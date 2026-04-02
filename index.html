@@ -46,14 +46,14 @@
       --color-dark-navy:     #002855;
       --color-sky-blue:      #46B1EF;
 
-      /* Code syntax highlighting (intentionally outside brand palette for legibility) */
-      --code-bg: #0d1117;
-      --code-text: #c9d1d9;
-      --code-keyword: #ff7b72;
-      --code-function: #79c0ff;
-      --code-string: #a5d6ff;
-      --code-comment: #8b949e;
-      --code-border: #30363d;
+      /* Code syntax highlighting — light mode (dark mode overridden below) */
+      --code-bg: #FFFFFF;
+      --code-text: #1A1A1A;
+      --code-keyword: #C13232;
+      --code-function: #0070F0;
+      --code-string: #002855;
+      --code-comment: #666666;
+      --code-border: #E6E6E6;
 
       /* 3.3 Grayscale */
       --pgn-color-white:    #FFFFFF;
@@ -113,6 +113,15 @@
       --pgn-color-danger-tint: #3A1A1A;
       --color-deep-navy: #000D1A;
       --color-ice-blue: #0D2240;
+
+      /* Code blocks — dark theme */
+      --code-bg: #0d1117;
+      --code-text: #FFFFFF;
+      --code-keyword: #ff7b72;
+      --code-function: #79c0ff;
+      --code-string: #a5d6ff;
+      --code-comment: #999999;
+      --code-border: #30363d;
     }
     [data-theme="dark"] body {
       background: var(--pgn-color-bg-light);
@@ -394,7 +403,7 @@
     .code-block {
       background: var(--code-bg); color: var(--code-text);
       font-family: 'Lato', 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.6;
-      border-radius: var(--pgn-size-border-radius-base);
+      border: 1px solid var(--code-border); border-radius: var(--pgn-size-border-radius-base);
       padding: var(--pgn-spacing-2) var(--pgn-spacing-3); overflow-x: auto;
     }
     .code-block .kw { color: var(--code-keyword); }
