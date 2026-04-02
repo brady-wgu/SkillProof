@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JFT SDP MVP — Scenario Catalog &amp; Storyboard Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* SDP Design System v1.2 — Simplified presentation tokens.
+       In production, both files consume @wgu/sdp-brand/light.min.css
+       which provides the full Paragon --pgn-* token set. */
+    :root {
+      --color-deep-navy: #001730;
+      --color-dark-navy: #002855;
+      --color-brand-blue: #0070F0;
+      --color-bright-blue: #0070F0;
+      --color-sky-blue: #46B1EF;
+      --color-ice-blue: #EEF6F9;
+      --color-white: #FFFFFF;
+      --color-accent-red: #C13232;
+      --color-success: #2E7D32;
+      --color-amber: #FBAE40;
+      --gray-90: #1A1A1A;
+      --gray-80: #333333;
+      --gray-70: #4D4D4D;
+      --gray-60: #666666;
+      --gray-50: #808080;
+      --gray-30: #B3B3B3;
+      --gray-20: #CCCCCC;
+      --gray-10: #E6E6E6;
+      --gray-05: #F2F2F2;
+      --space-1: 8px; --space-2: 16px; --space-3: 24px;
+      --space-4: 32px; --space-5: 40px; --space-6: 48px;
+      --color-trigger-bg: #F0F7FF;
+      --color-outcome-bg: #F1F8E9;
+      --color-notes-bg: #FFF8E1;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: 'Lato', 'Segoe UI', Arial, sans-serif;
+      font-size: 16px; line-height: 1.5; color: var(--gray-70); background: var(--color-white);
+    }
+    h1,h2,h3,h4,h5 { font-family: 'Sora', 'Segoe UI', Arial, sans-serif; color: var(--gray-90); font-weight: 700; }
+    h1 { font-size: 40px; line-height: 1.2; } h2 { font-size: 32px; line-height: 1.25; }
+    h3 { font-size: 28px; line-height: 1.3; } h4 { font-size: 24px; line-height: 1.35; }
+    h5 { font-size: 20px; line-height: 1.4; }
+    a { color: var(--color-brand-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    :focus-visible {
+      outline: 3px solid var(--color-bright-blue);
+      outline-offset: 2px;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    code { background: var(--gray-05); padding: 0 8px; border-radius: 4px; font-family: 'Lato', sans-serif; font-size: 14px; }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--color-deep-navy); color: var(--color-white);
+      padding: var(--space-2) var(--space-4);
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .navbar-brand { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: var(--color-white); display: flex; align-items: center; gap: 16px; }
+    .navbar-brand span { opacity: 0.7; font-weight: 400; font-size: 14px; }
+    .navbar-nav { display: flex; gap: var(--space-1); list-style: none; }
+    .navbar-nav a { color: var(--color-white); opacity: 0.85; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; }
+    .navbar-nav a:hover, .navbar-nav a.active { opacity: 1; background: rgba(255,255,255,0.12); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-dark-navy) 50%, var(--color-deep-navy) 100%);
+      color: var(--color-white); padding: 120px var(--space-4) 100px; padding-left: calc(260px + var(--space-4)); text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(77,181,232,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(0,85,212,0.06) 0%, transparent 50%); }
+    .hero > * { position: relative; z-index: 1; }
+    .hero-badge { display: inline-block; background: rgba(77,181,232,0.15); border: 1px solid rgba(77,181,232,0.3); color: var(--color-sky-blue); font-size: 14px; font-weight: 700; padding: 8px 24px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: var(--space-3); }
+    .hero h1 { font-size: 52px; color: var(--color-white); margin-bottom: var(--space-2); max-width: 900px; margin-left: auto; margin-right: auto; }
+    .hero .subtitle { font-size: 22px; color: rgba(255,255,255,0.85); max-width: 700px; margin: 0 auto var(--space-5); line-height: 1.5; }
+    .hero-meta { display: flex; justify-content: center; gap: var(--space-5); flex-wrap: wrap; }
+    .hero-meta-item { text-align: center; }
+    .hero-meta-item .value { font-family: 'Sora', sans-serif; font-size: 36px; font-weight: 700; color: var(--color-sky-blue); }
+    .hero-meta-item .label { font-size: 14px; color: rgba(255,255,255,0.78); text-transform: uppercase; letter-spacing: 1px; margin-top: 8px; }
+    .hero-divider { width: 80px; height: 3px; background: var(--color-sky-blue); margin: var(--space-5) auto var(--space-4); border-radius: 2px; }
+    .hero-doc-info { font-size: 14px; color: rgba(255,255,255,0.78); max-width: 600px; margin: var(--space-4) auto 0; }
+
+    /* SIDEBAR TOC */
+    .toc-sidebar {
+      position: fixed; left: 0; top: 64px; width: 260px; height: calc(100vh - 64px);
+      background: var(--color-ice-blue); border-right: 1px solid var(--gray-10);
+      padding: var(--space-3) var(--space-2); overflow-y: auto; z-index: 50; font-size: 14px;
+    }
+    .toc-sidebar h5 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-50); margin-bottom: var(--space-2); }
+    .toc-scenario { margin-bottom: var(--space-3); }
+    .toc-scenario-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; color: var(--color-deep-navy); margin-bottom: 8px; }
+    .toc-link { display: block; padding: 8px 8px 8px 16px; color: var(--gray-60); font-size: 12px; line-height: 1.5; border-left: 2px solid transparent; transition: all 0.15s; border-radius: 0 4px 4px 0; }
+    .toc-link:hover { color: var(--color-brand-blue); background: rgba(0,85,212,0.05); text-decoration: none; border-left-color: var(--color-sky-blue); }
+
+    /* MAIN */
+    .main-content { margin-left: 260px; margin-right: auto; max-width: calc(100% - 260px); padding: 0 var(--space-5); }
+    .main-content > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+    /* SCENARIO HEADER */
+    .scenario-header { background: var(--color-deep-navy); color: var(--color-white); padding: 80px var(--space-4) 64px; margin: 0 calc(-1 * var(--space-5)); max-width: none; text-align: center; position: relative; }
+    .scenario-header::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--color-sky-blue); }
+    .scenario-id { display: inline-block; background: rgba(77,181,232,0.15); border: 1px solid rgba(77,181,232,0.3); color: var(--color-sky-blue); font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-2); }
+    .scenario-header h2 { color: var(--color-white); margin-bottom: var(--space-1); }
+    .scenario-header .persona { font-size: 16px; color: var(--color-sky-blue); }
+
+    /* SCENARIO META */
+    .scenario-meta { background: var(--gray-05); border: 1px solid var(--gray-10); border-radius: 8px; padding: var(--space-3); margin: var(--space-5) 0; }
+    .scenario-meta table { width: 100%; border-collapse: collapse; }
+    .scenario-meta td, .scenario-meta th { padding: 8px 16px; font-size: 14px; border-bottom: 1px solid var(--gray-10); vertical-align: top; }
+    .scenario-meta th { font-weight: 700; color: var(--gray-80); width: 200px; text-align: left; }
+
+    /* DOC BLOCKS */
+    .doc-block { margin: var(--space-4) 0; padding: var(--space-3); border-radius: 8px; }
+    .doc-block h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-2); }
+    .doc-block p, .doc-block li { font-size: 16px; line-height: 1.65; }
+    .doc-block ul { padding-left: 24px; margin-top: 8px; }
+    .doc-block li { margin-bottom: 8px; }
+    .doc-block.context { background: var(--color-ice-blue); border-left: 4px solid var(--color-sky-blue); }
+    .doc-block.trigger { background: var(--color-trigger-bg); border-left: 4px solid var(--color-brand-blue); }
+    .doc-block.outcome { background: var(--color-outcome-bg); border-left: 4px solid var(--color-success); }
+    .doc-block.notes { background: var(--color-notes-bg); border-left: 4px solid var(--color-amber); }
+
+    /* STEPS */
+    .step { margin: var(--space-6) 0; scroll-margin-top: 80px; }
+    .step-header { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
+    .step-number { flex-shrink: 0; width: 40px; height: 40px; background: var(--color-brand-blue); color: var(--color-white); font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .step-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 20px; color: var(--gray-90); }
+    .step-screen-label { font-size: 12px; color: var(--gray-50); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-left: auto; background: var(--gray-05); padding: 8px 16px; border-radius: 4px; }
+    .step-text { font-size: 16px; line-height: 1.75; color: var(--gray-70); margin-bottom: var(--space-3); }
+    .step-screenshot { border: 1px solid var(--gray-10); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); background: var(--gray-05); }
+    .step-screenshot img { width: 100%; display: block; }
+
+    /* DIVIDERS */
+    .section-divider { height: 4px; background: linear-gradient(90deg, var(--color-sky-blue), var(--color-brand-blue)); margin: var(--space-6) calc(-1 * var(--space-5)); max-width: none; }
+
+    /* TABLES */
+    .screen-map { margin: var(--space-4) 0; overflow-x: auto; }
+    .screen-map table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .screen-map th { background: var(--color-deep-navy); color: var(--color-white); text-align: left; padding: 8px 16px; font-family: 'Sora', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .screen-map td { padding: 8px 16px; border-bottom: 1px solid var(--gray-10); }
+    .screen-map tr:nth-child(even) td { background: var(--gray-05); }
+
+    /* INTRO */
+    .intro-section { padding: var(--space-5) 0; }
+    .intro-section h2 { margin-bottom: var(--space-2); padding-bottom: var(--space-1); border-bottom: 2px solid var(--gray-10); }
+    .intro-section p { font-size: 16px; line-height: 1.75; margin-bottom: var(--space-2); }
+    .sub-section-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: var(--space-2) 0; }
+    .sub-section-chip { background: var(--color-ice-blue); border: 1px solid rgba(77,181,232,0.2); padding: 8px 16px; border-radius: 6px; font-size: 14px; color: var(--color-deep-navy); }
+    .sub-section-chip .num { font-weight: 700; color: var(--color-brand-blue); margin-right: 8px; }
+
+    /* FOOTER */
+    .site-footer { background: var(--color-deep-navy); color: rgba(255,255,255,0.5); text-align: center; padding: var(--space-5) var(--space-4); font-size: 14px; }
+    .site-footer strong { color: rgba(255,255,255,0.8); }
+
+    .skip-nav {
+      position: absolute; left: -9999px; top: auto;
+      width: 1px; height: 1px; overflow: hidden;
+      z-index: 9999; padding: 8px 16px;
+      background: var(--color-bright-blue); color: #fff;
+      font-size: 16px; font-weight: 700; text-decoration: none;
+    }
+    .skip-nav:focus {
+      position: fixed; left: 0; top: 0;
+      width: auto; height: auto;
+    }
+
+    @media (max-width: 1024px) {
+      .toc-sidebar { display: none; }
+      .main-content { margin-left: 0; }
+      .site-footer { margin-left: 0; }
+      .hero { padding-left: var(--space-4); }
+      .hero h1 { font-size: 36px; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: var(--space-5) var(--space-2); }
+      .hero h1 { font-size: 28px; }
+      .hero-meta { flex-direction: column; gap: var(--space-3); }
+      .sub-section-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 24px; }
+      .main-content { padding: 0 var(--space-2); }
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<nav class="navbar" id="top">
+  <div class="navbar-brand">WGU <span>|</span> JFT SDP MVP</div>
+  <ul class="navbar-nav">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#sc-mvp-01">SC-MVP-01</a></li>
+    <li><a href="#sc-mvp-02">SC-MVP-02</a></li>
+    <li><a href="#sc-mvp-03">SC-MVP-03</a></li>
+    <li><a href="#sc-mvp-04">SC-MVP-04</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+
+<aside class="toc-sidebar" aria-label="Table of contents">
+  <h5>Navigation</h5>
+  <div class="toc-scenario"><div class="toc-scenario-title">Overview</div>
+    <a class="toc-link" href="#overview">Purpose</a>
+    <a class="toc-link" href="#sub-sections">13 Sub-Sections</a>
+  </div>
+  <div class="toc-scenario"><div class="toc-scenario-title">SC-MVP-01: First Launch</div>
+    <a class="toc-link" href="#sc01-step1">1. LMS Course Page</a><a class="toc-link" href="#sc01-step2">2. Welcome / Entry</a>
+    <a class="toc-link" href="#sc01-step3">3. Diagnostic Q1</a><a class="toc-link" href="#sc01-step4">4. Diagnostic Q2</a>
+    <a class="toc-link" href="#sc01-step5">5. Diagnostic Results</a><a class="toc-link" href="#sc01-step6">6. Progress Map</a>
+    <a class="toc-link" href="#sc01-step7">7. First Coaching Task</a><a class="toc-link" href="#sc01-step8">8. Session Saved</a>
+  </div>
+  <div class="toc-scenario"><div class="toc-scenario-title">SC-MVP-02: Progressive Coaching</div>
+    <a class="toc-link" href="#sc02-step1">1. LMS Course Page</a><a class="toc-link" href="#sc02-step2">2. Welcome / Entry</a>
+    <a class="toc-link" href="#sc02-step3">3. Diagnostic Q1</a><a class="toc-link" href="#sc02-step4">4. Diagnostic Q2</a>
+    <a class="toc-link" href="#sc02-step5">5. Diagnostic Q3</a><a class="toc-link" href="#sc02-step6">6. Progress Map</a>
+    <a class="toc-link" href="#sc02-step7">7. Correct Answer</a><a class="toc-link" href="#sc02-step8">8. Targeted Feedback</a>
+    <a class="toc-link" href="#sc02-step9">9. Verification</a><a class="toc-link" href="#sc02-step10">10. Difficulty Advances</a>
+    <a class="toc-link" href="#sc02-step11">11. Session Saved</a>
+  </div>
+  <div class="toc-scenario"><div class="toc-scenario-title">SC-MVP-03: Fast-Track</div>
+    <a class="toc-link" href="#sc03-step1">1. LMS Course Page</a><a class="toc-link" href="#sc03-step2">2. Welcome / Entry</a>
+    <a class="toc-link" href="#sc03-step3">3. Diagnostic Q1</a><a class="toc-link" href="#sc03-step4">4. Diagnostic Q2</a>
+    <a class="toc-link" href="#sc03-step5">5. Diagnostic Q3</a><a class="toc-link" href="#sc03-step6">6. Advanced Diagnostic</a>
+    <a class="toc-link" href="#sc03-step7">7. Fast-Track Results</a><a class="toc-link" href="#sc03-step8">8. Verification Task</a>
+    <a class="toc-link" href="#sc03-step9">9. No-Gaps Summary</a>
+  </div>
+  <div class="toc-scenario"><div class="toc-scenario-title">SC-MVP-04: Returning Student</div>
+    <a class="toc-link" href="#sc04-step1">1. LMS Course Page</a><a class="toc-link" href="#sc04-step2">2. Returning Welcome</a>
+    <a class="toc-link" href="#sc04-step3">3. Re-Assessment Q1</a><a class="toc-link" href="#sc04-step4">4. Re-Assessment Q2</a>
+    <a class="toc-link" href="#sc04-step5">5. Resume Coaching</a><a class="toc-link" href="#sc04-step6">6. Session Saved</a>
+  </div>
+</aside>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Western Governors University &mdash; Program Development</div>
+  <h1>JFT SDP MVP<br>Scenario Catalog &amp; Storyboard</h1>
+  <p class="subtitle">Interactive reference combining user scenario narratives with the complete visual storyboard for the Skills Development Platform Coding Coach MVP.</p>
+  <div class="hero-divider"></div>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="value">4</div><div class="label">Scenarios</div></div>
+    <div class="hero-meta-item"><div class="value">34</div><div class="label">Screens</div></div>
+    <div class="hero-meta-item"><div class="value">13</div><div class="label">Sub-Sections</div></div>
+    <div class="hero-meta-item"><div class="value">v1.2</div><div class="label">Catalog Version</div></div>
+  </div>
+  <div class="hero-doc-info">MVP Scenario Catalog v1.2 &middot; 01 Apr 2026 &middot; SDP Design System v1.2 &middot; Storyboard v3<br>Author: Brady Redfearn, Senior Strategist, Program Development<br><br><a href="https://brady-wgu.github.io/JFT_SDP_MVP/" target="_blank" rel="noopener" style="color: var(--color-sky-blue); opacity: 0.85;">View the Interactive MVP Storyboard &rarr;</a></div>
+</section>
+
+<main class="main-content" id="main-content">
+
+  <!-- OVERVIEW -->
+  <section class="intro-section" id="overview">
+    <h2>Purpose</h2>
+    <p>This catalog defines the user scenarios for the JFT Skills Development Platform (JFT SDP) MVP release. It is scoped to the four MVP scenarios that constitute the complete functional scope of the first production deployment.</p>
+    <p>The MVP objective is to deploy the existing v1 proof-of-concept codebase (Cicada) to a production-quality, scalable infrastructure with a polished UI, accessible outside the WGU intranet via LTI 1.3 single sign-on. No new features, adaptive logic changes, or coaching algorithm modifications are in scope for this release.</p>
+    <p>Each of the four scenarios is self-contained. Each represents a distinct student profile interacting with the Coding Coach for the first time (SC-MVP-01, 02, 03) or returning after a break (SC-MVP-04). Every scenario begins from the LMS course page and includes its own complete LTI launch, diagnostic or re-assessment, and coaching flow.</p>
+  </section>
+
+  <section class="intro-section" id="sub-sections">
+    <h2>13 Learning Objective Sub-Sections</h2>
+    <p>The coaching structure for this release is defined by these 13 sub-sections, inherited from the v1 Cicada codebase:</p>
+    <div class="sub-section-list">
+      <div class="sub-section-chip"><span class="num">1.</span> Basic Syntax and Data Types</div>
+      <div class="sub-section-chip"><span class="num">2.</span> Control Flow and Logic</div>
+      <div class="sub-section-chip"><span class="num">3.</span> Functions and Modular Programming</div>
+      <div class="sub-section-chip"><span class="num">4.</span> Data Structures: Lists, Tuples, Sets, Dicts</div>
+      <div class="sub-section-chip"><span class="num">5.</span> Working with Files and I/O</div>
+      <div class="sub-section-chip"><span class="num">6.</span> Error Handling and Debugging</div>
+      <div class="sub-section-chip"><span class="num">7.</span> Object-Oriented Programming (OOP)</div>
+      <div class="sub-section-chip"><span class="num">8.</span> Python Libraries and Modules</div>
+      <div class="sub-section-chip"><span class="num">9.</span> Advanced Data Handling</div>
+      <div class="sub-section-chip"><span class="num">10.</span> Regular Expressions and Strings</div>
+      <div class="sub-section-chip"><span class="num">11.</span> Working with Databases</div>
+      <div class="sub-section-chip"><span class="num">12.</span> Introduction to Automation</div>
+      <div class="sub-section-chip"><span class="num">13.</span> Introduction to Machine Learning</div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-MVP-01 ==================== -->
+  <section class="scenario-header" id="sc-mvp-01">
+    <div class="scenario-id">SC-MVP-01</div>
+    <h2>First Launch of the Coding Coach</h2>
+    <div class="persona">Sally (Basic) &mdash; No prior Python knowledge &middot; 8 Screens</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-MVP-01</td></tr>
+    <tr><th scope="row">User Type</th><td>Student</td></tr>
+    <tr><th scope="row">Persona</th><td>Sally (Basic &mdash; no prior Python knowledge)</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>8 (Screen IDs: 1, 2, 3, 18, 4, 5, 6, 7)</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Context</h3><p>Sally is an enrolled WGU student working through E010: Foundations of Programming (Python). The JFT SDP coding coach is available to her as a supplemental practice tool via a resource link in the course she can click at any time. It does not replace any formative opportunity or high-stakes course assessment. Sally has no prior Python knowledge. She clicks the Coding Coach link for the first time.</p></section>
+  <section class="doc-block trigger"><h3>Trigger</h3><p>Sally clicks the "Coding Coach &mdash; Python" resource link in E010. The LTI 1.3 link launch completes, WGU SSO confirms her identity silently (no separate login prompt), and the coaching platform opens in a new browser tab.</p></section>
+
+  <div class="step" id="sc01-step1"><div class="step-header"><div class="step-number">1</div><div class="step-title">LMS Course Page</div><div class="step-screen-label">Screen 1</div></div>
+    <p class="step-text">Sally is already signed into her WGU course (E010: Foundations of Programming &mdash; Python). The LMS displays a mock textbook page for Module 1: Python Basics with course navigation in a left sidebar. The sidebar includes course modules (Python Basics, Control Flow, Functions, Data Structures), supplemental resources (Course Textbook, Video Lectures), and a highlighted "Coding Coach &mdash; Python" link under Practice Tools. A brief description reads: "AI-powered Python practice. Launches via LTI in a new tab. No separate login required." Sally clicks the Coding Coach link.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step01_screen01.png" alt="SC-MVP-01 Step 1: LMS Course Page" loading="lazy"></div></div>
+
+  <div class="step" id="sc01-step2"><div class="step-header"><div class="step-number">2</div><div class="step-title">Welcome / Entry Screen</div><div class="step-screen-label">Screen 2</div></div>
+    <p class="step-text">The Coding Coach opens in a new browser tab. The entry screen displays a badge ("Supplemental Practice Tool"), the heading "Coding Coach &mdash; Python Foundations", and a plain-language description. A "Begin Diagnostic" button is the primary CTA with a note "(Takes about 5-8 minutes)." Trust signals appear below: "Secured via WGU SSO," "WCAG 2.2 AA," "Works on any device." The right side lists all 13 practice areas. No tutorial is required.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step02_screen02.png" alt="SC-MVP-01 Step 2: Welcome / Entry" loading="lazy"></div></div>
+
+  <div class="step" id="sc01-step3"><div class="step-header"><div class="step-number">3</div><div class="step-title">Diagnostic Question 1</div><div class="step-screen-label">Screen 3</div></div>
+    <p class="step-text">The platform presents a short diagnostic &mdash; LLM-generated questions sampling across all 13 sub-sections. The first screen shows Question 3 of 10, sub-section "Basic Syntax &amp; Data Types," with a progress bar at 30%. The AI-generated prompt asks Sally to define and use variables in Python. A dark-themed code editor provides space for her response. A "Need a Hint?" link and "Submit Answer" button are available.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step03_screen03.png" alt="SC-MVP-01 Step 3: Diagnostic Q1" loading="lazy"></div></div>
+
+  <div class="step" id="sc01-step4"><div class="step-header"><div class="step-number">4</div><div class="step-title">Diagnostic Question 2</div><div class="step-screen-label">Screen 18</div></div>
+    <p class="step-text">Question 7 of 10, sub-section "Control Flow &amp; Logic" at 70%. The prompt asks Sally to write a Python function called <code>check_grade</code> that takes a numeric score and returns "Pass" or "Fail." Questions are calibrated for a student with zero prior Python experience.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step04_screen18.png" alt="SC-MVP-01 Step 4: Diagnostic Q2" loading="lazy"></div></div>
+
+  <div class="step" id="sc01-step5"><div class="step-header"><div class="step-number">5</div><div class="step-title">Diagnostic Results</div><div class="step-screen-label">Screen 4</div></div>
+    <p class="step-text">Sally completes the diagnostic. The results screen displays "We've established your starting point." Her results show no measurable prior knowledge across any sub-section. The baseline is stored against Sally's WGU student ID via LTI 1.3. All 13 sub-sections are listed as chips. A "View Your Progress Map" CTA leads to the next screen.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step05_screen04.png" alt="SC-MVP-01 Step 5: Diagnostic Results" loading="lazy"></div></div>
+
+  <div class="step" id="sc01-step6"><div class="step-header"><div class="step-number">6</div><div class="step-title">Progress Map</div><div class="step-screen-label">Screen 5</div></div>
+    <p class="step-text">The progress map shows "13 sub-sections &middot; 0 mastered &middot; 13 to explore." All show "Not Started." Basic Syntax &amp; Data Types is highlighted as the "Recommended starting point." Sally can "Start Coaching" or "Return to Course Textbook."</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step06_screen05.png" alt="SC-MVP-01 Step 6: Progress Map" loading="lazy"></div></div>
+
+  <div class="step" id="sc01-step7"><div class="step-header"><div class="step-number">7</div><div class="step-title">First Coaching Task</div><div class="step-screen-label">Screen 6</div></div>
+    <p class="step-text">Sally is routed to "Variables &amp; Assignment" in Basic Syntax &amp; Data Types. The AI coaching prompt introduces variables and asks Sally to create a <code>student_name</code> variable. A tip box provides guidance. The response area includes a code editor, "Submit Answer," "Need a Hint?" link, and "Save &amp; Exit" ghost button.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step07_screen06.png" alt="SC-MVP-01 Step 7: First Coaching Task" loading="lazy"></div></div>
+
+  <div class="step" id="sc01-step8"><div class="step-header"><div class="step-number">8</div><div class="step-title">Session Saved</div><div class="step-screen-label">Screen 7</div></div>
+    <p class="step-text">Sally closes the tool. The confirmation card shows: sub-section (Basic Syntax &amp; Data Types), tasks completed (1), sub-sections unlocked (1 of 13), session duration (14 min), resume point (Variables &amp; Assignment &mdash; Task 2). "Return to E010 Course" and "View Progress Map" links are available. If Sally exits mid-task, she resumes at the last completed task boundary on her next launch.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-01_step08_screen07.png" alt="SC-MVP-01 Step 8: Session Saved" loading="lazy"></div></div>
+
+  <section class="doc-block outcome"><h3>Expected Outcome</h3><ul>
+    <li>LTI 1.3 basic launch completes without a separate login prompt.</li>
+    <li>The diagnostic samples across all 13 SDP sub-sections.</li>
+    <li>A coaching baseline is stored against Sally's WGU student ID via LTI 1.3.</li>
+    <li>Sally is routed to an appropriate first coaching task based on diagnostic results.</li>
+    <li>Session progress is saved on exit. On re-launch, Sally resumes at the last completed task boundary.</li>
+    <li>All screens meet WCAG 2.2 AA and are navigable by keyboard and screen reader.</li>
+  </ul></section>
+  <section class="doc-block notes"><h3>Notes for JFT</h3><ul>
+    <li>The coding coach does not generate grades or feed passback to the LMS. WGU is using basic LTI 1.3 (no LTI Advantage).</li>
+    <li>The platform must expose a stable launch URL that does not change when course structure is reorganized.</li>
+    <li>Diagnostic question generation relies on LLM-inherent variation to prevent identical question sets.</li>
+    <li>FERPA requirements apply to all stored student interaction data from first launch.</li>
+  </ul></section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-MVP-02 ==================== -->
+  <section class="scenario-header" id="sc-mvp-02">
+    <div class="scenario-id">SC-MVP-02</div>
+    <h2>Progressive Coaching with Targeted Feedback</h2>
+    <div class="persona">Sally (Advanced) &mdash; Partial Python knowledge &middot; 11 Screens</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-MVP-02</td></tr>
+    <tr><th scope="row">User Type</th><td>Student</td></tr>
+    <tr><th scope="row">Persona</th><td>Sally (Advanced &mdash; partial Python knowledge)</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>11 (Screen IDs: 15, 25, 26, 27, 31, 8, 19, 9, 10, 20, 21)</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Context</h3><p>Sally has partial Python knowledge &mdash; she understands basic syntax but has gaps in data structures and more advanced topics. She accesses the Coding Coach for the first time. This scenario demonstrates progressive coaching with targeted feedback when a student answers incorrectly, including gap verification and difficulty advancement.</p></section>
+  <section class="doc-block trigger"><h3>Trigger</h3><p>Sally clicks the "Coding Coach &mdash; Python" resource link in E010. The LTI 1.3 launch completes, WGU SSO confirms her identity silently, and the coaching platform opens in a new browser tab.</p></section>
+
+  <div class="step" id="sc02-step1"><div class="step-header"><div class="step-number">1</div><div class="step-title">LMS Course Page</div><div class="step-screen-label">Screen 15</div></div>
+    <p class="step-text">Sally is signed into E010. The LMS displays the mock textbook page with the "Coding Coach &mdash; Python" link. Sally clicks the link.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step01_screen15.png" alt="SC-MVP-02 Step 1: LMS Course Page" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step2"><div class="step-header"><div class="step-number">2</div><div class="step-title">Welcome / Entry Screen</div><div class="step-screen-label">Screen 25</div></div>
+    <p class="step-text">The Coding Coach opens with the entry screen: "Begin Diagnostic" CTA, trust signals, and 13 practice area list. Sally clicks "Begin Diagnostic."</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step02_screen25.png" alt="SC-MVP-02 Step 2: Welcome / Entry" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step3"><div class="step-header"><div class="step-number">3</div><div class="step-title">Diagnostic Question 1</div><div class="step-screen-label">Screen 26</div></div>
+    <p class="step-text">Question 3 of 10, "Basic Syntax &amp; Data Types" at 30%. Prompt asks Sally to define and use variables.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step03_screen26.png" alt="SC-MVP-02 Step 3: Diagnostic Q1" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step4"><div class="step-header"><div class="step-number">4</div><div class="step-title">Diagnostic Question 2</div><div class="step-screen-label">Screen 27</div></div>
+    <p class="step-text">Question 7 of 10, "Control Flow &amp; Logic" at 70%. Prompt asks Sally to write a <code>check_grade</code> function.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step04_screen27.png" alt="SC-MVP-02 Step 4: Diagnostic Q2" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step5"><div class="step-header"><div class="step-number">5</div><div class="step-title">Diagnostic Question 3</div><div class="step-screen-label">Screen 31</div></div>
+    <p class="step-text">"Data Structures: Lists, Tuples, Sets, Dictionaries" &mdash; a more advanced diagnostic question reflecting Sally's partial knowledge.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step05_screen31.png" alt="SC-MVP-02 Step 5: Diagnostic Q3" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step6"><div class="step-header"><div class="step-number">6</div><div class="step-title">Progress Map</div><div class="step-screen-label">Screen 8</div></div>
+    <p class="step-text">Sally's diagnostic reveals partial knowledge. The progress map shows: "13 sub-sections &middot; 1 in progress &middot; 12 not started." Data Structures is marked "In Progress &mdash; Foundational level." Basic Syntax shows "Completed diagnostic baseline."</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step06_screen08.png" alt="SC-MVP-02 Step 6: Progress Map" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step7"><div class="step-header"><div class="step-number">7</div><div class="step-title">Correct Answer at Foundational Level</div><div class="step-screen-label">Screen 19</div></div>
+    <p class="step-text">The AI prompt asks for the Python syntax to append 'grape' to a list. Sally answers correctly with <code>fruits.append('grape')</code>. The platform confirms with specific feedback and notes difficulty will increase.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step07_screen19.png" alt="SC-MVP-02 Step 7: Correct Answer" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step8"><div class="step-header"><div class="step-number">8</div><div class="step-title">Incorrect Answer + Targeted Feedback</div><div class="step-screen-label">Screen 9</div></div>
+    <p class="step-text">At increased difficulty on dictionary iteration, Sally answers incorrectly &mdash; her code prints the entire dictionary instead of individual key-value pairs. The platform generates targeted feedback identifying the specific error and provides a concrete correct example using <code>.items()</code> and f-string formatting. "Try Next Question" at same difficulty level.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step08_screen09.png" alt="SC-MVP-02 Step 8: Targeted Feedback" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step9"><div class="step-header"><div class="step-number">9</div><div class="step-title">Verification Question (Same Difficulty)</div><div class="step-screen-label">Screen 10</div></div>
+    <p class="step-text">A new question at the same difficulty verifies gap resolution. Sally is asked to filter the <code>student_scores</code> dictionary, printing only students who scored 90 or above.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step09_screen10.png" alt="SC-MVP-02 Step 9: Verification Question" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step10"><div class="step-header"><div class="step-number">10</div><div class="step-title">Verification Passed &mdash; Difficulty Advances</div><div class="step-screen-label">Screen 20</div></div>
+    <p class="step-text">Sally answers correctly. "Verification Passed &mdash; Gap resolved &mdash; difficulty advancing." Progression: Foundational &rarr; Intermediate &rarr; Advanced. Identical questions are never repeated within a session.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step10_screen20.png" alt="SC-MVP-02 Step 10: Difficulty Advances" loading="lazy"></div></div>
+
+  <div class="step" id="sc02-step11"><div class="step-header"><div class="step-number">11</div><div class="step-title">Session Saved</div><div class="step-screen-label">Screen 21</div></div>
+    <p class="step-text">Confirmation: Data Structures, 4 tasks completed, Intermediate difficulty, 2 of 13 sub-sections explored, 22 min session, resume at Dictionary Comprehensions &mdash; Task 6.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-02_step11_screen21.png" alt="SC-MVP-02 Step 11: Session Saved" loading="lazy"></div></div>
+
+  <section class="doc-block outcome"><h3>Expected Outcome</h3><ul>
+    <li>Difficulty increases progressively and does not repeat identical questions within a session.</li>
+    <li>Incorrect-answer feedback is specific to Sally's actual error, not generic.</li>
+    <li>Session progress is fully preserved. Sally resumes at her exact competency position.</li>
+    <li>Progress map updates in real time.</li>
+    <li>Verification questions confirm gap resolution before difficulty advances.</li>
+  </ul></section>
+  <section class="doc-block notes"><h3>Notes for JFT</h3><ul>
+    <li>Feedback specificity is the primary quality risk. Templated responses do not satisfy this requirement.</li>
+    <li>Difficulty ceiling per sub-section is inherited from Cicada v1 as-is.</li>
+    <li>FERPA requirements apply. MVP stores competency-level indicators, not exact Q&amp;A state.</li>
+  </ul></section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-MVP-03 ==================== -->
+  <section class="scenario-header" id="sc-mvp-03">
+    <div class="scenario-id">SC-MVP-03</div>
+    <h2>Experienced Developer Fast-Tracks Through Coaching Baseline</h2>
+    <div class="persona">Sally (Professional) &mdash; Experienced Python developer &middot; 9 Screens</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-MVP-03</td></tr>
+    <tr><th scope="row">User Type</th><td>Student</td></tr>
+    <tr><th scope="row">Persona</th><td>Sally (Professional &mdash; experienced Python developer)</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>9 (Screen IDs: 16, 28, 29, 30, 33, 22, 11, 12, 13)</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Context</h3><p>Sally is a software developer enrolled in E010 with several years of professional Python experience. She accesses the coding coach expecting it to recognize her existing skills quickly so she is not required to work through content she does not need.</p></section>
+  <section class="doc-block trigger"><h3>Trigger</h3><p>Sally clicks the "Coding Coach &mdash; Python" resource link in E010. The LTI 1.3 launch completes and the diagnostic opens.</p></section>
+
+  <div class="step" id="sc03-step1"><div class="step-header"><div class="step-number">1</div><div class="step-title">LMS Course Page</div><div class="step-screen-label">Screen 16</div></div>
+    <p class="step-text">Sally is signed into E010. She clicks the "Coding Coach &mdash; Python" link.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step01_screen16.png" alt="SC-MVP-03 Step 1: LMS Course Page" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step2"><div class="step-header"><div class="step-number">2</div><div class="step-title">Welcome / Entry Screen</div><div class="step-screen-label">Screen 28</div></div>
+    <p class="step-text">The entry screen with "Begin Diagnostic" CTA. Sally clicks to start.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step02_screen28.png" alt="SC-MVP-03 Step 2: Welcome / Entry" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step3"><div class="step-header"><div class="step-number">3</div><div class="step-title">Diagnostic Question 1</div><div class="step-screen-label">Screen 29</div></div>
+    <p class="step-text">Question 3 of 10, "Basic Syntax &amp; Data Types." Sally's professional experience means she completes this quickly.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step03_screen29.png" alt="SC-MVP-03 Step 3: Diagnostic Q1" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step4"><div class="step-header"><div class="step-number">4</div><div class="step-title">Diagnostic Question 2</div><div class="step-screen-label">Screen 30</div></div>
+    <p class="step-text">Question 7 of 10, "Control Flow &amp; Logic." Prompt asks to write a <code>check_grade</code> function.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step04_screen30.png" alt="SC-MVP-03 Step 4: Diagnostic Q2" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step5"><div class="step-header"><div class="step-number">5</div><div class="step-title">Diagnostic Question 3</div><div class="step-screen-label">Screen 33</div></div>
+    <p class="step-text">"Data Structures: Lists, Tuples, Sets, Dictionaries" &mdash; advanced diagnostic question.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step05_screen33.png" alt="SC-MVP-03 Step 5: Diagnostic Q3" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step6"><div class="step-header"><div class="step-number">6</div><div class="step-title">Advanced Diagnostic with Positive Feedback</div><div class="step-screen-label">Screen 22</div></div>
+    <p class="step-text">Question 8 of 10, "Advanced Data Handling" at 80%. Sally writes a list comprehension with compound filtering. The platform responds: "Your response demonstrates fluent use of list comprehensions. This is characteristic of an experienced Python developer. The diagnostic is calibrating your baseline."</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step06_screen22.png" alt="SC-MVP-03 Step 6: Advanced Diagnostic" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step7"><div class="step-header"><div class="step-number">7</div><div class="step-title">Fast-Track Diagnostic Results</div><div class="step-screen-label">Screen 11</div></div>
+    <p class="step-text">"Strong baseline detected." 12 of 13 sub-sections show mastery. Functions &amp; Modular Programming requires hands-on verification. "Begin Verification Task" CTA.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step07_screen11.png" alt="SC-MVP-03 Step 7: Fast-Track Results" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step8"><div class="step-header"><div class="step-number">8</div><div class="step-title">Verification Task (Write a Python Module)</div><div class="step-screen-label">Screen 12</div></div>
+    <p class="step-text">Sally must create a <code>math_utils.py</code> module with <code>add</code> and <code>multiply</code> functions, a <code>__name__ == "__main__"</code> guard, and demonstrate importing. Alert: "Your code is evaluated by the AI as text. There is no in-browser code execution environment."</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step08_screen12.png" alt="SC-MVP-03 Step 8: Verification Task" loading="lazy"></div></div>
+
+  <div class="step" id="sc03-step9"><div class="step-header"><div class="step-number">9</div><div class="step-title">No-Gaps Summary</div><div class="step-screen-label">Screen 13</div></div>
+    <p class="step-text">"No coaching gaps identified. Proficiency confirmed across all 13 sub-sections." Options: continue practicing, select any sub-section for targeted practice, or return to E010.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-03_step09_screen13.png" alt="SC-MVP-03 Step 9: No-Gaps Summary" loading="lazy"></div></div>
+
+  <section class="doc-block outcome"><h3>Expected Outcome</h3><ul>
+    <li>Sally is not routed into coaching content for sub-sections where mastery was demonstrated.</li>
+    <li>At least one sub-section requires verification beyond the diagnostic.</li>
+    <li>The full fast-track path is achievable in one short session.</li>
+    <li>From the no-gaps summary, Sally can browse sub-sections for targeted practice.</li>
+  </ul></section>
+  <section class="doc-block notes"><h3>Notes for JFT</h3><ul>
+    <li>Fast-track threshold logic is inherited from Cicada v1. JFT must document the threshold parameters.</li>
+    <li>The MVP does not include in-browser code execution. All code is evaluated by the LLM as text.</li>
+    <li>Student-directed sub-section selection is supported in the MVP.</li>
+  </ul></section>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-MVP-04 ==================== -->
+  <section class="scenario-header" id="sc-mvp-04">
+    <div class="scenario-id">SC-MVP-04</div>
+    <h2>Student Returns and Resumes a Prior Session</h2>
+    <div class="persona">Sally (Returning) &mdash; Resuming after multi-week break &middot; 6 Screens</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-MVP-04</td></tr>
+    <tr><th scope="row">User Type</th><td>Student</td></tr>
+    <tr><th scope="row">Persona</th><td>Sally (Returning &mdash; resuming after multi-week break)</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>6 (Screen IDs: 17, 14, 34, 15*, 23, 24)</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Context</h3><p>Sally worked through two coaching sessions making intermediate progress in two sub-sections. She paused for several weeks. Session progress is preserved and she resumes at the last completed task boundary. A brief re-assessment verifies retention before coaching resumes at her prior difficulty level.</p></section>
+  <section class="doc-block trigger"><h3>Trigger</h3><p>Sally clicks the "Coding Coach &mdash; Python" resource link in E010 after a multi-week break. The LTI 1.3 launch completes.</p></section>
+
+  <div class="step" id="sc04-step1"><div class="step-header"><div class="step-number">1</div><div class="step-title">LMS Course Page</div><div class="step-screen-label">Screen 17</div></div>
+    <p class="step-text">Sally is signed into E010. She clicks the "Coding Coach &mdash; Python" link.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-04_step01_screen17.png" alt="SC-MVP-04 Step 1: LMS Course Page" loading="lazy"></div></div>
+
+  <div class="step" id="sc04-step2"><div class="step-header"><div class="step-number">2</div><div class="step-title">Returning Learner Welcome</div><div class="step-screen-label">Screen 14</div></div>
+    <p class="step-text">"Welcome back, Sally." Session snapshot: Last session (3 weeks ago), Active sub-section (Data Structures at Intermediate), Resume point (Dictionary Iteration &mdash; Task 5), Sub-sections explored (2 of 13). Full progress map with all 13 sub-sections and current status. "Resume Coaching" and "Return to Course" buttons available.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-04_step02_screen14.png" alt="SC-MVP-04 Step 2: Returning Learner Welcome" loading="lazy"></div></div>
+
+  <div class="step" id="sc04-step3"><div class="step-header"><div class="step-number">3</div><div class="step-title">Re-Assessment Question 1</div><div class="step-screen-label">Screen 34</div></div>
+    <p class="step-text">Brief re-assessment to verify retention. Question 1 of 2, "Data Structures" with badge "Re-Assessment &middot; Welcome Back." Prompt: access and transform nested dictionary data &mdash; print each student's name and average grade. Topic: "Data Structures &mdash; Nested Dictionaries (Intermediate)."</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-04_step03_screen34.png" alt="SC-MVP-04 Step 3: Re-Assessment Q1" loading="lazy"></div></div>
+
+  <div class="step" id="sc04-step4"><div class="step-header"><div class="step-number">4</div><div class="step-title">Re-Assessment Question 2</div><div class="step-screen-label">Screen 15*</div></div>
+    <p class="step-text">Question 2 of 2, "Control Flow &amp; Logic" at 100%. Write a function <code>count_passing</code> that returns pass/fail counts from a list of scores. Topic: "Control Flow &amp; Logic &mdash; Loops and Conditionals (Intermediate)."</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-04_step04_screen15.png" alt="SC-MVP-04 Step 4: Re-Assessment Q2" loading="lazy"></div></div>
+
+  <div class="step" id="sc04-step5"><div class="step-header"><div class="step-number">5</div><div class="step-title">Resume Coaching Task</div><div class="step-screen-label">Screen 23</div></div>
+    <p class="step-text">Sally picks up Data Structures at Intermediate. Breadcrumb: "Coding Coach > Data Structures > Dictionary Operations." Prompt: filter a dictionary by computed criteria &mdash; return students above the class average. Tip: use <code>sum()</code> and <code>len()</code> for the average.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-04_step05_screen23.png" alt="SC-MVP-04 Step 5: Resume Coaching" loading="lazy"></div></div>
+
+  <div class="step" id="sc04-step6"><div class="step-header"><div class="step-number">6</div><div class="step-title">Session Saved</div><div class="step-screen-label">Screen 24</div></div>
+    <p class="step-text">Data Structures, 2 tasks, Intermediate, 2 of 13 explored, 18 min, resume at Dictionary Operations &mdash; Task 8.</p>
+    <div class="step-screenshot"><img src="screenshots_dark/sc-mvp-04_step06_screen24.png" alt="SC-MVP-04 Step 6: Session Saved" loading="lazy"></div></div>
+
+  <section class="doc-block outcome"><h3>Expected Outcome</h3><ul>
+    <li>Prior progress is preserved and surfaced immediately. No restart from initial diagnostic.</li>
+    <li>Returning-learner screen shows last session date, active sub-section, difficulty, and resume point.</li>
+    <li>Brief re-assessment (2 questions) verifies retention before coaching resumes.</li>
+    <li>Coaching resumes at last completed task boundary at prior difficulty level.</li>
+    <li>If performance indicates decay, difficulty adjusts downward per Cicada v1 logic silently.</li>
+  </ul></section>
+  <section class="doc-block notes"><h3>Notes for JFT</h3><ul>
+    <li>Session persistence is a foundational MVP requirement. Lost progress = tool failure.</li>
+    <li>Configurable re-assessment thresholds are a future capability. The brief re-assessment shown verifies retention only.</li>
+    <li>Session persistence must handle gaps of any length. FERPA requires 3-year data retention.</li>
+    <li>JFT must document how the v1 difficulty algorithm handles sustained regression patterns.</li>
+  </ul></section>
+
+  <div class="section-divider"></div>
+
+  <!-- REFERENCE -->
+  <section class="intro-section" id="reference">
+    <h2>Storyboard Reference</h2>
+    <p>The authoritative UX reference is the v3 HTML storyboard, containing 34 interactive screens across all four scenarios. The live interactive prototype is available at: <a href="https://brady-wgu.github.io/JFT_SDP_MVP/" target="_blank" rel="noopener">brady-wgu.github.io/JFT_SDP_MVP</a></p>
+    <div class="screen-map"><table>
+      <thead><tr><th scope="col">Scenario</th><th scope="col">Screens</th><th scope="col">Screen IDs</th></tr></thead>
+      <tbody>
+        <tr><td>SC-MVP-01</td><td>8</td><td>1, 2, 3, 18, 4, 5, 6, 7</td></tr>
+        <tr><td>SC-MVP-02</td><td>11</td><td>15, 25, 26, 27, 31, 8, 19, 9, 10, 20, 21</td></tr>
+        <tr><td>SC-MVP-03</td><td>9</td><td>16, 28, 29, 30, 33, 22, 11, 12, 13</td></tr>
+        <tr><td>SC-MVP-04</td><td>6</td><td>17, 14, 34, 15*, 23, 24</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>34</strong></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <h3 style="margin-top:32px;">Design System Compliance</h3>
+    <ul style="font-size:16px; line-height:1.75; padding-left:24px;">
+      <li><strong>Typography:</strong> Sora (headings), Lato (body, code blocks). No monospace fonts.</li>
+      <li><strong>Colors:</strong> Deep Navy (#001730), Brand Blue (#0055D4), Sky Blue (#4DB5E8), Accent Red (#C13232), Ice Blue (#EEF6F9).</li>
+      <li><strong>Layout:</strong> 12-column grid, 8-point spacing, Paragon component classes.</li>
+      <li><strong>Accessibility:</strong> WCAG 2.2 AA, semantic HTML, ARIA labels, keyboard navigation.</li>
+    </ul>
+  </section>
+
+  <section class="intro-section">
+    <h2>Document Control</h2>
+    <div class="screen-map"><table>
+      <thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Status</th><th scope="col">Changes</th></tr></thead>
+      <tbody>
+        <tr><td>1.0</td><td>30 Mar 2026</td><td>Superseded</td><td>Initial MVP scenario catalog shared with JFT.</td></tr>
+        <tr><td>1.1</td><td>30 Mar 2026</td><td>Superseded</td><td>Added Codebase Reference section.</td></tr>
+        <tr><td>1.2</td><td>01 Apr 2026</td><td>Draft</td><td>Aligned with v3 storyboard (34 screens). Self-contained scenarios. SC-MVP-04 re-assessment. Typography corrected to SDP Design System v1.2.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+</main><!-- .main-content -->
+
+<footer class="site-footer" style="margin-left: 260px;">
+  <strong>Western Governors University</strong> | Program Development | JFT SDP<br>
+  MVP Scenario Catalog v1.2 &middot; 01 Apr 2026 &middot; SDP Design System v1.2 &middot; Storyboard v3<br><br>
+  <em>WGU confidential/proprietary. Do not redistribute without authorization.</em>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('[id^="sc-mvp-"], #overview, #reference');
+  const navLinks = document.querySelectorAll('.navbar-nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
