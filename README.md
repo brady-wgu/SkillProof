@@ -128,6 +128,7 @@ Changes applied since v3.0 (30 Mar 2026):
 
 - **zyBooks landing page** — replaced mock WGU Student Portal LMS page (Screen 01) across all four scenarios with a realistic zyBooks course page; "Coding Coach" CTA button placed next to the Competencies section as the new entry point
 - **Sequential screen numbering** — renumbered all 34 screens sequentially (01–08 SC-MVP-01, 09–19 SC-MVP-02, 20–28 SC-MVP-03, 29–34 SC-MVP-04); admin bar now displays true screen numbers instead of restarting at 01 per scenario
+- **Presentation text sync** — fully aligned presentation.html narrative text, Notes for JFT, and Document Control with the v1.2 Scenario Catalog (07 Apr 2026), including expanded LRPS descriptions per WGU LRPS team review
 - **Design system audit** — 271 fixes across index.html and presentation.html covering WCAG 2.2 AA compliance, FY26 color palette alignment, typography scale enforcement, and 8-point spacing grid
 - **FY26 palette reconciliation** — `--pgn-*` tokens updated from SDP Figma values to FY26 authoritative values (`#001730`, `#0070F0`, `#46B1EF`)
 - **Light-mode code blocks** — white background with SDP palette syntax highlighting; dark mode retains `#0d1117` theme
@@ -145,7 +146,7 @@ This storyboard is grounded in the following WGU Program Development deliverable
 
 | Document | Version | Date |
 |:---------|:--------|:-----|
-| JFT SDP MVP Scenario Catalog | v1.1 | 30 Mar 2026 |
+| JFT SDP MVP Scenario Catalog | v1.2 | 07 Apr 2026 |
 | JFT SDP User Profiles | v1.2 | 30 Mar 2026 |
 | SDP Design System Specification | v1.2 | 30 Mar 2026 |
 | WGU FY26 Design System Specification | v1.0 | 25 Mar 2025 |
