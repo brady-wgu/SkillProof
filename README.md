@@ -9,12 +9,11 @@
 [![Presentation Dark](https://img.shields.io/badge/Presentation-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP_MVP/presentation_dark.html)
 [![Version](https://img.shields.io/badge/Version-3.1-46B1EF?style=for-the-badge)]()
 [![Screens](https://img.shields.io/badge/Screens-34-001730?style=for-the-badge)]()
-[![WCAG](https://img.shields.io/badge/WCAG_2.2-AA-2E7D32?style=for-the-badge)]()
 
 ---
 
-*A medium-fidelity HTML storyboard for the JFT SDP Coding Coach MVP release.*
-*Built on the [SDP Design System v1.2](https://github.com/openedx/paragon) (Paragon / Open edX) with WGU FY26 brand tokens.*
+*A medium-fidelity sample storyboard for the JFT SDP Coding Coach MVP release — not a pixel-perfect specification.*
+*Built with Claude Code on the [SDP Design System v1.2](https://github.com/openedx/paragon) (Paragon / Open edX) with WGU FY26 brand tokens.*
 
 </div>
 
@@ -22,9 +21,9 @@
 
 ## Overview
 
-This storyboard is the authoritative UX reference for the **JFT Skills Development Platform (SDP) MVP** -- an AI-powered Python coding coach for WGU students. It covers all four MVP user scenarios defined in the JFT SDP MVP Scenario Catalog v1.1.
+This storyboard is a medium-fidelity visual sample for the **JFT Skills Development Platform (SDP) MVP** -- an AI-powered Python coding coach for WGU students. It covers all four MVP user scenarios defined in the JFT SDP MVP Scenario Catalog v1.1.
 
-The prototype consists of three self-contained HTML files that work offline, require no build step, and render in any modern browser. Developers should use them as the pixel-level reference for all student-facing screens in the MVP.
+The prototype consists of three self-contained HTML files that work offline, require no build step, and render in any modern browser. These illustrate roughly what the MVP could look like on a desktop browser -- they are **not** pixel-perfect specifications to be duplicated exactly. This prototype was built with Claude Code for rapid visualization, has not been formally audited for accessibility, and has not been tested for mobile responsiveness. Developers should deploy something that looks approximately like this using the Cicada v1.1 codebase; the first release from JFT is an MVP and will be iterated on several times during the contract duration.
 
 ### Pages
 
@@ -94,7 +93,7 @@ All padding, margin, and gap values follow an **8-point grid** (multiples of 8px
 - **Keyboard navigation** (arrow keys between screens)
 - **Admin bar** with 3-column layout: scenario ID, description, numbered screen buttons
 - **Presentation pages** — scrollable scenario catalogs with annotated screenshots (light and dark variants)
-- **WCAG 2.2 AA** compliant: semantic HTML, ARIA landmarks, skip navigation, focus indicators, heading hierarchy, table scope attributes, contrast-verified color pairs, touch target sizing, responsive breakpoints
+- **Basic accessibility patterns** applied (semantic HTML, ARIA landmarks, heading hierarchy) but no formal WCAG audit has been performed
 - **FY26 brand compliance** — all colors, typography, and spacing validated against the WGU FY26 Design System Specification
 - **Fully offline** -- self-contained HTML files, no external dependencies beyond Google Fonts
 - **Paragon-compatible CSS** class names (`--pgn-*` tokens, `.btn-primary`, `.pgn__card`, etc.)
@@ -157,13 +156,13 @@ Upstream design system: [@openedx/paragon](https://github.com/openedx/paragon) (
 
 ## For Developers
 
-This storyboard is a **design reference**, not production code. When implementing:
+This storyboard is a **medium-fidelity sample**, not production code or a pixel-perfect specification. It was built with Claude Code for rapid visualization and is meant to illustrate the general look and feel of the MVP on a desktop browser. Do not attempt to replicate it exactly -- use it as a rough guide for the intended user experience. When implementing:
 
 1. Install Paragon: `npm install @openedx/paragon`
 2. Apply WGU brand tokens via the brand package override mechanism
 3. Use Paragon React components -- do not rebuild them
 4. The CSS custom properties in this file (`--pgn-*`) map directly to the Paragon token schema
-5. All screen layouts, component patterns, and interaction flows shown here are the implementation target
+5. The screen layouts, component patterns, and interaction flows shown here illustrate the general direction -- adapt them as needed for the production implementation
 
 ---
 
