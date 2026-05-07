@@ -201,6 +201,11 @@
     <li><a href="#sc-mvp-02">SC-MVP-02</a></li>
     <li><a href="#sc-mvp-03">SC-MVP-03</a></li>
     <li><a href="#sc-mvp-04">SC-MVP-04</a></li>
+    <li><a href="#sc-add-02">SC-ADD-02</a></li>
+    <li><a href="#sc-add-03">SC-ADD-03</a></li>
+    <li><a href="#sc-add-04">SC-ADD-04</a></li>
+    <li><a href="#sc-add-05">SC-ADD-05</a></li>
+    <li><a href="#sc-add-06">SC-ADD-06</a></li>
     <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
@@ -237,6 +242,14 @@
     <a class="toc-link" href="#sc04-step3">3. Re-Assessment Q1</a><a class="toc-link" href="#sc04-step4">4. Re-Assessment Q2</a>
     <a class="toc-link" href="#sc04-step5">5. Resume Coaching</a><a class="toc-link" href="#sc04-step6">6. Session Saved</a>
   </div>
+  <div class="toc-scenario"><div class="toc-scenario-title">v1.3 Additional Scenarios</div>
+    <a class="toc-link" href="#sc-add-overview">Overview</a>
+    <a class="toc-link" href="#sc-add-02">SC-ADD-02: Tenant Admin Portal</a>
+    <a class="toc-link" href="#sc-add-03">SC-ADD-03: Instructor Dashboard</a>
+    <a class="toc-link" href="#sc-add-04">SC-ADD-04: Super Admin Governance</a>
+    <a class="toc-link" href="#sc-add-05">SC-ADD-05: Data Portability</a>
+    <a class="toc-link" href="#sc-add-06">SC-ADD-06: Incident Response &amp; SLA</a>
+  </div>
 </aside>
 
 <!-- HERO -->
@@ -246,11 +259,11 @@
   <p class="subtitle">Medium-fidelity sample combining user scenario narratives with a visual storyboard for the Skills Development Platform Coding Coach MVP. This is a rough desktop example, not a pixel-perfect specification.</p>
   <div class="hero-divider"></div>
   <div class="hero-meta">
-    <div class="hero-meta-item"><div class="value">4</div><div class="label">Scenarios</div></div>
-    <div class="hero-meta-item"><div class="value">34</div><div class="label">Screens</div></div>
-    <div class="hero-meta-item"><div class="value">13</div><div class="label">Sub-Sections</div></div>
+    <div class="hero-meta-item"><div class="value">9</div><div class="label">Scenarios</div></div>
+    <div class="hero-meta-item"><div class="value">73</div><div class="label">Screens</div></div>
+    <div class="hero-meta-item"><div class="value">4</div><div class="label">Personas</div></div>
   </div>
-  <div class="hero-doc-info">MVP Scenario Catalog v1.2 &middot; 07 Apr 2026 &middot; SDP Design System v1.2 &middot; Storyboard v3<br>Author: Brady Redfearn, Senior Strategist, Program Development<br><br><a href="https://brady-wgu.github.io/JFT_SDP_MVP/" target="_blank" rel="noopener" style="color: var(--color-sky-blue); opacity: 0.85;">View the Interactive MVP Storyboard &rarr;</a></div>
+  <div class="hero-doc-info">Scenario Catalog v1.3 &middot; 05 May 2026 &middot; SDP Design System v1.2 &middot; Storyboard v4.0<br>Author: Brady Redfearn, Senior Strategist, Program Development<br><br><a href="https://brady-wgu.github.io/JFT_SDP_MVP/" target="_blank" rel="noopener" style="color: var(--color-sky-blue); opacity: 0.85;">View the Interactive MVP Storyboard &rarr;</a></div>
 </section>
 
 <main class="main-content" id="main-content">
@@ -544,7 +557,233 @@
     <li>In-session regression behavior is handled by the adaptive difficulty algorithm in the v1 Cicada codebase: the algorithm reduces question difficulty in response to sustained incorrect answers. No explicit regression detection logic or student notification is added in the MVP. JFT must document how the v1 difficulty progression algorithm handles sustained regression patterns so that this behavior is testable during UAT.</li>
   </ul></section>
 
+    <!-- ==================== SC-ADD OVERVIEW ==================== -->
+  <section class="scenario-header" id="sc-add-overview">
+    <div class="scenario-id">v1.3 Additional Scenarios</div>
+    <h2>Tenant Admin, Instructor, and Super Admin</h2>
+    <div class="persona">Six post-MVP scenarios &middot; 39 new screens across 3 per-persona portals</div>
+  </section>
+  <section class="doc-block context"><h3>Source</h3><p>The v1.3 User Scenario Catalog (05 May 2026) extends v1.2 with six additional scenarios that sequence post-MVP work. SC-ADD-01 is an acceptance-level rollup of the four v1.2 MVP scenarios (in progress separately, no new scope). SC-ADD-02 through SC-ADD-06 introduce the Tenant Admin, Instructor, and Super Admin user types and platform capabilities &mdash; covered in this catalog with full storyboard walkthroughs against three new HTML files.</p></section>
+  <section class="doc-block context"><h3>Per-persona portals</h3><p>Each persona authenticates separately via its own secret LRPS deep link. Each portal is a self-contained HTML file that JFT will build using this catalog as the design spec:</p><ul>
+    <li><strong>Alice (Tenant Admin)</strong> &mdash; <code>tenant_admin.html</code> &mdash; SC-ADD-02 (Portal &amp; Course Configuration), SC-ADD-05 (Data Portability), SC-ADD-06 (Incident Response &amp; SLA) &mdash; 23 screens</li>
+    <li><strong>Charlie (Instructor)</strong> &mdash; <code>instructor.html</code> &mdash; SC-ADD-03 (Instructor Dashboard &amp; At-Risk Intervention) &mdash; 8 screens</li>
+    <li><strong>Bob (Super Admin)</strong> &mdash; <code>super_admin.html</code> &mdash; SC-ADD-04 (Super Admin Governance &amp; Cost Audit) &mdash; 8 screens</li>
+  </ul><p>All three portals share the same SDP Design System v1.2 chrome, WGU FY26 brand tokens, navbar pattern, and component library so they read as one cohesive product family.</p></section>
+  <section class="doc-block notes"><h3>SC-ADD-01: Acceptance Validation of the MVP Coaching Loop</h3><p>SC-ADD-01 is the acceptance-level rollup of the four v1.2 MVP scenarios. It introduces no new scope and is in progress separately. No new screens; the original SC-MVP-01 through SC-MVP-04 walkthroughs above carry the visual coverage for this acceptance validation.</p></section>
+
   <div class="section-divider"></div>
+
+  <!-- ==================== SC-ADD-02 ==================== -->
+  <section class="scenario-header" id="sc-add-02">
+    <div class="scenario-id">SC-ADD-02</div>
+    <h2>Tenant Admin Portal and Course Configuration</h2>
+    <div class="persona">Alice (Tenant Admin, PDev content owner) &middot; 9 Screens &middot; tenant_admin.html</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-ADD-02</td></tr>
+    <tr><th scope="row">User Type</th><td>Tenant Admin</td></tr>
+    <tr><th scope="row">Persona</th><td>Alice (Program Development content owner)</td></tr>
+    <tr><th scope="row">Goal</th><td>Validate multi-tenancy, role-based access control, and the Course-as-a-Service administrative UI.</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>9 (tenant_admin.html screens 1&ndash;9)</td></tr>
+    <tr><th scope="row">SOW refs</th><td>&sect;8.6, &sect;2.5, &sect;6.24, &sect;10.8, &sect;7.9</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Workflow</h3><p>Alice logs into the Tenant Admin Portal via secret LRPS deep link. Multi-tenant SaaS scoping shows only her assigned Program Subject. She creates a new Subject, enters Topics and Learning Objectives, and configures AI prompt options (e.g., profile data, domain limits, jailbreaking instructions, preferred model) and scoring details. &ldquo;Deploy to Production&rdquo; triggers the automated CI/CD pipeline; the new course goes live for Sally.</p></section>
+
+  <div class="step"><div class="step-header"><div class="step-number">1</div><div class="step-title">LRPS deep link &rarr; SSO</div><div class="step-screen-label">Screen 1</div></div>
+    <p class="step-text">Alice opens the secret LRPS deep link. WGU SSO completes silently and her role is mapped to <strong>Tenant Admin</strong>.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step01_screen01.png" alt="SC-ADD-02 Step 1: LRPS landing &amp; SSO" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">2</div><div class="step-title">Tenant Admin Portal home</div><div class="step-screen-label">Screen 2</div></div>
+    <p class="step-text">Multi-tenant scoping shows Alice only her assigned Program Subject (Foundations of Programming &mdash; Python). Three subjects listed (E010 in production, E075 staging, E120 draft). Status legend at top right.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step02_screen02.png" alt="SC-ADD-02 Step 2: Portal home" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">3</div><div class="step-title">New Subject form</div><div class="step-screen-label">Screen 3</div></div>
+    <p class="step-text">Step 1 of 5. Subject code, title, description, owner (Alice), Program Subject (locked by tenant scoping). Saved-as-draft alert.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step03_screen03.png" alt="SC-ADD-02 Step 3: New Subject form" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">4</div><div class="step-title">Topics &amp; Learning Objectives</div><div class="step-screen-label">Screen 4</div></div>
+    <p class="step-text">Step 2 of 5. Numbered list of 4 topics with edit/reorder affordances and inline LO counts. Tip alert about ideal topic count.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step04_screen04.png" alt="SC-ADD-02 Step 4: Topics &amp; LOs" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">AI prompt configuration</div><div class="step-screen-label">Screen 5</div></div>
+    <p class="step-text">Step 3 of 5. Toggle switches for profile data, domain limits, jailbreak guard, sandbox. Custom prompt addendum textarea. Right-side compiled-prompt preview shows the final system prompt JFT will send to the model.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step05_screen05.png" alt="SC-ADD-02 Step 5: AI prompt config" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">6</div><div class="step-title">Preferred model picker</div><div class="step-screen-label">Screen 6</div></div>
+    <p class="step-text">Step 4 of 5. Three radio cards: Claude Sonnet 4.5 (recommended, selected), GPT-5, Gemini 2.5 Pro. Each card shows reasoning/code capability badges plus cost and latency tiers. Fallback chain alert references SC-ADD-06.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step06_screen06.png" alt="SC-ADD-02 Step 6: Model picker" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">7</div><div class="step-title">Scoring &amp; rubric</div><div class="step-screen-label">Screen 7</div></div>
+    <p class="step-text">Step 5 of 5. Per-objective rubric table (10 LOs &times; weight, threshold, pattern). Total weight check + mastery threshold input.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step07_screen07.png" alt="SC-ADD-02 Step 7: Scoring &amp; rubric" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">8</div><div class="step-title">Review &amp; Deploy &mdash; CI/CD pipeline</div><div class="step-screen-label">Screen 8</div></div>
+    <p class="step-text">Subject summary card + warning banner + &ldquo;Deploy to Production&rdquo; CTA. Five-step Stepper component shows live pipeline status: Validate &check; &middot; Build &check; &middot; Test (running) &middot; Deploy &middot; Verify.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step08_screen08.png" alt="SC-ADD-02 Step 8: Deploy review" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">9</div><div class="step-title">Deploy success &mdash; live for Sally</div><div class="step-screen-label">Screen 9</div></div>
+    <p class="step-text">Green-tinted success panel with pipeline duration (2m 47s), &ldquo;View live course&rdquo; CTA, build identifier, and audit-logged stamp.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-02_step09_screen09.png" alt="SC-ADD-02 Step 9: Deploy success" loading="lazy"></div></div>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-ADD-03 ==================== -->
+  <section class="scenario-header" id="sc-add-03">
+    <div class="scenario-id">SC-ADD-03</div>
+    <h2>Instructor Dashboard and At-Risk Intervention</h2>
+    <div class="persona">Charlie (course instructor) &middot; 8 Screens &middot; instructor.html</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-ADD-03</td></tr>
+    <tr><th scope="row">User Type</th><td>Instructor</td></tr>
+    <tr><th scope="row">Persona</th><td>Charlie (course instructor)</td></tr>
+    <tr><th scope="row">Goal</th><td>Validate educator-facing analytics and student engagement tracking.</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>8 (instructor.html screens 1&ndash;8)</td></tr>
+    <tr><th scope="row">SOW refs</th><td>&sect;7.10, &sect;7.11, &sect;7.13, &sect;10.4</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Workflow</h3><p>Charlie accesses the Instructor Dashboard via secret LRPS deep link and opens the Data Visualization panel showing a Student Heatmap. He identifies Sally as at-risk: assessment complete, AI-scored competency low. He drills into her conversation logs to review AI feedback, confirming the Audit Trail captures all interactions.</p></section>
+
+  <div class="step"><div class="step-header"><div class="step-number">1</div><div class="step-title">LRPS deep link &rarr; SSO</div><div class="step-screen-label">Screen 1</div></div>
+    <p class="step-text">Charlie&rsquo;s separately-authenticated LRPS link. Role mapped: <strong>Instructor</strong>.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step01_screen01.png" alt="SC-ADD-03 Step 1: LRPS landing &amp; SSO" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">2</div><div class="step-title">Dashboard home with section cards</div><div class="step-screen-label">Screen 2</div></div>
+    <p class="step-text">Charlie&rsquo;s three sections (E010 &sect; 042 active, E075 &sect; 018, E135 &sect; 003). Active section shows 28 learners, 76% avg competency, 4 at-risk badge. &ldquo;4 learners flagged at-risk in E010 today&rdquo; alert.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step02_screen02.png" alt="SC-ADD-03 Step 2: Dashboard home" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">3</div><div class="step-title">Class heatmap &mdash; data visualization</div><div class="step-screen-label">Screen 3</div></div>
+    <p class="step-text">CSS-grid heatmap of 15 of 28 learners &times; 4 competencies. Color scale runs red (28) to green (98). Filter chips: All / Mastery / On track / Watch / At risk. Sally&rsquo;s row tinted danger-pink.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step03_screen03.png" alt="SC-ADD-03 Step 3: Class heatmap" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">4</div><div class="step-title">At-risk filter &mdash; Sally identified</div><div class="step-screen-label">Screen 4</div></div>
+    <p class="step-text">Filter narrowed to 4 at-risk learners. Cohort summary side panel shows the lowest-scoring competency (Manipulates Data Structures, avg 42.4) and a suggestion. Sally row clickable to drill in.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step04_screen04.png" alt="SC-ADD-03 Step 4: At-risk filter" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">Sally drill-down profile</div><div class="step-screen-label">Screen 5</div></div>
+    <p class="step-text">Anonymized identifier <code>lnr_4a3b2c1d</code>. Profile stats card + 8-row per-objective scores table with score pills (low/med/high). &ldquo;AI-scored competency: Low&rdquo; badge. Pattern callout about explain/reflect items.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step05_screen05.png" alt="SC-ADD-03 Step 5: Sally profile" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">6</div><div class="step-title">Conversation log list</div><div class="step-screen-label">Screen 6</div></div>
+    <p class="step-text">Nine sessions table with date, topic, objective, AI score, duration, Audit Trail &ldquo;Captured&rdquo; badge per row. Most recent session (09) is clickable.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step06_screen06.png" alt="SC-ADD-03 Step 6: Conversation log list" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">7</div><div class="step-title">Session 09 transcript with AI feedback</div><div class="step-screen-label">Screen 7</div></div>
+    <p class="step-text">Chat-style transcript: Sally&rsquo;s loop submission vs SDP Coach feedback panels (LO miss, Reframe). &ldquo;47 messages captured&rdquo; badge confirms full Audit Trail. Mark for outreach / Refer to mentor / View Audit Trail / Export CTAs.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step07_screen07.png" alt="SC-ADD-03 Step 7: Session transcript" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">8</div><div class="step-title">Audit Trail confirmation</div><div class="step-screen-label">Screen 8</div></div>
+    <p class="step-text">Green feedback panel + 5-stat row (47 messages, 18m 12s, 0 dropped, 3 score updates, 100% capture integrity). 10-row event log table with sha256 hashes. RBAC alert: source IPs masked for instructor view.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-03_step08_screen08.png" alt="SC-ADD-03 Step 8: Audit Trail" loading="lazy"></div></div>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-ADD-04 ==================== -->
+  <section class="scenario-header" id="sc-add-04">
+    <div class="scenario-id">SC-ADD-04</div>
+    <h2>Super Admin Governance and Cost Audit</h2>
+    <div class="persona">Bob (platform operations and infrastructure) &middot; 8 Screens &middot; super_admin.html</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-ADD-04</td></tr>
+    <tr><th scope="row">User Type</th><td>Super Admin</td></tr>
+    <tr><th scope="row">Persona</th><td>Bob (platform operations and infrastructure)</td></tr>
+    <tr><th scope="row">Goal</th><td>Validate financial controls, security compliance, and global resource management.</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>8 (super_admin.html screens 1&ndash;8)</td></tr>
+    <tr><th scope="row">SOW refs</th><td>&sect;6.4, &sect;6.6, &sect;10.7, &sect;9.5, &sect;10.1</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Workflow</h3><p>Bob reviews Token Usage Tracking to identify high-consumption tenants and tightens Global Rate Limits in response to a spike. He pulls a Compliance Report to verify TLS 1.3 encryption across all data paths. He checks Geo-redundancy status to confirm cross-region resilience.</p></section>
+
+  <div class="step"><div class="step-header"><div class="step-number">1</div><div class="step-title">LRPS deep link &rarr; SSO + MFA</div><div class="step-screen-label">Screen 1</div></div>
+    <p class="step-text">Bob authenticates with MFA. Role mapped: <strong>Super Admin &middot; Platform Operations</strong>. Privileged-session warning surfaces audit logging.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step01_screen01.png" alt="SC-ADD-04 Step 1: LRPS landing + MFA" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">2</div><div class="step-title">Cross-tenant overview</div><div class="step-screen-label">Screen 2</div></div>
+    <p class="step-text">4 KPI gauges (7 tenants, 3,842 active learners, $4,287 MTD spend, 62% rate-limit headroom). Active alert: PDev token spike. Recent platform events feed. Quick links to the four governance domains.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step02_screen02.png" alt="SC-ADD-04 Step 2: Portal home" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">3</div><div class="step-title">Token Usage Tracking</div><div class="step-screen-label">Screen 3</div></div>
+    <p class="step-text">3 aggregate gauges (MTD spend warning, tokens consumed, projection danger). Per-tenant breakdown of 7 tenants with utilization meters; PDev flagged with spike badge.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step03_screen03.png" alt="SC-ADD-04 Step 3: Token usage" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">4</div><div class="step-title">PDev cost spike drill-down</div><div class="step-screen-label">Screen 4</div></div>
+    <p class="step-text">30-bar daily cost chart, last 4 days highlighted as the spike. Top consuming subjects table (E010, E075, E135). &ldquo;Likely cause&rdquo; card identifies cohort 042 launch + new prompt config. CTA to adjust rate limits.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step04_screen04.png" alt="SC-ADD-04 Step 4: Cost spike drill-down" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">Global Rate Limits config</div><div class="step-screen-label">Screen 5</div></div>
+    <p class="step-text">New limits form (tenant 2,400 / subject 1,200 / learner 60 req/hr / burst 120 in 60s). 6-row projected effect table shows MTD spend back inside budget with imperceptible learner-latency impact. Pending audit-trail entry preview.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step05_screen05.png" alt="SC-ADD-04 Step 5: Rate limits config" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">6</div><div class="step-title">Compliance Report &mdash; TLS 1.3</div><div class="step-screen-label">Screen 6</div></div>
+    <p class="step-text">4 compliance KPI gauges (17/17 services TLS 1.3, 100% cert validity, 3-day soonest expiry, last scan stamp). 10-row service-by-service table with cipher / cert expiry / last scan / pass status. Generate-PDF CTA.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step06_screen06.png" alt="SC-ADD-04 Step 6: Compliance report" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">7</div><div class="step-title">Geo-redundancy status</div><div class="step-screen-label">Screen 7</div></div>
+    <p class="step-text">3 region cards: us-east-1 primary (2,401 learners), us-west-2 secondary (1,156), eu-west-1 DR (285). Each shows P50/P95 latency, replication lag, last failover stamp. 4-row recent failover table. RTO well under 4-hr target.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step07_screen07.png" alt="SC-ADD-04 Step 7: Geo-redundancy" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">8</div><div class="step-title">Cross-tenant audit log</div><div class="step-screen-label">Screen 8</div></div>
+    <p class="step-text">Filter chips + 11-row event table spanning all v1.3 personas&rsquo; actions (Bob, Alice, Charlie, JFT CSM, system). Severity and result badges. Source attribution. &ldquo;Showing 11 of 4,287 events in last 24h. Retention: 7 years (FERPA).&rdquo;</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-04_step08_screen08.png" alt="SC-ADD-04 Step 8: Audit log" loading="lazy"></div></div>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-ADD-05 ==================== -->
+  <section class="scenario-header" id="sc-add-05">
+    <div class="scenario-id">SC-ADD-05</div>
+    <h2>Tenant Admin Data Portability</h2>
+    <div class="persona">Alice (Tenant Admin) &middot; 6 Screens &middot; tenant_admin.html (10&ndash;15)</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-ADD-05</td></tr>
+    <tr><th scope="row">User Type</th><td>Tenant Admin</td></tr>
+    <tr><th scope="row">Persona</th><td>Alice (PDev content owner)</td></tr>
+    <tr><th scope="row">Goal</th><td>Validate integration APIs and data export commitments.</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>6 (tenant_admin.html screens 10&ndash;15)</td></tr>
+    <tr><th scope="row">SOW refs</th><td>&sect;8.7, &sect;7.14, &sect;8.9</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Workflow</h3><p>Alice uses the RESTful API to query student scores for transfer into WGU internal systems. She uses one-click export to download a JSON or CSV file with engagement metrics for a stakeholder meeting.</p></section>
+
+  <div class="step"><div class="step-header"><div class="step-number">1</div><div class="step-title">Data &amp; APIs landing</div><div class="step-screen-label">Screen 10</div></div>
+    <p class="step-text">Two entry cards side-by-side: REST API (auth, base URL, 14 endpoints, 600 req/hr) and One-click export (JSON / CSV / UTF-8, 3 datasets, audit retention). Tenant scoping alert at bottom.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-05_step01_screen10.png" alt="SC-ADD-05 Step 1: Data &amp; APIs" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">2</div><div class="step-title">REST API console &mdash; request</div><div class="step-screen-label">Screen 11</div></div>
+    <p class="step-text">GET method + endpoint + 4 query params (limit, since, fields, order). Send / Recent / Copy as cURL CTAs. Side panel: Auth (bearer token, last 4 chars), tenant lock, 213/600 rate-limit usage. PII handling alert.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-05_step02_screen11.png" alt="SC-ADD-05 Step 2: REST API console" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">3</div><div class="step-title">Sample JSON response payload</div><div class="step-screen-label">Screen 12</div></div>
+    <p class="step-text">Status row (200 OK, 142 ms, 1,284 records). Syntax-highlighted JSON code block: meta + 2 sample records (anonymized IDs, competency, score, last_active, sessions, mastery flag). Copy / Download / Open in CSV view CTAs.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-05_step03_screen12.png" alt="SC-ADD-05 Step 3: JSON response" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">4</div><div class="step-title">Export wizard &mdash; choose dataset</div><div class="step-screen-label">Screen 13</div></div>
+    <p class="step-text">Step 1 of 3. 3 dataset radio cards: Engagement metrics (selected, ~1,284 rows), Score history, Conversation logs (with PII review badge). Tip alert about which dataset suits which audience.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-05_step04_screen13.png" alt="SC-ADD-05 Step 4: Export wizard" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">Format picker &amp; preview</div><div class="step-screen-label">Screen 14</div></div>
+    <p class="step-text">Step 2 of 3. CSV / JSON / Parquet tab switcher (CSV active). 5-row preview table with engagement columns. Time-range select (last 35 days) + columns chip-list with &ldquo;+ Add&rdquo; affordance.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-05_step05_screen14.png" alt="SC-ADD-05 Step 5: Format picker" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">6</div><div class="step-title">Download confirmation</div><div class="step-screen-label">Screen 15</div></div>
+    <p class="step-text">Green-tinted success panel. File-meta card: <code>engagement-metrics-pdev-e010-2026-05-07.csv</code> (1,284 rows, 184 KB, CSV, UTF-8). Download / Open in Sheets / Back CTAs. Audit ID stamp.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-05_step06_screen15.png" alt="SC-ADD-05 Step 6: Download" loading="lazy"></div></div>
+
+  <div class="section-divider"></div>
+
+  <!-- ==================== SC-ADD-06 ==================== -->
+  <section class="scenario-header" id="sc-add-06">
+    <div class="scenario-id">SC-ADD-06</div>
+    <h2>Critical Incident Response and SLA Verification</h2>
+    <div class="persona">Alice (Tenant Admin) &middot; 8 Screens &middot; tenant_admin.html (16&ndash;23)</div>
+  </section>
+  <div class="scenario-meta"><table>
+    <tr><th scope="row">Scenario ID</th><td>SC-ADD-06</td></tr>
+    <tr><th scope="row">User Type</th><td>Tenant Admin</td></tr>
+    <tr><th scope="row">Persona</th><td>Alice (PDev content owner)</td></tr>
+    <tr><th scope="row">Goal</th><td>Validate the Support Plan, service-level agreements, and proactive monitoring.</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>8 (tenant_admin.html screens 16&ndash;23)</td></tr>
+    <tr><th scope="row">SOW refs</th><td>&sect;6.5, &sect;9.2, &sect;9.5, &sect;9.7, &sect;9.10, &sect;9.13</td></tr>
+  </table></div>
+  <section class="doc-block context"><h3>Workflow</h3><p>A primary LLM provider goes down. 24/7 Proactive Monitoring detects the failure and triggers the LLM Fallback mechanism. Alice is notified and logs a P1 ticket in Jira. The JFT Customer Success Manager responds within 2 hours to confirm fallback success and that the 99.95% Uptime SLA is maintained.</p></section>
+
+  <div class="step"><div class="step-header"><div class="step-number">1</div><div class="step-title">All systems operational (baseline)</div><div class="step-screen-label">Screen 16</div></div>
+    <p class="step-text">99.97% uptime gauge + zero-incident summary. 5 service rows (Model Router, Auth, API Gateway, Data Export, Telemetry) all green. Sets the &ldquo;before&rdquo; state.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step01_screen16.png" alt="SC-ADD-06 Step 1: All systems operational" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">2</div><div class="step-title">Active incident &mdash; LLM down, fallback engaged</div><div class="step-screen-label">Screen 17</div></div>
+    <p class="step-text">Amber alert banner timestamps the failure (09:43:21 UTC). Service rows show Model Router degraded, Anthropic primary unreachable, GPT-5 fallback active and serving 1,247 sessions. CTAs: Log P1 ticket / View notification / Incident timeline.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step02_screen17.png" alt="SC-ADD-06 Step 2: Active incident" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">3</div><div class="step-title">Notification email + toast detail</div><div class="step-screen-label">Screen 18</div></div>
+    <p class="step-text">Email metadata (from JFT CSM, to Alice, channels: Email + Toast + SMS). Body confirms fallback automatic, references the 2-hr SLA, and notes no learner action required.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step03_screen18.png" alt="SC-ADD-06 Step 3: Notification" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">4</div><div class="step-title">P1 ticket creation</div><div class="step-screen-label">Screen 19</div></div>
+    <p class="step-text">Severity locked to P1 by monitoring. Affected services chips. Started-at, tenant lock. Title and description prefilled. Notify list. Linked alert ID. Submit / Back floating actions.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step04_screen19.png" alt="SC-ADD-06 Step 4: P1 ticket form" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">Ticket submitted &mdash; JFT-SDP-2138</div><div class="step-screen-label">Screen 20</div></div>
+    <p class="step-text">Green-tinted confirmation. Ticket metadata table (status In Progress, severity P1, opened stamp, 2-hr SLA target, linked alert). View thread / Back CTAs.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step05_screen20.png" alt="SC-ADD-06 Step 5: Ticket submitted" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">6</div><div class="step-title">CSM response thread</div><div class="step-screen-label">Screen 21</div></div>
+    <p class="step-text">Ticket header summary + 6-stat row (severity, opened, first response 6 min, SLA target, ETA, notify). 4-bubble chat thread (Alice auto-logged + 3 from CSM Jordan including SLA-on-track update and final resolution). Reply form + send.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step06_screen21.png" alt="SC-ADD-06 Step 6: CSM thread" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">7</div><div class="step-title">Service restored &mdash; fallback verified</div><div class="step-screen-label">Screen 22</div></div>
+    <p class="step-text">Green feedback panel announces 11:08:14 UTC restoration. Before / during / after status table for primary, fallback, router, learner sessions, SLA breaches. 0 sessions failed across the 1h 24m window.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step07_screen22.png" alt="SC-ADD-06 Step 7: Service restored" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">8</div><div class="step-title">SLA dashboard</div><div class="step-screen-label">Screen 23</div></div>
+    <p class="step-text">99.97% uptime gauge + 21m downtime budget remaining gauge. 4-row recent incidents table (today&rsquo;s LLM event, prior gateway flap, telemetry back-pressure, auth anomaly). Next SLA report scheduled 30 May 2026.</p>
+    <div class="step-screenshot"><img src="screenshots/sc-add-06_step08_screen23.png" alt="SC-ADD-06 Step 8: SLA dashboard" loading="lazy"></div></div>
+
+<div class="section-divider"></div>
 
   <!-- REFERENCE -->
   <section class="intro-section" id="reference">
@@ -557,7 +796,13 @@
         <tr><td>SC-MVP-02</td><td>11</td><td>9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19</td></tr>
         <tr><td>SC-MVP-03</td><td>9</td><td>20, 21, 22, 23, 24, 25, 26, 27, 28</td></tr>
         <tr><td>SC-MVP-04</td><td>6</td><td>29, 30, 31, 32, 33, 34</td></tr>
-        <tr><td><strong>Total</strong></td><td><strong>34</strong></td><td></td></tr>
+        <tr><td colspan="3" style="background: var(--color-deep-navy); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; padding: 10px 16px;">v1.3 Additional Scenarios &mdash; per-persona portals</td></tr>
+        <tr><td>SC-ADD-02 &middot; tenant_admin.html</td><td>9</td><td>1, 2, 3, 4, 5, 6, 7, 8, 9</td></tr>
+        <tr><td>SC-ADD-03 &middot; instructor.html</td><td>8</td><td>1, 2, 3, 4, 5, 6, 7, 8</td></tr>
+        <tr><td>SC-ADD-04 &middot; super_admin.html</td><td>8</td><td>1, 2, 3, 4, 5, 6, 7, 8</td></tr>
+        <tr><td>SC-ADD-05 &middot; tenant_admin.html</td><td>6</td><td>10, 11, 12, 13, 14, 15</td></tr>
+        <tr><td>SC-ADD-06 &middot; tenant_admin.html</td><td>8</td><td>16, 17, 18, 19, 20, 21, 22, 23</td></tr>
+        <tr><td><strong>Total (across 4 HTML files)</strong></td><td><strong>73</strong></td><td></td></tr>
       </tbody>
     </table></div>
     <h3 style="margin-top:32px;">Design System Compliance</h3>
@@ -576,7 +821,8 @@
       <tbody>
         <tr><td>1.0</td><td>30 Mar 2026</td><td>Superseded</td><td>Initial MVP-focused scenario catalog shared with JFT. Scope limited to SC-MVP-01 through SC-MVP-04, with all open design questions resolved per MVP intent. Derived from JFT SDP User Scenario Catalog v1.1 (30 Mar 2026).</td></tr>
         <tr><td>1.1</td><td>30 Mar 2026</td><td>Superseded</td><td>Added Section 4: Codebase Reference documenting Cicada v1.0 and v1.1, documentation status, and baseline version selection requirements. Updated Section 1 purpose statement to reflect deferred scenario set. Version bump from 1.0 to 1.1.</td></tr>
-        <tr><td>1.2</td><td>07 Apr 2026</td><td>Draft</td><td>Aligned all scenario narratives with v3 HTML storyboard (34 screens). Each scenario is now self-contained with its own LMS entry and complete flow. Expanded all narrative steps with specific UI content, screen titles, and component descriptions. Added Storyboard Screen Map tables. SC-MVP-04 now includes brief re-assessment. Added Section 6: Storyboard Reference with screen count summary and design system compliance. Updated persona labels to clarify knowledge profiles. Typography corrected to SDP Design System v1.2 (Sora/Lato only, no monospace). Corrected LRPS descriptions per WGU LRPS team review (06 Apr 2026).</td></tr>
+        <tr><td>1.2</td><td>07 Apr 2026</td><td>Superseded</td><td>Aligned all scenario narratives with v3 HTML storyboard (34 screens). Each scenario is now self-contained with its own LMS entry and complete flow. Expanded all narrative steps with specific UI content, screen titles, and component descriptions. Added Storyboard Screen Map tables. SC-MVP-04 now includes brief re-assessment. Added Section 6: Storyboard Reference with screen count summary and design system compliance. Updated persona labels to clarify knowledge profiles. Typography corrected to SDP Design System v1.2 (Sora/Lato only, no monospace). Corrected LRPS descriptions per WGU LRPS team review (06 Apr 2026).</td></tr>
+        <tr><td>1.3</td><td>07 May 2026</td><td>Draft</td><td>Extends v1.2 with the v1.3 User Scenario Catalog (05 May 2026). Adds SC-ADD-02 / 03 / 04 / 05 / 06 walkthroughs across three new per-persona portal HTML files: <code>tenant_admin.html</code> (Alice, 23 screens), <code>instructor.html</code> (Charlie, 8 screens), <code>super_admin.html</code> (Bob, 8 screens). Each portal authenticates separately via its own LRPS deep link but shares the SDP Design System v1.2 chrome and the WGU FY26 brand. SC-ADD-01 noted as in-progress separately (acceptance rollup of v1.2; no new scope). Storyboard total: 73 screens / 4 HTML files / 4 personas. Real WGU FY26 White / Full-Color Reverse Corporation logos replace the placeholder wordmark across the new portals.</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -585,7 +831,7 @@
 
 <footer class="site-footer" style="margin-left: 260px;">
   <strong>Western Governors University</strong> | Program Development | JFT SDP<br>
-  MVP Scenario Catalog v1.2 &middot; 07 Apr 2026 &middot; SDP Design System v1.2 &middot; Storyboard v3<br><br>
+  Scenario Catalog v1.3 &middot; 05 May 2026 &middot; SDP Design System v1.2 &middot; Storyboard v4.0<br><br>
   <em>WGU confidential/proprietary. Do not redistribute without authorization.</em>
 </footer>
 
