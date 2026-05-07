@@ -50,6 +50,10 @@ PORTALS = [
     {"file": "super_admin.html", "scenarios": [
         ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8]),
     ]},
+    # v1.3 LRPS landing page — single page, no goToScreen (special case)
+    {"file": "lrps.html", "scenarios": [
+        ("lrps", [None]),  # None = no goToScreen call, just capture as-is
+    ]},
 ]
 
 THEMES = [
@@ -81,13 +85,18 @@ async def capture_portal(page, portal, theme, out_dir):
     captured = 0
     for scenario_id, screen_ids in portal["scenarios"]:
         for step_idx, screen_id in enumerate(screen_ids, 1):
-            await page.evaluate(f"goToScreen({screen_id})")
-            await page.evaluate("document.activeElement?.blur()")
-            await page.wait_for_timeout(300)
-            fname = (
-                f"{out_dir}/{scenario_id}_"
-                f"step{step_idx:02d}_screen{screen_id:02d}.png"
-            )
+            if screen_id is None:
+                # Single-page portal (e.g., lrps.html) — no goToScreen call
+                await page.wait_for_timeout(300)
+                fname = f"{out_dir}/{scenario_id}.png"
+            else:
+                await page.evaluate(f"goToScreen({screen_id})")
+                await page.evaluate("document.activeElement?.blur()")
+                await page.wait_for_timeout(300)
+                fname = (
+                    f"{out_dir}/{scenario_id}_"
+                    f"step{step_idx:02d}_screen{screen_id:02d}.png"
+                )
             await page.screenshot(path=fname, full_page=False)
             captured += 1
     print(f"  captured {captured} screens")
