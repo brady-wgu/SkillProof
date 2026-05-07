@@ -116,7 +116,8 @@
       min-height: 100vh;
     }
     :focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
-    h1:focus-visible, h2:focus-visible { outline: none; }
+    /* Headings inherit the standard :focus-visible outline above (WCAG 2.2 AA §2.4.7).
+       The capture pipeline injects its own outline-suppression for screenshots. */
     a { color: var(--pgn-color-brand-base); text-decoration: none; }
     img { max-width: 100%; }
 
