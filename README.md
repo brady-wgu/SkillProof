@@ -7,8 +7,8 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.0-46B1EF?style=for-the-badge)](CHANGELOG.md)
-[![Screens](https://img.shields.io/badge/Screens-75-001730?style=for-the-badge)]()
+[![Version](https://img.shields.io/badge/Version-4.4-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Screens](https://img.shields.io/badge/Screens-81-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
 ![Portal selector landing](assets/landing/light.png)
@@ -40,13 +40,13 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **Portal Selector** | [`/`](https://brady-wgu.github.io/JFT_SDP/) | Landing page with cards for every surface. **Start here.** |
 | **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for the three admin portals (3 live SDP rows, 17 illustrative). |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
-| **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response, plus tenant Branding & Team settings. 25 screens. |
-| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
-| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy. 8 screens. |
+| **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response, plus four Tenant Settings (Branding · Team & Roles · Instructor Roster · Subject Lifecycle). 27 screens. |
+| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail → Learner Search & Lookup. 9 screens. |
+| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy, integrations, learner remediation, billing & cost centers. 11 screens. |
 | **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/JFT_SDP/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
 | **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-**Total: 75 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
+**Total: 81 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
 
 ---
 
@@ -68,21 +68,21 @@ JFT_SDP/
 │   ├── README.md
 │   ├── screenshots/            34 PNGs (light)
 │   └── screenshots_dark/       34 PNGs (dark)
-├── tenant_admin/               v1.3 — Alice
+├── tenant_admin/               v1.3 — Alice (extended in v4.4)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            25 PNGs
-│   └── screenshots_dark/       25 PNGs
-├── instructor/                 v1.3 — Charlie
+│   ├── screenshots/            27 PNGs
+│   └── screenshots_dark/       27 PNGs
+├── instructor/                 v1.3 — Charlie (extended in v4.4)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            8 PNGs
-│   └── screenshots_dark/       8 PNGs
-├── super_admin/                v1.3 — Bob
+│   ├── screenshots/            9 PNGs
+│   └── screenshots_dark/       9 PNGs
+├── super_admin/                v1.3 — Bob (extended in v4.4)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            8 PNGs
-│   └── screenshots_dark/       8 PNGs
+│   ├── screenshots/            11 PNGs
+│   └── screenshots_dark/       11 PNGs
 └── lrps/                       Entry point for the 3 admin portals
     ├── index.html
     ├── README.md
@@ -115,6 +115,8 @@ Click any persona folder to read its dedicated README.
 
 **Source:** JFT SDP MVP Scenario Catalog v1.2 (07 Apr 2026).
 
+**v1.2 catalog alignment:** 100% (34/34 screens depict every step described in the catalog). UX detail beyond the visual design — `Need a Hint?` interaction, persistent session-stats display, fast-track threshold reasoning, re-assessment retention framing — is elaborated in [`presentation.html`](presentation.html). Honest call-outs of what v1 does **not** depict (no real Python execution, no mid-task pause, no error recovery, no re-assessment failure path, etc.) are enumerated in [student/README.md](student/README.md#v1-known-limitations). The v1 student screens are deliberately frozen as a baseline — see that file for the full list of v1.4+ candidate gaps.
+
 ---
 
 ### 🏢 Tenant Admin (v1.3) — Alice
@@ -125,11 +127,11 @@ Click any persona folder to read its dedicated README.
 
 **Scope:** Multi-tenancy, RBAC, the Course-as-a-Service administrative UI, integration APIs and data export commitments, and the Support Plan / SLA workflow.
 
-**Scenarios (3, 25 screens):**
+**Scenarios (3, 27 screens):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping, Subject creation, Topics & Learning Objectives, AI prompt config, model picker, rubric, deploy via CI/CD. | 9 |
+| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping, Subject creation, Topics & Learning Objectives, AI prompt config (with v4.4 minimal "Recent versions" panel), model picker, rubric, deploy via CI/CD. Plus four Tenant Settings: Branding · Team & Roles · **v4.4 Instructor Roster** · **v4.4 Subject Lifecycle**. | 13 |
 | **SC-ADD-05** | **Data Portability.** REST API console (query learner scores), one-click export wizard (CSV / JSON / Parquet) with audit trail. | 6 |
 | **SC-ADD-06** | **Critical Incident Response & SLA.** Primary LLM provider down → fallback engaged → P1 ticket → JFT CSM 2-hr response → service restored → 99.95% uptime SLA verified. | 8 |
 
@@ -141,15 +143,15 @@ Click any persona folder to read its dedicated README.
 
 **Surface:** [`instructor/`](instructor/) · [Live](https://brady-wgu.github.io/JFT_SDP/instructor/) · [README](instructor/README.md)
 
-**Persona:** Charlie — course instructor for E010 Foundations of Programming (Python).
+**Persona:** Charlie — Instructor (Course Instructor / Program Mentor per User Profile + the requirements) for E010 Foundations of Programming (Python), E075 Intermediate Python & Libraries, and E135 OOP with Python.
 
-**Scope:** Educator-facing analytics and student engagement tracking.
+**Scope:** Educator-facing analytics and learner engagement tracking. The SDP is a practice tool — coaching scores never feed academic records.
 
-**Scenarios (1, 8 screens):**
+**Scenarios (1, 9 screens):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** Section overview → class heatmap (15 learners × 4 competencies, 9-step color scale) → at-risk filter → Sally drill-down → conversation transcript with AI feedback → Audit Trail event log. | 8 |
+| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** Course overview → class heatmap (15 learners × 4 competencies, 9-step color scale; **v4.4 export CTAs + name/email pivot**) → at-risk filter → Sally drill-down → conversation transcript with AI feedback → Audit Trail event log → **v4.4 Learner Search** (name/email/identifier lookup across all learners in Charlie's courses, with course/status filters and sortable table). | 9 |
 
 **Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
 
@@ -163,11 +165,11 @@ Click any persona folder to read its dedicated README.
 
 **Scope:** Cross-tenant governance, financial controls, security compliance, global resource management.
 
-**Scenarios (1, 8 screens):**
+**Scenarios (1, 11 screens):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-04** | **Super Admin Governance & Cost Audit.** Cross-tenant overview → token usage tracking → cost-spike drill-down → global rate limits → TLS 1.3 compliance report → geo-redundancy status → cross-tenant audit log. | 8 |
+| **SC-ADD-04** | **Super Admin Governance & Cost Audit.** Cross-tenant overview → token usage tracking → cost-spike drill-down → global rate limits → TLS 1.3 + FERPA compliance report → geo-redundancy status → cross-tenant audit log → **v4.4 Third-Party Integrations** (OpenRouter / AWS / Datadog / Entra ID / GitHub / Slack deep-links) → **v4.4 Learner Remediation** (cross-tenant per-learner score reset / force re-diagnostic / pause access; required-justification audit log) → **v4.4 Billing & Cost Centers** (per-tenant cost allocation per §11.1; per-model spend split via OpenRouter; budget alerts). | 11 |
 
 **Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
 
@@ -185,6 +187,27 @@ The LRPS surface includes:
 - 3 live SDP rows (Tenant Admin, Instructor, Super Admin) — clickable, deep-linked
 - 17 illustrative filler rows (OEX modules, zyBooks, Pearson, ProctorU, prototype legacy, Panopto, etc.) for realistic LRPS density
 - A meta-bar quick-launch with chips to all 5 surfaces + the catalog
+
+---
+
+## Shared persona & course reference
+
+Canonical strings used across all 5 surfaces. Use these verbatim when adding new screens, narrative, or test fixtures so the storyboard remains internally consistent. (Drift here is the most common source of bugs — e.g., a Tenant Admin screen that calls Sally's course "E010" while the Instructor heatmap calls it "Foundations of Programming".)
+
+| String | Canonical value | Notes |
+|:-------|:----------------|:------|
+| **Student persona** | `Sally` | First name only. Avatar initial: `S`. Used in LTI 1.3 `name` claim. Knowledge level (Beginner / Intermediate / Advanced / Returning) varies by scenario; the persona is the same Sally across all four. |
+| **Course code** | `E010` | Course code for "Foundations of Programming (Python)". |
+| **Course title** | `Foundations of Programming (Python)` | Or short form `Python Foundations` in tight UI chrome. Never abbreviate to "FoP" in user-facing copy. |
+| **Enrollment model** | `Rolling enrollment` | Per the User Profile, WGU has no fixed cohorts or sections. Every learner enters on their own day and progresses at their own rate. Avoid "Section 042" / "Spring 2026" framing in any new screen copy — talk about *active learners in a course* instead. |
+| **Tenant** | `PDev` | Program Development. Lowercase tenant slug: `pdev`. Alice (Tenant Admin) owns this tenant. |
+| **Tenant display name** | `Program Development` | When spelled out (e.g., audit log entries, tenant scoping callouts). |
+| **LMS course identifier** | `WGUE010PythonAY2026` | The LRPS-registered LMS course slug zyBooks renders. Visible on Screen 1 of every SC-MVP scenario. |
+| **13 sub-sections** | Basic Syntax & Data Types · Control Flow & Logic · Data Structures: Lists, Tuples, Sets, Dictionaries · Functions & Modular Programming · Object-Oriented Programming · Error Handling & Exceptions · File I/O & Persistence · Iterators & Generators · Decorators & Closures · Concurrency Basics · Standard Library Essentials · Testing & Debugging · Packaging & Environments | The full prototype v1 SDP sub-section taxonomy. Order is significant: Progress Map renders in this order. |
+| **Cost-spike date (SC-ADD-04)** | `04 May 2026` | Bob's cost audit drill-down references this date as the spike origin. |
+| **Storyboard version** | `v4.x` | Tracks the visual prototype, not the underlying SDP product. SDP product versions follow the catalog: v1.2 MVP, v1.3 Additional, etc. |
+
+If you need to change any of these, update them everywhere in the same commit — `Glob` for the literal string across all 5 portals, `presentation.html` / `presentation_dark.html`, and all per-persona READMEs before opening the PR.
 
 ---
 
@@ -290,7 +313,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.0** — adds the three v1.3 admin portals, the LRPS landing, and the portal-selector home page; restructures the repo into per-persona subdirectories.
+The latest release is **v4.4** — eight contract-grounded requirements gap fills against the signed contract/requirements. Six new admin-portal screens (Tenant Admin Instructor Roster + Subject Lifecycle; Super Admin Third-Party Integrations + Learner Remediation + Billing & Cost Centers; Instructor Learner Search) plus inline additions (Tenant Admin prompt-versions panel; Instructor heatmap export CTAs). No changes to `student/index.html` (preserved as v1 baseline).
 
 ---
 
