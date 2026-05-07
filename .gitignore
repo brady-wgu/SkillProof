@@ -1,0 +1,15 @@
+# Editor / agent config — local dev only, not part of the deliverable
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node / JS toolchain (in case future tooling lands here)
+node_modules/
