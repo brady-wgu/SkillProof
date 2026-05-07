@@ -14,15 +14,15 @@ Multi-tenancy, RBAC, the Course-as-a-Service administrative UI, integration APIs
 
 ## Scenarios
 
-This portal covers **three v1.3 scenarios** in one cohesive Alice experience:
+This portal covers **three v1.3 scenarios** in one cohesive Alice experience, plus two supporting **Tenant Settings** screens (Branding + Team & Roles) accessible from the Portal home:
 
 | ID | Description | Screens | Screen IDs |
 |:---|:------------|:-------:|:----------:|
-| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping → Subject creation → Topics & Learning Objectives → AI prompt config (toggles for profile data, domain limits, jailbreak guard, sandbox; custom system prompt addendum; right-pane compiled-prompt preview) → preferred model picker (Claude / GPT / Gemini radio cards) → scoring rubric → Deploy to Production triggers automated CI/CD pipeline (5-step Stepper) → success panel with live-course link. | 9 | 1–9 |
+| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping → Subject creation → Topics & Learning Objectives → AI prompt config (toggles for profile data, domain limits, jailbreak guard, sandbox; custom system prompt addendum; right-pane compiled-prompt preview) → preferred model picker (Claude / GPT / Gemini radio cards) → scoring rubric → Deploy to Production triggers automated CI/CD pipeline (5-step Stepper) → success panel with live-course link. **Plus Tenant Settings:** Branding & Customization (§7.9 — tenant display name, logo, primary color, custom domain, footer copy, learner-facing preview) and Team & Role-Based Access (§10.8 — 5-member roster with Owner/Editor/Viewer badges, recent role-change audit log, 10-row permissions matrix). | 11 | 1–9, 24, 25 |
 | **SC-ADD-05** | **Data Portability.** Data & APIs landing → REST API console (method + endpoint + query params, auth/scoping side panel, rate-limit display) → sample JSON response (syntax-highlighted code block) → one-click export wizard (3 dataset radio cards) → format picker (CSV / JSON / Parquet tab switcher with 5-row preview) → download confirmation with file metadata + audit ID. | 6 | 10–15 |
 | **SC-ADD-06** | **Critical Incident Response & SLA Verification.** All-systems-operational baseline → primary LLM provider down → Fallback engaged automatically → notification email / toast → P1 ticket creation form (prefilled from monitoring) → JFT-SDP-2138 confirmation → JFT CSM chat thread (within 2-hr SLA) → service-restored verification → SLA dashboard showing 99.97% uptime maintained. | 8 | 16–23 |
 
-**Total: 3 scenarios · 23 screens.**
+**Total: 3 scenarios · 25 screens.**
 
 ## Source
 
@@ -30,17 +30,17 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 
 ## requirements references
 
-| Scenario | requirements refs |
-|:---------|:---------|
-| SC-ADD-02 | §8.6 (Multi-tenancy), §2.5 (Tenant Admin Portal), §6.24 (CI/CD), §10.8 (RBAC), §7.9 (Custom Branding) |
+| Scenario | requirements refs | Where covered |
+|:---------|:---------|:--------------|
+| SC-ADD-02 | §8.6 (Multi-tenancy), §2.5 (Tenant Admin Portal), §6.24 (CI/CD), §10.8 (RBAC), §7.9 (Custom Branding) | §8.6 → screen 2 (scoping callout); §2.5 → whole portal; §6.24 → screen 8 (Stepper); §10.8 → screen 25 (Team & Roles + permissions matrix); §7.9 → screen 24 (Branding) |
 | SC-ADD-05 | §8.7 (API), §7.14 (Export Capability), §8.9 (Data Formats) |
 | SC-ADD-06 | §6.5 (AI Fallback), §9.2 (Uptime), §9.5 (SLAs), §9.7 (CSM), §9.10 (Response time), §9.13 (Monitoring) |
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (23 screens, 3 scenario flows)
-- `screenshots/` — 23 light-theme PNGs at 1440×900
-- `screenshots_dark/` — 23 dark-theme PNGs
+- [`index.html`](index.html) — interactive storyboard (25 screens, 3 scenario flows + 2 supporting Tenant Settings screens)
+- `screenshots/` — 25 light-theme PNGs at 1440×900
+- `screenshots_dark/` — 25 dark-theme PNGs
 
 ## Components introduced in this portal
 

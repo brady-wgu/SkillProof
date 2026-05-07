@@ -8,7 +8,7 @@
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
 [![Version](https://img.shields.io/badge/Version-4.0-46B1EF?style=for-the-badge)](CHANGELOG.md)
-[![Screens](https://img.shields.io/badge/Screens-73-001730?style=for-the-badge)]()
+[![Screens](https://img.shields.io/badge/Screens-75-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
 ![Portal selector landing](assets/landing/light.png)
@@ -40,13 +40,13 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **Portal Selector** | [`/`](https://brady-wgu.github.io/JFT_SDP/) | Landing page with cards for every surface. **Start here.** |
 | **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for the three admin portals (3 live SDP rows, 17 illustrative). |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
-| **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response. 23 screens. |
+| **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response, plus tenant Branding & Team settings. 25 screens. |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
 | **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy. 8 screens. |
 | **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/JFT_SDP/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
 | **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-**Total: 73 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
+**Total: 75 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
 
 ---
 
@@ -71,8 +71,8 @@ JFT_SDP/
 ├── tenant_admin/               v1.3 — Alice
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            23 PNGs
-│   └── screenshots_dark/       23 PNGs
+│   ├── screenshots/            25 PNGs
+│   └── screenshots_dark/       25 PNGs
 ├── instructor/                 v1.3 — Charlie
 │   ├── index.html
 │   ├── README.md
@@ -125,7 +125,7 @@ Click any persona folder to read its dedicated README.
 
 **Scope:** Multi-tenancy, RBAC, the Course-as-a-Service administrative UI, integration APIs and data export commitments, and the Support Plan / SLA workflow.
 
-**Scenarios (3, 23 screens):**
+**Scenarios (3, 25 screens):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
