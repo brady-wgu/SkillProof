@@ -21,7 +21,7 @@ This is the **v1.2 MVP scope** — the first JFT release. It deploys the existin
 | **SC-MVP-03** | Professional | 9 | Experienced developer fast-tracks. Diagnostic demonstrates mastery across all sub-sections. One verification task required for Functions & Modular Programming. |
 | **SC-MVP-04** | Returning | 6 | Student returns after multi-week break. Prior progress preserved. Re-assessment verifies retention before resuming coaching at prior difficulty level. |
 
-**Total: 4 scenarios · 34 screens.**
+**Total: 4 scenarios · 34 screens.** *(See [v1 Known Limitations](#v1-known-limitations) below for honest call-outs of what's **not** depicted.)*
 
 ## Source
 
@@ -58,5 +58,6 @@ Honest call-outs of what the v1 student storyboard does **not** depict. These ar
 4. **Re-assessment failure path not modeled.** SC-MVP-04 shows the happy path where Sally passes the 2-question retention check. What happens if she fails (e.g., she's regressed in the Intermediate band) — re-route to Foundational? Lock the session for a fresh diagnostic? Issue a tip and continue? — is undefined in v1.
 5. **Coach flow detailed for only 3 of 13 sub-sections.** The narrative steps elaborate Basic Syntax & Data Types, Control Flow & Logic, and Data Structures. The other 10 sub-sections inherit Cicada v1 behavior implicitly. The chip set is shown on the Progress Map; the per-sub-section coaching loops are not visualized in the v1 storyboard.
 6. **Educator feedback loop is invisible from the student storyboard alone.** The catalog assumes that Instructors (SC-ADD-03 / Charlie) can see Sally's coaching transcripts and flag at-risk patterns. That loop is depicted only in `instructor/index.html`; the student storyboard itself does not show "your coach reported X to your instructor" framing or any opt-in/opt-out for sharing.
+7. **WCAG 2.2 AA §2.4.7 (Focus Visible) — heading focus indicator suppressed.** The v1 CSS at `student/index.html` line ~238 includes `h1:focus-visible, …, h6:focus-visible { outline: none; }`, which removes the standard 3px Bright Blue focus ring from headings. This was caught in the v4.6 adversarial accessibility audit. The override exists across the v1 baseline; per the freeze directive, fixing it is out of scope for v1. **All v1.3 admin portals (Tenant Admin / Instructor / Super Admin / LRPS) and the root portal selector were fixed in v4.6** — only `student/index.html` retains the violation. v1.4 student refresh should remove the override (matching the v4.6 fix in the admin portals: just delete the heading-specific override; the standard `:focus-visible` rule above it provides a compliant 3px outline).
 
 These limitations are deliberately preserved in v1 (Brady's directive — the v1 student screens are frozen as a baseline). They are candidates for a v1.4 student refresh.

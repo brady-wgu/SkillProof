@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.5-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.6-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-81-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -235,6 +235,17 @@ The storyboard implements the **SDP Design System v1.2**, a brand theme layer on
 
 Where FY26 and SDP Figma tokens conflict, **FY26 takes precedence**.
 
+#### Documented palette extensions (intentional; out of FY26 scope)
+
+Two specialized UI domains use deliberately extended palettes for clarity and industry familiarity. **These are intentional and must NOT be expanded to other surfaces.** Implementers should keep these scoped to their declared domains:
+
+| Domain | Tokens | Where used | Justification |
+|:---|:---|:---|:---|
+| **Code-block syntax highlighting** | GitHub-style: `--code-keyword: #ff7b72`, `--code-function: #79c0ff`, `--code-string: #a5d6ff`, `--code-bg: #0d1117`, `--code-border: #30363d` | `tenant_admin/index.html` (REST API JSON examples on screens 11–13); `student/index.html` (read-only Python code editors) | Industry-standard code coloring (matches GitHub / VS Code dark themes). FY26 navy/blue would be unreadable for code tokens. |
+| **Heatmap gradient** (9-step) | `--heat-1` through `--heat-9` (red → green via amber midpoints) | `instructor/index.html` screen 3 (15-learner × 4-competency class heatmap) | Sequential data visualization needs perceptually distinct steps; FY26 has no diverging-scale tokens. |
+
+All other surfaces (navbars, cards, forms, alerts, badges, status pills) use canonical FY26 tokens only.
+
 ### Typography
 
 - **Headings:** Sora Bold (H1 40, H2 32, H3 28, H4 24, H5 20)
@@ -313,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.5** — comprehensive 2-pass SOW + scenario compliance audit. Pass 3 and Pass 4 both reported 0 issues; full SOW main-body coverage and 100% v1.3 scenario-step depiction verified. Editorial scrub of internal-process terminology + v4.4 catalog completeness pass + drift fixes. No changes to `student/index.html` (preserved as v1 baseline).
+The latest release is **v4.6** — adversarial-framed accessibility / design-system / navigation re-audit. Pass 5 caught a real WCAG 2.2 AA §2.4.7 focus-ring violation that pattern-matching prior passes missed. Fixed in 5 modifiable portals; documented as a known limitation in `student/README.md` (frozen v1 baseline). Plus design-system palette-extension documentation. **Pass 6 + Pass 7 both 0 issues** under stricter adversarial framing — second 2-consecutive-clean-pass certification this week.
 
 ---
 
