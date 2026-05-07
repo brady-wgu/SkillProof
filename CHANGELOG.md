@@ -6,6 +6,53 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.7 — 07 May 2026 — Tenant Admin polish pass (SC-ADD-02 / 05 / 06 unified experience)
+
+The three Tenant Admin scenarios had been stitched together by the meta-bar and a basic portal home. v4.7 turns them into a single polished Alice experience: a hub-style portal home that lights up across all three scenarios, plus cross-scenario "what's next?" CTAs at each scenario completion screen so the journey feels intentional instead of three separate demos.
+
+### Changed — `tenant_admin/index.html` screen 2 (Tenant Admin Portal home) redesigned as the central hub
+
+The portal home was a single Subject list + 3 buttons. Now it's a full hub:
+
+- **Hero** — "Welcome back, Alice" with tenant scoping (PDev / IT) and the 7-year audit-log retention disclosure inline.
+- **4 KPI gauges spanning all 3 scenarios** — Subjects Live (SC-ADD-02), SLA Uptime · 30D (SC-ADD-06), Exports This Week (SC-ADD-05), and System Status (SC-ADD-06). Each has color-coded status dots + target/headroom captions.
+- **3-domain quick-launch row** — three featured cards labeled with their scenario IDs, each with a primary CTA + secondary deep-link:
+  - Configure courses (SC-ADD-02): New Subject + Tenant Settings
+  - Data & APIs (SC-ADD-05): API Console + Start Export
+  - System status (SC-ADD-06): System Status + SLA Dashboard
+- **Two-column body** — Your Subjects (4-row list — added E135 to the list to reflect the most recent deploy) on the left, **Recent activity feed** on the right showing 6 events from across all three scenarios with timestamps + scenario labels (`SC-ADD-06 · Service restored`, `SC-ADD-05 · Export complete`, `SC-ADD-02 · Subject deployed`, etc.). The activity feed is the visual proof that the three scenarios are one cohesive operation, not three separate demos.
+- **Bottom CTAs** — New Subject + Tenant Settings + an audit-retention reminder.
+
+### Changed — Cross-scenario "What's next?" CTAs at each scenario's completion screen
+
+Each scenario used to dead-end at "Back to Portal." Now they invite the next logical action.
+
+- **Screen 9** (SC-ADD-02 deploy success) — added a "What's next?" panel below the success message with three CTAs: Export E135 baseline metrics (jumps to SC-ADD-05 step 4), Check system status (jumps to SC-ADD-06 step 1), Query via REST API (jumps to SC-ADD-05 step 2). Reinforces that a deploy normally precedes a baseline-metrics export and a status check.
+- **Screen 15** (SC-ADD-05 export complete) — added a "What's next?" panel with three CTAs: SLA dashboard (SC-ADD-06 step 8), Portal home, New Subject. Frames the export as part of an ongoing tenant operation, not a terminal action.
+- **Screen 23** (SC-ADD-06 SLA dashboard) — added a "What's next?" panel with three CTAs: Export incident report (SC-ADD-05 step 4), Portal home, Configure another Subject (SC-ADD-02 step 3). Plus the existing "Next SLA report" alert now hyperlinks to the Data & APIs panel.
+
+### Changed — minor
+
+- `tenant_admin/index.html` CSS — added `.gauge-number.good { color: var(--pgn-color-success-base); }` rule for parity with `super_admin/index.html`. The class was used implicitly on the new portal home gauges; making it explicit prevents future drift.
+- 164 screenshots regenerated. Tenant Admin screens 2 (the redesign) + 9 / 15 / 23 (cross-scenario CTAs) + every other admin-portal screen had minor pixel diffs from the regeneration. `student/index.html` source still 0 lines changed.
+
+### Why this matters
+
+Per Brady's direction: SC-ADD-02 / 05 / 06 are not three separate demos JFT will build separately — they are one Tenant Admin experience that Alice lives inside as a daily workflow. The polish pass:
+1. Establishes the portal home as the visual centerpiece (hub model, not a launcher).
+2. Makes the cross-scenario data flow visible (the 24h activity feed shows how the three scenarios touch each other in time).
+3. Replaces dead-end completion screens with cross-scenario invitations that reflect realistic operations (deploy → export, export → SLA review, incident response → next config).
+4. Keeps screen count at 81 (no new screens; pure UX integration of existing 27 Tenant Admin screens).
+
+### Verification
+
+- `git diff --stat student/index.html` returns 0 lines (preservation directive intact)
+- All Tenant Admin screens render in both light + dark themes (164 PNGs regenerated)
+- `goToScreen(N)` cross-references in new CTAs all point to existing screens (3, 11, 13, 16, 23)
+- Forbidden-term sweep clean (the v4.5/v4.6 audit list re-checked; 0 hits)
+
+---
+
 ## v4.6 — 07 May 2026 — Adversarial accessibility / design-system / nav re-audit (2 consecutive clean passes)
 
 Second 2-pass-clean compliance audit, this time with **adversarial framing** — fresh agents instructed to be skeptical of v4.5's "0 issues" claim and look harder at niche dimensions (WCAG 2.2 AA accessibility, design-system token compliance, cross-portal navigation, niche SOW main-body sections, sub-step granularity). Pass 5 caught real gaps that prior passes pattern-matched past; v4.6 closes them. **Pass 6 + Pass 7 both reported 0 issues** — full SOW + scenario compliance re-verified under stricter framing.
