@@ -577,15 +577,15 @@
   <section class="scenario-header" id="sc-add-02">
     <div class="scenario-id">SC-ADD-02</div>
     <h2>Tenant Admin Portal and Course Configuration</h2>
-    <div class="persona">Alice (Tenant Admin, PDev content owner) &middot; 9 Screens &middot; tenant_admin.html</div>
+    <div class="persona">Alice (Tenant Admin, PDev content owner) &middot; 13 Screens &middot; tenant_admin.html</div>
   </section>
   <div class="scenario-meta"><table>
     <tr><th scope="row">Scenario ID</th><td>SC-ADD-02</td></tr>
     <tr><th scope="row">User Type</th><td>Tenant Admin</td></tr>
     <tr><th scope="row">Persona</th><td>Alice (Program Development content owner)</td></tr>
     <tr><th scope="row">Goal</th><td>Validate multi-tenancy, role-based access control, and the Course-as-a-Service administrative UI.</td></tr>
-    <tr><th scope="row">Storyboard Screens</th><td>9 (tenant_admin.html screens 1&ndash;9)</td></tr>
-    <tr><th scope="row">requirements refs</th><td>&sect;8.6, &sect;2.5, &sect;6.24, &sect;10.8, &sect;7.9</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>13 (tenant_admin.html screens 1&ndash;9 + 24&ndash;27)</td></tr>
+    <tr><th scope="row">requirements refs</th><td>&sect;8.6, &sect;2.5, &sect;6.24, &sect;10.8, &sect;7.9, &sect;10.4</td></tr>
   </table></div>
   <section class="doc-block context"><h3>Workflow</h3><p>Alice logs into the Tenant Admin Portal via secret LRPS deep link. Multi-tenant SaaS scoping shows only her assigned Program Subject. She creates a new Subject, enters Topics and Learning Objectives, and configures AI prompt options (e.g., profile data, domain limits, jailbreaking instructions, preferred model) and scoring details. &ldquo;Deploy to Production&rdquo; triggers the automated CI/CD pipeline; the new course goes live for Sally.</p></section>
 
@@ -602,7 +602,7 @@
     <p class="step-text">Step 2 of 5. Numbered list of 4 topics with edit/reorder affordances and inline LO counts. Tip alert about ideal topic count.</p>
     <div class="step-screenshot"><img src="tenant_admin/screenshots_dark/sc-add-02_step04_screen04.png" alt="SC-ADD-02 Step 4: Topics &amp; LOs" loading="lazy"></div></div>
   <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">AI prompt configuration</div><div class="step-screen-label">Screen 5</div></div>
-    <p class="step-text">Step 3 of 5. Toggle switches for profile data, domain limits, jailbreak guard, sandbox. Custom prompt addendum textarea. Right-side compiled-prompt preview shows the final system prompt JFT will send to the model.</p>
+    <p class="step-text">Step 3 of 5. Toggle switches for profile data, domain limits, jailbreak guard, sandbox. Custom prompt addendum textarea. Right-side compiled-prompt preview shows the final system prompt JFT will send to the model. A read-only &ldquo;Recent versions&rdquo; panel below the form lists the last 3 prompt edits with author + timestamp; diff view and rollback are deferred for JFT effort estimation.</p>
     <div class="step-screenshot"><img src="tenant_admin/screenshots_dark/sc-add-02_step05_screen05.png" alt="SC-ADD-02 Step 5: AI prompt config" loading="lazy"></div></div>
   <div class="step"><div class="step-header"><div class="step-number">6</div><div class="step-title">Preferred model picker</div><div class="step-screen-label">Screen 6</div></div>
     <p class="step-text">Step 4 of 5. Three radio cards: Claude Sonnet 4.5 (recommended, selected), GPT-5, Gemini 2.5 Pro. Each card shows reasoning/code capability badges plus cost and latency tiers. Fallback chain alert references SC-ADD-06.</p>
@@ -622,6 +622,12 @@
   <div class="step"><div class="step-header"><div class="step-number">11</div><div class="step-title">Tenant Settings &mdash; Team &amp; Roles (&sect;10.8)</div><div class="step-screen-label">Screen 25</div></div>
     <p class="step-text">5-row team table with Owner / Editor / Viewer role badges (Alice plus Sam, Robin, Quinn, and a pending Kit invite); recent role-change audit log; 10-row permissions matrix showing what each role can do. Multi-tenant isolation alert reinforces that role grants don&rsquo;t cross tenant boundaries.</p>
     <div class="step-screenshot"><img src="tenant_admin/screenshots_dark/sc-add-02_step11_screen25.png" alt="SC-ADD-02 Step 11: Tenant Settings &mdash; Team &amp; Roles" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">12</div><div class="step-title">Tenant Settings &mdash; Instructor Roster &amp; Course Assignment (&sect;2.5 + &sect;10.8)</div><div class="step-screen-label">Screen 26</div></div>
+    <p class="step-text">Table of 7 instructors active across Alice&rsquo;s tenant, with course chips for each course they teach (E010, E075, E135), active-learner counts, last-active stamp, status badge, and per-row Manage CTA. Right-rail card summarizes course-to-instructor coverage; recent-assignment audit log preview. Bulk-import CSV + Add Instructor CTAs at top. Footer alert clarifies that LRPS owns account provisioning at the WGU identity layer; this screen owns course-level assignment within Alice&rsquo;s tenant.</p>
+    <div class="step-screenshot"><img src="tenant_admin/screenshots_dark/sc-add-02_step12_screen26.png" alt="SC-ADD-02 Step 12: Instructor Roster" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">13</div><div class="step-title">Tenant Settings &mdash; Subject Lifecycle &amp; Archival (&sect;2.5 + &sect;10.4)</div><div class="step-screen-label">Screen 27</div></div>
+    <p class="step-text">Two-section layout: Active Subjects table (E010 / E075 / E135 with deployed-prompt version, learner count, status, deactivate CTA) and Archived Subjects table (E020 legacy, E099 pilot) with FERPA-aligned 7-year retention dates and Restore CTAs. Right-rail &ldquo;Deactivate Subject&rdquo; preview panel shows the cutover date, retention policy (locked to Super Admin defaults), required justification field, and a warning that the action writes to the cross-tenant audit log (&sect;10.4). Footer clarifies that deactivation does not delete learner-progress data, instructor assignments, or audit logs &mdash; they persist through the retention window for advising continuity.</p>
+    <div class="step-screenshot"><img src="tenant_admin/screenshots_dark/sc-add-02_step13_screen27.png" alt="SC-ADD-02 Step 13: Subject Lifecycle" loading="lazy"></div></div>
 
   <div class="section-divider"></div>
 
@@ -629,15 +635,15 @@
   <section class="scenario-header" id="sc-add-03">
     <div class="scenario-id">SC-ADD-03</div>
     <h2>Instructor Dashboard and At-Risk Intervention</h2>
-    <div class="persona">Charlie (course instructor) &middot; 8 Screens &middot; instructor.html</div>
+    <div class="persona">Charlie (Instructor) &middot; 9 Screens &middot; instructor.html</div>
   </section>
   <div class="scenario-meta"><table>
     <tr><th scope="row">Scenario ID</th><td>SC-ADD-03</td></tr>
     <tr><th scope="row">User Type</th><td>Instructor</td></tr>
-    <tr><th scope="row">Persona</th><td>Charlie (course instructor)</td></tr>
-    <tr><th scope="row">Goal</th><td>Validate educator-facing analytics and student engagement tracking.</td></tr>
-    <tr><th scope="row">Storyboard Screens</th><td>8 (instructor.html screens 1&ndash;8)</td></tr>
-    <tr><th scope="row">requirements refs</th><td>&sect;7.10, &sect;7.11, &sect;7.13, &sect;10.4</td></tr>
+    <tr><th scope="row">Persona</th><td>Charlie (Instructor)</td></tr>
+    <tr><th scope="row">Goal</th><td>Validate educator-facing analytics and learner engagement tracking. The SDP is a practice tool &mdash; coaching scores never feed academic records.</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>9 (instructor.html screens 1&ndash;9)</td></tr>
+    <tr><th scope="row">requirements refs</th><td>&sect;7.10, &sect;7.11, &sect;7.12, &sect;7.13, &sect;7.14, &sect;10.4</td></tr>
   </table></div>
   <section class="doc-block context"><h3>Workflow</h3><p>Charlie accesses the Instructor Dashboard via secret LRPS deep link and opens the Data Visualization panel showing a Student Heatmap. He identifies Sally as at-risk: assessment complete, AI-scored competency low. He drills into her conversation logs to review AI feedback, confirming the Audit Trail captures all interactions.</p></section>
 
@@ -648,10 +654,10 @@
     <p class="step-text">Charlie&rsquo;s three sections (E010 &sect; 042 active, E075 &sect; 018, E135 &sect; 003). Active section shows 28 learners, 76% avg competency, 4 at-risk badge. &ldquo;4 learners flagged at-risk in E010 today&rdquo; alert.</p>
     <div class="step-screenshot"><img src="instructor/screenshots_dark/sc-add-03_step02_screen02.png" alt="SC-ADD-03 Step 2: Dashboard home" loading="lazy"></div></div>
   <div class="step"><div class="step-header"><div class="step-number">3</div><div class="step-title">Class heatmap &mdash; data visualization</div><div class="step-screen-label">Screen 3</div></div>
-    <p class="step-text">CSS-grid heatmap of 15 of 28 learners &times; 4 competencies. Color scale runs red (28) to green (98). Filter chips: All / Mastery / On track / Watch / At risk. Sally&rsquo;s row tinted danger-pink.</p>
+    <p class="step-text">CSS-grid heatmap of 15 of 28 learners &times; 4 competencies. Color scale runs red (28) to green (98). Filter chips: All / Mastery / On track / Watch / At risk. Sally&rsquo;s row tinted danger-pink. Header bar adds &ldquo;Search by name / email&rdquo; (deep-links to screen 9) plus &ldquo;Course report (PDF)&rdquo; and &ldquo;CSV&rdquo; export CTAs.</p>
     <div class="step-screenshot"><img src="instructor/screenshots_dark/sc-add-03_step03_screen03.png" alt="SC-ADD-03 Step 3: Class heatmap" loading="lazy"></div></div>
   <div class="step"><div class="step-header"><div class="step-number">4</div><div class="step-title">At-risk filter &mdash; Sally identified</div><div class="step-screen-label">Screen 4</div></div>
-    <p class="step-text">Filter narrowed to 4 at-risk learners. Cohort summary side panel shows the lowest-scoring competency (Manipulates Data Structures, avg 42.4) and a suggestion. Sally row clickable to drill in.</p>
+    <p class="step-text">Filter narrowed to 4 at-risk learners. Course summary side panel shows the lowest-scoring competency (Manipulates Data Structures, avg 42.4) and a suggestion. Sally row clickable to drill in.</p>
     <div class="step-screenshot"><img src="instructor/screenshots_dark/sc-add-03_step04_screen04.png" alt="SC-ADD-03 Step 4: At-risk filter" loading="lazy"></div></div>
   <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">Sally drill-down profile</div><div class="step-screen-label">Screen 5</div></div>
     <p class="step-text">Anonymized identifier <code>lnr_4a3b2c1d</code>. Profile stats card + 8-row per-objective scores table with score pills (low/med/high). &ldquo;AI-scored competency: Low&rdquo; badge. Pattern callout about explain/reflect items.</p>
@@ -665,6 +671,9 @@
   <div class="step"><div class="step-header"><div class="step-number">8</div><div class="step-title">Audit Trail confirmation</div><div class="step-screen-label">Screen 8</div></div>
     <p class="step-text">Green feedback panel + 5-stat row (47 messages, 18m 12s, 0 dropped, 3 score updates, 100% capture integrity). 10-row event log table with sha256 hashes. RBAC alert: source IPs masked for instructor view.</p>
     <div class="step-screenshot"><img src="instructor/screenshots_dark/sc-add-03_step08_screen08.png" alt="SC-ADD-03 Step 8: Audit Trail" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">9</div><div class="step-title">Learner Search &amp; Individual Lookup (&sect;7.10 + &sect;7.12)</div><div class="step-screen-label">Screen 9</div></div>
+    <p class="step-text">Searchable view across all 68 learners enrolled in Charlie&rsquo;s three courses (rolling enrollment &mdash; no traditional cohorts). Search by name, email, or anonymized identifier. Filters for course (E010 / E075 / E135) and status (At risk / On track / Mastery / Inactive). Sortable result table with avatar, contact, course chip, average competency, sessions, last-active stamp, status badge, and per-row Open Profile CTA. Footer reiterates FERPA scope: Instructors see only learners enrolled in courses they teach; Tenant Admin sees aggregated program data; Super Admin holds cross-tenant view.</p>
+    <div class="step-screenshot"><img src="instructor/screenshots_dark/sc-add-03_step09_screen09.png" alt="SC-ADD-03 Step 9: Learner Search" loading="lazy"></div></div>
 
   <div class="section-divider"></div>
 
@@ -672,15 +681,15 @@
   <section class="scenario-header" id="sc-add-04">
     <div class="scenario-id">SC-ADD-04</div>
     <h2>Super Admin Governance and Cost Audit</h2>
-    <div class="persona">Bob (platform operations and infrastructure) &middot; 8 Screens &middot; super_admin.html</div>
+    <div class="persona">Bob (platform operations and infrastructure) &middot; 11 Screens &middot; super_admin.html</div>
   </section>
   <div class="scenario-meta"><table>
     <tr><th scope="row">Scenario ID</th><td>SC-ADD-04</td></tr>
     <tr><th scope="row">User Type</th><td>Super Admin</td></tr>
     <tr><th scope="row">Persona</th><td>Bob (platform operations and infrastructure)</td></tr>
     <tr><th scope="row">Goal</th><td>Validate financial controls, security compliance, and global resource management.</td></tr>
-    <tr><th scope="row">Storyboard Screens</th><td>8 (super_admin.html screens 1&ndash;8)</td></tr>
-    <tr><th scope="row">requirements refs</th><td>&sect;6.4, &sect;6.6, &sect;10.7, &sect;9.5, &sect;10.1</td></tr>
+    <tr><th scope="row">Storyboard Screens</th><td>11 (super_admin.html screens 1&ndash;11)</td></tr>
+    <tr><th scope="row">requirements refs</th><td>&sect;2.4, &sect;2.5, &sect;6.4, &sect;6.6, &sect;9.5, &sect;9.13, &sect;10.1, &sect;10.4, &sect;10.7, &sect;11.1</td></tr>
   </table></div>
   <section class="doc-block context"><h3>Workflow</h3><p>Bob reviews Token Usage Tracking to identify high-consumption tenants and tightens Global Rate Limits in response to a spike. He pulls a Compliance Report to verify TLS 1.3 encryption across all data paths. He checks Geo-redundancy status to confirm cross-region resilience.</p></section>
 
@@ -694,7 +703,7 @@
     <p class="step-text">3 aggregate gauges (MTD spend warning, tokens consumed, projection danger). Per-tenant breakdown of 7 tenants with utilization meters; PDev flagged with spike badge.</p>
     <div class="step-screenshot"><img src="super_admin/screenshots_dark/sc-add-04_step03_screen03.png" alt="SC-ADD-04 Step 3: Token usage" loading="lazy"></div></div>
   <div class="step"><div class="step-header"><div class="step-number">4</div><div class="step-title">PDev cost spike drill-down</div><div class="step-screen-label">Screen 4</div></div>
-    <p class="step-text">30-bar daily cost chart, last 4 days highlighted as the spike. Top consuming subjects table (E010, E075, E135). &ldquo;Likely cause&rdquo; card identifies cohort 042 launch + new prompt config. CTA to adjust rate limits.</p>
+    <p class="step-text">30-bar daily cost chart, last 4 days highlighted as the spike. Top consuming subjects table (E010, E075, E135). &ldquo;Likely cause&rdquo; card identifies an enrollment surge in E010 plus new prompt config. CTA to adjust rate limits.</p>
     <div class="step-screenshot"><img src="super_admin/screenshots_dark/sc-add-04_step04_screen04.png" alt="SC-ADD-04 Step 4: Cost spike drill-down" loading="lazy"></div></div>
   <div class="step"><div class="step-header"><div class="step-number">5</div><div class="step-title">Global Rate Limits config</div><div class="step-screen-label">Screen 5</div></div>
     <p class="step-text">New limits form (tenant 2,400 / subject 1,200 / learner 60 req/hr / burst 120 in 60s). 6-row projected effect table shows MTD spend back inside budget with imperceptible learner-latency impact. Pending audit-trail entry preview.</p>
@@ -708,6 +717,15 @@
   <div class="step"><div class="step-header"><div class="step-number">8</div><div class="step-title">Cross-tenant audit log</div><div class="step-screen-label">Screen 8</div></div>
     <p class="step-text">Filter chips + 11-row event table spanning all v1.3 personas&rsquo; actions (Bob, Alice, Charlie, JFT CSM, system). Severity and result badges. Source attribution. &ldquo;Showing 11 of 4,287 events in last 24h. Retention: 7 years (FERPA).&rdquo;</p>
     <div class="step-screenshot"><img src="super_admin/screenshots_dark/sc-add-04_step08_screen08.png" alt="SC-ADD-04 Step 8: Audit log" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">9</div><div class="step-title">Third-Party Integrations (&sect;2.4 + &sect;2.5)</div><div class="step-screen-label">Screen 9</div></div>
+    <p class="step-text">Read-only Connected Services view: OpenRouter.ai (LLM gateway, replacing direct keys for OpenAI / Anthropic / Google), AWS (compute, data, networking; FERPA-eligible services only), Datadog (APM / logs / synthetic checks), Microsoft Entra ID (SSO), GitHub Enterprise (CI/CD source), and Slack (incident channel). Each card shows account / region / latency / spend metrics with a deep-link button to the vendor console. Footer alert: JFT owns all credentials and rotation per the requirements; rotation requests go through Sev2 tickets, not in-portal.</p>
+    <div class="step-screenshot"><img src="super_admin/screenshots_dark/sc-add-04_step09_screen09.png" alt="SC-ADD-04 Step 9: Integrations" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">10</div><div class="step-title">Learner Remediation (Global Admin only)</div><div class="step-screen-label">Screen 10</div></div>
+    <p class="step-text">LRPS owns account provisioning, so this screen is global-admin-only <em>coaching-state</em> remediation. Search a learner by anonymized identifier, view per-objective competency scores, and apply remediation: per-objective score reset, reset all progress (subject or cross-subject), force re-diagnostic, pause access, or open the conversation log. Required justification field is audit-logged (actor, IP, timestamp, before-after). Recent remediation events table at the bottom. Privileged-action warning surfaces FERPA scope: progress and score data only; account identity / LMS enrollment / grade-bearing assessments stay in their owning systems.</p>
+    <div class="step-screenshot"><img src="super_admin/screenshots_dark/sc-add-04_step10_screen10.png" alt="SC-ADD-04 Step 10: Learner Remediation" loading="lazy"></div></div>
+  <div class="step"><div class="step-header"><div class="step-number">11</div><div class="step-title">Billing &amp; Cost Centers (&sect;11.1 + &sect;6.6)</div><div class="step-screen-label">Screen 11</div></div>
+    <p class="step-text">Per-tenant cost allocation aligned with requirements Section 11.1 hosting + support fee schedule. 4 KPI gauges (MTD spend across all tenants, EOM forecast, hosting fee tier, CSM support fee tier). 6-row tenant table (PDev / SOB / SOH / SOE / SOIT / Pilot) with cost-center codes, owner emails, MTD spend, budget cap, EOM forecast, status badge. Spend-by-model breakdown via OpenRouter (Claude 56% / GPT-4o 28% / Gemini 16%) with utilization-meter rows. Configurable budget alerts (75% / 90% / spike / per-learner thresholds). Export-invoice-PDF + Edit-budgets CTAs at top.</p>
+    <div class="step-screenshot"><img src="super_admin/screenshots_dark/sc-add-04_step11_screen11.png" alt="SC-ADD-04 Step 11: Billing" loading="lazy"></div></div>
 
   <div class="section-divider"></div>
 
@@ -803,12 +821,12 @@
         <tr><td>SC-MVP-03</td><td>9</td><td>20, 21, 22, 23, 24, 25, 26, 27, 28</td></tr>
         <tr><td>SC-MVP-04</td><td>6</td><td>29, 30, 31, 32, 33, 34</td></tr>
         <tr><td colspan="3" style="background: var(--color-deep-navy); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; padding: 10px 16px;">v1.3 Additional Scenarios &mdash; per-persona portals</td></tr>
-        <tr><td>SC-ADD-02 &middot; tenant_admin.html</td><td>11</td><td>1, 2, 3, 4, 5, 6, 7, 8, 9, 24, 25</td></tr>
-        <tr><td>SC-ADD-03 &middot; instructor.html</td><td>8</td><td>1, 2, 3, 4, 5, 6, 7, 8</td></tr>
-        <tr><td>SC-ADD-04 &middot; super_admin.html</td><td>8</td><td>1, 2, 3, 4, 5, 6, 7, 8</td></tr>
-        <tr><td>SC-ADD-05 &middot; tenant_admin.html</td><td>6</td><td>10, 11, 12, 13, 14, 15</td></tr>
-        <tr><td>SC-ADD-06 &middot; tenant_admin.html</td><td>8</td><td>16, 17, 18, 19, 20, 21, 22, 23</td></tr>
-        <tr><td><strong>Total (across 4 HTML files)</strong></td><td><strong>75</strong></td><td></td></tr>
+        <tr><td>SC-ADD-02 &middot; tenant_admin/index.html</td><td>13</td><td>1, 2, 3, 4, 5, 6, 7, 8, 9, 24, 25, 26, 27</td></tr>
+        <tr><td>SC-ADD-03 &middot; instructor/index.html</td><td>9</td><td>1, 2, 3, 4, 5, 6, 7, 8, 9</td></tr>
+        <tr><td>SC-ADD-04 &middot; super_admin/index.html</td><td>11</td><td>1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11</td></tr>
+        <tr><td>SC-ADD-05 &middot; tenant_admin/index.html</td><td>6</td><td>10, 11, 12, 13, 14, 15</td></tr>
+        <tr><td>SC-ADD-06 &middot; tenant_admin/index.html</td><td>8</td><td>16, 17, 18, 19, 20, 21, 22, 23</td></tr>
+        <tr><td><strong>Total (across 4 HTML files)</strong></td><td><strong>81</strong></td><td></td></tr>
       </tbody>
     </table></div>
     <h3 style="margin-top:32px;">Design System Compliance</h3>
@@ -828,7 +846,8 @@
         <tr><td>1.0</td><td>30 Mar 2026</td><td>Superseded</td><td>Initial MVP-focused scenario catalog shared with JFT. Scope limited to SC-MVP-01 through SC-MVP-04, with all open design questions resolved per MVP intent. Derived from JFT SDP User Scenario Catalog v1.1 (30 Mar 2026).</td></tr>
         <tr><td>1.1</td><td>30 Mar 2026</td><td>Superseded</td><td>Added Section 4: Codebase Reference documenting prototype v1.0 and v1.1, documentation status, and baseline version selection requirements. Updated Section 1 purpose statement to reflect deferred scenario set. Version bump from 1.0 to 1.1.</td></tr>
         <tr><td>1.2</td><td>07 Apr 2026</td><td>Superseded</td><td>Aligned all scenario narratives with v3 HTML storyboard (34 screens). Each scenario is now self-contained with its own LMS entry and complete flow. Expanded all narrative steps with specific UI content, screen titles, and component descriptions. Added Storyboard Screen Map tables. SC-MVP-04 now includes brief re-assessment. Added Section 6: Storyboard Reference with screen count summary and design system compliance. Updated persona labels to clarify knowledge profiles. Typography corrected to SDP Design System v1.2 (Sora/Lato only, no monospace). Corrected LRPS descriptions per WGU LRPS team review (06 Apr 2026).</td></tr>
-        <tr><td>1.3</td><td>07 May 2026</td><td>Draft</td><td>Extends v1.2 with the v1.3 User Scenario Catalog (05 May 2026). Adds SC-ADD-02 / 03 / 04 / 05 / 06 walkthroughs across three new per-persona portal HTML files: <code>tenant_admin.html</code> (Alice, 23 screens), <code>instructor.html</code> (Charlie, 8 screens), <code>super_admin.html</code> (Bob, 8 screens). Each portal authenticates separately via its own LRPS deep link but shares the SDP Design System v1.2 chrome and the WGU FY26 brand. SC-ADD-01 noted as in-progress separately (acceptance rollup of v1.2; no new scope). Storyboard total: 73 screens / 4 HTML files / 4 personas. Real WGU FY26 White / Full-Color Reverse Corporation logos replace the placeholder wordmark across the new portals.</td></tr>
+        <tr><td>1.3</td><td>07 May 2026</td><td>Superseded</td><td>Extends v1.2 with the v1.3 User Scenario Catalog (05 May 2026). Adds SC-ADD-02 / 03 / 04 / 05 / 06 walkthroughs across three new per-persona portal HTML files: <code>tenant_admin/index.html</code> (Alice), <code>instructor/index.html</code> (Charlie), <code>super_admin/index.html</code> (Bob). Each portal authenticates separately via its own LRPS deep link but shares the SDP Design System v1.2 chrome and the WGU FY26 brand. SC-ADD-01 noted as in-progress separately (acceptance rollup of v1.2; no new scope). Storyboard total at v1.3: 73 screens / 4 HTML files / 4 personas. Real WGU FY26 White / Full-Color Reverse Corporation logos replace the placeholder wordmark across the new portals.</td></tr>
+        <tr><td>1.3+</td><td>07 May 2026</td><td>Current</td><td>Storyboard v4.4 extensions on top of catalog v1.3: SC-ADD-02 grows to 13 screens (adds Instructor Roster + Subject Lifecycle + inline prompt-versions panel); SC-ADD-03 grows to 9 screens (adds Learner Search + heatmap export CTAs); SC-ADD-04 grows to 11 screens (adds Third-Party Integrations + Learner Remediation + Billing &amp; Cost Centers). All additions contract-grounded against the signed requirements. Storyboard total: 81 screens. <code>student/index.html</code> preserved at v1 baseline (34 screens unchanged).</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -837,7 +856,7 @@
 
 <footer class="site-footer" style="margin-left: 260px;">
   <strong>Western Governors University</strong> | Program Development | JFT SDP<br>
-  Scenario Catalog v1.3 &middot; 05 May 2026 &middot; SDP Design System v1.2 &middot; Storyboard v4.0<br><br>
+  Scenario Catalog v1.3 &middot; 05 May 2026 &middot; SDP Design System v1.2 &middot; Storyboard v4.5<br><br>
   <em>WGU confidential/proprietary. Do not redistribute without authorization.</em>
 </footer>
 

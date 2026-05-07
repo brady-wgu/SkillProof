@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.4-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.5-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-81-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -313,7 +313,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.4** — eight contract-grounded requirements gap fills against the signed contract/requirements. Six new admin-portal screens (Tenant Admin Instructor Roster + Subject Lifecycle; Super Admin Third-Party Integrations + Learner Remediation + Billing & Cost Centers; Instructor Learner Search) plus inline additions (Tenant Admin prompt-versions panel; Instructor heatmap export CTAs). No changes to `student/index.html` (preserved as v1 baseline).
+The latest release is **v4.5** — comprehensive 2-pass requirements + scenario compliance audit. Pass 3 and Pass 4 both reported 0 issues; full requirements main-body coverage and 100% v1.3 scenario-step depiction verified. Editorial scrub of internal-process terminology + v4.4 catalog completeness pass + drift fixes. No changes to `student/index.html` (preserved as v1 baseline).
 
 ---
 
