@@ -1112,9 +1112,9 @@
           <div class="pgn__card pgn__card-featured">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">lightbulb</span>Likely cause</span>
-              <h2 class="h5 mb-2">New cohort + AI prompt expansion</h2>
-              <p class="small mb-2">On 04 May, PDev opened a new section (Section 042) for E010 with 28 learners (including Sally). On the same day, Alice deployed updated AI prompt configuration that increased average tokens-per-session by 22%.</p>
-              <p class="small mb-2"><strong>Recommended action:</strong> review per-subject rate limits before the cohort hits Week 2. Adjusting now keeps the tenant within budget without affecting learner experience.</p>
+              <h2 class="h5 mb-2">Enrollment surge + AI prompt expansion</h2>
+              <p class="small mb-2">On 04 May, PDev saw a wave of 28 new learner launches in E010 (including Sally) under WGU&rsquo;s rolling-enrollment model. On the same day, Alice deployed updated AI prompt configuration that increased average tokens-per-session by 22%.</p>
+              <p class="small mb-2"><strong>Recommended action:</strong> review per-subject rate limits before the surge persists into a second week. Adjusting now keeps the tenant within budget without affecting learner experience.</p>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="goToScreen(5)"><span class="material-icons-outlined">speed</span>Adjust rate limits</button>
                 <button class="btn btn-outline-primary btn-sm">Notify Alice</button>
@@ -1185,7 +1185,7 @@
               </div>
               <div class="form-group" style="margin-bottom:0;">
                 <label class="form-label" for="f-reason">Audit note (required)</label>
-                <input class="form-control" id="f-reason" type="text" value="Cohort 042 launch + new prompt config; tighten before week 2 to stay in MTD budget." />
+                <input class="form-control" id="f-reason" type="text" value="Enrollment surge in E010 + new prompt config; tighten before week 2 to stay in MTD budget." />
               </div>
             </div>
           </div>
@@ -1222,7 +1222,7 @@
           <tr><th>Tenant</th><td>pdev</td></tr>
           <tr><th>Before</th><td><code>{ tenant: 3000, subject: 1500, learner: 80, burst: 200/60s }</code></td></tr>
           <tr><th>After</th><td><code>{ tenant: 2400, subject: 1200, learner: 60, burst: 120/60s }</code></td></tr>
-          <tr><th>Reason</th><td>Cohort 042 launch + new prompt config; tighten before week 2 to stay in MTD budget.</td></tr>
+          <tr><th>Reason</th><td>Enrollment surge in E010 + new prompt config; tighten before week 2 to stay in MTD budget.</td></tr>
           <tr><th>Notify</th><td>Alice (tenant admin) via email + portal toast</td></tr>
         </table>
       </div>
@@ -1947,7 +1947,7 @@
   </main>
 </section>
 
-<!-- Screen 11: Billing & Cost Centers (G5 / the requirements + Zycus 6.6) -->
+<!-- Screen 11: Billing & Cost Centers (G5 / the requirements + §6.6) -->
 <section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -1966,7 +1966,7 @@
       </nav>
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">request_quote</span>Financial Operations · §11.1 Hosting + Support · Zycus 6.6 Token Cost</span>
+          <span class="eyebrow"><span class="material-icons-outlined">request_quote</span>Financial Operations · §11.1 Hosting + Support · §6.6 Token Cost</span>
           <h1 id="s11-heading">Billing &amp; cost centers</h1>
           <p class="mt-1">Per-tenant cost allocation and budget posture. JFT issues a single monthly invoice to WGU; this view internally splits that invoice across program-development cost centers so each tenant absorbs its own LLM spend.</p>
         </div>
