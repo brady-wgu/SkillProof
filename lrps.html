@@ -80,7 +80,7 @@
       --pgn-size-border-radius-lg:   0.5rem;
       --pgn-size-border-radius-sm:   0.25rem;
       --pgn-size-rounded-pill:       50rem;
-      --pgn-size-container-max-width-lg: 1300px;
+      --pgn-size-container-max-width-lg: 1920px;
 
       --pgn-font-family-heading: 'Sora', 'Segoe UI', Arial, sans-serif;
       --pgn-font-family-body: 'Lato', 'Segoe UI', Arial, sans-serif;
@@ -194,11 +194,11 @@
     .container {
       max-width: var(--pgn-size-container-max-width-lg);
       width: 100%; margin: 0 auto;
-      padding-left: var(--pgn-spacing-4); padding-right: var(--pgn-spacing-4);
+      padding-left: var(--pgn-spacing-3); padding-right: var(--pgn-spacing-3);
     }
     .lrps-shell {
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 240px minmax(0, 1fr);
       gap: var(--pgn-spacing-3);
       align-items: start;
     }
