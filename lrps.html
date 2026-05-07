@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Resource Provisioning System — WGU</title>
+
+  <!--
+    DEMO ONLY · MEDIUM-FIDELITY SAMPLE
+    Recreates WGU's internal Learning Resource Provisioning System (LRPS)
+    as the entry point for the three v1.3 SDP admin portals. JFT does not
+    build LRPS — this page exists to model the realistic deep-link source.
+
+    Each persona (Tenant Admin, Instructor, Super Admin) is provisioned in
+    LRPS as a separate "Provider" row with its own URL. Clicking a row
+    navigates to the corresponding portal HTML file, where the SSO landing
+    screen (screen 1) takes over.
+
+    The aesthetic intentionally matches the real LRPS — a legacy enterprise
+    Bootstrap-era data table — rather than the modern SDP Design System.
+    LRPS is an internal admin tool, not a learner-facing surface.
+  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       LRPS LEGACY TOKENS — intentionally NOT the SDP Design System.
+       These mimic the older enterprise Bootstrap-era LRPS aesthetic
+       seen in the actual internal tool.
+       ================================================================ */
+    :root {
+      --lrps-navbar-bg:   #001730;     /* WGU deep navy, matches FY26 */
+      --lrps-subbar-bg:   #6F8AB6;     /* slate blue / periwinkle */
+      --lrps-subbar-text: #FFFFFF;
+      --lrps-side-bg:     #E9ECEF;
+      --lrps-side-header: #D8DCE0;
+      --lrps-side-active: #4078C0;
+      --lrps-side-active-text: #FFFFFF;
+      --lrps-content-bg:  #F4F5F7;
+      --lrps-table-bg:    #FFFFFF;
+      --lrps-table-row-alt: #FAFBFC;
+      --lrps-table-border: #D1D5DA;
+      --lrps-table-head-bg-1: #E1EBF7;
+      --lrps-table-head-bg-2: #C8D8EE;
+      --lrps-text:        #333333;
+      --lrps-text-muted:  #6A737D;
+      --lrps-link:        #0366D6;
+      --lrps-link-hover:  #024EA0;
+      --lrps-row-hover:   #FFF8DC;     /* old-school amber tint on hover */
+      --lrps-row-selected:#D2E7FB;
+      --lrps-shadow:      0 1px 3px rgba(0,0,0,0.06);
+      --lrps-input-border:#B5BCC4;
+      --lrps-input-focus: #4078C0;
+      --lrps-success:     #1B7B2C;
+      --lrps-warning:     #B5710B;
+      --lrps-danger:      #B22222;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Verdana, Arial, sans-serif;
+      font-size: 12px; line-height: 1.4;
+      color: var(--lrps-text);
+      background: var(--lrps-content-bg);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+    a { color: var(--lrps-link); text-decoration: none; }
+    a:hover { color: var(--lrps-link-hover); text-decoration: underline; }
+    :focus-visible { outline: 2px solid var(--lrps-side-active); outline-offset: 1px; }
+
+    /* ================================================================
+       NAVBAR (dark)
+       ================================================================ */
+    .lrps-navbar {
+      background: var(--lrps-navbar-bg);
+      color: #fff;
+      height: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+      flex-shrink: 0;
+    }
+    .lrps-navbar-left { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+    .lrps-navbar-logo { height: 22px; width: auto; }
+    .lrps-navbar-center {
+      flex: 1;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .lrps-navbar-right {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px;
+      flex: 0 0 auto;
+    }
+    .lrps-user-toggle {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: transparent; border: none; color: #fff;
+      cursor: pointer; padding: 4px 8px;
+      font-size: 12px; font-family: inherit;
+    }
+    .lrps-user-toggle:hover { background: rgba(255,255,255,0.08); }
+    .lrps-user-toggle .material-icons-outlined { font-size: 16px; }
+
+    /* ================================================================
+       SUBHEADER (slate blue)
+       ================================================================ */
+    .lrps-subbar {
+      background: var(--lrps-subbar-bg);
+      color: var(--lrps-subbar-text);
+      height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ================================================================
+       MAIN GRID — sidebar + content
+       ================================================================ */
+    .lrps-shell {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* ================================================================
+       LEFT SIDEBAR
+       ================================================================ */
+    .lrps-sidebar {
+      background: var(--lrps-side-bg);
+      border-right: 1px solid var(--lrps-table-border);
+      padding: 12px 0;
+    }
+    .lrps-side-section { margin-bottom: 8px; }
+    .lrps-side-header {
+      background: var(--lrps-side-header);
+      padding: 6px 12px;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--lrps-text);
+      border-top: 1px solid var(--lrps-table-border);
+      border-bottom: 1px solid var(--lrps-table-border);
+    }
+    .lrps-side-link {
+      display: block;
+      padding: 6px 16px;
+      color: var(--lrps-text);
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+    }
+    .lrps-side-link:hover {
+      background: rgba(64,120,192,0.08);
+      text-decoration: none;
+      color: var(--lrps-link);
+    }
+    .lrps-side-link.active {
+      background: var(--lrps-side-active);
+      color: var(--lrps-side-active-text);
+      font-weight: 700;
+    }
+
+    /* ================================================================
+       CONTENT AREA
+       ================================================================ */
+    .lrps-content {
+      padding: 12px 16px 0;
+      display: flex; flex-direction: column;
+      min-width: 0;
+    }
+    .lrps-content-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .lrps-content-title {
+      font-size: 14px; font-weight: 700; color: var(--lrps-text);
+    }
+    .lrps-content-tools {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 12px;
+    }
+    .lrps-checkbox-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      cursor: pointer;
+    }
+    .lrps-search {
+      width: 220px; height: 24px;
+      padding: 0 8px;
+      border: 1px solid var(--lrps-input-border);
+      border-radius: 2px;
+      font-size: 12px; font-family: inherit;
+      background: #fff;
+    }
+    .lrps-search:focus { outline: none; border-color: var(--lrps-input-focus); box-shadow: 0 0 0 2px rgba(64,120,192,0.15); }
+
+    /* ================================================================
+       DATA TABLE (the core LRPS aesthetic)
+       ================================================================ */
+    .lrps-table-wrap {
+      background: var(--lrps-table-bg);
+      border: 1px solid var(--lrps-table-border);
+      border-radius: 2px;
+      box-shadow: var(--lrps-shadow);
+      overflow: auto;
+      flex: 1;
+      min-height: 400px;
+    }
+    .lrps-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 12px;
+    }
+    .lrps-table thead th {
+      background: linear-gradient(180deg, var(--lrps-table-head-bg-1) 0%, var(--lrps-table-head-bg-2) 100%);
+      border-right: 1px solid var(--lrps-table-border);
+      border-bottom: 1px solid var(--lrps-table-border);
+      padding: 6px 10px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--lrps-text);
+      white-space: nowrap;
+      position: sticky; top: 0; z-index: 1;
+    }
+    .lrps-table thead th.sortable {
+      cursor: pointer;
+    }
+    .lrps-table thead th.sortable::after {
+      content: " \25B2\25BC";
+      color: var(--lrps-text-muted);
+      font-size: 9px;
+      margin-left: 4px;
+    }
+    .lrps-table thead th.sorted-asc::after { content: " \25B2"; color: var(--lrps-text); }
+    .lrps-table thead th.sorted-desc::after { content: " \25BC"; color: var(--lrps-text); }
+    .lrps-table tbody td {
+      border-right: 1px solid var(--lrps-table-border);
+      border-bottom: 1px solid var(--lrps-table-border);
+      padding: 4px 10px;
+      vertical-align: middle;
+      white-space: nowrap;
+      max-width: 460px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lrps-table tbody tr:nth-child(even) td { background: var(--lrps-table-row-alt); }
+    .lrps-table tbody tr:hover td { background: var(--lrps-row-hover); }
+    .lrps-table tbody tr.live { cursor: pointer; }
+    .lrps-table tbody tr.selected td { background: var(--lrps-row-selected); }
+    .lrps-table tbody tr.selected:hover td { background: var(--lrps-row-selected); }
+    .lrps-id { font-family: Consolas, 'Courier New', monospace; color: var(--lrps-link); }
+    .lrps-name { color: var(--lrps-text); }
+    .lrps-name .lrps-name-prefix { color: var(--lrps-text-muted); }
+    .lrps-name .lrps-name-tag { color: var(--lrps-text-muted); margin-right: 8px; }
+    .lrps-status {
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .lrps-status-cb {
+      width: 14px; height: 14px;
+      border: 1px solid var(--lrps-input-border);
+      border-radius: 2px;
+      background: var(--lrps-link);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 11px;
+    }
+    .lrps-status-cb::before { content: "\2713"; font-weight: 700; }
+    .lrps-status-cb.inactive { background: #fff; }
+    .lrps-status-cb.inactive::before { content: ""; }
+    .lrps-status-letter { font-weight: 700; color: var(--lrps-text); }
+    .lrps-desc { color: var(--lrps-link); font-family: Consolas, 'Courier New', monospace; font-size: 11px; }
+    .lrps-driver { color: var(--lrps-text); }
+    .lrps-table tbody tr.sdp-row td { background: #F0FAFF; }
+    .lrps-table tbody tr.sdp-row:nth-child(even) td { background: #E6F4FB; }
+    .lrps-table tbody tr.sdp-row:hover td { background: var(--lrps-row-hover); }
+    .lrps-table tbody tr.sdp-row .lrps-name { font-weight: 700; }
+    .lrps-table tbody tr.sdp-row .lrps-launch {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--lrps-link); font-size: 11px; margin-left: 8px;
+    }
+
+    /* ================================================================
+       PAGINATION + ACTION ROW
+       ================================================================ */
+    .lrps-table-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 6px 8px;
+      background: var(--lrps-table-bg);
+      border: 1px solid var(--lrps-table-border);
+      border-top: none;
+      border-radius: 0 0 2px 2px;
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .lrps-table-actions { display: flex; align-items: center; gap: 4px; }
+    .lrps-icon-btn {
+      width: 24px; height: 24px;
+      background: #fff;
+      border: 1px solid var(--lrps-input-border);
+      border-radius: 2px;
+      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--lrps-text);
+    }
+    .lrps-icon-btn:hover { background: var(--lrps-row-hover); border-color: var(--lrps-input-focus); }
+    .lrps-icon-btn .material-icons-outlined { font-size: 16px; }
+    .lrps-icon-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .lrps-pager {
+      display: inline-flex; align-items: center; gap: 8px;
+      flex: 1; justify-content: center;
+    }
+    .lrps-pager-input {
+      width: 40px; height: 22px;
+      border: 1px solid var(--lrps-input-border);
+      border-radius: 2px;
+      text-align: center;
+      font-family: inherit; font-size: 12px;
+    }
+    .lrps-pager-select {
+      height: 22px;
+      border: 1px solid var(--lrps-input-border);
+      border-radius: 2px;
+      font-family: inherit; font-size: 12px;
+      padding: 0 4px;
+      background: #fff;
+    }
+    .lrps-pager-info { color: var(--lrps-text-muted); }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    .lrps-footer {
+      margin-top: 12px;
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--lrps-text-muted);
+      border-top: 1px solid var(--lrps-table-border);
+      background: var(--lrps-content-bg);
+      flex-shrink: 0;
+    }
+
+    /* ================================================================
+       SDP LAUNCH BANNER (above table) — short demo banner explaining
+       which rows are live in this storyboard.
+       ================================================================ */
+    .lrps-demo-banner {
+      background: #FFF8DC;
+      border: 1px solid #D6C77A;
+      border-left: 3px solid var(--lrps-warning);
+      border-radius: 2px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: #5C4A12;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .lrps-demo-banner .material-icons-outlined { font-size: 18px; color: var(--lrps-warning); flex-shrink: 0; }
+    .lrps-demo-banner strong { color: #3E3208; }
+
+    /* ================================================================
+       SR-ONLY (accessibility)
+       ================================================================ */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    @media (max-width: 900px) {
+      .lrps-shell { grid-template-columns: 160px 1fr; }
+      .lrps-search { width: 140px; }
+    }
+    @media (max-width: 700px) {
+      .lrps-shell { grid-template-columns: 1fr; }
+      .lrps-sidebar { display: none; }
+      .lrps-navbar-center { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     LRPS NAVBAR (dark)
+     ================================================================ -->
+<header class="lrps-navbar" role="banner">
+  <div class="lrps-navbar-left">
+    <img class="lrps-navbar-logo" src="assets/wgu-corporation-white.png" alt="WGU">
+  </div>
+  <div class="lrps-navbar-center">Western Governors University</div>
+  <div class="lrps-navbar-right">
+    <button class="lrps-user-toggle" aria-haspopup="true">
+      <span class="material-icons-outlined">expand_more</span>brady.redfearn
+    </button>
+  </div>
+</header>
+
+<!-- ================================================================
+     LRPS SUBHEADER (slate blue)
+     ================================================================ -->
+<div class="lrps-subbar">Learning Resource Provisioning System</div>
+
+<!-- ================================================================
+     SHELL (sidebar + content)
+     ================================================================ -->
+<div class="lrps-shell">
+
+  <!-- ================================================================
+       LEFT SIDEBAR
+       ================================================================ -->
+  <nav class="lrps-sidebar" aria-label="LRPS navigation">
+    <div class="lrps-side-section">
+      <div class="lrps-side-header">Learning Resources</div>
+      <a class="lrps-side-link active" href="#" aria-current="page">Providers</a>
+      <a class="lrps-side-link" href="#">Items</a>
+      <a class="lrps-side-link" href="#">Cost Models</a>
+    </div>
+    <div class="lrps-side-section">
+      <div class="lrps-side-header">Global Search</div>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       CONTENT AREA
+       ================================================================ -->
+  <main class="lrps-content">
+
+    <div class="lrps-demo-banner">
+      <span class="material-icons-outlined">info</span>
+      <div>
+        <strong>DEMO ONLY.</strong> This is a recreation of WGU&rsquo;s internal Learning Resource Provisioning System (LRPS) for the JFT SDP storyboard. The three highlighted SDP rows are live &mdash; click to launch the corresponding portal. All other rows are illustrative only.
+      </div>
+    </div>
+
+    <div class="lrps-content-header">
+      <div class="lrps-content-title">List all Providers</div>
+      <div class="lrps-content-tools">
+        <label class="lrps-checkbox-label"><input type="checkbox"> Show Inactive Providers</label>
+        <input class="lrps-search" type="search" placeholder="Search" aria-label="Search providers">
+      </div>
+    </div>
+
+    <div class="lrps-table-wrap">
+      <table class="lrps-table" aria-label="Providers">
+        <thead>
+          <tr>
+            <th class="sortable">Id</th>
+            <th class="sortable sorted-asc">Name</th>
+            <th>Status</th>
+            <th class="sortable">Description</th>
+            <th class="sortable">Driver Class</th>
+            <th class="sortable">Created By</th>
+            <th class="sortable">Created Date</th>
+            <th class="sortable">Modified By</th>
+            <th class="sortable">Modified Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filler rows (illustrative only) -->
+          <tr>
+            <td class="lrps-id">269781201</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560016]</span><span class="lrps-name-prefix">OEX</span> &nbsp; Course Summary</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@9c2f1d&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781205</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560016]</span><span class="lrps-name-prefix">OEX</span> &nbsp; Introduction</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@eca08f&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781210</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560016]</span><span class="lrps-name-prefix">OEX</span> &nbsp; Knowledge Check</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@f9303b&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781214</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560016]</span><span class="lrps-name-prefix">OEX</span> &nbsp; Learning Objectives</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@7236c9&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781219</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560016]</span><span class="lrps-name-prefix">OEX</span> &nbsp; Move Ahead If Ready</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@4e3461&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781224</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560016]</span><span class="lrps-name-prefix">OEX</span> &nbsp; Prepare for the Assessment</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@3bc15a&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781229</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560016]</span><span class="lrps-name-prefix">OEX</span> &nbsp; Readings &amp; Resources</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@c3b6a2&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781240</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560042]</span><span class="lrps-name-prefix">zyBooks</span> &nbsp; Foundations of Programming (Python)</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://learn.zybooks.com/zybook/WGUE010PythonAY2026/launch?lti=1&amp;ctx=section</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Brady Redfearn</td>
+            <td>03/22/2026</td>
+            <td>Brady Redfearn</td>
+            <td>04/12/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781248</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[4560042]</span><span class="lrps-name-prefix">SDP</span> &nbsp; Coding Coach &mdash; Student (LTI 1.3)</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://sdp.wgu.edu/lti/launch?subject=e010&amp;role=student</td>
+            <td class="lrps-driver">SDPLTIProviderDriver</td>
+            <td>Brady Redfearn</td>
+            <td>03/30/2026</td>
+            <td>Brady Redfearn</td>
+            <td>04/30/2026</td>
+          </tr>
+
+          <!-- =========================================================
+               LIVE SDP ADMIN ROWS — clickable for the storyboard demo
+               ========================================================= -->
+          <tr class="live sdp-row" tabindex="0" data-launch="tenant_admin.html" aria-label="Launch SDP Tenant Admin Portal">
+            <td class="lrps-id">269781301</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[SDP-TA]</span>SDP Tenant Admin Portal &mdash; Course Configuration <span class="lrps-launch"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>launch</span></td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://lrps.wgu.edu/provision/sdp/tenant-admin/{tenant_id}?role=tenant_admin&amp;scope=program_subject</td>
+            <td class="lrps-driver">SDPTenantAdminProviderDriver</td>
+            <td>Brady Redfearn</td>
+            <td>05/05/2026</td>
+            <td>Brady Redfearn</td>
+            <td>05/07/2026</td>
+          </tr>
+          <tr class="live sdp-row" tabindex="0" data-launch="instructor.html" aria-label="Launch SDP Instructor Dashboard">
+            <td class="lrps-id">269781302</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[SDP-IN]</span>SDP Instructor Dashboard &mdash; At-Risk Intervention <span class="lrps-launch"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>launch</span></td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://lrps.wgu.edu/provision/sdp/instructor/{section_id}?role=instructor&amp;scope=section</td>
+            <td class="lrps-driver">SDPInstructorProviderDriver</td>
+            <td>Brady Redfearn</td>
+            <td>05/05/2026</td>
+            <td>Brady Redfearn</td>
+            <td>05/07/2026</td>
+          </tr>
+          <tr class="live sdp-row" tabindex="0" data-launch="super_admin.html" aria-label="Launch SDP Super Admin Portal">
+            <td class="lrps-id">269781303</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[SDP-SA]</span>SDP Super Admin Portal &mdash; Platform Operations <span class="lrps-launch"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>launch</span></td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://lrps.wgu.edu/provision/sdp/super-admin?role=super_admin&amp;scope=global&amp;mfa=required</td>
+            <td class="lrps-driver">SDPSuperAdminProviderDriver</td>
+            <td>Brady Redfearn</td>
+            <td>05/05/2026</td>
+            <td>Brady Redfearn</td>
+            <td>05/07/2026</td>
+          </tr>
+
+          <!-- More filler rows below the live ones -->
+          <tr>
+            <td class="lrps-id">269781311</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[SDP-API]</span>SDP REST API Provider &mdash; v1</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://api.sdp.wgu.edu/v1/oauth2/authorize?client_id={tenant_client}&amp;scope=tenant.read</td>
+            <td class="lrps-driver">SDPApiProviderDriver</td>
+            <td>Brady Redfearn</td>
+            <td>04/02/2026</td>
+            <td>Brady Redfearn</td>
+            <td>05/06/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781317</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[CGP]</span>Cicada PoC v1.1 (Legacy) &mdash; Coding Coach</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cicada-v1.cgp.wgu.edu/launch?role=student&amp;deprecated=true</td>
+            <td class="lrps-driver">LegacyCGPProviderDriver</td>
+            <td>WGU PDev</td>
+            <td>06/14/2025</td>
+            <td>Brady Redfearn</td>
+            <td>03/30/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781322</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[Studio]</span>OEX Studio &mdash; Course Authoring</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://studio-oex.wgu.edu/course/course-v1:WGUx+C841x+2021_T3</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Diane Patel</td>
+            <td>02/18/2026</td>
+            <td>Diane Patel</td>
+            <td>04/24/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781329</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[Panopto]</span>Panopto Lecture Capture &mdash; PDev IT</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://wgu.hosted.panopto.com/Panopto/oauth2/connect/authorize?folder=PDev_IT</td>
+            <td class="lrps-driver">PanoptoLTIProviderDriver</td>
+            <td>WGU IT</td>
+            <td>09/04/2025</td>
+            <td>WGU IT</td>
+            <td>02/14/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781334</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[Pearson]</span>MyMathLab &mdash; Quantitative Reasoning</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://mlm.pearson.com/launch?course=WGUMath&amp;lti_version=1.3</td>
+            <td class="lrps-driver">PearsonLTIProviderDriver</td>
+            <td>Diane Patel</td>
+            <td>11/05/2025</td>
+            <td>Diane Patel</td>
+            <td>03/12/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781340</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[ProctorU]</span>ProctorU Live+ &mdash; Capstone</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://go.proctoru.com/sso?token={examinee_token}&amp;exam_id={exam}</td>
+            <td class="lrps-driver">ProctorULTIProviderDriver</td>
+            <td>WGU IT</td>
+            <td>08/19/2025</td>
+            <td>WGU IT</td>
+            <td>01/22/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781345</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[CGP]</span>Cicada PoC v1.0 (Retired)</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb inactive"></span><span class="lrps-status-letter">I</span></span></td>
+            <td class="lrps-desc">https://cicada-v0.cgp.wgu.edu/launch?role=student&amp;retired=true</td>
+            <td class="lrps-driver">LegacyCGPProviderDriver</td>
+            <td>WGU PDev</td>
+            <td>04/02/2025</td>
+            <td>Brady Redfearn</td>
+            <td>03/30/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781351</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[OEX]</span>Reflection Exit Slip</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@4e34a0&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781358</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[OEX]</span>Welcome &amp; Roster Sync</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@5a2e9b&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Alonzo Thayn</td>
+            <td>05/14/2025</td>
+            <td>Alonzo Thayn</td>
+            <td>05/29/2025</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781364</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[Coursera]</span>Coursera Programs Bridge &mdash; Tech</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://www.coursera.org/lti/launch?context=wgu_tech&amp;lti_version=1.3</td>
+            <td class="lrps-driver">CourseraLTIProviderDriver</td>
+            <td>WGU IT</td>
+            <td>10/02/2025</td>
+            <td>WGU IT</td>
+            <td>02/02/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781371</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[ID]</span>Instructional Designer Review &mdash; PDev</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://pdev-internal.wgu.edu/lrps/id-review/{review_id}</td>
+            <td class="lrps-driver">InternalSAMLProviderDriver</td>
+            <td>Diane Patel</td>
+            <td>01/14/2026</td>
+            <td>Diane Patel</td>
+            <td>04/29/2026</td>
+          </tr>
+          <tr>
+            <td class="lrps-id">269781378</td>
+            <td class="lrps-name"><span class="lrps-name-tag">[OEX]</span>Diagnostic Pre-Test &mdash; Math</td>
+            <td><span class="lrps-status"><span class="lrps-status-cb"></span><span class="lrps-status-letter">A</span></span></td>
+            <td class="lrps-desc">https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+MATH101+2021_T3/block-v1:WGUx+MATH101+2021_T3+type@vertical+block@cb69ea&hellip;</td>
+            <td class="lrps-driver">BasicLTIProviderDriver</td>
+            <td>Marcus Hyde</td>
+            <td>05/14/2025</td>
+            <td>Marcus Hyde</td>
+            <td>05/29/2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lrps-table-footer">
+      <div class="lrps-table-actions">
+        <button class="lrps-icon-btn" type="button" aria-label="Refresh"><span class="material-icons-outlined">refresh</span></button>
+        <button class="lrps-icon-btn" type="button" aria-label="Add new provider"><span class="material-icons-outlined">add</span></button>
+        <button class="lrps-icon-btn" type="button" aria-label="Save"><span class="material-icons-outlined">save</span></button>
+      </div>
+      <div class="lrps-pager">
+        <button class="lrps-icon-btn" type="button" aria-label="First page" disabled><span class="material-icons-outlined">first_page</span></button>
+        <button class="lrps-icon-btn" type="button" aria-label="Previous page" disabled><span class="material-icons-outlined">chevron_left</span></button>
+        <span class="lrps-pager-info">Page</span>
+        <input class="lrps-pager-input" type="text" value="1" aria-label="Page number">
+        <span class="lrps-pager-info">of 68</span>
+        <button class="lrps-icon-btn" type="button" aria-label="Next page"><span class="material-icons-outlined">chevron_right</span></button>
+        <button class="lrps-icon-btn" type="button" aria-label="Last page"><span class="material-icons-outlined">last_page</span></button>
+        <select class="lrps-pager-select" aria-label="Rows per page">
+          <option>50</option>
+          <option>100</option>
+          <option selected>200</option>
+        </select>
+      </div>
+      <div class="lrps-pager-info">View 1 - 200 of 13,549</div>
+    </div>
+  </main>
+</div>
+
+<footer class="lrps-footer" role="contentinfo">
+  Version: 3.4.2 &nbsp; BuildTimeStamp: 20260507-0942
+</footer>
+
+<script>
+  /* Make the three SDP rows launch their portals */
+  document.querySelectorAll('tr.live[data-launch]').forEach(function(row) {
+    var url = row.getAttribute('data-launch');
+    var go = function() { window.location.href = url; };
+    row.addEventListener('click', go);
+    row.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+  });
+</script>
+
+</body>
+</html>

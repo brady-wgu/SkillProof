@@ -31,6 +31,8 @@ It now covers **all nine v1.2 + v1.3 user scenarios across four personas**:
 
 Each persona has its own **secret LRPS deep link** and authenticates separately, so the four HTML files are independently loaded surfaces. They share the SDP Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
 
+The three admin portals start from a recreation of WGU's internal **Learning Resource Provisioning System (LRPS)** at [`lrps.html`](https://brady-wgu.github.io/JFT_SDP_MVP/lrps.html). The LRPS page intentionally mirrors the legacy enterprise aesthetic of the real internal tool — Brady or another LRPS admin selects the appropriate provider row, which deep-links into the corresponding portal. JFT does not build LRPS; it's modeled here only as the realistic source of the deep links.
+
 The prototype consists of self-contained HTML files that work offline, require no build step, and render in any modern browser. These illustrate roughly what the SDP could look like on a desktop browser — they are **not** pixel-perfect specifications to be duplicated exactly. This prototype was built with Claude Code for rapid visualization, has not been formally audited for accessibility, and has not been tested for mobile responsiveness.
 
 > **Note for JFT:** Tenant Admin, Instructor, and Super Admin scenarios have not been started by JFT yet. This storyboard is the design spec for those new surfaces — use it as the visual North Star while building, not a frozen contract. The first JFT release is an MVP and will be iterated on several times during the contract.
@@ -39,6 +41,7 @@ The prototype consists of self-contained HTML files that work offline, require n
 
 | Page | URL | Description |
 |:-----|:----|:------------|
+| **LRPS Landing** | [`lrps.html`](https://brady-wgu.github.io/JFT_SDP_MVP/lrps.html) | Entry point for the three admin portals. Recreates WGU's internal Learning Resource Provisioning System; the three SDP rows are clickable and deep-link into the corresponding portal |
 | **Student Storyboard** | [`index.html`](https://brady-wgu.github.io/JFT_SDP_MVP/) | 34-screen interactive prototype for SC-MVP-01 through SC-MVP-04 (Sally's coaching loop) |
 | **Tenant Admin Portal** | [`tenant_admin.html`](https://brady-wgu.github.io/JFT_SDP_MVP/tenant_admin.html) | 23-screen portal for SC-ADD-02 (Course Configuration) + SC-ADD-05 (Data Portability) + SC-ADD-06 (Incident Response) — Alice |
 | **Instructor Dashboard** | [`instructor.html`](https://brady-wgu.github.io/JFT_SDP_MVP/instructor.html) | 8-screen dashboard for SC-ADD-03 (At-Risk Intervention) — Charlie |
@@ -157,6 +160,7 @@ The four portals use the **official WGU FY26 Corporation logo** (`assets/wgu-cor
 
 | Page | URL |
 |:-----|:----|
+| LRPS Landing | **[brady-wgu.github.io/JFT_SDP_MVP/lrps.html](https://brady-wgu.github.io/JFT_SDP_MVP/lrps.html)** |
 | Student Storyboard | **[brady-wgu.github.io/JFT_SDP_MVP](https://brady-wgu.github.io/JFT_SDP_MVP/)** |
 | Tenant Admin Portal | **[brady-wgu.github.io/JFT_SDP_MVP/tenant_admin.html](https://brady-wgu.github.io/JFT_SDP_MVP/tenant_admin.html)** |
 | Instructor Dashboard | **[brady-wgu.github.io/JFT_SDP_MVP/instructor.html](https://brady-wgu.github.io/JFT_SDP_MVP/instructor.html)** |
@@ -190,6 +194,7 @@ Output: ~146 PNGs (73 per theme) into `screenshots/` and `screenshots_dark/`.
 
 Changes applied since v3.1 (v1.2 student storyboard):
 
+- **LRPS landing page** — new `lrps.html` recreates WGU's internal Learning Resource Provisioning System as the realistic entry point for the three admin portals. The three SDP rows are clickable and deep-link into `tenant_admin.html`, `instructor.html`, and `super_admin.html`. Other rows are illustrative of the typical LRPS provider mix (zyBooks, OEX courses, Cicada legacy, Pearson, Panopto, etc.).
 - **v1.3 Tenant Admin Portal** — new `tenant_admin.html` (23 screens) covering SC-ADD-02 (Portal & Course Configuration), SC-ADD-05 (Data Portability), SC-ADD-06 (Critical Incident Response & SLA Verification). Persona: Alice. Components include a 5-step CI/CD Stepper, REST API console with method/endpoint/params, JSON syntax-highlighted code blocks, JFT CSM chat thread, SLA gauge dashboard.
 - **v1.3 Instructor Dashboard** — new `instructor.html` (8 screens) covering SC-ADD-03 (Instructor Dashboard & At-Risk Intervention). Persona: Charlie. Components include a CSS-grid student-competency heatmap (15 learners × 4 competencies, 9-step color scale), per-objective score pills, AI coaching transcript with feedback panels, Audit Trail event log with sha256 hashes.
 - **v1.3 Super Admin Portal** — new `super_admin.html` (8 screens) covering SC-ADD-04 (Governance & Cost Audit). Persona: Bob. Components include cross-tenant overview gauges, 30-bar daily cost spike chart, per-tenant utilization meters, TLS 1.3 compliance report, geo-redundancy region cards, cross-tenant audit log feed.
