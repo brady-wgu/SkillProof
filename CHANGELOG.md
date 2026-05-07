@@ -6,6 +6,29 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.2 — 07 May 2026 — v1.3 gap-coverage pass
+
+Three-pass review against the v1.3 User Scenario Catalog identified three requirements-ref gaps. Filled to bring all 5 v1.3 scenarios to **100% workflow + requirements-ref coverage**. Two consecutive review passes confirmed zero remaining gaps.
+
+### Added (3 fills)
+- **`tenant_admin/` screen 24 — Tenant Settings: Branding & Customization (§7.9 Custom Branding).** Two-column tenant configuration with form + learner-facing preview. Form fields: tenant display name, logo upload (with current preview), primary accent color picker, custom domain (with DNS-verified status), favicon, footer copy. Preview pane shows a mock of how Sally sees the WGU PDev branding when she launches the Coding Coach.
+- **`tenant_admin/` screen 25 — Tenant Settings: Team & Role-Based Access (§10.8 RBAC).** 5-row team table (Alice + Sam + Robin + Quinn + pending Kit invite) with Owner / Editor / Viewer role badges. Recent role-change audit log. 10-row permissions matrix showing what each role can do. Multi-tenant isolation alert.
+- **`super_admin/` screen 6 — Compliance Report enhancement (§10.1 FERPA Compliance).** Added a FERPA privacy compliance section above the existing TLS service-by-service table. 4 FERPA KPI gauges (100% staff training / 7-yr audit retention / 3-yr inactive learner data retention / N/A parental notification — adult learners only). 6-row FERPA control table referencing 34 CFR §§99.10 / 99.31 / 99.32 / 99.37 plus WGU policies 8.2 and 8.4. Eyebrow updated to "Encryption + Privacy Audit · §10.7 · §10.1."
+
+### Changed
+- `tenant_admin/` portal home (screen 2) gains a "Tenant Settings" button alongside the existing New Subject + Cross-Subject Analytics CTAs.
+- Meta-bar SC-ADD-02 navigation extended from 9 buttons to 11 (steps 10/11 link to screens 24/25).
+- `tenant_admin` `TOTAL_SCREENS` bumped 23 → 25.
+- `capture_screens.py` PORTALS list extends `sc-add-02` screen ids with `[24, 25]` so the pipeline captures the new screens.
+- `presentation.html` and `presentation_dark.html` extended with new SC-ADD-02 step 10 + 11 entries, SC-ADD-04 step 6 description enriched with FERPA, screen-map summary updated (SC-ADD-02 row 9 → 11; total 73 → 75).
+- README, per-persona READMEs, and version badges updated to reflect 75-screen total.
+
+### Coverage verification
+
+Pass 2 + Pass 3 (both clean): every workflow sentence and every requirements reference across SC-ADD-02 through SC-ADD-06 is now visually depicted in the storyboard. Mapping table of requirements refs to screens lives in each persona's README.
+
+---
+
 ## v4.1 — 07 May 2026 — Repo restructure
 
 Reorganization-only release. No new scenarios or screen content.
