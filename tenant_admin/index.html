@@ -799,6 +799,7 @@
       font-size: 64px; font-weight: 700; line-height: 1;
       color: var(--pgn-color-success-base);
     }
+    .gauge-number.good    { color: var(--pgn-color-success-base); }
     .gauge-number.warning { color: var(--pgn-color-warning-base); }
     .gauge-number.danger  { color: var(--pgn-color-danger-base); }
     .gauge-label { font-size: 14px; color: var(--pgn-color-gray-600); margin-top: var(--pgn-spacing-1); }
@@ -957,11 +958,13 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#">Tenant Admin Portal</a>
       </nav>
-      <div class="d-flex justify-content-between align-items-center mb-3">
+
+      <!-- Hero -->
+      <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">school</span>Your Subjects</span>
-          <h1 id="s2-heading">Tenant Admin Portal</h1>
-          <p class="mt-1">Multi-tenant scoping limits this view to subjects you own under your assigned <strong>Program Subject</strong>.</p>
+          <span class="eyebrow"><span class="material-icons-outlined">school</span>Tenant Admin Portal · Program Development / IT</span>
+          <h1 id="s2-heading">Welcome back, Alice</h1>
+          <p class="mt-1">Multi-tenant scoping limits this view to <strong>Foundations of Programming (Python)</strong>. All actions audit-logged for 7 years.</p>
         </div>
         <div class="status-legend">
           <span class="status-legend-item"><span class="dot green"></span>Production</span>
@@ -970,71 +973,206 @@
         </div>
       </div>
 
-      <div class="pgn__card mb-3">
-        <div class="pgn__card-section">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <h2 class="h5">Program Subject: <span class="text-strong">Foundations of Programming (Python)</span></h2>
-            <span class="badge badge-info">PDev / IT</span>
-          </div>
-          <p class="small text-muted">3 subjects total — 1 in production, 1 in staging, 1 in draft. Configurations apply at the subject level and roll up to course offerings.</p>
-        </div>
-      </div>
-
-      <div class="row-list mb-4">
-        <div class="row-card recommended">
-          <div class="row-num">1</div>
-          <div class="row-content">
-            <div class="d-flex align-items-center gap-2">
-              <span class="dot green"></span>
-              <span class="row-title">E010: Foundations of Programming (Python)</span>
-              <span class="badge badge-success">In production</span>
-            </div>
-            <div class="row-sub">Live · 1,284 active learners · last deployed 02 May 2026 · model: Claude Sonnet 4.5</div>
-          </div>
-          <div class="row-actions">
-            <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+      <!-- KPI row spanning all 3 scenarios -->
+      <div class="row mb-3">
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SUBJECTS LIVE</span><span class="dot green"></span></div>
+            <div class="gauge-number">2</div>
+            <div class="gauge-target">+1 in staging · 1 draft</div>
           </div>
         </div>
-        <div class="row-card">
-          <div class="row-num">2</div>
-          <div class="row-content">
-            <div class="d-flex align-items-center gap-2">
-              <span class="dot amber"></span>
-              <span class="row-title">E075: Intermediate Python &amp; Libraries</span>
-              <span class="badge badge-warning">In staging</span>
-            </div>
-            <div class="row-sub">Awaiting acceptance · 0 active learners · last build 04 May 2026 · model: GPT-5</div>
-          </div>
-          <div class="row-actions">
-            <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SLA UPTIME · 30D</span><span class="dot green"></span></div>
+            <div class="gauge-number good">99.97<span style="font-size:24px;">%</span></div>
+            <div class="gauge-target">Target 99.95% · 0.02% headroom</div>
           </div>
         </div>
-        <div class="row-card">
-          <div class="row-num">3</div>
-          <div class="row-content">
-            <div class="d-flex align-items-center gap-2">
-              <span class="dot gray"></span>
-              <span class="row-title">E120: Applied Data Structures (Python)</span>
-              <span class="badge badge-gray">Draft</span>
-            </div>
-            <div class="row-sub">Configuration in progress · saved 06 May 2026 · model: not selected</div>
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">EXPORTS · THIS WEEK</span><span class="dot green"></span></div>
+            <div class="gauge-number">4</div>
+            <div class="gauge-target">CSV 3 · JSON 1 · all audit-logged</div>
           </div>
-          <div class="row-actions">
-            <button class="btn btn-outline-primary btn-sm">Resume <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+        </div>
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SYSTEM STATUS</span><span class="dot green"></span></div>
+            <div class="gauge-number good" style="font-size:36px;">Operational</div>
+            <div class="gauge-target">Last incident resolved 11:08 UTC · 1h 24m</div>
           </div>
         </div>
       </div>
 
-      <div class="d-flex gap-2">
+      <!-- 3-domain quick launch -->
+      <h2 class="h5 mb-2">What would you like to do?</h2>
+      <div class="row mb-3">
+        <div class="col-4">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(3)">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">edit_note</span>SC-ADD-02 · Course Configuration</span>
+              <h3 class="h5 mt-1 mb-2">Configure courses</h3>
+              <p class="small text-muted mb-3">Create or update a Subject's topics, learning objectives, AI prompt, model, and rubric. Deploy via the 5-step CI/CD pipeline.</p>
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">add</span>New Subject</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(24);">Tenant Settings</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(10)">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">database</span>SC-ADD-05 · Data Portability</span>
+              <h3 class="h5 mt-1 mb-2">Data &amp; APIs</h3>
+              <p class="small text-muted mb-3">Query learner records via the REST API console (OAuth 2.0, 600 req/hr) or run a one-click CSV / JSON / Parquet export.</p>
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(11);"><span class="material-icons-outlined">terminal</span>API Console</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(13);">Start Export</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(16)">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">monitoring</span>SC-ADD-06 · Incident Response &amp; SLA</span>
+              <h3 class="h5 mt-1 mb-2">System status</h3>
+              <p class="small text-muted mb-3">Live system health, JFT 24/7 monitoring, P1 incident tickets, JFT CSM 2-hour SLA, and the rolling 30-day SLA dashboard.</p>
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(16);"><span class="material-icons-outlined">visibility</span>System Status</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(23);">SLA Dashboard</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-column: Subjects + Activity feed -->
+      <div class="row mb-3">
+        <div class="col-7">
+          <h2 class="h5 mb-2">Your Subjects</h2>
+          <div class="row-list">
+            <div class="row-card recommended">
+              <div class="row-num">1</div>
+              <div class="row-content">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="dot green"></span>
+                  <span class="row-title">E010: Foundations of Programming (Python)</span>
+                  <span class="badge badge-success">In production</span>
+                </div>
+                <div class="row-sub">Live · 1,284 active learners · last deployed 02 May 2026 · Claude Sonnet 4.5 · prompt v3</div>
+              </div>
+              <div class="row-actions">
+                <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+              </div>
+            </div>
+            <div class="row-card">
+              <div class="row-num">2</div>
+              <div class="row-content">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="dot green"></span>
+                  <span class="row-title">E135: Object-Oriented Programming with Python</span>
+                  <span class="badge badge-success">In production</span>
+                </div>
+                <div class="row-sub">Live · 18 active learners · last deployed 06 May 2026 · Claude Sonnet 4.5 · prompt v1</div>
+              </div>
+              <div class="row-actions">
+                <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+              </div>
+            </div>
+            <div class="row-card">
+              <div class="row-num">3</div>
+              <div class="row-content">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="dot amber"></span>
+                  <span class="row-title">E075: Intermediate Python &amp; Libraries</span>
+                  <span class="badge badge-warning">In staging</span>
+                </div>
+                <div class="row-sub">Awaiting acceptance · 0 active learners · last build 04 May 2026 · GPT-5</div>
+              </div>
+              <div class="row-actions">
+                <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+              </div>
+            </div>
+            <div class="row-card">
+              <div class="row-num">4</div>
+              <div class="row-content">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="dot gray"></span>
+                  <span class="row-title">E120: Applied Data Structures (Python)</span>
+                  <span class="badge badge-gray">Draft</span>
+                </div>
+                <div class="row-sub">Configuration in progress · saved 06 May 2026 · model: not selected</div>
+              </div>
+              <div class="row-actions">
+                <button class="btn btn-outline-primary btn-sm">Resume <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <h2 class="h5 mb-2">Recent activity · last 24h</h2>
+          <div class="pgn__card">
+            <div class="pgn__card-section" style="padding: var(--pgn-spacing-2);">
+              <div class="row-list" style="gap:0;">
+                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
+                  <span class="dot green" style="margin-top:6px;"></span>
+                  <div style="flex:1;">
+                    <div><span class="text-muted small">11:08 UTC</span> · <strong>Service restored</strong></div>
+                    <div class="small text-muted">SC-ADD-06 · Anthropic primary back online · 0 sessions failed during 1h 24m fallback</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
+                  <span class="dot amber" style="margin-top:6px;"></span>
+                  <div style="flex:1;">
+                    <div><span class="text-muted small">09:43 UTC</span> · <strong>P1 ticket opened</strong></div>
+                    <div class="small text-muted">SC-ADD-06 · LLM provider degraded · auto-fallback engaged · JFT CSM acknowledged in 6 min</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
+                  <span class="dot blue" style="margin-top:6px;"></span>
+                  <div style="flex:1;">
+                    <div><span class="text-muted small">09:42 UTC</span> · <strong>Export complete</strong></div>
+                    <div class="small text-muted">SC-ADD-05 · <code>engagement-metrics-pdev-e010-2026-05-07.csv</code> · 1,284 rows · Audit ID xpz4</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
+                  <span class="dot blue" style="margin-top:6px;"></span>
+                  <div style="flex:1;">
+                    <div><span class="text-muted small">06 May · 14:30</span> · <strong>Subject deployed</strong></div>
+                    <div class="small text-muted">SC-ADD-02 · E135 went live · 5-step CI/CD in 2m 47s · prompt v1, Claude Sonnet 4.5</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
+                  <span class="dot green" style="margin-top:6px;"></span>
+                  <div style="flex:1;">
+                    <div><span class="text-muted small">06 May · 11:42</span> · <strong>Tenant settings updated</strong></div>
+                    <div class="small text-muted">Branding · custom domain DNS verified for <code>pdev.sdp.wgu.edu</code></div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; font-size:13px;">
+                  <span class="dot blue" style="margin-top:6px;"></span>
+                  <div style="flex:1;">
+                    <div><span class="text-muted small">06 May · 06:00</span> · <strong>Compliance scan passed</strong></div>
+                    <div class="small text-muted">TLS 1.3 across 17 services · FERPA controls 6/6 ✓ · §10.7 + §10.1</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2 align-items-center">
         <button class="btn btn-primary btn-lg" onclick="goToScreen(3)">
           <span class="material-icons-outlined" aria-hidden="true">add</span>New Subject
-        </button>
-        <button class="btn btn-outline-primary btn-lg">
-          <span class="material-icons-outlined" aria-hidden="true">analytics</span>Cross-Subject Analytics
         </button>
         <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(24)">
           <span class="material-icons-outlined" aria-hidden="true">tune</span>Tenant Settings
         </button>
+        <span class="text-muted small" style="margin-left:auto;">Audit log retention: 7 years (FERPA) · cross-tenant view available to Super Admin</span>
       </div>
     </div>
   </main>
@@ -1571,6 +1709,20 @@ Always cite the Learning Objective being assessed by ID.</div>
         </div>
         <div class="small text-muted">Tenant: WGU PDev / IT · Subject ID: <code>e135-oop-python</code> · Build: <code>2026.05.06.1547</code> · Audit logged</div>
       </div>
+
+      <!-- Cross-scenario "what's next" -->
+      <div class="pgn__card mt-3">
+        <div class="pgn__card-section">
+          <span class="eyebrow"><span class="material-icons-outlined">arrow_forward</span>What's next?</span>
+          <h2 class="h6 mt-1 mb-2">Common follow-ups after a deploy</h2>
+          <div class="d-flex gap-2" style="flex-wrap:wrap;">
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(13)"><span class="material-icons-outlined">file_download</span>Export E135 baseline metrics</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(16)"><span class="material-icons-outlined">monitoring</span>Check system status</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">terminal</span>Query via REST API</button>
+          </div>
+          <p class="small text-muted mt-2 mb-0">Deploys are audit-logged and visible to Super Admin via the cross-tenant audit log.</p>
+        </div>
+      </div>
     </div>
   </main>
 </section>
@@ -1978,6 +2130,20 @@ Always cite the Learning Objective being assessed by ID.</div>
           <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(10)">Back to Data &amp; APIs</button>
         </div>
         <div class="text-center small text-muted">Audit ID: <code>aud_2026-05-07_09-42-18_xpz4</code> · Tenant: pdev · Subject: e010 · Logged for 7 years</div>
+      </div>
+
+      <!-- Cross-scenario "what's next" -->
+      <div class="pgn__card mt-3">
+        <div class="pgn__card-section">
+          <span class="eyebrow"><span class="material-icons-outlined">arrow_forward</span>What's next?</span>
+          <h2 class="h6 mt-1 mb-2">Common follow-ups after an export</h2>
+          <div class="d-flex gap-2" style="flex-wrap:wrap;">
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(23)"><span class="material-icons-outlined">leaderboard</span>SLA dashboard</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">home</span>Portal home</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>New Subject</button>
+          </div>
+          <p class="small text-muted mt-2 mb-0">Every export writes to the cross-tenant audit log (§10.4) with your Tenant Admin actor identity. Stakeholders can request a machine-readable SLA copy via the same APIs.</p>
+        </div>
       </div>
     </div>
   </main>
@@ -2601,7 +2767,21 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
       <div class="alert alert-info">
         <span class="material-icons-outlined">event_note</span>
-        <div><strong>Next SLA report:</strong> 30 May 2026 · sent to Alice + WGU PDev leadership · machine-readable copy via the Data &amp; APIs panel.</div>
+        <div><strong>Next SLA report:</strong> 30 May 2026 · sent to Alice + WGU PDev leadership · machine-readable copy via the <a href="#" onclick="goToScreen(10); return false;">Data &amp; APIs panel</a>.</div>
+      </div>
+
+      <!-- Cross-scenario "what's next" -->
+      <div class="pgn__card mt-3">
+        <div class="pgn__card-section">
+          <span class="eyebrow"><span class="material-icons-outlined">arrow_forward</span>What's next?</span>
+          <h2 class="h6 mt-1 mb-2">SLA window verified — common follow-ups</h2>
+          <div class="d-flex gap-2" style="flex-wrap:wrap;">
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(13)"><span class="material-icons-outlined">file_download</span>Export incident report (CSV)</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">home</span>Portal home</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>Configure another Subject</button>
+          </div>
+          <p class="small text-muted mt-2 mb-0">SLA performance is independently corroborated in the Super Admin cross-tenant view. Brady or another Super Admin can verify your tenant's window via that role.</p>
+        </div>
       </div>
     </div>
   </main>

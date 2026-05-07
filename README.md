@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.6-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.7-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-81-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.6** — adversarial-framed accessibility / design-system / navigation re-audit. Pass 5 caught a real WCAG 2.2 AA §2.4.7 focus-ring violation that pattern-matching prior passes missed. Fixed in 5 modifiable portals; documented as a known limitation in `student/README.md` (frozen v1 baseline). Plus design-system palette-extension documentation. **Pass 6 + Pass 7 both 0 issues** under stricter adversarial framing — second 2-consecutive-clean-pass certification this week.
+The latest release is **v4.7** — Tenant Admin polish pass. SC-ADD-02 (course config), SC-ADD-05 (data portability), SC-ADD-06 (incident response) are now tied together as one cohesive Alice experience: redesigned portal home with cross-scenario KPIs + activity feed + 3-domain quick launches, plus "What's next?" cross-scenario CTAs at each scenario's completion screen. No new screens (still 81 total); pure UX integration.
 
 ---
 
