@@ -486,7 +486,14 @@
     .pgn__data-table tr.live td:first-child {
       box-shadow: inset 4px 0 0 0 var(--pgn-color-brand-base);
     }
-    .pgn__data-table tr.live .lrps-name { font-weight: 700; color: var(--pgn-color-gray-900); }
+    .pgn__data-table tr.live .lrps-name {
+      font-weight: 700; color: var(--pgn-color-gray-900);
+      /* Live rows display a no-student-badge; allow it to fit alongside the
+         title without ellipsis truncation. */
+      max-width: none;
+      overflow: visible;
+      text-overflow: clip;
+    }
     .pgn__data-table .id-cell {
       font-family: 'Lato', 'Consolas', monospace;
       color: var(--pgn-color-brand-base);
@@ -497,6 +504,22 @@
       font-size: 12px;
       color: var(--pgn-color-gray-600);
       margin-right: 8px;
+    }
+    .pgn__data-table .name-cell .no-student-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-left: 10px; padding: 2px 8px;
+      font-size: 10.5px; font-weight: 700; line-height: 1.4;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      color: #B5710B; background: var(--pgn-color-warning-tint);
+      border: 1px solid var(--pgn-color-warning-base);
+      border-radius: var(--pgn-size-border-radius-sm);
+      vertical-align: middle;
+    }
+    .pgn__data-table .name-cell .no-student-badge .material-icons-outlined {
+      font-size: 12px;
+    }
+    [data-theme="dark"] .pgn__data-table .name-cell .no-student-badge {
+      color: var(--color-amber); background: #3A2A0A; border-color: #4F3814;
     }
     .pgn__data-table .desc-cell {
       font-family: 'Lato', 'Consolas', monospace;
@@ -894,7 +917,7 @@
                      ========================================================= -->
                 <tr class="live" tabindex="0" data-launch="../tenant_admin/" aria-label="Launch SDP Tenant Admin Portal">
                   <td class="id-cell">269781301</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-TA]</span>SDP Tenant Admin Portal — Course Configuration</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-TA]</span>SDP Tenant Admin Portal — Course Configuration<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/sdp/tenant-admin/{tenant_id}</td>
                   <td class="driver-cell">SDPTenantAdminProviderDriver</td>
@@ -906,7 +929,7 @@
                 </tr>
                 <tr class="live" tabindex="0" data-launch="../instructor/" aria-label="Launch SDP Instructor Dashboard">
                   <td class="id-cell">269781302</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-IN]</span>SDP Instructor Dashboard — At-Risk Intervention</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-IN]</span>SDP Instructor Dashboard — At-Risk Intervention<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/sdp/instructor/{section_id}</td>
                   <td class="driver-cell">SDPInstructorProviderDriver</td>
@@ -918,7 +941,7 @@
                 </tr>
                 <tr class="live" tabindex="0" data-launch="../super_admin/" aria-label="Launch SDP Super Admin Portal">
                   <td class="id-cell">269781303</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-SA]</span>SDP Super Admin Portal — Platform Operations</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-SA]</span>SDP Super Admin Portal — Platform Operations<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/sdp/super-admin?mfa=required</td>
                   <td class="driver-cell">SDPSuperAdminProviderDriver</td>

@@ -322,7 +322,7 @@
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-01_step02_screen02.png" alt="SC-MVP-01 Step 2: Welcome / Entry" loading="lazy"></div></div>
 
   <div class="step" id="sc01-step3"><div class="step-header"><div class="step-number">3</div><div class="step-title">Diagnostic Question 1</div><div class="step-screen-label">Screen 3</div></div>
-    <p class="step-text">The platform presents a short diagnostic &mdash; LLM-generated questions sampling across all 13 sub-sections. The first screen shows Question 3 of 10, sub-section "Basic Syntax &amp; Data Types," with a progress bar at 30%. The AI-generated prompt asks Sally to define and use variables in Python. A dark-themed code editor provides space for her response. A "Need a Hint?" link and "Submit Answer" button are available.</p>
+    <p class="step-text">The platform presents a short diagnostic &mdash; LLM-generated questions sampling across all 13 sub-sections. The first screen shows Question 3 of 10, sub-section "Basic Syntax &amp; Data Types," with a progress bar at 30%. The AI-generated prompt asks Sally to define and use variables in Python. A dark-themed code editor provides space for her response. A "Need a Hint?" link and "Submit Answer" button are available. The "Need a Hint?" link reveals scaffolding without giving away the answer; submitted code is evaluated by the AI coaching engine using the same text-based evaluation logic that drives targeted feedback later in the session (see SC-MVP-02 step 8).</p>
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-01_step03_screen03.png" alt="SC-MVP-01 Step 3: Diagnostic Q1" loading="lazy"></div></div>
 
   <div class="step" id="sc01-step4"><div class="step-header"><div class="step-number">4</div><div class="step-title">Diagnostic Question 2</div><div class="step-screen-label">Screen 4</div></div>
@@ -415,7 +415,7 @@
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-02_step09_screen17.png" alt="SC-MVP-02 Step 9: Verification Question" loading="lazy"></div></div>
 
   <div class="step" id="sc02-step10"><div class="step-header"><div class="step-number">10</div><div class="step-title">Verification Passed &mdash; Difficulty Advances</div><div class="step-screen-label">Screen 18</div></div>
-    <p class="step-text">Sally answers correctly. "Verification Passed &mdash; Gap resolved &mdash; difficulty advancing." Progression: Foundational &rarr; Intermediate &rarr; Advanced. Identical questions are never repeated within a session.</p>
+    <p class="step-text">Sally answers correctly. "Verification Passed &mdash; Gap resolved &mdash; difficulty advancing." Progression: Foundational &rarr; Intermediate &rarr; Advanced. Identical questions are never repeated within a session. Throughout coaching, a persistent session-stats display shows the three canonical fields &mdash; Sub-section (e.g., "Data Structures"), Tasks completed (e.g., 3), and Current difficulty (e.g., "Intermediate") &mdash; so Sally always knows her progression state without leaving the active task.</p>
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-02_step10_screen18.png" alt="SC-MVP-02 Step 10: Difficulty Advances" loading="lazy"></div></div>
 
   <div class="step" id="sc02-step11"><div class="step-header"><div class="step-number">11</div><div class="step-title">Session Saved</div><div class="step-screen-label">Screen 19</div></div>
@@ -478,7 +478,7 @@
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-03_step06_screen25.png" alt="SC-MVP-03 Step 6: Advanced Diagnostic" loading="lazy"></div></div>
 
   <div class="step" id="sc03-step7"><div class="step-header"><div class="step-number">7</div><div class="step-title">Fast-Track Diagnostic Results</div><div class="step-screen-label">Screen 26</div></div>
-    <p class="step-text">"Strong baseline detected." 12 of 13 sub-sections show mastery. Functions &amp; Modular Programming requires hands-on verification. "Begin Verification Task" CTA.</p>
+    <p class="step-text">"Strong baseline detected." 12 of 13 sub-sections show mastery via the diagnostic &mdash; checkmarks confirm Sally's responses across Basic Syntax, Control Flow, Data Structures, OOP, error handling, and the other applied-skill areas met the fast-track threshold defined by the v1 prototype codebase. Only Functions &amp; Modular Programming remains marked "pending" because the diagnostic question pool did not adequately sample module-level skills (importable file structure, <code>__name__ == "__main__"</code> guards, multi-function organization). A short hands-on verification task is required before coaching content for that single sub-section is suppressed. "Begin Verification Task" CTA.</p>
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-03_step07_screen26.png" alt="SC-MVP-03 Step 7: Fast-Track Results" loading="lazy"></div></div>
 
   <div class="step" id="sc03-step8"><div class="step-header"><div class="step-number">8</div><div class="step-title">Verification Task (Write a Python Module)</div><div class="step-screen-label">Screen 27</div></div>
@@ -528,7 +528,7 @@
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-04_step02_screen30.png" alt="SC-MVP-04 Step 2: Returning Learner Welcome" loading="lazy"></div></div>
 
   <div class="step" id="sc04-step3"><div class="step-header"><div class="step-number">3</div><div class="step-title">Re-Assessment Question 1</div><div class="step-screen-label">Screen 31</div></div>
-    <p class="step-text">Brief re-assessment to verify retention. Question 1 of 2, "Data Structures" with badge "Re-Assessment &middot; Welcome Back." Prompt: access and transform nested dictionary data &mdash; print each student's name and average grade. Topic: "Data Structures &mdash; Nested Dictionaries (Intermediate)."</p>
+    <p class="step-text">Brief re-assessment to verify retention after Sally's multi-week break. Question 1 of 2, "Data Structures" with the "Re-Assessment &middot; Welcome Back" badge prominently displayed at the top of the question card &mdash; signalling that this is a retention check, not a fresh diagnostic, and that the platform is calibrating whether Sally retained competency at her prior difficulty level (Intermediate) before resuming coaching. Prompt: access and transform nested dictionary data &mdash; print each student's name and average grade. Topic: "Data Structures &mdash; Nested Dictionaries (Intermediate)."</p>
     <div class="step-screenshot"><img src="student/screenshots_dark/sc-mvp-04_step03_screen31.png" alt="SC-MVP-04 Step 3: Re-Assessment Q1" loading="lazy"></div></div>
 
   <div class="step" id="sc04-step4"><div class="step-header"><div class="step-number">4</div><div class="step-title">Re-Assessment Question 2</div><div class="step-screen-label">Screen 32</div></div>

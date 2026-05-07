@@ -487,13 +487,43 @@
       border-left: 4px solid var(--pgn-color-brand-base);
     }
     .preview-card { border-left-color: var(--pgn-color-info-base); }
-    .ai-label, .preview-label {
+    .history-card { border-left-color: var(--pgn-color-gray-400); }
+    .ai-label, .preview-label, .history-label {
       display: flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--pgn-color-brand-base);
       margin-bottom: var(--pgn-spacing-2);
     }
     .preview-label { color: var(--pgn-color-info-base); }
+    .history-label { color: var(--pgn-color-gray-700); }
+    .version-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 180px 220px;
+      gap: var(--pgn-spacing-2);
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--pgn-color-gray-100);
+      font-size: 13px;
+    }
+    .version-row:last-of-type { border-bottom: none; }
+    .version-row .v-tag {
+      font-family: 'Lato', monospace; font-weight: 700;
+      color: var(--pgn-color-brand-base);
+    }
+    .version-row .v-tag.v-current {
+      background: var(--pgn-color-success-tint); color: #1B5E20;
+      padding: 2px 8px; border-radius: var(--pgn-size-border-radius-sm);
+      display: inline-block; line-height: 1.4;
+    }
+    .version-row .v-author { color: var(--pgn-color-gray-700); }
+    .version-row .v-date { color: var(--pgn-color-gray-700); font-variant-numeric: tabular-nums; }
+    .version-row .v-note { color: var(--pgn-color-gray-700); }
+    .history-footnote {
+      font-size: 12px; color: var(--pgn-color-gray-600);
+      margin-top: var(--pgn-spacing-2);
+      padding-top: var(--pgn-spacing-2);
+      border-top: 1px dashed var(--pgn-color-gray-200);
+    }
     .ai-label .material-icons-outlined,
     .preview-label .material-icons-outlined { font-size: 16px; }
     .preview-text {
@@ -1248,6 +1278,30 @@ OUTPUT
 Always cite the Learning Objective being assessed by ID.</div>
           </div>
         </div>
+      </div>
+
+      <!-- G9: Recent prompt versions (minimal indicator; no diff/rollback in v4.4) -->
+      <div class="ai-prompt-card history-card mt-4">
+        <div class="history-label"><span class="material-icons-outlined">history</span>Recent versions</div>
+        <div class="version-row">
+          <span class="v-tag v-current">v3 · live</span>
+          <span class="v-note">Added OOP-by-example addendum; tightened off-topic refusal language.</span>
+          <span class="v-author">Alice (Tenant Admin)</span>
+          <span class="v-date">07 May 2026 · 09:42</span>
+        </div>
+        <div class="version-row">
+          <span class="v-tag">v2</span>
+          <span class="v-note">Enabled Python sandbox tool; added LO citation requirement to OUTPUT.</span>
+          <span class="v-author">Sam (Editor)</span>
+          <span class="v-date">02 May 2026 · 14:18</span>
+        </div>
+        <div class="version-row">
+          <span class="v-tag">v1</span>
+          <span class="v-note">Initial baseline created from prototype v1 prompt template.</span>
+          <span class="v-author">Alice (Tenant Admin)</span>
+          <span class="v-date">28 Apr 2026 · 11:05</span>
+        </div>
+        <div class="history-footnote">Versions are recorded automatically each time "Deploy to Production" runs. v4.4 storyboard scope is read-only visibility only — diff view and rollback are deferred for JFT effort estimation.</div>
       </div>
     </div>
   </main>
@@ -2847,6 +2901,381 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(24)"><span class="material-icons-outlined">arrow_back</span>Back: Branding</button>
+    <button class="btn btn-primary" onclick="goToScreen(26)">Next: Instructors<span class="material-icons-outlined">arrow_forward</span></button>
+  </div>
+</section>
+
+<!-- Screen 26: Tenant Settings — Instructor Roster & Course Assignment (G3 / the requirements + Zycus 10.8) -->
+<section class="screen" id="screen-26" aria-labelledby="s26-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <span class="navbar-chip">Tenant Admin Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-26">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Tenant Admin Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <a href="#" onclick="goToScreen(25); return false;">Tenant Settings</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>Instructors</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">cast_for_education</span>Tenant Configuration · §2.5 Instructor Management · Zycus 10.8 RBAC</span>
+      <h1 id="s26-heading">Instructor Roster &amp; Course Assignment</h1>
+      <p class="mt-1 mb-4">Assign instructors to the courses your tenant publishes. Instructors authenticate through their own LRPS deep link and are scoped to the courses listed here. Accounts are provisioned by LRPS — this screen manages course assignment, not account creation.</p>
+
+      <div class="row mb-3">
+        <div class="col-8">
+          <div class="pgn__card pgn__card-featured">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="eyebrow"><span class="material-icons-outlined">person_search</span>Instructors · 6 active</span>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-tertiary btn-sm"><span class="material-icons-outlined">upload_file</span>Bulk import (CSV)</button>
+                  <button class="btn btn-primary btn-sm"><span class="material-icons-outlined">person_add</span>Add Instructor</button>
+                </div>
+              </div>
+              <table class="pgn__data-table">
+                <thead>
+                  <tr>
+                    <th>Instructor</th>
+                    <th>Courses</th>
+                    <th style="text-align:right;">Active learners</th>
+                    <th>Last active</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">C</div>
+                        <div>
+                          <div class="text-strong">Charlie</div>
+                          <div class="micro text-muted">name@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E075</span> <span class="badge badge-info">E135</span></td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>68</strong></td>
+                    <td>14 min ago</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-success-base);">D</div>
+                        <div>
+                          <div class="text-strong">Devon</div>
+                          <div class="micro text-muted">name@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>54</strong></td>
+                    <td>2 hours ago</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-info-base);">M</div>
+                        <div>
+                          <div class="text-strong">Maya</div>
+                          <div class="micro text-muted">name@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E075</span></td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>22</strong></td>
+                    <td>Yesterday</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #4527A0;">P</div>
+                        <div>
+                          <div class="text-strong">Priya</div>
+                          <div class="micro text-muted">name@wgu.edu · Program Mentor</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>46</strong></td>
+                    <td>Yesterday</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base); color:#1A1A1A;">T</div>
+                        <div>
+                          <div class="text-strong">Teagan</div>
+                          <div class="micro text-muted">name@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E075</span></td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>18</strong></td>
+                    <td>3 days ago</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #C13232;">N</div>
+                        <div>
+                          <div class="text-strong">Noor</div>
+                          <div class="micro text-muted">name@wgu.edu · Program Mentor</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span></td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>12</strong></td>
+                    <td>5 days ago</td>
+                    <td><span class="badge badge-warning">Idle &gt; 5d</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr style="opacity: 0.65;">
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-400);">L</div>
+                        <div>
+                          <div class="text-strong">Logan</div>
+                          <div class="micro text-muted">name@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="text-muted small">—</span></td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums; color: var(--pgn-color-gray-600);">—</td>
+                    <td class="text-muted small">22 Mar 2026</td>
+                    <td><span class="badge badge-gray">Deactivated</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Reactivate</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card mb-3">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">insights</span>Coverage</span>
+              <h2 class="h5 mb-2">Course → instructor map</h2>
+              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size:13px;">
+                <tr><th style="background:transparent; padding: 6px 4px;">E010</th><td style="background:transparent; padding: 6px 4px;">4 instructors · 28 learners</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">E075</th><td style="background:transparent; padding: 6px 4px;">3 instructors · 22 learners</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">E135</th><td style="background:transparent; padding: 6px 4px;">3 instructors · 18 learners</td></tr>
+              </table>
+              <div class="alert alert-info mt-2" style="font-size:13px;">
+                <span class="material-icons-outlined">tips_and_updates</span>
+                <div>WGU's rolling-enrollment model means every active learner is assigned to exactly one instructor for advising; that mapping is owned in the SIS, not here.</div>
+              </div>
+            </div>
+          </div>
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">recent_actors</span>Recent assignments</span>
+              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size: 12px;">
+                <tr><th style="background:transparent; padding: 6px 4px;">06 May 13:18</th><td style="background:transparent; padding: 6px 4px;">Alice assigned Charlie to E135</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">02 May 09:44</th><td style="background:transparent; padding: 6px 4px;">Alice deactivated Logan</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">28 Apr 11:20</th><td style="background:transparent; padding: 6px 4px;">Alice added Noor (E010)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">15 Apr 16:05</th><td style="background:transparent; padding: 6px 4px;">Alice added Teagan (E075)</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <span class="material-icons-outlined">verified_user</span>
+        <div><strong>Account scoping:</strong> instructor accounts are provisioned by LRPS at the WGU identity layer. Removing an instructor here only removes their course assignments in this tenant — their WGU identity and access to other tenants is unaffected.</div>
+      </div>
+    </div>
+  </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(25)"><span class="material-icons-outlined">arrow_back</span>Back: Team &amp; Roles</button>
+    <button class="btn btn-primary" onclick="goToScreen(27)">Next: Subject Lifecycle<span class="material-icons-outlined">arrow_forward</span></button>
+  </div>
+</section>
+
+<!-- Screen 27: Tenant Settings — Subject Lifecycle & Archival (G6 / the requirements + Zycus 10.4) -->
+<section class="screen" id="screen-27" aria-labelledby="s27-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <span class="navbar-chip">Tenant Admin Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-27">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Tenant Admin Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <a href="#" onclick="goToScreen(25); return false;">Tenant Settings</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>Subject Lifecycle</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">inventory_2</span>Tenant Configuration · §2.5 Module Lifecycle · Zycus 10.4 Audit Logging</span>
+      <h1 id="s27-heading">Subject Lifecycle &amp; Archival</h1>
+      <p class="mt-1 mb-4">Retire subjects when they're no longer offered, while preserving learner-progress data for the contracted retention window. Archived subjects stay visible to past learners' Instructors for advising, but new launches are blocked.</p>
+
+      <div class="row mb-3">
+        <div class="col-7">
+          <div class="pgn__card pgn__card-featured">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="eyebrow"><span class="material-icons-outlined">play_circle</span>Active subjects · 3</span>
+                <button class="btn btn-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>New Subject</button>
+              </div>
+              <table class="pgn__data-table">
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Deployed</th>
+                    <th style="text-align:right;">Learners</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="text-strong">E010 · Foundations of Programming (Python)</div>
+                      <div class="micro text-muted">Subject ID <code>sub_e010</code> · prompt v3 · Claude 3.5 Sonnet</div>
+                    </td>
+                    <td>04 May 2026</td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>28</strong></td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Live</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Deactivate…</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="text-strong">E075 · Intermediate Python &amp; Libraries</div>
+                      <div class="micro text-muted">Subject ID <code>sub_e075</code> · prompt v2 · GPT-4o</div>
+                    </td>
+                    <td>14 Apr 2026</td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>22</strong></td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Live</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Deactivate…</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="text-strong">E135 · OOP with Python</div>
+                      <div class="micro text-muted">Subject ID <code>sub_e135</code> · prompt v1 · Claude 3.5 Sonnet · diagnostic in flight</div>
+                    </td>
+                    <td>02 May 2026</td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>18</strong></td>
+                    <td><span class="badge badge-info"><span class="dot blue"></span>Ramping</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Deactivate…</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="pgn__card mt-3">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">archive</span>Archived subjects · 2</span>
+              <h2 class="h5 mb-2">Read-only · learner data preserved</h2>
+              <table class="pgn__data-table">
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Archived</th>
+                    <th style="text-align:right;">Learners (lifetime)</th>
+                    <th>Retention until</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="opacity: 0.85;">
+                    <td>
+                      <div class="text-strong">E020 · Python Fundamentals (legacy)</div>
+                      <div class="micro text-muted">Replaced by E010 in Apr 2026.</div>
+                    </td>
+                    <td>04 Apr 2026</td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;">312</td>
+                    <td>04 Apr 2033</td>
+                    <td><button class="btn btn-tertiary btn-sm">Restore</button></td>
+                  </tr>
+                  <tr style="opacity: 0.85;">
+                    <td>
+                      <div class="text-strong">E099 · Python for Data Analysis (pilot)</div>
+                      <div class="micro text-muted">Pilot complete · superseded by separate E125 path.</div>
+                    </td>
+                    <td>22 Feb 2026</td>
+                    <td style="text-align:right; font-variant-numeric: tabular-nums;">47</td>
+                    <td>22 Feb 2033</td>
+                    <td><button class="btn btn-tertiary btn-sm">Restore</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-5">
+          <div class="pgn__card pgn__card-featured" style="border-left: 4px solid var(--pgn-color-warning-base);">
+            <div class="pgn__card-section">
+              <span class="eyebrow" style="color: #B5710B;"><span class="material-icons-outlined">remove_circle_outline</span>Deactivate Subject · preview</span>
+              <h2 class="h5 mb-2">Deactivate E010 · Foundations of Programming (Python)?</h2>
+              <p class="small text-muted mb-3">Currently active with 28 learners. Deactivation runs as a controlled wind-down — no learner mid-session is interrupted.</p>
+
+              <div class="form-group mb-3">
+                <label class="form-label" for="f-cutover">Cutover date</label>
+                <input class="form-control" id="f-cutover" value="14 May 2026 · 23:59 MT" readonly>
+                <div class="form-help">After this moment, no new sessions can launch. In-flight sessions complete normally.</div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label">Learner-data retention</label>
+                <div class="d-flex gap-2" style="flex-wrap:wrap;">
+                  <span class="badge badge-info">7 years (FERPA default)</span>
+                  <span class="text-muted small">— Per §10.1; locked by Super Admin policy.</span>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label" for="f-reason">Reason</label>
+                <textarea class="form-control" id="f-reason" rows="2">E010 superseded by an updated curriculum starting Summer 2026 enrollment. New launches will route to E011.</textarea>
+              </div>
+
+              <div class="alert alert-warning" style="font-size:13px;">
+                <span class="material-icons-outlined">policy</span>
+                <div>This action will write an entry to the cross-tenant audit log (Zycus 10.4) and notify the Super Admin team. It is reversible via "Restore" until the retention window closes.</div>
+              </div>
+
+              <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-outline-primary btn-sm">Cancel</button>
+                <button class="btn btn-primary btn-sm" style="background: var(--pgn-color-warning-base); border-color: var(--pgn-color-warning-base); color: #1A1A1A;"><span class="material-icons-outlined">schedule</span>Schedule deactivation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <span class="material-icons-outlined">verified_user</span>
+        <div><strong>What deactivation does NOT do:</strong> it does not delete learner-progress data, instructor assignments, or audit logs. Those persist through the retention window so Instructors can answer advising questions for past learners.</div>
+      </div>
+    </div>
+  </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(26)"><span class="material-icons-outlined">arrow_back</span>Back: Instructors</button>
     <button class="btn btn-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">check</span>Done</button>
   </div>
 </section>
@@ -2855,7 +3284,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP Tenant Admin Portal Storyboard v3.2 — Western Governors University</p>
+  <p>JFT SDP Tenant Admin Portal Storyboard — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
@@ -2877,6 +3306,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Deploy success">09</button>
       <button class="step-btn" onclick="goToScreen(24)" aria-label="Screen 24: Tenant Settings — Branding (§7.9)">24</button>
       <button class="step-btn" onclick="goToScreen(25)" aria-label="Screen 25: Tenant Settings — Team &amp; Roles (§10.8)">25</button>
+      <button class="step-btn" onclick="goToScreen(26)" aria-label="Screen 26: Tenant Settings — Instructor Roster (§2.5 + Zycus 10.8)">26</button>
+      <button class="step-btn" onclick="goToScreen(27)" aria-label="Screen 27: Tenant Settings — Subject Lifecycle (§2.5 + Zycus 10.4)">27</button>
     </nav>
 
     <span class="flow-id">SC-ADD-05</span>
@@ -2907,7 +3338,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 25; // SC-ADD-02 (1-9, 24-25 supporting) + SC-ADD-05 (10-15) + SC-ADD-06 (16-23)
+  const TOTAL_SCREENS = 27; // SC-ADD-02 (1-9, 24-27 tenant settings) + SC-ADD-05 (10-15) + SC-ADD-06 (16-23). v4.4 added 26 (Instructor Roster) + 27 (Subject Lifecycle).
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;

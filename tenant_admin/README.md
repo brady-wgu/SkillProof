@@ -1,4 +1,4 @@
-# Tenant Admin — Alice · v1.3
+# Tenant Admin — Alice · v1.3 (extended in storyboard v4.4)
 
 [← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) · [Catalog](../presentation.html#sc-add-02)
 
@@ -14,15 +14,15 @@ Multi-tenancy, RBAC, the Course-as-a-Service administrative UI, integration APIs
 
 ## Scenarios
 
-This portal covers **three v1.3 scenarios** in one cohesive Alice experience, plus two supporting **Tenant Settings** screens (Branding + Team & Roles) accessible from the Portal home:
+This portal covers **three v1.3 scenarios** in one cohesive Alice experience, plus four supporting **Tenant Settings** screens accessible from the Portal home (Branding + Team & Roles + Instructor Roster + Subject Lifecycle):
 
 | ID | Description | Screens | Screen IDs |
 |:---|:------------|:-------:|:----------:|
-| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping → Subject creation → Topics & Learning Objectives → AI prompt config (toggles for profile data, domain limits, jailbreak guard, sandbox; custom system prompt addendum; right-pane compiled-prompt preview) → preferred model picker (Claude / GPT / Gemini radio cards) → scoring rubric → Deploy to Production triggers automated CI/CD pipeline (5-step Stepper) → success panel with live-course link. **Plus Tenant Settings:** Branding & Customization (§7.9 — tenant display name, logo, primary color, custom domain, footer copy, learner-facing preview) and Team & Role-Based Access (§10.8 — 5-member roster with Owner/Editor/Viewer badges, recent role-change audit log, 10-row permissions matrix). | 11 | 1–9, 24, 25 |
+| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping → Subject creation → Topics & Learning Objectives → AI prompt config (toggles for profile data, domain limits, jailbreak guard, sandbox; custom system prompt addendum; right-pane compiled-prompt preview; **v4.4 G9: minimal "Recent versions" panel** showing the last 3 prompt edits with author/timestamp — read-only, deferred diff/rollback for JFT effort estimation) → preferred model picker (Claude / GPT / Gemini radio cards) → scoring rubric → Deploy to Production triggers automated CI/CD pipeline (5-step Stepper) → success panel with live-course link. **Plus four Tenant Settings:** Branding & Customization (§7.9), Team & Role-Based Access (§10.8 — internal Owner/Editor/Viewer for the Tenant Admin Portal itself), **v4.4 G3 Instructor Roster & Course Assignment** (§2.5 + Zycus 10.8 — 7-instructor table including Program Mentors with E010/E075/E135 course chips, active-learner counts, recent-assignment audit log, bulk import option; LRPS owns account provisioning, this screen owns course-level assignment), and **v4.4 G6 Subject Lifecycle & Archival** (§2.5 module lifecycle + Zycus 10.4 audit logging — active subjects table with deactivation flow, archived subjects with FERPA-aligned 7-year retention, deactivation-preview panel showing cutover date / retention policy / audit warning). | 13 | 1–9, 24–27 |
 | **SC-ADD-05** | **Data Portability.** Data & APIs landing → REST API console (method + endpoint + query params, auth/scoping side panel, rate-limit display) → sample JSON response (syntax-highlighted code block) → one-click export wizard (3 dataset radio cards) → format picker (CSV / JSON / Parquet tab switcher with 5-row preview) → download confirmation with file metadata + audit ID. | 6 | 10–15 |
 | **SC-ADD-06** | **Critical Incident Response & SLA Verification.** All-systems-operational baseline → primary LLM provider down → Fallback engaged automatically → notification email / toast → P1 ticket creation form (prefilled from monitoring) → JFT-SDP-2138 confirmation → JFT CSM chat thread (within 2-hr SLA) → service-restored verification → SLA dashboard showing 99.97% uptime maintained. | 8 | 16–23 |
 
-**Total: 3 scenarios · 25 screens.**
+**Total: 3 scenarios · 27 screens.** (v4.4 added screens 26 + 27; G9 panel added inline to existing screen 5.)
 
 ## Source
 
@@ -32,15 +32,15 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 
 | Scenario | requirements refs | Where covered |
 |:---------|:---------|:--------------|
-| SC-ADD-02 | §8.6 (Multi-tenancy), §2.5 (Tenant Admin Portal), §6.24 (CI/CD), §10.8 (RBAC), §7.9 (Custom Branding) | §8.6 → screen 2 (scoping callout); §2.5 → whole portal; §6.24 → screen 8 (Stepper); §10.8 → screen 25 (Team & Roles + permissions matrix); §7.9 → screen 24 (Branding) |
+| SC-ADD-02 | §8.6 (Multi-tenancy), §2.5 (Tenant Admin Portal — Course Configuration, modules, instructors, analytics), §6.24 (CI/CD), §10.8 (RBAC), §7.9 (Custom Branding), §10.4 (Audit Logging) | §8.6 → screen 2 (scoping callout); §2.5 (config) → whole portal; §6.24 → screen 8 (Stepper); §10.8 → screen 25 (internal Team & Roles) + screen 26 (instructor course assignment); §7.9 → screen 24 (Branding); §2.5 (modules lifecycle) + §10.4 → screen 27 (Subject Lifecycle); §2.5 (instructors) → screen 26 (Instructor Roster); §6.7 prompt guardrails → screen 5 inline G9 versions panel |
 | SC-ADD-05 | §8.7 (API), §7.14 (Export Capability), §8.9 (Data Formats) |
 | SC-ADD-06 | §6.5 (AI Fallback), §9.2 (Uptime), §9.5 (SLAs), §9.7 (CSM), §9.10 (Response time), §9.13 (Monitoring) |
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (25 screens, 3 scenario flows + 2 supporting Tenant Settings screens)
-- `screenshots/` — 25 light-theme PNGs at 1440×900
-- `screenshots_dark/` — 25 dark-theme PNGs
+- [`index.html`](index.html) — interactive storyboard (27 screens, 3 scenario flows + 4 supporting Tenant Settings screens)
+- `screenshots/` — 27 light-theme PNGs at 1440×900
+- `screenshots_dark/` — 27 dark-theme PNGs
 
 ## Components introduced in this portal
 

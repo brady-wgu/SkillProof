@@ -9,12 +9,12 @@ Usage:
 
 Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
-    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (23 + 23)
-    instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
-    super_admin/screenshots/     + super_admin/screenshots_dark/     (8 + 8)
+    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (27 + 27)
+    instructor/screenshots/      + instructor/screenshots_dark/      (9 + 9)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (11 + 11)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 148 PNGs.
+Total: 164 PNGs.
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
@@ -39,15 +39,15 @@ PORTALS = [
         ("sc-mvp-04", [29, 30, 31, 32, 33, 34]),
     ]},
     {"file": "tenant_admin/index.html", "scenarios": [
-        ("sc-add-02", [1, 2, 3, 4, 5, 6, 7, 8, 9, 24, 25]),  # 24-25 = Tenant Settings (Branding §7.9 + Team §10.8)
+        ("sc-add-02", [1, 2, 3, 4, 5, 6, 7, 8, 9, 24, 25, 26, 27]),  # 24-25 = Branding §7.9 + Team §10.8; 26-27 = v4.4 Instructor Roster + Subject Lifecycle
         ("sc-add-05", [10, 11, 12, 13, 14, 15]),
         ("sc-add-06", [16, 17, 18, 19, 20, 21, 22, 23]),
     ]},
     {"file": "instructor/index.html", "scenarios": [
-        ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),
+        ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8, 9]),  # 9 = v4.4 Learner Search
     ]},
     {"file": "super_admin/index.html", "scenarios": [
-        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8]),
+        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]),  # 9-11 = v4.4 Integrations, Learner Remediation, Billing
     ]},
     {"file": "lrps/index.html", "scenarios": [
         ("lrps", [None]),  # None = no goToScreen call, just capture as-is
@@ -90,7 +90,19 @@ async def capture_portal(page, portal, theme):
     for scenario_id, screen_ids in portal["scenarios"]:
         for step_idx, screen_id in enumerate(screen_ids, 1):
             if screen_id is None:
-                # Single-page portal (e.g., lrps) — no goToScreen call
+                # Single-page portal (e.g., lrps) — no goToScreen call.
+                # For LRPS, scroll the live SDP rows into view so the M4
+                # "Not for student use" badges land in the hero screenshot
+                # (the alphabetically-sorted OEX rows above add no value).
+                await page.evaluate(
+                    "(() => {"
+                    " const row = document.querySelector('tr.live[data-launch=\"../student/\"]');"
+                    " if (row) {"
+                    "   const rect = row.getBoundingClientRect();"
+                    "   window.scrollTo({top: window.scrollY + rect.top - 200, behavior: 'instant'});"
+                    " }"
+                    "})()"
+                )
                 await page.wait_for_timeout(300)
                 fname = f"{out_dir}/{scenario_id}.png"
             else:

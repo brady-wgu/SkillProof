@@ -29,6 +29,25 @@ This LRPS landing models step 2. The three live SDP rows (Tenant Admin, Instruct
 
 The table also has a sidebar quick-launch section that links directly to the three SDP admin portals, and a meta-bar at the bottom with quick-launch chips to all 5 surfaces + the catalog.
 
+## LMS → LRPS → LTI provisioning chain (student-facing flow)
+
+LRPS is what produces the **student-facing** Coding Coach link as well. The provisioning chain that gets Sally into the SDP from her zyBooks course page works like this:
+
+1. **WGU's D&D (Design & Development) team** registers the SDP Coding Coach as an LRPS provider — a row in the LRPS provider table similar to the SDP-TA / SDP-IN / SDP-SA admin rows shown in this storyboard, but configured as a student-facing resource (no MFA, learner role mapping).
+2. **The D&D team places an LRPS-generated link** on the relevant zyBooks E010 course page. zyBooks (Wiley) renders it as a "Coding Coach" button next to the Competencies section — that's the button you see on Screen 1 of every SC-MVP scenario.
+3. **Sally clicks the button**. Because she's already authenticated to the WGU LMS, LRPS handles SSO transparently — there's no second login prompt.
+4. **LRPS issues an LTI 1.3 launch** to the SDP platform. The LTI payload carries Sally's WGU student ID, course context (E010), and role (`Learner`).
+5. **The SDP receives the launch**, looks up or creates Sally's session against her WGU student ID, and opens the Coding Coach welcome screen.
+
+Important properties of this chain:
+
+- **JFT does not own LMS-side link placement.** The D&D team manages all LMS resource links. JFT's responsibility is to expose a stable launch URL that does not change when course content is reorganized.
+- **The launch URL must be stable.** If JFT changes the launch endpoint, every LMS link breaks until D&D re-provisions them through LRPS. Versioning the launch endpoint is therefore a coordination cost, not a free refactor.
+- **Per-persona deep links use the same chain.** The admin portals (Tenant Admin, Instructor, Super Admin) are provisioned the same way as the student Coding Coach link, but with admin role mappings and (for Super Admin) MFA enforced at the LRPS level. The "Quick Launch · Live" sidebar in this LRPS landing demonstrates the admin-side equivalent.
+- **Basic LTI 1.3, not LTI Advantage.** No grade passback, no NRPS, no deep-linking content selection. The student MVP scope deliberately avoids LTI Advantage to keep FERPA scope minimal and the integration surface small.
+
+The LRPS integration and its role in the LTI launch flow were reviewed with JFT by the WGU LRPS team on 06 Apr 2026.
+
 ## Files
 
 - [`index.html`](index.html) — single-page LRPS landing
