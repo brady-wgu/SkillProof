@@ -1,4 +1,5 @@
-"""Capture all storyboard screens (4 portals × 2 themes) as PNG screenshots.
+"""Capture all storyboard screens (5 portals × 2 themes) as PNG screenshots,
+writing each portal's outputs into its own per-persona subdirectory.
 
 Usage:
     1. Start a local HTTP server from the repo root:
@@ -6,17 +7,19 @@ Usage:
     2. Run this script:
          python capture_screens.py
 
-Outputs:
-    screenshots/         (light theme — 73 PNGs)
-    screenshots_dark/    (dark theme — 73 PNGs)
+Outputs (per persona):
+    student/screenshots/         + student/screenshots_dark/         (34 + 34)
+    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (23 + 23)
+    instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (8 + 8)
+    lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
+
+Total: 148 PNGs.
 
 Naming:
-    sc-mvp-NN_stepNN_screenNN.png   (index.html)
-    sc-add-02_stepNN_screenNN.png   (tenant_admin.html screens 1-9)
-    sc-add-03_stepNN_screenNN.png   (instructor.html screens 1-8)
-    sc-add-04_stepNN_screenNN.png   (super_admin.html screens 1-8)
-    sc-add-05_stepNN_screenNN.png   (tenant_admin.html screens 10-15)
-    sc-add-06_stepNN_screenNN.png   (tenant_admin.html screens 16-23)
+    {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
+    {persona}/screenshots[_dark]/sc-add-NN_stepNN_screenNN.png
+    lrps/screenshots[_dark]/lrps.png
 """
 import asyncio
 import os
@@ -26,54 +29,55 @@ REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE_URL = "http://localhost:63417"
 VIEWPORT = {"width": 1440, "height": 900}
 
-# Each portal: (HTML file, scenario_id, screen_ids[]) — screenshot file uses
-# scenario_id for the SC-* prefix. Screen ID is the in-file goToScreen target.
+# Each portal: HTML file (relative to repo root) + scenarios.
+# Output dir is derived from the HTML's parent directory + theme subdir.
 PORTALS = [
-    # Existing v1.2 student storyboard — index.html
-    {"file": "index.html", "scenarios": [
+    {"file": "student/index.html", "scenarios": [
         ("sc-mvp-01", [1, 2, 3, 4, 5, 6, 7, 8]),
         ("sc-mvp-02", [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]),
         ("sc-mvp-03", [20, 21, 22, 23, 24, 25, 26, 27, 28]),
         ("sc-mvp-04", [29, 30, 31, 32, 33, 34]),
     ]},
-    # v1.3 Tenant Admin — tenant_admin.html (3 scenarios under one file)
-    {"file": "tenant_admin.html", "scenarios": [
+    {"file": "tenant_admin/index.html", "scenarios": [
         ("sc-add-02", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
         ("sc-add-05", [10, 11, 12, 13, 14, 15]),
         ("sc-add-06", [16, 17, 18, 19, 20, 21, 22, 23]),
     ]},
-    # v1.3 Instructor — instructor.html
-    {"file": "instructor.html", "scenarios": [
+    {"file": "instructor/index.html", "scenarios": [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),
     ]},
-    # v1.3 Super Admin — super_admin.html
-    {"file": "super_admin.html", "scenarios": [
+    {"file": "super_admin/index.html", "scenarios": [
         ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8]),
     ]},
-    # v1.3 LRPS landing page — single page, no goToScreen (special case)
-    {"file": "lrps.html", "scenarios": [
+    {"file": "lrps/index.html", "scenarios": [
         ("lrps", [None]),  # None = no goToScreen call, just capture as-is
     ]},
 ]
 
-THEMES = [
-    ("light", "screenshots"),
-    ("dark",  "screenshots_dark"),
-]
+THEMES = ["light", "dark"]
 
 
-async def capture_portal(page, portal, theme, out_dir):
+def out_dir_for(portal_file, theme):
+    """student/index.html + light  ->  {repo}/student/screenshots
+       student/index.html + dark   ->  {repo}/student/screenshots_dark"""
+    persona_dir = os.path.dirname(portal_file)
+    sub = "screenshots" if theme == "light" else "screenshots_dark"
+    return os.path.join(REPO_ROOT, persona_dir, sub).replace("\\", "/")
+
+
+async def capture_portal(page, portal, theme):
     """Open portal HTML, set theme, capture every screen in its scenarios."""
     url = f"{BASE_URL}/{portal['file']}"
-    print(f"\n[{theme}] {portal['file']}")
-    # Set theme via localStorage BEFORE navigation so first paint matches.
-    # (Done at the page level via init script — avoids first-paint flash.)
+    out_dir = out_dir_for(portal["file"], theme)
+    os.makedirs(out_dir, exist_ok=True)
+    print(f"\n[{theme}] {portal['file']}  ->  {os.path.relpath(out_dir, REPO_ROOT)}")
+
     await page.add_init_script(
         f"localStorage.setItem('sdp-theme', '{theme}');"
     )
     await page.goto(url, wait_until="networkidle")
 
-    # Suppress all focus outlines globally
+    # Suppress all focus outlines globally for cleaner screenshots
     await page.add_style_tag(content=(
         "*:focus, *:focus-visible {"
         " outline: none !important;"
@@ -86,7 +90,7 @@ async def capture_portal(page, portal, theme, out_dir):
     for scenario_id, screen_ids in portal["scenarios"]:
         for step_idx, screen_id in enumerate(screen_ids, 1):
             if screen_id is None:
-                # Single-page portal (e.g., lrps.html) — no goToScreen call
+                # Single-page portal (e.g., lrps) — no goToScreen call
                 await page.wait_for_timeout(300)
                 fname = f"{out_dir}/{scenario_id}.png"
             else:
@@ -104,24 +108,19 @@ async def capture_portal(page, portal, theme, out_dir):
 
 
 async def main():
-    # Ensure output dirs exist
-    for _, out_subdir in THEMES:
-        os.makedirs(os.path.join(REPO_ROOT, out_subdir), exist_ok=True)
-
     total = 0
     async with async_playwright() as p:
         browser = await p.chromium.launch()
-        for theme, out_subdir in THEMES:
-            out_dir = os.path.join(REPO_ROOT, out_subdir).replace("\\", "/")
+        for theme in THEMES:
             # Fresh context per theme so the init script localStorage applies
             # cleanly without leaking across portal navigations.
             context = await browser.new_context(viewport=VIEWPORT)
             page = await context.new_page()
             for portal in PORTALS:
-                total += await capture_portal(page, portal, theme, out_dir)
+                total += await capture_portal(page, portal, theme)
             await context.close()
         await browser.close()
-    print(f"\nDone — {total} screenshots written to {REPO_ROOT}/screenshots[_dark]/")
+    print(f"\nDone — {total} screenshots written into per-persona subdirs.")
 
 
 if __name__ == "__main__":
