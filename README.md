@@ -1,19 +1,19 @@
 <div align="center">
 
-# JFT SDP Storyboard
+# JFT SDP — Skills Development Platform
 
-**Interactive Prototype for the WGU Skills Development Platform**
+**Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP_MVP/)
-[![Presentation](https://img.shields.io/badge/Presentation-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP_MVP/presentation.html)
-[![Presentation Dark](https://img.shields.io/badge/Presentation-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP_MVP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.0-46B1EF?style=for-the-badge)]()
+[![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
+[![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
+[![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
+[![Version](https://img.shields.io/badge/Version-4.0-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-73-001730?style=for-the-badge)]()
+[![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
----
+![Portal selector landing](assets/landing/light.png)
 
-*A medium-fidelity sample storyboard for the JFT SDP Coding Coach — not a pixel-perfect specification.*
-*Built with Claude Code on the [SDP Design System v1.2](https://github.com/openedx/paragon) (Paragon / Open edX) with WGU FY26 brand tokens.*
+*A medium-fidelity sample — not a pixel-perfect specification. Built with Claude Code on the [SDP Design System v1.2](https://github.com/openedx/paragon) (Paragon / Open edX) with WGU FY26 brand tokens.*
 
 </div>
 
@@ -21,68 +21,179 @@
 
 ## Overview
 
-This storyboard is a medium-fidelity visual sample for the **JFT Skills Development Platform (SDP)** — an AI-powered Python coding coach for WGU students, plus the administrative surfaces that surround it.
+The **JFT Skills Development Platform (SDP)** is WGU's AI-powered Python coding coach for students, plus the administrative surfaces around it. This repo holds the **medium-fidelity storyboard** that JFT (Jellyfish Technologies) builds against — a self-contained, offline-capable visual sample of all the major surfaces:
 
-It now covers **all nine v1.2 + v1.3 user scenarios across four personas**:
-- **Sally** (Student) — the original v1.2 MVP coaching loop (4 scenarios, 34 screens, `index.html`)
-- **Alice** (Tenant Admin / PDev content owner) — Portal & Course Configuration, Data Portability, and Critical Incident Response (3 scenarios, 23 screens, `tenant_admin.html`)
-- **Charlie** (Instructor) — Instructor Dashboard & At-Risk Intervention (1 scenario, 8 screens, `instructor.html`)
-- **Bob** (Super Admin / Platform Operations) — Governance & Cost Audit (1 scenario, 8 screens, `super_admin.html`)
+- **Sally** (Student) — the v1.2 MVP coaching loop. **JFT shipped this first.** ([student/](student/))
+- **Alice** (Tenant Admin / PDev content owner) — Course-as-a-Service portal, Data Portability, Critical Incident Response. ([tenant_admin/](tenant_admin/))
+- **Charlie** (Instructor) — At-Risk Intervention dashboard. ([instructor/](instructor/))
+- **Bob** (Super Admin / Platform Operations) — Governance & Cost Audit. ([super_admin/](super_admin/))
+- Plus **LRPS Landing** ([lrps/](lrps/)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all three admin portals.
 
-Each persona has its own **secret LRPS deep link** and authenticates separately, so the four HTML files are independently loaded surfaces. They share the SDP Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
+Each persona has its own **secret LRPS deep link** in production and authenticates separately. They share the SDP Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
 
-The three admin portals start from a recreation of WGU's internal **Learning Resource Provisioning System (LRPS)** at [`lrps.html`](https://brady-wgu.github.io/JFT_SDP_MVP/lrps.html). The LRPS page intentionally mirrors the legacy enterprise aesthetic of the real internal tool — Brady or another LRPS admin selects the appropriate provider row, which deep-links into the corresponding portal. JFT does not build LRPS; it's modeled here only as the realistic source of the deep links.
+> **Note for JFT:** The Tenant Admin, Instructor, and Super Admin scenarios are the design spec for surfaces JFT has not yet started building. Use this storyboard as the visual North Star, not a frozen contract. The first JFT release was an MVP and will be iterated on several times during the contract.
 
-The prototype consists of self-contained HTML files that work offline, require no build step, and render in any modern browser. These illustrate roughly what the SDP could look like on a desktop browser — they are **not** pixel-perfect specifications to be duplicated exactly. This prototype was built with Claude Code for rapid visualization, has not been formally audited for accessibility, and has not been tested for mobile responsiveness.
+### Surfaces
 
-> **Note for JFT:** Tenant Admin, Instructor, and Super Admin scenarios have not been started by JFT yet. This storyboard is the design spec for those new surfaces — use it as the visual North Star while building, not a frozen contract. The first JFT release is an MVP and will be iterated on several times during the contract.
+| Surface | URL | Description |
+|:--------|:----|:------------|
+| **Portal Selector** | [`/`](https://brady-wgu.github.io/JFT_SDP/) | Landing page with cards for every surface. **Start here.** |
+| **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for the three admin portals (3 live SDP rows, 17 illustrative). |
+| **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
+| **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response. 23 screens. |
+| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
+| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy. 8 screens. |
+| **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/JFT_SDP/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
+| **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-### Pages
-
-| Page | URL | Description |
-|:-----|:----|:------------|
-| **LRPS Landing** | [`lrps.html`](https://brady-wgu.github.io/JFT_SDP_MVP/lrps.html) | Entry point for the three admin portals. Recreates WGU's internal Learning Resource Provisioning System; the three SDP rows are clickable and deep-link into the corresponding portal |
-| **Student Storyboard** | [`index.html`](https://brady-wgu.github.io/JFT_SDP_MVP/) | 34-screen interactive prototype for SC-MVP-01 through SC-MVP-04 (Sally's coaching loop) |
-| **Tenant Admin Portal** | [`tenant_admin.html`](https://brady-wgu.github.io/JFT_SDP_MVP/tenant_admin.html) | 23-screen portal for SC-ADD-02 (Course Configuration) + SC-ADD-05 (Data Portability) + SC-ADD-06 (Incident Response) — Alice |
-| **Instructor Dashboard** | [`instructor.html`](https://brady-wgu.github.io/JFT_SDP_MVP/instructor.html) | 8-screen dashboard for SC-ADD-03 (At-Risk Intervention) — Charlie |
-| **Super Admin Portal** | [`super_admin.html`](https://brady-wgu.github.io/JFT_SDP_MVP/super_admin.html) | 8-screen console for SC-ADD-04 (Governance & Cost Audit) — Bob |
-| **Scenario Catalog (Light)** | [`presentation.html`](https://brady-wgu.github.io/JFT_SDP_MVP/presentation.html) | Scrollable presentation with all 9 scenarios annotated with light-mode screenshots |
-| **Scenario Catalog (Dark)** | [`presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP_MVP/presentation_dark.html) | Same presentation with dark-mode screenshots |
+**Total: 73 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
 
 ---
 
-## Scenarios
+## Repo layout
 
-### v1.2 — Student (Sally) — `index.html`
+```
+JFT_SDP/
+├── index.html                  Portal selector landing
+├── presentation.html           Scenario catalog (light)
+├── presentation_dark.html      Scenario catalog (dark)
+├── capture_screens.py          Playwright screenshot pipeline
+├── README.md                   This file
+├── CHANGELOG.md                Version history
+├── assets/
+│   ├── wgu-corporation-*.png  WGU FY26 corporate logos (3 variants)
+│   └── landing/                Portal-selector hero screenshots
+├── student/                    v1.2 MVP — Sally
+│   ├── index.html
+│   ├── README.md
+│   ├── screenshots/            34 PNGs (light)
+│   └── screenshots_dark/       34 PNGs (dark)
+├── tenant_admin/               v1.3 — Alice
+│   ├── index.html
+│   ├── README.md
+│   ├── screenshots/            23 PNGs
+│   └── screenshots_dark/       23 PNGs
+├── instructor/                 v1.3 — Charlie
+│   ├── index.html
+│   ├── README.md
+│   ├── screenshots/            8 PNGs
+│   └── screenshots_dark/       8 PNGs
+├── super_admin/                v1.3 — Bob
+│   ├── index.html
+│   ├── README.md
+│   ├── screenshots/            8 PNGs
+│   └── screenshots_dark/       8 PNGs
+└── lrps/                       Entry point for the 3 admin portals
+    ├── index.html
+    ├── README.md
+    ├── screenshots/            1 PNG (the LRPS page itself)
+    └── screenshots_dark/       1 PNG
+```
 
-| Scenario | Flow | Screens | Description |
-|:---------|:-----|:-------:|:------------|
-| **SC-MVP-01** | Basic | 8 | First launch of the Coding Coach. New student with no Python knowledge completes diagnostic, views progress map, begins first coaching task, saves session. |
-| **SC-MVP-02** | Advanced | 11 | Progressive coaching with targeted feedback. Student with partial Python knowledge completes diagnostic, receives foundational coaching, encounters incorrect answer with specific error feedback, verifies gap resolution, advances difficulty. |
-| **SC-MVP-03** | Professional | 9 | Experienced developer fast-tracks through the coaching baseline. Diagnostic demonstrates mastery across all sub-sections. One verification task required for Functions & Modular Programming. |
-| **SC-MVP-04** | Returning | 6 | Student returns after a multi-week break. Prior progress preserved. Re-assessment verifies retention before resuming coaching at prior difficulty level. |
+Click any persona folder to read its dedicated README.
 
-### v1.3 — Additional Scenarios (Tenant Admin / Instructor / Super Admin)
+---
 
-| Scenario | Persona | File | Screens | Description |
-|:---------|:--------|:-----|:-------:|:------------|
-| **SC-ADD-01** | Sally | — | — | Acceptance rollup of v1.2 MVP scenarios. In progress separately; no new scope. |
-| **SC-ADD-02** | Alice | `tenant_admin.html` | 9 | Tenant Admin Portal & Course Configuration. Multi-tenant scoping, Subject creation, Topics & LOs, AI prompt config, model picker, scoring rubric, deploy via CI/CD. |
-| **SC-ADD-03** | Charlie | `instructor.html` | 8 | Instructor Dashboard & At-Risk Intervention. Section overview, class heatmap, at-risk filter, student drill-down, conversation logs, transcript with AI feedback, Audit Trail. |
-| **SC-ADD-04** | Bob | `super_admin.html` | 8 | Super Admin Governance & Cost Audit. Cross-tenant overview, Token Usage Tracking, cost-spike drill-down, Global Rate Limits, Compliance Report (TLS 1.3), Geo-redundancy, audit log. |
-| **SC-ADD-05** | Alice | `tenant_admin.html` | 6 | Data Portability. REST API console, sample JSON response, one-click export wizard, CSV/JSON/Parquet picker, download confirmation. |
-| **SC-ADD-06** | Alice | `tenant_admin.html` | 8 | Critical Incident Response & SLA. All-systems-operational baseline, LLM fallback engaged, notification, P1 ticket, JFT CSM thread, service restored, SLA dashboard. |
+## Persona sections
 
-**Total: 73 screens across 4 HTML files.**
+### 🎓 Student (v1.2 MVP) — Sally
+
+**Surface:** [`student/`](student/) · [Live](https://brady-wgu.github.io/JFT_SDP/student/) · [README](student/README.md)
+
+**Persona:** Sally — Beginner / Intermediate / Advanced Python knowledge. Launches via LTI 1.3 from her zyBooks course page.
+
+**Scope:** This is the **v1.2 MVP scope** — the first JFT release. It deploys the existing Cicada v1 proof-of-concept codebase to production-quality, scalable infrastructure with a polished UI, accessible outside the WGU intranet via LTI 1.3 SSO. No new features, adaptive logic changes, or coaching algorithm modifications are in scope for this v1.2 release.
+
+**Scenarios (4, 34 screens):**
+
+| ID | Flow | Screens | Description |
+|:---|:-----|:-------:|:------------|
+| **SC-MVP-01** | Basic | 8 | First launch. New student with no Python knowledge. Diagnostic → progress map → first coaching task → save. |
+| **SC-MVP-02** | Advanced | 11 | Progressive coaching. Partial Python knowledge. Diagnostic → coaching → incorrect-answer feedback → verification → difficulty advance. |
+| **SC-MVP-03** | Professional | 9 | Experienced developer fast-tracks. Diagnostic shows mastery; one verification task for Functions & Modular Programming. |
+| **SC-MVP-04** | Returning | 6 | Returns after multi-week break. Prior progress preserved. Re-assessment verifies retention before resuming. |
+
+**Source:** JFT SDP MVP Scenario Catalog v1.2 (07 Apr 2026).
+
+---
+
+### 🏢 Tenant Admin (v1.3) — Alice
+
+**Surface:** [`tenant_admin/`](tenant_admin/) · [Live](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) · [README](tenant_admin/README.md)
+
+**Persona:** Alice — WGU Program Development (PDev) content owner. Authenticates via her own secret LRPS deep link.
+
+**Scope:** Multi-tenancy, RBAC, the Course-as-a-Service administrative UI, integration APIs and data export commitments, and the Support Plan / SLA workflow.
+
+**Scenarios (3, 23 screens):**
+
+| ID | Description | Screens |
+|:---|:------------|:-------:|
+| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping, Subject creation, Topics & Learning Objectives, AI prompt config, model picker, rubric, deploy via CI/CD. | 9 |
+| **SC-ADD-05** | **Data Portability.** REST API console (query learner scores), one-click export wizard (CSV / JSON / Parquet) with audit trail. | 6 |
+| **SC-ADD-06** | **Critical Incident Response & SLA.** Primary LLM provider down → fallback engaged → P1 ticket → JFT CSM 2-hr response → service restored → 99.95% uptime SLA verified. | 8 |
+
+**Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
+
+---
+
+### 👨‍🏫 Instructor (v1.3) — Charlie
+
+**Surface:** [`instructor/`](instructor/) · [Live](https://brady-wgu.github.io/JFT_SDP/instructor/) · [README](instructor/README.md)
+
+**Persona:** Charlie — course instructor for E010 Foundations of Programming (Python).
+
+**Scope:** Educator-facing analytics and student engagement tracking.
+
+**Scenarios (1, 8 screens):**
+
+| ID | Description | Screens |
+|:---|:------------|:-------:|
+| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** Section overview → class heatmap (15 learners × 4 competencies, 9-step color scale) → at-risk filter → Sally drill-down → conversation transcript with AI feedback → Audit Trail event log. | 8 |
+
+**Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
+
+---
+
+### 🛡️ Super Admin (v1.3) — Bob
+
+**Surface:** [`super_admin/`](super_admin/) · [Live](https://brady-wgu.github.io/JFT_SDP/super_admin/) · [README](super_admin/README.md)
+
+**Persona:** Bob — WGU platform operations and infrastructure. Authenticates with MFA in addition to SSO.
+
+**Scope:** Cross-tenant governance, financial controls, security compliance, global resource management.
+
+**Scenarios (1, 8 screens):**
+
+| ID | Description | Screens |
+|:---|:------------|:-------:|
+| **SC-ADD-04** | **Super Admin Governance & Cost Audit.** Cross-tenant overview → token usage tracking → cost-spike drill-down → global rate limits → TLS 1.3 compliance report → geo-redundancy status → cross-tenant audit log. | 8 |
+
+**Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
+
+---
+
+### 🚪 LRPS Landing (Entry Point)
+
+**Surface:** [`lrps/`](lrps/) · [Live](https://brady-wgu.github.io/JFT_SDP/lrps/) · [README](lrps/README.md)
+
+**Persona:** Brady (the LRPS admin who provisions the deep links) or any WGU staff with LRPS access.
+
+**Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SDP Design System v1.2. Each of the three admin portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. JFT does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
+
+The LRPS surface includes:
+- 3 live SDP rows (Tenant Admin, Instructor, Super Admin) — clickable, deep-linked
+- 17 illustrative filler rows (OEX modules, zyBooks, Pearson, ProctorU, Cicada legacy, Panopto, etc.) for realistic LRPS density
+- A meta-bar quick-launch with chips to all 5 surfaces + the catalog
 
 ---
 
 ## Design System
 
-The storyboard implements the **SDP Design System v1.2**, which is a brand theme layer on top of [Paragon](https://github.com/openedx/paragon) (Open edX's open-source design system).
+The storyboard implements the **SDP Design System v1.2**, a brand theme layer on top of [Paragon](https://github.com/openedx/paragon) (Open edX's open-source design system).
 
-| Layer | Purpose |
-|:------|:--------|
+| Layer | Responsibility |
+|:------|:--------------|
 | **Paragon** | Component structure, accessibility, base CSS (`@openedx/paragon`) |
 | **WGU Brand Tokens** | Color, typography, spacing overrides (`--pgn-*` CSS custom properties) |
 | **SDP Product** | Page composition, content structure, learning interactions |
@@ -99,118 +210,52 @@ The storyboard implements the **SDP Design System v1.2**, which is a brand theme
 | Accent Red | `#C13232` | Error states, emphasis |
 | Amber | `#FBAE40` | Warnings, section accents |
 
-All colors aligned to the WGU FY26 Design System Specification. Where FY26 and SDP Figma tokens conflict, FY26 values take precedence.
+Where FY26 and SDP Figma tokens conflict, **FY26 takes precedence**.
 
 ### Typography
 
-- **Headings:** Sora Bold (H1: 40px, H2: 32px, H3: 28px, H4: 24px, H5: 20px)
+- **Headings:** Sora Bold (H1 40, H2 32, H3 28, H4 24, H5 20)
 - **Body:** Lato Regular 16px / 1.5 line-height
-- **Type scale:** 12, 14, 16, 18, 20, 24, 28, 32, 40, 48px (strict — no off-scale sizes)
-- **Code blocks:** Lato 14px on `#0d1117` for JSON / API consoles; light-mode student-storyboard code blocks use white background with SDP-palette syntax highlighting.
+- **Code blocks:** Lato 14px on `#0d1117` for JSON/API consoles; SDP-palette syntax in light mode for student code blocks
+- **Type scale:** strict 12 / 14 / 16 / 18 / 20 / 24 / 28 / 32 / 40 / 48 px
 
 ### Spacing
 
-All padding, margin, and gap values follow an **8-point grid** (multiples of 8px: 8, 16, 24, 32, 40, 48px).
+8-point grid throughout. All padding, margin, and gap values are multiples of 8px.
 
 ### Branding
 
-The four portals use the **official WGU FY26 Corporation logo** (`assets/wgu-corporation-*.png`) instead of a wordmark placeholder:
-
-- **Light theme:** Full-Color Reverse logo on the navy header (FY26 preferred for dark backgrounds)
-- **Dark theme:** White logo on the navy header (FY26 single-color variant for dark backgrounds)
-- The wordmark text label has been dropped — the logo stands alone, per Brady's branding rule.
+- Real **WGU FY26 Corporation logos** in [`assets/`](assets/) (White, Full Color, Full Color Reverse)
+- **Theme-aware logo swap:** Full Color Reverse on light theme, White on dark theme — both render correctly on the navy header
+- **Wordmark text dropped** — the logo stands alone (per Brady's branding rule)
 
 ---
 
-## Features
-
-- **73 interactive screens** across 4 self-contained per-persona portal HTMLs
-- **Per-persona LRPS deep links** — each portal authenticates separately (Tenant Admin, Instructor, Super Admin all sign in via their own deep link). Screen 1 of each portal models the SSO landing.
-- **Theme-aware logo swap** — Full-Color Reverse on light theme, White on dark theme; both render correctly on the navy header.
-- **Real WGU FY26 Corporation logos** — `assets/wgu-corporation-white.png`, `wgu-corporation-full-color.png`, `wgu-corporation-full-color-reverse.png` (placeholder wordmark dropped).
-- **Dark mode toggle** (moon/sun icon in header) with `localStorage` persistence shared across portals
-- **Keyboard navigation** (arrow keys between screens within each portal)
-- **Storyboard meta-bar** with 3-column layout: scenario ID, description, numbered screen buttons (per portal)
-- **Presentation pages** — scrollable scenario catalogs with annotated screenshots (light and dark variants), now covering all 9 scenarios
-- **Basic accessibility patterns** applied (semantic HTML, ARIA landmarks, heading hierarchy, focus-visible outlines) but no formal WCAG audit has been performed
-- **FY26 brand compliance** — all colors, typography, and spacing validated against the WGU FY26 Design System Specification
-- **Fully offline** — self-contained HTML files, no external dependencies beyond Google Fonts (Sora + Lato + Material Icons Outlined)
-- **Paragon-compatible CSS** class names (`--pgn-*` tokens, `.btn-primary`, `.pgn__card`, `.pgn__breadcrumb`, `.pgn__data-table`, `.pgn__stepper`, etc.)
-
-### New components introduced in v4.0
-
-- `.heatmap-grid` + `.heatmap-cell` (h1–h9 9-step color scale) — instructor class heatmap
-- `.score-pill` (low / med / high tints) — instructor objective scores
-- `.api-console` + `.api-method` + `.api-endpoint` + `.api-params` — REST API console
-- `.tab-switcher` — segmented control (CSV / JSON / Parquet)
-- `.file-meta` — download confirmation file metadata card
-- `.gauge-card` + `.gauge-number` + `.gauge-bar` — uptime / SLA / cost gauges
-- `.chat-card` + `.chat-thread` + `.chat-bubble` + `.chat-avatar` — CSM ticket thread + AI coaching transcript
-- `.spike-card` + `.spike-chart` + `.spike-bar` — daily cost trend (CSS bars, no SVG)
-- `.util-meter` — inline utilization meter for tenant rows
-- `.region-card` — geo-redundancy region cards with status stripe
-- `.stepper-card` + `.stepper-bullet` + `.stepper-line` — CI/CD pipeline progress
-- `.feedback-panel` (success / warning / danger) — fallback verification, deploy success, audit confirmation
-
----
-
-## How to Use
+## How to use
 
 ### Online
 
-| Page | URL |
-|:-----|:----|
-| LRPS Landing | **[brady-wgu.github.io/JFT_SDP_MVP/lrps.html](https://brady-wgu.github.io/JFT_SDP_MVP/lrps.html)** |
-| Student Storyboard | **[brady-wgu.github.io/JFT_SDP_MVP](https://brady-wgu.github.io/JFT_SDP_MVP/)** |
-| Tenant Admin Portal | **[brady-wgu.github.io/JFT_SDP_MVP/tenant_admin.html](https://brady-wgu.github.io/JFT_SDP_MVP/tenant_admin.html)** |
-| Instructor Dashboard | **[brady-wgu.github.io/JFT_SDP_MVP/instructor.html](https://brady-wgu.github.io/JFT_SDP_MVP/instructor.html)** |
-| Super Admin Portal | **[brady-wgu.github.io/JFT_SDP_MVP/super_admin.html](https://brady-wgu.github.io/JFT_SDP_MVP/super_admin.html)** |
-| Scenario Catalog (Light) | **[brady-wgu.github.io/JFT_SDP_MVP/presentation.html](https://brady-wgu.github.io/JFT_SDP_MVP/presentation.html)** |
-| Scenario Catalog (Dark) | **[brady-wgu.github.io/JFT_SDP_MVP/presentation_dark.html](https://brady-wgu.github.io/JFT_SDP_MVP/presentation_dark.html)** |
+The portal selector at [brady-wgu.github.io/JFT_SDP/](https://brady-wgu.github.io/JFT_SDP/) links to every surface. From there you can open any portal directly, or open LRPS first and click into a portal via its provider row.
 
 ### Offline
-Download the HTML files, the `assets/` directory (WGU logos), and the `screenshots/` / `screenshots_dark/` directories. Open in any browser. No server required.
 
-### Navigation
-- Use the **storyboard meta-bar** at the bottom of each portal to jump between scenarios and screens
-- Use **arrow keys** (left/right) to step through screens sequentially within the active portal
-- Toggle **dark mode** with the moon/sun icon in the upper-right corner — preference persists across portals via `localStorage`
+Clone the repo and open `index.html` in any modern browser. No build step, no server required (the screenshot pipeline is the only thing that needs a local HTTP server). Files are fully self-contained beyond Google Fonts (Sora + Lato + Material Icons Outlined).
 
-### Regenerating screenshots
+### Regenerate screenshots
 
 ```bash
-# 1. Start a static HTTP server from the repo root
+# 1. From the repo root, start a local HTTP server
 python -m http.server 63417
 
-# 2. In another terminal, run the capture pipeline
+# 2. In another terminal
 python capture_screens.py
 ```
 
-Output: ~146 PNGs (73 per theme) into `screenshots/` and `screenshots_dark/`.
+Output: 148 PNGs total — 74 per theme, distributed across the 5 per-persona `screenshots/` and `screenshots_dark/` subdirs.
 
 ---
 
-## Changelog (v4.0)
-
-Changes applied since v3.1 (v1.2 student storyboard):
-
-- **LRPS landing page** — new `lrps.html` recreates WGU's internal Learning Resource Provisioning System as the realistic entry point for the three admin portals. The three SDP rows are clickable and deep-link into `tenant_admin.html`, `instructor.html`, and `super_admin.html`. Other rows are illustrative of the typical LRPS provider mix (zyBooks, OEX courses, Cicada legacy, Pearson, Panopto, etc.).
-- **v1.3 Tenant Admin Portal** — new `tenant_admin.html` (23 screens) covering SC-ADD-02 (Portal & Course Configuration), SC-ADD-05 (Data Portability), SC-ADD-06 (Critical Incident Response & SLA Verification). Persona: Alice. Components include a 5-step CI/CD Stepper, REST API console with method/endpoint/params, JSON syntax-highlighted code blocks, JFT CSM chat thread, SLA gauge dashboard.
-- **v1.3 Instructor Dashboard** — new `instructor.html` (8 screens) covering SC-ADD-03 (Instructor Dashboard & At-Risk Intervention). Persona: Charlie. Components include a CSS-grid student-competency heatmap (15 learners × 4 competencies, 9-step color scale), per-objective score pills, AI coaching transcript with feedback panels, Audit Trail event log with sha256 hashes.
-- **v1.3 Super Admin Portal** — new `super_admin.html` (8 screens) covering SC-ADD-04 (Governance & Cost Audit). Persona: Bob. Components include cross-tenant overview gauges, 30-bar daily cost spike chart, per-tenant utilization meters, TLS 1.3 compliance report, geo-redundancy region cards, cross-tenant audit log feed.
-- **Per-persona LRPS deep links** — each portal authenticates separately. Each Screen 1 models the LRPS landing → SSO → role mapping (Tenant Admin / Instructor / Super Admin · Platform Operations).
-- **Real WGU FY26 Corporation logos** — placeholder wordmark replaced across the new portals. Theme-aware swap: Full-Color Reverse on light theme, White on dark theme. Logos under `assets/wgu-corporation-*.png`.
-- **Wordmark text removed** — the logo image stands alone in the navbar (Brady's branding rule).
-- **Personas use first names only** — `A Alice`, `C Charlie`, `B Bob` (matches Brady's existing convention).
-- **Catalog presentations updated** — `presentation.html` and `presentation_dark.html` extended with full SC-ADD-02 / 03 / 04 / 05 / 06 walkthroughs (39 new annotated screenshots per theme). v1.2 student walkthroughs preserved unchanged. Document Control table extended with v1.3 entry.
-- **Screenshot pipeline rewritten** — `capture_screens.py` now iterates four portals × two themes (light/dark) with theme-aware localStorage init. Output: 73 PNGs per theme.
-- **TOC + navbar** — updated across both presentation files to include all 9 scenarios.
-
----
-
-## Source Documents
-
-This storyboard is grounded in the following WGU Program Development deliverables:
+## Source documents
 
 | Document | Version | Date |
 |:---------|:--------|:-----|
@@ -221,23 +266,31 @@ This storyboard is grounded in the following WGU Program Development deliverable
 | WGU FY26 Design System Specification | v1.0 | 25 Mar 2025 |
 | WGU Design Systems Differential Analysis | v2.0 | 16 Apr 2026 |
 
-Upstream design system: [@openedx/paragon](https://github.com/openedx/paragon) (release-23.x, v23.19.1)
+Upstream design system: [@openedx/paragon](https://github.com/openedx/paragon) (release-23.x, v23.19.1).
 
 ---
 
-## For Developers (JFT)
+## For developers (JFT)
 
-This storyboard is a **medium-fidelity sample**, not production code or a pixel-perfect specification. It was built with Claude Code for rapid visualization and is meant to illustrate the general look and feel of the SDP and its administrative surfaces on a desktop browser. Do not attempt to replicate it exactly — use it as a rough guide for the intended user experience.
+This storyboard is a **medium-fidelity sample**, not production code or a pixel-perfect specification. It illustrates the general look and feel of the SDP and its administrative surfaces on a desktop browser. Use it as a rough guide for the intended user experience — adapt as needed for the production implementation.
 
 When implementing:
 
 1. **Install Paragon** — `npm install @openedx/paragon`
 2. **Apply WGU brand tokens** via the brand package override mechanism (`@wgu/sdp-brand`)
 3. **Use Paragon React components** — do not rebuild them. The storyboard's CSS class names (`.pgn__card`, `.btn-primary`, `.pgn__breadcrumb`, etc.) map directly to Paragon's component schema.
-4. **Per-persona portals are separate authenticated surfaces** — each has its own LRPS deep link. Tenant Admin, Instructor, and Super Admin should not be combined into a single SPA shell; the auth flow and RBAC scoping are role-bound.
-5. **Tenant Admin owns three v1.3 scenarios in one portal** — SC-ADD-02 (Course Configuration), SC-ADD-05 (Data Portability), SC-ADD-06 (Incident Response). The screens compose into a single Tenant Admin experience but are documented separately in the catalog.
+4. **Per-persona portals are separately authenticated surfaces** — each has its own LRPS deep link. Tenant Admin, Instructor, and Super Admin should not be combined into a single SPA shell; the auth flow and RBAC scoping are role-bound.
+5. **Tenant Admin owns three v1.3 scenarios in one portal** — the screens compose into a single Tenant Admin experience but are documented separately in the catalog.
 6. The CSS custom properties in the portal HTML files (`--pgn-*`) map directly to the Paragon token schema.
-7. The screen layouts, component patterns, and interaction flows shown here illustrate the general direction — adapt them as needed for the production implementation.
+7. Each persona's [`README.md`](#repo-layout) lists the specific patterns and components introduced for that surface.
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+
+The latest release is **v4.0** — adds the three v1.3 admin portals, the LRPS landing, and the portal-selector home page; restructures the repo into per-persona subdirectories.
 
 ---
 
@@ -245,6 +298,6 @@ When implementing:
 
 **Western Governors University** | Program Development | JFT SDP
 
-*WGU confidential/proprietary. Do not redistribute without authorization.*
+*WGU confidential / proprietary. Do not redistribute without authorization.*
 
 </div>
