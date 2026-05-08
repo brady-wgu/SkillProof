@@ -6,6 +6,75 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.9 — 08 May 2026 — Second overboard sweep (REST API specifics + CSM SLA framing + Instructor Learner Search)
+
+After v4.8 Brady asked for another adversarial pass. A fresh independent agent (Pass 8) found 3 more items that were over-extrapolated. v4.9 closes them.
+
+### Trimmed — REST API specifics fabricated (Tenant Admin)
+
+The v4.0 prototype invented "14 endpoints" and "600 req/hour" as plausible defaults for the API console. Re-reading the SOW main body and v1.3 SC-ADD-05 catalog, neither commits to those numbers — §8.7 commits to a "RESTful API for student engagement data export" generically. The catalog narrative is just "Alice uses the RESTful API to query student scores."
+
+Sites edited (`tenant_admin/index.html`):
+- Screen 2 (portal home) SC-ADD-05 quick-launch caption: "OAuth 2.0, 600 req/hr" → "OAuth 2.0, per-tenant rate limit"
+- Screen 10 (Data & APIs landing) Programmatic-access table:
+  - "Endpoints · 14 available" → "Endpoints · Catalog finalized at onboarding"
+  - "Rate limit · 600 req/hour" → "Rate limit · Per tenant tier"
+- Screen 11 (REST API console) usage indicator: "Rate limit · 213 / 600 req/hour" → "Rate limit · Well below tenant tier cap"
+
+The trim makes the prototype honest about what JFT will configure later vs. what's already determined.
+
+### Trimmed — "JFT CSM 2-hour SLA" framing conflated §9.5 + §9.1.4
+
+SOW §9.5 specifies the JFT support P1 response time as <2 hours. §9.1.4 lists the Customer Success Manager as a business-hours WGU-facing POC. The v4.0 storyboard labeled the SC-ADD-06 chat thread "JFT CSM 2-hour SLA," conflating the two roles. The CSM is a person who acknowledges within the §9.5 window; the SLA itself is a JFT-support commitment.
+
+Sites edited (`tenant_admin/index.html`):
+- Screen 2 SC-ADD-06 quick-launch description: "JFT CSM 2-hour SLA" → "JFT support 2-hour P1 response per §9.5"
+- Screen 21 (CSM chat thread) eyebrow: "Customer Success Response · Within 2-hr SLA" → "JFT Support P1 Response · §9.5 (CSM Jordan as WGU-facing POC)"
+- Chat-bubble badges (CSM Jordan acknowledged at 6 min) are factually OK and unchanged — Jordan is the CSM, who acknowledged within the §9.5 window.
+
+### Removed — `instructor/index.html` screen 9 (Learner Search)
+
+The screen was added in v4.4 as G2, originally Mike's "Gradebook" suggestion that I retargeted as "Learner Search." Reading the v1.3 SC-ADD-03 catalog narrative literally: "Charlie accesses the Instructor Dashboard via secret LRPS deep link and opens the Data Visualization panel showing a Student Heatmap. He identifies Sally as at-risk: assessment complete, AI-scored competency low. He drills into her conversation logs to review AI feedback…" — there is no search step. The User Profile says "drill into individual student performance records" (singular drill-down), not "search across all."
+
+Removed:
+- Entire `<section id="screen-9">` block (~190 lines)
+- "Search learners" button on screen 2 (linked to screen 9)
+- "Search by name / email" chip on screen 3 heatmap (linked to screen 9)
+- Meta-bar nav button "09"
+- `TOTAL_SCREENS` 9 → 8
+- 2 PNG screenshots (light + dark)
+
+Catalog updates (`presentation.html` + `presentation_dark.html`):
+- SC-ADD-03 step 9 entry removed
+- SC-ADD-03 metadata: 9 → 8 screens; SOW refs trimmed (dropped §7.12; kept §7.10/7.11/7.13/7.14/10.4)
+- Screen-map summary: 78 → 77 total
+- Document Control: new v1.3+++ row noting v4.9 trim
+- Footer: Storyboard v4.8 → v4.9
+
+`instructor/README.md`: scenarios row 9 → 8; SOW refs trimmed.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through v4.4 → v4.5 → v4.6 → v4.7 → v4.8 → v4.9)
+- `instructor/screenshots/` and `screenshots_dark/` each have 8 PNGs
+- All `goToScreen(N)` references valid (zero broken nav)
+- 0 hits for "14 available", "600 req/hour", "JFT CSM 2-hour SLA" in tracked deliverable HTML/MD (CHANGELOG meta-context allowed)
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | Before v4.9 | After v4.9 |
+|---|---|---|
+| Total storyboard screens | 78 | **77** |
+| `instructor/` | 9 | 8 |
+| `tenant_admin/` | 27 | 27 (Findings 1 + 2 are in-place text edits) |
+| `super_admin/` | 8 | 8 |
+| `student/` | 34 | 34 (frozen) |
+| `lrps/` | 1 | 1 |
+| PNGs | 158 | 156 |
+
+---
+
 ## v4.8 — 08 May 2026 — Overboard trim (3 Super Admin screens removed; Tenant Admin home + screen 5 trimmed)
 
 Brady ran a fresh contract-grounding audit and confirmed prior agents (myself included) had built features that weren't actually in the SOW main body. v4.8 removes the overboard items so the prototype reflects only what JFT contracted to deliver.

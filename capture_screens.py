@@ -10,11 +10,11 @@ Usage:
 Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
     tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (27 + 27)
-    instructor/screenshots/      + instructor/screenshots_dark/      (9 + 9)
+    instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
     super_admin/screenshots/     + super_admin/screenshots_dark/     (8 + 8)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 158 PNGs.
+Total: 156 PNGs.
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
@@ -44,7 +44,7 @@ PORTALS = [
         ("sc-add-06", [16, 17, 18, 19, 20, 21, 22, 23]),
     ]},
     {"file": "instructor/index.html", "scenarios": [
-        ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8, 9]),  # 9 = v4.4 Learner Search
+        ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
     ]},
     {"file": "super_admin/index.html", "scenarios": [
         ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9-11; v4.8 removed them as overboard / not contract-grounded.

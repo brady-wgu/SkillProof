@@ -1,4 +1,4 @@
-# Instructor — Charlie · v1.3 (extended in storyboard v4.4)
+# Instructor — Charlie · v1.3
 
 [← Back to root README](../README.md) · [Live dashboard](https://brady-wgu.github.io/JFT_SDP/instructor/) · [Catalog](../presentation.html#sc-add-03)
 
@@ -16,9 +16,9 @@ Educator-facing analytics and student engagement tracking. The instructor's prim
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** LRPS landing → SSO → dashboard home (3 active courses with KPIs, no traditional sections per WGU's rolling-enrollment model) → class heatmap (15 learners × 4 competencies, 9-step red→green color scale; **v4.4 G10:** Export Course Report (PDF) / CSV CTAs and a "Search by name / email" pivot to screen 9) → at-risk filter applied (Sally identified) → Sally drill-down (8-row per-objective scores) → conversation log list (9 sessions) → session 09 transcript with AI feedback panels inline → Audit Trail confirmation (47 messages captured, 10-row event log) → **v4.4 G2: Learner Search & Individual Lookup** (search by name / email / anonymized identifier across all 68 learners in Charlie's courses, with course + status filters, sortable table, and per-row "Open profile" deep-link to the existing drill-down). | 9 |
+| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** LRPS landing → SSO → dashboard home (3 active courses with KPIs, no traditional sections per WGU's rolling-enrollment model) → class heatmap (15 learners × 4 competencies, 9-step red→green color scale; Export Course Report (PDF) / CSV CTAs per §7.14) → at-risk filter applied (Sally identified) → Sally drill-down (8-row per-objective scores) → conversation log list (9 sessions) → session 09 transcript with AI feedback panels inline → Audit Trail confirmation (47 messages captured, 10-row event log). | 8 |
 
-**Total: 1 scenario · 9 screens.** (v4.4 added screen 9; screen 3 enhanced with export + search CTAs.)
+**Total: 1 scenario · 8 screens.**
 
 ## Source
 
@@ -26,13 +26,13 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 
 ## SOW references
 
-§7.10–7.11 (Engagement / Educator Dashboards), §7.12 (Usage statistics & reporting), §7.13 (Visualizations), §7.14 (Export capabilities), §10.4 (Audit Logs).
+§7.10–7.11 (Engagement / Educator Dashboards), §7.13 (Visualizations), §7.14 (Export capabilities), §10.4 (Audit Logs).
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (9 screens)
-- `screenshots/` — 9 light-theme PNGs at 1440×900
-- `screenshots_dark/` — 9 dark-theme PNGs
+- [`index.html`](index.html) — interactive storyboard (8 screens)
+- `screenshots/` — 8 light-theme PNGs at 1440×900
+- `screenshots_dark/` — 8 dark-theme PNGs
 
 ## Components introduced in this portal
 

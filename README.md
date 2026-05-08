@@ -7,8 +7,8 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.8-46B1EF?style=for-the-badge)](CHANGELOG.md)
-[![Screens](https://img.shields.io/badge/Screens-78-001730?style=for-the-badge)]()
+[![Version](https://img.shields.io/badge/Version-4.9-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
 ![Portal selector landing](assets/landing/light.png)
@@ -41,12 +41,12 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for the three admin portals (3 live SDP rows, 17 illustrative). |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
 | **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response, plus four Tenant Settings (Branding · Team & Roles · Instructor Roster · Subject Lifecycle). 27 screens. |
-| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail → Learner Search & Lookup. 9 screens. |
+| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
 | **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy, audit log. 8 screens. |
 | **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/JFT_SDP/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
 | **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-**Total: 78 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
+**Total: 77 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
 
 ---
 
@@ -73,11 +73,11 @@ JFT_SDP/
 │   ├── README.md
 │   ├── screenshots/            27 PNGs
 │   └── screenshots_dark/       27 PNGs
-├── instructor/                 v1.3 — Charlie (extended in v4.4)
+├── instructor/                 v1.3 — Charlie
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            9 PNGs
-│   └── screenshots_dark/       9 PNGs
+│   ├── screenshots/            8 PNGs
+│   └── screenshots_dark/       8 PNGs
 ├── super_admin/                v1.3 — Bob
 │   ├── index.html
 │   ├── README.md
@@ -143,15 +143,15 @@ Click any persona folder to read its dedicated README.
 
 **Surface:** [`instructor/`](instructor/) · [Live](https://brady-wgu.github.io/JFT_SDP/instructor/) · [README](instructor/README.md)
 
-**Persona:** Charlie — Instructor (Course Instructor / Program Mentor per User Profile + SOW §2.5) for E010 Foundations of Programming (Python), E075 Intermediate Python & Libraries, and E135 OOP with Python.
+**Persona:** Charlie — Instructor (per User Profile + SOW §2.5) for E010 Foundations of Programming (Python), E075 Intermediate Python & Libraries, and E135 OOP with Python.
 
 **Scope:** Educator-facing analytics and learner engagement tracking. The SDP is a practice tool — coaching scores never feed academic records.
 
-**Scenarios (1, 9 screens):**
+**Scenarios (1, 8 screens):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** Course overview → class heatmap (15 learners × 4 competencies, 9-step color scale; **v4.4 export CTAs + name/email pivot**) → at-risk filter → Sally drill-down → conversation transcript with AI feedback → Audit Trail event log → **v4.4 Learner Search** (name/email/identifier lookup across all learners in Charlie's courses, with course/status filters and sortable table). | 9 |
+| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** Course overview → class heatmap (15 learners × 4 competencies, 9-step color scale; export CTAs per §7.14) → at-risk filter → Sally drill-down → conversation transcript with AI feedback → Audit Trail event log. | 8 |
 
 **Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
 
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.8** — overboard trim. A critical re-read of the SOW main body confirmed three v4.4 Super Admin screens (Third-Party Integrations / Learner Remediation / Billing & Cost Centers) were not contract-grounded — they were extrapolations from in-conversation remarks rather than SOW commitments. Removed. Tenant Admin portal home (screen 2) trimmed back: the v4.7 real-time activity feed and infrastructure-status / SLA-uptime KPI gauges over-promised platform-monitoring features that belong to Super Admin per the User Profile. Tenant Admin screen 5 prompt-versions panel collapsed to a one-line "Last edited" indicator. Storyboard total: **81 → 78 screens**. The prototype now reflects only what JFT contracted to deliver.
+The latest release is **v4.9** — second overboard sweep. A fresh adversarial audit found 3 more items that weren't actually SOW-grounded: (1) Tenant Admin REST API console specifics ("14 endpoints", "600 req/hr") were prototype defaults, not in catalog or SOW — trimmed to placeholders. (2) "JFT CSM 2-hour SLA" framing was reframed to "JFT support P1 response per §9.5 (CSM Jordan as WGU-facing POC)" — the SLA is a JFT-support commitment per §9.5, not a CSM-owned SLA. (3) Instructor screen 9 (Learner Search) was removed — not in SC-ADD-03 catalog narrative (which only describes heatmap → at-risk filter → drill-down). Storyboard total: **78 → 77 screens**. The prototype is now strictly contract-grounded.
 
 ---
 
