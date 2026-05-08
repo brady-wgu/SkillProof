@@ -6,6 +6,59 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.15 — 08 May 2026 — Eighth overboard sweep (catalog/README leakage from v4.14 + 3-vs-4 LRPS row drift + {section_id} URL)
+
+Pass 14 (post-v4.14 independent audit) found **4 items** — three Material + one Borderline. Three of them are catalog/README sites that mirrored v4.14's storyboard fixes; the fourth is a 3-vs-4 internal contradiction that has been latent since the student row was added to LRPS as a live entry. v4.15 closes all 4. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — `WGU policies 8.2 and 8.4` survived in catalog narratives + super_admin README
+
+v4.14 trimmed the fabricated `WGU Policy 8.4` and `WGU Policy 8.2` citations from `super_admin/index.html` (FERPA control table) but missed three downstream sites mirroring the same SC-ADD-04 step-6 description:
+
+- `presentation.html:709` SC-ADD-04 step 6 narrative
+- `presentation_dark.html:709` (same)
+- `super_admin/README.md:19` SC-ADD-04 row
+
+All three softened to "generic WGU institutional policies (data breach drill, staff FERPA training)" — same trim rationale as v4.14.
+
+### Trimmed — "Dashboard home with section cards" catalog step title
+
+`presentation.html:653` + `presentation_dark.html:653` SC-ADD-03 step 2 step title still said "section cards" even though the step body and the storyboard itself were corrected to "course" framing. The CSS class `.section-card` is internal styling (not user-visible); only the step title was the leakage. Trimmed to "Dashboard home with course cards."
+
+### Trimmed — "3 live SDP rows" stale count (LRPS actually shows 4)
+
+LRPS landing page (`lrps/index.html` line 727) shows "4 Live SDP rows" and line 736 explicitly enumerates "Student, Tenant Admin, Instructor, Super Admin" as the four live rows. But three docs still claimed 3:
+
+- `index.html:455` LRPS portal-card scenario tag: "3 live SDP rows" → "4 live SDP rows"
+- `README.md:41` Surfaces table LRPS row: "(3 live SDP rows, 17 illustrative)" → "(4 live SDP rows + illustrative filler)"
+- `README.md:187` LRPS scope bullet: "3 live SDP rows (Tenant Admin, Instructor, Super Admin)" → "4 live SDP rows (Student, Tenant Admin, Instructor, Super Admin)"
+- `lrps/README.md:26-27` table: count 3 → 4 with persona enumeration
+
+### Trimmed — `{section_id}` URL placeholder in LRPS instructor row
+
+`lrps/index.html:935` had `lrps.wgu.edu/provision/sdp/instructor/{section_id}` as the user-visible URL template. The other three live rows use `?role=student` / `{tenant_id}` / `?mfa=required` — none reference sections. Per the rolling-enrollment rule (README line 202), "section" framing is forbidden in user-facing copy; this URL fragment is user-visible in the LRPS provider table. Replaced with `{course_id}` to match the rolling-enrollment model.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 12 consecutive releases)
+- `grep -i "WGU policies 8\."` in deliverable → 0 hits (CHANGELOG meta-context allowed)
+- `grep -i "section cards\|section_id"` in deliverable → 0 hits
+- `grep -i "3 live SDP"` in deliverable → 0 hits
+- All 4 Pass 14 findings verified clean
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.14 | v4.15 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| `WGU policies 8.x` mentions | 3 | **0** |
+| `3 live SDP rows` stale count | 3 | **0** |
+| `{section_id}` URL placeholder | 1 | **0** |
+| `section cards` catalog step titles | 2 | **0** |
+| Pass 14 findings | 4 | **0 expected on Pass 15** |
+
+---
+
 ## v4.14 — 08 May 2026 — Seventh overboard sweep (Jira + AWS region IDs + WGU Policy 8.x citations + section leakage + 1,247 sessions)
 
 Pass 13 (post-v4.13 independent audit) found **6 items** — concentrated in places prior code-focused passes had only spot-checked (incident-response screens 17–22, geo-redundancy screen 7, instructor screens 4 + 8, FERPA control table). v4.14 closes all 6. **No screens removed** (still 77); all in-place text edits.

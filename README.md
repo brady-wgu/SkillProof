@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.14-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.15-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -38,7 +38,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | Surface | URL | Description |
 |:--------|:----|:------------|
 | **Portal Selector** | [`/`](https://brady-wgu.github.io/JFT_SDP/) | Landing page with cards for every surface. **Start here.** |
-| **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for the three admin portals (3 live SDP rows, 17 illustrative). |
+| **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for all four personas (4 live SDP rows + illustrative filler). |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
 | **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response, plus four Tenant Settings (Branding · Team & Roles · Instructor Roster · Subject Lifecycle). 27 screens. |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
@@ -184,8 +184,8 @@ Click any persona folder to read its dedicated README.
 **Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SDP Design System v1.2. Each of the three admin portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. JFT does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
 
 The LRPS surface includes:
-- 3 live SDP rows (Tenant Admin, Instructor, Super Admin) — clickable, deep-linked
-- 17 illustrative filler rows (OEX modules, zyBooks, Pearson, ProctorU, Cicada legacy, Panopto, etc.) for realistic LRPS density
+- 4 live SDP rows (Student, Tenant Admin, Instructor, Super Admin) — clickable, deep-linked
+- Illustrative filler rows (OEX modules, zyBooks, Pearson, ProctorU, Cicada legacy, Panopto, etc.) for realistic LRPS density
 - A meta-bar quick-launch with chips to all 5 surfaces + the catalog
 
 ---
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.14** — seventh overboard sweep. Pass 13 (independent post-v4.13 audit) found **6 items** concentrated in places prior passes had only spot-checked: (1) **`Jira` vendor naming** outside vendor-config UI on tenant_admin screens 18 + 19 + both catalog narratives — SOW §9.5 commits to a 2-hour P1 SLA but does not commit to Jira (Atlassian). Replaced with "JFT Support" framing. (2) **AWS-specific region IDs** (`us-east-1` / `us-west-2` / `eu-west-1`) + city locations (Northern Virginia / Oregon / Dublin) on super_admin Geo-Redundancy screen 7 — replaced with role-based labels ("Primary region · US East", "Secondary region · US West", "DR region · EU"). (3) **"section" framing** that escaped v4.13's rolling-enrollment trim on instructor screens 4 + 8 (2 sites). (4) **Fabricated `WGU Policy 8.4` + `WGU Policy 8.2`** citations in the FERPA control table — softened to "WGU institutional policy" (the 34 CFR §99.x federal citations remain). (5) **"1,247 sessions" fabricated specific** ricocheted across SC-ADD-06 incident screens 17 / 19 / 22 + catalog narrative — generic-ized to "All active learner sessions" (same class as v4.9's "213/600 rate-limit" trim). All 6 closed. No screens removed (still 77); all in-place text edits.
+The latest release is **v4.15** — eighth overboard sweep. Pass 14 (independent post-v4.14 audit) found **4 items** — three of them catalog/README sites mirroring v4.14's storyboard fixes (catalog-narrative drift class), plus a stale 3-vs-4 row count that's been latent since the student row was added to LRPS as a live entry: (1) **`WGU policies 8.2 and 8.4`** survived in `presentation.html` + `presentation_dark.html` SC-ADD-04 step-6 narrative + `super_admin/README.md` even though v4.14 trimmed them on the storyboard — softened to "generic WGU institutional policies (data breach drill, staff FERPA training)" everywhere. (2) **"Dashboard home with section cards"** SC-ADD-03 step-2 step title in both catalogs — body text was already correct; only the title leaked. Fixed to "course cards." (3) **"3 live SDP rows"** count stale across `index.html` + `README.md` (×2) + `lrps/README.md` — the LRPS landing actually shows 4 live rows (Student + Tenant Admin + Instructor + Super Admin). All four sites updated to 4. (4) **`{section_id}` URL placeholder** in the LRPS instructor live-row description cell — the other three live rows use `?role=student` / `{tenant_id}` / `?mfa=required`; instructor was the outlier. Replaced with `{course_id}` to match the rolling-enrollment model. All 4 closed. No screens removed (still 77); all in-place text edits.
 
 ---
 

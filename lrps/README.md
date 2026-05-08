@@ -23,8 +23,8 @@ This LRPS landing models step 2. The three live SDP rows (Tenant Admin, Instruct
 
 | Type | Count | Behavior |
 |:-----|:-----:|:---------|
-| **Live SDP rows** | 3 | Clickable → launch the corresponding portal |
-| **Illustrative filler rows** | 17 | Static, not clickable. Mix of real WGU LRPS provider types: OEX modules, zyBooks, Pearson MyMathLab, ProctorU, Coursera, Cicada legacy, Panopto, OEX Studio, Instructional Designer Review, etc. |
+| **Live SDP rows** | 4 | Clickable → launch the corresponding portal (Student, Tenant Admin, Instructor, Super Admin) |
+| **Illustrative filler rows** | many | Static, not clickable. Mix of real WGU LRPS provider types: OEX modules, zyBooks, Pearson MyMathLab, ProctorU, Coursera, Cicada legacy, Panopto, OEX Studio, Instructional Designer Review, etc. |
 | **Inactive rows** | 1 | "Cicada PoC v1.0 (Retired)" — demonstrates the "Show Inactive Providers" toggle behavior |
 
 The table also has a sidebar quick-launch section that links directly to the three SDP admin portals, and a meta-bar at the bottom with quick-launch chips to all 5 surfaces + the catalog.
