@@ -7,8 +7,8 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.7-46B1EF?style=for-the-badge)](CHANGELOG.md)
-[![Screens](https://img.shields.io/badge/Screens-81-001730?style=for-the-badge)]()
+[![Version](https://img.shields.io/badge/Version-4.8-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Screens](https://img.shields.io/badge/Screens-78-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
 ![Portal selector landing](assets/landing/light.png)
@@ -42,11 +42,11 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
 | **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response, plus four Tenant Settings (Branding · Team & Roles · Instructor Roster · Subject Lifecycle). 27 screens. |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail → Learner Search & Lookup. 9 screens. |
-| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy, integrations, learner remediation, billing & cost centers. 11 screens. |
+| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy, audit log. 8 screens. |
 | **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/JFT_SDP/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
 | **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-**Total: 81 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
+**Total: 78 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
 
 ---
 
@@ -78,11 +78,11 @@ JFT_SDP/
 │   ├── README.md
 │   ├── screenshots/            9 PNGs
 │   └── screenshots_dark/       9 PNGs
-├── super_admin/                v1.3 — Bob (extended in v4.4)
+├── super_admin/                v1.3 — Bob
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            11 PNGs
-│   └── screenshots_dark/       11 PNGs
+│   ├── screenshots/            8 PNGs
+│   └── screenshots_dark/       8 PNGs
 └── lrps/                       Entry point for the 3 admin portals
     ├── index.html
     ├── README.md
@@ -165,11 +165,11 @@ Click any persona folder to read its dedicated README.
 
 **Scope:** Cross-tenant governance, financial controls, security compliance, global resource management.
 
-**Scenarios (1, 11 screens):**
+**Scenarios (1, 8 screens):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-04** | **Super Admin Governance & Cost Audit.** Cross-tenant overview → token usage tracking → cost-spike drill-down → global rate limits → TLS 1.3 + FERPA compliance report → geo-redundancy status → cross-tenant audit log → **v4.4 Third-Party Integrations** (OpenRouter / AWS / Datadog / Entra ID / GitHub / Slack deep-links) → **v4.4 Learner Remediation** (cross-tenant per-learner score reset / force re-diagnostic / pause access; required-justification audit log) → **v4.4 Billing & Cost Centers** (per-tenant cost allocation per §11.1; per-model spend split via OpenRouter; budget alerts). | 11 |
+| **SC-ADD-04** | **Super Admin Governance & Cost Audit.** Cross-tenant overview → token usage tracking → cost-spike drill-down → global rate limits → TLS 1.3 + FERPA compliance report → geo-redundancy status → cross-tenant audit log. | 8 |
 
 **Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
 
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.7** — Tenant Admin polish pass. SC-ADD-02 (course config), SC-ADD-05 (data portability), SC-ADD-06 (incident response) are now tied together as one cohesive Alice experience: redesigned portal home with cross-scenario KPIs + activity feed + 3-domain quick launches, plus "What's next?" cross-scenario CTAs at each scenario's completion screen. No new screens (still 81 total); pure UX integration.
+The latest release is **v4.8** — overboard trim. A critical re-read of the requirements main body confirmed three v4.4 Super Admin screens (Third-Party Integrations / Learner Remediation / Billing & Cost Centers) were not contract-grounded — they were extrapolations from in-conversation remarks rather than requirements commitments. Removed. Tenant Admin portal home (screen 2) trimmed back: the v4.7 real-time activity feed and infrastructure-status / SLA-uptime KPI gauges over-promised platform-monitoring features that belong to Super Admin per the User Profile. Tenant Admin screen 5 prompt-versions panel collapsed to a one-line "Last edited" indicator. Storyboard total: **81 → 78 screens**. The prototype now reflects only what JFT contracted to deliver.
 
 ---
 

@@ -1,4 +1,4 @@
-# Super Admin — Bob · v1.3 (extended in storyboard v4.4)
+# Super Admin — Bob · v1.3
 
 [← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/JFT_SDP/super_admin/) · [Catalog](../presentation.html#sc-add-04)
 
@@ -16,9 +16,9 @@ Cross-tenant governance, financial controls, security compliance, global resourc
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-04** | **Super Admin Governance & Cost Audit.** LRPS landing → SSO + MFA → portal home (4 KPI gauges + active alerts + recent platform events; **v4.4: 8 quick-link cards** including the new Integrations / Learner Remediation / Billing entries) → Token Usage Tracking (per-tenant breakdown with utilization meters; PDev flagged with spike) → cost-spike drill-down (30-bar daily cost chart, top consuming subjects, "likely cause" diagnosis) → Global Rate Limits config (form + before/after projection + pending audit-trail entry preview) → **Compliance Report — TLS 1.3 + FERPA** (encryption audit §10.7 across 17 services + FERPA privacy audit §10.1 with 4 KPI gauges and a 6-row FERPA control table referencing 34 CFR §§99.10 / 99.31 / 99.32 / 99.37 plus WGU policies 8.2 and 8.4) → Geo-redundancy (3 region cards with replication lag, recent failover tests, RTO under 4-hr target) → cross-tenant audit log feed → **v4.4 G8: Third-Party Integrations** (read-only deep-links to OpenRouter.ai LLM gateway, AWS, Datadog, Entra ID, GitHub, Slack — JFT manages credentials per requirements) → **v4.4 G1: Learner Remediation** (cross-tenant per-learner search; per-objective score reset + force re-diagnostic + reset all progress + pause access; required-justification audit log; cross-tenant scope, global-admin only) → **v4.4 G5: Billing & Cost Centers** (per-tenant cost cards aligned to §11.1, MTD spend + EOM forecast + budget caps; per-model OpenRouter spend split; configurable budget alerts). | 11 |
+| **SC-ADD-04** | **Super Admin Governance & Cost Audit.** LRPS landing → SSO + MFA → portal home (4 KPI gauges + active alerts + recent platform events + 4 quick-link cards) → Token Usage Tracking (per-tenant breakdown with utilization meters; PDev flagged with spike) → cost-spike drill-down (30-bar daily cost chart, top consuming subjects, "likely cause" diagnosis) → Global Rate Limits config (form + before/after projection + pending audit-trail entry preview) → **Compliance Report — TLS 1.3 + FERPA** (encryption audit §10.7 across 17 services + FERPA privacy audit §10.1 with 4 KPI gauges and a 6-row FERPA control table referencing 34 CFR §§99.10 / 99.31 / 99.32 / 99.37 plus WGU policies 8.2 and 8.4) → Geo-redundancy (3 region cards with replication lag, recent failover tests, RTO under 4-hr target) → cross-tenant audit log feed. | 8 |
 
-**Total: 1 scenario · 11 screens.** (v4.4 added 9 / 10 / 11; portal home (screen 2) gained a second row of quick-link cards.)
+**Total: 1 scenario · 8 screens.**
 
 ## Source
 
@@ -26,13 +26,13 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 
 ## requirements references
 
-§2.4 (AI Orchestration / multi-provider), §2.5 (System health, audit logs), §6.4 (Rate Limiting), §6.6 (Token Tracking), §9.5 (Geo-redundancy / SLA), §9.13 (Monitoring & alerting), §10.1 (FERPA), §10.4 (Audit Logging), §10.7 (Encryption), §11.1 (Hosting + Support fee schedule).
+§6.4 (Rate Limiting), §6.6 (Token Tracking), §9.5 (Geo-redundancy / SLA), §10.1 (FERPA), §10.4 (Audit Logging), §10.7 (Encryption).
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (11 screens)
-- `screenshots/` — 11 light-theme PNGs at 1440×900
-- `screenshots_dark/` — 11 dark-theme PNGs
+- [`index.html`](index.html) — interactive storyboard (8 screens)
+- `screenshots/` — 8 light-theme PNGs at 1440×900
+- `screenshots_dark/` — 8 dark-theme PNGs
 
 ## Components introduced in this portal
 
