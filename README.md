@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.9-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.10-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -132,7 +132,7 @@ Click any persona folder to read its dedicated README.
 | ID | Description | Screens |
 |:---|:------------|:-------:|
 | **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping, Subject creation, Topics & Learning Objectives, AI prompt config (with v4.4 minimal "Recent versions" panel), model picker, rubric, deploy via CI/CD. Plus four Tenant Settings: Branding · Team & Roles · **v4.4 Instructor Roster** · **v4.4 Subject Lifecycle**. | 13 |
-| **SC-ADD-05** | **Data Portability.** REST API console (query learner scores), one-click export wizard (CSV / JSON / Parquet) with audit trail. | 6 |
+| **SC-ADD-05** | **Data Portability.** REST API console (query learner scores), one-click export wizard (CSV / JSON per §8.9) with audit trail. | 6 |
 | **SC-ADD-06** | **Critical Incident Response & SLA.** Primary LLM provider down → fallback engaged → P1 ticket → JFT CSM 2-hr response → service restored → 99.95% uptime SLA verified. | 8 |
 
 **Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.9** — second overboard sweep. A fresh adversarial audit found 3 more items that weren't actually SOW-grounded: (1) Tenant Admin REST API console specifics ("14 endpoints", "600 req/hr") were prototype defaults, not in catalog or SOW — trimmed to placeholders. (2) "JFT CSM 2-hour SLA" framing was reframed to "JFT support P1 response per §9.5 (CSM Jordan as WGU-facing POC)" — the SLA is a JFT-support commitment per §9.5, not a CSM-owned SLA. (3) Instructor screen 9 (Learner Search) was removed — not in SC-ADD-03 catalog narrative (which only describes heatmap → at-risk filter → drill-down). Storyboard total: **78 → 77 screens**. The prototype is now strictly contract-grounded.
+The latest release is **v4.10** — third overboard sweep. Four more fixes against SC-ADD-05 + SC-ADD-06: (1) Parquet format dropped from the export wizard (SOW §8.9 + v1.3 catalog say JSON / CSV only). (2) "Primary LLM (Anthropic)" / "Fallback (GPT-5)" generic-ized across SC-ADD-06 incident screens — SOW §6.1 treats vendors as equivalent under an LLM-agnostic orchestration layer; the contract doesn't commit to a primary vendor. The model picker (screen 6) still names vendors appropriately. (3) "7 years (FERPA default)" softened to "Per institutional policy" on Subject Lifecycle (the SOW doesn't specify 7 years). (4) Export wizard trimmed from 3 datasets to 1 — engagement metrics is the only dataset named in the v1.3 catalog. Score history + conversation transcripts framed as post-pilot roadmap. No screens removed (still 77); all in-place text edits.
 
 ---
 

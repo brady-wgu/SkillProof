@@ -6,6 +6,76 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.10 — 08 May 2026 — Third overboard sweep (Parquet + LLM vendor naming + 7-year FERPA claim + 3 export datasets)
+
+After v4.9 Brady asked for another adversarial pass. Pass 9 found 4 more items not actually SOW-grounded. v4.10 closes them. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — Parquet format (not in SOW or catalog)
+
+- **SOW §8.9:** "Data exports will be available in JSON, CSV, or XML formats."
+- **v1.3 catalog SC-ADD-05:** "She uses one-click export to download a JSON or CSV file."
+- Parquet appears in neither. It was added during v4.0 prototyping as a "more modern" option.
+
+Sites edited:
+- `tenant_admin/index.html` screen 2 quick-launch caption: "CSV / JSON / Parquet" → "CSV / JSON"
+- `tenant_admin/index.html` screen 14 format-picker tab switcher: 3 tabs → 2 tabs (CSV / JSON; Parquet button removed)
+- `presentation.html` + `presentation_dark.html` SC-ADD-05 step 5 narrative: "CSV / JSON / Parquet tab switcher" → "CSV / JSON tab switcher"
+- `README.md` SC-ADD-05 row caption + `tenant_admin/README.md` scenario row + components list
+
+### Generic-ized — "Primary LLM (Anthropic)" / "Fallback (GPT-5)" in SC-ADD-06 incident scenario
+
+- **SOW §6.1:** "LLM-agnostic orchestration layer that uses provider SDKs and configurable rules to steer traffic between GPT-4o, Claude, Gemini, and future models."
+- **§6.5:** "fail over to a secondary LLM."
+- The contract treats all three providers as equivalent options. Naming Anthropic specifically as "the primary" implies a vendor commitment that isn't contracted.
+
+Sites edited (`tenant_admin/index.html` SC-ADD-06 incident screens 17/18/19/21/22/23):
+- "Primary LLM (Anthropic)" → "Primary LLM provider" (4 sites)
+- "Fallback LLM (GPT-5)" → "Fallback LLM provider" (2 sites)
+- Narrative + ticket textarea + chat-thread copy generic-ized; §6.5 cited explicitly
+- Vendor names retained on the model picker (screen 6) and rubric (screen 7) — those are vendor-picker UIs where naming is appropriate
+
+`presentation.html` + `presentation_dark.html` SC-ADD-06 step 17 narrative similarly generic-ized.
+
+### Softened — Subject Lifecycle "7 years (FERPA default)"
+
+- **SOW §10.1:** "FERPA Compliance" — generic; does not specify 7 years.
+- The "FERPA default" phrasing implied a JFT-side default that isn't contracted.
+
+Site edited (`tenant_admin/index.html` screen 27):
+- Retention badge: "7 years (FERPA default)" → "Per institutional policy"
+- Caption: "Per §10.1; locked by Super Admin policy" → "FERPA-aligned; configured at the platform level (§10.1)"
+
+Other "7 years" mentions (audit-log retention captions on screens 2 / 10 / 15, Super Admin compliance KPI on screen 6) are kept — those are configured-value displays rather than policy claims about a JFT-default. If Pass 10 disagrees, fix in next cycle.
+
+### Trimmed — Export wizard from 3 datasets to 1
+
+- **v1.3 catalog SC-ADD-05:** "She uses one-click export to download a JSON or CSV file **with engagement metrics**." Singular dataset.
+- **SOW §7.14:** generic "one-click exports" — doesn't enumerate dataset types.
+- The original 3-card layout (Engagement metrics / Score history / Conversation logs) extrapolated beyond catalog; conversation transcripts in particular raise FERPA / PII scope not addressed in the contract.
+
+Site edited (`tenant_admin/index.html` screen 13):
+- 3 radio cards → 1 radio card (engagement metrics, selected)
+- Tip alert reframed: "Engagement metrics is the v1.3 contracted dataset (per SC-ADD-05 catalog narrative + SOW §8.7). Additional datasets such as score history and conversation transcripts are post-pilot roadmap candidates pending FERPA scope review."
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through v4.4 → v4.5 → v4.6 → v4.7 → v4.8 → v4.9 → v4.10)
+- All `goToScreen(N)` references valid; no broken nav
+- `grep -i "parquet"` → 0 hits in deliverable surfaces (CHANGELOG meta-context allowed)
+- Vendor naming retained only on model-picker / config screens; absent from incident narrative
+
+### Numbers
+
+| | Before v4.10 | After v4.10 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals; in-place edits) |
+| `tenant_admin/` | 27 | 27 |
+| Export wizard dataset cards | 3 | **1** |
+| Format-picker tabs | 3 | **2** |
+| Vendor names in SC-ADD-06 narrative | Anthropic + GPT-5 | generic |
+
+---
+
 ## v4.9 — 08 May 2026 — Second overboard sweep (REST API specifics + CSM SLA framing + Instructor Learner Search)
 
 After v4.8 Brady asked for another adversarial pass. A fresh independent agent (Pass 8) found 3 more items that were over-extrapolated. v4.9 closes them.

@@ -1012,7 +1012,7 @@
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">database</span>SC-ADD-05 · Data Portability</span>
               <h3 class="h5 mt-1 mb-2">Data &amp; APIs</h3>
-              <p class="small text-muted mb-3">Query learner records via the REST API console (OAuth 2.0, per-tenant rate limit) or run a one-click CSV / JSON / Parquet export.</p>
+              <p class="small text-muted mb-3">Query learner records via the REST API console (OAuth 2.0, per-tenant rate limit) or run a one-click CSV / JSON export.</p>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(11);"><span class="material-icons-outlined">terminal</span>API Console</button>
                 <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(13);">Start Export</button>
@@ -1887,30 +1887,11 @@ Always cite the Learning Objective being assessed by ID.</div>
             <span class="badge badge-gray">~ 184 KB</span>
           </div>
         </div>
-        <div class="radio-card" role="radio" aria-checked="false" tabindex="0">
-          <span class="material-icons-outlined" style="font-size:24px; color: var(--pgn-color-gray-600);">grade</span>
-          <div class="radio-card-title mt-2">Score history</div>
-          <div class="radio-card-vendor">Per-objective scores over time</div>
-          <div class="radio-card-meta">
-            <span class="badge badge-info">~ 18,420 rows</span>
-            <span class="badge badge-gray">~ 2.1 MB</span>
-          </div>
-        </div>
-        <div class="radio-card" role="radio" aria-checked="false" tabindex="0">
-          <span class="material-icons-outlined" style="font-size:24px; color: var(--pgn-color-gray-600);">forum</span>
-          <div class="radio-card-title mt-2">Conversation logs</div>
-          <div class="radio-card-vendor">AI coaching transcripts (anonymized)</div>
-          <div class="radio-card-meta">
-            <span class="badge badge-info">~ 4,732 rows</span>
-            <span class="badge badge-gray">~ 12 MB</span>
-            <span class="badge badge-warning">PII review required</span>
-          </div>
-        </div>
       </div>
 
       <div class="alert alert-info">
         <span class="material-icons-outlined">tips_and_updates</span>
-        <div><strong>Engagement metrics</strong> is what your CFO and provost typically need for stakeholder readouts. Score history is best for academic policy reviews.</div>
+        <div><strong>Engagement metrics</strong> is the v1.3 contracted dataset (per SC-ADD-05 catalog narrative + SOW §8.7). Additional datasets such as score history and conversation transcripts are post-pilot roadmap candidates pending FERPA scope review.</div>
       </div>
     </div>
   </main>
@@ -1947,7 +1928,6 @@ Always cite the Learning Objective being assessed by ID.</div>
         <div class="tab-switcher" role="tablist">
           <button class="active" role="tab" aria-selected="true">CSV</button>
           <button role="tab" aria-selected="false">JSON</button>
-          <button role="tab" aria-selected="false">Parquet</button>
         </div>
         <div class="text-muted small" style="margin-left:auto;">UTF-8 · Header row · Comma delimiter</div>
       </div>
@@ -2224,7 +2204,7 @@ Always cite the Learning Objective being assessed by ID.</div>
               <span class="row-title">Model Router</span>
               <span class="badge badge-warning">Degraded · falling back</span>
             </div>
-            <div class="row-sub">Routing to GPT-5 (fallback). p50 latency 412 ms (+199 ms baseline).</div>
+            <div class="row-sub">Routing to fallback LLM provider. p50 latency 412 ms (+199 ms baseline).</div>
           </div>
         </div>
         <div class="row-card" style="border-color: var(--pgn-color-danger-base); background: var(--pgn-color-danger-tint);">
@@ -2232,7 +2212,7 @@ Always cite the Learning Objective being assessed by ID.</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
               <span class="dot red"></span>
-              <span class="row-title">Primary LLM (Anthropic)</span>
+              <span class="row-title">Primary LLM provider</span>
               <span class="badge badge-danger">Unreachable</span>
             </div>
             <div class="row-sub">Last successful request 09:43:08 UTC. Provider status page reports incident.</div>
@@ -2243,7 +2223,7 @@ Always cite the Learning Objective being assessed by ID.</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
               <span class="dot green"></span>
-              <span class="row-title">Fallback LLM (GPT-5)</span>
+              <span class="row-title">Fallback LLM provider</span>
               <span class="badge badge-success">Active · serving</span>
             </div>
             <div class="row-sub">Took over at 09:43:21 UTC. 1,247 sessions migrated transparently.</div>
@@ -2307,7 +2287,7 @@ Always cite the Learning Objective being assessed by ID.</div>
         </div>
         <div class="pgn__card-section" style="border-top: 1px solid var(--pgn-color-gray-100);">
           <p class="mb-2">Hi Alice,</p>
-          <p class="mb-2">JFT Proactive Monitoring detected an outage with your primary LLM provider (Anthropic) at <strong>09:43:21 UTC</strong>. The SDP automatically engaged the fallback model (<strong>GPT-5</strong>). Learner sessions are continuing without interruption.</p>
+          <p class="mb-2">JFT Proactive Monitoring detected an outage with your primary LLM provider at <strong>09:43:21 UTC</strong>. The SDP automatically engaged the fallback LLM provider per §6.5. Learner sessions are continuing without interruption.</p>
           <p class="mb-2">Our 24/7 team has acknowledged the incident. Per the SLA, we will respond with a status confirmation <strong>within 2 hours</strong>. Your <strong>99.95% Uptime SLA</strong> is being measured against the affected services in real time, and current projections show it will be maintained.</p>
           <p class="mb-2">No action is required from you. If you'd like the resolution tracked formally, you can log a P1 ticket from the portal — it will be linked to this incident automatically.</p>
           <p class="mb-2">— JFT Customer Success</p>
@@ -2384,9 +2364,9 @@ Always cite the Learning Objective being assessed by ID.</div>
         </div>
         <div class="form-group">
           <label class="form-label" for="t-desc">Description</label>
-          <textarea class="form-control" id="t-desc" rows="6">JFT 24/7 Proactive Monitoring detected loss of connectivity to Anthropic at 09:43:21 UTC.
+          <textarea class="form-control" id="t-desc" rows="6">JFT 24/7 Proactive Monitoring detected loss of connectivity to the primary LLM provider at 09:43:21 UTC.
 
-The Model Router automatically engaged the fallback chain (GPT-5). 1,247 active learner sessions migrated transparently. p50 latency rose from 213 ms to 412 ms.
+The Model Router automatically engaged the fallback chain per §6.5. 1,247 active learner sessions migrated transparently. p50 latency rose from 213 ms to 412 ms.
 
 Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         </div>
@@ -2511,14 +2491,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <div class="chat-avatar csm" aria-hidden="true">J</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>JFT CSM · Jordan</strong><span>09:51 UTC</span><span class="badge badge-success">SLA: 6 min</span></div>
-              <div class="chat-text">Acknowledged. Confirmed Anthropic-side outage on their public status page. Fallback chain working as designed — GPT-5 serving without errors. Estimated restoration: 60–90 min based on Anthropic's last update. We'll re-verify primary connectivity before failing back automatically.</div>
+              <div class="chat-text">Acknowledged. Confirmed provider-side outage on their public status page. Fallback chain working as designed — secondary LLM serving without errors. Estimated restoration: 60–90 min based on the provider's last update. We'll re-verify primary connectivity before failing back automatically.</div>
             </div>
           </div>
           <div class="chat-row">
             <div class="chat-avatar csm" aria-hidden="true">J</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>JFT CSM · Jordan</strong><span>10:32 UTC</span></div>
-              <div class="chat-text">Anthropic status page reports restored. Re-verifying primary LLM connectivity with synthetic probes. Will confirm before failing back.</div>
+              <div class="chat-text">Provider status page reports restored. Re-verifying primary LLM connectivity with synthetic probes. Will confirm before failing back.</div>
             </div>
           </div>
           <div class="chat-row">
@@ -2570,8 +2550,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <tr><th>Service</th><th>Before</th><th>During</th><th>After</th><th>Duration</th></tr>
           </thead>
           <tbody>
-            <tr><td>Primary LLM (Anthropic)</td><td><span class="dot green"></span> Operational</td><td><span class="dot red"></span> Unreachable</td><td><span class="dot green"></span> Operational</td><td><strong>1h 24m</strong></td></tr>
-            <tr><td>Fallback LLM (GPT-5)</td><td><span class="dot gray"></span> Standby</td><td><span class="dot green"></span> Active · serving</td><td><span class="dot gray"></span> Standby</td><td>—</td></tr>
+            <tr><td>Primary LLM provider</td><td><span class="dot green"></span> Operational</td><td><span class="dot red"></span> Unreachable</td><td><span class="dot green"></span> Operational</td><td><strong>1h 24m</strong></td></tr>
+            <tr><td>Fallback LLM provider</td><td><span class="dot gray"></span> Standby</td><td><span class="dot green"></span> Active · serving</td><td><span class="dot gray"></span> Standby</td><td>—</td></tr>
             <tr><td>Model Router</td><td><span class="dot green"></span> Operational</td><td><span class="dot amber"></span> Degraded</td><td><span class="dot green"></span> Operational</td><td>—</td></tr>
             <tr><td>Learner sessions</td><td>1,247 active</td><td>1,247 active · 0 dropped</td><td>1,261 active</td><td><strong>0 failed</strong></td></tr>
             <tr><td>SLA breaches</td><td>—</td><td>0</td><td>0</td><td><strong>None</strong></td></tr>
@@ -2647,7 +2627,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <tr>
             <td>07 May 2026</td>
             <td>09:43 – 11:08</td>
-            <td>Primary LLM (Anthropic) outage</td>
+            <td>Primary LLM provider outage</td>
             <td><strong>1h 24m</strong></td>
             <td><span class="badge badge-success">Auto-fallback</span></td>
             <td>0 sessions failed</td>
@@ -3339,8 +3319,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               <div class="form-group mb-3">
                 <label class="form-label">Learner-data retention</label>
                 <div class="d-flex gap-2" style="flex-wrap:wrap;">
-                  <span class="badge badge-info">7 years (FERPA default)</span>
-                  <span class="text-muted small">— Per §10.1; locked by Super Admin policy.</span>
+                  <span class="badge badge-info">Per institutional policy</span>
+                  <span class="text-muted small">— FERPA-aligned; configured at the platform level (§10.1).</span>
                 </div>
               </div>
 
