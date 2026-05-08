@@ -6,6 +6,95 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.13 — 08 May 2026 — Sixth overboard sweep (catalog-narrative + READMEs + root-index leakage; v4.0 staleness across portal titles/footers)
+
+Pass 12 (post-v4.12 independent audit) found **17 items** the previous five sweeps missed — concentrated in surfaces the prior code-focused passes had under-audited: catalog scenario narratives, per-portal READMEs, the root `index.html` portal-selector landing, and `v4.0`-vintage portal titles + footers that were never bumped after the initial release. v4.13 closes all 17. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed / softened — instructor/ audit-log leakage (v4.10/v4.12 oversight)
+
+The SC-ADD-03 Audit Trail event log (instructor screen 8) still listed three sources that had been generic-ized elsewhere in v4.10 + v4.12:
+- Row 4 "Guardrail svc" → "SDP Coach"
+- Row 5 "Anthropic Claude Sonnet 4.5" → "Primary LLM provider"
+- Row 7 "Scoring engine" → "SDP Coach"
+
+Same generic-ization rationale as v4.12: audit-log displays are not vendor-picker context, and named internal architecture components ("Guardrail svc", "Scoring engine") are implementation detail beyond the requirements.
+
+### Trimmed — `super_admin/index.html` "via cert-manager"
+
+Compliance Report (screen 6) tail copy named a specific Kubernetes-ecosystem auto-renewal tool. Implementation detail comparable to "(RDS)" v4.12 dropped. Trimmed to "Auto-renewal is enabled across all services."
+
+### Trimmed — `tenant_admin/index.html` "3 available" datasets + "Sally's section"
+
+- Screen 10 (Data & APIs landing) Quick exports table row: "Datasets · 3 available" → "Datasets · Engagement metrics (v1.3)" — matches the v4.10 trim of the export wizard from 3 datasets to 1 (engagement metrics only).
+- Screen 8 (Review & Deploy) deploy-warning alert: "live for all learners on Sally's section" → "live for all active learners in this Subject" — "section" framing forbidden by the rolling-enrollment rule (README line 202).
+
+### Trimmed — catalog scenario narratives in `presentation.html` + `presentation_dark.html`
+
+Catalog narratives had not been refreshed after the v4.4–v4.12 storyboard sweeps and were describing pre-trim screens:
+
+- **Per-persona portals list (line 568):** "Alice (Tenant Admin) ... 23 screens" → "27 screens" (v4.4 extended Tenant Admin)
+- **SC-ADD-02 step 2 narrative:** "Three subjects (E010 in production, E075 staging, E120 draft)" → "Four subjects (E010 production, E135 production, E075 staging, E120 draft)" (matches current portal home Subjects list)
+- **SC-ADD-02 step 5 narrative:** "Recent versions panel ... last 3 prompt edits" → "one-line 'Last edited' indicator" (matches v4.8 collapse)
+- **SC-ADD-03 step 2 narrative:** "Charlie's three sections (E010 § 042 active, E075 § 018, E135 § 003). Active section shows..." → "Charlie's three courses (E010, E075, E135) under WGU's rolling-enrollment model — no fixed sections or cohorts. Active course (E010) shows..." (rolling-enrollment rule)
+- **SC-ADD-03 step 3 narrative:** "Search by name / email (deep-links to screen 9)" → removed (v4.9 dropped screen 9)
+- **SC-ADD-04 step 6 narrative:** "17/17 services TLS 1.3 ... 7-yr audit trail retention ... 10-row service-by-service TLS table with cipher" → "all paths TLS 1.3 ... audit trail retention per institutional policy ... service-by-service TLS table (TLS version + cert expiry + last scan + pass status)" (matches v4.11 + v4.12 trims)
+- **SC-ADD-05 step 1 narrative:** "REST API (auth, base URL, 14 endpoints, 600 req/hr) ... 3 datasets" → "REST API (OAuth 2.0 auth, base URL, per-tenant rate limit, endpoint catalog finalized at onboarding) ... engagement metrics dataset" (matches v4.9 + v4.10 trims)
+- **SC-ADD-05 step 2 narrative:** "213/600 rate-limit usage" → "rate-limit usage well below tenant tier cap" (matches v4.9 trim)
+
+### Trimmed — `super_admin/README.md` "across 17 services"
+
+Two mentions ("encryption audit §10.7 across 17 services" + "TLS 1.3 verification across 17 services") softened to "across all data paths" — matches v4.12 storyboard wording.
+
+### Trimmed — `tenant_admin/README.md` "7-year retention" + "JFT CSM ... 2-hr SLA"
+
+- "FERPA-aligned 7-year retention" → "FERPA-aligned retention per institutional policy" (matches v4.10 + v4.11 trims)
+- "JFT CSM chat thread (within 2-hr SLA)" → "JFT Support P1 response thread within 2-hr SLA per §9.5 (CSM Jordan as WGU-facing POC)" (matches v4.9 reframe of CSM-vs-Support SLA ownership)
+- "The CSM chat thread on screen 21 demonstrates within-2-hr SLA response" → reframed to clarify SLA is owned by JFT Support per §9.5; CSM Jordan is the §9.1.4 WGU-facing POC
+
+### Bumped — root `index.html` portal-selector landing
+
+Never updated after the v4.0 initial release. Refreshed:
+- Hero eyebrow "v4.0" → "v4.13"
+- Hero stat "73 Screens" → "77 Screens"
+- Tenant Admin card "23 screens" → "27 screens"
+- Instructor card "Charlie · course instructor" → "Charlie · Instructor" (User Profile canonical)
+- Catalog card "148 screenshots" → "156 screenshots"
+- Footer "Storyboard v4.0" → "Storyboard v4.13"
+- HTML comment "23 screens" → "27 screens"
+
+### Bumped — portal `index.html` titles + footers (v4.0 vintage)
+
+Three portal HTMLs had `<title>... Storyboard v4.0</title>` and visible footers `Storyboard v4.0 — Western Governors University` since the initial release:
+- `instructor/index.html` — title + footer + persona comment "course instructor" → "Instructor"
+- `super_admin/index.html` — title + footer
+- `lrps/index.html` — title + footer
+
+All bumped to v4.13.
+
+### Bumped — catalog hero `Storyboard v4.0` → `Storyboard v4.13`
+
+Both `presentation.html` + `presentation_dark.html` hero `<div class="hero-doc-info">` showed `Storyboard v4.0` despite footers being bumped each release. Now matches footer.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 10 consecutive releases)
+- `grep -i "Storyboard v4\.0"` in deliverable HTML/MD → 0 hits in current state (allowed in CHANGELOG meta-context)
+- `grep -i "Section 042\|§ 042\|course instructor"` in deliverable → 0 hits (allowed in CHANGELOG + Document Control historical references)
+- `grep -i "17 services\|14 endpoints\|600 req\|3 datasets\|7 year\|7-year\|7yr\|7 yr\|Guardrail svc\|Scoring engine\|cert-manager\|Anthropic Claude"` in deliverable → 0 hits (CHANGELOG meta-context allowed)
+- All 17 Pass 12 findings verified clean
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.12 | v4.13 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| Pass 12 findings | 17 | **0 expected on Pass 13** |
+| Files with `Storyboard v4.0` staleness | 6 | **0** |
+| Catalog narratives describing pre-trim screens | 7 sites × 2 catalogs | **0** |
+
+---
+
 ## v4.12 — 08 May 2026 — Fifth overboard sweep (TLS cipher specifics + vendor model names in subject metadata)
 
 Pass 11 (post-v4.11) found 2 more items. v4.12 closes both. **No screens removed** (still 77); all in-place text edits.
