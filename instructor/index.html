@@ -840,7 +840,6 @@
             </div>
             <div class="d-flex gap-2 mt-3">
               <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open heatmap</button>
-              <button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(9);"><span class="material-icons-outlined">person_search</span>Search learners</button>
             </div>
           </div>
         </div>
@@ -908,7 +907,6 @@
           <span class="text-muted small">View:</span>
           <button class="chip-filter active">Heatmap</button>
           <button class="chip-filter">Trend</button>
-          <button class="chip-filter" onclick="goToScreen(9)">Search by name / email</button>
           <span class="text-muted small" style="margin-left:8px; padding-left:8px; border-left:1px solid var(--pgn-color-gray-200);">Export:</span>
           <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>Course report (PDF)</button>
           <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">table_view</span>CSV</button>
@@ -1450,229 +1448,6 @@ for s in scores:
   </main>
 </section>
 
-<!-- Screen 9: Learner Search & Individual Lookup (G2 / §7.10 + §7.12) -->
-<section class="screen" id="screen-9" aria-labelledby="s9-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <span class="navbar-chip">Instructor Dashboard</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-9">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Instructor Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(3); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Learner search</span>
-      </nav>
-      <div class="d-flex justify-content-between align-items-end mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">person_search</span>Learner Lookup · §7.10 + §7.12</span>
-          <h1 id="s9-heading">Search learners by name or email</h1>
-          <p class="mt-1">Charlie's view across every learner currently active in his courses (rolling enrollment — no fixed cohort). Coaching scores never feed academic records; this is a practice-tool lookup for advising conversations.</p>
-        </div>
-        <div class="d-flex gap-2 align-items-center">
-          <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">grid_view</span>Heatmap view</button>
-          <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">file_download</span>Export results (CSV)</button>
-        </div>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <input class="form-control" placeholder="Search by name, email, or anonymized identifier" style="height:40px; flex:1; max-width:520px;" value="">
-        <select class="form-control" style="height:40px; max-width:180px;">
-          <option>Course: All</option>
-          <option>Course: E010</option>
-          <option>Course: E075</option>
-          <option>Course: E135</option>
-        </select>
-        <select class="form-control" style="height:40px; max-width:200px;">
-          <option>Status: All</option>
-          <option>Status: At risk</option>
-          <option>Status: On track</option>
-          <option>Status: Mastery</option>
-          <option>Status: Inactive &gt; 7d</option>
-        </select>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">68 active learners across your 3 courses</span>
-        <span class="badge badge-info">7 mastery</span>
-        <span class="badge badge-info">52 on track</span>
-        <span class="badge badge-warning">5 watch list</span>
-        <span class="badge badge-danger">4 at risk</span>
-      </div>
-
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th>Learner</th>
-            <th>Course</th>
-            <th style="text-align:right;">Avg comp.</th>
-            <th>Sessions</th>
-            <th>Last active</th>
-            <th>Status</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-danger-base);">S</div>
-                <div>
-                  <div class="text-strong">Sally</div>
-                  <div class="micro text-muted">sally.j@my.wgu.edu · <code>lnr_4a3b2c1d</code></div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E010</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums; color: var(--pgn-color-danger-base);"><strong>52</strong></td>
-            <td>9</td>
-            <td>14 min ago</td>
-            <td><span class="badge badge-danger"><span class="dot red"></span>At risk</span></td>
-            <td><button class="btn btn-tertiary btn-sm" onclick="goToScreen(5)">Open profile</button></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-success-base);">A</div>
-                <div>
-                  <div class="text-strong">Aisha N.</div>
-                  <div class="micro text-muted">aisha.n@my.wgu.edu</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E010</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>96</strong></td>
-            <td>14</td>
-            <td>2 hours ago</td>
-            <td><span class="badge badge-success"><span class="dot green"></span>Mastery</span></td>
-            <td><button class="btn btn-tertiary btn-sm">Open profile</button></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-info-base);">D</div>
-                <div>
-                  <div class="text-strong">Daniel R.</div>
-                  <div class="micro text-muted">daniel.r@my.wgu.edu</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E010</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>78</strong></td>
-            <td>11</td>
-            <td>Yesterday</td>
-            <td><span class="badge badge-info"><span class="dot blue"></span>On track</span></td>
-            <td><button class="btn btn-tertiary btn-sm">Open profile</button></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base); color:#1A1A1A;">M</div>
-                <div>
-                  <div class="text-strong">Marcus B.</div>
-                  <div class="micro text-muted">marcus.b@my.wgu.edu</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E010</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>62</strong></td>
-            <td>5</td>
-            <td>3 days ago</td>
-            <td><span class="badge badge-warning"><span class="dot amber"></span>Watch</span></td>
-            <td><button class="btn btn-tertiary btn-sm">Open profile</button></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #4527A0;">P</div>
-                <div>
-                  <div class="text-strong">Priya V.</div>
-                  <div class="micro text-muted">priya.v@my.wgu.edu</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E075</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>89</strong></td>
-            <td>22</td>
-            <td>1 hour ago</td>
-            <td><span class="badge badge-info"><span class="dot blue"></span>On track</span></td>
-            <td><button class="btn btn-tertiary btn-sm">Open profile</button></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-danger-base);">J</div>
-                <div>
-                  <div class="text-strong">Jordan K.</div>
-                  <div class="micro text-muted">jordan.k@my.wgu.edu</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E010</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums; color: var(--pgn-color-danger-base);"><strong>38</strong></td>
-            <td>3</td>
-            <td>8 days ago</td>
-            <td><span class="badge badge-danger"><span class="dot red"></span>At risk · idle</span></td>
-            <td><button class="btn btn-tertiary btn-sm">Open profile</button></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-info-base);">T</div>
-                <div>
-                  <div class="text-strong">Tasha O.</div>
-                  <div class="micro text-muted">tasha.o@my.wgu.edu</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E135</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>74</strong></td>
-            <td>7</td>
-            <td>Yesterday</td>
-            <td><span class="badge badge-info"><span class="dot blue"></span>On track</span></td>
-            <td><button class="btn btn-tertiary btn-sm">Open profile</button></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-success-base);">R</div>
-                <div>
-                  <div class="text-strong">Riku S.</div>
-                  <div class="micro text-muted">riku.s@my.wgu.edu</div>
-                </div>
-              </div>
-            </td>
-            <td><span class="badge badge-info">E135</span></td>
-            <td style="text-align:right; font-variant-numeric: tabular-nums;"><strong>92</strong></td>
-            <td>18</td>
-            <td>5 hours ago</td>
-            <td><span class="badge badge-success"><span class="dot green"></span>Mastery</span></td>
-            <td><button class="btn btn-tertiary btn-sm">Open profile</button></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="d-flex justify-content-between align-items-center">
-        <span class="text-muted small">Showing 8 of 68 learners. Sort by clicking any column header.</span>
-        <div class="d-flex gap-2">
-          <button class="btn btn-tertiary btn-sm" disabled>← Newer</button>
-          <button class="btn btn-tertiary btn-sm">Older →</button>
-        </div>
-      </div>
-
-      <div class="alert alert-info mt-3">
-        <span class="material-icons-outlined">policy</span>
-        <div><strong>FERPA scope:</strong> learner data is visible only for learners enrolled in courses you instruct. Tenant Admin (Alice) sees aggregated program-level data; Super Admin (Bob) sees cross-tenant data with privileged-session warnings. Every record open is logged to the cross-tenant audit trail.</div>
-      </div>
-    </div>
-  </main>
-</section>
 
 <!-- ================================================================
      META BAR — DEMO ONLY
@@ -1697,14 +1472,13 @@ for s in scores:
       <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Conversation logs">06</button>
       <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Session transcript">07</button>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Audit Trail">08</button>
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Learner search">09</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 9; // SC-ADD-03 (1-8) + v4.4: 09 Learner Search
+  const TOTAL_SCREENS = 8; // SC-ADD-03 (1-8). v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;

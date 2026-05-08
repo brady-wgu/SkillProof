@@ -1012,7 +1012,7 @@
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">database</span>SC-ADD-05 · Data Portability</span>
               <h3 class="h5 mt-1 mb-2">Data &amp; APIs</h3>
-              <p class="small text-muted mb-3">Query learner records via the REST API console (OAuth 2.0, 600 req/hr) or run a one-click CSV / JSON / Parquet export.</p>
+              <p class="small text-muted mb-3">Query learner records via the REST API console (OAuth 2.0, per-tenant rate limit) or run a one-click CSV / JSON / Parquet export.</p>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(11);"><span class="material-icons-outlined">terminal</span>API Console</button>
                 <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(13);">Start Export</button>
@@ -1025,7 +1025,7 @@
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">monitoring</span>SC-ADD-06 · Incident Response &amp; SLA</span>
               <h3 class="h5 mt-1 mb-2">System status</h3>
-              <p class="small text-muted mb-3">Live system health, JFT 24/7 monitoring, P1 incident tickets, JFT CSM 2-hour SLA, and the rolling 30-day SLA dashboard.</p>
+              <p class="small text-muted mb-3">Live system health, JFT 24/7 monitoring, P1 incident tickets, JFT support 2-hour P1 response per §9.5, and the rolling 30-day SLA dashboard.</p>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(16);"><span class="material-icons-outlined">visibility</span>System Status</button>
                 <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(23);">SLA Dashboard</button>
@@ -1676,8 +1676,8 @@ Always cite the Learning Objective being assessed by ID.</div>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
                 <tr><th style="width:40%;">Auth</th><td>OAuth 2.0 · Bearer token</td></tr>
                 <tr><th>Base URL</th><td><code>api.sdp.wgu.edu/v1</code></td></tr>
-                <tr><th>Endpoints</th><td>14 available</td></tr>
-                <tr><th>Rate limit</th><td>600 req/hour</td></tr>
+                <tr><th>Endpoints</th><td>Catalog finalized at onboarding</td></tr>
+                <tr><th>Rate limit</th><td>Per tenant tier</td></tr>
               </table>
               <button class="btn btn-primary mt-3" onclick="goToScreen(11)"><span class="material-icons-outlined">terminal</span>Open API Console</button>
             </div>
@@ -1764,7 +1764,7 @@ Always cite the Learning Objective being assessed by ID.</div>
                 <tr><th style="background:transparent;">Token</th><td style="background:transparent;"><code>sdp_xxx_…_8kE2</code> · expires in 47 min</td></tr>
                 <tr><th style="background:transparent;">Tenant</th><td style="background:transparent;">pdev (locked)</td></tr>
                 <tr><th style="background:transparent;">Subject</th><td style="background:transparent;">e010 · Foundations of Programming (Python)</td></tr>
-                <tr><th style="background:transparent;">Rate limit</th><td style="background:transparent;">213 / 600 req/hour</td></tr>
+                <tr><th style="background:transparent;">Rate limit</th><td style="background:transparent;">Well below tenant tier cap</td></tr>
               </table>
             </div>
           </div>
@@ -2478,7 +2478,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       </nav>
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">support_agent</span>Customer Success Response · Within 2-hr SLA</span>
+          <span class="eyebrow"><span class="material-icons-outlined">support_agent</span>JFT Support P1 Response · §9.5 (CSM Jordan as WGU-facing POC)</span>
           <h1 id="s21-heading">JFT-SDP-2138: Primary LLM unreachable</h1>
         </div>
         <div class="d-flex gap-2 align-items-center">
