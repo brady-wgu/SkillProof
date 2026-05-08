@@ -2226,7 +2226,7 @@ Always cite the Learning Objective being assessed by ID.</div>
               <span class="row-title">Fallback LLM provider</span>
               <span class="badge badge-success">Active · serving</span>
             </div>
-            <div class="row-sub">Took over at 09:43:21 UTC. 1,247 sessions migrated transparently.</div>
+            <div class="row-sub">Took over at 09:43:21 UTC. All active learner sessions migrated transparently.</div>
           </div>
         </div>
         <div class="row-card">
@@ -2295,7 +2295,7 @@ Always cite the Learning Objective being assessed by ID.</div>
       </div>
 
       <div class="d-flex gap-2">
-        <button class="btn btn-primary" onclick="goToScreen(19)"><span class="material-icons-outlined">add_task</span>Open Jira ticket</button>
+        <button class="btn btn-primary" onclick="goToScreen(19)"><span class="material-icons-outlined">add_task</span>Open P1 ticket</button>
         <button class="btn btn-outline-primary"><span class="material-icons-outlined">reply</span>Reply</button>
         <button class="btn btn-tertiary" onclick="goToScreen(17)"><span class="material-icons-outlined">arrow_back</span>Back to incident</button>
       </div>
@@ -2303,7 +2303,7 @@ Always cite the Learning Objective being assessed by ID.</div>
   </main>
 </section>
 
-<!-- Screen 19: Jira P1 ticket creation form ========================= -->
+<!-- Screen 19: P1 ticket creation form ========================= -->
 <section class="screen" id="screen-19" aria-labelledby="s19-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -2325,7 +2325,7 @@ Always cite the Learning Objective being assessed by ID.</div>
         <span>New Ticket</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">add_task</span>Step 1 of 1 · New incident ticket</span>
-      <h1 id="s19-heading" class="h1 mb-2">Log a P1 incident in Jira</h1>
+      <h1 id="s19-heading" class="h1 mb-2">Log a P1 incident with JFT Support</h1>
       <p class="mb-4">Fields are prefilled from the active monitoring alert. You can edit before submission.</p>
 
       <div class="ticket-card">
@@ -2366,7 +2366,7 @@ Always cite the Learning Objective being assessed by ID.</div>
           <label class="form-label" for="t-desc">Description</label>
           <textarea class="form-control" id="t-desc" rows="6">JFT 24/7 Proactive Monitoring detected loss of connectivity to the primary LLM provider at 09:43:21 UTC.
 
-The Model Router automatically engaged the fallback chain per §6.5. 1,247 active learner sessions migrated transparently. p50 latency rose from 213 ms to 412 ms.
+The Model Router automatically engaged the fallback chain per §6.5. All active learner sessions migrated transparently. p50 latency rose from 213 ms to 412 ms.
 
 Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         </div>
@@ -2553,7 +2553,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <tr><td>Primary LLM provider</td><td><span class="dot green"></span> Operational</td><td><span class="dot red"></span> Unreachable</td><td><span class="dot green"></span> Operational</td><td><strong>1h 24m</strong></td></tr>
             <tr><td>Fallback LLM provider</td><td><span class="dot gray"></span> Standby</td><td><span class="dot green"></span> Active · serving</td><td><span class="dot gray"></span> Standby</td><td>—</td></tr>
             <tr><td>Model Router</td><td><span class="dot green"></span> Operational</td><td><span class="dot amber"></span> Degraded</td><td><span class="dot green"></span> Operational</td><td>—</td></tr>
-            <tr><td>Learner sessions</td><td>1,247 active</td><td>1,247 active · 0 dropped</td><td>1,261 active</td><td><strong>0 failed</strong></td></tr>
+            <tr><td>Learner sessions</td><td>All active</td><td>All active · 0 dropped</td><td>All active</td><td><strong>0 failed</strong></td></tr>
             <tr><td>SLA breaches</td><td>—</td><td>0</td><td>0</td><td><strong>None</strong></td></tr>
           </tbody>
         </table>
