@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.11-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.12-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.11** — fourth overboard sweep. Pass 10 caught 2 items v4.10 missed: (1) "Claude Sonnet 4.5 (primary)" escaped the v4.10 vendor-name generic-ization on the SC-ADD-06 baseline screen 16 — fixed. (2) Eight remaining "7 years" retention claims (audit-log captions across Tenant Admin / Instructor / Super Admin) were declarative policy statements, not configured-value displays — softened to "per institutional policy (FERPA-aligned)." The "3-year inactive learner data" gauge on super_admin compliance is kept (matches SOW §10.2). No screens removed (still 77); all in-place text edits.
+The latest release is **v4.12** — fifth overboard sweep. Pass 11 caught 2 items v4.11 missed: (1) **TLS cipher suite specifics** on the Super Admin Compliance Report (`TLS_AES_256_GCM_SHA384`, `TLS_CHACHA20_POLY1305_SHA256`, named internal services like "Vector store" / "Stepper coordinator") were architecture-detail beyond the SOW §10.7 commitment to TLS 1.3 — generic-ized. (2) **Vendor model names in subject metadata** (Claude Sonnet 4.5 / GPT-5 on tenant_admin screen 2 portal home, Claude 3.5 Sonnet / GPT-4o on screen 27 Subject Lifecycle) were informational metadata that drifted from the v4.10 vendor-agnostic stance and were inconsistent with each other — dropped. Vendor names retained on model-picker / fallback-chain / Review-and-Deploy screens (vendor-context UI, appropriate). No screens removed (still 77); all in-place text edits.
 
 ---
 

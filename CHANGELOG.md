@@ -6,6 +6,59 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.12 — 08 May 2026 — Fifth overboard sweep (TLS cipher specifics + vendor model names in subject metadata)
+
+Pass 11 (post-v4.11) found 2 more items. v4.12 closes both. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — TLS cipher suite specifics on Super Admin Compliance Report (screen 6)
+
+The Compliance Report listed 10 services with specific cipher suites (`TLS_AES_256_GCM_SHA384`, `TLS_CHACHA20_POLY1305_SHA256`, `TLS_AES_128_GCM_SHA256`) plus a 7-additional-services footnote naming "Guardrail svc, Scoring engine, Cache layer, Vector store, Stepper coordinator, Notification svc, CSM bridge."
+
+- **SOW §10.7:** "Encryption (TLS 1.3) across all data paths." Cipher suite selection is implementation detail.
+- **No SOW or catalog text** commits to specific cipher algorithms or names internal architecture components like "Vector store" / "Stepper coordinator."
+
+Edits (`super_admin/index.html`):
+- Removed the "Cipher" column from the service table (kept TLS version 1.3 + cert expiry + last scan + status)
+- Consolidated provider-specific rows: "Model Router → Anthropic" + "Model Router → OpenAI (fallback)" + "Model Router → Google (fallback)" → 2 generic rows ("primary LLM provider" + "fallback LLM providers")
+- Removed "(RDS)" implementation detail from "Tenant DB" row
+- Replaced 7-named-services footnote with "Additional internal platform services use TLS 1.3 encryption identically; details available in the PDF export for compliance audits"
+- KPI gauge: "17/17 Services TLS 1.3" → "All paths · TLS 1.3" (count was implementation-specific)
+- Audit log "17/17 pass" badge → "All paths pass"
+
+### Trimmed — vendor model names in subject metadata rows
+
+After v4.10's vendor-naming sweep across the SC-ADD-06 incident scenario, model names still appeared in subject metadata rows on tenant_admin screen 2 (portal home Subjects list) and screen 27 (Subject Lifecycle Active Subjects table). Pass 11 noted both:
+1. The names are informational metadata (not vendor-picker context), inconsistent with the v4.10 rule.
+2. The two screens were inconsistent with each other ("Claude Sonnet 4.5" vs. "Claude 3.5 Sonnet"; "GPT-5" vs. "GPT-4o") — fabricated specifics that drifted.
+
+Edits (`tenant_admin/index.html`):
+- Screen 2 portal home Subjects list (3 rows): dropped " · Claude Sonnet 4.5" / " · GPT-5" suffixes
+- Screen 27 Subject Lifecycle Active Subjects (3 rows): dropped " · Claude 3.5 Sonnet" / " · GPT-4o" annotations from Subject ID metadata lines
+
+Vendor names retained on:
+- Screen 6 (Choose the Preferred Model) — vendor-picker UI, appropriate
+- Screen 7 (Configure Scoring & Rubric) — fallback chain config display, appropriate
+- Screen 8 (Review & Deploy) — review-of-Alice's-choices, appropriate
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 9 consecutive releases)
+- `grep "TLS_AES\|TLS_CHACHA"` → 0 hits (cipher names removed)
+- `grep "Vector store\|Stepper coordinator\|Guardrail svc"` → 0 hits in deliverable (retained in CHANGELOG meta-context)
+- Vendor names contained to model-picker / fallback-chain / Review screens; absent from data displays
+- "Claude 3.5 Sonnet" vs "Claude Sonnet 4.5" inconsistency resolved by removing both from data displays
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.11 | v4.12 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| TLS cipher names in deliverable | 3 | **0** |
+| Vendor model names in subject metadata | 6 | **0** |
+
+---
+
 ## v4.11 — 08 May 2026 — Fourth overboard sweep (escaped vendor name + 7-year retention claims trimmed)
 
 Pass 10 (independent post-v4.10 audit) found 2 items v4.10 missed. v4.11 closes both. **No screens removed** (still 77); all in-place text edits.

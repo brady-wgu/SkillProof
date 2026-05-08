@@ -1228,8 +1228,8 @@
       <div class="row mb-3">
         <div class="col-3">
           <div class="gauge-card center">
-            <div class="gauge-number good">17/17</div>
-            <div class="gauge-label">Services TLS 1.3</div>
+            <div class="gauge-number good" style="font-size:36px;">All paths</div>
+            <div class="gauge-label">TLS 1.3</div>
           </div>
         </div>
         <div class="col-3">
@@ -1312,26 +1312,24 @@
             <th>Service / data path</th>
             <th>Encryption</th>
             <th>TLS version</th>
-            <th>Cipher</th>
             <th>Cert expiry</th>
             <th>Last scan</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>API Gateway (api.sdp.wgu.edu)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2026-09-12</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Auth — WGU SSO bridge</td><td>HTTPS + mTLS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2026-08-01</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Model Router → Anthropic</td><td>HTTPS</td><td><strong>1.3</strong></td><td>TLS_CHACHA20_POLY1305_SHA256</td><td>2026-12-04</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Model Router → OpenAI (fallback)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2027-01-18</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Model Router → Google (fallback)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>TLS_AES_128_GCM_SHA256</td><td>2026-10-22</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Tenant DB (RDS, in-transit)</td><td>TLS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2026-11-05</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Audit Trail store (in-transit)</td><td>TLS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2026-11-05</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Telemetry pipeline (in-transit)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2026-09-30</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Data Export Service (egress)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2026-09-12</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>LRPS deep-link bridge</td><td>HTTPS</td><td><strong>1.3</strong></td><td>TLS_AES_256_GCM_SHA384</td><td>2026-08-15</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>API Gateway (api.sdp.wgu.edu)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-09-12</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>Auth — WGU SSO bridge</td><td>HTTPS + mTLS</td><td><strong>1.3</strong></td><td>2026-08-01</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>Model Router → primary LLM provider</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-12-04</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>Model Router → fallback LLM providers</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2027-01-18</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>Tenant DB (in-transit)</td><td>TLS</td><td><strong>1.3</strong></td><td>2026-11-05</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>Audit Trail store (in-transit)</td><td>TLS</td><td><strong>1.3</strong></td><td>2026-11-05</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>Telemetry pipeline (in-transit)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-09-30</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>Data Export Service (egress)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-09-12</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>LRPS deep-link bridge</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-08-15</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
         </tbody>
       </table>
-      <p class="small text-muted mb-3">7 additional internal services (Guardrail svc, Scoring engine, Cache layer, Vector store, Stepper coordinator, Notification svc, CSM bridge) pass identically. Report includes them in the PDF export.</p>
+      <p class="small text-muted mb-3">Additional internal platform services use TLS 1.3 encryption identically; details available in the PDF export for compliance audits.</p>
 
       <div class="alert alert-info">
         <span class="material-icons-outlined">schedule</span>
@@ -1555,7 +1553,7 @@
             <td>System (Compliance scanner)</td>
             <td><code>compliance.tls.scan.complete</code></td>
             <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">17/17 pass</span></td>
+            <td><span class="badge badge-success">All paths pass</span></td>
             <td>internal</td>
           </tr>
           <tr>
