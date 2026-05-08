@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.13-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.14-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.13** — sixth overboard sweep. Pass 12 (independent post-v4.12 audit) found **17 items** the prior code-focused sweeps under-audited: (1) **catalog scenario narratives** in `presentation.html` + `presentation_dark.html` were describing pre-trim screens (Tenant Admin "23 screens", "Three subjects E075/E120", "Recent versions panel last 3 prompt edits", instructor "§ 042 / § 018 / § 003" sections, SC-ADD-04 "17/17 services TLS 1.3 / 7-yr audit retention / 10-row TLS table with cipher", SC-ADD-05 "14 endpoints / 600 req/hr / 3 datasets / 213/600 rate-limit"); (2) **per-portal READMEs** had stale "across 17 services" + "FERPA-aligned 7-year retention" + "JFT CSM 2-hr SLA"; (3) **root `index.html`** still showed v4.0 hero, "73 Screens", "23 screens" Tenant Admin, "course instructor", "148 screenshots", v4.0 footer; (4) **portal `<title>` + visible footers** in instructor / super_admin / lrps had been "Storyboard v4.0" since the initial release; (5) **instructor audit-log table** still listed "Guardrail svc" / "Anthropic Claude Sonnet 4.5" / "Scoring engine" (v4.10/v4.12 oversight); (6) **super_admin "via cert-manager"** named a specific Kubernetes-ecosystem tool; (7) **tenant_admin "3 available" datasets** + **"Sally's section"** copy. All 17 closed. No screens removed (still 77); all in-place text edits.
+The latest release is **v4.14** — seventh overboard sweep. Pass 13 (independent post-v4.13 audit) found **6 items** concentrated in places prior passes had only spot-checked: (1) **`Jira` vendor naming** outside vendor-config UI on tenant_admin screens 18 + 19 + both catalog narratives — SOW §9.5 commits to a 2-hour P1 SLA but does not commit to Jira (Atlassian). Replaced with "JFT Support" framing. (2) **AWS-specific region IDs** (`us-east-1` / `us-west-2` / `eu-west-1`) + city locations (Northern Virginia / Oregon / Dublin) on super_admin Geo-Redundancy screen 7 — replaced with role-based labels ("Primary region · US East", "Secondary region · US West", "DR region · EU"). (3) **"section" framing** that escaped v4.13's rolling-enrollment trim on instructor screens 4 + 8 (2 sites). (4) **Fabricated `WGU Policy 8.4` + `WGU Policy 8.2`** citations in the FERPA control table — softened to "WGU institutional policy" (the 34 CFR §99.x federal citations remain). (5) **"1,247 sessions" fabricated specific** ricocheted across SC-ADD-06 incident screens 17 / 19 / 22 + catalog narrative — generic-ized to "All active learner sessions" (same class as v4.9's "213/600 rate-limit" trim). All 6 closed. No screens removed (still 77); all in-place text edits.
 
 ---
 

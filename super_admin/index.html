@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.13</title>
+  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.14</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -1300,8 +1300,8 @@
           <tr><td>Right to inspect / request correction</td><td>34 CFR §99.10</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>Self-service via student portal · 5-day SLA for correction requests</td></tr>
           <tr><td>Directory information opt-out</td><td>34 CFR §99.37</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>Honored at LTI launch · propagated through all telemetry</td></tr>
           <tr><td>Data retention &amp; deletion</td><td>34 CFR §99.32</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>3-year inactivity threshold · automated purge with audit entry</td></tr>
-          <tr><td>Annual data breach response drill</td><td>WGU Policy 8.4</td><td><span class="badge badge-success">Verified</span></td><td>22 Jan 2026</td><td>Q1 tabletop completed · next drill 22 Jul 2026</td></tr>
-          <tr><td>Staff FERPA training (annual)</td><td>WGU Policy 8.2</td><td><span class="badge badge-success">100% current</span></td><td>30 Apr 2026</td><td>Tracked in WGU Learning Hub · auto-suspended access if &gt; 365 days</td></tr>
+          <tr><td>Annual data breach response drill</td><td>WGU institutional policy</td><td><span class="badge badge-success">Verified</span></td><td>22 Jan 2026</td><td>Q1 tabletop completed · next drill 22 Jul 2026</td></tr>
+          <tr><td>Staff FERPA training (annual)</td><td>WGU institutional policy</td><td><span class="badge badge-success">100% current</span></td><td>30 Apr 2026</td><td>Tracked in WGU Learning Hub · auto-suspended access if &gt; 365 days</td></tr>
         </tbody>
       </table>
 
@@ -1373,8 +1373,8 @@
           <div class="region-card">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <div>
-                <div class="region-name">us-east-1 <span class="badge badge-brand">Primary</span></div>
-                <div class="region-loc">Northern Virginia, USA</div>
+                <div class="region-name">Primary region <span class="badge badge-brand">US East</span></div>
+                <div class="region-loc">Active region serving most learners</div>
               </div>
               <span class="dot green"></span>
             </div>
@@ -1390,8 +1390,8 @@
           <div class="region-card">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <div>
-                <div class="region-name">us-west-2 <span class="badge badge-info">Secondary</span></div>
-                <div class="region-loc">Oregon, USA</div>
+                <div class="region-name">Secondary region <span class="badge badge-info">US West</span></div>
+                <div class="region-loc">Hot standby for failover</div>
               </div>
               <span class="dot green"></span>
             </div>
@@ -1407,8 +1407,8 @@
           <div class="region-card">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <div>
-                <div class="region-name">eu-west-1 <span class="badge badge-info">Secondary</span></div>
-                <div class="region-loc">Dublin, Ireland</div>
+                <div class="region-name">DR region <span class="badge badge-info">EU</span></div>
+                <div class="region-loc">Disaster-recovery region</div>
               </div>
               <span class="dot green"></span>
             </div>
@@ -1436,10 +1436,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>07 May 00:00 UTC</td><td>Synthetic probe</td><td>us-east-1</td><td>us-west-2</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">2m 41s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>06 May 00:00 UTC</td><td>Synthetic probe</td><td>us-east-1</td><td>eu-west-1</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">3m 14s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>22 Apr 14:00 UTC</td><td>Quarterly DR drill</td><td>us-east-1</td><td>us-west-2</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">8m 12s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>22 Jan 14:00 UTC</td><td>Quarterly DR drill</td><td>us-east-1</td><td>eu-west-1</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">11m 48s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>07 May 00:00 UTC</td><td>Synthetic probe</td><td>Primary</td><td>Secondary</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">2m 41s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>06 May 00:00 UTC</td><td>Synthetic probe</td><td>Primary</td><td>DR</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">3m 14s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>22 Apr 14:00 UTC</td><td>Quarterly DR drill</td><td>Primary</td><td>Secondary</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">8m 12s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
+          <tr><td>22 Jan 14:00 UTC</td><td>Quarterly DR drill</td><td>Primary</td><td>DR</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">11m 48s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
         </tbody>
       </table>
 
@@ -1596,7 +1596,7 @@
             <td>06 May 00:00:01</td>
             <td>all</td>
             <td>System (Geo)</td>
-            <td><code>failover.probe</code> (us-east → eu-west)</td>
+            <td><code>failover.probe</code> (Primary → DR)</td>
             <td><span class="badge badge-info">Info</span></td>
             <td><span class="badge badge-success">3m 14s</span></td>
             <td>internal</td>
@@ -1620,7 +1620,7 @@
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP Super Admin Portal Storyboard v4.13 — Western Governors University</p>
+  <p>JFT SDP Super Admin Portal Storyboard v4.14 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">

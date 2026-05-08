@@ -6,6 +6,82 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.14 — 08 May 2026 — Seventh overboard sweep (Jira + AWS region IDs + WGU Policy 8.x citations + section leakage + 1,247 sessions)
+
+Pass 13 (post-v4.13 independent audit) found **6 items** — concentrated in places prior code-focused passes had only spot-checked (incident-response screens 17–22, geo-redundancy screen 7, instructor screens 4 + 8, FERPA control table). v4.14 closes all 6. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — `Jira` vendor naming outside vendor-config UI
+
+SOW §9.5 commits to a 2-hour P1 response time but does not commit to Jira (Atlassian) as the ticketing vendor. Same vendor-naming-outside-vendor-context rationale that drove v4.10–v4.12.
+
+Sites edited (5 across 3 files):
+- `tenant_admin/index.html:2298` — `<button>...Open Jira ticket</button>` → "Open P1 ticket"
+- `tenant_admin/index.html:2306` — HTML comment "Screen 19: Jira P1 ticket creation form" → "Screen 19: P1 ticket creation form"
+- `tenant_admin/index.html:2328` — `<h1>Log a P1 incident in Jira</h1>` → "Log a P1 incident with JFT Support"
+- `presentation.html:771` + `presentation_dark.html:771` SC-ADD-06 workflow narrative — "logs a P1 ticket in Jira. The JFT Customer Success Manager responds within 2 hours" → "logs a P1 ticket with JFT Support. JFT Support acknowledges within the §9.5 2-hour P1 SLA (with the JFT CSM as WGU-facing POC per §9.1.4)" (also closes the catalog-narrative CSM-vs-Support SLA conflation that v4.9 fixed in the storyboard but missed here)
+
+### Trimmed — AWS-specific region IDs + city locations on Geo-Redundancy screen 7
+
+`us-east-1` / `us-west-2` / `eu-west-1` are AWS-specific availability-zone identifiers; `Northern Virginia, USA` / `Oregon, USA` / `Dublin, Ireland` are AWS data-center locations. SOW §9.5 commits to geo-redundancy generically; nothing in SOW or v1.3 catalog names AWS or specific zones. Same rationale as v4.12 dropping `(RDS)` and named internal services.
+
+Sites edited (`super_admin/index.html`):
+- Region cards (lines 1376–1411): "us-east-1" / "us-west-2" / "eu-west-1" → "Primary region · US East" / "Secondary region · US West" / "DR region · EU"
+- Region card sub-text: city-specific locations → role-specific descriptions ("Active region serving most learners" / "Hot standby for failover" / "Disaster-recovery region")
+- Failover test table (lines 1439–1442) From/To columns: AWS zone IDs → "Primary" / "Secondary" / "DR"
+- Audit log (line 1599): `failover.probe (us-east → eu-west)` → `failover.probe (Primary → DR)`
+- `presentation.html:712` + `presentation_dark.html:712` SC-ADD-04 step 7 narrative: "us-east-1 primary / us-west-2 secondary / eu-west-1 DR" → "Primary US East / Secondary US West / DR EU"
+
+### Trimmed — "section" framing leakage in instructor
+
+v4.13 caught "Sally's section" on tenant_admin screen 8 but missed two instructor sites. README line 202 + the rolling-enrollment rule forbid "section" framing.
+
+Sites edited (`instructor/index.html`):
+- Line 1008 (screen 4 at-risk filter alert): "the lowest score in the section" → "the lowest score in this course"
+- Line 1439 (screen 8 audit-trail compliance footer): "Charlie's view is constrained to his sections by RBAC" → "Charlie's view is constrained to his courses by RBAC"
+
+### Trimmed — fabricated `WGU Policy 8.4` and `WGU Policy 8.2` citations
+
+The 34 CFR §99.10 / §99.31 / §99.32 / §99.37 federal-regulation citations elsewhere in the FERPA control table are real. But "WGU Policy 8.4" / "8.2" were invented internal-policy numbers — no SOW or catalog grounding, and these aren't legally verifiable WGU policy references.
+
+Sites edited (`super_admin/index.html`):
+- Line 1303 "Annual data breach response drill | WGU Policy 8.4" → "WGU institutional policy"
+- Line 1304 "Staff FERPA training (annual) | WGU Policy 8.2" → "WGU institutional policy"
+
+### Trimmed — "1,247 sessions" fabricated specific
+
+The number ricocheted across SC-ADD-06 incident screens (17, 19, 22) and the catalog narrative as if authoritative. No SOW or catalog text specifies a session count for the incident scenario. Same class as v4.9's "213/600 rate-limit usage" trim.
+
+Sites edited (5 across 3 files):
+- `tenant_admin/index.html:2229` (screen 17 Fallback row sub-text): "1,247 sessions migrated transparently" → "All active learner sessions migrated transparently"
+- `tenant_admin/index.html:2369` (screen 19 P1 ticket description textarea): "1,247 active learner sessions migrated transparently" → "All active learner sessions migrated transparently"
+- `tenant_admin/index.html:2556` (screen 22 service status table Learner sessions row): `1,247 active` / `1,247 active · 0 dropped` / `1,261 active` → `All active` / `All active · 0 dropped` / `All active`
+- `presentation.html:777` + `presentation_dark.html:777` SC-ADD-06 step 2 narrative: "fallback LLM provider active and serving 1,247 sessions per §6.5" → "fallback LLM provider active and serving all active learner sessions per §6.5"
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 11 consecutive releases)
+- `grep -i "Jira"` in deliverable HTML/MD → 0 hits (CHANGELOG meta-context allowed)
+- `grep -i "us-east-1|us-west-2|eu-west-1|Northern Virginia|Oregon, USA|Dublin, Ireland"` in deliverable → 0 hits
+- `grep "WGU Policy 8\."` in deliverable → 0 hits
+- `grep "1,247"` in deliverable → 0 hits
+- `grep -i "in the section\|sections by RBAC"` in deliverable → 0 hits
+- All 6 Pass 13 findings verified clean
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.13 | v4.14 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| `Jira` mentions | 5 | **0** |
+| AWS-specific zone IDs | 11 | **0** |
+| Fabricated `WGU Policy 8.x` citations | 2 | **0** |
+| `1,247 sessions` fabricated specifics | 5 | **0** |
+| `section` framing in instructor | 2 | **0** |
+| Pass 13 findings | 6 | **0 expected on Pass 14** |
+
+---
+
 ## v4.13 — 08 May 2026 — Sixth overboard sweep (catalog-narrative + READMEs + root-index leakage; v4.0 staleness across portal titles/footers)
 
 Pass 12 (post-v4.12 independent audit) found **17 items** the previous five sweeps missed — concentrated in surfaces the prior code-focused passes had under-audited: catalog scenario narratives, per-portal READMEs, the root `index.html` portal-selector landing, and `v4.0`-vintage portal titles + footers that were never bumped after the initial release. v4.13 closes all 17. **No screens removed** (still 77); all in-place text edits.
