@@ -973,34 +973,20 @@
         </div>
       </div>
 
-      <!-- KPI row spanning all 3 scenarios -->
+      <!-- Tenant KPIs (program-level only; infrastructure status lives in Super Admin per User Profile) -->
       <div class="row mb-3">
-        <div class="col-3">
+        <div class="col-6">
           <div class="gauge-card">
             <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SUBJECTS LIVE</span><span class="dot green"></span></div>
             <div class="gauge-number">2</div>
             <div class="gauge-target">+1 in staging · 1 draft</div>
           </div>
         </div>
-        <div class="col-3">
-          <div class="gauge-card">
-            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SLA UPTIME · 30D</span><span class="dot green"></span></div>
-            <div class="gauge-number good">99.97<span style="font-size:24px;">%</span></div>
-            <div class="gauge-target">Target 99.95% · 0.02% headroom</div>
-          </div>
-        </div>
-        <div class="col-3">
+        <div class="col-6">
           <div class="gauge-card">
             <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">EXPORTS · THIS WEEK</span><span class="dot green"></span></div>
             <div class="gauge-number">4</div>
             <div class="gauge-target">CSV 3 · JSON 1 · all audit-logged</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card">
-            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SYSTEM STATUS</span><span class="dot green"></span></div>
-            <div class="gauge-number good" style="font-size:36px;">Operational</div>
-            <div class="gauge-target">Last incident resolved 11:08 UTC · 1h 24m</div>
           </div>
         </div>
       </div>
@@ -1049,118 +1035,62 @@
         </div>
       </div>
 
-      <!-- 2-column: Subjects + Activity feed -->
-      <div class="row mb-3">
-        <div class="col-7">
-          <h2 class="h5 mb-2">Your Subjects</h2>
-          <div class="row-list">
-            <div class="row-card recommended">
-              <div class="row-num">1</div>
-              <div class="row-content">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="dot green"></span>
-                  <span class="row-title">E010: Foundations of Programming (Python)</span>
-                  <span class="badge badge-success">In production</span>
-                </div>
-                <div class="row-sub">Live · 1,284 active learners · last deployed 02 May 2026 · Claude Sonnet 4.5 · prompt v3</div>
-              </div>
-              <div class="row-actions">
-                <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
-              </div>
+      <h2 class="h5 mb-2">Your Subjects</h2>
+      <div class="row-list mb-3">
+        <div class="row-card recommended">
+          <div class="row-num">1</div>
+          <div class="row-content">
+            <div class="d-flex align-items-center gap-2">
+              <span class="dot green"></span>
+              <span class="row-title">E010: Foundations of Programming (Python)</span>
+              <span class="badge badge-success">In production</span>
             </div>
-            <div class="row-card">
-              <div class="row-num">2</div>
-              <div class="row-content">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="dot green"></span>
-                  <span class="row-title">E135: Object-Oriented Programming with Python</span>
-                  <span class="badge badge-success">In production</span>
-                </div>
-                <div class="row-sub">Live · 18 active learners · last deployed 06 May 2026 · Claude Sonnet 4.5 · prompt v1</div>
-              </div>
-              <div class="row-actions">
-                <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
-              </div>
-            </div>
-            <div class="row-card">
-              <div class="row-num">3</div>
-              <div class="row-content">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="dot amber"></span>
-                  <span class="row-title">E075: Intermediate Python &amp; Libraries</span>
-                  <span class="badge badge-warning">In staging</span>
-                </div>
-                <div class="row-sub">Awaiting acceptance · 0 active learners · last build 04 May 2026 · GPT-5</div>
-              </div>
-              <div class="row-actions">
-                <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
-              </div>
-            </div>
-            <div class="row-card">
-              <div class="row-num">4</div>
-              <div class="row-content">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="dot gray"></span>
-                  <span class="row-title">E120: Applied Data Structures (Python)</span>
-                  <span class="badge badge-gray">Draft</span>
-                </div>
-                <div class="row-sub">Configuration in progress · saved 06 May 2026 · model: not selected</div>
-              </div>
-              <div class="row-actions">
-                <button class="btn btn-outline-primary btn-sm">Resume <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
-              </div>
-            </div>
+            <div class="row-sub">Live · 1,284 active learners · last deployed 02 May 2026 · Claude Sonnet 4.5 · prompt v3</div>
+          </div>
+          <div class="row-actions">
+            <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
           </div>
         </div>
-        <div class="col-5">
-          <h2 class="h5 mb-2">Recent activity · last 24h</h2>
-          <div class="pgn__card">
-            <div class="pgn__card-section" style="padding: var(--pgn-spacing-2);">
-              <div class="row-list" style="gap:0;">
-                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
-                  <span class="dot green" style="margin-top:6px;"></span>
-                  <div style="flex:1;">
-                    <div><span class="text-muted small">11:08 UTC</span> · <strong>Service restored</strong></div>
-                    <div class="small text-muted">SC-ADD-06 · Anthropic primary back online · 0 sessions failed during 1h 24m fallback</div>
-                  </div>
-                </div>
-                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
-                  <span class="dot amber" style="margin-top:6px;"></span>
-                  <div style="flex:1;">
-                    <div><span class="text-muted small">09:43 UTC</span> · <strong>P1 ticket opened</strong></div>
-                    <div class="small text-muted">SC-ADD-06 · LLM provider degraded · auto-fallback engaged · JFT CSM acknowledged in 6 min</div>
-                  </div>
-                </div>
-                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
-                  <span class="dot blue" style="margin-top:6px;"></span>
-                  <div style="flex:1;">
-                    <div><span class="text-muted small">09:42 UTC</span> · <strong>Export complete</strong></div>
-                    <div class="small text-muted">SC-ADD-05 · <code>engagement-metrics-pdev-e010-2026-05-07.csv</code> · 1,284 rows · Audit ID xpz4</div>
-                  </div>
-                </div>
-                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
-                  <span class="dot blue" style="margin-top:6px;"></span>
-                  <div style="flex:1;">
-                    <div><span class="text-muted small">06 May · 14:30</span> · <strong>Subject deployed</strong></div>
-                    <div class="small text-muted">SC-ADD-02 · E135 went live · 5-step CI/CD in 2m 47s · prompt v1, Claude Sonnet 4.5</div>
-                  </div>
-                </div>
-                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;">
-                  <span class="dot green" style="margin-top:6px;"></span>
-                  <div style="flex:1;">
-                    <div><span class="text-muted small">06 May · 11:42</span> · <strong>Tenant settings updated</strong></div>
-                    <div class="small text-muted">Branding · custom domain DNS verified for <code>pdev.sdp.wgu.edu</code></div>
-                  </div>
-                </div>
-                <div class="d-flex gap-2 align-items-start" style="padding:10px 4px; font-size:13px;">
-                  <span class="dot blue" style="margin-top:6px;"></span>
-                  <div style="flex:1;">
-                    <div><span class="text-muted small">06 May · 06:00</span> · <strong>Compliance scan passed</strong></div>
-                    <div class="small text-muted">TLS 1.3 across 17 services · FERPA controls 6/6 ✓ · §10.7 + §10.1</div>
-                  </div>
-                </div>
-              </div>
+        <div class="row-card">
+          <div class="row-num">2</div>
+          <div class="row-content">
+            <div class="d-flex align-items-center gap-2">
+              <span class="dot green"></span>
+              <span class="row-title">E135: Object-Oriented Programming with Python</span>
+              <span class="badge badge-success">In production</span>
             </div>
+            <div class="row-sub">Live · 18 active learners · last deployed 06 May 2026 · Claude Sonnet 4.5 · prompt v1</div>
+          </div>
+          <div class="row-actions">
+            <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+          </div>
+        </div>
+        <div class="row-card">
+          <div class="row-num">3</div>
+          <div class="row-content">
+            <div class="d-flex align-items-center gap-2">
+              <span class="dot amber"></span>
+              <span class="row-title">E075: Intermediate Python &amp; Libraries</span>
+              <span class="badge badge-warning">In staging</span>
+            </div>
+            <div class="row-sub">Awaiting acceptance · 0 active learners · last build 04 May 2026 · GPT-5</div>
+          </div>
+          <div class="row-actions">
+            <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+          </div>
+        </div>
+        <div class="row-card">
+          <div class="row-num">4</div>
+          <div class="row-content">
+            <div class="d-flex align-items-center gap-2">
+              <span class="dot gray"></span>
+              <span class="row-title">E120: Applied Data Structures (Python)</span>
+              <span class="badge badge-gray">Draft</span>
+            </div>
+            <div class="row-sub">Configuration in progress · saved 06 May 2026 · model: not selected</div>
+          </div>
+          <div class="row-actions">
+            <button class="btn btn-outline-primary btn-sm">Resume <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
           </div>
         </div>
       </div>
@@ -1419,28 +1349,12 @@ Always cite the Learning Objective being assessed by ID.</div>
         </div>
       </div>
 
-      <!-- G9: Recent prompt versions (minimal indicator; no diff/rollback in v4.4) -->
-      <div class="ai-prompt-card history-card mt-4">
-        <div class="history-label"><span class="material-icons-outlined">history</span>Recent versions</div>
-        <div class="version-row">
-          <span class="v-tag v-current">v3 · live</span>
-          <span class="v-note">Added OOP-by-example addendum; tightened off-topic refusal language.</span>
-          <span class="v-author">Alice (Tenant Admin)</span>
-          <span class="v-date">07 May 2026 · 09:42</span>
-        </div>
-        <div class="version-row">
-          <span class="v-tag">v2</span>
-          <span class="v-note">Enabled Python sandbox tool; added LO citation requirement to OUTPUT.</span>
-          <span class="v-author">Sam (Editor)</span>
-          <span class="v-date">02 May 2026 · 14:18</span>
-        </div>
-        <div class="version-row">
-          <span class="v-tag">v1</span>
-          <span class="v-note">Initial baseline created from prototype v1 prompt template.</span>
-          <span class="v-author">Alice (Tenant Admin)</span>
-          <span class="v-date">28 Apr 2026 · 11:05</span>
-        </div>
-        <div class="history-footnote">Versions are recorded automatically each time "Deploy to Production" runs. v4.4 storyboard scope is read-only visibility only — diff view and rollback are deferred for JFT effort estimation.</div>
+      <!-- G9: minimal version indicator; full history UI deferred for JFT effort estimation -->
+      <div class="d-flex align-items-center gap-2 mt-3" style="font-size:13px; color: var(--pgn-color-gray-700);">
+        <span class="material-icons-outlined" style="font-size:16px; color: var(--pgn-color-gray-600);">history</span>
+        <span>Last edited <strong>07 May 2026 · 09:42</strong> · <code>v3</code> · Alice (Tenant Admin).</span>
+        <a href="#" onclick="event.preventDefault();" class="text-muted small" style="text-decoration: underline;">View history</a>
+        <span class="text-muted small" style="margin-left:auto;">Full diff &amp; rollback UI deferred for JFT effort estimation.</span>
       </div>
     </div>
   </main>

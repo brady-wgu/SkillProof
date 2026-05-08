@@ -6,6 +6,81 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.8 — 08 May 2026 — Overboard trim (3 Super Admin screens removed; Tenant Admin home + screen 5 trimmed)
+
+Brady ran a fresh contract-grounding audit and confirmed prior agents (myself included) had built features that weren't actually in the requirements main body. v4.8 removes the overboard items so the prototype reflects only what JFT contracted to deliver.
+
+### Removed — 3 Super Admin screens (added in v4.4 as inferred "gap fills")
+
+- **`super_admin/index.html` screen 9 (Third-Party Integrations).** OpenRouter / AWS / Datadog / Entra ID / GitHub / Slack deep-link cards. the requirements commits to "AI orchestration layer supporting multiple LLM providers" as **internal architecture**, not as a Super Admin-facing vendor-management UI. JFT's vendor management is operational ops, not a JFT deliverable. The original justification was a Brady in-conversation remark ("links to all the 3rd party tools that are setup, like AWS as well") — not a requirements commitment.
+- **`super_admin/index.html` screen 10 (Learner Remediation).** Cross-tenant per-learner score reset / force re-diagnostic / pause access with required-justification audit log. requirements commits to data export and audit logging, not data **modification**. Score reset crosses into FERPA territory (modifying education records). Not in v1.3 catalog or User Profile. Original justification was a Brady in-conversation remark ("resetting a user's score, that would be a Global Admin feature") — not contracted.
+- **`super_admin/index.html` screen 11 (Billing & Cost Centers).** Per-tenant cost-center allocation table + per-model spend split + budget alerts. §11.1 specifies what JFT bills WGU; it does not commit to a UI for WGU's **internal** cost-center allocation across PDev / SOB / SOH. That's WGU's accounting concern, not a JFT deliverable. Token-usage / API-spend tracking is contract-committed (already exists on screen 3); cross-tenant cost-center reconciliation isn't.
+
+`super_admin/index.html` returns to **8 screens** (matches the v1.3 SC-ADD-04 catalog narrative as originally authored).
+
+Side cleanup:
+- Super Admin screen 2 (portal home): removed the v4.4 second row of quick-link cards (Integrations / Learner Remediation / Billing / Audit Log). Kept the original 4-card row (Token Usage / Rate Limits / Compliance / Geo-Redundancy).
+- Super Admin meta-bar nav: removed buttons 09 / 10 / 11.
+- 6 PNG screenshots removed (3 light + 3 dark).
+
+### Trimmed — Tenant Admin Portal home (screen 2)
+
+The v4.7 hub redesign over-promised real-time platform-monitoring features that belong to Super Admin per the User Profile. v4.8 trims back to program-level scope:
+
+- **Removed** the "Recent activity" feed (right-column 6-event timeline). Implied real-time event aggregation across all 3 scenarios is not a contracted UI capability.
+- **Removed** the "System Status · Operational" KPI gauge. Per the User Profile, infrastructure status is Bob's (Super Admin) scope, not Alice's (Tenant Admin). Tenant Admin sees their own tenant's module status, not platform-wide health.
+- **Removed** the "SLA Uptime · 30D" KPI gauge. SLA reporting is contract-committed (SC-ADD-06 has it on screen 23) but surfacing it on the Tenant Admin home as a real-time metric isn't in the SC-ADD-02 narrative.
+- **Kept** the 2 program-level KPIs ("Subjects Live" + "Exports This Week") — these are grounded in Tenant Admin scope per §2.5.
+- **Kept** the 3-domain quick-launch row (Course Configuration / Data & APIs / System Status). Pure navigation; no functionality claim.
+- **Kept** the Subjects list (now full-width since the right column is gone).
+- **Kept** the "What's next?" cross-scenario CTA panels on screens 9 / 15 / 23 from v4.7 — pure UX integration, no functionality claim.
+
+### Trimmed — Tenant Admin screen 5 prompt-versions panel
+
+The v4.4 G9 "Recent versions" panel (3-row table + footnote) was based on a Brady in-conversation request for "minimal indication for JFT to push back if too hard." v4.8 takes that "minimal" framing more literally: collapsed to a single-line indicator showing "Last edited 07 May · v3 · Alice" with a "View history" link and a deferred-feature note. Same intent, much smaller surface.
+
+### Catalog updates
+
+`presentation.html` + `presentation_dark.html`:
+- Removed SC-ADD-04 step 9 / 10 / 11 entries.
+- SC-ADD-04 metadata: 11 → 8 screens; requirements refs trimmed to §6.4, §6.6, §9.5, §10.1, §10.4, §10.7 (dropped §2.4, §2.5 ambiguous, §9.13, §11.1).
+- Screen-map summary: 81 → 78 total.
+- Document Control table records the v4.8 trim with full rationale.
+- Footer bumped to Storyboard v4.8.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through v4.4 → v4.5 → v4.6 → v4.7 → v4.8)
+- 6 super_admin orphan PNGs removed; remaining 158 screenshots regenerated
+- All `goToScreen(N)` references valid (no broken nav)
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | Before v4.8 | After v4.8 |
+|---|---|---|
+| Total storyboard screens | 81 | **78** |
+| `super_admin/` | 11 | 8 |
+| `tenant_admin/` | 27 | 27 (screen 2 + screen 5 trimmed in place) |
+| `instructor/` | 9 | 9 |
+| `student/` | 34 | 34 (frozen) |
+| `lrps/` | 1 | 1 |
+| PNGs | 164 | 158 |
+
+### What's still kept that was added in v4.4
+
+These items were re-validated against requirements + scenarios and confirmed contract-grounded:
+- `tenant_admin/26` Instructor Roster (§2.5 instructors + §10.8 RBAC)
+- `tenant_admin/27` Subject Lifecycle (§2.5 module lifecycle + §10.4 audit logging)
+- `instructor/9` Learner Search (§7.10 + §7.12)
+- `instructor/3` heatmap export CTAs (§7.14)
+
+### Lesson learned
+
+In-conversation remarks during prototyping are NOT contract commitments. v4.4–v4.7 conflated the two; v4.8 corrects that. Future iterations should re-cite requirements main-body sections (with literal quotes ≤15 words) before proposing new screens — not "Brady mentioned X" remembered from chat.
+
+---
+
 ## v4.7 — 07 May 2026 — Tenant Admin polish pass (SC-ADD-02 / 05 / 06 unified experience)
 
 The three Tenant Admin scenarios had been stitched together by the meta-bar and a basic portal home. v4.7 turns them into a single polished Alice experience: a hub-style portal home that lights up across all three scenarios, plus cross-scenario "what's next?" CTAs at each scenario completion screen so the journey feels intentional instead of three separate demos.

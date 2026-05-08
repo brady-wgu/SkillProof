@@ -11,10 +11,10 @@ Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
     tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (27 + 27)
     instructor/screenshots/      + instructor/screenshots_dark/      (9 + 9)
-    super_admin/screenshots/     + super_admin/screenshots_dark/     (11 + 11)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (8 + 8)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 164 PNGs.
+Total: 158 PNGs.
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
@@ -47,7 +47,7 @@ PORTALS = [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8, 9]),  # 9 = v4.4 Learner Search
     ]},
     {"file": "super_admin/index.html", "scenarios": [
-        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]),  # 9-11 = v4.4 Integrations, Learner Remediation, Billing
+        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9-11; v4.8 removed them as overboard / not contract-grounded.
     ]},
     {"file": "lrps/index.html", "scenarios": [
         ("lrps", [None]),  # None = no goToScreen call, just capture as-is
