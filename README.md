@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.10-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.11-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -324,7 +324,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.10** — third overboard sweep. Four more fixes against SC-ADD-05 + SC-ADD-06: (1) Parquet format dropped from the export wizard (SOW §8.9 + v1.3 catalog say JSON / CSV only). (2) "Primary LLM (Anthropic)" / "Fallback (GPT-5)" generic-ized across SC-ADD-06 incident screens — SOW §6.1 treats vendors as equivalent under an LLM-agnostic orchestration layer; the contract doesn't commit to a primary vendor. The model picker (screen 6) still names vendors appropriately. (3) "7 years (FERPA default)" softened to "Per institutional policy" on Subject Lifecycle (the SOW doesn't specify 7 years). (4) Export wizard trimmed from 3 datasets to 1 — engagement metrics is the only dataset named in the v1.3 catalog. Score history + conversation transcripts framed as post-pilot roadmap. No screens removed (still 77); all in-place text edits.
+The latest release is **v4.11** — fourth overboard sweep. Pass 10 caught 2 items v4.10 missed: (1) "Claude Sonnet 4.5 (primary)" escaped the v4.10 vendor-name generic-ization on the SC-ADD-06 baseline screen 16 — fixed. (2) Eight remaining "7 years" retention claims (audit-log captions across Tenant Admin / Instructor / Super Admin) were declarative policy statements, not configured-value displays — softened to "per institutional policy (FERPA-aligned)." The "3-year inactive learner data" gauge on super_admin compliance is kept (matches SOW §10.2). No screens removed (still 77); all in-place text edits.
 
 ---
 

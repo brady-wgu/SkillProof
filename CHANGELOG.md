@@ -6,6 +6,59 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.11 — 08 May 2026 — Fourth overboard sweep (escaped vendor name + 7-year retention claims trimmed)
+
+Pass 10 (independent post-v4.10 audit) found 2 items v4.10 missed. v4.11 closes both. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — escaped vendor name on SC-ADD-06 baseline screen 16
+
+v4.10 generic-ized the SC-ADD-06 incident scenario (screens 17–23) but the **baseline** screen 16 ("All systems operational") still had "Claude Sonnet 4.5 (primary) · 99.99% past 24h · p50 latency 213 ms" in the Model Router operational status row. That contradicted the v4.10 LLM-agnostic stance.
+
+Site edited (`tenant_admin/index.html` line ~2111):
+- "Claude Sonnet 4.5 (primary) · 99.99% past 24h · p50 latency 213 ms" → "Primary LLM provider · 99.99% past 24h · p50 latency 213 ms"
+
+### Softened — all 7 "7 years" / "7 yr" retention mentions
+
+v4.10 softened the most prominent "7 years (FERPA default)" claim on Subject Lifecycle screen 27 but explicitly deferred 7 other sites with "if Pass 10 disagrees, fix in next cycle." Pass 10 disagreed.
+
+- **SOW §10.1:** "FERPA Compliance" — generic; does not specify 7 years.
+- **SOW §10.2 / answer row #10.2:** "default three years" for inactive learner data (a different scope).
+- **MSA §10c:** "no more than sixty (60) days after termination" for JFT's data-retention obligation.
+- **v1.3 catalog:** no mention of 7-year retention anywhere.
+
+The "7 years" claims across audit-log captions weren't configured-value displays — they were declarative policy statements ("for 7 years," "retention 7 years") that implied a JFT-side default. Trimmed all of them.
+
+Sites edited:
+- `tenant_admin/index.html` line ~967 (portal home hero): "All actions audit-logged for 7 years" → "All actions audit-logged per institutional retention policy"
+- `tenant_admin/index.html` line ~1105 (portal home footer): "Audit log retention: 7 years (FERPA)" → "Audit log retention: per institutional policy (FERPA-aligned)"
+- `tenant_admin/index.html` line ~1696 (Data & APIs landing audit row): "Logged for 7 years" → "Logged per institutional policy"
+- `tenant_admin/index.html` line ~2026 (export confirmation footer): "Logged for 7 years" → "Logged per institutional policy"
+- `instructor/index.html` line ~1401 (Audit Trail screen): "Logged immutably for 7 years per FERPA retention policy" → "Logged immutably per FERPA-aligned institutional retention policy"
+- `super_admin/index.html` line ~1267 (Compliance Report KPI gauge): "7 yr · Audit trail retention" → "Per policy · Audit trail retention" (FERPA-aligned caption added)
+- `super_admin/index.html` line ~1477 (Audit Log header): "FERPA-grade retention (7 years)" → "FERPA-aligned retention per institutional policy"
+- `super_admin/index.html` line ~1610 (Audit Log footer): "Retention: 7 years (FERPA)" → "Retention: per institutional policy (FERPA-aligned)"
+- `presentation.html` + `presentation_dark.html` SC-ADD-04 step 8 narrative: "Retention: 7 years (FERPA)" → "Retention: per institutional policy (FERPA-aligned)"
+- `presentation.html` + `presentation_dark.html` SC-ADD-02 step 13 (Subject Lifecycle) narrative: "FERPA-aligned 7-year retention dates" → "retention dates per institutional policy"
+
+Note: the "3 yr inactive learner data retention" gauge on `super_admin/index.html` Compliance Report (screen 6) is **kept** — that maps to SOW §10.2 "default three years" for inactive learner data, which IS contractually committed. Different scope from audit-log retention.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through v4.4 → v4.5 → v4.6 → v4.7 → v4.8 → v4.9 → v4.10 → v4.11)
+- `grep -i "7 years\|7-year\|7 yr"` in tracked deliverable HTML/MD → 0 hits in current state (CHANGELOG + Document Control historical references allowed)
+- `grep "Claude Sonnet 4.5\|Anthropic"` → only on model-picker / Subjects-list / rubric (vendor-picker contexts); 0 hits in SC-ADD-06 baseline + incident narrative
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.10 | v4.11 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| "7 years" / "7 yr" retention mentions | 8 | **0** |
+| Vendor names in SC-ADD-06 narrative | 1 escaped | **0** |
+
+---
+
 ## v4.10 — 08 May 2026 — Third overboard sweep (Parquet + LLM vendor naming + 7-year FERPA claim + 3 export datasets)
 
 After v4.9 Brady asked for another adversarial pass. Pass 9 found 4 more items not actually SOW-grounded. v4.10 closes them. **No screens removed** (still 77); all in-place text edits.
