@@ -6,6 +6,49 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.16 — 08 May 2026 — Ninth overboard sweep (lrps/README prose drift + JS comments + 5-day FERPA SLA + 47 operators)
+
+Pass 15 (post-v4.15 independent audit) found **1 Material + 4 Borderline** items. v4.16 closes the Material + 3 of 4 Borderline (the 4th — `4-hour RTO` — was Pass 15's "noted but not flagged" tail; left as-is, parallel to kept "99.95% / 99.97% uptime"). **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — `lrps/README.md` prose paragraph "three live SDP rows" survived v4.15
+
+v4.15 swept the count table (lines 26-27) but missed the prose paragraph at line 20 saying "three live SDP rows (Tenant Admin, Instructor, Super Admin)" — same enumeration error v4.15 fixed elsewhere. Updated to "four live SDP rows (Student, Tenant Admin, Instructor, Super Admin)."
+
+### Trimmed — JS code comments in `lrps/index.html` (consistency with v4.15)
+
+Two non-user-visible JS comments still said "three" — the agent flagged at borderline confidence. Cleaned for consistency:
+- Line 1113: "Make the three live SDP rows launch their portals" → "Make the four live SDP rows launch their portals"
+- Line 1123: "Theme toggle (matches the three SDP portals)" → "Theme toggle (matches the four SDP portals)"
+
+### Trimmed — fabricated "5-day SLA for correction requests" (FERPA control table)
+
+`super_admin/index.html:1300` claimed a 5-day SLA for FERPA correction requests. 34 CFR §99.10's regulatory window is 45 days; the 5-day claim was a fabricated JFT-side internal commitment with no SOW/catalog grounding. Same class as v4.10's "7 years (FERPA default)" trim. Softened to "correction requests handled per institutional policy (within the 45-day regulatory window)" — preserves the regulatory anchor (45 days), drops the invented JFT-side specific.
+
+### Trimmed — fabricated "47 JFT + WGU operators" (FERPA training gauge)
+
+`super_admin/index.html:1262` sub-text said "All 47 JFT + WGU operators current." 47 is invented headcount with no SOW/catalog grounding. Same class as v4.14's "1,247 sessions" trim. Softened to "All operators current per institutional policy."
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 13 consecutive releases)
+- `grep -i "three live SDP\|three SDP portals"` in deliverable → 0 hits (CHANGELOG meta-context allowed)
+- `grep "5-day SLA\|All 47"` in deliverable → 0 hits
+- All 4 Pass 15 findings (1 Material + 3 Borderline) verified clean
+- The 4th Pass 15 borderline item ("4-hour RTO" specific) explicitly left as-is — agent rated borderline-not-flagged; matches the contract-grounded pattern of "99.95% / 99.97% uptime" (specific SLA telemetry display)
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.15 | v4.16 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| `three live SDP` mentions | 3 | **0** |
+| `5-day SLA` fabricated specific | 1 | **0** |
+| `47 operators` fabricated specific | 1 | **0** |
+| Pass 15 Material findings | 1 | **0 expected on Pass 16** |
+
+---
+
 ## v4.15 — 08 May 2026 — Eighth overboard sweep (catalog/README leakage from v4.14 + 3-vs-4 LRPS row drift + {section_id} URL)
 
 Pass 14 (post-v4.14 independent audit) found **4 items** — three Material + one Borderline. Three of them are catalog/README sites that mirrored v4.14's storyboard fixes; the fourth is a 3-vs-4 internal contradiction that has been latent since the student row was added to LRPS as a live entry. v4.15 closes all 4. **No screens removed** (still 77); all in-place text edits.
