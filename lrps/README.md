@@ -17,7 +17,7 @@ Each persona's secret LRPS deep link is what gets them into their respective adm
 3. They click → deep link launches → the persona's portal opens with the SSO landing screen
 4. SSO completes, role is mapped, the persona is in their portal
 
-This LRPS landing models step 2. The three live SDP rows (Tenant Admin, Instructor, Super Admin) are clickable and deep-link straight into the corresponding portal HTML in this storyboard.
+This LRPS landing models step 2. The four live SDP rows (Student, Tenant Admin, Instructor, Super Admin) are clickable and deep-link straight into the corresponding portal HTML in this storyboard.
 
 ## What's in the table
 
