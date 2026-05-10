@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.17</title>
+  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.18</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -1301,7 +1301,17 @@
           <tr><td>Directory information opt-out</td><td>34 CFR §99.37</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>Honored at LTI launch · propagated through all telemetry</td></tr>
           <tr><td>Data retention &amp; deletion</td><td>34 CFR §99.32</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>3-year inactivity threshold · automated purge with audit entry</td></tr>
           <tr><td>Annual data breach response drill</td><td>WGU institutional policy</td><td><span class="badge badge-success">Verified</span></td><td>22 Jan 2026</td><td>Q1 tabletop completed · next drill 22 Jul 2026</td></tr>
-          <tr><td>Staff FERPA training (annual)</td><td>WGU institutional policy</td><td><span class="badge badge-success">100% current</span></td><td>30 Apr 2026</td><td>Tracked per institutional policy · auto-suspended access after 365 days of inactivity</td></tr>
+          <tr><td>Staff FERPA training (annual)</td><td>WGU institutional policy + the requirements #10.3</td><td><span class="badge badge-success">100% current</span></td><td>30 Apr 2026</td><td>Tracked per institutional policy · auto-suspended access after 365 days of inactivity</td></tr>
+          <tr><td>SOC 2 Type II posture</td><td>the requirements #10.6</td><td><span class="badge badge-success">Inherited (cloud provider)</span></td><td>Quarterly review</td><td>Hosted on SOC 2 / ISO-certified cloud; JFT SOC 2 readiness in progress per §16.5 #10.6</td></tr>
+          <tr><td>ISO 27001 alignment</td><td>the requirements #10.13</td><td><span class="badge badge-success">Aligned</span></td><td>Annual review</td><td>Controls aligned with ISO 27001; cloud-provider certification inherited per §16.5 #10.13</td></tr>
+          <tr><td>Zero-trust authorization model</td><td>the requirements #10.14</td><td><span class="badge badge-success">Enforced</span></td><td>07 May 2026</td><td>Every service call requires authentication, authorization, and encryption per §16.5 #10.14</td></tr>
+          <tr><td>GDPR controls (international learners)</td><td>the requirements #10.12</td><td><span class="badge badge-info">Activated on demand</span></td><td>Quarterly review</td><td>Lawful basis tracking, consent, data subject rights — engaged when international learners are in scope per §16.5 #10.12</td></tr>
+          <tr><td>Penetration testing (annual minimum)</td><td>the requirements #10.10</td><td><span class="badge badge-success">Scheduled</span></td><td>Last: 14 Feb 2026 · Next: 14 Feb 2027</td><td>Independent third-party pentest per §16.5 #10.10; high findings remediated within agreed window</td></tr>
+          <tr><td>Encryption at rest (AES-256)</td><td>the requirements #10.16</td><td><span class="badge badge-success">Enforced</span></td><td>07 May 2026</td><td>AES-256 for DBs, object storage, and backups · cloud KMS-managed keys with regular rotation per §16.5 #10.16</td></tr>
+          <tr><td>MFA for privileged accounts</td><td>the requirements #10.18</td><td><span class="badge badge-success">100% adoption</span></td><td>07 May 2026</td><td>TOTP or hardware keys required for cloud consoles, code repos, production access · WGU SSO extends to institutional users per §16.5 #10.18</td></tr>
+          <tr><td>Threat detection / SIEM</td><td>the requirements #10.15</td><td><span class="badge badge-success">24/7</span></td><td>07 May 2026</td><td>Cloud-native threat detection + SIEM correlation routes anomalies to 24/7 security response per §16.5 #10.15</td></tr>
+          <tr><td>Vulnerability scanning + 48-hr critical patch SLA</td><td>the requirements #10.9 + #10.19</td><td><span class="badge badge-success">Active</span></td><td>Per-release scan</td><td>Automated scans on every release · critical findings remediated within 48 hours per §16.5 #10.9</td></tr>
+          <tr><td>Business Continuity &amp; DR (RTO ≤ 4hr, RPO ≤ 60min)</td><td>the requirements #10.20 + §16.4 #9.4</td><td><span class="badge badge-success">Validated</span></td><td>Last drill: 22 Apr 2026</td><td>Multi-zone redundancy, automated backups, periodic recovery drills · 100% successful recovery within RTO/RPO targets</td></tr>
         </tbody>
       </table>
 
@@ -1620,7 +1630,7 @@
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP Super Admin Portal Storyboard v4.17 — Western Governors University</p>
+  <p>JFT SDP Super Admin Portal Storyboard v4.18 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">

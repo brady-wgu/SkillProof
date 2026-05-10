@@ -6,6 +6,77 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.18 — 10 May 2026 — requirements-anchored sweep (restore over-trims + add missing requirements per the literal signed requirements MD)
+
+Brady provided the **literal signed contract/requirements** (`JFT_WGU_MSA_SOW_signed_05MAY2026.md`, 869 lines, signed 03 MAR 2026 by David [name] / Amit Kumar [name]). Prior adversarial passes 11–16 worked from CHANGELOG-derived paraphrases of the requirements rather than the contract itself. Reading the actual requirements revealed **both over-trims and gaps**: items I had removed that are explicitly committed in requirements Appendix A, plus contract-grounded features the storyboard never depicted. v4.18 is a single batched release that restores wrongly-trimmed items, adds missing requirements-required items, and keeps in place the trims that are genuinely ungrounded. **No screens removed** (still 77); all in-place text edits + small section additions within existing screens.
+
+### Restored — items v4.13/v4.14 incorrectly trimmed (in requirements)
+
+| Item | Where trimmed | requirements citation | Restoration |
+|---|---|---|---|
+| **Jira ticketing** | v4.14 | the requirements ("Issues will be tracked in **Jira**") + §9.4 ("**Jira / Ticketing System**") + §13 ("via Jira or email") | Restored "Open Jira ticket" button on tenant_admin screen 18; "Log a P1 incident in Jira" heading on screen 19; Jira mention in catalog SC-ADD-06 workflow narrative |
+| **Anthropic Claude Sonnet 4.5 in instructor audit log** | v4.13 | the requirements #6.1 explicitly names "Claude (Anthropic), ChatGPT (OpenAI), Gemini (Google)" as required LLM providers; §5 Tech Stack names OpenAI/Anthropic/Google Vertex AI | Restored vendor-named `model.invoke` row in SC-ADD-03 Audit Trail (audit-log accuracy of which specific model handled the inference is appropriate). "Guardrail svc" and "Scoring engine" stay generic (named internal architecture not in requirements) |
+| **PDF + XML export formats** | v4.10 | the requirements #7.14 ("CSV, **PDF**, or JSON") + §16.3 #8.9 ("JSON, CSV, **XML**") | Restored 4-format tab switcher (CSV / JSON / PDF / XML) on export wizard screen 14; Quick-exports row on screen 10 now lists "JSON · CSV · PDF · XML" |
+
+### Added — requirements requirements the storyboard never depicted
+
+| Feature | requirements citation | Where added |
+|---|---|---|
+| **Real-time webhooks** | §16.3 #8.12 + §3.19 | Third entry card on tenant_admin Data & APIs landing (screen 10) — "HTTPS POST · signed payloads · exponential backoff retries · per-tenant endpoints · session.start / submission / score.update events" |
+| **GraphQL API** | §16.1 #6.28 + §16.3 #8.13 | "REST / GraphQL" tab switcher on API Console (screen 11) + "REST + GraphQL APIs" framing on Data & APIs landing card |
+| **A/B testing for LLM configs** | §16.1 #6.8 | Badge below the prompt textarea on AI Prompt Config (screen 5): "A/B test variants enabled · §16.1 #6.8" |
+| **LaTeX input/output** | §16.1 #6.12 | Badge on screen 5: "LaTeX rendering · §16.1 #6.12" |
+| **Default locale / i18n** | §16.2 #7.6 + §3.7 | New "Default locale" dropdown on Branding & Customization (screen 24) — "English (US) — pilot" selected, with English (UK) / Spanish (US) / French (CA) / German available |
+| **PWA installability** | §16.2 #7.7 | Badge on Branding (screen 24): "Installable PWA enabled" with help text |
+| **SOC 2 Type II posture** | §16.5 #10.6 | New row in super_admin Compliance Report FERPA control table (screen 6) |
+| **ISO 27001 alignment** | §16.5 #10.13 | New row in compliance table |
+| **Zero-trust authorization** | §16.5 #10.14 | New row in compliance table |
+| **GDPR controls** | §16.5 #10.12 | New row in compliance table |
+| **Penetration testing (annual)** | §16.5 #10.10 | New row in compliance table with last/next dates |
+| **AES-256 encryption at rest** | §16.5 #10.16 | New row in compliance table |
+| **MFA for privileged accounts** | §16.5 #10.18 | New row in compliance table (100% adoption) |
+| **Threat detection / SIEM** | §16.5 #10.15 | New row in compliance table (24/7 monitoring per §16.4 #9.1) |
+| **Vulnerability scanning + 48-hr critical patch SLA** | §16.5 #10.9 + #10.19 | New row in compliance table |
+| **BC/DR with RTO ≤ 4hr, RPO ≤ 60min** | §16.5 #10.20 + §16.4 #9.4 | New row in compliance table referencing the 22 Apr 2026 last-drill date |
+
+### Kept trimmed — items still genuinely not in requirements
+
+- AWS-specific zone IDs (`us-east-1` / `us-west-2` / `eu-west-1`) — the requirements says "AWS / GCP / Azure (finalize with WGU)"; specific zone IDs remain implementation detail
+- `WGU Policy 8.2` / `WGU Policy 8.4` / `WGU Learning Hub` — not in requirements
+- "1,247 sessions" / "47 operators" / "14 endpoints" / "600 req/hr" — fabricated specifics, not in requirements
+- "7 years" FERPA retention — the requirements says "default three years" for inactive learner data
+- TLS cipher suite names (TLS_AES_256_GCM_SHA384 etc.) — implementation detail beyond §10.7 "TLS 1.3"
+- Named internal services (Guardrail svc, Scoring engine, Vector store, Stepper coordinator, etc.) — implementation detail
+- "JFT 24/7 [Operations | Proactive Monitoring]" as branded service-name — keep "24/7 Proactive Monitoring" as a capability descriptor (matches §9.13 + §16.4 #9.1); drop "JFT 24/7" prefix-branding
+
+### requirements tension resolution — 24/7 vs business hours
+
+The requirements contains a tension between §9.1 ("WGU's standard business hours" support coverage) + §11 pricing on "Standard Business Hours" and §16.4 #9.1 ("24/7 system monitoring") + #9.10 ("24/7 technical support with <2 hour response"). Storyboard treats this as two layers: **automated monitoring is 24/7** (per §9.13 + §16.4 #9.1) while **human support coverage is business hours with 2-hour P1 response** (per §9.1 + §9.5). Both contractual commitments are honored without conflation.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 15 consecutive releases)
+- `grep -i "Jira"` returns hits in tenant_admin/index.html (screens 18 + 19) + catalog SC-ADD-06 workflow ✓
+- `grep -i "GraphQL\|webhook\|LaTeX\|SOC 2\|ISO 27001\|GDPR\|zero-trust\|AES-256\|penetration"` returns hits in expected locations ✓
+- `grep -i "us-east-1\|WGU Policy 8\|WGU Learning Hub\|1,247\|14 endpoints"` returns **0 hits** in deliverable (CHANGELOG meta-context allowed)
+- All 13 requirements Appendix A feature gaps documented in plan are now depicted
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.17 | v4.18 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| Jira mentions | 0 | **restored** (3+ sites) |
+| GraphQL depicted | No | **Yes** (1 tab + 1 card mention) |
+| Webhooks depicted | No | **Yes** (1 card on Data & APIs landing) |
+| LaTeX / A/B test / i18n / PWA depicted | No | **Yes** (badges on screens 5 + 24) |
+| SOC 2 / ISO 27001 / GDPR / zero-trust / pentest / AES-256 / MFA / SIEM / BC-DR / vuln-scan rows | 0 | **10 new rows** added to super_admin Compliance Report FERPA control table |
+| Export formats depicted | 2 (JSON, CSV) | **4** (JSON, CSV, PDF, XML — §16.2 #7.14 + §16.3 #8.9) |
+| Vendor-named `model.invoke` in audit log | No | **Yes** (Anthropic Claude Sonnet 4.5 — §16.1 #6.1 explicitly names) |
+
+---
+
 ## v4.17 — 08 May 2026 — Tenth overboard sweep (WGU Learning Hub + FERPA-grade leftover + JFT 24/7 service-naming)
 
 Pass 16 (post-v4.16 independent audit) found **1 Material + 2 Borderline** items. v4.17 closes all 3. **No screens removed** (still 77); all in-place text edits.
