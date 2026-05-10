@@ -6,6 +6,37 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.19 — 10 May 2026 — requirements-anchored sweep follow-up (hub-card stale wording + SAML 2.0 SP citation)
+
+Pass 18 (post-v4.18 audit using the literal requirements MD as authority source) found **1 Material + 1 Borderline** items. v4.19 closes both. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — stale 2-format export wording on tenant_admin Hub card
+
+`tenant_admin/index.html:1015` (Hub card on screen 2 quick-launch grid for SC-ADD-05 Data Portability) described the surface as "Query learner records via the REST API console (OAuth 2.0, per-tenant rate limit) or run a one-click CSV / JSON export." v4.18 restored PDF + XML formats on screens 10 and 14 + the catalog, but missed updating this Hub-card description. Refreshed to: "Query learner records via the REST or GraphQL API console (OAuth 2.0, per-tenant rate limit), run a one-click multi-format export (JSON · CSV · PDF · XML per §16.2 #7.14 + §16.3 #8.9), or stream events via real-time webhooks (§16.3 #8.12)."
+
+### Added — SAML 2.0 SP citation on super_admin SSO landing (§16.3 #8.2)
+
+The storyboard previously depicted "WGU SSO authentication complete · MFA verified" on the super_admin screen 1 Privileged session landing without naming the SAML protocol. the requirements #8.2 commits JFT to "SAML single sign-on (SSO) integration" as a SAML service provider with WGU's IdP. Convention established in v4.18 (requirements citations on §16.3 #8.10 OAuth, #8.12 webhooks, #8.13 GraphQL) supports adding the §16.3 #8.2 anchor here. Updated to: "WGU SSO authentication complete · SAML 2.0 SP (§16.3 #8.2) · MFA verified (§16.5 #10.18)."
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 16 consecutive releases)
+- `grep -i "SAML"` in deliverable returns at least 1 hit on super_admin screen 1
+- `grep -i "CSV / JSON export"` returns 0 hits in deliverable (Hub card refreshed)
+- Pass 18 Material + Borderline findings both verified clean
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.18 | v4.19 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| Hub-card stale format wording | 1 | **0** |
+| SAML 2.0 SP citation depicted | 0 | **1** |
+| Pass 18 findings | 2 | **0 expected on Pass 19** |
+
+---
+
 ## v4.18 — 10 May 2026 — requirements-anchored sweep (restore over-trims + add missing requirements per the literal signed requirements MD)
 
 Brady provided the **literal signed contract/requirements** (`JFT_WGU_MSA_SOW_signed_05MAY2026.md`, 869 lines, signed 03 MAR 2026 by David [name] / Amit Kumar [name]). Prior adversarial passes 11–16 worked from CHANGELOG-derived paraphrases of the requirements rather than the contract itself. Reading the actual requirements revealed **both over-trims and gaps**: items I had removed that are explicitly committed in requirements Appendix A, plus contract-grounded features the storyboard never depicted. v4.18 is a single batched release that restores wrongly-trimmed items, adds missing requirements-required items, and keeps in place the trims that are genuinely ungrounded. **No screens removed** (still 77); all in-place text edits + small section additions within existing screens.
