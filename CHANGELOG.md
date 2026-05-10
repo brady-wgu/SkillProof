@@ -6,6 +6,48 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.17 — 08 May 2026 — Tenth overboard sweep (WGU Learning Hub + FERPA-grade leftover + JFT 24/7 service-naming)
+
+Pass 16 (post-v4.16 independent audit) found **1 Material + 2 Borderline** items. v4.17 closes all 3. **No screens removed** (still 77); all in-place text edits.
+
+### Trimmed — fabricated `WGU Learning Hub` product name
+
+`super_admin/index.html:1304` (FERPA control table sub-text): "Tracked in WGU Learning Hub · auto-suspended access if > 365 days." "WGU Learning Hub" is invented WGU-internal product naming with no SOW or catalog grounding — same class as v4.14's trimmed `WGU Policy 8.x` and v4.13's trimmed named internal services. Softened to "Tracked per institutional policy · auto-suspended access after 365 days of inactivity."
+
+### Trimmed — `FERPA-grade retention` leftover
+
+`super_admin/index.html:727` (Privileged session alert on screen 1): "All actions in this portal are logged to the cross-tenant audit trail with FERPA-grade retention." v4.11 swept "FERPA-grade retention (7 years)" elsewhere in this file (line ~1477) but missed this site. There is no formal "FERPA-grade" classification — the rest of the codebase consistently uses "FERPA-aligned retention per institutional policy." Softened here to match.
+
+### Trimmed — `JFT 24/7` service-naming prefix (4 sites in tenant_admin)
+
+The catalog narrative on `presentation.html:771` correctly describes the capability as "24/7 Proactive Monitoring detects the failure" (capability descriptor, no JFT prefix). But four storyboard sites used "JFT 24/7 [Proactive Monitoring | monitoring | Operations]" — branding it as a named JFT service. Same class as v4.13's "Guardrail svc / Scoring engine" trim (named internal services beyond SOW grounding). Generic-ized to drop the "24/7" service-naming while keeping the §9.13 monitoring + §9.5 P1 SLA contract grounding:
+
+- `tenant_admin/index.html:1028` (screen 2 hub caption): "Live system health, JFT 24/7 monitoring, ..." → "Live system health, JFT Proactive Monitoring (§9.13), ..."
+- `tenant_admin/index.html:2071` (screen 16 baseline): "JFT 24/7 Proactive Monitoring shows nominal" → "JFT Proactive Monitoring (§9.13) shows nominal"
+- `tenant_admin/index.html:2367` (screen 19 ticket description textarea): "JFT 24/7 Proactive Monitoring detected" → "JFT Proactive Monitoring (per §9.13) detected"
+- `tenant_admin/index.html:2414` (screen 20 ticket confirmation): "Acknowledged by JFT 24/7 Operations" → "Acknowledged by JFT Support per §9.5" (also closes a CSM-vs-Support SLA ownership conflation that v4.9 fixed elsewhere)
+
+The catalog narrative line 771 retains "24/7 Proactive Monitoring" (capability descriptor matching v1.3 catalog text); only the JFT-prefixed service-naming was the leakage.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 14 consecutive releases)
+- `grep -i "WGU Learning Hub|FERPA-grade|JFT 24/7|24/7 Operations"` in deliverable → 0 hits (CHANGELOG meta-context allowed)
+- All 3 Pass 16 findings (1 Material + 2 Borderline) verified clean
+- Forbidden-term sweep clean
+
+### Numbers
+
+| | v4.16 | v4.17 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| `WGU Learning Hub` mentions | 1 | **0** |
+| `FERPA-grade` leftover | 1 | **0** |
+| `JFT 24/7` service-naming sites | 4 | **0** |
+| Pass 16 findings | 3 | **0 expected on Pass 17** |
+
+---
+
 ## v4.16 — 08 May 2026 — Ninth overboard sweep (lrps/README prose drift + JS comments + 5-day FERPA SLA + 47 operators)
 
 Pass 15 (post-v4.15 independent audit) found **1 Material + 4 Borderline** items. v4.16 closes the Material + 3 of 4 Borderline (the 4th — `4-hour RTO` — was Pass 15's "noted but not flagged" tail; left as-is, parallel to kept "99.95% / 99.97% uptime"). **No screens removed** (still 77); all in-place text edits.
