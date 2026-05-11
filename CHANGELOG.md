@@ -6,6 +6,121 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.28 — 11 May 2026 — Instructor metrics retargeted + new super_admin External Tooling screen (closes deferred JFT items J / K / L / M)
+
+Brady's 11 May direction closed 4 deferred decision points from yesterday's JFT meeting that had been parked under the "Tenant Admin first" directive. v4.28 ships them in one release.
+
+> **J**: "Display the metrics that are most useful to the instructor. Remove any 'total time on site' metrics, but focus on things that show where students are having problems so they can be resolved."
+>
+> **K**: "Let's mimic the AWS console and have links to these 3rd party resources on a page for the admin to click to. I don't want to duplicate effort here, just illustrate that some things will be on this page, but other things will be on 3rd party dashboards, such as AWS specifically."
+>
+> **L & M**: "This is a global setting right now. Unless there is a requirement for this being configurable per-course, let's stick with the global setting perspective for this. I do think some of these options are in the 3rd party tools as well, such as OpenRouter.ai, AWS, Redis, and the other tools being leveraged."
+>
+> — Brady, 11 May 2026
+
+### J — Instructor metrics retargeted to struggle / intervention indicators
+
+All 4 in-place edits on existing `instructor/index.html` screens. No new screens. Pattern: strip time-on-site metric → replace with metric that tells the instructor *where to focus the intervention*.
+
+| Screen | Removed | Added |
+|---|---|---|
+| **Screen 5** Sally profile card | `Total time: 2h 22m` row | `Stuck on: **Lists & comprehensions** (LO 3.1)` row + `LO misses (last 9 sessions): 14` badge |
+| **Screen 6** Conversation log table | `Duration` column (e.g. "18m 12s") | `Outcome` column with semantic badges: `LO miss × N` (danger) / `Stuck (no progress)` (warning) / `Partial progress` (warning) / `Progress` (info) / `Baseline` (gray) |
+| **Screen 7** Session 09 transcript eyebrow | `· 18m 12s ·` from "Session 09 · 06 May 2026 · 18m 12s · Lists & comprehensions" | `· 5 AI feedback panels · 3 LO misses` |
+| **Screen 8** Audit Trail KPI strip | `18m 12s Session length` stat | Two struggle stats: `3 LO misses` (danger color) + `5 AI escalations` (warning color); kept the `0 Events dropped` + `100% Capture integrity` integrity stats |
+
+Instructor screen count unchanged at 8. The Audit Trail still has its FERPA-integrity job (event count, dropped events, capture integrity) — Brady didn't ask to gut that, just to add struggle signal where there used to be a time metric.
+
+### K — New super_admin Screen 10: External Tooling & Integrations
+
+Brady's framing: "mimic the AWS console" + "I don't want to duplicate effort here". The new screen is a hub page that points the Global Admin at the 3rd party dashboards where the actual control surface lives.
+
+**Layout**:
+- Breadcrumb: Super Admin Portal → External Tooling
+- Eyebrow: "Super Admin"
+- Title: "External Tooling & Integrations"
+- Section: **External dashboards** — 2-row grid of 3 col-4 cards each (6 cards total)
+- Section: **Global configuration** — table of 4 settings + where they're enforced
+
+**6 dashboard cards** (each: icon + status pill + tool name + 1-line description + "Open dashboard ↗" link):
+
+| Card | Status pill | What lives there |
+|---|---|---|
+| AWS Console | All services healthy | Infrastructure · RDS · S3 · IAM · networking |
+| OpenRouter.ai | Primary + 2 fallback | LLM provider routing · fallback chains |
+| Redis Admin | Cache hit 87% | Token cache · session state · rate-limit counters |
+| Grafana / Datadog | All dashboards green | Observability · P50/P95 latency · error rates |
+| JFT Support (Jira) | 3 P3 open | Tickets · P1 SLA tracking |
+| GitHub | main passing | Code repos · CI/CD pipelines |
+
+All link-out buttons use `href="#"` with `onclick="event.preventDefault();"` for the storyboard — real URLs wired up at build time.
+
+### L & M — Global configuration surfaced (not per-course)
+
+Brady confirmed both should stay **global settings**, not configurable per-course. Some values are enforced by 3rd party tools (Redis, OpenRouter, AWS) — surfaced on the new Screen 10 as a table that shows *what the value is, what enforces it, and where to change it*.
+
+| Setting | Value | Enforced by | Notes |
+|---|---|---|---|
+| Student input character limit | 5,000 chars | Student UI input layer (SDP) | Global setting; not configurable per course |
+| LLM token cap per session | 50,000 tokens | Redis Admin | Cached + enforced at Redis |
+| Default LLM provider chain | Primary + 2 fallback | OpenRouter.ai | Per-tenant model selection in Content Creator Portal |
+| Storage retention | Per institutional policy | AWS Console | FERPA-aligned |
+
+This pattern resolves L+M without inventing in-portal config UI for things that already have a dashboard elsewhere.
+
+### Super Admin portal home (Screen 2) — 6th quick-link card
+
+Added a 6th col-3 quick-link card pointing to Screen 10 (External Tooling). Icon: `open_in_new`. Description: "AWS · OpenRouter · Redis · Grafana · Jira · GitHub". Layout wraps cleanly to 4+2.
+
+### Counts
+
+| | Before v4.28 | After v4.28 |
+|---|---|---|
+| Storyboard total | 74 | **75** |
+| `super_admin/` | 9 | **10** (Screen 10 added) |
+| `instructor/` | 8 | 8 (in-place edits only) |
+| `tenant_admin/` | 23 | 23 |
+| `student/` | 34 | 34 (frozen) |
+| `lrps/` | 1 | 1 |
+| PNGs | 150 | **152** (super_admin gains 1 light + 1 dark) |
+
+### Catalog stale-label cleanup (housekeeping)
+
+While updating the SC-ADD-04 step list, I noticed pre-existing numbering bugs left over from the v4.4 → v4.8 trim that removed three over-added screens (Third-Party Integrations / Learner Remediation / Billing & Cost Centers):
+
+- "Step 10 / Screen 10" was Geo-redundancy (actually screen 7 per file name `sc-add-04_step07_screen07.png`)
+- "Step 11 / Screen 11" was Audit log (actually screen 8 per file name `sc-add-04_step08_screen08.png`)
+
+Corrected to "Step 7 / Screen 7" and "Step 8 / Screen 8" in both catalogs to match the file names + alt text + super_admin index sectioning. My new Screen 10 (External Tooling) now occupies the correct slot.
+
+### Files touched
+
+- `instructor/index.html` — Screens 5, 6, 7, 8 metric retargeting
+- `super_admin/index.html` — added Screen 10 (~140 lines) + Screen 2 6th quick-link card + meta-bar button 10 + `TOTAL_SCREENS = 10` + version stamps
+- `index.html` (root) — portal-card description + hero "Screens" stat 74 → 75 + version stamp
+- `presentation.html` + `presentation_dark.html` — added SC-ADD-04 step 10 entry + fixed stale step 10/11 → 7/8 labels + screen-map row update + Doc Control v4.28 row (+ v4.27 marked Superseded) + hero "Screens" stat 73 → 74 + version stamps
+- `README.md` — version badge 4.27 → 4.28 + screens badge 74 → 75
+- `CHANGELOG.md` — this entry
+- `capture_screens.py` — super_admin scenarios list `[1..9]` → `[1..10]` + docstring counts 150 → 152
+
+### What did NOT change
+
+- `student/index.html` remains frozen — **26th consecutive release** with `git diff --stat` returning 0 lines
+- `tenant_admin/index.html` content unchanged (only the title version stamp)
+- `lrps/index.html` content unchanged (only the title + footer version stamps)
+
+### Verification
+
+1. `git diff --stat student/index.html` returns 0 lines
+2. `super_admin/index.html` `TOTAL_SCREENS = 10`
+3. Storyboard total = 75 (74 + 1)
+4. Instructor portal: no "Total time" / "Duration" / "Session length" time-on-site metrics remain — replaced everywhere by struggle/intervention indicators
+5. Super Admin Screen 10 has 6 external-tool cards + Global Configuration table visible
+6. SC-ADD-04 step numbering in both catalogs is now sequential 1–10 (was 1, 2, 3, 4, 5, 6, 10, 11, 9 before — stale)
+7. Doc Control: v4.28 row Current, v4.27 row Superseded in both catalogs
+
+---
+
 ## v4.27 — 11 May 2026 — User Management role taxonomy expanded to 4 tiers (Student → Instructor → Tenant Admin → Global Admin)
 
 v4.25 built `super_admin/index.html` Screen 9 (User Management) per Mike's feedback with a 3-tier hierarchy: **User → Tenant Admin → Global Admin**. Brady reframed the role model on 11 May to explicitly call out the 4 storyboard personas as the starting tiers: **Student → Instructor → Tenant Admin → Global Admin**. v4.27 brings the screen into agreement.
