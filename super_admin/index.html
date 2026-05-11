@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.24</title>
+  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.25</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -865,6 +865,15 @@
             </div>
           </div>
         </div>
+        <div class="col-3">
+          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(9)">
+            <div class="pgn__card-section">
+              <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">manage_accounts</span>
+              <h3 class="h5 mt-2 mb-1">User Management</h3>
+              <p class="small text-muted">Upgrade users to Tenant or Global Admin</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -1610,11 +1619,235 @@
 </section>
 
 
+<!-- Screen 9: User Management (Global Admin role upgrade) — v4.25 per Mike-feedback reshape -->
+<section class="screen" id="screen-9" aria-labelledby="s9-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <span class="navbar-chip">Super Admin Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-9">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Super Admin Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>User Management</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">manage_accounts</span>Global Admin</span>
+      <h1 id="s9-heading">User Management</h1>
+
+      <div class="row mb-3">
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="text-muted small">TOTAL USERS</div>
+            <div class="gauge-number">187</div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="text-muted small">TENANT ADMINS</div>
+            <div class="gauge-number">23</div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="text-muted small">GLOBAL ADMINS</div>
+            <div class="gauge-number">2</div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="text-muted small">PENDING UPGRADES</div>
+            <div class="gauge-number">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-warning mb-3">
+        <span class="material-icons-outlined">warning_amber</span>
+        <div><strong>Minimum 2 Global Admins required.</strong></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-8">
+          <div class="pgn__card pgn__card-featured">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="eyebrow"><span class="material-icons-outlined">people</span>All users</span>
+                <div class="d-flex gap-2 align-items-center">
+                  <input class="form-control form-control-sm" type="text" placeholder="Search by name, email, tenant…" style="width: 280px; height: 32px; font-size: 13px;">
+                </div>
+              </div>
+              <table class="pgn__data-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Tenant</th>
+                    <th>Role</th>
+                    <th>Last active</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">B</div>
+                        <div>
+                          <div class="text-strong">Bob (you)</div>
+                          <div class="micro text-muted">bob.taylor@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-muted small">— (cross-tenant)</td>
+                    <td><span class="badge badge-brand">Global Admin</span></td>
+                    <td>Now</td>
+                    <td class="text-muted small">Cannot downgrade self</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">J</div>
+                        <div>
+                          <div class="text-strong">Jordan</div>
+                          <div class="micro text-muted">jordan.lin@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-muted small">— (cross-tenant)</td>
+                    <td><span class="badge badge-brand">Global Admin</span></td>
+                    <td>2 hours ago</td>
+                    <td><button class="btn btn-tertiary btn-sm" disabled>Downgrade (blocks min 2)</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">A</div>
+                        <div>
+                          <div class="text-strong">Alice</div>
+                          <div class="micro text-muted">alice.morgan@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>PDev</td>
+                    <td><span class="badge badge-info">Tenant Admin</span></td>
+                    <td>15 min ago</td>
+                    <td>
+                      <button class="btn btn-outline-primary btn-sm">Upgrade to Global</button>
+                      <button class="btn btn-tertiary btn-sm">Downgrade</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">M</div>
+                        <div>
+                          <div class="text-strong">Mike</div>
+                          <div class="micro text-muted">mike.hassett@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>School of Business</td>
+                    <td><span class="badge badge-info">Tenant Admin</span></td>
+                    <td>Yesterday</td>
+                    <td>
+                      <button class="btn btn-outline-primary btn-sm">Upgrade to Global</button>
+                      <button class="btn btn-tertiary btn-sm">Downgrade</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">D</div>
+                        <div>
+                          <div class="text-strong">Devon</div>
+                          <div class="micro text-muted">devon.park@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>PDev</td>
+                    <td><span class="badge badge-gray">User</span></td>
+                    <td>3 days ago</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm">Upgrade to Tenant Admin</button>
+                      <button class="btn btn-outline-primary btn-sm">Upgrade to Global</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">P</div>
+                        <div>
+                          <div class="text-strong">Priya</div>
+                          <div class="micro text-muted">priya.shah@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>School of Health</td>
+                    <td><span class="badge badge-gray">User</span></td>
+                    <td>1 week ago</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm">Upgrade to Tenant Admin</button>
+                      <button class="btn btn-outline-primary btn-sm">Upgrade to Global</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">T</div>
+                        <div>
+                          <div class="text-strong">Teagan</div>
+                          <div class="micro text-muted">teagan.rao@wgu.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>PDev</td>
+                    <td><span class="badge badge-gray">User</span></td>
+                    <td>2 weeks ago</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm">Upgrade to Tenant Admin</button>
+                      <button class="btn btn-outline-primary btn-sm">Upgrade to Global</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between align-items-center mt-2 small text-muted">
+                <span>Showing 7 of 187 users</span>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-tertiary btn-sm" disabled>&lsaquo; Prev</button>
+                  <button class="btn btn-tertiary btn-sm">Next &rsaquo;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">history</span>Recent role changes</span>
+              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size:12px;">
+                <tr><th style="background:transparent; padding: 6px 4px;">07 May 09:18</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Alice → Tenant Admin (PDev)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">02 May 14:30</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Mike → Tenant Admin (School of Business)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">28 Apr 10:02</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Jordan → Global Admin</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">22 Mar 16:00</th><td style="background:transparent; padding: 6px 4px;">Bob → Global Admin (initial)</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+
 <!-- ================================================================
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP Super Admin Portal Storyboard v4.24 — Western Governors University</p>
+  <p>JFT SDP Super Admin Portal Storyboard v4.25 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
@@ -1633,13 +1866,14 @@
       <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Compliance report">06</button>
       <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Geo-redundancy">07</button>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Cross-tenant audit log">08</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: User Management (Global Admin role upgrade)">09</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 8; // SC-ADD-04 (1-8). v4.4 added 9-11; v4.8 removed them as overboard / not contract-grounded.
+  const TOTAL_SCREENS = 9; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per Mike-feedback reshape; previous Team & Roles screen relocated here from tenant_admin.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;

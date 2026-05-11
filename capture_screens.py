@@ -9,12 +9,12 @@ Usage:
 
 Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
-    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (24 + 24)
+    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (23 + 23)
     instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
-    super_admin/screenshots/     + super_admin/screenshots_dark/     (8 + 8)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (9 + 9)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 150 PNGs (v4.22 net: -6 from removing SC-ADD-05; +3 from new LO management screens).
+Total: 150 PNGs (v4.25: tenant_admin -1 Team & Roles relocated to super_admin User Management; net unchanged).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
@@ -39,17 +39,16 @@ PORTALS = [
         ("sc-mvp-04", [29, 30, 31, 32, 33, 34]),
     ]},
     {"file": "tenant_admin/index.html", "scenarios": [
-        # v4.22: SC-ADD-05 removed (Data Portability moved to global / Super Admin; in-portal
-        # API console replaced by external Swagger docs per SOW §2.4). 3 new LO management
-        # screens (5/6/7) added between Topics & LOs (4) and AI Prompt Config (8).
-        ("sc-add-02", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 21, 22, 23, 24]),  # 5=Add LO, 6=Edit LO, 7=Remove LO; 8=AI Prompt Config; 21-24 = Tenant Settings (Branding §7.9, Team §10.8, Instructor Roster §2.5+§10.8, Subject Lifecycle §2.5+§10.4)
+        # v4.25: Team & Roles screen (formerly tenant_admin 22) moved to Super Admin per Mike-
+        # feedback reshape; old 23 (Instructor Roster) -> 22, old 24 (Subject Lifecycle) -> 23.
+        ("sc-add-02", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 21, 22, 23]),  # 21 Branding, 22 Instructor Roster, 23 Subject Lifecycle
         ("sc-add-06", [13, 14, 15, 16, 17, 18, 19, 20]),
+    ]},
+    {"file": "super_admin/index.html", "scenarios": [
+        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9]),  # v4.25: screen 9 added (User Management - Global Admin role upgrade per Mike-feedback reshape)
     ]},
     {"file": "instructor/index.html", "scenarios": [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
-    ]},
-    {"file": "super_admin/index.html", "scenarios": [
-        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9-11; v4.8 removed them as overboard / not contract-grounded.
     ]},
     {"file": "lrps/index.html", "scenarios": [
         ("lrps", [None]),  # None = no goToScreen call, just capture as-is

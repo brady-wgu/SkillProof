@@ -6,6 +6,89 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.25 — 11 May 2026 — Mike-feedback reshape (Branding simplified, Team & Roles relocated to Global Admin, 3-tier role model, file-upload on prompt config, address-by-name)
+
+Brady met with Mike and brought back answers on the 4 open items plus 3 refinements. v4.25 implements them.
+
+### A. Branding & Customization (Tenant Admin Screen 21) — simplified to logo + standardized footer
+
+Per Mike: "Logo only right now, use Open edX footer is standardized: WGU logo, ADA Accommodation, Privacy Policy, ToS, Honor Code, copyright notice."
+
+**Stripped from the Branding form:** tenant display name, primary accent color, custom domain, favicon upload, default locale dropdown, PWA install badge, footer copy textarea.
+
+**Kept:** tenant logo upload (single control).
+
+**Preview pane** rebuilt to show the Open edX standardized footer mockup with the 6 elements Mike named (WGU logo + tenant logo side-by-side, then ADA Accommodation · Privacy Policy · Terms of Service · Honor Code links, then copyright notice). Demonstrates the only thing the Tenant Admin actually configures (logo) and what the rest of the footer chrome looks like (fixed by the Open edX layer).
+
+### B. Team & Roles relocated to Global Admin (Super Admin) + redesigned as User Management
+
+Per Mike: "Tenant 22 screen goes in global admin only" + 3-tier role hierarchy (User → Tenant Admin → Global Admin) + "Always have 2 Global Admins" + "List all users in a table, upgrade whoever I want to."
+
+**Tenant Admin side:**
+- Deleted Screen 22 (Team & Roles with Owner/Editor/Viewer model)
+- Renumbered Screen 23 (Instructor Roster) → 22
+- Renumbered Screen 24 (Subject Lifecycle) → 23
+- `TOTAL_SCREENS = 23` (was 24)
+- Updated Screen 21 (Branding) "Next" button → "Next: Instructor Roster"
+- Updated meta-bar nav (removed old 22 button)
+
+**Super Admin side — new Screen 9: User Management**
+- 4-card KPI row: Total users · Tenant Admins · Global Admins · Pending upgrades
+- Minimum-2-Global-Admins constraint warning at top
+- All-users table with columns: User · Tenant · Role badge (User / Tenant Admin / Global Admin) · Last active · Actions
+- Action buttons per row: Upgrade to Tenant Admin / Upgrade to Global / Downgrade (disabled where blocked)
+- Recent role changes right-rail (moved from the old Team & Roles audit log)
+- `TOTAL_SCREENS = 9` (was 8)
+- Added meta-bar button for Screen 9
+- Added "User Management" quick-link card on Super Admin Portal home (Screen 2)
+
+### C. File upload + address-by-name on Configure AI Coaching Prompt (Tenant Admin Screen 8)
+
+Per Mike: "Add a file button if you want to really edit something like crazy for the prompt config for tenant admin" + "Make the answers student-specific. No 'student', call them by name."
+
+- Added "Upload advanced config (.txt / .md / .json)" button above the form (alternative entry for power-users).
+- Updated compiled prompt preview OUTPUT block:
+  ```
+  OUTPUT
+  Always cite the Learning Objective being assessed by code (e.g., LO 1.3).
+  Address the learner by their first name. Never use "student" as the form of address.
+  ```
+
+### D. Read-only view of other tenants (Tenant Admin Screen 2)
+
+Per Mike: "Read only of other tenants."
+
+Added "Other tenants — Read-only" inline section below the Subjects table on Portal home. 3 rows (School of Business, School of Health, School of Education) each with a "View" button only (no edit action).
+
+### Items verified already correct (no edits)
+
+- **Instructor portal:** Sally is already addressed by name throughout all instructor screens. No changes needed.
+- **Student portal:** Only "student" mentions are inside sample task content (Python exercises referring to data about students/scores), not generic addresses for Sally. Student portal remains frozen (23 consecutive releases).
+- **LTI entry via LRPS:** Mike: "Everyone goes in through LTI link via LRPS" — already depicted on Screen 1 of every portal.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 23 consecutive releases)
+- tenant_admin section IDs sequential 1–23; `TOTAL_SCREENS = 23`
+- super_admin section IDs sequential 1–9; `TOTAL_SCREENS = 9`
+- Storyboard total = 74 (unchanged)
+- `grep -i "Owner.*Editor.*Viewer"` in deliverable → 0 hits (old role model fully removed)
+- Branding screen visible: logo upload + standardized footer mockup only
+- Compiled prompt preview includes "Address the learner by their first name" line
+- Configure AI Coaching Prompt has "Upload advanced config" button
+- Super Admin User Management reachable from Portal home + meta-bar
+
+### Numbers
+
+| | v4.24 | v4.25 |
+|---|---|---|
+| Total storyboard screens | 74 | **74** |
+| `tenant_admin/` | 24 | **23** |
+| `super_admin/` | 8 | **9** |
+| PNGs | 150 | **150** |
+
+---
+
 ## v4.24 — 10 May 2026 — Strip ALL descriptive / scenario-narrative text from prototype screens (developers will copy literally)
 
 Per Brady's directive ("My developers are VERY literal. They are going to copy this page, pixel-by-pixel, even though I have told them otherwise. So this prototype needs to be 100% what is required to meet the SOW in the most efficient method possible... Remove all the descriptive text across the prototypes that is scenario-based descriptor information and just keep the text minimal everywhere.").
