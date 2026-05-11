@@ -11,10 +11,10 @@ Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
     tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (23 + 23)
     instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
-    super_admin/screenshots/     + super_admin/screenshots_dark/     (9 + 9)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 150 PNGs (v4.27: super_admin Screen 9 User Management expanded to 4-tier role taxonomy — Student / Instructor / Tenant Admin / Global Admin; counts unchanged from v4.25).
+Total: 152 PNGs (v4.28: super_admin gained Screen 10 External Tooling & Integrations per Brady "mostly in AWS" directive; instructor metrics retargeted to struggle indicators).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
@@ -45,7 +45,7 @@ PORTALS = [
         ("sc-add-06", [13, 14, 15, 16, 17, 18, 19, 20]),
     ]},
     {"file": "super_admin/index.html", "scenarios": [
-        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9]),  # v4.25: screen 9 added (User Management - Global Admin role upgrade per Mike-feedback reshape)
+        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),  # v4.25: screen 9 (User Management); v4.28: screen 10 (External Tooling & Integrations per Brady "mostly in AWS" directive).
     ]},
     {"file": "instructor/index.html", "scenarios": [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
