@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (9 + 9)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 150 PNGs (v4.26: footer-mockup polish on tenant_admin Screen 21 to match WGU's actual learner-facing footer; counts unchanged from v4.25).
+Total: 150 PNGs (v4.27: super_admin Screen 9 User Management expanded to 4-tier role taxonomy — Student / Instructor / Tenant Admin / Global Admin; counts unchanged from v4.25).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png

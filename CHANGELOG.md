@@ -6,6 +6,98 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.27 — 11 May 2026 — User Management role taxonomy expanded to 4 tiers (Student → Instructor → Tenant Admin → Global Admin)
+
+v4.25 built `super_admin/index.html` Screen 9 (User Management) per Mike's feedback with a 3-tier hierarchy: **User → Tenant Admin → Global Admin**. Brady reframed the role model on 11 May to explicitly call out the 4 storyboard personas as the starting tiers: **Student → Instructor → Tenant Admin → Global Admin**. v4.27 brings the screen into agreement.
+
+> "The Global Admin can see all users in a large table, then manually upgrade people from student or instructor to the other accounts. Global Admin is the only one who can upgrade account access." — Brady, 11 May 2026
+
+### What changed on super_admin Screen 9
+
+**KPI row (4 cards)** — same count, different semantics:
+| Before (v4.25) | After (v4.27) |
+|---|---|
+| Total users · 187 | Students · 150 |
+| Tenant Admins · 23 | Instructors · 12 |
+| Global Admins · 2 | Tenant Admins · 23 |
+| Pending upgrades · 0 | Global Admins · 2 |
+
+Totals still add to 187 (150 + 12 + 23 + 2). Dropped "Pending upgrades" gauge (was always 0 in the storyboard) to make room for the Instructor tier.
+
+**Role badges** in the table — generic "User" badge replaced by 2 distinct tier badges:
+- **Student** → `badge-gray` (gray-on-bg-light, matches lowest-tier visual)
+- **Instructor** → `badge-warning` (amber/gold on warning-tint, distinct from Tenant Admin's info-blue)
+- Tenant Admin → `badge-info` (unchanged)
+- Global Admin → `badge-brand` (unchanged)
+
+**Table rows** (8 total, was 7):
+| Row | Persona | Tenant | Role | Actions |
+|---|---|---|---|---|
+| 1 | Bob (you) | — | Global Admin | Cannot downgrade self |
+| 2 | Jordan | — | Global Admin | Downgrade (disabled — min 2) |
+| 3 | Alice | PDev | Tenant Admin | Upgrade to Global / Downgrade |
+| 4 | Mike | School of Business | Tenant Admin | Upgrade to Global / Downgrade |
+| 5 | **Charlie** (new) | PDev | Instructor | Upgrade to Tenant Admin / Upgrade to Global |
+| 6 | Priya | School of Health | Instructor (was User) | Upgrade to Tenant Admin / Upgrade to Global |
+| 7 | **Sally** (new) | PDev | Student | Upgrade to Instructor / Upgrade to Tenant Admin |
+| 8 | Devon | PDev | Student (was User) | Upgrade to Instructor / Upgrade to Tenant Admin |
+
+Teagan row dropped to keep the row count manageable. Sally + Charlie added explicitly because they're the canonical Student + Instructor personas elsewhere in the storyboard — keeping the table internally consistent with the 4-persona model.
+
+**Upgrade actions per row**:
+- Student → primary: `Upgrade to Instructor`, outline: `Upgrade to Tenant Admin` (skip-tier allowed)
+- Instructor → primary: `Upgrade to Tenant Admin`, outline: `Upgrade to Global`
+- Tenant Admin → outline: `Upgrade to Global`, tertiary: `Downgrade`
+- Global Admin → `Downgrade (blocks min 2)` disabled where appropriate; self-row shows "Cannot downgrade self"
+
+**Recent role-changes audit log** (right rail) grew 4 → 6 entries to show recent upgrades across all 4 tiers:
+- 10 May 11:42 — Bob upgraded Charlie → Instructor (PDev)
+- 07 May 09:18 — Bob upgraded Alice → Tenant Admin (PDev)
+- 05 May 13:15 — Bob upgraded Priya → Instructor (School of Health)
+- 02 May 14:30 — Bob upgraded Mike → Tenant Admin (School of Business)
+- 28 Apr 10:02 — Bob upgraded Jordan → Global Admin
+- 22 Mar 16:00 — Bob → Global Admin (initial)
+
+**Pagination text** bumped: "Showing 7 of 187 users" → "Showing 8 of 187 users".
+
+**Constraint banner** unchanged: "Minimum 2 Global Admins required."
+
+### Other touches
+
+- **Screen 2 quick-link card** (Super Admin Portal home → User Management): description text updated from "Upgrade users to Tenant or Global Admin" → "Upgrade students or instructors to higher roles" (reflects 4-tier model)
+- **HTML comment** on Screen 9 + **TOTAL_SCREENS comment** + **meta-bar aria-label** all updated to reflect 4-tier taxonomy
+- **No screen count change** — TOTAL_SCREENS still 9 on super_admin, storyboard total still 74
+
+### Files touched
+
+- `super_admin/index.html` — Screen 9 (KPI row, table rows, audit log) + Screen 2 quick-link card text + version stamps + HTML comments
+- `presentation.html` + `presentation_dark.html` — SC-ADD-04 step 9 description; Doc Control v4.27 row (+ v4.26 marked Superseded); footer + hero version stamps
+- `index.html` (root) — hero-eyebrow + footer version + portal-card comment
+- `README.md` — version badge 4.26 → 4.27
+- `CHANGELOG.md` — this entry
+- `capture_screens.py` — header docstring version comment
+
+### What did NOT change
+
+- `student/index.html` remains frozen (25th consecutive release with `git diff --stat` returning 0 lines)
+- `tenant_admin/index.html` — no changes (v4.25 already removed old Team & Roles screen; v4.26 only touched Branding)
+- `instructor/index.html` — only version stamps (no content changes)
+- `lrps/index.html` — only version stamps
+- All super_admin screens 1–8 — only version stamps
+- Screen count: 74 (unchanged)
+- PNG count: 150 (unchanged; super_admin Screen 9 PNG regenerates with the new 4-tier table)
+
+### Verification
+
+1. `git diff --stat student/index.html` returns 0 lines (preservation directive intact through 25 consecutive releases)
+2. super_admin `TOTAL_SCREENS = 9` (unchanged from v4.25)
+3. Storyboard total = 74 (unchanged)
+4. Role badges visible in screenshot: Student (gray) + Instructor (amber) + Tenant Admin (info-blue) + Global Admin (brand-blue) = 4 distinct tiers
+5. KPI row shows 4 cards: Students 150 / Instructors 12 / Tenant Admins 23 / Global Admins 2
+6. Both light + dark catalogs show new v4.27 row in Doc Control, v4.26 row marked Superseded
+
+---
+
 ## v4.26 — 11 May 2026 — Branding footer-mockup refresh (match production WGU footer)
 
 Brady shared a screenshot of WGU's actual production learner-facing footer from another live course. v4.25 had built the Branding preview pane (tenant_admin Screen 21) with a stylized single-block footer mockup that didn't match the production layout. v4.26 rebuilds the preview pane to match production exactly.
