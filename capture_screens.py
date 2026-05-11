@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 152 PNGs (v4.29: login & elevation workflow clarified across LRPS landing + all 3 admin SSO screens + User Management; counts unchanged from v4.28).
+Total: 152 PNGs (v4.30: WGU-staff-default-Instructor framing added to LRPS banner + User Management intro; counts unchanged from v4.29).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png

@@ -6,6 +6,49 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.30 — 11 May 2026 — "All WGU staff default to Instructor" framing made explicit
+
+Quick follow-up to v4.29 per Brady's additional context: in production, **every WGU staff member** (regardless of actual job function) lands at the Instructor LTI baseline by default. The v4.29 work captured the mechanic ("LTI carries only Student or Instructor"), but didn't explicitly call out that this is the policy for *all* WGU staff — not just people who actually teach.
+
+> "All staff at WGU will be defaulted to the 'Instructor' role. Then they will be manually elevated where appropriate."
+> — Brady, 11 May 2026
+
+### Two-paragraph edit
+
+**LRPS landing banner** (`lrps/index.html`) — expanded to call out that the Instructor LTI link covers all WGU staff and that non-elevation is a valid steady state:
+
+> Only 2 LRPS rows route real users into the SDP: `[SDP-ST]` (LTI `role=student`, for learners) and `[SDP-IN]` (LTI `role=instructor`, for **all WGU staff**). Every WGU staff member — instructors, content creators, platform operators — lands at the Instructor baseline by default. A Global Admin then manually elevates them to **Tenant Admin** or **Global Admin** in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline.
+
+**Super Admin Screen 9 User Management intro** (`super_admin/index.html`) — same framing, with explicit "staff who don't need elevated privileges stay at the Instructor baseline" call-out so Bob understands non-elevation is a valid steady state, not an incomplete onboarding:
+
+> All users who have logged into the SDP via LTI. Learners land at **Student**; **all WGU staff land at Instructor** by default (whether they actually teach or not). Elevations to **Tenant Admin** or **Global Admin** are applied here by a Global Admin and take effect on the user's next login. Staff who don't need elevated privileges stay at the Instructor baseline.
+
+### What did NOT change
+
+- All other SSO check screens (Charlie / Alice / Bob's Screen 1's) — already accurate per v4.29
+- Table rows on Screen 9 — already show "LTI: Instructor" baseline annotations per v4.29
+- Screen counts — still 75 total
+- `student/index.html` — untouched (**28th consecutive release** of the preservation directive)
+- PNG count — still 152
+
+### Files touched
+
+- `lrps/index.html` — banner paragraph expanded + version stamps
+- `super_admin/index.html` — Screen 9 intro paragraph expanded + version stamps
+- `index.html` (root) — version stamps
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.30 row (v4.29 marked Superseded) + version stamps
+- `tenant_admin/index.html` + `instructor/index.html` + `lrps/index.html` + `README.md` + `capture_screens.py` — version stamps only
+- `CHANGELOG.md` — this entry
+
+### Verification
+
+1. `git diff --stat student/index.html` returns 0 lines (28 consecutive releases)
+2. LRPS banner now reads "for **all WGU staff**" and includes the "stay at Instructor baseline" steady-state note
+3. Screen 9 intro now reads "all WGU staff land at Instructor by default (whether they actually teach or not)"
+4. Doc Control: v4.30 Current, v4.29 Superseded in both catalogs
+
+---
+
 ## v4.29 — 11 May 2026 — Login & elevation workflow clarified across the site
 
 Brady walked through the production login & elevation flow on 11 May and asked for it to be clearly conveyed across the site. v4.29 implements the clarifications in-place across LRPS landing + all 3 admin SSO screens + the User Management screen.
