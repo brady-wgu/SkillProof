@@ -6,6 +6,30 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.20 — 10 May 2026 — SOW-anchored sweep follow-up #2 (super_admin/README narrative drift)
+
+Pass 19 (post-v4.19) found **1 Material** item: `super_admin/README.md:19` SC-ADD-04 row still described the FERPA control table as "**6-row**" when v4.18 had expanded it to **16 rows** with explicit SOW §16.5 control citations. Same README-narrative-mirrors-storyboard drift class as v4.15. v4.20 closes it. **No screens removed** (still 77).
+
+### Trimmed — README count + content drift
+
+Updated `super_admin/README.md:19` SC-ADD-04 description to reflect the v4.18 expansion: now reads "**16-row** FERPA control table referencing 34 CFR §§99.10 / 99.31 / 99.32 / 99.37 plus generic WGU institutional policies covering data breach drills and staff FERPA training, with explicit SOW §16.5 control rows added in v4.18: SOC 2 Type II (#10.6), ISO 27001 (#10.13), zero-trust authorization (#10.14), GDPR (#10.12), annual penetration testing (#10.10), AES-256 at rest with cloud KMS (#10.16), MFA for privileged accounts (#10.18), threat detection / SIEM (#10.15), vulnerability scanning + 48-hr critical patch SLA (#10.9 + #10.19), and BC/DR with RTO ≤ 4hr + RPO ≤ 60min (#10.20 + §16.4 #9.4)". Also added "SAML 2.0 SP per §16.3 #8.2; MFA per §16.5 #10.18" to the SSO landing description per the v4.19 storyboard update.
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 17 consecutive releases)
+- `grep -i "6-row FERPA"` in deliverable → 0 hits
+- `grep -i "16-row FERPA"` in deliverable → 1 hit (super_admin/README.md)
+- Pass 19 finding verified clean
+
+### Numbers
+
+| | v4.19 | v4.20 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| Pass 19 findings | 1 | **0 expected on Pass 20** |
+
+---
+
 ## v4.19 — 10 May 2026 — SOW-anchored sweep follow-up (hub-card stale wording + SAML 2.0 SP citation)
 
 Pass 18 (post-v4.18 audit using the literal SOW MD as authority source) found **1 Material + 1 Borderline** items. v4.19 closes both. **No screens removed** (still 77); all in-place text edits.
