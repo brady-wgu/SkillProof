@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (9 + 9)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 150 PNGs (v4.25: tenant_admin -1 Team & Roles relocated to super_admin User Management; net unchanged).
+Total: 150 PNGs (v4.26: footer-mockup polish on tenant_admin Screen 21 to match WGU's actual learner-facing footer; counts unchanged from v4.25).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
