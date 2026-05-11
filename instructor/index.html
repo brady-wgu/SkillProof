@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Instructor Dashboard — SC-ADD-03 Storyboard v4.23</title>
+  <title>JFT SDP — Instructor Dashboard — SC-ADD-03 Storyboard v4.24</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -871,8 +871,8 @@
       </div>
 
       <div class="alert alert-info">
-        <span class="material-icons-outlined">tips_and_updates</span>
-        <div><strong>4 learners flagged at-risk in E010 today.</strong> Open the heatmap to identify patterns; AI-scored competency drives the flag and is rechecked after every coaching session.</div>
+        <span class="material-icons-outlined">priority_high</span>
+        <div><strong>4 learners flagged at-risk in E010 today.</strong></div>
       </div>
     </div>
   </main>
@@ -1005,7 +1005,7 @@
 
       <div class="alert alert-warning mt-3">
         <span class="material-icons-outlined">priority_high</span>
-        <div><strong>4 learners are at risk.</strong> Sally's competency on <em>Manipulates Data Structures</em> dropped to 28 after her latest coaching session — the lowest score in this course. Use the <strong>At-risk filter</strong> to focus.</div>
+        <div><strong>4 learners at risk.</strong> Sally lowest on <em>Manipulates Data Structures</em> (28).</div>
       </div>
     </div>
   </main>
@@ -1092,19 +1092,11 @@
                 <tr><th>Total sessions</th><td>27 in last 7 days</td></tr>
                 <tr><th>Mastery threshold</th><td>80% (set by Alice)</td></tr>
               </table>
-              <div class="alert alert-warning mt-2" style="font-size:13px;">
-                <span class="material-icons-outlined">lightbulb</span>
-                <div>Suggestion: Review supplementary practice materials for Lists/Dicts and consider a synchronous office-hour topic.</div>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="alert alert-info mt-3">
-        <span class="material-icons-outlined">trending_down</span>
-        <div><strong>Sally is the most-at-risk learner</strong> — assessment complete, AI-scored competency low (avg 40.75). Drill in to review her conversation logs.</div>
-      </div>
     </div>
   </main>
   <div class="floating-actions">
@@ -1191,10 +1183,6 @@
         </div>
       </div>
 
-      <div class="alert alert-warning">
-        <span class="material-icons-outlined">lightbulb</span>
-        <div><strong>Pattern:</strong> Sally scores stronger on “run/observe” items than on “explain/reflect” items. The AI Coach has flagged this twice across the last 3 sessions. Reviewing her conversation logs will show whether the AI feedback already redirected her toward decomposition strategies.</div>
-      </div>
     </div>
   </main>
   <div class="floating-actions">
@@ -1263,10 +1251,6 @@
         </tbody>
       </table>
 
-      <div class="alert alert-info mt-3">
-        <span class="material-icons-outlined">verified</span>
-        <div><strong>Audit Trail intact</strong> · all 9 sessions captured in full · 0 events dropped · 47 messages total in session 09.</div>
-      </div>
     </div>
   </main>
 </section>
@@ -1398,7 +1382,6 @@ for s in scores:
       <div class="feedback-panel mb-3">
         <span class="feedback-label"><span class="material-icons-outlined">verified</span>Audit Trail Captured</span>
         <h1 id="s8-heading" class="h2 mb-2">All 47 messages logged</h1>
-        <p class="mb-3">The Audit Trail captured every interaction in this coaching session: prompts, learner submissions, AI feedback, score updates, and metadata. Logged immutably per FERPA-aligned institutional retention policy.</p>
         <div class="d-flex gap-3" style="flex-wrap:wrap;">
           <div class="section-stat"><div class="section-stat-num">47</div><div class="section-stat-label">Messages</div></div>
           <div class="section-stat"><div class="section-stat-num">18m 12s</div><div class="section-stat-label">Session length</div></div>
@@ -1434,11 +1417,6 @@ for s in scores:
         </tbody>
       </table>
 
-      <div class="alert alert-info mb-3">
-        <span class="material-icons-outlined">policy</span>
-        <div><strong>Compliance:</strong> Source IPs are partially masked in this view. Full IPs are accessible to Super Admin only via the cross-tenant audit log. Charlie's view is constrained to his courses by RBAC.</div>
-      </div>
-
       <div class="d-flex gap-2">
         <button class="btn btn-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">arrow_back</span>Back to transcript</button>
         <button class="btn btn-outline-primary"><span class="material-icons-outlined">file_download</span>Export full log (JSON)</button>
@@ -1453,7 +1431,7 @@ for s in scores:
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP Instructor Dashboard Storyboard v4.23 — Western Governors University</p>
+  <p>JFT SDP Instructor Dashboard Storyboard v4.24 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
