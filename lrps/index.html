@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — LRPS Landing — Storyboard v4.29</title>
+  <title>JFT SDP — LRPS Landing — Storyboard v4.30</title>
 
   <!--
     DEMO ONLY · MEDIUM-FIDELITY SAMPLE
@@ -733,7 +733,7 @@
     <div class="alert alert-info mb-3">
       <span class="material-icons-outlined">key</span>
       <div>
-        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SDP: <code>[SDP-ST]</code> (LTI <code>role=student</code>) and <code>[SDP-IN]</code> (LTI <code>role=instructor</code>). Tenant Admins and Global Admins enter the SDP via the same Instructor LTI link &mdash; the SDP looks up their stored elevation after handshake and routes them to the Tenant Admin or Super Admin portal. The <code>[SDP-TA]</code> and <code>[SDP-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
+        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SDP: <code>[SDP-ST]</code> (LTI <code>role=student</code>, for learners) and <code>[SDP-IN]</code> (LTI <code>role=instructor</code>, for <strong>all WGU staff</strong>). Every WGU staff member &mdash; instructors, content creators, platform operators &mdash; lands at the Instructor baseline by default. A Global Admin then manually elevates them to <strong>Tenant Admin</strong> or <strong>Global Admin</strong> in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline. The <code>[SDP-TA]</code> and <code>[SDP-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
       </div>
     </div>
 
@@ -1099,7 +1099,7 @@
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP LRPS Landing — v4.29 — Western Governors University</p>
+  <p>JFT SDP LRPS Landing — v4.30 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard navigation">
