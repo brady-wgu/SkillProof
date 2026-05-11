@@ -6,6 +6,44 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.24 — 10 May 2026 — Strip ALL descriptive / scenario-narrative text from prototype screens (developers will copy literally)
+
+Per Brady's directive ("My developers are VERY literal. They are going to copy this page, pixel-by-pixel, even though I have told them otherwise. So this prototype needs to be 100% what is required to meet the SOW in the most efficient method possible... Remove all the descriptive text across the prototypes that is scenario-based descriptor information and just keep the text minimal everywhere.").
+
+**Hard rule applied:** if a paragraph/alert/form-help is *scenario-narrative explaining what the screen does or what a button does*, it's gone. UI components must self-document via labels, buttons, and data. The two examples Brady cited (the "Multi-tenant scoping limits this view…" alert on the Tenant Admin hub, and the "Create or update a Subject's topics, learning objectives…" hub-card description) are exactly the pattern stripped everywhere.
+
+### What stays
+
+- Functional **button labels**, **field labels**, **data table headers**, **status indicators**, **error/warning text that conveys actionable state** (e.g., "Primary LLM Provider unreachable · Fallback engaged"), **sample data content** (the JSON response on the API console, the CSM email body, the heatmap cells — these depict actual product data, not narrative).
+
+### What was stripped
+
+- All `<p class="mb-4">Step N of 5...</p>` instructional paragraphs at the top of each course-config screen
+- "Hub card" descriptions on screen 2 ("Create or update a Subject's topics, learning objectives..." gone; cards now just have heading + buttons)
+- Welcome alert on screen 2 ("Multi-tenant scoping limits this view to Foundations of Programming (Python). All actions audit-logged per institutional retention policy.")
+- Every `form-help` block that explained *what a field is for* or *what happens when you change it* (kept only where the help is functional metadata like "PNG or SVG · max 200×60px")
+- "Tip" alerts (rolling-enrollment narrative, 4-6 topics best practice, etc.)
+- "Saved as draft" / "Next SLA report" / "Audit Trail intact" / "RTO well within target" / "Audit: changes you make from here are logged" — informational alerts dropped
+- "What's next?" cross-scenario card on Deploy Success (entire card removed)
+- "Why is this a manual ticket?" expander on Deploy Success (removed)
+- LRPS card narrative paragraph (kept the destination URL + ticket form + Submit buttons)
+- A/B testing + LaTeX badge captions (kept the badges themselves)
+- CSM email body trimmed from 4 paragraphs to 3 short ones
+- Sample data captions ("This is what Sally sees when she launches the Coding Coach...") gone
+- Permission matrix caption + Multi-tenant isolation alerts (the table headers are self-documenting)
+- Subject Lifecycle "What deactivation does NOT do" alert + audit-warning under the deactivation form (dropped)
+- All instructor screens: at-risk learner narrative alerts, "Sally is the most-at-risk learner" callout, "Pattern: Sally scores stronger on run/observe items..." reflection alert, "Audit Trail intact" + Compliance Source-IP alert
+- Super_admin screens: privileged-session retention narrative, PDev tenant flagged narrative tail, scoring-style change info, FERPA controls preamble, additional-services footnote, hourly-scan alert, RTO-within-target alert, "Audit: changes you make from here..." alert
+- Root index portal-card descriptions reduced to one short line each ("Course configuration + incident response", "At-risk intervention dashboard", "Cross-tenant governance and compliance", "Learner coaching loop"); "Start at LRPS" tip alert removed
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 22 consecutive releases)
+- Page byte-count significantly reduced; storyboard remains visually intact and navigable
+- 74 screens, no removals
+
+---
+
 ## v4.23 — 10 May 2026 — Strip internal contract refs (SOW §§ + SC-ADD-NN / SC-MVP-NN scenario IDs) from user-visible UI
 
 Per Brady's directive ("On Tenant Admin Screen 2, you list 'SC-ADD-NN' and Sections from the contract. That was only internal information. Remove anything in any of the prototype screens that references contract requirements specifically by text or the user scenarios. Those do not help the Tenant Admin in real life at all."), all SOW section citations (§7.9, §10.4, §16.5 #10.X, etc.) and user-scenario identifiers (SC-ADD-02, SC-MVP-01, etc.) have been removed from **user-visible body text** across all four admin portal HTMLs + the root portal selector. Internal markers (HTML comments, aria-labels referencing storyboard structure, Doc Control rows, READMEs, CHANGELOG, catalog narratives) are preserved for ongoing traceability.

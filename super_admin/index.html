@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.23</title>
+  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.24</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -724,7 +724,7 @@
           </div>
           <div class="alert alert-warning mt-3" style="text-align:left;">
             <span class="material-icons-outlined">verified_user</span>
-            <div><strong>Privileged session.</strong> All actions in this portal are logged to the cross-tenant audit trail with FERPA-aligned retention per institutional policy.</div>
+            <div><strong>Privileged session.</strong> All actions audit-logged.</div>
           </div>
           <div class="mt-3">
             <button class="btn btn-primary btn-lg" onclick="goToScreen(2)">
@@ -971,7 +971,7 @@
 
       <div class="alert alert-warning">
         <span class="material-icons-outlined">priority_high</span>
-        <div><strong>PDev tenant flagged.</strong> Click the row to drill into the cost spike timeline and identify the contributing subjects.</div>
+        <div><strong>PDev tenant flagged.</strong></div>
       </div>
     </div>
   </main>
@@ -1086,10 +1086,6 @@
         </div>
       </div>
 
-      <div class="alert alert-info">
-        <span class="material-icons-outlined">info</span>
-        <div><strong>Audit:</strong> changes you make from here are logged to the cross-tenant audit trail with your Super Admin actor identity.</div>
-      </div>
     </div>
   </main>
 </section>
@@ -1113,7 +1109,6 @@
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">speed</span>Global Rate Limits</span>
       <h1 id="s5-heading" class="h1 mb-2">Tighten rate limits — PDev tenant</h1>
-      <p class="mb-4">Applies to all subjects under the PDev / Foundations of Programming (Python) tenant. Adjustments take effect at the next request cycle (≈ 30 seconds).</p>
 
       <div class="row mb-3">
         <div class="col-6">
@@ -1253,7 +1248,6 @@
       </div>
 
       <h2 class="h5 mb-2">FERPA privacy compliance</h2>
-      <p class="small text-muted mb-2">FERPA-aligned controls verified across the platform. WGU SDP serves adult learners only; parental notification is not applicable.</p>
       <div class="row mb-3">
         <div class="col-3">
           <div class="gauge-card center">
@@ -1339,12 +1333,6 @@
           <tr><td>LRPS deep-link bridge</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-08-15</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
         </tbody>
       </table>
-      <p class="small text-muted mb-3">Additional internal platform services use TLS 1.3 encryption identically; details available in the PDF export for compliance audits.</p>
-
-      <div class="alert alert-info">
-        <span class="material-icons-outlined">schedule</span>
-        <div><strong>Hourly automated scans · daily summary at 06:00 UTC.</strong> Soonest cert expiry is 03 Aug 2026 (LRPS deep-link bridge). Auto-renewal is enabled across all services.</div>
-      </div>
     </div>
   </main>
 </section>
@@ -1453,10 +1441,6 @@
         </tbody>
       </table>
 
-      <div class="alert alert-success">
-        <span class="material-icons-outlined">verified</span>
-        <div><strong>RTO well within target.</strong> All recent failover events resolve in under 12 minutes against the &lt; 4-hour Recovery Time Objective. Next quarterly DR drill scheduled for 22 Jul 2026.</div>
-      </div>
     </div>
   </main>
 </section>
@@ -1630,7 +1614,7 @@
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP Super Admin Portal Storyboard v4.23 — Western Governors University</p>
+  <p>JFT SDP Super Admin Portal Storyboard v4.24 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
