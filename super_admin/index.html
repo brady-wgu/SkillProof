@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.27</title>
+  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.28</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -871,6 +871,15 @@
               <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">manage_accounts</span>
               <h3 class="h5 mt-2 mb-1">User Management</h3>
               <p class="small text-muted">Upgrade students or instructors to higher roles</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(10)">
+            <div class="pgn__card-section">
+              <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">open_in_new</span>
+              <h3 class="h5 mt-2 mb-1">External Tooling</h3>
+              <p class="small text-muted">AWS &middot; OpenRouter &middot; Redis &middot; Grafana &middot; Jira &middot; GitHub</p>
             </div>
           </div>
         </div>
@@ -1862,12 +1871,164 @@
   </main>
 </section>
 
+<!-- Screen 10: External Tooling & Integrations — v4.28 per Brady "mostly in AWS" directive. Hub page that links out to 3rd party dashboards (AWS / OpenRouter / Redis / Grafana / Jira / GitHub) + surfaces global configuration values that are enforced outside the SDP (student 5000-char limit, Redis token cap, OpenRouter provider chain). -->
+<section class="screen" id="screen-10" aria-labelledby="s10-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <span class="navbar-chip">Super Admin Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-10">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Super Admin Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>External Tooling</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">open_in_new</span>Super Admin</span>
+      <h1 id="s10-heading">External Tooling &amp; Integrations</h1>
+      <p class="mt-1 mb-3">Some platform functions are managed in 3rd party dashboards. This page surfaces those integrations + global configuration values that live outside the SDP.</p>
+
+      <h2 class="h5 mb-2">External dashboards</h2>
+      <div class="row mb-3">
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">cloud</span>
+                <span class="badge badge-success">All services healthy</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">AWS Console</h3>
+              <p class="small text-muted mb-2">Infrastructure &middot; RDS &middot; S3 &middot; IAM &middot; networking</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open AWS Console</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">route</span>
+                <span class="badge badge-success">Primary + 2 fallback</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">OpenRouter.ai</h3>
+              <p class="small text-muted mb-2">LLM provider routing &middot; fallback chains</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open OpenRouter.ai</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">storage</span>
+                <span class="badge badge-success">Cache hit 87%</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">Redis Admin</h3>
+              <p class="small text-muted mb-2">Token cache &middot; session state &middot; rate-limit counters</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open Redis Admin</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">monitoring</span>
+                <span class="badge badge-success">All dashboards green</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">Grafana / Datadog</h3>
+              <p class="small text-muted mb-2">Observability &middot; P50/P95 latency &middot; error rates</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open observability</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">support_agent</span>
+                <span class="badge badge-warning">3 P3 open</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">JFT Support (Jira)</h3>
+              <p class="small text-muted mb-2">Tickets &middot; P1 SLA tracking</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open Jira</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">code</span>
+                <span class="badge badge-success">main passing</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">GitHub</h3>
+              <p class="small text-muted mb-2">Code repos &middot; CI/CD pipelines</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="h5 mb-2">Global configuration</h2>
+      <div class="pgn__card pgn__card-featured">
+        <div class="pgn__card-section">
+          <p class="small text-muted mb-3">Set globally (not per-tenant or per-course). Some values are enforced by 3rd party tools &mdash; open the relevant dashboard above to change them.</p>
+          <table class="pgn__data-table" style="border:none; box-shadow:none;">
+            <thead>
+              <tr>
+                <th>Setting</th>
+                <th>Value</th>
+                <th>Enforced by</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Student input character limit</strong></td>
+                <td>5,000 chars</td>
+                <td>Student UI input layer (SDP)</td>
+                <td>Global setting; not configurable per course</td>
+              </tr>
+              <tr>
+                <td><strong>LLM token cap per session</strong></td>
+                <td>50,000 tokens</td>
+                <td>Redis Admin (above)</td>
+                <td>Cached + enforced at Redis</td>
+              </tr>
+              <tr>
+                <td><strong>Default LLM provider chain</strong></td>
+                <td>Primary + 2 fallback</td>
+                <td>OpenRouter.ai (above)</td>
+                <td>Per-tenant model selection in Content Creator Portal</td>
+              </tr>
+              <tr>
+                <td><strong>Storage retention</strong></td>
+                <td>Per institutional policy</td>
+                <td>AWS Console (above)</td>
+                <td>FERPA-aligned</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</section>
+
 
 <!-- ================================================================
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP Super Admin Portal Storyboard v4.27 — Western Governors University</p>
+  <p>JFT SDP Super Admin Portal Storyboard v4.28 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
@@ -1887,13 +2048,14 @@
       <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Geo-redundancy">07</button>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Cross-tenant audit log">08</button>
       <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: User Management (Global Admin upgrades Student / Instructor / Tenant Admin)">09</button>
+      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: External Tooling & Integrations (AWS, OpenRouter, Redis, Grafana, Jira, GitHub) + global configuration">10</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 9; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per Mike-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin).
+  const TOTAL_SCREENS = 10; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per Mike-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per Brady "mostly in AWS" directive — hub page linking out to 3rd party dashboards + global configuration values.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
