@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 152 PNGs (v4.28: super_admin gained Screen 10 External Tooling & Integrations per Brady "mostly in AWS" directive; instructor metrics retargeted to struggle indicators).
+Total: 152 PNGs (v4.29: login & elevation workflow clarified across LRPS landing + all 3 admin SSO screens + User Management; counts unchanged from v4.28).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
