@@ -6,6 +6,113 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.22 — 10 May 2026 — Tenant Admin reshape per JFT meeting (Content Creator rename + LO management screens + SC-ADD-05 removal + Configure AI Coaching Prompt + LRPS provisioning workflow)
+
+Brady met with JFT this morning and brought back a set of reshapes for the Tenant Admin flow. v4.22 implements the Tenant Admin portion only (per Brady's "let's focus on getting the Tenant Admin flow finished today before we worry about any other user flows" directive). Other items (instructor metrics review, super_admin shrinkage, student 5000-char limit, Redis surfacing) deferred to subsequent releases.
+
+**Net screen count for tenant_admin:** 27 → **24** (+3 new LO management screens, −6 from removing SC-ADD-05 entirely).
+**Total storyboard:** 77 → **74** screens.
+
+### Renamed — "Tenant Admin Portal" → "Content Creator Portal" (user-facing UI only)
+
+Per Brady's Q1 answer ("Keep 'tenant admin' in all official language, but can use Content Creator in user-facing UIs for ease-of-explanation"):
+- **User-facing UI strings → "Content Creator"**: navbar chip on every tenant_admin screen, breadcrumb root, persona labels visible to Alice, meta-bar header, root `index.html` portal-selector card role + name + aria-label
+- **Official documentation → "Tenant Admin" preserved**: SOW reference text (§2.2 deliverable still names "Tenant Admin"), READMEs (with mapping note "Content Creator (SOW §2.2 role: Tenant Admin)"), CHANGELOG, Document Control rows, catalog Per-persona portals list (with mapping callout)
+
+### Removed — SC-ADD-05 (Data Portability) — 6 screens deleted (old screens 10–15)
+
+Per JFT meeting notes: "Take off that API screen from the [tenant admin]" + "Take out the data screen from the tenant admin and leave it on global."
+
+- **Why:** JFT confirmed external **Swagger documentation** (per SOW §2.4 deliverable "API specification using Swagger" + §16.1 #6.25) is the API access vehicle for downstream WGU systems — the in-portal API console was never the contracted experience. Data export scope moves to the global / Super Admin portal (deferred to a subsequent release per Brady's "Tenant Admin first" directive).
+- **Screens removed:** Data & APIs landing (10), REST API console (11), Sample JSON response (12), Export wizard (13), Format picker (14), Download confirmation (15)
+- **SOW alignment:** §16.3 #8.7 (REST API for student engagement data export), #8.9 (data formats), #8.12 (webhooks), #8.13 (GraphQL) all remain in-scope for the platform — just not depicted as a tenant-admin portal flow.
+
+### Added — 3 new LO management screens (5/6/7)
+
+Per Brady's H answer ("Instead of having the passing threshold be on a separate page, let's integrate it into the entry/modification screens for topics/learning objectives. You should also add screen to illustrate how the topics/learning objectives can be modified/removed/added.") and follow-up "Create new screens to completely illustrate the add/edit/remove flow for the user. One example for each action, including the new threshold/weight additions to Screen 04 and the new screens you're adding."
+
+- **NEW Screen 5: Add a Learning Objective** — Form with parent-topic dropdown, LO code, title, description (with "long descriptions make the model more prone to hallucinate" form-help), per-LO passing threshold input (0–100% with mastery badge), per-LO weight input (default 1.0× with course-total badge). Audit-trail warning per §10.4.
+- **NEW Screen 6: Edit a Learning Objective** — Same form pre-filled for LO 1.3, with edit-history alert showing last 3 changes + threshold-delta badge.
+- **NEW Screen 7: Remove a Learning Objective** — Confirmation with danger alert + LO metadata card + Impact preview card (14 active learners, 47 historical submissions, heatmap column behavior, weight delta, coach behavior, audit trail).
+- **Renumbering cascade:** Old screens 5–9 → new 8–12; old 16–23 → new 13–20; old 24–27 → new 21–24.
+
+### Modified — Screen 4 (Topics & Learning Objectives)
+
+Restructured from row-card topic list to per-LO data table:
+- 10-row LO table with columns: LO code, title, topic, **threshold (per-LO)**, **weight (per-LO)**, Actions (Edit / Remove icons)
+- "Add Learning Objective" primary CTA + "Add Topic" outline CTA + summary line ("10 LOs across 4 topics · Total weight 10.0× · Avg threshold 69.5%")
+- Tip alert reframed to explain the per-LO threshold + weight model (NOT set globally on the scoring screen)
+
+### Modified — Screen 8 (Configure AI Coaching Prompt) — toggle switches → 4 short text-box guardrails
+
+Per JFT meeting note ("Custom prompting: Turn these from radio buttons to short text boxes with a warning that if you add too much info, the model will be more prone to hallucinate. Update the Configure AI Coaching Prompt."):
+- Heading renamed: "Configure the AI Coaching Prompt" (was "AI Prompt Configuration")
+- Eyebrow renamed to "Configure AI Coaching Prompt"
+- **Replaced 4 toggle switches with 4 short text input fields**: Student profile data — how to use it; Subject-domain limits; Jailbreak / prompt-injection posture; Code execution sandbox use. Each with maxlength=200 + form-help text.
+- Custom system prompt addendum textarea reduced from rows=4 to rows=3 with maxlength=600.
+- **Prominent warning alert** at top of screen: "Less is more. Keep each field tight (one or two sentences). The more context you pass to the model, the more prone it becomes to hallucinate, drift off-topic, or contradict its own guardrails."
+- Compiled prompt preview pane rewritten to reflect the new 4-field structure (PROFILE USE / DOMAIN LIMITS / JAILBREAK POSTURE / SANDBOX USE / CONTENT-CREATOR ADDENDUM / OUTPUT).
+
+### Modified — Screen 10 (Scoring & Rubric) — threshold + weight removed; scoring style added
+
+Per Brady's directive that threshold + weight live on the LO management screens, not on a separate scoring page:
+- Title changed: "Configure Scoring & Rubric" → "Scoring style & coaching defaults"
+- **Threshold + weight columns removed** from per-LO table (now per-LO on screens 4 + 5 + 6 + 7)
+- **Mastery threshold input removed** (each LO declares its own passing threshold)
+- **Added Global coaching style** card with 3 radio cards: Socratic (Recommended, selected), Direct feedback, Adaptive
+- Per-LO scoring pattern table retained (Code / Code + explain / Reflection)
+- Info alert documents the v4.22 change
+
+### Modified — Screen 12 (Deploy success) — LRPS provisioning ticket section added
+
+Per JFT meeting note ("Process for getting new LRPS link · Present the destination link from JFT on the 'Deployed to Production' page. And then the tenant admin sends that in a ticket to the LRPS team manually."):
+- Heading changed: "E135 is live" → "E135 build succeeded"
+- **New section: "Next: file an LRPS provisioning ticket"** with:
+  - Production URL display card (terminal-styled, copyable): `https://sdp.wgu.edu/launch/pdev/e135-oop-python?build=2026.05.06.1547`
+  - Auto-filled ticket justification textarea (editable)
+  - CTAs: Submit LRPS ticket / Copy URL only / I'll do this later
+  - Info alert explaining LRPS is a manual handoff because LRPS is owned by the WGU D&D team, not JFT
+
+### Updated — root files
+
+- `index.html`: hero stat 77 → 74, Tenant Admin card → Content Creator (SOW §2.2: Tenant Admin), screen count 27 → 24, scenario tags drop SC-ADD-05, catalog card screenshots 156 → 150
+- `README.md`: version badge 4.21 → 4.22; screens badge 77 → 74; tenant_admin scenario table updated; "Content Creator (Tenant Admin per SOW §2.2)" section heading
+- `capture_screens.py`: PORTALS tenant_admin entry updated; docstring totals 156 → 150
+- `tenant_admin/README.md`: comprehensive refresh — "Content Creator (Tenant Admin)" heading; 2 scenarios × 24 screens; v4.22 reshape summary
+- `presentation.html` + `presentation_dark.html`: SC-ADD-05 section deleted, TOC + screen map updated, 3 new SC-ADD-02 step entries inserted, SC-ADD-02 step numbers renumbered, SC-ADD-06 screen labels renumbered
+
+### Items deferred per Brady's "Tenant Admin first" directive
+
+The following items from the JFT morning meeting are NOT in v4.22 and will be addressed in subsequent releases:
+- **J:** Review metrics — remove "Total Time" + add instructor score on chat history screens 7+8 (instructor portal — deferred)
+- **K:** Review the global admin totally (super_admin — deferred; "mostly in AWS" note for follow-up release)
+- **L:** Student 5000 char limit — surface to user (student/ — deferred; freezer status TBD)
+- **M:** Redis token limit surfacing (deferred)
+- **Mike discussion items** (course ownership model, transfer flow, branding & customization screen for Contract, multiple owners, course visibility default) — Brady to confer with Mike later today; storyboard changes in subsequent release once Mike's answers land
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 19 consecutive releases)
+- tenant_admin section IDs: sequential 1–24 (verified)
+- `TOTAL_SCREENS = 24` (verified)
+- `grep -i "SC-ADD-05"` in deliverable HTML → 0 hits outside historical/meta context (verified)
+- `grep "Tenant Admin Portal"` in user-facing UI strings → 0 hits (verified)
+- New screens 5/6/7 reachable via meta-bar buttons + Edit/Remove icons on screen 4
+- LRPS ticket section visible on screen 12
+
+### Numbers
+
+| | v4.21 | v4.22 |
+|---|---|---|
+| Total storyboard screens | 77 | **74** |
+| tenant_admin screens | 27 | **24** (+3 new LO mgmt, −6 SC-ADD-05) |
+| SC-ADD-02 screens | 13 | **16** |
+| SC-ADD-05 screens | 6 | **0** (removed) |
+| SC-ADD-06 screens | 8 | 8 (renumbered 16-23 → 13-20) |
+| Total PNGs | 154 (light+dark) | **150** |
+
+---
+
 ## v4.21 — 10 May 2026 — SOW-anchored sweep follow-up #3 (README format-picker narrative drift, 3 sites)
 
 Pass 21 (post-v4.20) found **1 Material** finding: 3 README sites still described the export format picker as 2-format (CSV / JSON) when v4.18 expanded it to 4-format (CSV / JSON / PDF / XML). Same README-narrative-mirrors-storyboard drift class as v4.20. v4.21 closes all 3. **No screens removed** (still 77); README-only edits.

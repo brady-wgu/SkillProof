@@ -7,8 +7,8 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.21-46B1EF?style=for-the-badge)](CHANGELOG.md)
-[![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
+[![Version](https://img.shields.io/badge/Version-4.22-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Screens](https://img.shields.io/badge/Screens-74-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
 ![Portal selector landing](assets/landing/light.png)
@@ -24,7 +24,7 @@
 The **JFT Skills Development Platform (SDP)** is WGU's AI-powered Python coding coach for students, plus the administrative surfaces around it. This repo holds the **medium-fidelity storyboard** that JFT (Jellyfish Technologies) builds against — a self-contained, offline-capable visual sample of all the major surfaces:
 
 - **Sally** (Student) — the v1.2 MVP coaching loop. **JFT shipped this first.** ([student/](student/))
-- **Alice** (Tenant Admin / PDev content owner) — Course-as-a-Service portal, Data Portability, Critical Incident Response. ([tenant_admin/](tenant_admin/))
+- **Alice** (Content Creator / PDev content owner; SOW §2.2 role: Tenant Admin) — Course-as-a-Service portal with per-LO threshold + weight + Add/Edit/Remove LO flows, Configure AI Coaching Prompt, LRPS provisioning workflow, Critical Incident Response. ([tenant_admin/](tenant_admin/))
 - **Charlie** (Instructor) — At-Risk Intervention dashboard. ([instructor/](instructor/))
 - **Bob** (Super Admin / Platform Operations) — Governance & Cost Audit. ([super_admin/](super_admin/))
 - Plus **LRPS Landing** ([lrps/](lrps/)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all three admin portals.
@@ -40,13 +40,13 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **Portal Selector** | [`/`](https://brady-wgu.github.io/JFT_SDP/) | Landing page with cards for every surface. **Start here.** |
 | **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for all four personas (4 live SDP rows + illustrative filler). |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
-| **Tenant Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config, data exports, incident response, plus four Tenant Settings (Branding · Team & Roles · Instructor Roster · Subject Lifecycle). 27 screens. |
+| **Content Creator Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config with per-LO threshold + weight + Add/Edit/Remove LO flows, Configure AI Coaching Prompt, deploy + LRPS provisioning, incident response, plus four Tenant Settings (Branding · Team & Roles · Instructor Roster · Subject Lifecycle). 24 screens. |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
 | **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob — token usage, rate limits, compliance, geo-redundancy, audit log. 8 screens. |
 | **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/JFT_SDP/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
 | **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-**Total: 77 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
+**Total: 74 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
 
 ---
 
@@ -119,21 +119,20 @@ Click any persona folder to read its dedicated README.
 
 ---
 
-### 🏢 Tenant Admin (v1.3) — Alice
+### 🏢 Content Creator (Tenant Admin per SOW §2.2) (v1.3) — Alice
 
 **Surface:** [`tenant_admin/`](tenant_admin/) · [Live](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) · [README](tenant_admin/README.md)
 
-**Persona:** Alice — WGU Program Development (PDev) content owner. Authenticates via her own secret LRPS deep link.
+**Persona:** Alice — WGU Program Development (PDev) content owner. The SOW calls this role **"Tenant Admin"** (§2.2 deliverable, §2.5 admin portal). Alice's user-facing portal chrome calls it **"Content Creator"** per JFT meeting 10 May 2026 — same role, two names for ease of explanation to non-technical stakeholders. Authenticates via her own secret LRPS deep link.
 
-**Scope:** Multi-tenancy, RBAC, the Course-as-a-Service administrative UI, integration APIs and data export commitments, and the Support Plan / SLA workflow.
+**Scope:** Multi-tenancy + RBAC + Course-as-a-Service course authoring (Subjects, Topics, Learning Objectives with per-LO threshold + weight + Add/Edit/Remove flows), AI coaching prompt configuration, model selection, scoring style, CI/CD-driven deploys, post-deploy manual LRPS provisioning ticket workflow, and the Support Plan / SLA workflow (SC-ADD-06).
 
-**Scenarios (3, 27 screens):**
+**Scenarios (2, 24 screens):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping, Subject creation, Topics & Learning Objectives, AI prompt config (with v4.4 minimal "Recent versions" panel), model picker, rubric, deploy via CI/CD. Plus four Tenant Settings: Branding · Team & Roles · **v4.4 Instructor Roster** · **v4.4 Subject Lifecycle**. | 13 |
-| **SC-ADD-05** | **Data Portability.** REST + GraphQL API console (query learner scores per §16.1 #6.28 + §16.3 #8.13), real-time webhooks (§16.3 #8.12), one-click export wizard (CSV / JSON / PDF / XML per §16.2 #7.14 + §16.3 #8.9) with audit trail. | 6 |
-| **SC-ADD-06** | **Critical Incident Response & SLA.** Primary LLM provider down → fallback engaged → P1 ticket → JFT CSM 2-hr response → service restored → 99.95% uptime SLA verified. | 8 |
+| **SC-ADD-02** | **Content Creator Portal & Course Configuration.** Multi-tenant scoping (§16.3 #8.6), Subject creation, **Topics & Learning Objectives with per-LO threshold + weight**, **Add / Edit / Remove LO flows** (3 illustration screens), **Configure AI Coaching Prompt** (4 short text-box guardrails + hallucination warning), model picker, Scoring Style & coaching defaults, deploy via CI/CD, **post-deploy LRPS provisioning ticket workflow**. Plus four Tenant Settings: Branding · Team & Roles · Instructor Roster · Subject Lifecycle. | 16 |
+| **SC-ADD-06** | **Critical Incident Response & SLA.** Primary LLM provider down → fallback engaged → P1 ticket in **Jira** (§9.1 + §9.4) → JFT Support 2-hr P1 response per §9.5 → service restored → 99.95% uptime SLA verified. | 8 |
 
 **Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
 
