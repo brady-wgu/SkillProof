@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — LRPS Landing — Storyboard v4.28</title>
+  <title>JFT SDP — LRPS Landing — Storyboard v4.29</title>
 
   <!--
     DEMO ONLY · MEDIUM-FIDELITY SAMPLE
@@ -730,6 +730,13 @@
       </div>
     </div>
 
+    <div class="alert alert-info mb-3">
+      <span class="material-icons-outlined">key</span>
+      <div>
+        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SDP: <code>[SDP-ST]</code> (LTI <code>role=student</code>) and <code>[SDP-IN]</code> (LTI <code>role=instructor</code>). Tenant Admins and Global Admins enter the SDP via the same Instructor LTI link &mdash; the SDP looks up their stored elevation after handshake and routes them to the Tenant Admin or Super Admin portal. The <code>[SDP-TA]</code> and <code>[SDP-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
+      </div>
+    </div>
+
     <div class="alert alert-warning mb-3">
       <span class="material-icons-outlined">info</span>
       <div>
@@ -916,11 +923,11 @@
                 <!-- =========================================================
                      LIVE SDP ADMIN ROWS — clickable
                      ========================================================= -->
-                <tr class="live" tabindex="0" data-launch="../tenant_admin/" aria-label="Launch SDP Tenant Admin Portal">
+                <tr class="live" tabindex="0" data-launch="../tenant_admin/" aria-label="Launch SDP Tenant Admin Portal (demo shortcut)">
                   <td class="id-cell">269781301</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-TA]</span>SDP Tenant Admin Portal — Course Configuration<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-TA]</span>SDP Tenant Admin Portal — Course Configuration <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/sdp/tenant-admin/{tenant_id}</td>
+                  <td class="desc-cell">(demo) production: SDP-IN handshake + Tenant Admin elevation lookup</td>
                   <td class="driver-cell">SDPTenantAdminProviderDriver</td>
                   <td>Brady</td>
                   <td class="date-cell">07 May 2026</td>
@@ -940,11 +947,11 @@
                     <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
                   </td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="../super_admin/" aria-label="Launch SDP Super Admin Portal">
+                <tr class="live" tabindex="0" data-launch="../super_admin/" aria-label="Launch SDP Super Admin Portal (demo shortcut)">
                   <td class="id-cell">269781303</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-SA]</span>SDP Super Admin Portal — Platform Operations<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-SA]</span>SDP Super Admin Portal — Platform Operations <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/sdp/super-admin?mfa=required</td>
+                  <td class="desc-cell">(demo) production: SDP-IN handshake + Global Admin elevation lookup + MFA</td>
                   <td class="driver-cell">SDPSuperAdminProviderDriver</td>
                   <td>Brady</td>
                   <td class="date-cell">07 May 2026</td>
@@ -1092,7 +1099,7 @@
      META BAR — DEMO ONLY
      ================================================================ -->
 <footer role="contentinfo" class="sr-only">
-  <p>JFT SDP LRPS Landing — v4.28 — Western Governors University</p>
+  <p>JFT SDP LRPS Landing — v4.29 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard navigation">

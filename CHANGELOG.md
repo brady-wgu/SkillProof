@@ -6,6 +6,113 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.29 — 11 May 2026 — Login & elevation workflow clarified across the site
+
+Brady walked through the production login & elevation flow on 11 May and asked for it to be clearly conveyed across the site. v4.29 implements the clarifications in-place across LRPS landing + all 3 admin SSO screens + the User Management screen.
+
+> The flow:
+> 1. Everyone clicks an LRPS link to get to the SDP.
+> 2. LTI packet only has 2 text-based identifiers related to access: **Student** and **Instructor**.
+> 3. Each user is given the included access level by default: student or instructor.
+> 4. Global admins can see everyone who has logged into the SDP.
+> 5. Global admins elevate everyone, as needed, to the instructor, tenant admin or global admin levels.
+>
+> — Brady, 11 May 2026
+
+### Mismatch that v4.29 fixes
+
+Before this release the storyboard implied LTI could grant any of the 4 roles directly. Tenant Admin Screen 1 said `Role mapped: **Tenant Admin**` and Super Admin Screen 1 said `Role mapped: **Super Admin · Platform Operations**` — as if the LTI packet carried those identifiers. It doesn't.
+
+### What changed
+
+**A. LRPS landing (`lrps/index.html`)**
+
+Added a "Production LTI flow" info banner above the providers table:
+
+> **Production LTI flow.** Only 2 LRPS rows route real users into the SDP: `[SDP-ST]` (LTI `role=student`) and `[SDP-IN]` (LTI `role=instructor`). Tenant Admins and Global Admins enter the SDP via the same Instructor LTI link — the SDP looks up their stored elevation after handshake and routes them to the Tenant Admin or Super Admin portal. The `[SDP-TA]` and `[SDP-SA]` rows below are *storyboard demo shortcuts*; they do not represent separate LTI provisioning paths.
+
+Reframed `[SDP-TA]` and `[SDP-SA]` table rows:
+- Name cell now has a `demo shortcut` badge next to the title
+- Desc cell now reads `(demo) production: SDP-IN handshake + Tenant Admin / Global Admin elevation lookup`
+- aria-labels updated to `(demo shortcut)`
+
+**B. Instructor Screen 1 (`instructor/index.html`) — SSO check items**
+
+| Before | After |
+|---|---|
+| LRPS deep link verified | LRPS deep link verified `[SDP-IN]` |
+| WGU SSO authentication complete | (unchanged) |
+| Role mapped: **Instructor** | LTI baseline role: **Instructor** *(no elevation needed)* |
+
+**C. Tenant Admin Screen 1 (`tenant_admin/index.html`) — SSO check items**
+
+| Before | After |
+|---|---|
+| LRPS deep link verified | LRPS deep link verified `[SDP-IN]` |
+| WGU SSO authentication complete | (unchanged) |
+| Role mapped: **Tenant Admin** | *(split into 2 lines:)* LTI baseline role: Instructor → Elevation applied: **Tenant Admin** *(by Global Admin Bob, 07 May 2026)* |
+
+**D. Super Admin Screen 1 (`super_admin/index.html`) — SSO check items**
+
+Same pattern as Tenant Admin:
+
+| Before | After |
+|---|---|
+| LRPS deep link verified | LRPS deep link verified `[SDP-IN]` |
+| WGU SSO authentication complete · SAML 2.0 SP · MFA verified | (unchanged) |
+| Role mapped: **Super Admin · Platform Operations** | *(split into 2 lines:)* LTI baseline role: Instructor → Elevation applied: **Global Admin · Platform Operations** *(initial seed)* |
+
+**E. Super Admin Screen 9 (User Management)**
+
+- Added intro paragraph below the H1:
+  > "All users who have logged into the SDP via LTI. LTI provides only 2 baseline roles (**Student** or **Instructor**); elevations to **Tenant Admin** or **Global Admin** are applied here and take effect on the user's next login."
+- Added `LTI: Instructor` / `LTI: Student` micro-text annotation under each role badge in all 8 table rows:
+  - Bob (you) — Global Admin · LTI: Instructor
+  - Jordan — Global Admin · LTI: Instructor
+  - Alice — Tenant Admin · LTI: Instructor
+  - Mike — Tenant Admin · LTI: Instructor
+  - Charlie — Instructor · LTI: Instructor
+  - Priya — Instructor · LTI: Instructor
+  - Sally — Student · LTI: Student
+  - Devon — Student · LTI: Student
+
+This makes the elevation story scannable: 4 rows show LTI: Instructor with elevated badges = Bob/Jordan/Alice/Mike were all elevated from Instructor baseline. Charlie/Priya/Sally/Devon are at their LTI baseline (no elevation).
+
+**F. `student/index.html` — untouched**
+
+The Student portal's entry screen is the Coding Coach brand hero (Sally R. avatar + "Begin Diagnostic" CTA), not an SSO check screen. The LTI handshake for Sally happens transparently before this screen renders. v4.29 leaves student/index.html untouched (**27th consecutive release** of the preservation directive).
+
+### Files touched
+
+- `lrps/index.html` — added info banner + reframed 2 demo-shortcut rows + version stamps
+- `instructor/index.html` — Screen 1 SSO check items + version stamps
+- `tenant_admin/index.html` — Screen 1 SSO check items + version stamps
+- `super_admin/index.html` — Screen 1 SSO check items + Screen 9 intro paragraph + 8 row LTI baseline annotations + version stamps
+- `index.html` (root) — hero + footer version stamps
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.29 row (+ v4.28 marked Superseded) + footer + hero version stamps
+- `README.md` — version badge 4.28 → 4.29
+- `CHANGELOG.md` — this entry
+- `capture_screens.py` — docstring version comment
+
+### What did NOT change
+
+- Storyboard total: **75 screens** (unchanged)
+- super_admin `TOTAL_SCREENS = 10` (unchanged)
+- `student/index.html` content (27 consecutive releases of the freeze)
+- PNG count: 152 (unchanged)
+
+### Verification
+
+1. `git diff --stat student/index.html` returns 0 lines
+2. LRPS landing shows the new info banner + 2 rows labeled `demo shortcut`
+3. All 3 admin SSO screens show LTI baseline + elevation framing (instead of "Role mapped: X")
+4. Super Admin Screen 9 shows LTI baseline annotations under every role badge
+5. The 4 elevated rows (Bob, Jordan, Alice, Mike) all show "LTI: Instructor" → tells the story that they were promoted from Instructor baseline
+6. The 4 non-elevated rows (Charlie, Priya, Sally, Devon) all show their LTI baseline matching their current role
+7. Doc Control: v4.29 Current, v4.28 Superseded in both catalogs
+
+---
+
 ## v4.28 — 11 May 2026 — Instructor metrics retargeted + new super_admin External Tooling screen (closes deferred JFT items J / K / L / M)
 
 Brady's 11 May direction closed 4 deferred decision points from yesterday's JFT meeting that had been parked under the "Tenant Admin first" directive. v4.28 ships them in one release.
