@@ -6,6 +6,33 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.21 — 10 May 2026 — SOW-anchored sweep follow-up #3 (README format-picker narrative drift, 3 sites)
+
+Pass 21 (post-v4.20) found **1 Material** finding: 3 README sites still described the export format picker as 2-format (CSV / JSON) when v4.18 expanded it to 4-format (CSV / JSON / PDF / XML). Same README-narrative-mirrors-storyboard drift class as v4.20. v4.21 closes all 3. **No screens removed** (still 77); README-only edits.
+
+### Trimmed — README narrative drift (3 sites)
+
+- `tenant_admin/README.md:22` SC-ADD-05 row: "format picker (CSV / JSON tab switcher with 5-row preview)" → 4-format with §16.2 #7.14 + §16.3 #8.9 citations + REST/GraphQL/webhooks mentions
+- `tenant_admin/README.md:50` Components list: "Tab switcher ... for CSV / JSON format selection (per SOW §8.9)" → "CSV / JSON / PDF / XML format selection (per SOW §16.2 #7.14 + §16.3 #8.9)"
+- `README.md` (root) SC-ADD-05 description: "one-click export wizard (CSV / JSON per §8.9)" → "REST + GraphQL API console + real-time webhooks + one-click export wizard (CSV / JSON / PDF / XML per §16.2 #7.14 + §16.3 #8.9)"
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 18 consecutive releases)
+- `grep -i "CSV / JSON tab"` in deliverable → 0 hits
+- `grep -i "CSV / JSON per §8\.9"` in deliverable → 0 hits
+- Pass 21 finding verified clean
+
+### Numbers
+
+| | v4.20 | v4.21 |
+|---|---|---|
+| Total storyboard screens | 77 | **77** (no removals) |
+| Stale 2-format README descriptions | 3 | **0** |
+| Pass 21 findings | 1 | **0 expected on Pass 22** |
+
+---
+
 ## v4.20 — 10 May 2026 — SOW-anchored sweep follow-up #2 (super_admin/README narrative drift)
 
 Pass 19 (post-v4.19) found **1 Material** item: `super_admin/README.md:19` SC-ADD-04 row still described the FERPA control table as "**6-row**" when v4.18 had expanded it to **16 rows** with explicit SOW §16.5 control citations. Same README-narrative-mirrors-storyboard drift class as v4.15. v4.20 closes it. **No screens removed** (still 77).

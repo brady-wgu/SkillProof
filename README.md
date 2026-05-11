@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.20-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.21-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -132,7 +132,7 @@ Click any persona folder to read its dedicated README.
 | ID | Description | Screens |
 |:---|:------------|:-------:|
 | **SC-ADD-02** | **Tenant Admin Portal & Course Configuration.** Multi-tenant scoping, Subject creation, Topics & Learning Objectives, AI prompt config (with v4.4 minimal "Recent versions" panel), model picker, rubric, deploy via CI/CD. Plus four Tenant Settings: Branding · Team & Roles · **v4.4 Instructor Roster** · **v4.4 Subject Lifecycle**. | 13 |
-| **SC-ADD-05** | **Data Portability.** REST API console (query learner scores), one-click export wizard (CSV / JSON per §8.9) with audit trail. | 6 |
+| **SC-ADD-05** | **Data Portability.** REST + GraphQL API console (query learner scores per §16.1 #6.28 + §16.3 #8.13), real-time webhooks (§16.3 #8.12), one-click export wizard (CSV / JSON / PDF / XML per §16.2 #7.14 + §16.3 #8.9) with audit trail. | 6 |
 | **SC-ADD-06** | **Critical Incident Response & SLA.** Primary LLM provider down → fallback engaged → P1 ticket → JFT CSM 2-hr response → service restored → 99.95% uptime SLA verified. | 8 |
 
 **Source:** JFT SDP User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
