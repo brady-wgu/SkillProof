@@ -6,6 +6,86 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.23 — 10 May 2026 — Strip internal contract refs (requirements §§ + SC-ADD-NN / SC-MVP-NN scenario IDs) from user-visible UI
+
+Per Brady's directive ("On Tenant Admin Screen 2, you list 'SC-ADD-NN' and Sections from the contract. That was only internal information. Remove anything in any of the prototype screens that references contract requirements specifically by text or the user scenarios. Those do not help the Tenant Admin in real life at all."), all requirements section citations (§7.9, §10.4, §16.5 #10.X, etc.) and user-scenario identifiers (SC-ADD-02, SC-MVP-01, etc.) have been removed from **user-visible body text** across all four admin portal HTMLs + the root portal selector. Internal markers (HTML comments, aria-labels referencing storyboard structure, Doc Control rows, READMEs, CHANGELOG, catalog narratives) are preserved for ongoing traceability.
+
+**No screens removed** (still 74). All in-place text edits. No new functionality.
+
+### tenant_admin/index.html (Content Creator Portal)
+
+- **Screen 2 Hub cards:** eyebrow "SC-ADD-02 · Course Configuration" → "Course Configuration"; "SC-ADD-06 · Incident Response & SLA" → "Incident Response & SLA"; description text scrubbed of §9.13 / §9.1 / §9.4 / §9.5 citations
+- **Screen 8 (Configure AI Coaching Prompt):** A/B testing + LaTeX rendering badges scrubbed of §16.1 #6.8 / #6.12 citations
+- **Screen 9 (Model picker):** removed "(see SC-ADD-06)" cross-reference
+- **Screen 12 (Deploy success):** removed "per the requirements" from audit-logged line
+- **Screen 13 (Incident baseline):** removed "(§9.13)" from Proactive Monitoring text
+- **Screen 14 (Fallback engaged):** removed "per §6.5" from fallback narrative
+- **Screen 16 (Ticket form):** removed "per §9.13" and "per §6.5" from auto-filled description textarea
+- **Screen 17 (Ticket confirmation):** removed "per §9.5"
+- **Screen 18 (CSM chat thread):** eyebrow stripped of "· §9.5"
+- **Screen 21 (Branding):** eyebrow stripped of "· §7.9 Custom Branding"; Default locale + PWA install labels stripped of §16.2 / §3.7 / §16.2 #7.7 citations; form-help text simplified
+- **Screen 22 (Team & Roles):** eyebrow stripped of "· §10.8 Role-Based Access Control"
+- **Screen 23 (Instructor Roster):** eyebrow stripped of "· §2.5 Instructor Management · §10.8 RBAC"
+- **Screen 24 (Subject Lifecycle):** eyebrow stripped of "· §2.5 Module Lifecycle · §10.4 Audit Logging"; inline "(§10.1)" + "(§10.4)" removed
+- **Screen 5 (Add LO):** "Per the requirements" → "All LO add/edit/remove events"
+- **Screen 6 (Edit LO):** "versioned per the requirements audit logging" → "versioned and audit-logged"; "Full audit trail available via the requirements logging" → "Full audit trail available via the cross-tenant audit log"
+- **Screen 7 (Remove LO):** "per the requirements" stripped from both intro paragraph and Impact preview table
+- **Meta-bar header:** "JFT SDP Content Creator Portal (the requirements role: Tenant Admin)" → "JFT SDP Content Creator Portal"
+- **Meta-bar flow labels:** "SC-ADD-02" → "Flow A"; "SC-ADD-06" → "Flow B"
+- **`<title>` tag:** bumped from stale "Storyboard v3.2" to "Content Creator Portal — Storyboard v4.23"
+
+### super_admin/index.html (Super Admin Portal)
+
+- **Screen 1:** "WGU SSO authentication complete · SAML 2.0 SP (§16.3 #8.2) · MFA verified (§16.5 #10.18)" → "WGU SSO authentication complete · SAML 2.0 SP · MFA verified"
+- **Screen 2 portal home:** "SC-ADD-06 incident resolved" → "Incident resolved"; 4 quick-link card captions stripped of §6.4 / §6.6 / §10.7 / §9.5
+- **Screen 3 (Token Usage):** eyebrow stripped of "· §6.6"
+- **Screen 5 (Global Rate Limits):** eyebrow stripped of "· §6.4"
+- **Screen 6 (Compliance Report):** eyebrow stripped of "· §10.7 · §10.1"; FERPA privacy section header stripped of "· §10.1"; service-by-service header stripped of "· §10.7"; **all 10 FERPA control table rows (added v4.18) scrubbed of the requirements #10.X citations** in both Reference and Notes columns — references now "WGU institutional policy" / "Industry standard" / "EU regulation" as appropriate; 34 CFR §99.X (federal regulation, public law) citations preserved
+- **Screen 7 (Geo-Redundancy):** eyebrow stripped of "· §9.5 · §10.1"
+- **Meta-bar flow label:** "SC-ADD-04" → "Flow"
+
+### instructor/index.html (Instructor Dashboard)
+
+- **Screen 8 (Audit Trail):** feedback label "Audit Trail Captured · §10.4" → "Audit Trail Captured"
+- **Meta-bar flow label:** "SC-ADD-03" → "Flow"
+
+### index.html (root portal selector)
+
+- **HTML comment header:** "Tenant Admin Portal (Alice, v1.3 — 23 screens)" → "Content Creator Portal" + the requirements mapping removed
+- **Tenant Admin portal card:** aria-label + portal-card-role both stripped of "(the requirements: Tenant Admin)"
+- **Scenario tags on all 4 portal cards** converted from scenario IDs to functional descriptors:
+  - Student: "SC-MVP-01/02/03/04" → "First Launch / Progressive Coaching / Fast Track / Returning Learner"
+  - Content Creator: "SC-ADD-02 / SC-ADD-06" → "Course Configuration / Incident Response"
+  - Instructor: "SC-ADD-03" → "At-Risk Intervention"
+  - Super Admin: "SC-ADD-04" → "Governance & Compliance"
+
+### What's preserved
+
+- **HTML comments + scenario-section banners** (`<!-- SC-ADD-02 — TENANT ADMIN PORTAL ... -->`) — internal markers, not visible to users
+- **Meta-bar aria-labels on step buttons** — screen-reader hints for storyboard navigation; the meta-bar is explicitly DEMO ONLY and not part of "real life" Tenant Admin UI
+- **34 CFR §99.X citations** on the super_admin FERPA control table Reference column — these are PUBLIC federal regulation citations (the actual FERPA statute), not internal contract references
+- **WCAG 2.2 AA** mentions — public accessibility standard, not internal
+- **READMEs + CHANGELOG + Doc Control rows + catalog narratives** — internal reference docs, not user-visible UI
+
+### Verification
+
+- `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 21 consecutive releases)
+- `grep -n "§[0-9]\|&sect;[0-9]" tenant_admin/index.html | grep -v "<!--\|aria-label\|<title>\|/\*"` → 0 user-visible hits
+- `grep -n "SC-ADD-\|SC-MVP-" tenant_admin/index.html super_admin/index.html instructor/index.html index.html | grep -v "<!--\|aria-label\|<title>\|/\*\|CHANGELOG"` → 0 user-visible hits
+
+### Numbers
+
+| | v4.22 | v4.23 |
+|---|---|---|
+| Total storyboard screens | 74 | **74** (no removals) |
+| Storyboard sections cleaned | 0 | **30+ visible-UI sites scrubbed** |
+| 34 CFR §99.X citations preserved (federal law) | 4 | 4 |
+| requirements §§ refs in user-visible UI | many | **0** |
+| SC-ADD-NN refs in user-visible UI | 12+ | **0** |
+| SC-MVP-NN refs in user-visible UI | 4 (root index portal card) | **0** |
+
+---
+
 ## v4.22 — 10 May 2026 — Tenant Admin reshape per JFT meeting (Content Creator rename + LO management screens + SC-ADD-05 removal + Configure AI Coaching Prompt + LRPS provisioning workflow)
 
 Brady met with JFT this morning and brought back a set of reshapes for the Tenant Admin flow. v4.22 implements the Tenant Admin portion only (per Brady's "let's focus on getting the Tenant Admin flow finished today before we worry about any other user flows" directive). Other items (instructor metrics review, super_admin shrinkage, student 5000-char limit, Redis surfacing) deferred to subsequent releases.

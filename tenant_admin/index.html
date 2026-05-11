@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Tenant Admin Portal — SC-ADD-02 / 05 / 06 Storyboard v3.2</title>
+  <title>JFT SDP — Content Creator Portal — Storyboard v4.23</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -997,7 +997,7 @@
         <div class="col-6">
           <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(3)">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">edit_note</span>SC-ADD-02 · Course Configuration</span>
+              <span class="eyebrow"><span class="material-icons-outlined">edit_note</span>Course Configuration</span>
               <h3 class="h5 mt-1 mb-2">Configure courses</h3>
               <p class="small text-muted mb-3">Create or update a Subject's topics, learning objectives (with per-LO threshold + weight), AI coaching prompt, model, and scoring style. Deploy via the 5-step CI/CD pipeline; after deploy, submit a manual LRPS provisioning ticket so the deep link can go live.</p>
               <div class="d-flex gap-2">
@@ -1010,9 +1010,9 @@
         <div class="col-6">
           <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(13)">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">monitoring</span>SC-ADD-06 · Incident Response &amp; SLA</span>
+              <span class="eyebrow"><span class="material-icons-outlined">monitoring</span>Incident Response &amp; SLA</span>
               <h3 class="h5 mt-1 mb-2">System status</h3>
-              <p class="small text-muted mb-3">Live system health, JFT Proactive Monitoring (§9.13), P1 incident tickets in Jira (§9.1 + §9.4), JFT Support 2-hour P1 response per §9.5, and the rolling 30-day SLA dashboard.</p>
+              <p class="small text-muted mb-3">Live system health, JFT Proactive Monitoring, P1 incident tickets in Jira, JFT Support 2-hour P1 response, and the rolling 30-day SLA dashboard.</p>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(13);"><span class="material-icons-outlined">visibility</span>System Status</button>
                 <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(20);">SLA Dashboard</button>
@@ -1330,11 +1330,11 @@ Always cite the Learning Objective being assessed by code (e.g., LO 1.3).</div>
         <span class="text-muted small" style="margin-left:auto;">Full diff &amp; rollback UI deferred for JFT effort estimation.</span>
       </div>
 
-      <!-- A/B testing + LaTeX rendering — the requirements #6.8 + #6.12 -->
+      <!-- A/B testing + LaTeX rendering -->
       <div class="d-flex align-items-center gap-3 mt-3" style="font-size:13px; flex-wrap:wrap;">
-        <span class="badge badge-brand"><span class="material-icons-outlined" style="font-size:14px;">science</span>A/B test variants enabled · §16.1 #6.8</span>
+        <span class="badge badge-brand"><span class="material-icons-outlined" style="font-size:14px;">science</span>A/B test variants enabled</span>
         <span class="text-muted">Split traffic across prompt or model variants and capture accuracy / latency / satisfaction deltas.</span>
-        <span class="badge badge-brand"><span class="material-icons-outlined" style="font-size:14px;">functions</span>LaTeX rendering · §16.1 #6.12</span>
+        <span class="badge badge-brand"><span class="material-icons-outlined" style="font-size:14px;">functions</span>LaTeX rendering</span>
         <span class="text-muted">Sanitized LaTeX input + output for STEM content.</span>
       </div>
     </div>
@@ -1366,7 +1366,7 @@ Always cite the Learning Objective being assessed by code (e.g., LO 1.3).</div>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">memory</span>Step 4 of 5 · Model Router</span>
       <h1 id="s9-heading" class="h1 mb-2">Choose the Preferred Model</h1>
-      <p class="mb-4">The Model Router will use this for first-pass coaching. The SDP automatically falls back to alternates if your primary is unavailable (see SC-ADD-06).</p>
+      <p class="mb-4">The Model Router will use this for first-pass coaching. The SDP automatically falls back to alternates if your primary is unavailable.</p>
 
       <div class="radio-cards mb-3">
         <div class="radio-card selected" role="radio" aria-checked="true" tabindex="0">
@@ -1615,7 +1615,7 @@ Always cite the Learning Objective being assessed by code (e.g., LO 1.3).</div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Deployed to Production</span>
         <h1 id="s12-heading" class="h2 mb-2">E135 build succeeded</h1>
         <p class="mb-4">The CI/CD pipeline for <strong>E135: Object-Oriented Programming with Python</strong> completed in 2 minutes 47 seconds. One manual step remains before learners can reach the course: file an LRPS provisioning ticket so WGU's LRPS team can mint the deep link.</p>
-        <div class="small text-muted mb-2">Tenant: WGU PDev / IT · Subject ID: <code>e135-oop-python</code> · Build: <code>2026.05.06.1547</code> · Audit logged per the requirements</div>
+        <div class="small text-muted mb-2">Tenant: WGU PDev / IT · Subject ID: <code>e135-oop-python</code> · Build: <code>2026.05.06.1547</code> · Audit logged</div>
       </div>
 
       <!-- LRPS provisioning ticket — manual handoff (per JFT meeting 10 May 2026) -->
@@ -1696,7 +1696,7 @@ Always cite the Learning Objective being assessed by code (e.g., LO 1.3).</div>
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">monitoring</span>System Status</span>
           <h1 id="s13-heading">All systems operational</h1>
-          <p class="mt-1">JFT Proactive Monitoring (§9.13) shows nominal across all SDP services.</p>
+          <p class="mt-1">JFT Proactive Monitoring shows nominal across all SDP services.</p>
         </div>
         <div class="status-legend">
           <span class="status-legend-item"><span class="dot green"></span>Operational</span>
@@ -1915,7 +1915,7 @@ Always cite the Learning Objective being assessed by code (e.g., LO 1.3).</div>
         </div>
         <div class="pgn__card-section" style="border-top: 1px solid var(--pgn-color-gray-100);">
           <p class="mb-2">Hi Alice,</p>
-          <p class="mb-2">JFT Proactive Monitoring detected an outage with your primary LLM provider at <strong>09:43:21 UTC</strong>. The SDP automatically engaged the fallback LLM provider per §6.5. Learner sessions are continuing without interruption.</p>
+          <p class="mb-2">JFT Proactive Monitoring detected an outage with your primary LLM provider at <strong>09:43:21 UTC</strong>. The SDP automatically engaged the fallback LLM provider. Learner sessions are continuing without interruption.</p>
           <p class="mb-2">Our 24/7 team has acknowledged the incident. Per the SLA, we will respond with a status confirmation <strong>within 2 hours</strong>. Your <strong>99.95% Uptime SLA</strong> is being measured against the affected services in real time, and current projections show it will be maintained.</p>
           <p class="mb-2">No action is required from you. If you'd like the resolution tracked formally, you can log a P1 ticket from the portal — it will be linked to this incident automatically.</p>
           <p class="mb-2">— JFT Customer Success</p>
@@ -1992,9 +1992,9 @@ Always cite the Learning Objective being assessed by code (e.g., LO 1.3).</div>
         </div>
         <div class="form-group">
           <label class="form-label" for="t-desc">Description</label>
-          <textarea class="form-control" id="t-desc" rows="6">JFT Proactive Monitoring (per §9.13) detected loss of connectivity to the primary LLM provider at 09:43:21 UTC.
+          <textarea class="form-control" id="t-desc" rows="6">JFT Proactive Monitoring detected loss of connectivity to the primary LLM provider at 09:43:21 UTC.
 
-The Model Router automatically engaged the fallback chain per §6.5. All active learner sessions migrated transparently. p50 latency rose from 213 ms to 412 ms.
+The Model Router automatically engaged the fallback chain. All active learner sessions migrated transparently. p50 latency rose from 213 ms to 412 ms.
 
 Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         </div>
@@ -2039,7 +2039,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         </div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Ticket Submitted</span>
         <h1 id="s17-heading" class="h2 text-center mb-3">JFT-SDP-2138 created</h1>
-        <p class="text-center mb-4">Severity <strong>P1</strong>. Acknowledged by JFT Support per §9.5. SLA timer started.</p>
+        <p class="text-center mb-4">Severity <strong>P1</strong>. Acknowledged by JFT Support. SLA timer started.</p>
 
         <div class="pgn__card mb-3" style="background:transparent;">
           <div class="pgn__card-section">
@@ -2086,7 +2086,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       </nav>
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">support_agent</span>JFT Support P1 Response · §9.5 (CSM Jordan as WGU-facing POC)</span>
+          <span class="eyebrow"><span class="material-icons-outlined">support_agent</span>JFT Support P1 Response (CSM Jordan as WGU-facing POC)</span>
           <h1 id="s18-heading">JFT-SDP-2138: Primary LLM unreachable</h1>
         </div>
         <div class="d-flex gap-2 align-items-center">
@@ -2332,7 +2332,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Branding</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">palette</span>Tenant Configuration · §7.9 Custom Branding</span>
+      <span class="eyebrow"><span class="material-icons-outlined">palette</span>Tenant Configuration · Custom Branding</span>
       <h1 id="s21-heading">Branding &amp; Customization</h1>
       <p class="mt-1 mb-4">Customize how your Program Subject appears to learners. Changes apply to all subjects in this tenant; preview reflects Sally's view of E010.</p>
 
@@ -2381,7 +2381,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label" for="b-locale">Default locale · §16.2 #7.6 / §3.7</label>
+                  <label class="form-label" for="b-locale">Default locale</label>
                   <select class="form-control" id="b-locale">
                     <option selected>English (US) — pilot</option>
                     <option>English (UK)</option>
@@ -2389,14 +2389,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                     <option>French (CA)</option>
                     <option>German</option>
                   </select>
-                  <div class="form-help">Pilot is English-only per the requirements; the platform supports internationalization so additional locales activate post-pilot.</div>
+                  <div class="form-help">Pilot is English-only; the platform supports internationalization so additional locales activate post-pilot.</div>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">PWA install · §16.2 #7.7</label>
+                  <label class="form-label">PWA install</label>
                   <div class="d-flex align-items-center gap-2" style="height:44px;">
                     <span class="badge badge-success"><span class="material-icons-outlined" style="font-size:14px;">install_mobile</span>Installable PWA enabled</span>
                   </div>
-                  <div class="form-help">Learners can install Coding Coach as a Progressive Web App on desktop and mobile per §16.2 #7.7.</div>
+                  <div class="form-help">Learners can install Coding Coach as a Progressive Web App on desktop and mobile.</div>
                 </div>
               </div>
               <div class="form-group" style="margin-bottom:0;">
@@ -2471,7 +2471,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Team &amp; Roles</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">groups</span>Tenant Configuration · §10.8 Role-Based Access Control</span>
+      <span class="eyebrow"><span class="material-icons-outlined">groups</span>Tenant Configuration · Role-Based Access Control</span>
       <h1 id="s22-heading">Team &amp; Role-Based Access</h1>
       <p class="mt-1 mb-4">Manage who has access to your tenant and what they can do. All role changes are logged to the audit trail with your Tenant Admin actor identity.</p>
 
@@ -2647,7 +2647,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Instructors</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">cast_for_education</span>Tenant Configuration · §2.5 Instructor Management · §10.8 RBAC</span>
+      <span class="eyebrow"><span class="material-icons-outlined">cast_for_education</span>Tenant Configuration · Instructor Management</span>
       <h1 id="s23-heading">Instructor Roster &amp; Course Assignment</h1>
       <p class="mt-1 mb-4">Assign instructors to the courses your tenant publishes. Instructors authenticate through their own LRPS deep link and are scoped to the courses listed here. Accounts are provisioned by LRPS — this screen manages course assignment, not account creation.</p>
 
@@ -2852,7 +2852,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Subject Lifecycle</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">inventory_2</span>Tenant Configuration · §2.5 Module Lifecycle · §10.4 Audit Logging</span>
+      <span class="eyebrow"><span class="material-icons-outlined">inventory_2</span>Tenant Configuration · Module Lifecycle &amp; Archival</span>
       <h1 id="s24-heading">Subject Lifecycle &amp; Archival</h1>
       <p class="mt-1 mb-4">Retire subjects when they're no longer offered, while preserving learner-progress data for the contracted retention window. Archived subjects stay visible to past learners' Instructors for advising, but new launches are blocked.</p>
 
@@ -2968,7 +2968,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                 <label class="form-label">Learner-data retention</label>
                 <div class="d-flex gap-2" style="flex-wrap:wrap;">
                   <span class="badge badge-info">Per institutional policy</span>
-                  <span class="text-muted small">— FERPA-aligned; configured at the platform level (§10.1).</span>
+                  <span class="text-muted small">— FERPA-aligned; configured at the platform level.</span>
                 </div>
               </div>
 
@@ -2979,7 +2979,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
               <div class="alert alert-warning" style="font-size:13px;">
                 <span class="material-icons-outlined">policy</span>
-                <div>This action will write an entry to the cross-tenant audit log (§10.4) and notify the Super Admin team. It is reversible via "Restore" until the retention window closes.</div>
+                <div>This action will write an entry to the cross-tenant audit log and notify the Super Admin team. It is reversible via "Restore" until the retention window closes.</div>
               </div>
 
               <div class="d-flex gap-2 mt-3">
@@ -3090,7 +3090,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
       <div class="alert alert-warning mb-3">
         <span class="material-icons-outlined">warning_amber</span>
-        <div><strong>Adding LOs is audit-logged.</strong> Per the requirements, all LO add/edit/remove events are written to the cross-tenant audit trail with the actor, timestamp, and before/after snapshot. The new LO will reach learners after you redeploy the subject via the CI/CD pipeline (screen 11) and the LRPS provisioning ticket is processed.</div>
+        <div><strong>Adding LOs is audit-logged.</strong> All LO add/edit/remove events are written to the cross-tenant audit trail with the actor, timestamp, and before/after snapshot. The new LO will reach learners after you redeploy the subject via the CI/CD pipeline and the LRPS provisioning ticket is processed.</div>
       </div>
     </div>
   </main>
@@ -3123,7 +3123,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">edit</span>LO Management · Edit</span>
       <h1 id="s6-heading" class="h1 mb-2">Edit Learning Objective 1.3</h1>
-      <p class="mb-4">Modify the title, description, passing threshold, or weight for an existing LO. Changes are versioned per the requirements audit logging.</p>
+      <p class="mb-4">Modify the title, description, passing threshold, or weight for an existing LO. Changes are versioned and audit-logged.</p>
 
       <div class="pgn__card pgn__card-featured mb-3">
         <div class="pgn__card-section">
@@ -3183,7 +3183,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <li>22 Apr 2026 · Alice · title clarified</li>
             <li>04 Apr 2026 · Alice · LO created</li>
           </ul>
-          Full audit trail available via the requirements logging.
+          Full audit trail available via the cross-tenant audit log.
         </div>
       </div>
     </div>
@@ -3217,7 +3217,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">delete_outline</span>LO Management · Remove</span>
       <h1 id="s7-heading" class="h1 mb-2">Remove Learning Objective 4.3?</h1>
-      <p class="mb-4">Removing an LO is a permanent change to the course definition. Historical learner attempts against this LO remain in the audit trail per the requirements but are no longer scored or surfaced to the coach.</p>
+      <p class="mb-4">Removing an LO is a permanent change to the course definition. Historical learner attempts against this LO remain in the audit trail but are no longer scored or surfaced to the coach.</p>
 
       <div class="alert alert-danger mb-3">
         <span class="material-icons-outlined">warning</span>
@@ -3248,7 +3248,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <tr><th>Heatmap column on Instructor dashboard</th><td>Will disappear at next coach refresh</td></tr>
             <tr><th>Course total weight after removal</th><td>10.0× → 9.0× (−1.0×)</td></tr>
             <tr><th>Coach behavior</th><td>No longer scores or suggests work on this objective starting at next session</td></tr>
-            <tr><th>Audit trail</th><td>Removal logged with full LO snapshot per the requirements</td></tr>
+            <tr><th>Audit trail</th><td>Removal logged with full LO snapshot</td></tr>
           </table>
           <p class="small text-muted mt-2 mb-0">Active learners will retain credit for any past mastery of this LO when computing prior coursework — but the LO will not appear in their future progress map.</p>
         </div>
@@ -3270,12 +3270,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP Content Creator Portal (the requirements role: Tenant Admin) &middot; SDP Design System v1.2 &middot; Persona: Alice</span>
+    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP Content Creator Portal &middot; SDP Design System v1.2 &middot; Persona: Alice</span>
   </div>
   <div class="meta-bar-flows">
-    <span class="flow-id">SC-ADD-02</span>
-    <span class="flow-desc">Tenant Admin Portal &amp; Course Configuration</span>
-    <nav class="flow-nav" aria-label="SC-ADD-02 screens">
+    <span class="flow-id">Flow A</span>
+    <span class="flow-desc">Content Creator Portal &amp; Course Configuration</span>
+    <nav class="flow-nav" aria-label="Course configuration screens">
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: SSO landing">01</button>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Subject form">03</button>
@@ -3294,9 +3294,9 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn" onclick="goToScreen(24)" aria-label="Screen 24: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">24</button>
     </nav>
 
-    <span class="flow-id">SC-ADD-06</span>
+    <span class="flow-id">Flow B</span>
     <span class="flow-desc">Critical Incident Response &amp; SLA</span>
-    <nav class="flow-nav" aria-label="SC-ADD-06 screens">
+    <nav class="flow-nav" aria-label="Incident response screens">
       <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: All systems operational">13</button>
       <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: LLM down, fallback engaged">14</button>
       <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Notification detail">15</button>
