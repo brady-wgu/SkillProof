@@ -6,6 +6,63 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.26 — 11 May 2026 — Branding footer-mockup refresh (match production WGU footer)
+
+Brady shared a screenshot of WGU's actual production learner-facing footer from another live course. v4.25 had built the Branding preview pane (tenant_admin Screen 21) with a stylized single-block footer mockup that didn't match the production layout. v4.26 rebuilds the preview pane to match production exactly.
+
+### What changed
+
+`tenant_admin/index.html` — Screen 21 (Tenant Settings — Branding & Customization), right-card preview pane only.
+
+**Layout: 2 distinct rows, separated by a thin divider** (matches production).
+
+- **Top row** (padding 20px 28px, border-bottom 1px #E4E7EB):
+  - Left: WGU corporation full-color logo, 28px height
+  - Right: "ADA Accommodation" link (Dark Navy, 13px, 600 weight)
+- **Bottom row** (padding 16px 28px):
+  - Left: "© 2026 Western Governors University – WGU. All Rights Reserved." (12px, gray-700)
+  - Right: "Privacy Policy | Terms of Service | Honor Code" with pipe separators (Dark Navy, 13px, 600 weight)
+
+**Background**: `#F5F7FA` (light pale, matches production).
+**Container**: rounded `var(--pgn-size-border-radius-lg)`, 1px gray-100 border.
+
+### What was removed from v4.25's mockup
+
+- The "WGU logo + tenant logo side-by-side with `← Tenant logo (configurable)` callout" decoration — the actual production WGU footer has no tenant-logo slot. The tenant logo lives elsewhere in the LMS chrome (header / Open edX top nav), not the footer.
+- The `#F8F8F8` background + 4px Deep Navy border-top accent stripe — production uses a clean `#F5F7FA` background with no top accent.
+- Dot separators between footer links (`·`) — production uses pipe separators (`|`).
+- Single-block layout — production is 2-row.
+
+### Files touched
+
+- `tenant_admin/index.html` — Screen 21 preview pane markup (single section replacement, ~13 lines)
+- `presentation.html` + `presentation_dark.html` — SC-ADD-02 step 13 description; Doc Control table (new v4.26 row + v4.25 row marked Superseded); footer + hero version stamps
+- `index.html` (root) — hero-eyebrow + footer version + portal-card comment
+- `README.md` — version badge 4.25 → 4.26
+- `CHANGELOG.md` — this entry
+- `capture_screens.py` — header docstring version comment
+
+### What did NOT change
+
+- `student/index.html` remains frozen (24th consecutive release with `git diff --stat` returning 0 lines)
+- `super_admin/index.html` — no changes (Screen 9 User Management from v4.25 unchanged)
+- `instructor/index.html` — no changes
+- `lrps/index.html` — only the footer version stamp + title bump (visual content unchanged)
+- All other screens across all portals — unchanged
+- Screen count: 74 (unchanged)
+- PNG count: 150 (unchanged; tenant_admin/screenshots/sc-add-02_step13_screen21.png + tenant_admin/screenshots_dark/sc-add-02_step13_screen21.png regenerate with the new footer mockup)
+
+### Verification
+
+1. `git diff --stat student/index.html` returns 0 lines (preservation directive intact through 24 consecutive releases)
+2. `tenant_admin/index.html` `TOTAL_SCREENS = 23` (unchanged from v4.25)
+3. `super_admin/index.html` `TOTAL_SCREENS = 9` (unchanged from v4.25)
+4. Storyboard total = 74 (unchanged)
+5. New Branding preview pane visually matches production WGU footer screenshot Brady provided
+6. Both light + dark catalogs show new v4.26 row in Doc Control, v4.25 row marked Superseded
+
+---
+
 ## v4.25 — 11 May 2026 — Mike-feedback reshape (Branding simplified, Team & Roles relocated to Global Admin, 3-tier role model, file-upload on prompt config, address-by-name)
 
 Brady met with Mike and brought back answers on the 4 open items plus 3 refinements. v4.25 implements them.
