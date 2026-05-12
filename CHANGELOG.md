@@ -6,6 +6,72 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.31 — 12 May 2026 — Contract tracking foundation (`_contract_tracking/` subfolder)
+
+WGU is establishing bidirectional traceability between the signed JFT MSA / SOW and the storyboard. v4.31 ships the foundation: a new `_contract_tracking/` subfolder with two trackers that defend against "extra work" pushback from JFT and prove contract-completeness back to WGU leadership. The folder is excluded from GitHub Pages by Jekyll's leading-underscore convention, so it never surfaces to JFT through the live storyboard.
+
+> "I need to be able to clearly demonstrate that anything I prototype or ask for is clearly required and not just 'extra work'."
+> — Brady, 12 May 2026
+
+> "JFT developers are completely literal with any deliverable I provide them, so if I give them a prototype screen with contract citations, that is what they will build. They are builders only, not thinkers."
+> — Brady, 12 May 2026
+
+The two trackers live strictly outside the storyboard build spec for that reason.
+
+### What's new
+
+**`_contract_tracking/` folder** (NEW):
+
+- `README.md` — banner README. First sentence: "This folder is WGU contract tracking. It is NOT product specification. JFT must not build features for content in this folder."
+- `CONTRACT_TRACKER.md` — **150 rows** mapping every binding MSA / SOW / Appendix A requirement to storyboard coverage. Columns: ID · Source · Requirement · Type · JFT Commitment · Storyboard Coverage · Build Status · Owner · Acceptance · Notes. Brady updates Build Status as JFT delivers each row.
+- `SCREEN_JUSTIFICATIONS.md` — **76 screen rows** reverse-mapping every storyboard surface to its contract grounding. Totals: 71 Contract-required · 5 Essential scaffolding · 0 Discretionary.
+
+### Identified gaps (9, for D3a follow-up)
+
+Storyboard Coverage = Gap in `CONTRACT_TRACKER.md` for:
+
+- A-6.8 A/B testing framework
+- A-6.12 LaTeX rendering verification surface
+- A-6.28 GraphQL API
+- A-8.8 Real-time and batch data export
+- A-8.12 Webhook support
+- A-8.13 GraphQL API queries
+- A-8.14 Data streaming
+- A-9.14 Self-service support portal
+- A-9.15 Video training resources
+
+These were either added to in-place compliance tables in v4.18 without dedicated screens, or never had visual representation. Each becomes a focused D3a commit in subsequent releases.
+
+### What did NOT change
+
+- Storyboard total: **76 screens** (no UI changes)
+- `student/index.html` content (29th consecutive release of the preservation directive)
+- Per-persona index.html UI content (only version stamps bumped)
+- PNG count: 152 (unchanged from v4.30)
+- presentation.html / presentation_dark.html UI content (Doc Control row added; otherwise version stamps only)
+
+### Files touched
+
+- `_contract_tracking/README.md` — new
+- `_contract_tracking/CONTRACT_TRACKER.md` — new (150 rows)
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — new (76 rows)
+- `README.md` — version badge 4.30 → 4.31
+- `index.html` (root) — version stamps
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.31 row added; v4.30 → Superseded; version stamps
+- `instructor/index.html` + `lrps/index.html` + `super_admin/index.html` + `tenant_admin/index.html` — version stamps only
+- `capture_screens.py` — docstring version comment
+- `CHANGELOG.md` — this entry
+
+### Verification
+
+1. `_contract_tracking/CONTRACT_TRACKER.md` enumerates 150 rows: MSA 30 + SOW core 28 + Appendix A 92 (28 + 14 + 15 + 15 + 20).
+2. `_contract_tracking/SCREEN_JUSTIFICATIONS.md` enumerates 76 screens: student 34 + tenant_admin 23 + instructor 8 + super_admin 10 + lrps 1.
+3. Prototype cleanliness check: `grep -rE "Required by|Contract reference|MSA §|TODO|FIXME|XXX" --include="*.html" --exclude-dir=_contract_tracking .` returns zero results.
+4. GitHub Pages exclusion: `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/` returns 404 (Jekyll leading-underscore default exclusion).
+5. Doc Control: v4.31 Current, v4.30 Superseded in both presentation catalogs.
+
+---
+
 ## v4.30 — 11 May 2026 — "All WGU staff default to Instructor" framing made explicit
 
 Quick follow-up to v4.29 per Brady's additional context: in production, **every WGU staff member** (regardless of actual job function) lands at the Instructor LTI baseline by default. The v4.29 work captured the mechanic ("LTI carries only Student or Instructor"), but didn't explicitly call out that this is the policy for *all* WGU staff — not just people who actually teach.
