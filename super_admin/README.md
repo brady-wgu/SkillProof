@@ -49,3 +49,19 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 - Cost spike workflow on screens 3-5 is end-to-end: identify the high-consumption tenant (PDev) → drill down to see the 30-day trend with last 4 days as a visible spike → adjust rate limits → see the projected effect (MTD spend back inside budget) → "Apply" writes an audit log entry.
 - The Compliance Report on screen 6 covers both encryption (§10.7) and FERPA (§10.1) — TLS 1.3 verification across all data paths plus FERPA privacy controls including staff training, audit retention, data deletion thresholds, and explicit FERPA control mapping to 34 CFR sections.
 - The cross-tenant audit log on screen 8 deliberately includes events from all the other v1.3 personas (Alice, Charlie, JFT CSM, system) so you can see how cross-tenant operations are surfaced to the Super Admin role.
+
+## Device context
+
+Desktop-primary, with command-line access for cloud infrastructure operations outside the SDP. The mobile-first commitment in Appendix A §16.2 #7.2 applies universally across the storyboard, so the Super Admin portal is responsive and accessible on smaller viewports, but the operational workflow assumes a desktop session with multiple panels open at once.
+
+## Maintenance windows and rolling enrollment
+
+WGU operates a rolling enrollment model: students enroll on the first of any month and progress at their own pace. There is no semester break and no naturally low-traffic window for production maintenance. Maintenance strategy must therefore favor approaches that minimize or eliminate user-visible downtime: blue/green deploys (committed in §16.1 #6.24), in-place rolling updates for stateless services, and database migrations executed via online schema-change patterns. Where a downtime window is unavoidable, it should land in a designated low-risk timeframe coordinated with WGU operations at least 14 days in advance per §16.4 #9.12.
+
+## LLM API account ownership and spend control
+
+LLM API costs are excluded from the fixed-cost SOW per §11 Note 5 — WGU is responsible for those charges directly. Account ownership and provisioning specifics are coordinated separately between WGU IT and JFT engineering. The cost telemetry rendered in this portal (Token Usage by Tenant on Screen 3, cost-spike drill-down on Screen 4) is the primary control surface for WGU to monitor spend. The rate-limit controls on Screen 5 are the operational lever for tightening per-tenant ceilings. A per-day or per-tenant hard spend cap acting as a circuit breaker is recommended for the pilot phase; the value of that cap is a WGU operational decision.
+
+## Pilot-to-WGU handoff transition
+
+During the pilot phase, JFT's technical leads operate this Super Admin surface on WGU's behalf, with the platform hosted and managed under the fixed-cost SOW. At a future date, the Super Admin role transitions to WGU IT. The handoff protocol, target date, and identity-provider integration for WGU IT access to cloud infrastructure (separate from the SDP application console, which uses WGU SSO via SAML per §16.3 #8.2) are scoped separately and not part of the v1.x storyboard. JFT and WGU should agree the handoff plan in writing well before the SOW pilot-support period ends.

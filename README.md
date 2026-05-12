@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
 [![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
 [![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.32-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.33-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-75-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -31,7 +31,7 @@ The **JFT Skill Development Platform (SDP)** is WGU's AI-powered Python coding c
 
 Each persona has its own **secret LRPS deep link** in production and authenticates separately. They share the SDP Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
 
-> **Note for JFT:** The Tenant Admin, Instructor, and Super Admin scenarios are the design spec for surfaces JFT has not yet started building. Use this storyboard as the visual North Star, not a frozen contract. The first JFT release was an MVP and will be iterated on several times during the contract.
+> **Note for JFT:** The Tenant Admin, Instructor, and Super Admin scenarios are the design spec for surfaces JFT has not yet started building. Use this storyboard as the visual North Star for the **full SOW scope**. WGU expects JFT to deliver every binding requirement in the MSA, the SOW body, and Appendix A within the contracted engagement window. The first JFT release was an MVP slice (E010 Coding Coach in `student/`); subsequent releases close the rest of Appendix A across the Tenant Admin, Instructor, and Super Admin portals. The SC-MVP scenarios deploy the existing Cicada coaching loop as-is; the surrounding platform (multi-LLM orchestration, admin portals, observability, exports, integrations, compliance surfaces) is net-new build work per Appendix A. WGU also runs independent accessibility testing against WCAG 2.2 AA in addition to JFT's own self-checks per §16.2 #7.3, so plan for remediation cycles inside the engagement window.
 
 ### Surfaces
 

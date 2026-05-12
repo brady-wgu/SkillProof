@@ -68,3 +68,15 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 - After deploy, the **LRPS provisioning ticket** workflow on screen 12 is a manual handoff: JFT does not write to LRPS; the WGU D&D team owns provisioning. The screen shows the production URL + auto-filled ticket justification for Alice to submit.
 - Tenant scoping is enforced at every layer: Subject creation locks the Program Subject field; deploys are audit-logged per SOW §10.4.
 - The chat thread on screen 18 demonstrates the JFT Support P1 response SLA (§9.5, <2-hr target). CSM Jordan is shown as the WGU-facing POC (§9.1.4); the SLA itself is owned by JFT Support, not the CSM. First reply at 6 minutes, full resolution at 1h 24m.
+
+## Device context
+
+Desktop-primary. Course authoring, AI prompt configuration, and deploy workflows are not well-suited to mobile screens. The mobile-first commitment in Appendix A §16.2 #7.2 applies universally, so the portal renders responsively, but the optimized workflow assumes a desktop session.
+
+## Tenant Admin portal as the configuration path for the full SOW
+
+The Content Creator / Tenant Admin portal **is** the production configuration mechanism for the SDP across all WGU PDev courses. The v1.2 student-only MVP was bootstrapped by JFT engineers via Git-versioned config for E010; once SC-ADD-02 ships, all subsequent course onboarding (E075 Intermediate Python & Libraries, E135 OOP with Python, and any future courses outside Python entirely) flows through this portal. The portal is not optional MVP-extension scope — it is part of the binding Appendix A §16.3 #8.6 multi-tenancy commitment and the §2.5 Admin Portal deliverable. WGU expects JFT to deliver it within the contracted engagement window.
+
+## LRPS provisioning is a manual WGU-side handoff
+
+The LRPS provisioning ticket workflow on screen 12 is intentionally a manual handoff — JFT does not write to LRPS. WGU's distributed LMS architecture (the LRPS provider table on `lrps/index.html` illustrates this) means generic "LTI 1.3 compliance" alone is not sufficient for end-to-end course launch; the WGU D&D team registers and provisions LRPS deep links separately. JFT's responsibility is to expose a stable launch URL that does not change when courses are reorganized. Custom LRPS integration work, if needed beyond what LTI 1.3 covers, should be scoped explicitly rather than assumed.
