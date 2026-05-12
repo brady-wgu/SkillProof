@@ -7,7 +7,7 @@
 **Version:** v1.0 (initial baseline)
 **Date:** 12 May 2026
 **Author:** WGU Program Development
-**Source:** brady-wgu/JFT_SDP at v4.35; signed JFT MSA / SOW (executed 2026)
+**Source:** brady-wgu/JFT_SDP at v4.36; signed JFT MSA / SOW (executed 2026)
 
 ## How to read this file
 
@@ -31,7 +31,7 @@ Classification policy:
 
 ## Student — Sally · 34 screens · `student/index.html`
 
-> **The student portal is frozen as of v4.35.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
+> **The student portal is frozen as of v4.36.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|

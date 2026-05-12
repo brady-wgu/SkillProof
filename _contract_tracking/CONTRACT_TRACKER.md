@@ -8,7 +8,7 @@
 **Date:** 12 May 2026
 **Author:** WGU Program Development
 **Source:** Signed JFT MSA / SOW (executed 2026)
-**Storyboard baseline:** brady-wgu/JFT_SDP at v4.35
+**Storyboard baseline:** brady-wgu/JFT_SDP at v4.36
 
 ## How to read this file
 
@@ -132,11 +132,11 @@ SOW core totals: 28 rows.
 | A-6.5 | Fallback mechanisms for LLM service interruptions | Yes | tenant-14, tenant-15 (fallback engaged) · tenant-19 (service restored) | In Dev | JFT | Fallback engages within seconds; demonstrated in SC-ADD-06 | |
 | A-6.6 | Token usage tracking and reporting | Yes | super-03 (per-tenant) · super-04 (drill-down) | In Dev | JFT | Token / cost telemetry by institution / course / provider | Critical for WGU's LLM API cost control (SOW §11 Note 5). |
 | A-6.7 | Configurable standard guardrails on all prompts for all LLMs | Yes | tenant-08 (4 short text-box guardrails) · referenced in student coaching | In Dev | JFT | Centralized guardrails injected into every prompt | |
-| A-6.8 | A/B testing framework for LLM configurations | Yes | Gap | Not Started | JFT | A/B experiments with statistical reporting | v4.18 noted as added to compliance table; needs dedicated screen. |
+| A-6.8 | A/B testing framework for LLM configurations | Yes | tenant-08 ("A/B test variants" badge on Configure AI Coaching Prompt) | In Design | JFT | A/B experiments with statistical reporting | Partial coverage: medium-fidelity badge declares the capability; full A/B test config + results surface is a future enhancement. v4.36 re-audit downgraded Gap → Partial. |
 | A-6.9 | Handle multiple concurrent LLM requests per user | Yes | Non-visual (operational) | Not Started | JFT | Concurrent request load test passes | |
 | A-6.10 | Custom fine-tuning capabilities | **No** | Non-visual (out of scope) | Not Applicable | — | — | Only out-of-scope item in Appendix A. RAG used instead. |
 | A-6.11 | Real-time model performance monitoring | Yes | super-02 (KPI gauges) · super-04 (performance trends) | In Dev | JFT | Real-time latency / error / accuracy / fallback metrics | |
-| A-6.12 | LaTeX support for inputs and outputs | Yes | Gap (referenced in v4.18) | Not Started | JFT | LaTeX rendering on student + admin screens | Needs verification screen in storyboard. |
+| A-6.12 | LaTeX support for inputs and outputs | Yes | tenant-08 ("LaTeX rendering" badge on Configure AI Coaching Prompt) | In Design | JFT | LaTeX rendering on student + admin screens | Partial coverage: medium-fidelity badge declares the capability; inline LaTeX preview verification surface is a future enhancement. v4.36 re-audit downgraded Gap → Partial. |
 | A-6.13 | Support 50,000+ daily active users | Yes | Non-visual (load test) | Not Started | JFT | k6 load test to 50K+ DAU passes | |
 | A-6.14 | Auto-scaling infrastructure for peak usage | Yes | super-02 (system health) | Not Started | JFT | Auto-scale events observable in monitoring | |
 | A-6.15 | Response times <3s for 95% of requests | Yes | super-02 (KPI) | Not Started | JFT | 95p latency under 3s in production | |
@@ -273,19 +273,19 @@ SOW core totals: 28 rows.
 
 ### Gaps requiring D3a follow-up
 
-The following Appendix A rows have Storyboard Coverage = Gap and are first-priority candidates for prototype gap closure:
+The following Appendix A rows have Storyboard Coverage = Gap and are first-priority candidates for prototype gap closure (after v4.36 re-audit):
 
-- A-6.8 A/B testing framework (referenced in v4.18 sweep; needs dedicated screen)
-- A-6.12 LaTeX rendering (referenced in v4.18; needs verification surface)
-- A-6.28 GraphQL API (needs surface; partial via super-10 external tooling)
-- A-8.8 Real-time and batch data export
-- A-8.12 Webhook support
-- A-8.13 GraphQL API queries
-- A-8.14 Data streaming
-- A-9.14 Self-service support portal
-- A-9.15 Video training resources
+- A-6.28 GraphQL API (no UI mention anywhere in the current storyboard; could be a card on super-10 External Tooling or part of a new data/integrations surface)
+- A-8.8 Real-time and batch data export (had coverage on the tenant_admin SC-ADD-05 Data & APIs landing in v4.18; removed in v4.22 when SC-ADD-05 was deleted and data-export scope moved to global / Super Admin)
+- A-8.12 Webhook support (same — removed in v4.22)
+- A-8.13 GraphQL API queries (same — removed in v4.22)
+- A-8.14 Data streaming (no prior coverage)
+- A-9.14 Self-service support portal (no prior coverage)
+- A-9.15 Video training resources (no prior coverage)
 
-Total gaps: 9 out of 92 Appendix A items (~10%). The remaining 83 Appendix A items have at least partial storyboard coverage.
+Total true gaps: **7 out of 92** Appendix A items. The remaining 85 Appendix A items have at least partial storyboard coverage.
+
+**Re-audit history:** v4.36 (12 May 2026) downgraded A-6.8 (A/B testing framework) and A-6.12 (LaTeX rendering) from Gap to Partial after verifying both badges added in v4.18 are still present on tenant-08 (Configure AI Coaching Prompt). Medium-fidelity badge coverage is adequate for declaring the capability; fuller surfaces (A/B test config + results, inline LaTeX preview) are future enhancements but not contract-required.
 
 ### Out-of-scope items (no build expected)
 
@@ -298,7 +298,7 @@ Total gaps: 9 out of 92 Appendix A items (~10%). The remaining 83 Appendix A ite
 
 | Version | Date | Status | Notes |
 |:---|:---|:---|:---|
-| 1.0 | 12 May 2026 | Current | Initial baseline. 156 rows enumerated across MSA + SOW + Appendix A. 9 gaps identified for D3a follow-up. Storyboard baseline: v4.35. |
+| 1.0 | 12 May 2026 | Current | Initial baseline. 156 rows enumerated across MSA + SOW + Appendix A. 9 gaps identified for D3a follow-up. Storyboard baseline: v4.36. |
 
 ---
 
