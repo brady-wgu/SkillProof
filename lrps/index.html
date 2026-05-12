@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — LRPS Landing — Storyboard v4.42</title>
+  <title>SkillProof — LRPS Landing — Storyboard v4.43</title>
 
   <!--
     DEMO ONLY · MEDIUM-FIDELITY SAMPLE
     Recreates WGU's internal Learning Resource Provisioning System (LRPS) as
-    the entry point for the three v1.3 SDP admin portals. The visual layer
-    has been modernized to the SDP Design System v1.2 (Sora/Lato, FY26
+    the entry point for the three v1.3 SkillProof admin portals. The visual layer
+    has been modernized to the SkillProof Design System v1.2 (Sora/Lato, FY26
     palette, 8-pt grid, Paragon-compatible component classes) so the LRPS
-    surface reads as part of the same product family as the SDP portals it
+    surface reads as part of the same product family as the SkillProof portals it
     deep-links into.
 
     Each persona (Tenant Admin, Instructor, Super Admin) is provisioned in
@@ -19,18 +19,18 @@
     navigates to the corresponding portal HTML, where the SSO landing
     screen takes over.
 
-    SDP Design System v1.2 — Built on Paragon / Open edX
+    SkillProof Design System v1.2 — Built on Paragon / Open edX
     In production, install:
       npm install @openedx/paragon
       @use "@openedx/paragon/dist/core.min.css";
-      @use "@wgu/sdp-brand/light.min.css";
+      @use "@wgu/skillproof-brand/light.min.css";
   -->
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
   <style>
     /* ================================================================
-       SDP DESIGN TOKENS (SDP Design System v1.2, Sections 3-5)
+       DESIGN TOKENS — SkillProof Design System v1.2 (Sections 3-5)
        Mirrors tenant_admin.html / instructor.html / super_admin.html.
        ================================================================ */
     :root {
@@ -299,7 +299,7 @@
     .pgn__card-featured { border-left: 4px solid var(--pgn-color-brand-base); }
 
     /* ================================================================
-       SIDEBAR (SDP-styled nav card)
+       SIDEBAR (SkillProof-styled nav card)
        ================================================================ */
     .sidebar-card {
       background: var(--pgn-color-white);
@@ -476,7 +476,7 @@
     .pgn__data-table tbody tr:not(.live):nth-child(even) td { background: rgba(0,0,0,0.015); }
     .pgn__data-table tbody tr:hover td { background: var(--pgn-color-bg-light); }
 
-    /* Live SDP rows — Ice Blue tint + featured stripe */
+    /* Live SkillProof rows — Ice Blue tint + featured stripe */
     .pgn__data-table tr.live td {
       background: var(--color-ice-blue);
       cursor: pointer;
@@ -684,7 +684,7 @@
 <a href="#main-content" class="skip-nav">Skip to main content</a>
 
 <!-- ================================================================
-     NAVBAR (SDP-styled, matches the three admin portals)
+     NAVBAR (SkillProof-styled, matches the three admin portals)
      ================================================================ -->
 <header class="navbar navbar-dark" role="banner">
   <a href="#" class="navbar-brand" aria-label="Western Governors University">
@@ -716,7 +716,7 @@
       <div>
         <span class="eyebrow"><span class="material-icons-outlined">database</span>Learning Resource Provisioning System · v3.4.2</span>
         <h1>Providers</h1>
-        <p class="mt-1">Provision and launch learning resources across the WGU portfolio. Each row corresponds to a registered provider; live SDP rows deep-link to the corresponding portal.</p>
+        <p class="mt-1">Provision and launch learning resources across the WGU portfolio. Each row corresponds to a registered provider; live SkillProof rows deep-link to the corresponding portal.</p>
       </div>
       <div class="page-stats">
         <div class="page-stat">
@@ -725,7 +725,7 @@
         </div>
         <div class="page-stat">
           <div class="page-stat-num text-success">4</div>
-          <div class="page-stat-label">Live SDP rows</div>
+          <div class="page-stat-label">Live SkillProof rows</div>
         </div>
       </div>
     </div>
@@ -733,21 +733,21 @@
     <div class="alert alert-info mb-3">
       <span class="material-icons-outlined">key</span>
       <div>
-        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SDP: <code>[SDP-ST]</code> (LTI <code>role=student</code>, for learners) and <code>[SDP-IN]</code> (LTI <code>role=instructor</code>, for <strong>all WGU staff</strong>). Every WGU staff member &mdash; instructors, content creators, platform operators &mdash; lands at the Instructor baseline by default. A Global Admin then manually elevates them to <strong>Tenant Admin</strong> or <strong>Global Admin</strong> in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline. The <code>[SDP-TA]</code> and <code>[SDP-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
+        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SkillProof: <code>[SkillProof-ST]</code> (LTI <code>role=student</code>, for learners) and <code>[SkillProof-IN]</code> (LTI <code>role=instructor</code>, for <strong>all WGU staff</strong>). Every WGU staff member &mdash; instructors, content creators, platform operators &mdash; lands at the Instructor baseline by default. A Global Admin then manually elevates them to <strong>Tenant Admin</strong> or <strong>Global Admin</strong> in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline. The <code>[SkillProof-TA]</code> and <code>[SkillProof-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
       </div>
     </div>
 
     <div class="alert alert-warning mb-3">
       <span class="material-icons-outlined">info</span>
       <div>
-        <strong>DEMO ONLY.</strong> This is the SDP-styled recreation of WGU&rsquo;s internal Learning Resource Provisioning System (LRPS). The four highlighted SDP rows are live &mdash; click to launch the corresponding portal (one per persona: Student, Tenant Admin, Instructor, Super Admin). All other rows are illustrative only.
+        <strong>DEMO ONLY.</strong> This is the SkillProof-styled recreation of WGU&rsquo;s internal Learning Resource Provisioning System (LRPS). The four highlighted SkillProof rows are live &mdash; click to launch the corresponding portal (one per persona: Student, Tenant Admin, Instructor, Super Admin). All other rows are illustrative only.
       </div>
     </div>
 
     <div class="lrps-shell">
 
       <!-- ================================================================
-           SIDEBAR — SDP-styled nav card
+           SIDEBAR — SkillProof-styled nav card
            ================================================================ -->
       <aside class="sidebar-card" aria-label="LRPS navigation">
         <div class="sidebar-section">
@@ -907,9 +907,9 @@
                   <td class="date-cell">12 Apr 2026</td>
                   <td class="actions-cell"></td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="../student/" aria-label="Launch SDP Coding Coach (Student)">
+                <tr class="live" tabindex="0" data-launch="../student/" aria-label="Launch SkillProof Coding Coach (Student)">
                   <td class="id-cell">269781248</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-ST]</span>SDP Coding Coach — Student (LTI 1.3)</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-ST]</span>SkillProof Coding Coach — Student (LTI 1.3)</td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">sdp.wgu.edu/lti/launch?subject=e010&amp;role=student</td>
                   <td class="driver-cell">SDPLTIProviderDriver</td>
@@ -921,13 +921,13 @@
                 </tr>
 
                 <!-- =========================================================
-                     LIVE SDP ADMIN ROWS — clickable
+                     LIVE SkillProof ADMIN ROWS — clickable
                      ========================================================= -->
-                <tr class="live" tabindex="0" data-launch="../tenant_admin/" aria-label="Launch SDP Tenant Admin Portal (demo shortcut)">
+                <tr class="live" tabindex="0" data-launch="../tenant_admin/" aria-label="Launch SkillProof Tenant Admin Portal (demo shortcut)">
                   <td class="id-cell">269781301</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-TA]</span>SDP Tenant Admin Portal — Course Configuration <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-TA]</span>SkillProof Tenant Admin Portal — Course Configuration <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">(demo) production: SDP-IN handshake + Tenant Admin elevation lookup</td>
+                  <td class="desc-cell">(demo) production: SkillProof-IN handshake + Tenant Admin elevation lookup</td>
                   <td class="driver-cell">SDPTenantAdminProviderDriver</td>
                   <td>Lana</td>
                   <td class="date-cell">07 May 2026</td>
@@ -935,9 +935,9 @@
                     <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
                   </td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="../instructor/" aria-label="Launch SDP Instructor Dashboard">
+                <tr class="live" tabindex="0" data-launch="../instructor/" aria-label="Launch SkillProof Instructor Dashboard">
                   <td class="id-cell">269781302</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-IN]</span>SDP Instructor Dashboard — At-Risk Intervention<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-IN]</span>SkillProof Instructor Dashboard — At-Risk Intervention<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/sdp/instructor/{course_id}</td>
                   <td class="driver-cell">SDPInstructorProviderDriver</td>
@@ -947,11 +947,11 @@
                     <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
                   </td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="../super_admin/" aria-label="Launch SDP Super Admin Portal (demo shortcut)">
+                <tr class="live" tabindex="0" data-launch="../super_admin/" aria-label="Launch SkillProof Super Admin Portal (demo shortcut)">
                   <td class="id-cell">269781303</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SDP-SA]</span>SDP Super Admin Portal — Platform Operations <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-SA]</span>SkillProof Super Admin Portal — Platform Operations <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">(demo) production: SDP-IN handshake + Global Admin elevation lookup + MFA</td>
+                  <td class="desc-cell">(demo) production: SkillProof-IN handshake + Global Admin elevation lookup + MFA</td>
                   <td class="driver-cell">SDPSuperAdminProviderDriver</td>
                   <td>Lana</td>
                   <td class="date-cell">07 May 2026</td>
@@ -963,7 +963,7 @@
                 <!-- More filler rows below the live ones -->
                 <tr>
                   <td class="id-cell">269781311</td>
-                  <td class="name-cell"><span class="name-tag">[SDP-API]</span>SDP REST API Provider — v1</td>
+                  <td class="name-cell"><span class="name-tag">[SkillProof-API]</span>SkillProof REST API Provider — v1</td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">api.sdp.wgu.edu/v1/oauth2/authorize?client_id={tenant_client}</td>
                   <td class="driver-cell">SDPApiProviderDriver</td>
@@ -1089,7 +1089,7 @@
           </div>
         </div>
 
-        <p class="text-muted small mt-2 text-center">Build: 20260507 · LRPS v3.4.2 · SDP-styled storyboard recreation</p>
+        <p class="text-muted small mt-2 text-center">Build: 20260507 · LRPS v3.4.2 · SkillProof-styled storyboard recreation</p>
       </section>
     </div>
   </div>
@@ -1118,7 +1118,7 @@
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> · JFT SDP · LRPS Landing · SDP Design System v1.2 · Persona: Lana (LRPS admin)</span>
+    <span><span class="meta-id">DEMO ONLY</span> · SkillProof · LRPS Landing · SkillProof Design System v1.2 · Persona: Lana (LRPS admin)</span>
   </div>
   <div class="meta-bar-flows">
     <span style="color: rgba(255,255,255,0.78); font-size:12px;">Quick launch:</span>
@@ -1131,7 +1131,7 @@
 </div>
 
 <script>
-  /* Make the four live SDP rows launch their portals */
+  /* Make the four live SkillProof rows launch their portals */
   document.querySelectorAll('tr.live[data-launch]').forEach(function(row) {
     var url = row.getAttribute('data-launch');
     var go = function() { window.location.href = url; };
@@ -1141,17 +1141,17 @@
     });
   });
 
-  /* Theme toggle (matches the four SDP portals) */
+  /* Theme toggle (matches the four SkillProof portals) */
   function toggleTheme() {
     var html = document.documentElement;
     var isDark = html.getAttribute('data-theme') === 'dark';
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
-    localStorage.setItem('sdp-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
   }
   (function() {
-    var saved = localStorage.getItem('sdp-theme');
+    var saved = localStorage.getItem('skillproof-theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });

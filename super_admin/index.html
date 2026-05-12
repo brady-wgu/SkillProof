@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.42</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.43</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
-    Super Admin Portal storyboard for the JFT SDP v1.3 additional scenarios.
+    Super Admin Portal storyboard for the SkillProof v1.3 additional scenarios.
     Persona: Bob (platform operations and infrastructure).
     Scenario: SC-ADD-04 (Super Admin Governance and Cost Audit).
 
-    Visual style mirrors tenant_admin.html and instructor.html (same SDP
+    Visual style mirrors tenant_admin.html and instructor.html (same SkillProof
     Design System v1.2 tokens, same WGU FY26 brand chrome, same architectural
     shell). Each persona has its own LRPS deep link; Bob's role is mapped at
     auth time as Super Admin · Platform Operations.
 
-    SDP Design System v1.2 — Built on Paragon / Open edX
+    SkillProof Design System v1.2 — Built on Paragon / Open edX
     In production, install:
       npm install @openedx/paragon
       @use "@openedx/paragon/dist/core.min.css";
-      @use "@wgu/sdp-brand/light.min.css";
+      @use "@wgu/skillproof-brand/light.min.css";
   -->
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
   <style>
     /* ================================================================
-       SDP DESIGN TOKENS (SDP Design System v1.2, Sections 3-5)
+       DESIGN TOKENS — SkillProof Design System v1.2 (Sections 3-5)
        Mirrors tenant_admin.html / instructor.html.
        ================================================================ */
     :root {
@@ -718,7 +718,7 @@
           <h1 id="s1-heading" class="h2 mb-2">Welcome to the Super Admin Portal</h1>
           <p class="mb-4">Verifying your secret LRPS deep link with WGU Single Sign-On.</p>
           <div class="stack-2 text-center" style="display:inline-block; text-align:left;">
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SDP-IN]</code></span></div>
+            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SkillProof-IN]</code></span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>WGU SSO authentication complete · SAML 2.0 SP · MFA verified</span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LTI baseline role: Instructor</span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>Elevation applied: <strong>Global Admin &middot; Platform Operations</strong> <span class="text-muted small">(initial seed)</span></span></div>
@@ -1231,7 +1231,7 @@
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">verified_user</span>Compliance · Encryption + Privacy Audit</span>
           <h1 id="s6-heading">Compliance report</h1>
-          <p class="mt-1">TLS 1.3 enforcement, certificate validity, and FERPA privacy controls across all SDP data paths and tenants.</p>
+          <p class="mt-1">TLS 1.3 enforcement, certificate validity, and FERPA privacy controls across all SkillProof data paths and tenants.</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
           <span class="badge badge-success" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">verified</span>All paths pass</span>
@@ -1572,7 +1572,7 @@
           <tr>
             <td>06 May 18:21:00</td>
             <td>pdev</td>
-            <td>System (SDP Coach)</td>
+            <td>System (SkillProof Coach)</td>
             <td><code>session.start</code> (lnr_4a3b2c1d)</td>
             <td><span class="badge badge-info">Info</span></td>
             <td><span class="badge badge-success">Success</span></td>
@@ -1648,7 +1648,7 @@
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">manage_accounts</span>Global Admin</span>
       <h1 id="s9-heading">User Management</h1>
-      <p class="mt-1 mb-3">All users who have logged into the SDP via LTI. Learners land at <strong>Student</strong>; <strong>all WGU staff land at Instructor</strong> by default (whether they actually teach or not). Elevations to <strong>Tenant Admin</strong> or <strong>Global Admin</strong> are applied here by a Global Admin and take effect on the user&rsquo;s next login. Staff who don&rsquo;t need elevated privileges stay at the Instructor baseline.</p>
+      <p class="mt-1 mb-3">All users who have logged into SkillProof via LTI. Learners land at <strong>Student</strong>; <strong>all WGU staff land at Instructor</strong> by default (whether they actually teach or not). Elevations to <strong>Tenant Admin</strong> or <strong>Global Admin</strong> are applied here by a Global Admin and take effect on the user&rsquo;s next login. Staff who don&rsquo;t need elevated privileges stay at the Instructor baseline.</p>
 
       <div class="row mb-3">
         <div class="col-3">
@@ -1873,7 +1873,7 @@
   </main>
 </section>
 
-<!-- Screen 10: External Tooling & Integrations — v4.28 per WGU direction for AWS-centric tooling. Hub page that links out to 3rd party dashboards (AWS / OpenRouter / Redis / Grafana / Jira / GitHub) + surfaces global configuration values that are enforced outside the SDP (student 5000-char limit, Redis token cap, OpenRouter provider chain). -->
+<!-- Screen 10: External Tooling & Integrations — v4.28 per WGU direction for AWS-centric tooling. Hub page that links out to 3rd party dashboards (AWS / OpenRouter / Redis / Grafana / Jira / GitHub) + surfaces global configuration values that are enforced outside the SkillProof (student 5000-char limit, Redis token cap, OpenRouter provider chain). -->
 <section class="screen" id="screen-10" aria-labelledby="s10-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -1892,7 +1892,7 @@
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">open_in_new</span>Super Admin</span>
       <h1 id="s10-heading">External Tooling &amp; Integrations</h1>
-      <p class="mt-1 mb-3">Some platform functions are managed in 3rd party dashboards. This page surfaces those integrations + global configuration values that live outside the SDP.</p>
+      <p class="mt-1 mb-3">Some platform functions are managed in 3rd party dashboards. This page surfaces those integrations + global configuration values that live outside the SkillProof.</p>
 
       <h2 class="h5 mb-2">External dashboards</h2>
       <div class="row mb-3">
@@ -1995,7 +1995,7 @@
               <tr>
                 <td><strong>Student input character limit</strong></td>
                 <td>5,000 chars</td>
-                <td>Student UI input layer (SDP)</td>
+                <td>Student UI input layer (SkillProof)</td>
                 <td>Global setting; not configurable per course</td>
               </tr>
               <tr>
@@ -2026,7 +2026,7 @@
 </section>
 
 
-<!-- Screen 11: Data & Integrations Hub — v4.42 closes 5 contract rows (A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 streaming). Cross-tenant scope; consolidates data-export functions moved from tenant_admin in v4.22. -->
+<!-- Screen 11: Data & Integrations Hub — v4.43 closes 5 contract rows (A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 streaming). Cross-tenant scope; consolidates data-export functions moved from tenant_admin in v4.22. -->
 <section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -2099,28 +2099,28 @@
             <tbody>
               <tr>
                 <td><strong>learner.assessment.completed</strong></td>
-                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><code>https://[tenant]/skillproof-webhook/&hellip;</code></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td>2 min ago</td>
                 <td>0</td>
               </tr>
               <tr>
                 <td><strong>learner.session.started</strong></td>
-                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><code>https://[tenant]/skillproof-webhook/&hellip;</code></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td>14 sec ago</td>
                 <td>0</td>
               </tr>
               <tr>
                 <td><strong>course.deployed</strong></td>
-                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><code>https://[tenant]/skillproof-webhook/&hellip;</code></td>
                 <td><span class="badge badge-success">Active</span></td>
                 <td>3 hr ago</td>
                 <td>0</td>
               </tr>
               <tr>
                 <td><strong>incident.p1.opened</strong></td>
-                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><code>https://[tenant]/skillproof-webhook/&hellip;</code></td>
                 <td><span class="badge badge-warning">Degraded</span></td>
                 <td>1 day ago</td>
                 <td>2</td>
@@ -2253,7 +2253,7 @@
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP Super Admin Portal &middot; SDP Design System v1.2 &middot; Persona: Bob</span>
+    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof Super Admin Portal &middot; SkillProof Design System v1.2 &middot; Persona: Bob</span>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow</span>
@@ -2276,7 +2276,7 @@
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 11; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values. v4.42: screen 11 added (Data & Integrations Hub) closing 5 D3a true gaps — A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 data streaming.
+  const TOTAL_SCREENS = 11; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values. v4.43: screen 11 added (Data & Integrations Hub) closing 5 D3a true gaps — A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 data streaming.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
@@ -2317,11 +2317,11 @@
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
-    localStorage.setItem('sdp-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
   }
 
   (function() {
-    var saved = localStorage.getItem('sdp-theme');
+    var saved = localStorage.getItem('skillproof-theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });

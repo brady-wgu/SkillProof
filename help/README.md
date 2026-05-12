@@ -4,7 +4,7 @@
 
 ## What this is
 
-A shared documentation, training, and support surface for the JFT SDP. Closes two Appendix A items that previously had no storyboard coverage:
+A shared documentation, training, and support surface for the SkillProof. Closes two Appendix A items that previously had no storyboard coverage:
 
 - **§16.4 #9.14 Self-service support portal** — search bar, three documentation-domain cards (Get Started, Troubleshooting, API Reference), recent updates feed, and a floating Contact JFT Support button.
 - **§16.4 #9.15 Video training resources** — role-filtered video gallery with a "Start with these three" featured callout, plus nine illustrative video tiles spanning all four personas.
@@ -43,7 +43,7 @@ Shared. Accessible from every admin portal (Tenant Admin / Instructor / Super Ad
 ## Notes
 
 - Container max-width matches the rest of the storyboard (1192px) for visual consistency across surfaces.
-- Theme toggle in the navbar persists user preference via `localStorage` (`sdp-theme` key) — same pattern as the other surfaces.
+- Theme toggle in the navbar persists user preference via `localStorage` (`skillproof-theme` key) — same pattern as the other surfaces.
 - Video tile thumbnails use three gradient alternates (default navy, bright-blue, amber-orange) cycled across the gallery to provide visual variety without requiring real video assets.
 - The floating Contact button stays anchored bottom-right regardless of scroll position. Production should preserve that positioning for predictability.
 - All copy is illustrative. Production video titles, documentation article titles, and update entries should be sourced from the actual content library WGU and JFT build during the engagement.

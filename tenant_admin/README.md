@@ -19,13 +19,13 @@ This portal covers **two v1.3 scenarios** in one cohesive Alice experience, plus
 | ID | Description | Screens | Screen IDs |
 |:---|:------------|:-------:|:----------:|
 | **SC-ADD-02** | **Content Creator Portal & Course Configuration.** Multi-tenant scoping (per-the requirements #8.6) → New Subject form → Topics & Learning Objectives **with per-LO passing threshold + weight** → **LO management deep-dive: Add LO (5) + Edit LO (6) + Remove LO (7)** with per-LO threshold/weight inputs and a hallucination-prevention warning on long LO descriptions → Configure AI Coaching Prompt (4 short text-box guardrails instead of toggle switches, with "less is more" warning to prevent hallucination) → Preferred Model picker → Scoring Style & Coaching Defaults (Socratic / Direct / Adaptive; per-LO scoring pattern table — threshold/weight have moved to the LO management screens) → Review & Deploy (5-step CI/CD Stepper: Validate → Build → Test → Deploy → Verify) → Deploy Success + **LRPS provisioning ticket** (production URL + auto-filled ticket justification + Submit to LRPS team for manual deep-link mint). **Plus four Tenant Settings:** Branding & Customization (§7.9, with default-locale dropdown + PWA install badge), Team & Role-Based Access (§10.8), Instructor Roster & Course Assignment (§2.5 + §10.8), and Subject Lifecycle & Archival (§2.5 + §10.4). | 16 | 1–12, 21–24 |
-| **SC-ADD-06** | **Critical Incident Response & SLA Verification.** All-systems-operational baseline → primary LLM provider down → Fallback engaged automatically (§6.5) → notification email / toast → P1 ticket creation form in Jira (§9.1 + §9.4) → JFT-SDP-2138 confirmation → JFT Support P1 response thread within 2-hr SLA per §9.5 (CSM Jordan as WGU-facing POC per §9.1.4) → service-restored verification → SLA dashboard showing 99.97% uptime maintained. | 8 | 13–20 |
+| **SC-ADD-06** | **Critical Incident Response & SLA Verification.** All-systems-operational baseline → primary LLM provider down → Fallback engaged automatically (§6.5) → notification email / toast → P1 ticket creation form in Jira (§9.1 + §9.4) → JFT-SkillProof-2138 confirmation → JFT Support P1 response thread within 2-hr SLA per §9.5 (CSM Jordan as WGU-facing POC per §9.1.4) → service-restored verification → SLA dashboard showing 99.97% uptime maintained. | 8 | 13–20 |
 
 **Total: 2 scenarios · 24 screens.** SC-ADD-05 (Data Portability) was removed in v4.22 per JFT meeting 10 May 2026 — data export scope moved to the global / Super Admin portal, and the in-portal API console was replaced by external Swagger documentation per the requirements deliverable ("API specification using Swagger").
 
 ## Source
 
-JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development. Storyboard rev: **v4.22** (10 May 2026 — JFT-meeting reshape).
+SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development. Storyboard rev: **v4.22** (10 May 2026 — JFT-meeting reshape).
 
 ## requirements references
 
@@ -75,7 +75,7 @@ Desktop-primary. Course authoring, AI prompt configuration, and deploy workflows
 
 ## Tenant Admin portal as the configuration path for the full requirements
 
-The Content Creator / Tenant Admin portal **is** the production configuration mechanism for the SDP across all WGU PDev courses. The v1.2 student-only MVP was bootstrapped by JFT engineers via Git-versioned config for E010; once SC-ADD-02 ships, all subsequent course onboarding (E075 Intermediate Python & Libraries, E135 OOP with Python, and any future courses outside Python entirely) flows through this portal. The portal is not optional MVP-extension scope — it is part of the binding Appendix A §16.3 #8.6 multi-tenancy commitment and the §2.5 Admin Portal deliverable. WGU expects JFT to deliver it within the contracted engagement window.
+The Content Creator / Tenant Admin portal **is** the production configuration mechanism for the SkillProof across all WGU PDev courses. The v1.2 student-only MVP was bootstrapped by JFT engineers via Git-versioned config for E010; once SC-ADD-02 ships, all subsequent course onboarding (E075 Intermediate Python & Libraries, E135 OOP with Python, and any future courses outside Python entirely) flows through this portal. The portal is not optional MVP-extension scope — it is part of the binding Appendix A §16.3 #8.6 multi-tenancy commitment and the §2.5 Admin Portal deliverable. WGU expects JFT to deliver it within the contracted engagement window.
 
 ## LRPS provisioning is a manual WGU-side handoff
 

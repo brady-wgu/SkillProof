@@ -25,7 +25,7 @@ This is the **v1.2 MVP scope** — the first JFT release. It deploys the existin
 
 ## Source
 
-JFT SDP MVP Scenario Catalog **v1.2** (07 Apr 2026). Authored by WGU Program Development.
+SkillProof MVP Scenario Catalog **v1.2** (07 Apr 2026). Authored by WGU Program Development.
 
 ## requirements references
 

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Skill Development Platform Storyboard</title>
+  <title>SkillProof Storyboard</title>
 
   <!--
     DEMO ONLY · MEDIUM-FIDELITY SAMPLE
-    Portal selector landing for the JFT Skill Development Platform storyboard.
+    Portal selector landing for the SkillProof storyboard.
     Six surfaces fan out from here:
       - LRPS landing (entry point for the three admin portals)
       - Student storyboard (Sally, v1.2 MVP — 34 screens)
@@ -17,7 +17,7 @@
       - Scenario Catalog (light + dark)
 
     Each persona has its own secret LRPS deep link in production. They share
-    the SDP Design System v1.2 chrome and the WGU FY26 brand so the suite
+    the SkillProof Design System v1.2 chrome and the WGU FY26 brand so the suite
     reads as one cohesive product family.
   -->
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
 
   <style>
     /* ================================================================
-       SDP DESIGN TOKENS (SDP Design System v1.2)
+       DESIGN TOKENS — SkillProof Design System v1.2
        ================================================================ */
     :root {
       --pgn-color-primary-base: #001730;
@@ -408,7 +408,7 @@
       <span class="material-icons-outlined theme-icon-light">dark_mode</span>
       <span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span>
     </button>
-    <span class="navbar-chip">JFT SDP Storyboard</span>
+    <span class="navbar-chip">SkillProof Storyboard</span>
   </div>
 </header>
 
@@ -416,9 +416,9 @@
 
   <section class="hero">
     <div class="container">
-      <span class="hero-eyebrow">JFT SDP · v4.42 · Medium-fidelity prototype</span>
-      <h1>Skill Development Platform</h1>
-      <p>An AI-powered Python coding coach for WGU students, plus the administrative surfaces around it. Six self-contained desktop storyboards spanning four personas, built on the SDP Design System v1.2 with WGU FY26 brand tokens.</p>
+      <span class="hero-eyebrow">SkillProof · v4.43 · Medium-fidelity prototype</span>
+      <h1>SkillProof</h1>
+      <p>An AI-powered Python coding coach for WGU students, plus the administrative surfaces around it. Six self-contained desktop storyboards spanning four personas, built on the SkillProof Design System v1.2 with WGU FY26 brand tokens.</p>
       <div class="hero-stats">
         <div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">Scenarios</div></div>
         <div class="hero-stat"><div class="hero-stat-num">75</div><div class="hero-stat-label">Screens</div></div>
@@ -446,9 +446,9 @@
               <div class="portal-card-persona">Lana · LRPS admin</div>
             </div>
           </div>
-          <p class="portal-card-desc">SDP-styled recreation of WGU's internal Learning Resource Provisioning System. Every portal in this storyboard launches from a row here.</p>
+          <p class="portal-card-desc">SkillProof-styled recreation of WGU's internal Learning Resource Provisioning System. Every portal in this storyboard launches from a row here.</p>
           <div class="scenario-tags">
-            <span class="scenario-tag">4 live SDP rows</span>
+            <span class="scenario-tag">4 live SkillProof rows</span>
             <span class="scenario-tag">17 illustrative</span>
           </div>
           <div class="portal-card-footer">
@@ -604,10 +604,10 @@
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
-    localStorage.setItem('sdp-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
   }
   (function() {
-    var saved = localStorage.getItem('sdp-theme');
+    var saved = localStorage.getItem('skillproof-theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });
