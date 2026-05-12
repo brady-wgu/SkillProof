@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 152 PNGs (v4.36: D3a re-audit downgraded 2 of 9 Gap classifications to Partial in CONTRACT_TRACKER (A-6.8 + A-6.12 have adequate medium-fidelity badge coverage on tenant-08); 7 true gaps remain for D3a build phase; no storyboard UI changes; PNG counts unchanged from v4.35).
+Total: 152 PNGs (v4.37: D3a build plan doc added to _contract_tracking/ proposing two themed surfaces — Data & Integrations Hub on Super Admin and Help & Resources as a new shared surface — pending WGU review before HTML composition; no storyboard UI changes; PNG counts unchanged from v4.36).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
