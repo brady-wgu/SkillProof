@@ -8,7 +8,7 @@
 **Date:** 12 May 2026
 **Author:** WGU Program Development
 **Source:** Signed JFT MSA / SOW (executed 2026)
-**Storyboard baseline:** brady-wgu/JFT_SDP at v4.34
+**Storyboard baseline:** brady-wgu/JFT_SDP at v4.35
 
 ## How to read this file
 
@@ -298,7 +298,7 @@ Total gaps: 9 out of 92 Appendix A items (~10%). The remaining 83 Appendix A ite
 
 | Version | Date | Status | Notes |
 |:---|:---|:---|:---|
-| 1.0 | 12 May 2026 | Current | Initial baseline. 156 rows enumerated across MSA + SOW + Appendix A. 9 gaps identified for D3a follow-up. Storyboard baseline: v4.34. |
+| 1.0 | 12 May 2026 | Current | Initial baseline. 156 rows enumerated across MSA + SOW + Appendix A. 9 gaps identified for D3a follow-up. Storyboard baseline: v4.35. |
 
 ---
 
