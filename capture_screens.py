@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 154 PNGs after capture (v4.39: WGU production footer (mirrored from tenant-21 Branding preview) deployed as the visible site footer across every non-MVP surface — tenant_admin, instructor, super_admin, lrps, help, root portal selector, and both presentation catalogs. student/index.html intentionally NOT touched per the MVP freeze. PNG counts unchanged from v4.38).
+Total: 154 PNGs after capture (v4.40: WGU production footer extended to student/index.html with explicit per-change authorization (ending the 36-consecutive-release freeze streak). Footer now present on every storyboard surface. PNG counts unchanged from v4.39).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
