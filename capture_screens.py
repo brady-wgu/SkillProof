@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 152 PNGs (v4.37: D3a build plan doc added to _contract_tracking/ proposing two themed surfaces — Data & Integrations Hub on Super Admin and Help & Resources as a new shared surface — pending WGU review before HTML composition; no storyboard UI changes; PNG counts unchanged from v4.36).
+Total: 154 PNGs after capture (v4.38: NEW shared Help & Resources surface added in help/ folder, closing Appendix A §16.4 #9.14 self-service support portal and #9.15 video training resources; storyboard surface count 5 → 6, screen count 76 → 77; PNG count grows 152 → 154 after capture executes locally).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
