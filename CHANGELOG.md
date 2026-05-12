@@ -1,8 +1,55 @@
 # Changelog
 
-All notable changes to the JFT SDP storyboard. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
+All notable changes to the SkillProof storyboard. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
-The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, not the underlying SDP product version that JFT is building. The SDP product follows the user scenario catalog versions (v1.2 MVP, v1.3 Additional, etc.).
+The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, not the underlying SkillProof product version that JFT is building. The SkillProof product follows the user scenario catalog versions (v1.2 MVP, v1.3 Additional, etc.).
+
+---
+
+## v4.43 — 12 May 2026 — Product rename: Skill Development Platform → SkillProof
+
+WGU executive direction delivered late on 12 May 2026: the product previously named **Skill Development Platform** (abbreviated **SDP**) is now branded **SkillProof**. This release applies the rename across every storyboard surface, README, tracker, and toolchain file in the repo.
+
+### What changed
+
+- **Product references in visible text:** every occurrence of "Skill Development Platform", "SDP", "JFT SDP", and "SDP Design System" replaced with "SkillProof" / "SkillProof Design System" across all 22 affected files.
+- **Storyboard titles:** `<title>JFT SDP — Skill Development Platform Storyboard</title>` → `<title>SkillProof Storyboard</title>` and parallel patterns on every persona portal.
+- **LRPS row tags:** `[SDP-ST]`, `[SDP-TA]`, `[SDP-IN]`, `[SDP-SA]`, `[SDP-API]` → `[SkillProof-ST]`, `[SkillProof-TA]`, `[SkillProof-IN]`, `[SkillProof-SA]`, `[SkillProof-API]` in `lrps/index.html`.
+- **Design-tokens code-comment headers:** "SDP DESIGN TOKENS (SDP Design System v1.2)" → "DESIGN TOKENS — SkillProof Design System v1.2" (cleaner phrasing after rename collapse).
+- **Technical identifiers** also renamed for storyboard consistency. JFT will need a migration shim in the deployed MVP to handle existing user state:
+  - `localStorage.setItem('sdp-theme', ...)` → `localStorage.setItem('skillproof-theme', ...)`
+  - `@wgu/sdp-brand` hypothetical npm package reference → `@wgu/skillproof-brand`
+  - `https://[tenant]/sdp-webhook/...` URL pattern → `https://[tenant]/skillproof-webhook/...`
+- **Awkward "the SkillProof X" article phrasings** fixed where "the SDP" historically read fine but "the SkillProof" stutters without a noun: dropped the article in `help/index.html`, `instructor/README.md`, `lrps/README.md`, `super_admin/index.html`, and the root README.
+- **Version stamp** bumped v4.42 → v4.43 across all HTML files, the catalogs' hero-doc-info banners, Doc Control rows (v4.42 → Superseded, v4.43 Current), the README badge, and `capture_screens.py` docstring.
+
+### What did NOT change
+
+- **GitHub repo name** `brady-wgu/JFT_SDP` is NOT renamed in this release. Renaming a GitHub repo is a significant operation (changes URLs, breaks existing clones until GitHub's redirect kicks in, affects the published GitHub Pages domain). If WGU wants the repo URL to also reflect the new product name, that's a separate explicit operation to schedule.
+- **GitHub Pages URL** `brady-wgu.github.io/JFT_SDP/` likewise unchanged (follows repo name).
+- **Folder structure** (`student/`, `tenant_admin/`, `instructor/`, `super_admin/`, `lrps/`, `help/`) unchanged — persona-named, not product-named.
+- **Contract identifiers** like contract, requirements, Appendix A unchanged. The signed contract continues to reference "Skill Development Platform"; the rename is a marketing / branding decision that does not modify the legal product naming in the executed contract.
+- **Storyboard surface count** (6) and screen count (78) unchanged.
+- **WGU production footer** markup unchanged on all 9 surfaces.
+
+### Historical narrative in past CHANGELOG entries
+
+Past CHANGELOG entries describing prior storyboard releases have been bulk-renamed too — references like "JFT SDP" and "Skill Development Platform" inside older entry bodies now read "SkillProof". This keeps the file internally consistent under the new name, at the cost of slight historical anachronism (e.g., the v4.31 entry now describes correcting "the product name from the plural to the singular form" which only makes sense in the pre-rename "Skill / Skills" framing). The v4.43 entry above is the authoritative record of the rename event itself.
+
+### Doc Control tables
+
+Both `presentation.html` and `presentation_dark.html` get a new v4.43 row (Current), with v4.42 flipped to Superseded.
+
+### Files touched
+
+22 files: `CHANGELOG.md`, `README.md`, `index.html`, `capture_screens.py`, `presentation.html`, `presentation_dark.html`, all 6 persona/help `index.html` files, all 6 persona/help `README.md` files (student through help), and 4 `_contract_tracking/*.md` files (CONTRACT_TRACKER, SCREEN_JUSTIFICATIONS, D3A_BUILD_PLAN, README).
+
+### Verification
+
+1. Cleanliness grep against sensitive-pattern list returns zero matches.
+2. Old-product-name grep (`Skill Development Platform`, `\bSDP\b`, `sdp-theme`, `@wgu/sdp-brand`, `sdp-webhook`) returns zero matches outside of the explanatory CHANGELOG entry above.
+3. README badge reads v4.43.
+4. Doc Control: v4.43 Current, v4.42 Superseded in both presentation catalogs.
 
 ---
 
@@ -12,7 +59,7 @@ WGU Program Development direction: the WGU production footer should be the last 
 
 ### What changed
 
-Deleted the `<p class="sr-only">JFT SDP [persona] Storyboard v4.XX — Western Governors University …</p>` line from inside the WGU footer on every storyboard surface:
+Deleted the `<p class="sr-only">SkillProof [persona] Storyboard v4.XX — Western Governors University …</p>` line from inside the WGU footer on every storyboard surface:
 
 - `student/index.html` (v4.40 stamp removed — first edit since the v4.40 freeze-restart, with explicit authorization for this specific change covering the footer cleanup directive)
 - `tenant_admin/index.html`, `instructor/index.html`, `super_admin/index.html`, `lrps/index.html`, `help/index.html` (v4.41 stamps removed)
@@ -24,7 +71,7 @@ The WGU production footer (logo + ADA Accommodation top row; copyright + Privacy
 ### Why version info isn't lost
 
 - Storyboard release version still lives in the `<title>` tag of every persona file (browser tab title).
-- Storyboard release version still lives in the meta-bar (`SDP Design System v1.2` reference + Persona identifier).
+- Storyboard release version still lives in the meta-bar (`SkillProof Design System v1.2` reference + Persona identifier).
 - Full version history lives in `CHANGELOG.md` and both presentation catalog Doc Control tables.
 - The hero-doc-info banner at the top of `presentation.html` and `presentation_dark.html` still shows the current catalog version + storyboard version for reviewers.
 
@@ -66,7 +113,7 @@ Closes the second themed surface from the v4.37 D3a build plan. Adds a new scree
 
 ### What's new
 
-New screen `super-11` on `super_admin/index.html` (Super Admin portal screen count 10 → 11; storyboard screen total 77 → 78). Five sections, all on one screen, following the SDP Design System v1.2 + Paragon `pgn__card` pattern established by `super-10` External Tooling:
+New screen `super-11` on `super_admin/index.html` (Super Admin portal screen count 10 → 11; storyboard screen total 77 → 78). Five sections, all on one screen, following the SkillProof Design System v1.2 + Paragon `pgn__card` pattern established by `super-10` External Tooling:
 
 - **Data export (A-8.8)** — two-card row: Real-time export (webhook stream, OAuth-secured, signed payloads, last-event-received timestamp) and Batch export (JSON / CSV / PDF / XML, daily / weekly / monthly schedule, next-run timestamp).
 - **Webhook subscriptions (A-8.12)** — featured card with a 4-row event table (`learner.assessment.completed`, `learner.session.started`, `course.deployed`, `incident.p1.opened`) showing Endpoint URL, Status pill, Last delivery, Retries (24h). Register endpoint CTA.
@@ -223,12 +270,12 @@ First focused D3a build PR. Implements the **Help & Resources** themed surface d
 
 - **New top-level folder `help/`** parallel to `lrps/`, following the established 5-surface storyboard pattern. Brings the storyboard surface count from 5 to 6.
 - **`help/index.html`** — single-screen shared surface with:
-  - SDP Design System v1.2 navbar (deep navy header, brand logo + product subtitle, Portals / Scenario Catalog links, theme toggle).
+  - SkillProof Design System v1.2 navbar (deep navy header, brand logo + product subtitle, Portals / Scenario Catalog links, theme toggle).
   - H1 "How can we help?" plus subtitle, search bar (non-functional placeholder, with leading icon + trailing `/` keyboard-hint chip).
   - **Self-service support section (A-9.14):** three documentation-domain cards (Get Started, Troubleshooting, API Reference) with icons, descriptions, and call-to-action links. Recent updates feed underneath (4 illustrative entries with New/Updated status tags).
   - **Video training section (A-9.15):** role-filter chips (All roles / Student / Instructor / Tenant Admin / Super Admin) with active-state JS, "New here? Start with these three" gradient featured callout, and a 3×3 grid of nine illustrative video tiles (16:9 placeholder gradient thumbnails with play-icon overlay + duration badge, role-tagged in the metadata strip).
   - Floating "Contact JFT Support" action button anchored bottom-right; mirrors the Jira ticket workflow on `tenant-16` (the existing SC-ADD-06 Tenant Admin pattern).
-  - Light/dark theme support with `localStorage` persistence (same `sdp-theme` key as the other surfaces).
+  - Light/dark theme support with `localStorage` persistence (same `skillproof-theme` key as the other surfaces).
   - Meta-bar bottom strip identifying surface + design system + persona scope, matching the LRPS landing pattern.
 - **`help/README.md`** — persona definition (shared across all admin roles + LRPS admin), scope, requirements references (§16.4 #9.14 + #9.15 + supporting), file inventory, component catalog, design notes, future-enhancement list.
 
@@ -294,7 +341,7 @@ Pre-build planning doc added to `_contract_tracking/` so WGU Program Development
 - **New file `_contract_tracking/D3A_BUILD_PLAN.md`** — proposes how to close the 7 true-gap items identified in v4.36. Covers two themed surfaces:
   - **Data & Integrations Hub** (new `super-11` screen, 5 contract rows: A-6.28, A-8.8, A-8.12, A-8.13, A-8.14). Builds on the Super Admin portal as the 11th screen, following the cross-tenant scope established in v4.22 when SC-ADD-05 was moved to global.
   - **Help & Resources** (new shared `help-01` surface, 2 contract rows: A-9.14, A-9.15). Proposed as a 6th top-level folder linkable from all admin portals.
-- Lists design constraints (SDP Design System v1.2, code-syntax palette extension scope, external-dashboard pattern from v4.28, JFT-literal-builders rule), open design questions for each surface, tracker-update consequences, and an effort-estimated sequencing recommendation (Help & Resources first, then Data & Integrations).
+- Lists design constraints (SkillProof Design System v1.2, code-syntax palette extension scope, external-dashboard pattern from v4.28, JFT-literal-builders rule), open design questions for each surface, tracker-update consequences, and an effort-estimated sequencing recommendation (Help & Resources first, then Data & Integrations).
 - The doc explicitly states it is **not an authorization to build** — WGU review and approval is required before HTML composition proceeds.
 
 ### What did NOT change
@@ -462,7 +509,7 @@ Applies the WGU-side analysis findings F1–F13 (from the pre-build contract-vs-
 **`tenant_admin/README.md` — three new sections (F5 + F7 + F12).**
 
 - *Device context* — desktop-primary; course authoring and AI prompt configuration unsuited to mobile.
-- *Tenant Admin portal as the configuration path for the full requirements* — this portal **is** the production configuration mechanism for the SDP; not optional MVP-extension scope; part of binding §16.3 #8.6 multi-tenancy commitment and §2.5 Admin Portal deliverable.
+- *Tenant Admin portal as the configuration path for the full requirements* — this portal **is** the production configuration mechanism for the SkillProof; not optional MVP-extension scope; part of binding §16.3 #8.6 multi-tenancy commitment and §2.5 Admin Portal deliverable.
 - *LRPS provisioning is a manual WGU-side handoff* — JFT does not write to LRPS; generic "LTI 1.3 compliance" is not sufficient for end-to-end course launch in WGU's distributed-LMS environment; custom LRPS integration work beyond LTI 1.3 baseline is scoped explicitly.
 
 **`instructor/README.md` — two new sections (F6 + F12).**
@@ -561,13 +608,13 @@ Storyboard cost-dashboard mockup numbers (illustrative dollar amounts on token-u
 
 ### Product-name correction: Skills → Skill
 
-Audit against the signed contract/requirements confirmed the product is the **Skill Development Platform** (singular). The repo had been using the plural form in 9 places across 4 files. Refactored to match the contract:
+Audit against the signed contract/requirements confirmed the product is the **SkillProof** (singular). The repo had been using the plural form in 9 places across 4 files. Refactored to match the contract:
 
 - `index.html` (root) — page title, source comment, hero `<h1>`
 - `README.md` — top-level heading, Overview paragraph
 - `presentation.html` + `presentation_dark.html` — subtitle, MVP catalog purpose paragraph
 
-The **SDP** abbreviation is unchanged (still stands for the same name, just singular). Generic English usages of "skills" elsewhere in the storyboard (e.g., "her existing skills", "learn new skills" in zyBooks reference copy) are correct English and untouched.
+The **SkillProof** abbreviation is unchanged (still stands for the same name, just singular). Generic English usages of "skills" elsewhere in the storyboard (e.g., "her existing skills", "learn new skills" in zyBooks reference copy) are correct English and untouched.
 
 ### Identified gaps (9, for D3a follow-up)
 
@@ -624,11 +671,11 @@ Quick follow-up to v4.29 per WGU Program Development's additional context: in pr
 
 **LRPS landing banner** (`lrps/index.html`) — expanded to call out that the Instructor LTI link covers all WGU staff and that non-elevation is a valid steady state:
 
-> Only 2 LRPS rows route real users into the SDP: `[SDP-ST]` (LTI `role=student`, for learners) and `[SDP-IN]` (LTI `role=instructor`, for **all WGU staff**). Every WGU staff member — instructors, content creators, platform operators — lands at the Instructor baseline by default. A Global Admin then manually elevates them to **Tenant Admin** or **Global Admin** in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline.
+> Only 2 LRPS rows route real users into the SkillProof: `[SkillProof-ST]` (LTI `role=student`, for learners) and `[SkillProof-IN]` (LTI `role=instructor`, for **all WGU staff**). Every WGU staff member — instructors, content creators, platform operators — lands at the Instructor baseline by default. A Global Admin then manually elevates them to **Tenant Admin** or **Global Admin** in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline.
 
 **Super Admin Screen 9 User Management intro** (`super_admin/index.html`) — same framing, with explicit "staff who don't need elevated privileges stay at the Instructor baseline" call-out so Bob understands non-elevation is a valid steady state, not an incomplete onboarding:
 
-> All users who have logged into the SDP via LTI. Learners land at **Student**; **all WGU staff land at Instructor** by default (whether they actually teach or not). Elevations to **Tenant Admin** or **Global Admin** are applied here by a Global Admin and take effect on the user's next login. Staff who don't need elevated privileges stay at the Instructor baseline.
+> All users who have logged into the SkillProof via LTI. Learners land at **Student**; **all WGU staff land at Instructor** by default (whether they actually teach or not). Elevations to **Tenant Admin** or **Global Admin** are applied here by a Global Admin and take effect on the user's next login. Staff who don't need elevated privileges stay at the Instructor baseline.
 
 ### What did NOT change
 
@@ -661,10 +708,10 @@ Quick follow-up to v4.29 per WGU Program Development's additional context: in pr
 WGU Program Development walked through the production login & elevation flow on 11 May and asked for it to be clearly conveyed across the site. v4.29 implements the clarifications in-place across LRPS landing + all 3 admin SSO screens + the User Management screen.
 
 > The flow:
-> 1. Everyone clicks an LRPS link to get to the SDP.
+> 1. Everyone clicks an LRPS link to get to the SkillProof.
 > 2. LTI packet only has 2 text-based identifiers related to access: **Student** and **Instructor**.
 > 3. Each user is given the included access level by default: student or instructor.
-> 4. Global admins can see everyone who has logged into the SDP.
+> 4. Global admins can see everyone who has logged into the SkillProof.
 > 5. Global admins elevate everyone, as needed, to the instructor, tenant admin or global admin levels.
 >
 > — WGU Program Development, 11 May 2026
@@ -679,18 +726,18 @@ Before this release the storyboard implied LTI could grant any of the 4 roles di
 
 Added a "Production LTI flow" info banner above the providers table:
 
-> **Production LTI flow.** Only 2 LRPS rows route real users into the SDP: `[SDP-ST]` (LTI `role=student`) and `[SDP-IN]` (LTI `role=instructor`). Tenant Admins and Global Admins enter the SDP via the same Instructor LTI link — the SDP looks up their stored elevation after handshake and routes them to the Tenant Admin or Super Admin portal. The `[SDP-TA]` and `[SDP-SA]` rows below are *storyboard demo shortcuts*; they do not represent separate LTI provisioning paths.
+> **Production LTI flow.** Only 2 LRPS rows route real users into the SkillProof: `[SkillProof-ST]` (LTI `role=student`) and `[SkillProof-IN]` (LTI `role=instructor`). Tenant Admins and Global Admins enter the SkillProof via the same Instructor LTI link — the SkillProof looks up their stored elevation after handshake and routes them to the Tenant Admin or Super Admin portal. The `[SkillProof-TA]` and `[SkillProof-SA]` rows below are *storyboard demo shortcuts*; they do not represent separate LTI provisioning paths.
 
-Reframed `[SDP-TA]` and `[SDP-SA]` table rows:
+Reframed `[SkillProof-TA]` and `[SkillProof-SA]` table rows:
 - Name cell now has a `demo shortcut` badge next to the title
-- Desc cell now reads `(demo) production: SDP-IN handshake + Tenant Admin / Global Admin elevation lookup`
+- Desc cell now reads `(demo) production: SkillProof-IN handshake + Tenant Admin / Global Admin elevation lookup`
 - aria-labels updated to `(demo shortcut)`
 
 **B. Instructor Screen 1 (`instructor/index.html`) — SSO check items**
 
 | Before | After |
 |---|---|
-| LRPS deep link verified | LRPS deep link verified `[SDP-IN]` |
+| LRPS deep link verified | LRPS deep link verified `[SkillProof-IN]` |
 | WGU SSO authentication complete | (unchanged) |
 | Role mapped: **Instructor** | LTI baseline role: **Instructor** *(no elevation needed)* |
 
@@ -698,7 +745,7 @@ Reframed `[SDP-TA]` and `[SDP-SA]` table rows:
 
 | Before | After |
 |---|---|
-| LRPS deep link verified | LRPS deep link verified `[SDP-IN]` |
+| LRPS deep link verified | LRPS deep link verified `[SkillProof-IN]` |
 | WGU SSO authentication complete | (unchanged) |
 | Role mapped: **Tenant Admin** | *(split into 2 lines:)* LTI baseline role: Instructor → Elevation applied: **Tenant Admin** *(by Global Admin Bob, 07 May 2026)* |
 
@@ -708,14 +755,14 @@ Same pattern as Tenant Admin:
 
 | Before | After |
 |---|---|
-| LRPS deep link verified | LRPS deep link verified `[SDP-IN]` |
+| LRPS deep link verified | LRPS deep link verified `[SkillProof-IN]` |
 | WGU SSO authentication complete · SAML 2.0 SP · MFA verified | (unchanged) |
 | Role mapped: **Super Admin · Platform Operations** | *(split into 2 lines:)* LTI baseline role: Instructor → Elevation applied: **Global Admin · Platform Operations** *(initial seed)* |
 
 **E. Super Admin Screen 9 (User Management)**
 
 - Added intro paragraph below the H1:
-  > "All users who have logged into the SDP via LTI. LTI provides only 2 baseline roles (**Student** or **Instructor**); elevations to **Tenant Admin** or **Global Admin** are applied here and take effect on the user's next login."
+  > "All users who have logged into the SkillProof via LTI. LTI provides only 2 baseline roles (**Student** or **Instructor**); elevations to **Tenant Admin** or **Global Admin** are applied here and take effect on the user's next login."
 - Added `LTI: Instructor` / `LTI: Student` micro-text annotation under each role badge in all 8 table rows:
   - Bob (you) — Global Admin · LTI: Instructor
   - Jordan — Global Admin · LTI: Instructor
@@ -818,7 +865,7 @@ WGU Program Development confirmed both should stay **global settings**, not conf
 
 | Setting | Value | Enforced by | Notes |
 |---|---|---|---|
-| Student input character limit | 5,000 chars | Student UI input layer (SDP) | Global setting; not configurable per course |
+| Student input character limit | 5,000 chars | Student UI input layer (SkillProof) | Global setting; not configurable per course |
 | LLM token cap per session | 50,000 tokens | Redis Admin | Cached + enforced at Redis |
 | Default LLM provider chain | Primary + 2 fallback | OpenRouter.ai | Per-tenant model selection in Content Creator Portal |
 | Storage retention | Per institutional policy | AWS Console | FERPA-aligned |
@@ -1172,7 +1219,7 @@ Per WGU Program Development's directive ("On Tenant Admin Screen 2, you list 'SC
 - **Screen 5 (Add LO):** "Per the requirements" → "All LO add/edit/remove events"
 - **Screen 6 (Edit LO):** "versioned per the requirements audit logging" → "versioned and audit-logged"; "Full audit trail available via the requirements logging" → "Full audit trail available via the cross-tenant audit log"
 - **Screen 7 (Remove LO):** "per the requirements" stripped from both intro paragraph and Impact preview table
-- **Meta-bar header:** "JFT SDP Content Creator Portal (the requirements role: Tenant Admin)" → "JFT SDP Content Creator Portal"
+- **Meta-bar header:** "SkillProof Content Creator Portal (the requirements role: Tenant Admin)" → "SkillProof Content Creator Portal"
 - **Meta-bar flow labels:** "SC-ADD-02" → "Flow A"; "SC-ADD-06" → "Flow B"
 - **`<title>` tag:** bumped from stale "Storyboard v3.2" to "Content Creator Portal — Storyboard v4.23"
 
@@ -1534,15 +1581,15 @@ The catalog narrative line 771 retains "24/7 Proactive Monitoring" (capability d
 
 Pass 15 (post-v4.15 independent audit) found **1 Material + 4 Borderline** items. v4.16 closes the Material + 3 of 4 Borderline (the 4th — `4-hour RTO` — was Pass 15's "noted but not flagged" tail; left as-is, parallel to kept "99.95% / 99.97% uptime"). **No screens removed** (still 77); all in-place text edits.
 
-### Trimmed — `lrps/README.md` prose paragraph "three live SDP rows" survived v4.15
+### Trimmed — `lrps/README.md` prose paragraph "three live SkillProof rows" survived v4.15
 
-v4.15 swept the count table (lines 26-27) but missed the prose paragraph at line 20 saying "three live SDP rows (Tenant Admin, Instructor, Super Admin)" — same enumeration error v4.15 fixed elsewhere. Updated to "four live SDP rows (Student, Tenant Admin, Instructor, Super Admin)."
+v4.15 swept the count table (lines 26-27) but missed the prose paragraph at line 20 saying "three live SkillProof rows (Tenant Admin, Instructor, Super Admin)" — same enumeration error v4.15 fixed elsewhere. Updated to "four live SkillProof rows (Student, Tenant Admin, Instructor, Super Admin)."
 
 ### Trimmed — JS code comments in `lrps/index.html` (consistency with v4.15)
 
 Two non-user-visible JS comments still said "three" — the agent flagged at borderline confidence. Cleaned for consistency:
-- Line 1113: "Make the three live SDP rows launch their portals" → "Make the four live SDP rows launch their portals"
-- Line 1123: "Theme toggle (matches the three SDP portals)" → "Theme toggle (matches the four SDP portals)"
+- Line 1113: "Make the three live SkillProof rows launch their portals" → "Make the four live SkillProof rows launch their portals"
+- Line 1123: "Theme toggle (matches the three SkillProof portals)" → "Theme toggle (matches the four SkillProof portals)"
 
 ### Trimmed — fabricated "5-day SLA for correction requests" (FERPA control table)
 
@@ -1555,7 +1602,7 @@ Two non-user-visible JS comments still said "three" — the agent flagged at bor
 ### Verification
 
 - `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 13 consecutive releases)
-- `grep -i "three live SDP\|three SDP portals"` in deliverable → 0 hits (CHANGELOG meta-context allowed)
+- `grep -i "three live SkillProof\|three SkillProof portals"` in deliverable → 0 hits (CHANGELOG meta-context allowed)
 - `grep "5-day SLA\|All 47"` in deliverable → 0 hits
 - All 4 Pass 15 findings (1 Material + 3 Borderline) verified clean
 - The 4th Pass 15 borderline item ("4-hour RTO" specific) explicitly left as-is — agent rated borderline-not-flagged; matches the contract-grounded pattern of "99.95% / 99.97% uptime" (specific SLA telemetry display)
@@ -1566,7 +1613,7 @@ Two non-user-visible JS comments still said "three" — the agent flagged at bor
 | | v4.15 | v4.16 |
 |---|---|---|
 | Total storyboard screens | 77 | **77** (no removals) |
-| `three live SDP` mentions | 3 | **0** |
+| `three live SkillProof` mentions | 3 | **0** |
 | `5-day SLA` fabricated specific | 1 | **0** |
 | `47 operators` fabricated specific | 1 | **0** |
 | Pass 15 Material findings | 1 | **0 expected on Pass 16** |
@@ -1591,13 +1638,13 @@ All three softened to "generic WGU institutional policies (data breach drill, st
 
 `presentation.html:653` + `presentation_dark.html:653` SC-ADD-03 step 2 step title still said "section cards" even though the step body and the storyboard itself were corrected to "course" framing. The CSS class `.section-card` is internal styling (not user-visible); only the step title was the leakage. Trimmed to "Dashboard home with course cards."
 
-### Trimmed — "3 live SDP rows" stale count (LRPS actually shows 4)
+### Trimmed — "3 live SkillProof rows" stale count (LRPS actually shows 4)
 
-LRPS landing page (`lrps/index.html` line 727) shows "4 Live SDP rows" and line 736 explicitly enumerates "Student, Tenant Admin, Instructor, Super Admin" as the four live rows. But three docs still claimed 3:
+LRPS landing page (`lrps/index.html` line 727) shows "4 Live SkillProof rows" and line 736 explicitly enumerates "Student, Tenant Admin, Instructor, Super Admin" as the four live rows. But three docs still claimed 3:
 
-- `index.html:455` LRPS portal-card scenario tag: "3 live SDP rows" → "4 live SDP rows"
-- `README.md:41` Surfaces table LRPS row: "(3 live SDP rows, 17 illustrative)" → "(4 live SDP rows + illustrative filler)"
-- `README.md:187` LRPS scope bullet: "3 live SDP rows (Tenant Admin, Instructor, Super Admin)" → "4 live SDP rows (Student, Tenant Admin, Instructor, Super Admin)"
+- `index.html:455` LRPS portal-card scenario tag: "3 live SkillProof rows" → "4 live SkillProof rows"
+- `README.md:41` Surfaces table LRPS row: "(3 live SkillProof rows, 17 illustrative)" → "(4 live SkillProof rows + illustrative filler)"
+- `README.md:187` LRPS scope bullet: "3 live SkillProof rows (Tenant Admin, Instructor, Super Admin)" → "4 live SkillProof rows (Student, Tenant Admin, Instructor, Super Admin)"
 - `lrps/README.md:26-27` table: count 3 → 4 with persona enumeration
 
 ### Trimmed — `{section_id}` URL placeholder in LRPS instructor row
@@ -1609,7 +1656,7 @@ LRPS landing page (`lrps/index.html` line 727) shows "4 Live SDP rows" and line 
 - `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through 12 consecutive releases)
 - `grep -i "WGU policies 8\."` in deliverable → 0 hits (CHANGELOG meta-context allowed)
 - `grep -i "section cards\|section_id"` in deliverable → 0 hits
-- `grep -i "3 live SDP"` in deliverable → 0 hits
+- `grep -i "3 live SkillProof"` in deliverable → 0 hits
 - All 4 Pass 14 findings verified clean
 - Forbidden-term sweep clean
 
@@ -1619,7 +1666,7 @@ LRPS landing page (`lrps/index.html` line 727) shows "4 Live SDP rows" and line 
 |---|---|---|
 | Total storyboard screens | 77 | **77** (no removals) |
 | `WGU policies 8.x` mentions | 3 | **0** |
-| `3 live SDP rows` stale count | 3 | **0** |
+| `3 live SkillProof rows` stale count | 3 | **0** |
 | `{section_id}` URL placeholder | 1 | **0** |
 | `section cards` catalog step titles | 2 | **0** |
 | Pass 14 findings | 4 | **0 expected on Pass 15** |
@@ -1709,9 +1756,9 @@ Pass 12 (post-v4.12 independent audit) found **17 items** the previous five swee
 ### Trimmed / softened — instructor/ audit-log leakage (v4.10/v4.12 oversight)
 
 The SC-ADD-03 Audit Trail event log (instructor screen 8) still listed three sources that had been generic-ized elsewhere in v4.10 + v4.12:
-- Row 4 "Guardrail svc" → "SDP Coach"
+- Row 4 "Guardrail svc" → "SkillProof Coach"
 - Row 5 "Anthropic Claude Sonnet 4.5" → "Primary LLM provider"
-- Row 7 "Scoring engine" → "SDP Coach"
+- Row 7 "Scoring engine" → "SkillProof Coach"
 
 Same generic-ization rationale as v4.12: audit-log displays are not vendor-picker context, and named internal architecture components ("Guardrail svc", "Scoring engine") are implementation detail beyond the requirements.
 
@@ -2253,7 +2300,7 @@ Eight contract-grounded gaps closed across the three admin portals. **Authority 
 - **`super_admin/` screen 9 — Third-Party Integrations (G8, §2.4 AI Orchestration + §2.5 system health).** Read-only Connected Services view: OpenRouter.ai (LLM gateway, replacing direct keys for OpenAI/Anthropic/Google), AWS (compute/data/networking), Datadog (APM/logs/synthetic), Entra ID (SSO), GitHub (CI/CD source), Slack (incident channel). Each card has a deep-link button to the vendor console. Explicit credential-management note: JFT owns rotation; rotate via Sev2 ticket, not in-portal.
 - **`super_admin/` screen 10 — Learner Remediation (G1, WGU Program Development-clarified Global Admin scope).** LRPS owns account provisioning, so this screen is global-admin-only *coaching-state* remediation: per-objective score reset, reset all progress (subject or cross-subject), force re-diagnostic, pause access, view conversation log. Required justification field (audit-logged with actor/IP/before-after). Recent remediation events table. FERPA-scope clarification at the bottom: progress + score data only; account identity / LMS enrollment / grade-bearing assessments are out of scope.
 - **`super_admin/` screen 11 — Billing & Cost Centers (G5, §11.1 hosting + support fee schedule + §6.6 token tracking).** Per-tenant cost allocation: 6-row table (PDev / SOB / SOH / SOE / SOIT / Pilot) with cost-center codes, owner emails, MTD spend, budget caps, EOM forecasts, status badges (PDev forecast to exceed). Spend-by-model breakdown via OpenRouter (Claude 56% / GPT-4o 28% / Gemini 16%). 4-row configurable budget-alert preferences.
-- **`instructor/` screen 9 — Learner Search & Individual Lookup (G2, §7.10 + §7.12).** Reframed from Miguel's "Gradebook" — the SDP is a practice tool, not a gradebook. Search by name / email / anonymized identifier across all 68 learners in Charlie's three courses, with course + status filters, sortable result table (Sally / Aisha / Daniel / Marcus / Priya / Jordan / Tasha / Riku as a representative cross-section), and per-row "Open profile" CTA that pivots to the existing drill-down. FERPA-scope note: Instructors only see learners in courses they instruct.
+- **`instructor/` screen 9 — Learner Search & Individual Lookup (G2, §7.10 + §7.12).** Reframed from Miguel's "Gradebook" — the SkillProof is a practice tool, not a gradebook. Search by name / email / anonymized identifier across all 68 learners in Charlie's three courses, with course + status filters, sortable result table (Sally / Aisha / Daniel / Marcus / Priya / Jordan / Tasha / Riku as a representative cross-section), and per-row "Open profile" CTA that pivots to the existing drill-down. FERPA-scope note: Instructors only see learners in courses they instruct.
 
 ### Changed — small edits to existing surfaces
 
@@ -2264,7 +2311,7 @@ Eight contract-grounded gaps closed across the three admin portals. **Authority 
 - **`instructor/` screen 6 (Conversation logs)** — eyebrow "Cohort summary" → "Course summary".
 - **`super_admin/` screen 2 (Portal home)** — Quick links extended from 4 cards to 8 (added Integrations / Learner Remediation / Billing / Audit Log).
 - **Meta-bars** updated for `tenant_admin` (steps 26 + 27 added) and `super_admin` (steps 09 + 10 + 11 added) and `instructor` (step 09 added).
-- **`capture_screens.py`** — PORTALS list updated; LRPS capture now scrolls the page so the live SDP rows + v4.3 "Not for student use" badges land in the hero shot (replacing the old top-of-page OEX-rows view that didn't communicate the page's purpose).
+- **`capture_screens.py`** — PORTALS list updated; LRPS capture now scrolls the page so the live SkillProof rows + v4.3 "Not for student use" badges land in the hero shot (replacing the old top-of-page OEX-rows view that didn't communicate the page's purpose).
 
 ### Authority decisions documented in this release
 
@@ -2273,7 +2320,7 @@ WGU Program Development's directive: *"the contract rules everything. The User P
 - **Miguel's "Course Instructor" rename** — REJECTED in v4.3, stays rejected. The User Profile + the requirements use `Instructor` as the contract-named user type.
 - **Miguel's "Admin" persona** — does not exist. The "global-level technical administrator with full cross-tenant access" *is* Super Admin (Bob) per the User Profile. Account-management functions land in `super_admin/`, not in a new persona and not in Tenant Admin (which is content-focused).
 - **Account merge** — explicitly OUT per the requirements ("Manual creation or management of student accounts outside of LTI-based provisioning"). Not implemented.
-- **AI score override authority for Instructors (G7)** — DROPPED. The SDP is a practice tool; coaching scores never feed academic records. There's no record to override.
+- **AI score override authority for Instructors (G7)** — DROPPED. The SkillProof is a practice tool; coaching scores never feed academic records. There's no record to override.
 - **Tenant Admin notification preferences (G4)** — DROPPED. The §9 Communication Plan is JFT→WGU rollout documentation, not runtime tenant-configurable alerting.
 - **G11 (Tenant Onboarding Wizard) and G12 (Subject Usage Analytics heatmap)** — deferred per WGU Program Development direction.
 
@@ -2296,7 +2343,7 @@ Catalog & narrative clarifications driven by a holistic re-read of the v1.2 stud
 - **Top-level `README.md` Student section — "v1.2 catalog alignment" note.** Documents 100% catalog coverage (34/34 screens) and points readers at `presentation.html` for elaborated UX details and `student/README.md` for known v1 limitations.
 - **`student/README.md` — "Screen 1 (zyBooks landing) is reference design only" callout.** Per the v1.2 catalog, the zyBooks course-page screen exists to contextualize the LTI launch; it is not part of the Coding Coach application or a JFT deliverable.
 - **`student/README.md` — "v1 Known Limitations" section.** Six honest call-outs of what v1 does not depict (no real Python execution, no mid-task pause/resume, no error recovery flows, no re-assessment failure path, only 3 of 13 sub-sections detailed in narrative, educator feedback loop invisible from student storyboard alone). Candidates for a v1.4 student refresh.
-- **`lrps/README.md` — "LMS → LRPS → LTI provisioning chain (student-facing flow)" section.** Documents how the student-facing Coding Coach link is provisioned: D&D registers SDP as an LRPS provider → places the link on the zyBooks E010 course page → Sally clicks → LRPS handles SSO + issues an LTI 1.3 launch carrying her WGU student ID, course context, and Learner role. Per-persona deep links (Tenant Admin / Instructor / Super Admin) use the same chain with admin role mappings. Basic LTI 1.3, not LTI Advantage.
+- **`lrps/README.md` — "LMS → LRPS → LTI provisioning chain (student-facing flow)" section.** Documents how the student-facing Coding Coach link is provisioned: D&D registers SkillProof as an LRPS provider → places the link on the zyBooks E010 course page → Sally clicks → LRPS handles SSO + issues an LTI 1.3 launch carrying her WGU student ID, course context, and Learner role. Per-persona deep links (Tenant Admin / Instructor / Super Admin) use the same chain with admin role mappings. Basic LTI 1.3, not LTI Advantage.
 
 ### Changed
 
@@ -2305,7 +2352,7 @@ Catalog & narrative clarifications driven by a holistic re-read of the v1.2 stud
   - SC-MVP-02 step 10 (Difficulty Advances) — itemizes the three persistent session-stats fields (Sub-section / Tasks completed / Current difficulty) shown across coaching screens.
   - SC-MVP-03 step 7 (Fast-Track Results) — narrates *why* 12 of 13 sub-sections check off from the diagnostic while Functions & Modular Programming alone requires hands-on verification (the diagnostic question pool does not adequately sample module-level skills like `__name__ == "__main__"` guards).
   - SC-MVP-04 step 3 (Re-Assessment Q1) — calls out the "Re-Assessment · Welcome Back" badge prominence and frames the 2-question check as a retention check (not a fresh diagnostic) before coaching resumes at Sally's prior difficulty level.
-- **`lrps/index.html` — "Not for student use" amber badges on the three live SDP admin rows** (SDP-TA / SDP-IN / SDP-SA). Material `block` icon + 10.5px uppercase label in the warning-tint amber. Theme-aware (lighter on dark theme). Miguel's feedback: LRPS is admin-visible in some contexts where students might also browse the page, and the admin rows must never be confused for student-facing resources. The student row (SDP-ST) is unchanged.
+- **`lrps/index.html` — "Not for student use" amber badges on the three live SkillProof admin rows** (SkillProof-TA / SkillProof-IN / SkillProof-SA). Material `block` icon + 10.5px uppercase label in the warning-tint amber. Theme-aware (lighter on dark theme). Miguel's feedback: LRPS is admin-visible in some contexts where students might also browse the page, and the admin rows must never be confused for student-facing resources. The student row (SkillProof-ST) is unchanged.
 
 ### Verification
 
@@ -2390,7 +2437,7 @@ Major release adding the three v1.3 admin portals (Tenant Admin, Instructor, Sup
 - **Tenant Admin Portal** (`tenant_admin/`) — Alice. 23 screens covering SC-ADD-02 (Portal & Course Configuration), SC-ADD-05 (Data Portability), SC-ADD-06 (Critical Incident Response & SLA Verification). New components: 5-step CI/CD Stepper, REST API console with method/endpoint/params, JSON syntax-highlighted code blocks, JFT CSM chat thread, SLA gauge dashboard.
 - **Instructor Dashboard** (`instructor/`) — Charlie. 8 screens covering SC-ADD-03 (At-Risk Intervention). New components: CSS-grid student-competency heatmap (15 learners × 4 competencies, 9-step color scale), per-objective score pills, AI coaching transcript with feedback panels, Audit Trail event log with sha256 hashes.
 - **Super Admin Portal** (`super_admin/`) — Bob. 8 screens covering SC-ADD-04 (Governance & Cost Audit). New components: cross-tenant overview gauges, 30-bar daily cost-spike chart, per-tenant utilization meters, TLS 1.3 compliance report, geo-redundancy region cards, cross-tenant audit log feed.
-- **LRPS Landing** (`lrps/`) — recreation of WGU's internal Learning Resource Provisioning System. Originally faithful to the legacy enterprise aesthetic; restyled with the SDP Design System v1.2 in commit `e735361`. Each persona's secret LRPS deep link maps to a clickable provider row.
+- **LRPS Landing** (`lrps/`) — recreation of WGU's internal Learning Resource Provisioning System. Originally faithful to the legacy enterprise aesthetic; restyled with the SkillProof Design System v1.2 in commit `e735361`. Each persona's secret LRPS deep link maps to a clickable provider row.
 - **Real WGU FY26 Corporation logos** in `assets/`. Theme-aware swap: Full-Color Reverse on light theme, White on dark theme. Wordmark text removed (WGU Program Development's branding rule).
 - **Per-persona LRPS deep links** modeled in each portal's screen 1 (SSO landing → role mapping).
 
@@ -2418,8 +2465,8 @@ Polish release for the v1.2 student MVP storyboard.
 - **Sequential screen numbering** — all 34 screens renumbered sequentially (01–08 SC-MVP-01, 09–19 SC-MVP-02, 20–28 SC-MVP-03, 29–34 SC-MVP-04). Admin bar shows true screen numbers.
 - **Presentation text sync** — `presentation.html` / `presentation_dark.html` aligned with v1.2 Scenario Catalog (07 Apr 2026), including expanded LRPS descriptions per WGU LRPS team review.
 - **Design system audit** — 271 fixes across `index.html` and `presentation.html` for WCAG 2.2 AA compliance, FY26 color palette alignment, typography scale enforcement, 8-point spacing grid.
-- **FY26 palette reconciliation** — `--pgn-*` tokens updated from SDP Figma values to FY26 authoritative values.
-- **Light-mode code blocks** — white background with SDP palette syntax highlighting; dark mode retains `#0d1117`.
+- **FY26 palette reconciliation** — `--pgn-*` tokens updated from SkillProof Figma values to FY26 authoritative values.
+- **Light-mode code blocks** — white background with SkillProof palette syntax highlighting; dark mode retains `#0d1117`.
 - All 68 screenshots (34 light + 34 dark) recaptured at 1440×900 with sequential filenames matching new screen IDs.
 
 ### Removed
@@ -2432,7 +2479,7 @@ Polish release for the v1.2 student MVP storyboard.
 
 ## v3.0 — 30 Mar 2026 — Initial MVP storyboard
 
-First complete v1.2 MVP storyboard release. 34 screens across the 4 student scenarios (SC-MVP-01 through SC-MVP-04). Single-page interactive prototype + scrollable presentation catalog. Built with Claude Code on the SDP Design System v1.2.
+First complete v1.2 MVP storyboard release. 34 screens across the 4 student scenarios (SC-MVP-01 through SC-MVP-04). Single-page interactive prototype + scrollable presentation catalog. Built with Claude Code on the SkillProof Design System v1.2.
 
 ---
 

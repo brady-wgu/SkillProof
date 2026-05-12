@@ -22,7 +22,7 @@ Cross-tenant governance, financial controls, security compliance, global resourc
 
 ## Source
 
-JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development.
+SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development.
 
 ## requirements references
 
@@ -52,7 +52,7 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 
 ## Device context
 
-Desktop-primary, with command-line access for cloud infrastructure operations outside the SDP. The mobile-first commitment in Appendix A §16.2 #7.2 applies universally across the storyboard, so the Super Admin portal is responsive and accessible on smaller viewports, but the operational workflow assumes a desktop session with multiple panels open at once.
+Desktop-primary, with command-line access for cloud infrastructure operations outside the SkillProof. The mobile-first commitment in Appendix A §16.2 #7.2 applies universally across the storyboard, so the Super Admin portal is responsive and accessible on smaller viewports, but the operational workflow assumes a desktop session with multiple panels open at once.
 
 ## Maintenance windows and rolling enrollment
 
@@ -64,4 +64,4 @@ LLM API costs are excluded from the fixed-cost requirements per §11 Note 5 — 
 
 ## Pilot-to-WGU handoff transition
 
-During the pilot phase, JFT's technical leads operate this Super Admin surface on WGU's behalf, with the platform hosted and managed under the fixed-cost requirements. At a future date, the Super Admin role transitions to WGU IT. The handoff protocol, target date, and identity-provider integration for WGU IT access to cloud infrastructure (separate from the SDP application console, which uses WGU SSO via SAML per §16.3 #8.2) are scoped separately and not part of the v1.x storyboard. JFT and WGU should agree the handoff plan in writing well before the requirements pilot-support period ends.
+During the pilot phase, JFT's technical leads operate this Super Admin surface on WGU's behalf, with the platform hosted and managed under the fixed-cost requirements. At a future date, the Super Admin role transitions to WGU IT. The handoff protocol, target date, and identity-provider integration for WGU IT access to cloud infrastructure (separate from the SkillProof application console, which uses WGU SSO via SAML per §16.3 #8.2) are scoped separately and not part of the v1.x storyboard. JFT and WGU should agree the handoff plan in writing well before the requirements pilot-support period ends.

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Help &amp; Resources — Storyboard v4.42</title>
+  <title>SkillProof — Help &amp; Resources — Storyboard v4.43</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
-    Help & Resources shared surface for the JFT SDP v1.3 additional scenarios.
+    Help & Resources shared surface for the SkillProof v1.3 additional scenarios.
     Closes Appendix A §16.4 #9.14 (Self-service support portal) and #9.15 (Video training resources).
     Accessible from all admin portals (Tenant Admin / Instructor / Super Admin) via the Help link in each navbar.
   -->
@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@300;400;700&family=Material+Icons+Outlined&display=swap" rel="stylesheet">
 
   <style>
-    /* SDP Design System v1.2 — minimal inline */
+    /* SkillProof Design System v1.2 — minimal inline */
     :root {
       --color-deep-navy: #001730;
       --color-dark-navy: #002855;
@@ -380,9 +380,9 @@
 
   <header class="navbar">
     <div class="navbar-brand">
-      <div class="brand-logo">SDP</div>
+      <div class="brand-logo">SkillProof</div>
       <div class="brand-text">
-        <div class="brand-product">JFT SDP</div>
+        <div class="brand-product">SkillProof</div>
         <div class="brand-subtitle">Help &amp; Resources</div>
       </div>
     </div>
@@ -414,7 +414,7 @@
       <div class="card">
         <div class="card-icon"><span class="material-icons-outlined">rocket_launch</span></div>
         <div class="card-title">Get Started</div>
-        <div class="card-body">Onboarding videos, quick-start guides, and orientation tours for each role. New to the SDP? Begin here.</div>
+        <div class="card-body">Onboarding videos, quick-start guides, and orientation tours for each role. New to the SkillProof? Begin here.</div>
         <a class="card-link" href="#">Browse get-started library <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></a>
       </div>
 
@@ -482,7 +482,7 @@
       <span class="material-icons-outlined">star</span>
       <div>
         <div class="featured-text">New here? Start with these three.</div>
-        <div class="featured-sub">A short walkthrough of the SDP for every role &mdash; first launch, first session, first review.</div>
+        <div class="featured-sub">A short walkthrough of SkillProof for every role &mdash; first launch, first session, first review.</div>
       </div>
     </div>
 
@@ -494,7 +494,7 @@
           <span class="duration">3:42</span>
         </div>
         <div class="video-meta">
-          <div class="video-title">Your first SDP coaching session</div>
+          <div class="video-title">Your first SkillProof coaching session</div>
           <div class="video-role">Student</div>
         </div>
       </div>
@@ -592,7 +592,7 @@
   </main>
 
   <div class="meta-bar">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP &middot; Help &amp; Resources &middot; SDP Design System v1.2 &middot; Persona: shared (all admin roles + LRPS)</span>
+    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof &middot; Help &amp; Resources &middot; SkillProof Design System v1.2 &middot; Persona: shared (all admin roles + LRPS)</span>
   </div>
 
   <!-- WGU Footer (production design — mirrors the tenant-21 Branding preview pane) -->
@@ -625,11 +625,11 @@
       const next = current === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
       document.getElementById('theme-icon').textContent = next === 'dark' ? 'light_mode' : 'dark_mode';
-      try { localStorage.setItem('sdp-theme', next); } catch (e) {}
+      try { localStorage.setItem('skillproof-theme', next); } catch (e) {}
     }
     (function () {
       try {
-        const saved = localStorage.getItem('sdp-theme');
+        const saved = localStorage.getItem('skillproof-theme');
         if (saved === 'dark') {
           document.documentElement.setAttribute('data-theme', 'dark');
           document.getElementById('theme-icon').textContent = 'light_mode';

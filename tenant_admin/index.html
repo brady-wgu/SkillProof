@@ -3,37 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Content Creator Portal — Storyboard v4.42</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.43</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
-    Tenant Admin storyboard for the JFT SDP v1.3 additional scenarios.
+    Tenant Admin storyboard for the SkillProof v1.3 additional scenarios.
     Persona: Alice (Tenant Admin, Program Development content owner).
     Scenarios: SC-ADD-02 (Portal & Course Configuration),
                SC-ADD-05 (Data Portability),
                SC-ADD-06 (Critical Incident Response & SLA).
 
-    Visual style derived from the live JFT SDP prototype at
-    lrps.wgu.edu/provision/563034848 and the SDP Design System v1.2
+    Visual style derived from the live SkillProof prototype at
+    lrps.wgu.edu/provision/563034848 and the SkillProof Design System v1.2
     (30 MAR 2026, Ready for Development). Branding uses the official
     WGU FY26 Corporation logo (White on dark theme; Full-Color Reverse
     on light theme) per the WGU FY26 Logo & Seal Guide. JFT has not
     yet started any Tenant Admin work; this storyboard serves as the
     design spec they will build to.
 
-    SDP Design System v1.2 — Built on Paragon / Open edX
+    SkillProof Design System v1.2 — Built on Paragon / Open edX
     Upstream: @openedx/paragon (github.com/openedx/paragon, release-23.x)
     In production, install:
       npm install @openedx/paragon
       @use "@openedx/paragon/dist/core.min.css";
-      @use "@wgu/sdp-brand/light.min.css";
+      @use "@wgu/skillproof-brand/light.min.css";
   -->
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
   <style>
     /* ================================================================
-       SDP DESIGN TOKENS (SDP Design System v1.2, Sections 3-5)
+       DESIGN TOKENS — SkillProof Design System v1.2 (Sections 3-5)
        Mirrors index.html so the two storyboards stay visually aligned.
        ================================================================ */
     :root {
@@ -53,7 +53,7 @@
       --pgn-color-danger-tint:  #FDEAEA;
       --pgn-color-warning-tint: #FEF3E2;
 
-      /* FY26 Core Brand Palette (SDP 3.5) */
+      /* FY26 Core Brand Palette (SkillProof 3.5) */
       --color-deep-navy:     #001730;
       --color-ice-blue:      #EEF6F9;
       --color-bright-blue:   #0070F0;
@@ -71,7 +71,7 @@
       --code-comment: #999999;
       --code-border: #30363d;
 
-      /* Grayscale (SDP 3.3) */
+      /* Grayscale (SkillProof 3.3) */
       --pgn-color-white:    #FFFFFF;
       --pgn-color-black:    #000000;
       --pgn-color-gray-100: #E6E6E6;
@@ -86,7 +86,7 @@
       --pgn-color-bg-base:  #FFFFFF;
       --pgn-color-bg-light: #F2F2F2;
 
-      /* Spacing (8-point grid, SDP 5.1) */
+      /* Spacing (8-point grid, SkillProof 5.1) */
       --pgn-spacing-1: 8px;
       --pgn-spacing-2: 16px;
       --pgn-spacing-3: 24px;
@@ -188,7 +188,7 @@
     img { max-width: 100%; }
 
     /* ================================================================
-       TYPOGRAPHY (SDP 4)
+       TYPOGRAPHY (SkillProof 4)
        ================================================================ */
     .h1, h1 { font-family: var(--pgn-font-family-heading); font-size: 40px; line-height: 1.2; font-weight: 700; color: var(--pgn-color-gray-900); }
     .h2, h2 { font-family: var(--pgn-font-family-heading); font-size: 32px; line-height: 1.25; font-weight: 700; color: var(--pgn-color-gray-900); }
@@ -205,7 +205,7 @@
     .small  { font-size: 14px; }
     .micro  { font-size: 12px; }
 
-    /* SDP signature: eyebrow label */
+    /* SkillProof signature: eyebrow label */
     .eyebrow {
       display: inline-flex; align-items: center; gap: 6px;
       font-family: var(--pgn-font-family-body);
@@ -626,7 +626,7 @@
     .pgn__data-table .num-col { text-align: right; font-variant-numeric: tabular-nums; }
 
     /* ================================================================
-       FLOATING BOTTOM-RIGHT ACTIONS (SDP signature)
+       FLOATING BOTTOM-RIGHT ACTIONS (SkillProof signature)
        ================================================================ */
     .floating-actions {
       position: fixed; bottom: 200px; right: var(--pgn-spacing-4);
@@ -928,7 +928,7 @@
           <h1 id="s1-heading" class="h2 mb-2">Welcome to the Tenant Admin Portal</h1>
           <p class="mb-4">Verifying your secret LRPS deep link with WGU Single Sign-On.</p>
           <div class="stack-2 text-center" style="display:inline-block; text-align:left;">
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SDP-IN]</code></span></div>
+            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SkillProof-IN]</code></span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>WGU SSO authentication complete</span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LTI baseline role: Instructor</span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>Elevation applied: <strong>Tenant Admin</strong> <span class="text-muted small">(by Global Admin Bob, 07 May 2026)</span></span></div>
@@ -1317,7 +1317,7 @@
         <div class="col-6">
           <div class="preview-card">
             <div class="preview-label"><span class="material-icons-outlined">preview</span>Compiled prompt preview</div>
-            <div class="preview-text">You are the SDP coaching engine for E135: Object-Oriented Programming with Python. Western Governors University, Program Development.
+            <div class="preview-text">You are the SkillProof coaching engine for E135: Object-Oriented Programming with Python. Western Governors University, Program Development.
 
 PROFILE USE
 Use anonymized prior performance and mentor notes to calibrate difficulty; never repeat PII back to the learner.
@@ -1630,7 +1630,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 
           <div class="form-group mb-3">
             <label class="form-label" for="lrps-justification">Ticket justification</label>
-            <textarea class="form-control" id="lrps-justification" rows="3">New SDP subject E135 deployed. Requesting LRPS deep-link provisioning. Tenant: pdev. Build: e135-oop-python 2026.05.06.1547.</textarea>
+            <textarea class="form-control" id="lrps-justification" rows="3">New SkillProof subject E135 deployed. Requesting LRPS deep-link provisioning. Tenant: pdev. Build: e135-oop-python 2026.05.06.1547.</textarea>
           </div>
 
           <div class="d-flex gap-2 mb-3">
@@ -1675,7 +1675,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">monitoring</span>System Status</span>
           <h1 id="s13-heading">All systems operational</h1>
-          <p class="mt-1">JFT Proactive Monitoring shows nominal across all SDP services.</p>
+          <p class="mt-1">JFT Proactive Monitoring shows nominal across all SkillProof services.</p>
         </div>
         <div class="status-legend">
           <span class="status-legend-item"><span class="dot green"></span>Operational</span>
@@ -2005,13 +2005,13 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <span class="material-icons-outlined text-success" style="font-size:64px;">task_alt</span>
         </div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Ticket Submitted</span>
-        <h1 id="s17-heading" class="h2 text-center mb-3">JFT-SDP-2138 created</h1>
+        <h1 id="s17-heading" class="h2 text-center mb-3">JFT-SkillProof-2138 created</h1>
         <p class="text-center mb-4">Severity <strong>P1</strong>. Acknowledged by JFT Support. SLA timer started.</p>
 
         <div class="pgn__card mb-3" style="background:transparent;">
           <div class="pgn__card-section">
             <table class="pgn__data-table" style="border:none; box-shadow:none; background:transparent;">
-              <tr><th style="width:35%; background:transparent;">Ticket</th><td style="background:transparent;"><a href="#"><strong>JFT-SDP-2138</strong></a></td></tr>
+              <tr><th style="width:35%; background:transparent;">Ticket</th><td style="background:transparent;"><a href="#"><strong>JFT-SkillProof-2138</strong></a></td></tr>
               <tr><th style="background:transparent;">Status</th><td style="background:transparent;"><span class="badge badge-warning">In Progress</span></td></tr>
               <tr><th style="background:transparent;">Severity</th><td style="background:transparent;"><span class="badge badge-danger">P1 · Critical</span></td></tr>
               <tr><th style="background:transparent;">Opened</th><td style="background:transparent;">09:45:12 UTC · 07 May 2026</td></tr>
@@ -2049,12 +2049,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#">Incidents</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>JFT-SDP-2138</span>
+        <span>JFT-SkillProof-2138</span>
       </nav>
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">support_agent</span>JFT Support P1 Response (CSM Jordan as WGU-facing POC)</span>
-          <h1 id="s18-heading">JFT-SDP-2138: Primary LLM unreachable</h1>
+          <h1 id="s18-heading">JFT-SkillProof-2138: Primary LLM unreachable</h1>
         </div>
         <div class="d-flex gap-2 align-items-center">
           <span class="badge badge-warning">In Progress</span>
@@ -2133,7 +2133,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(13); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>JFT-SDP-2138 · Resolved</span>
+        <span>JFT-SkillProof-2138 · Resolved</span>
       </nav>
       <div class="feedback-panel">
         <span class="feedback-label"><span class="material-icons-outlined">check_circle</span>Fallback Verified · Service Restored</span>
@@ -2961,7 +2961,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP Content Creator Portal &middot; SDP Design System v1.2 &middot; Persona: Alice</span>
+    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof Content Creator Portal &middot; SkillProof Design System v1.2 &middot; Persona: Alice</span>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow A</span>
@@ -3042,12 +3042,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
-    localStorage.setItem('sdp-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
   }
 
   // Restore theme on load
   (function() {
-    var saved = localStorage.getItem('sdp-theme');
+    var saved = localStorage.getItem('skillproof-theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });

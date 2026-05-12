@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Instructor Dashboard — SC-ADD-03 Storyboard v4.42</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.43</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
-    Instructor Dashboard storyboard for the JFT SDP v1.3 additional scenarios.
+    Instructor Dashboard storyboard for the SkillProof v1.3 additional scenarios.
     Persona: Charlie (Instructor).
     Scenario: SC-ADD-03 (Instructor Dashboard and At-Risk Intervention).
 
-    Visual style mirrors tenant_admin.html (same SDP Design System v1.2 tokens,
+    Visual style mirrors tenant_admin.html (same SkillProof Design System v1.2 tokens,
     same WGU FY26 brand chrome, same architectural shell). JFT has not yet
     started any Instructor work; this storyboard serves as the design spec
     they will build to.
 
-    SDP Design System v1.2 — Built on Paragon / Open edX
+    SkillProof Design System v1.2 — Built on Paragon / Open edX
     In production, install:
       npm install @openedx/paragon
       @use "@openedx/paragon/dist/core.min.css";
-      @use "@wgu/sdp-brand/light.min.css";
+      @use "@wgu/skillproof-brand/light.min.css";
   -->
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
   <style>
     /* ================================================================
-       SDP DESIGN TOKENS (SDP Design System v1.2, Sections 3-5)
+       DESIGN TOKENS — SkillProof Design System v1.2 (Sections 3-5)
        Mirrors tenant_admin.html so portals stay visually aligned.
        ================================================================ */
     :root {
@@ -193,7 +193,7 @@
     img { max-width: 100%; }
 
     /* ================================================================
-       TYPOGRAPHY (SDP 4)
+       TYPOGRAPHY (SkillProof 4)
        ================================================================ */
     .h1, h1 { font-family: var(--pgn-font-family-heading); font-size: 40px; line-height: 1.2; font-weight: 700; color: var(--pgn-color-gray-900); }
     .h2, h2 { font-family: var(--pgn-font-family-heading); font-size: 32px; line-height: 1.25; font-weight: 700; color: var(--pgn-color-gray-900); }
@@ -543,7 +543,7 @@
     .w-100 { width: 100%; }
 
     /* ================================================================
-       FLOATING BOTTOM-RIGHT ACTIONS (SDP signature)
+       FLOATING BOTTOM-RIGHT ACTIONS (SkillProof signature)
        ================================================================ */
     .floating-actions {
       position: fixed; bottom: 200px; right: var(--pgn-spacing-4);
@@ -776,7 +776,7 @@
           <h1 id="s1-heading" class="h2 mb-2">Welcome to the Instructor Dashboard</h1>
           <p class="mb-4">Verifying your secret LRPS deep link with WGU Single Sign-On.</p>
           <div class="stack-2 text-center" style="display:inline-block; text-align:left;">
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SDP-IN]</code></span></div>
+            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SkillProof-IN]</code></span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>WGU SSO authentication complete</span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LTI baseline role: <strong>Instructor</strong> <span class="text-muted small">(no elevation needed)</span></span></div>
           </div>
@@ -1294,7 +1294,7 @@
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SDP Coach</strong><span>18:21:04</span><span class="badge badge-gray">Prompt</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:21:04</span><span class="badge badge-gray">Prompt</span></div>
               <div class="chat-text">Earlier you used a list to track scores. Can you rewrite that block to compute the average using a list comprehension instead of an index loop?</div>
             </div>
           </div>
@@ -1311,7 +1311,7 @@ avg = total / len(scores)</div>
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SDP Coach</strong><span>18:23:55</span><span class="badge badge-warning">Feedback · LO miss</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:23:55</span><span class="badge badge-warning">Feedback · LO miss</span></div>
               <div class="chat-text">That's a working sum, but it's not a comprehension yet — you're still iterating by index. A comprehension would let you express "give me each score, transformed if needed" as a single expression. Try writing it as <code>sum(s for s in scores) / len(scores)</code>, then see if you can collapse it to one line using <code>sum(scores) / len(scores)</code>. Where do you think the comprehension fits if you wanted only positive scores?</div>
             </div>
           </div>
@@ -1325,7 +1325,7 @@ avg = total / len(scores)</div>
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SDP Coach</strong><span>18:26:24</span><span class="badge badge-info">Reframe</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:26:24</span><span class="badge badge-info">Reframe</span></div>
               <div class="chat-text">Both styles work. The comprehension is more idiomatic in Python and easier to read once you're comfortable with it. Let's slow down: write a list comprehension that returns the squares of each score. Just that — no average yet.</div>
             </div>
           </div>
@@ -1341,7 +1341,7 @@ for s in scores:
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SDP Coach</strong><span>18:33:01</span><span class="badge badge-warning">Feedback · LO miss</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:33:01</span><span class="badge badge-warning">Feedback · LO miss</span></div>
               <div class="chat-text">Almost there. The shape of a comprehension is <code>[expression for item in iterable]</code>. Your loop body says <code>append(s * s)</code> — the expression is <code>s * s</code>, the item is <code>s</code>, the iterable is <code>scores</code>. Put those in the bracket form. (Continued for 36 more messages …)</div>
             </div>
           </div>
@@ -1405,15 +1405,15 @@ for s in scores:
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td>2026-05-06 18:21:00</td><td>session.start</td><td>SDP Coach</td><td class="num-col">128 B</td><td><code>a3f2b1c4</code></td></tr>
-          <tr><td>2</td><td>2026-05-06 18:21:04</td><td>ai.prompt</td><td>SDP Coach</td><td class="num-col">412 B</td><td><code>1c8e7d2a</code></td></tr>
+          <tr><td>1</td><td>2026-05-06 18:21:00</td><td>session.start</td><td>SkillProof Coach</td><td class="num-col">128 B</td><td><code>a3f2b1c4</code></td></tr>
+          <tr><td>2</td><td>2026-05-06 18:21:04</td><td>ai.prompt</td><td>SkillProof Coach</td><td class="num-col">412 B</td><td><code>1c8e7d2a</code></td></tr>
           <tr><td>3</td><td>2026-05-06 18:23:41</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">186 B</td><td><code>9f4d6e0b</code></td></tr>
-          <tr><td>4</td><td>2026-05-06 18:23:42</td><td>guardrail.pass</td><td>SDP Coach</td><td class="num-col">96 B</td><td><code>2b7c5a91</code></td></tr>
+          <tr><td>4</td><td>2026-05-06 18:23:42</td><td>guardrail.pass</td><td>SkillProof Coach</td><td class="num-col">96 B</td><td><code>2b7c5a91</code></td></tr>
           <tr><td>5</td><td>2026-05-06 18:23:49</td><td>model.invoke</td><td>Anthropic Claude Sonnet 4.5</td><td class="num-col">2.1 KB</td><td><code>4e8a3c7d</code></td></tr>
-          <tr><td>6</td><td>2026-05-06 18:23:55</td><td>ai.feedback</td><td>SDP Coach</td><td class="num-col">624 B</td><td><code>6d9b2e15</code></td></tr>
-          <tr><td>7</td><td>2026-05-06 18:23:56</td><td>score.update</td><td>SDP Coach</td><td class="num-col">112 B</td><td><code>8c3f1a47</code></td></tr>
+          <tr><td>6</td><td>2026-05-06 18:23:55</td><td>ai.feedback</td><td>SkillProof Coach</td><td class="num-col">624 B</td><td><code>6d9b2e15</code></td></tr>
+          <tr><td>7</td><td>2026-05-06 18:23:56</td><td>score.update</td><td>SkillProof Coach</td><td class="num-col">112 B</td><td><code>8c3f1a47</code></td></tr>
           <tr><td>8</td><td>2026-05-06 18:26:12</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">94 B</td><td><code>5a2e9b08</code></td></tr>
-          <tr><td>9</td><td>2026-05-06 18:26:24</td><td>ai.feedback</td><td>SDP Coach</td><td class="num-col">388 B</td><td><code>7e4d8c63</code></td></tr>
+          <tr><td>9</td><td>2026-05-06 18:26:24</td><td>ai.feedback</td><td>SkillProof Coach</td><td class="num-col">388 B</td><td><code>7e4d8c63</code></td></tr>
           <tr><td>10</td><td>2026-05-06 18:32:48</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">142 B</td><td><code>0f1c4d9e</code></td></tr>
         </tbody>
       </table>
@@ -1451,7 +1451,7 @@ for s in scores:
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP Instructor Dashboard &middot; SDP Design System v1.2 &middot; Persona: Charlie</span>
+    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof Instructor Dashboard &middot; SkillProof Design System v1.2 &middot; Persona: Charlie</span>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow</span>
@@ -1512,11 +1512,11 @@ for s in scores:
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
-    localStorage.setItem('sdp-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
   }
 
   (function() {
-    var saved = localStorage.getItem('sdp-theme');
+    var saved = localStorage.getItem('skillproof-theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });

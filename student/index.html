@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — SC-MVP-01–04: Coding Coach Storyboard v3</title>
+  <title>SkillProof — SC-MVP-01–04: Coding Coach Storyboard v3</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -15,22 +15,22 @@
     it exactly. The first release from JFT is an MVP that will be
     iterated on during the contract duration.
 
-    SDP Design System v1.2 — Built on Paragon / Open edX
+    SkillProof Design System v1.2 — Built on Paragon / Open edX
     Upstream: @openedx/paragon (github.com/openedx/paragon, release-23.x)
-    This storyboard recreates Paragon CSS class patterns with WGU SDP
+    This storyboard recreates Paragon CSS class patterns with WGU SkillProof
     brand token overrides. In production, use the real npm packages:
       npm install @openedx/paragon
       @use "@openedx/paragon/dist/core.min.css";
-      @use "@wgu/sdp-brand/light.min.css";
+      @use "@wgu/skillproof-brand/light.min.css";
   -->
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
   <style>
     /* ================================================================
-       SDP DESIGN TOKENS (SDP Design System v1.2, Sections 3-5)
+       DESIGN TOKENS — SkillProof Design System v1.2 (Sections 3-5)
        Mapped to Paragon --pgn-* CSS custom property slots.
-       In production these come from @wgu/sdp-brand/light.min.css.
+       In production these come from @wgu/skillproof-brand/light.min.css.
        ================================================================ */
     :root {
       /* 3.1 WGU Brand Colors → Paragon semantic roles */
@@ -48,7 +48,7 @@
       --pgn-color-success-tint: #E8F5E9;
       --pgn-color-danger-tint:  #FDEAEA;
 
-      /* FY26 Core Brand Palette (SDP 3.5) */
+      /* FY26 Core Brand Palette (SkillProof 3.5) */
       --color-deep-navy:     #001730;
       --color-ice-blue:      #EEF6F9;
       --color-bright-blue:   #0070F0;
@@ -242,7 +242,7 @@
     a:hover { text-decoration: underline; }
 
     /* ================================================================
-       TYPOGRAPHY (SDP 4)
+       TYPOGRAPHY (SkillProof 4)
        ================================================================ */
     .h1, h1 { font-family: 'Sora', 'Segoe UI', Arial, sans-serif; font-size: 40px; line-height: 1.2; font-weight: 700; color: var(--pgn-color-gray-900); }
     .h2, h2 { font-family: 'Sora', 'Segoe UI', Arial, sans-serif; font-size: 32px; line-height: 1.25; font-weight: 700; color: var(--pgn-color-gray-900); }
@@ -255,7 +255,7 @@
     .micro { font-size: 12px; }
 
     /* ================================================================
-       LAYOUT (SDP 5.2 — 12-column grid, Paragon Container)
+       LAYOUT (SkillProof 5.2 — 12-column grid, Paragon Container)
        ================================================================ */
     .container {
       max-width: var(--pgn-size-container-max-width-lg);
@@ -2950,7 +2950,7 @@ Test it with: [<span class="num">85</span>, <span class="num">42</span>, <span c
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP Coding Coach &middot; SDP Design System v1.2</span>
+    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof Coding Coach &middot; SkillProof Design System v1.2</span>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">SC-MVP-01</span>
@@ -3083,12 +3083,12 @@ Test it with: [<span class="num">85</span>, <span class="num">42</span>, <span c
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
-    localStorage.setItem('sdp-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
   }
 
   // Restore theme on load
   (function() {
-    var saved = localStorage.getItem('sdp-theme');
+    var saved = localStorage.getItem('skillproof-theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });

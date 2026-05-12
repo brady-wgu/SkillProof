@@ -10,7 +10,7 @@
 
 ## Scope
 
-Educator-facing analytics and student engagement tracking. The instructor's primary job-to-be-done in the SDP is identifying at-risk learners and reviewing the AI Coach's interactions to decide on outreach or mentor referrals. **The SDP is a practice tool — coaching scores never feed academic records.** Instructors observe and advise; they do not override AI scores (that's not in the contract).
+Educator-facing analytics and student engagement tracking. The instructor's primary job-to-be-done in SkillProof is identifying at-risk learners and reviewing the AI Coach's interactions to decide on outreach or mentor referrals. **SkillProof is a practice tool — coaching scores never feed academic records.** Instructors observe and advise; they do not override AI scores (that's not in the contract).
 
 ## Scenarios
 
@@ -22,7 +22,7 @@ Educator-facing analytics and student engagement tracking. The instructor's prim
 
 ## Source
 
-JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development.
+SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development.
 
 ## requirements references
 
@@ -41,13 +41,13 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 - **`.score-pill`** — small inline pill with low/med/high tint thresholds
 - **`.section-card`** + **`.section-stat`** — instructor section-overview cards with stat counters
 - **`.chip-filter`** — view + filter pill bar with active states (including red `at-risk` variant)
-- Reuses the **chat-thread** pattern from Tenant Admin's CSM thread, but with `ai` avatar variant for the SDP Coach
+- Reuses the **chat-thread** pattern from Tenant Admin's CSM thread, but with `ai` avatar variant for the SkillProof Coach
 
 ## Notes
 
 - Heatmap on screen 3 shows 15 of 28 learners (the rest scroll vertically). The full filter chip bar at the top lets you switch between All / Mastery / On track / Watch / At risk subsets.
 - Sally's row is tinted danger-pink to emphasize her at-risk status before any filter is applied.
-- The conversation transcript on screen 7 surfaces the AI Coach's "LO miss" feedback — this is the intervention point where Charlie decides whether to trust the AI's read and reach out to the learner. Charlie does **not** override AI scores; the SDP is a practice tool, not a gradebook.
+- The conversation transcript on screen 7 surfaces the AI Coach's "LO miss" feedback — this is the intervention point where Charlie decides whether to trust the AI's read and reach out to the learner. Charlie does **not** override AI scores; SkillProof is a practice tool, not a gradebook.
 - Source IPs in the Audit Trail (screen 8) are partially masked for the instructor view — full IPs are accessible to Super Admin only via the cross-tenant audit log.
 - v4.4 reframed all "Section 042" / "Spring 2026" copy to course-level. WGU's rolling-enrollment model means there are no fixed cohorts or sections — Charlie advises every learner currently active in his three courses (rolling).
 

@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 156 PNGs after capture (v4.42: removed visible storyboard version-stamp paragraphs from inside the WGU footer on all 9 storyboard surfaces — root index, persona portals, help, presentation catalogs, AND student MVP — per WGU direction that the WGU footer is the last visible element on every page (meta-bar follows as storyboard navigation chrome). No UI structural changes; PNG count unchanged from v4.41).
+Total: 156 PNGs after capture (v4.43: removed visible storyboard version-stamp paragraphs from inside the WGU footer on all 9 storyboard surfaces — root index, persona portals, help, presentation catalogs, AND student MVP — per WGU direction that the WGU footer is the last visible element on every page (meta-bar follows as storyboard navigation chrome). No UI structural changes; PNG count unchanged from v4.41).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
@@ -74,7 +74,7 @@ async def capture_portal(page, portal, theme):
     print(f"\n[{theme}] {portal['file']}  ->  {os.path.relpath(out_dir, REPO_ROOT)}")
 
     await page.add_init_script(
-        f"localStorage.setItem('sdp-theme', '{theme}');"
+        f"localStorage.setItem('skillproof-theme', '{theme}');"
     )
     await page.goto(url, wait_until="networkidle")
 
@@ -92,7 +92,7 @@ async def capture_portal(page, portal, theme):
         for step_idx, screen_id in enumerate(screen_ids, 1):
             if screen_id is None:
                 # Single-page portal (e.g., lrps) — no goToScreen call.
-                # For LRPS, scroll the live SDP rows into view so the M4
+                # For LRPS, scroll the live SkillProof rows into view so the M4
                 # "Not for student use" badges land in the hero screenshot
                 # (the alphabetically-sorted OEX rows above add no value).
                 await page.evaluate(
