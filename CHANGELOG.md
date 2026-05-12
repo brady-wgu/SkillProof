@@ -6,6 +6,49 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.40 — 12 May 2026 — WGU footer extended to the student MVP storyboard (freeze broken with explicit authorization)
+
+Follow-up to v4.39. The WGU production footer is now also present on `student/index.html` — the deployed MVP at `wgu.teamjft.com`. **This is the first edit to `student/index.html` since the 36-consecutive-release freeze began** and is the deliberate end of that streak, made with explicit per-change authorization.
+
+### What changed
+
+- `student/index.html` — the existing sr-only `<footer>` containing only the storyboard version stamp is replaced with the same visible WGU production footer used on every other surface in v4.39. Footer structure (verbatim from `tenant-21` Branding preview): top row = WGU logo + ADA Accommodation; bottom row = copyright + Privacy Policy | Terms of Service | Honor Code. Storyboard version stamp preserved inside as a final `sr-only` paragraph.
+
+### Why this is OK to do (per the standing freeze rule)
+
+WGU Program Development authorized this specific change on 12 May 2026:
+
+> "For this update, let's make it across all screens. That footer needs to be global and would have been on the MVP pages if I had known that was an organizational standard in the first place."
+
+The footer is an organizational branding standard (it's the WGU production learner-facing footer that the deployed system at `wgu.teamjft.com` already shows in production). Bringing the storyboard's student MVP into alignment with the production standard is appropriate; it's a catch-up to organizational reality, not a unilateral design change.
+
+### Freeze policy remains in effect for future changes
+
+This release ends the 36-consecutive-release freeze streak, but the freeze rule itself is unchanged: future edits to `student/index.html` still require explicit per-change authorization from WGU Program Development. The freeze counter resets after v4.40.
+
+### What did NOT change
+
+- No other surfaces touched in v4.40 (every non-MVP surface already received the footer in v4.39).
+- No new screens. Storyboard total: 77 screens.
+- Student screen count: still 34.
+- PNG count in repo: 152 (capture not re-run since the visible change is at page footer level, outside the screen sections used by `capture_screens.py`).
+
+### Files touched
+
+- `student/index.html` — sr-only footer replaced with the visible WGU footer (sr-only version stamp preserved inside).
+- `README.md`, `index.html`, all four non-frozen persona `index.html` files, `help/index.html`, `presentation.html`, `presentation_dark.html`, `capture_screens.py`, `_contract_tracking/CONTRACT_TRACKER.md`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — version stamps bumped v4.39 → v4.40.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.40 row added; v4.39 → Superseded.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep returns zero sensitive matches.
+2. Doc Control: v4.40 Current, v4.39 Superseded in both presentation catalogs.
+3. WGU footer markers (`ADA Accommodation`) present in every storyboard surface including `student/index.html`.
+4. `student/index.html` git diff shows exactly one change region — the footer block replacement. No other student-side edits.
+
+---
+
 ## v4.39 — 12 May 2026 — WGU production footer deployed across every non-MVP surface
 
 Per WGU direction: take the WGU learner-facing footer mockup that was previously only a preview pane on `tenant-21` (Branding) and deploy it as the actual visible site footer across every surface in the storyboard.
