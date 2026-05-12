@@ -12,7 +12,7 @@ A recreation of WGU's internal **Learning Resource Provisioning System (LRPS)**,
 
 Each persona's secret LRPS deep link is what gets them into their respective admin portal. So the realistic flow is:
 
-1. WGU staff (Brady or another LRPS admin) opens LRPS
+1. WGU staff (the LRPS admin) opens LRPS
 2. They locate the appropriate provider row (e.g., "SDP Tenant Admin Portal — Course Configuration")
 3. They click → deep link launches → the persona's portal opens with the SSO landing screen
 4. SSO completes, role is mapped, the persona is in their portal
@@ -68,4 +68,4 @@ The LRPS landing was originally rendered in the legacy enterprise Bootstrap aest
 
 - The **DEMO ONLY banner** at the top of the table makes it clear to anyone landing here that this is a recreation, not the real LRPS.
 - Container max-width is `1920px` to use the full widescreen viewport — the real LRPS is a data-dense admin tool, and the SDP's default 1192px container made the table too cramped (see commit `8704b3b` for the layout fix).
-- The user avatar shows "Brady" because the real LRPS shows the logged-in WGU admin's identity. In the storyboard context, Brady is the LRPS admin who provisions the deep links for Alice, Charlie, and Bob.
+- The user avatar shows "Lana" because the real LRPS shows the logged-in WGU admin's identity. In the storyboard context, Lana is the fictional LRPS admin persona who provisions the deep links for Alice, Charlie, and Bob.
