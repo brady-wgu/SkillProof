@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.40</title>
+  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.41</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -2026,6 +2026,210 @@
 </section>
 
 
+<!-- Screen 11: Data & Integrations Hub — v4.41 closes 5 contract rows (A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 streaming). Cross-tenant scope; consolidates data-export functions moved from tenant_admin in v4.22. -->
+<section class="screen" id="screen-11" aria-labelledby="s11-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <span class="navbar-chip">Super Admin Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-11">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Super Admin Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>Data &amp; Integrations</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">hub</span>Super Admin</span>
+      <h1 id="s11-heading">Data &amp; Integrations Hub</h1>
+      <p class="mt-1 mb-3">Cross-tenant data export, real-time event streaming, and developer-facing API surfaces for downstream consumption. Scope moved here from the Content Creator Portal in v4.22 per the global scoping decision.</p>
+
+      <!-- Real-time + batch data export (A-8.8) -->
+      <h2 class="h5 mb-2">Data export</h2>
+      <p class="small text-muted mb-2">Engagement-data and audit-event exports for analytics, accreditation reporting, and downstream tenant systems. Real-time pushes events as they happen; batch consolidates them on a schedule.</p>
+      <div class="row mb-3">
+        <div class="col-6">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">bolt</span>
+                <span class="badge badge-success">Live</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">Real-time export</h3>
+              <p class="small text-muted mb-2">Webhook stream &middot; OAuth-secured &middot; signed payloads</p>
+              <div class="micro text-muted mb-1">Last event: 47 seconds ago &middot; 0 failed deliveries (24h)</div>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">tune</span>Configure webhooks</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">schedule</span>
+                <span class="badge badge-info">Scheduled</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">Batch export</h3>
+              <p class="small text-muted mb-2">JSON &middot; CSV &middot; PDF &middot; XML &middot; daily / weekly / monthly</p>
+              <div class="micro text-muted mb-1">Next run: tonight 02:00 UTC &middot; Last batch: 12,847 rows</div>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">schedule</span>Manage schedules</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Webhook subscriptions (A-8.12) -->
+      <h2 class="h5 mb-2">Webhook subscriptions</h2>
+      <p class="small text-muted mb-2">Push-based event notifications to downstream tenant systems. Payloads are HMAC-signed; failed deliveries retry with exponential backoff, dead-letter queue after 5 attempts.</p>
+      <div class="pgn__card pgn__card-featured mb-3">
+        <div class="pgn__card-section">
+          <table class="pgn__data-table" style="border:none; box-shadow:none;">
+            <thead>
+              <tr>
+                <th>Event type</th>
+                <th>Endpoint</th>
+                <th>Status</th>
+                <th>Last delivery</th>
+                <th>Retries (24h)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>learner.assessment.completed</strong></td>
+                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>2 min ago</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td><strong>learner.session.started</strong></td>
+                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>14 sec ago</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td><strong>course.deployed</strong></td>
+                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>3 hr ago</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td><strong>incident.p1.opened</strong></td>
+                <td><code>https://[tenant]/sdp-webhook/&hellip;</code></td>
+                <td><span class="badge badge-warning">Degraded</span></td>
+                <td>1 day ago</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span class="micro text-muted">4 active subscriptions &middot; 1 with retries this 24h</span>
+            <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">add</span>Register endpoint</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GraphQL API (A-6.28 + A-8.13) -->
+      <h2 class="h5 mb-2">GraphQL API</h2>
+      <p class="small text-muted mb-2">Flexible query alternative to REST. Depth-limited (max 8), query-complexity-limited (max 1000), FERPA-aware authorization scoping. Use when REST over-fetching is a concern; otherwise prefer REST.</p>
+      <div class="row mb-3">
+        <div class="col-6">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <h3 class="h5 mt-2 mb-1">Endpoint</h3>
+              <div class="micro text-muted mb-2"><code>POST https://api.[tenant].sdp.wgu.edu/graphql</code></div>
+              <div class="micro mb-1"><strong>Auth:</strong> OAuth Bearer &middot; <strong>Depth limit:</strong> 8 &middot; <strong>Complexity:</strong> 1000</div>
+              <div class="d-flex gap-2 mt-2">
+                <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open GraphiQL sandbox</a>
+                <a class="btn btn-tertiary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">description</span>Schema docs</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <h3 class="h5 mt-2 mb-1">Sample query</h3>
+              <pre style="background:#0d1117; color:#c9d1d9; padding:12px 14px; border-radius:8px; font-family:monospace; font-size:12px; overflow-x:auto; margin-bottom:0;"><code><span style="color:#ff7b72;">query</span> <span style="color:#79c0ff;">LearnerProgress</span> {
+  <span style="color:#79c0ff;">learner</span>(id: <span style="color:#a5d6ff;">"abc123"</span>) {
+    name
+    coachingSessions(last: <span style="color:#a5d6ff;">5</span>) {
+      startedAt
+      objectives { code mastery }
+    }
+  }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data streaming (A-8.14) -->
+      <h2 class="h5 mb-2">Data streaming</h2>
+      <p class="small text-muted mb-2">Near-real-time event stream for analytics pipelines. Three providers supported; choose based on downstream tenant infrastructure.</p>
+      <div class="row mb-3">
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">cloud_queue</span>
+                <span class="badge badge-success">Active</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">Apache Kafka</h3>
+              <p class="small text-muted mb-2">12 topics &middot; lag &lt; 200ms p95</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Kafka admin</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">stream</span>
+                <span class="badge badge-success">Active</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">AWS Kinesis</h3>
+              <p class="small text-muted mb-2">4 streams &middot; lag &lt; 400ms p95</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Kinesis console</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-gray-500);">notifications</span>
+                <span class="badge badge-gray">Standby</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">GCP Pub/Sub</h3>
+              <p class="small text-muted mb-2">Provisioned &middot; not yet routed</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Pub/Sub console</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REST API reference link card -->
+      <div class="pgn__card pgn__card-featured">
+        <div class="pgn__card-section d-flex justify-content-between align-items-center" style="gap:16px;">
+          <div>
+            <h3 class="h5 mt-0 mb-1">REST API reference</h3>
+            <p class="small text-muted mb-0">Full Swagger / OpenAPI documentation for the REST surface. Use for simple resource-based access; GraphQL above for flexible queries.</p>
+          </div>
+          <a class="btn btn-outline-primary" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:16px;">open_in_new</span>Open Swagger UI</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</section>
+
+
 <!-- ================================================================
      META BAR — DEMO ONLY
      ================================================================ -->
@@ -2045,7 +2249,7 @@
       <a href="#" onclick="event.preventDefault();" style="color: #002855; font-weight: 600; text-decoration: none;">Honor Code</a>
     </div>
   </div>
-  <p class="sr-only">JFT SDP Super Admin Portal Storyboard v4.40 — Western Governors University</p>
+  <p class="sr-only">JFT SDP Super Admin Portal Storyboard v4.41 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
@@ -2066,13 +2270,14 @@
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Cross-tenant audit log">08</button>
       <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: User Management (Global Admin upgrades Student / Instructor / Tenant Admin)">09</button>
       <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: External Tooling & Integrations (AWS, OpenRouter, Redis, Grafana, Jira, GitHub) + global configuration">10</button>
+      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Data & Integrations Hub (data export, webhooks, GraphQL, streaming)">11</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 10; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values.
+  const TOTAL_SCREENS = 11; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values. v4.41: screen 11 added (Data & Integrations Hub) closing 5 D3a true gaps — A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 data streaming.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;

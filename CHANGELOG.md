@@ -6,6 +6,62 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.41 — 12 May 2026 — D3a build phase 2: Data & Integrations Hub on Super Admin (closes the final 5 true gaps)
+
+Closes the second themed surface from the v4.37 D3a build plan. Adds a new screen 11 to the Super Admin portal — **Data & Integrations Hub** — consolidating the five remaining Appendix A true gaps in a single cross-tenant surface. After this release, the D3a build phase is **complete**: zero true gaps remain in `CONTRACT_TRACKER.md`.
+
+### What's new
+
+New screen `super-11` on `super_admin/index.html` (Super Admin portal screen count 10 → 11; storyboard screen total 77 → 78). Five sections, all on one screen, following the SDP Design System v1.2 + Paragon `pgn__card` pattern established by `super-10` External Tooling:
+
+- **Data export (A-8.8)** — two-card row: Real-time export (webhook stream, OAuth-secured, signed payloads, last-event-received timestamp) and Batch export (JSON / CSV / PDF / XML, daily / weekly / monthly schedule, next-run timestamp).
+- **Webhook subscriptions (A-8.12)** — featured card with a 4-row event table (`learner.assessment.completed`, `learner.session.started`, `course.deployed`, `incident.p1.opened`) showing Endpoint URL, Status pill, Last delivery, Retries (24h). Register endpoint CTA.
+- **GraphQL API (A-6.28 + A-8.13)** — two-card row: Endpoint card (URL, OAuth Bearer auth, depth limit 8, complexity limit 1000, GraphiQL sandbox + schema docs CTAs) and Sample query code block (syntax-highlighted GraphQL using the documented code-syntax palette extension).
+- **Data streaming (A-8.14)** — three provider cards (Apache Kafka active, AWS Kinesis active, GCP Pub/Sub standby) with status pills, topic/stream counts, lag p95 metrics, and link-out CTAs to the actual streaming infra dashboards.
+- **REST API reference** — closing featured card linking to the external Swagger UI (already in scope via A-6.22 + A-8.11; provides connection point so the surface feels complete).
+
+Meta-bar navigation extended with a screen-11 button. `TOTAL_SCREENS` constant bumped 10 → 11. Cross-tenant scope is clear: no per-tenant breadcrumb, consistent with the rest of Super Admin.
+
+### Tracker updates
+
+- `_contract_tracking/CONTRACT_TRACKER.md` — rows A-6.28, A-8.8, A-8.12, A-8.13, A-8.14 updated: Storyboard Coverage `Gap` → `super-11` with specific section anchor; Build Status moves Not Started → In Design. "Gaps requiring D3a follow-up" summary rewritten: total true gaps **0** (down from 5); all 7 D3a items struck through with closure annotations.
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — new `super-11` row added to Super Admin section with Primary Grounding citing all 5 closed contract IDs. Super Admin totals: 10 → 11 screens. Totals table updated: screens 77 → 78; Contract-required 72 → 73.
+
+### D3a build phase complete
+
+Across v4.38 (Help & Resources surface) + v4.41 (Data & Integrations Hub):
+
+- **7 of 7** true-gap items closed.
+- **2 new surfaces** added — one new top-level folder (`help/`) and one new screen on an existing portal (`super-11`).
+- Storyboard surface count went 5 → 6 (after v4.38) and stayed at 6.
+- Storyboard screen count went 76 → 77 (v4.38, Help & Resources surface) → 78 (v4.41, super-11).
+- Zero contract requirements remain at `Gap` Storyboard Coverage in `CONTRACT_TRACKER.md`. All 92 Appendix A items have at least Partial coverage.
+
+### What did NOT change
+
+- `student/index.html` byte-identical to v4.40 (1 release since the v4.40 footer authorization; freeze counter starts over from v4.40 forward).
+- The other admin surfaces (tenant_admin, instructor, lrps) UI-unchanged — only the version stamps bumped.
+- PNG count: 152 in repo. After local re-capture: 156 (super-11 light + dark + the previously-deferred help/ light + dark from v4.38).
+
+### Files touched
+
+- `super_admin/index.html` — new `<section class="screen" id="screen-11">` inserted between screen-10 and the META BAR; meta-bar nav extended with screen-11 button; `TOTAL_SCREENS` bumped 10 → 11.
+- `_contract_tracking/CONTRACT_TRACKER.md` — 5 row reclassifications; gap summary rewritten.
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — new `super-11` row + Super Admin / Totals subtotals updated.
+- `README.md`, `index.html`, all four other non-frozen persona `index.html` files, `help/index.html`, `presentation.html`, `presentation_dark.html`, `capture_screens.py` — version stamps bumped v4.40 → v4.41.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.41 row added; v4.40 → Superseded.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep returns zero sensitive matches.
+2. Doc Control: v4.41 Current, v4.40 Superseded in both presentation catalogs.
+3. `student/index.html` byte-identical to v4.40 (1st release after the v4.40 freeze-restart).
+4. `super_admin/index.html` now has 11 `<section class="screen">` blocks (was 10); 11 step buttons in the meta-bar; `TOTAL_SCREENS = 11`.
+5. `_contract_tracking/CONTRACT_TRACKER.md` shows zero `Gap` Storyboard Coverage entries.
+
+---
+
 ## v4.40 — 12 May 2026 — WGU footer extended to the student MVP storyboard (freeze broken with explicit authorization)
 
 Follow-up to v4.39. The WGU production footer is now also present on `student/index.html` — the deployed MVP at `wgu.teamjft.com`. **This is the first edit to `student/index.html` since the 36-consecutive-release freeze began** and is the deliberate end of that streak, made with explicit per-change authorization.
