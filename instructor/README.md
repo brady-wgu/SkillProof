@@ -22,7 +22,7 @@ Educator-facing analytics and student engagement tracking. The instructor's prim
 
 ## Source
 
-JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by Brady Redfearn, WGU Program Development.
+JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development.
 
 ## SOW references
 

@@ -6,12 +6,101 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.31 — 12 May 2026 — Contract tracking foundation (`_contract_tracking/` subfolder)
+
+WGU is establishing bidirectional traceability between the signed JFT MSA / SOW and the storyboard. v4.31 ships the foundation: a new `_contract_tracking/` subfolder with two trackers that defend against "extra work" pushback from JFT and prove contract-completeness back to WGU leadership. The folder is excluded from GitHub Pages by Jekyll's leading-underscore convention, so it never surfaces to JFT through the live storyboard.
+
+WGU's requirement: every storyboard surface must trace to a contract requirement so "extra work" claims can be rebutted with the row IDs. Storyboard deliverables are also interpreted literally during build; specifications must contain only the elements intended for the final product, while commentary and meta-content live in separate audit artifacts. The two trackers therefore live strictly outside the storyboard build spec.
+
+### What's new
+
+**`_contract_tracking/` folder** (NEW):
+
+- `README.md` — banner README. First sentence: "This folder is WGU contract tracking. It is NOT product specification. JFT must not build features for content in this folder."
+- `CONTRACT_TRACKER.md` — **150 rows** mapping every binding MSA / SOW / Appendix A requirement to storyboard coverage. Columns: ID · Source · Requirement · Type · JFT Commitment · Storyboard Coverage · Build Status · Owner · Acceptance · Notes. WGU Program Development updates Build Status as JFT delivers each row.
+- `SCREEN_JUSTIFICATIONS.md` — **76 screen rows** reverse-mapping every storyboard surface to its contract grounding. Totals: 71 Contract-required · 5 Essential scaffolding · 0 Discretionary.
+
+### Public-repo sensitive-data sweep
+
+The `brady-wgu/JFT_SDP` repo is intentionally public so the storyboard can be shared with stakeholders inside and outside WGU. v4.31 includes a comprehensive sweep removing business-sensitive data from every file in the repo so anything published is safe for that audience.
+
+What was scrubbed:
+
+- **Real person attributions.** Author/directive references to real WGU staff replaced with "WGU Program Development", "WGU stakeholder", or "WGU direction". The fictional LRPS admin avatar previously named after a real person is now "Lana" (fictional persona, matching the Sally / Charlie / Alice / Bob storyboard pattern).
+- **Real email addresses.** All `@wgu.edu` addresses in storyboard UI (User Management table in `super_admin/index.html`, Instructor Roster in `tenant_admin/index.html`) changed to `@example.edu`. The User Management row previously labeled after a real WGU stakeholder is now "Miguel" / `miguel.alvarez@example.edu` (fictional).
+- **Contract financials.** Real hourly rate, total contract value, monthly hosting/support tiers, and milestone payment percentages removed from `_contract_tracking/CONTRACT_TRACKER.md`; replaced with semantic equivalents ("fixed-cost SOW with hourly rate × contracted hours", "milestone-based payment schedule per signed SOW").
+- **Contract metadata.** Acrobat Sign transaction ID, specific signing date (03 Mar 2026 → "2026"), and JFT primary contact name + email removed from `_contract_tracking/CONTRACT_TRACKER.md`.
+- **Historical CHANGELOG attributions.** "Brady" and "Mike" replaced throughout historical entries. The User Management storyboard row "Mike" → "Miguel" updates also propagated to CHANGELOG narrative for consistency.
+
+Storyboard cost-dashboard mockup numbers (illustrative dollar amounts on `super_admin/index.html` token-usage screens) are intentionally retained as design content — they are clearly placeholder data, not real WGU spend, and JFT needs to see what the cost dashboard layout should look like. If those need further treatment, that is a follow-up commit.
+
+### Product-name correction: Skills → Skill
+
+Audit against the signed MSA/SOW confirmed the product is the **Skill Development Platform** (singular). The repo had been using "Skills Development Platform" (plural) in 9 places across 4 files. Refactored to match the contract:
+
+- `index.html` (root) — page title, source comment, hero `<h1>`
+- `README.md` — top-level heading, Overview paragraph
+- `presentation.html` + `presentation_dark.html` — subtitle, MVP catalog purpose paragraph
+
+The **SDP** abbreviation is unchanged (still stands for the same name, just singular). Generic English usages of "skills" elsewhere in the storyboard (e.g., "her existing skills", "learn new skills" in zyBooks reference copy) are correct English and untouched.
+
+### Identified gaps (9, for D3a follow-up)
+
+Storyboard Coverage = Gap in `CONTRACT_TRACKER.md` for:
+
+- A-6.8 A/B testing framework
+- A-6.12 LaTeX rendering verification surface
+- A-6.28 GraphQL API
+- A-8.8 Real-time and batch data export
+- A-8.12 Webhook support
+- A-8.13 GraphQL API queries
+- A-8.14 Data streaming
+- A-9.14 Self-service support portal
+- A-9.15 Video training resources
+
+These were either added to in-place compliance tables in v4.18 without dedicated screens, or never had visual representation. Each becomes a focused D3a commit in subsequent releases.
+
+### What did NOT change
+
+- Storyboard total: **76 screens** (no UI changes)
+- `student/index.html` content (29th consecutive release of the preservation directive)
+- Per-persona index.html UI content (only version stamps bumped)
+- PNG count: 152 (unchanged from v4.30)
+- presentation.html / presentation_dark.html UI content (Doc Control row added; otherwise version stamps only)
+
+### Files touched
+
+- `_contract_tracking/README.md` — new (banner README + sensitive-data sweep)
+- `_contract_tracking/CONTRACT_TRACKER.md` — new (150 rows) + sweep of contract financials, names, emails, transaction ID, specific signing date
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — new (76 rows) + sweep of author attribution + signing date
+- `README.md` (root) — version badge 4.30 → 4.31; LRPS persona rename Brady → Lana; sweep of author/directive references
+- `index.html` (root) — version stamps; LRPS persona rename Brady → Lana; sweep of historical comment "Mike-feedback" → "WGU-stakeholder-feedback"
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.31 row added (sweep noted); v4.30 → Superseded; version stamps; sweep of author hero + historical Doc Control row narratives
+- `instructor/index.html` — version stamps; CSS comment "Brady's rule" → "WGU brand rule"
+- `lrps/index.html` — version stamps; LRPS persona avatar + table rows + meta-bar "Brady" → "Lana"
+- `super_admin/index.html` — version stamps; comment "per Brady AWS directive" → "per WGU direction for AWS-centric tooling"; User Management row "Mike" / `mike.hassett@wgu.edu` → "Miguel" / `miguel.alvarez@example.edu`; remaining `@wgu.edu` emails → `@example.edu`; audit log row reference Mike → Miguel
+- `tenant_admin/index.html` — version stamps; CSS comment "Brady's rule" → "WGU brand rule"; Instructor Roster `@wgu.edu` emails → `@example.edu`; comment "Mike-feedback reshape" → "WGU-stakeholder-feedback reshape"
+- `student/README.md`, `instructor/README.md`, `super_admin/README.md`, `tenant_admin/README.md`, `lrps/README.md` — author attribution + directive references swept
+- `capture_screens.py` — docstring version comment; comments "per Brady" / "per Mike-feedback" → "per WGU direction" / "per WGU-stakeholder feedback"
+- `CHANGELOG.md` — this entry plus historical sweep of Brady and Mike references throughout prior entries
+
+### Verification
+
+1. `_contract_tracking/CONTRACT_TRACKER.md` enumerates 150 rows: MSA 30 + SOW core 28 + Appendix A 92 (28 + 14 + 15 + 15 + 20).
+2. `_contract_tracking/SCREEN_JUSTIFICATIONS.md` enumerates 76 screens: student 34 + tenant_admin 23 + instructor 8 + super_admin 10 + lrps 1.
+3. Prototype cleanliness check: `grep -rE "Required by|Contract reference|MSA §|TODO|FIXME|XXX" --include="*.html" --exclude-dir=_contract_tracking .` returns zero results.
+4. GitHub Pages exclusion: `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/` returns 404 (Jekyll leading-underscore default exclusion).
+5. Doc Control: v4.31 Current, v4.30 Superseded in both presentation catalogs.
+6. Public-repo cleanliness audit: `grep -rE "Brady|Vivek|Sadh|Pandey|Hassett|Bevan|Perkinson|\bMike\b|@wgu\.edu|@jellyfishtechnologies|03 MAR 2026|03 Mar 2026|142,500|4,750|CBJC" .` returns zero matches (excluding the unavoidable `brady-wgu` GitHub username in repo URLs).
+
+---
+
 ## v4.30 — 11 May 2026 — "All WGU staff default to Instructor" framing made explicit
 
-Quick follow-up to v4.29 per Brady's additional context: in production, **every WGU staff member** (regardless of actual job function) lands at the Instructor LTI baseline by default. The v4.29 work captured the mechanic ("LTI carries only Student or Instructor"), but didn't explicitly call out that this is the policy for *all* WGU staff — not just people who actually teach.
+Quick follow-up to v4.29 per WGU Program Development's additional context: in production, **every WGU staff member** (regardless of actual job function) lands at the Instructor LTI baseline by default. The v4.29 work captured the mechanic ("LTI carries only Student or Instructor"), but didn't explicitly call out that this is the policy for *all* WGU staff — not just people who actually teach.
 
 > "All staff at WGU will be defaulted to the 'Instructor' role. Then they will be manually elevated where appropriate."
-> — Brady, 11 May 2026
+> — WGU Program Development, 11 May 2026
 
 ### Two-paragraph edit
 
@@ -51,7 +140,7 @@ Quick follow-up to v4.29 per Brady's additional context: in production, **every 
 
 ## v4.29 — 11 May 2026 — Login & elevation workflow clarified across the site
 
-Brady walked through the production login & elevation flow on 11 May and asked for it to be clearly conveyed across the site. v4.29 implements the clarifications in-place across LRPS landing + all 3 admin SSO screens + the User Management screen.
+WGU Program Development walked through the production login & elevation flow on 11 May and asked for it to be clearly conveyed across the site. v4.29 implements the clarifications in-place across LRPS landing + all 3 admin SSO screens + the User Management screen.
 
 > The flow:
 > 1. Everyone clicks an LRPS link to get to the SDP.
@@ -60,7 +149,7 @@ Brady walked through the production login & elevation flow on 11 May and asked f
 > 4. Global admins can see everyone who has logged into the SDP.
 > 5. Global admins elevate everyone, as needed, to the instructor, tenant admin or global admin levels.
 >
-> — Brady, 11 May 2026
+> — WGU Program Development, 11 May 2026
 
 ### Mismatch that v4.29 fixes
 
@@ -113,13 +202,13 @@ Same pattern as Tenant Admin:
   - Bob (you) — Global Admin · LTI: Instructor
   - Jordan — Global Admin · LTI: Instructor
   - Alice — Tenant Admin · LTI: Instructor
-  - Mike — Tenant Admin · LTI: Instructor
+  - Miguel — Tenant Admin · LTI: Instructor
   - Charlie — Instructor · LTI: Instructor
   - Priya — Instructor · LTI: Instructor
   - Sally — Student · LTI: Student
   - Devon — Student · LTI: Student
 
-This makes the elevation story scannable: 4 rows show LTI: Instructor with elevated badges = Bob/Jordan/Alice/Mike were all elevated from Instructor baseline. Charlie/Priya/Sally/Devon are at their LTI baseline (no elevation).
+This makes the elevation story scannable: 4 rows show LTI: Instructor with elevated badges = Bob/Jordan/Alice/Miguel were all elevated from Instructor baseline. Charlie/Priya/Sally/Devon are at their LTI baseline (no elevation).
 
 **F. `student/index.html` — untouched**
 
@@ -150,7 +239,7 @@ The Student portal's entry screen is the Coding Coach brand hero (Sally R. avata
 2. LRPS landing shows the new info banner + 2 rows labeled `demo shortcut`
 3. All 3 admin SSO screens show LTI baseline + elevation framing (instead of "Role mapped: X")
 4. Super Admin Screen 9 shows LTI baseline annotations under every role badge
-5. The 4 elevated rows (Bob, Jordan, Alice, Mike) all show "LTI: Instructor" → tells the story that they were promoted from Instructor baseline
+5. The 4 elevated rows (Bob, Jordan, Alice, Miguel) all show "LTI: Instructor" → tells the story that they were promoted from Instructor baseline
 6. The 4 non-elevated rows (Charlie, Priya, Sally, Devon) all show their LTI baseline matching their current role
 7. Doc Control: v4.29 Current, v4.28 Superseded in both catalogs
 
@@ -158,7 +247,7 @@ The Student portal's entry screen is the Coding Coach brand hero (Sally R. avata
 
 ## v4.28 — 11 May 2026 — Instructor metrics retargeted + new super_admin External Tooling screen (closes deferred JFT items J / K / L / M)
 
-Brady's 11 May direction closed 4 deferred decision points from yesterday's JFT meeting that had been parked under the "Tenant Admin first" directive. v4.28 ships them in one release.
+WGU Program Development's 11 May direction closed 4 deferred decision points from yesterday's JFT meeting that had been parked under the "Tenant Admin first" directive. v4.28 ships them in one release.
 
 > **J**: "Display the metrics that are most useful to the instructor. Remove any 'total time on site' metrics, but focus on things that show where students are having problems so they can be resolved."
 >
@@ -166,7 +255,7 @@ Brady's 11 May direction closed 4 deferred decision points from yesterday's JFT 
 >
 > **L & M**: "This is a global setting right now. Unless there is a requirement for this being configurable per-course, let's stick with the global setting perspective for this. I do think some of these options are in the 3rd party tools as well, such as OpenRouter.ai, AWS, Redis, and the other tools being leveraged."
 >
-> — Brady, 11 May 2026
+> — WGU Program Development, 11 May 2026
 
 ### J — Instructor metrics retargeted to struggle / intervention indicators
 
@@ -179,11 +268,11 @@ All 4 in-place edits on existing `instructor/index.html` screens. No new screens
 | **Screen 7** Session 09 transcript eyebrow | `· 18m 12s ·` from "Session 09 · 06 May 2026 · 18m 12s · Lists & comprehensions" | `· 5 AI feedback panels · 3 LO misses` |
 | **Screen 8** Audit Trail KPI strip | `18m 12s Session length` stat | Two struggle stats: `3 LO misses` (danger color) + `5 AI escalations` (warning color); kept the `0 Events dropped` + `100% Capture integrity` integrity stats |
 
-Instructor screen count unchanged at 8. The Audit Trail still has its FERPA-integrity job (event count, dropped events, capture integrity) — Brady didn't ask to gut that, just to add struggle signal where there used to be a time metric.
+Instructor screen count unchanged at 8. The Audit Trail still has its FERPA-integrity job (event count, dropped events, capture integrity) — WGU Program Development didn't ask to gut that, just to add struggle signal where there used to be a time metric.
 
 ### K — New super_admin Screen 10: External Tooling & Integrations
 
-Brady's framing: "mimic the AWS console" + "I don't want to duplicate effort here". The new screen is a hub page that points the Global Admin at the 3rd party dashboards where the actual control surface lives.
+WGU Program Development's framing: "mimic the AWS console" + "I don't want to duplicate effort here". The new screen is a hub page that points the Global Admin at the 3rd party dashboards where the actual control surface lives.
 
 **Layout**:
 - Breadcrumb: Super Admin Portal → External Tooling
@@ -207,7 +296,7 @@ All link-out buttons use `href="#"` with `onclick="event.preventDefault();"` for
 
 ### L & M — Global configuration surfaced (not per-course)
 
-Brady confirmed both should stay **global settings**, not configurable per-course. Some values are enforced by 3rd party tools (Redis, OpenRouter, AWS) — surfaced on the new Screen 10 as a table that shows *what the value is, what enforces it, and where to change it*.
+WGU Program Development confirmed both should stay **global settings**, not configurable per-course. Some values are enforced by 3rd party tools (Redis, OpenRouter, AWS) — surfaced on the new Screen 10 as a table that shows *what the value is, what enforces it, and where to change it*.
 
 | Setting | Value | Enforced by | Notes |
 |---|---|---|---|
@@ -273,9 +362,9 @@ Corrected to "Step 7 / Screen 7" and "Step 8 / Screen 8" in both catalogs to mat
 
 ## v4.27 — 11 May 2026 — User Management role taxonomy expanded to 4 tiers (Student → Instructor → Tenant Admin → Global Admin)
 
-v4.25 built `super_admin/index.html` Screen 9 (User Management) per Mike's feedback with a 3-tier hierarchy: **User → Tenant Admin → Global Admin**. Brady reframed the role model on 11 May to explicitly call out the 4 storyboard personas as the starting tiers: **Student → Instructor → Tenant Admin → Global Admin**. v4.27 brings the screen into agreement.
+v4.25 built `super_admin/index.html` Screen 9 (User Management) per Miguel's feedback with a 3-tier hierarchy: **User → Tenant Admin → Global Admin**. WGU Program Development reframed the role model on 11 May to explicitly call out the 4 storyboard personas as the starting tiers: **Student → Instructor → Tenant Admin → Global Admin**. v4.27 brings the screen into agreement.
 
-> "The Global Admin can see all users in a large table, then manually upgrade people from student or instructor to the other accounts. Global Admin is the only one who can upgrade account access." — Brady, 11 May 2026
+> "The Global Admin can see all users in a large table, then manually upgrade people from student or instructor to the other accounts. Global Admin is the only one who can upgrade account access." — WGU Program Development, 11 May 2026
 
 ### What changed on super_admin Screen 9
 
@@ -301,7 +390,7 @@ Totals still add to 187 (150 + 12 + 23 + 2). Dropped "Pending upgrades" gauge (w
 | 1 | Bob (you) | — | Global Admin | Cannot downgrade self |
 | 2 | Jordan | — | Global Admin | Downgrade (disabled — min 2) |
 | 3 | Alice | PDev | Tenant Admin | Upgrade to Global / Downgrade |
-| 4 | Mike | School of Business | Tenant Admin | Upgrade to Global / Downgrade |
+| 4 | Miguel | School of Business | Tenant Admin | Upgrade to Global / Downgrade |
 | 5 | **Charlie** (new) | PDev | Instructor | Upgrade to Tenant Admin / Upgrade to Global |
 | 6 | Priya | School of Health | Instructor (was User) | Upgrade to Tenant Admin / Upgrade to Global |
 | 7 | **Sally** (new) | PDev | Student | Upgrade to Instructor / Upgrade to Tenant Admin |
@@ -319,7 +408,7 @@ Teagan row dropped to keep the row count manageable. Sally + Charlie added expli
 - 10 May 11:42 — Bob upgraded Charlie → Instructor (PDev)
 - 07 May 09:18 — Bob upgraded Alice → Tenant Admin (PDev)
 - 05 May 13:15 — Bob upgraded Priya → Instructor (School of Health)
-- 02 May 14:30 — Bob upgraded Mike → Tenant Admin (School of Business)
+- 02 May 14:30 — Bob upgraded Miguel → Tenant Admin (School of Business)
 - 28 Apr 10:02 — Bob upgraded Jordan → Global Admin
 - 22 Mar 16:00 — Bob → Global Admin (initial)
 
@@ -365,7 +454,7 @@ Teagan row dropped to keep the row count manageable. Sally + Charlie added expli
 
 ## v4.26 — 11 May 2026 — Branding footer-mockup refresh (match production WGU footer)
 
-Brady shared a screenshot of WGU's actual production learner-facing footer from another live course. v4.25 had built the Branding preview pane (tenant_admin Screen 21) with a stylized single-block footer mockup that didn't match the production layout. v4.26 rebuilds the preview pane to match production exactly.
+WGU Program Development shared a screenshot of WGU's actual production learner-facing footer from another live course. v4.25 had built the Branding preview pane (tenant_admin Screen 21) with a stylized single-block footer mockup that didn't match the production layout. v4.26 rebuilds the preview pane to match production exactly.
 
 ### What changed
 
@@ -415,28 +504,28 @@ Brady shared a screenshot of WGU's actual production learner-facing footer from 
 2. `tenant_admin/index.html` `TOTAL_SCREENS = 23` (unchanged from v4.25)
 3. `super_admin/index.html` `TOTAL_SCREENS = 9` (unchanged from v4.25)
 4. Storyboard total = 74 (unchanged)
-5. New Branding preview pane visually matches production WGU footer screenshot Brady provided
+5. New Branding preview pane visually matches production WGU footer screenshot WGU Program Development provided
 6. Both light + dark catalogs show new v4.26 row in Doc Control, v4.25 row marked Superseded
 
 ---
 
-## v4.25 — 11 May 2026 — Mike-feedback reshape (Branding simplified, Team & Roles relocated to Global Admin, 3-tier role model, file-upload on prompt config, address-by-name)
+## v4.25 — 11 May 2026 — Miguel-feedback reshape (Branding simplified, Team & Roles relocated to Global Admin, 3-tier role model, file-upload on prompt config, address-by-name)
 
-Brady met with Mike and brought back answers on the 4 open items plus 3 refinements. v4.25 implements them.
+WGU Program Development met with Miguel and brought back answers on the 4 open items plus 3 refinements. v4.25 implements them.
 
 ### A. Branding & Customization (Tenant Admin Screen 21) — simplified to logo + standardized footer
 
-Per Mike: "Logo only right now, use Open edX footer is standardized: WGU logo, ADA Accommodation, Privacy Policy, ToS, Honor Code, copyright notice."
+Per Miguel: "Logo only right now, use Open edX footer is standardized: WGU logo, ADA Accommodation, Privacy Policy, ToS, Honor Code, copyright notice."
 
 **Stripped from the Branding form:** tenant display name, primary accent color, custom domain, favicon upload, default locale dropdown, PWA install badge, footer copy textarea.
 
 **Kept:** tenant logo upload (single control).
 
-**Preview pane** rebuilt to show the Open edX standardized footer mockup with the 6 elements Mike named (WGU logo + tenant logo side-by-side, then ADA Accommodation · Privacy Policy · Terms of Service · Honor Code links, then copyright notice). Demonstrates the only thing the Tenant Admin actually configures (logo) and what the rest of the footer chrome looks like (fixed by the Open edX layer).
+**Preview pane** rebuilt to show the Open edX standardized footer mockup with the 6 elements Miguel named (WGU logo + tenant logo side-by-side, then ADA Accommodation · Privacy Policy · Terms of Service · Honor Code links, then copyright notice). Demonstrates the only thing the Tenant Admin actually configures (logo) and what the rest of the footer chrome looks like (fixed by the Open edX layer).
 
 ### B. Team & Roles relocated to Global Admin (Super Admin) + redesigned as User Management
 
-Per Mike: "Tenant 22 screen goes in global admin only" + 3-tier role hierarchy (User → Tenant Admin → Global Admin) + "Always have 2 Global Admins" + "List all users in a table, upgrade whoever I want to."
+Per Miguel: "Tenant 22 screen goes in global admin only" + 3-tier role hierarchy (User → Tenant Admin → Global Admin) + "Always have 2 Global Admins" + "List all users in a table, upgrade whoever I want to."
 
 **Tenant Admin side:**
 - Deleted Screen 22 (Team & Roles with Owner/Editor/Viewer model)
@@ -458,7 +547,7 @@ Per Mike: "Tenant 22 screen goes in global admin only" + 3-tier role hierarchy (
 
 ### C. File upload + address-by-name on Configure AI Coaching Prompt (Tenant Admin Screen 8)
 
-Per Mike: "Add a file button if you want to really edit something like crazy for the prompt config for tenant admin" + "Make the answers student-specific. No 'student', call them by name."
+Per Miguel: "Add a file button if you want to really edit something like crazy for the prompt config for tenant admin" + "Make the answers student-specific. No 'student', call them by name."
 
 - Added "Upload advanced config (.txt / .md / .json)" button above the form (alternative entry for power-users).
 - Updated compiled prompt preview OUTPUT block:
@@ -470,7 +559,7 @@ Per Mike: "Add a file button if you want to really edit something like crazy for
 
 ### D. Read-only view of other tenants (Tenant Admin Screen 2)
 
-Per Mike: "Read only of other tenants."
+Per Miguel: "Read only of other tenants."
 
 Added "Other tenants — Read-only" inline section below the Subjects table on Portal home. 3 rows (School of Business, School of Health, School of Education) each with a "View" button only (no edit action).
 
@@ -478,7 +567,7 @@ Added "Other tenants — Read-only" inline section below the Subjects table on P
 
 - **Instructor portal:** Sally is already addressed by name throughout all instructor screens. No changes needed.
 - **Student portal:** Only "student" mentions are inside sample task content (Python exercises referring to data about students/scores), not generic addresses for Sally. Student portal remains frozen (23 consecutive releases).
-- **LTI entry via LRPS:** Mike: "Everyone goes in through LTI link via LRPS" — already depicted on Screen 1 of every portal.
+- **LTI entry via LRPS:** Miguel: "Everyone goes in through LTI link via LRPS" — already depicted on Screen 1 of every portal.
 
 ### Verification
 
@@ -505,9 +594,9 @@ Added "Other tenants — Read-only" inline section below the Subjects table on P
 
 ## v4.24 — 10 May 2026 — Strip ALL descriptive / scenario-narrative text from prototype screens (developers will copy literally)
 
-Per Brady's directive ("My developers are VERY literal. They are going to copy this page, pixel-by-pixel, even though I have told them otherwise. So this prototype needs to be 100% what is required to meet the SOW in the most efficient method possible... Remove all the descriptive text across the prototypes that is scenario-based descriptor information and just keep the text minimal everywhere.").
+Per WGU Program Development's directive ("My developers are VERY literal. They are going to copy this page, pixel-by-pixel, even though I have told them otherwise. So this prototype needs to be 100% what is required to meet the SOW in the most efficient method possible... Remove all the descriptive text across the prototypes that is scenario-based descriptor information and just keep the text minimal everywhere.").
 
-**Hard rule applied:** if a paragraph/alert/form-help is *scenario-narrative explaining what the screen does or what a button does*, it's gone. UI components must self-document via labels, buttons, and data. The two examples Brady cited (the "Multi-tenant scoping limits this view…" alert on the Tenant Admin hub, and the "Create or update a Subject's topics, learning objectives…" hub-card description) are exactly the pattern stripped everywhere.
+**Hard rule applied:** if a paragraph/alert/form-help is *scenario-narrative explaining what the screen does or what a button does*, it's gone. UI components must self-document via labels, buttons, and data. The two examples WGU Program Development cited (the "Multi-tenant scoping limits this view…" alert on the Tenant Admin hub, and the "Create or update a Subject's topics, learning objectives…" hub-card description) are exactly the pattern stripped everywhere.
 
 ### What stays
 
@@ -543,7 +632,7 @@ Per Brady's directive ("My developers are VERY literal. They are going to copy t
 
 ## v4.23 — 10 May 2026 — Strip internal contract refs (SOW §§ + SC-ADD-NN / SC-MVP-NN scenario IDs) from user-visible UI
 
-Per Brady's directive ("On Tenant Admin Screen 2, you list 'SC-ADD-NN' and Sections from the contract. That was only internal information. Remove anything in any of the prototype screens that references contract requirements specifically by text or the user scenarios. Those do not help the Tenant Admin in real life at all."), all SOW section citations (§7.9, §10.4, §16.5 #10.X, etc.) and user-scenario identifiers (SC-ADD-02, SC-MVP-01, etc.) have been removed from **user-visible body text** across all four admin portal HTMLs + the root portal selector. Internal markers (HTML comments, aria-labels referencing storyboard structure, Doc Control rows, READMEs, CHANGELOG, catalog narratives) are preserved for ongoing traceability.
+Per WGU Program Development's directive ("On Tenant Admin Screen 2, you list 'SC-ADD-NN' and Sections from the contract. That was only internal information. Remove anything in any of the prototype screens that references contract requirements specifically by text or the user scenarios. Those do not help the Tenant Admin in real life at all."), all SOW section citations (§7.9, §10.4, §16.5 #10.X, etc.) and user-scenario identifiers (SC-ADD-02, SC-MVP-01, etc.) have been removed from **user-visible body text** across all four admin portal HTMLs + the root portal selector. Internal markers (HTML comments, aria-labels referencing storyboard structure, Doc Control rows, READMEs, CHANGELOG, catalog narratives) are preserved for ongoing traceability.
 
 **No screens removed** (still 74). All in-place text edits. No new functionality.
 
@@ -623,14 +712,14 @@ Per Brady's directive ("On Tenant Admin Screen 2, you list 'SC-ADD-NN' and Secti
 
 ## v4.22 — 10 May 2026 — Tenant Admin reshape per JFT meeting (Content Creator rename + LO management screens + SC-ADD-05 removal + Configure AI Coaching Prompt + LRPS provisioning workflow)
 
-Brady met with JFT this morning and brought back a set of reshapes for the Tenant Admin flow. v4.22 implements the Tenant Admin portion only (per Brady's "let's focus on getting the Tenant Admin flow finished today before we worry about any other user flows" directive). Other items (instructor metrics review, super_admin shrinkage, student 5000-char limit, Redis surfacing) deferred to subsequent releases.
+WGU Program Development met with JFT this morning and brought back a set of reshapes for the Tenant Admin flow. v4.22 implements the Tenant Admin portion only (per WGU Program Development's "let's focus on getting the Tenant Admin flow finished today before we worry about any other user flows" directive). Other items (instructor metrics review, super_admin shrinkage, student 5000-char limit, Redis surfacing) deferred to subsequent releases.
 
 **Net screen count for tenant_admin:** 27 → **24** (+3 new LO management screens, −6 from removing SC-ADD-05 entirely).
 **Total storyboard:** 77 → **74** screens.
 
 ### Renamed — "Tenant Admin Portal" → "Content Creator Portal" (user-facing UI only)
 
-Per Brady's Q1 answer ("Keep 'tenant admin' in all official language, but can use Content Creator in user-facing UIs for ease-of-explanation"):
+Per WGU Program Development's Q1 answer ("Keep 'tenant admin' in all official language, but can use Content Creator in user-facing UIs for ease-of-explanation"):
 - **User-facing UI strings → "Content Creator"**: navbar chip on every tenant_admin screen, breadcrumb root, persona labels visible to Alice, meta-bar header, root `index.html` portal-selector card role + name + aria-label
 - **Official documentation → "Tenant Admin" preserved**: SOW reference text (§2.2 deliverable still names "Tenant Admin"), READMEs (with mapping note "Content Creator (SOW §2.2 role: Tenant Admin)"), CHANGELOG, Document Control rows, catalog Per-persona portals list (with mapping callout)
 
@@ -638,13 +727,13 @@ Per Brady's Q1 answer ("Keep 'tenant admin' in all official language, but can us
 
 Per JFT meeting notes: "Take off that API screen from the [tenant admin]" + "Take out the data screen from the tenant admin and leave it on global."
 
-- **Why:** JFT confirmed external **Swagger documentation** (per SOW §2.4 deliverable "API specification using Swagger" + §16.1 #6.25) is the API access vehicle for downstream WGU systems — the in-portal API console was never the contracted experience. Data export scope moves to the global / Super Admin portal (deferred to a subsequent release per Brady's "Tenant Admin first" directive).
+- **Why:** JFT confirmed external **Swagger documentation** (per SOW §2.4 deliverable "API specification using Swagger" + §16.1 #6.25) is the API access vehicle for downstream WGU systems — the in-portal API console was never the contracted experience. Data export scope moves to the global / Super Admin portal (deferred to a subsequent release per WGU Program Development's "Tenant Admin first" directive).
 - **Screens removed:** Data & APIs landing (10), REST API console (11), Sample JSON response (12), Export wizard (13), Format picker (14), Download confirmation (15)
 - **SOW alignment:** §16.3 #8.7 (REST API for student engagement data export), #8.9 (data formats), #8.12 (webhooks), #8.13 (GraphQL) all remain in-scope for the platform — just not depicted as a tenant-admin portal flow.
 
 ### Added — 3 new LO management screens (5/6/7)
 
-Per Brady's H answer ("Instead of having the passing threshold be on a separate page, let's integrate it into the entry/modification screens for topics/learning objectives. You should also add screen to illustrate how the topics/learning objectives can be modified/removed/added.") and follow-up "Create new screens to completely illustrate the add/edit/remove flow for the user. One example for each action, including the new threshold/weight additions to Screen 04 and the new screens you're adding."
+Per WGU Program Development's H answer ("Instead of having the passing threshold be on a separate page, let's integrate it into the entry/modification screens for topics/learning objectives. You should also add screen to illustrate how the topics/learning objectives can be modified/removed/added.") and follow-up "Create new screens to completely illustrate the add/edit/remove flow for the user. One example for each action, including the new threshold/weight additions to Screen 04 and the new screens you're adding."
 
 - **NEW Screen 5: Add a Learning Objective** — Form with parent-topic dropdown, LO code, title, description (with "long descriptions make the model more prone to hallucinate" form-help), per-LO passing threshold input (0–100% with mastery badge), per-LO weight input (default 1.0× with course-total badge). Audit-trail warning per §10.4.
 - **NEW Screen 6: Edit a Learning Objective** — Same form pre-filled for LO 1.3, with edit-history alert showing last 3 changes + threshold-delta badge.
@@ -670,7 +759,7 @@ Per JFT meeting note ("Custom prompting: Turn these from radio buttons to short 
 
 ### Modified — Screen 10 (Scoring & Rubric) — threshold + weight removed; scoring style added
 
-Per Brady's directive that threshold + weight live on the LO management screens, not on a separate scoring page:
+Per WGU Program Development's directive that threshold + weight live on the LO management screens, not on a separate scoring page:
 - Title changed: "Configure Scoring & Rubric" → "Scoring style & coaching defaults"
 - **Threshold + weight columns removed** from per-LO table (now per-LO on screens 4 + 5 + 6 + 7)
 - **Mastery threshold input removed** (each LO declares its own passing threshold)
@@ -696,14 +785,14 @@ Per JFT meeting note ("Process for getting new LRPS link · Present the destinat
 - `tenant_admin/README.md`: comprehensive refresh — "Content Creator (Tenant Admin)" heading; 2 scenarios × 24 screens; v4.22 reshape summary
 - `presentation.html` + `presentation_dark.html`: SC-ADD-05 section deleted, TOC + screen map updated, 3 new SC-ADD-02 step entries inserted, SC-ADD-02 step numbers renumbered, SC-ADD-06 screen labels renumbered
 
-### Items deferred per Brady's "Tenant Admin first" directive
+### Items deferred per WGU Program Development's "Tenant Admin first" directive
 
 The following items from the JFT morning meeting are NOT in v4.22 and will be addressed in subsequent releases:
 - **J:** Review metrics — remove "Total Time" + add instructor score on chat history screens 7+8 (instructor portal — deferred)
 - **K:** Review the global admin totally (super_admin — deferred; "mostly in AWS" note for follow-up release)
 - **L:** Student 5000 char limit — surface to user (student/ — deferred; freezer status TBD)
 - **M:** Redis token limit surfacing (deferred)
-- **Mike discussion items** (course ownership model, transfer flow, branding & customization screen for Contract, multiple owners, course visibility default) — Brady to confer with Mike later today; storyboard changes in subsequent release once Mike's answers land
+- **Miguel discussion items** (course ownership model, transfer flow, branding & customization screen for Contract, multiple owners, course visibility default) — WGU Program Development to confer with Miguel later today; storyboard changes in subsequent release once Miguel's answers land
 
 ### Verification
 
@@ -812,7 +901,7 @@ The storyboard previously depicted "WGU SSO authentication complete · MFA verif
 
 ## v4.18 — 10 May 2026 — SOW-anchored sweep (restore over-trims + add missing requirements per the literal signed SOW MD)
 
-Brady provided the **literal signed MSA/SOW** (`JFT_WGU_MSA_SOW_signed_05MAY2026.md`, 869 lines, signed 03 MAR 2026 by David Perkinson / Amit Kumar Pandey). Prior adversarial passes 11–16 worked from CHANGELOG-derived paraphrases of the SOW rather than the contract itself. Reading the actual SOW revealed **both over-trims and gaps**: items I had removed that are explicitly committed in SOW Appendix A, plus contract-grounded features the storyboard never depicted. v4.18 is a single batched release that restores wrongly-trimmed items, adds missing SOW-required items, and keeps in place the trims that are genuinely ungrounded. **No screens removed** (still 77); all in-place text edits + small section additions within existing screens.
+WGU Program Development provided the **literal signed MSA/SOW** as the authority for this sweep. Prior adversarial passes 11–16 worked from CHANGELOG-derived paraphrases of the SOW rather than the contract itself. Reading the actual SOW revealed **both over-trims and gaps**: items I had removed that are explicitly committed in SOW Appendix A, plus contract-grounded features the storyboard never depicted. v4.18 is a single batched release that restores wrongly-trimmed items, adds missing SOW-required items, and keeps in place the trims that are genuinely ungrounded. **No screens removed** (still 77); all in-place text edits + small section additions within existing screens.
 
 ### Restored — items v4.13/v4.14 incorrectly trimmed (in SOW)
 
@@ -1292,7 +1381,7 @@ Note: the "3 yr inactive learner data retention" gauge on `super_admin/index.htm
 
 ## v4.10 — 08 May 2026 — Third overboard sweep (Parquet + LLM vendor naming + 7-year FERPA claim + 3 export datasets)
 
-After v4.9 Brady asked for another adversarial pass. Pass 9 found 4 more items not actually SOW-grounded. v4.10 closes them. **No screens removed** (still 77); all in-place text edits.
+After v4.9 WGU Program Development asked for another adversarial pass. Pass 9 found 4 more items not actually SOW-grounded. v4.10 closes them. **No screens removed** (still 77); all in-place text edits.
 
 ### Trimmed — Parquet format (not in SOW or catalog)
 
@@ -1362,7 +1451,7 @@ Site edited (`tenant_admin/index.html` screen 13):
 
 ## v4.9 — 08 May 2026 — Second overboard sweep (REST API specifics + CSM SLA framing + Instructor Learner Search)
 
-After v4.8 Brady asked for another adversarial pass. A fresh independent agent (Pass 8) found 3 more items that were over-extrapolated. v4.9 closes them.
+After v4.8 WGU Program Development asked for another adversarial pass. A fresh independent agent (Pass 8) found 3 more items that were over-extrapolated. v4.9 closes them.
 
 ### Trimmed — REST API specifics fabricated (Tenant Admin)
 
@@ -1388,7 +1477,7 @@ Sites edited (`tenant_admin/index.html`):
 
 ### Removed — `instructor/index.html` screen 9 (Learner Search)
 
-The screen was added in v4.4 as G2, originally Mike's "Gradebook" suggestion that I retargeted as "Learner Search." Reading the v1.3 SC-ADD-03 catalog narrative literally: "Charlie accesses the Instructor Dashboard via secret LRPS deep link and opens the Data Visualization panel showing a Student Heatmap. He identifies Sally as at-risk: assessment complete, AI-scored competency low. He drills into her conversation logs to review AI feedback…" — there is no search step. The User Profile says "drill into individual student performance records" (singular drill-down), not "search across all."
+The screen was added in v4.4 as G2, originally Miguel's "Gradebook" suggestion that I retargeted as "Learner Search." Reading the v1.3 SC-ADD-03 catalog narrative literally: "Charlie accesses the Instructor Dashboard via secret LRPS deep link and opens the Data Visualization panel showing a Student Heatmap. He identifies Sally as at-risk: assessment complete, AI-scored competency low. He drills into her conversation logs to review AI feedback…" — there is no search step. The User Profile says "drill into individual student performance records" (singular drill-down), not "search across all."
 
 Removed:
 - Entire `<section id="screen-9">` block (~190 lines)
@@ -1431,12 +1520,12 @@ Catalog updates (`presentation.html` + `presentation_dark.html`):
 
 ## v4.8 — 08 May 2026 — Overboard trim (3 Super Admin screens removed; Tenant Admin home + screen 5 trimmed)
 
-Brady ran a fresh contract-grounding audit and confirmed prior agents (myself included) had built features that weren't actually in the SOW main body. v4.8 removes the overboard items so the prototype reflects only what JFT contracted to deliver.
+WGU Program Development ran a fresh contract-grounding audit and confirmed prior agents (myself included) had built features that weren't actually in the SOW main body. v4.8 removes the overboard items so the prototype reflects only what JFT contracted to deliver.
 
 ### Removed — 3 Super Admin screens (added in v4.4 as inferred "gap fills")
 
-- **`super_admin/index.html` screen 9 (Third-Party Integrations).** OpenRouter / AWS / Datadog / Entra ID / GitHub / Slack deep-link cards. SOW §2.4 commits to "AI orchestration layer supporting multiple LLM providers" as **internal architecture**, not as a Super Admin-facing vendor-management UI. JFT's vendor management is operational ops, not a JFT deliverable. The original justification was a Brady in-conversation remark ("links to all the 3rd party tools that are setup, like AWS as well") — not a SOW commitment.
-- **`super_admin/index.html` screen 10 (Learner Remediation).** Cross-tenant per-learner score reset / force re-diagnostic / pause access with required-justification audit log. SOW commits to data export and audit logging, not data **modification**. Score reset crosses into FERPA territory (modifying education records). Not in v1.3 catalog or User Profile. Original justification was a Brady in-conversation remark ("resetting a user's score, that would be a Global Admin feature") — not contracted.
+- **`super_admin/index.html` screen 9 (Third-Party Integrations).** OpenRouter / AWS / Datadog / Entra ID / GitHub / Slack deep-link cards. SOW §2.4 commits to "AI orchestration layer supporting multiple LLM providers" as **internal architecture**, not as a Super Admin-facing vendor-management UI. JFT's vendor management is operational ops, not a JFT deliverable. The original justification was a WGU Program Development in-conversation remark ("links to all the 3rd party tools that are setup, like AWS as well") — not a SOW commitment.
+- **`super_admin/index.html` screen 10 (Learner Remediation).** Cross-tenant per-learner score reset / force re-diagnostic / pause access with required-justification audit log. SOW commits to data export and audit logging, not data **modification**. Score reset crosses into FERPA territory (modifying education records). Not in v1.3 catalog or User Profile. Original justification was a WGU Program Development in-conversation remark ("resetting a user's score, that would be a Global Admin feature") — not contracted.
 - **`super_admin/index.html` screen 11 (Billing & Cost Centers).** Per-tenant cost-center allocation table + per-model spend split + budget alerts. §11.1 specifies what JFT bills WGU; it does not commit to a UI for WGU's **internal** cost-center allocation across PDev / SOB / SOH. That's WGU's accounting concern, not a JFT deliverable. Token-usage / API-spend tracking is contract-committed (already exists on screen 3); cross-tenant cost-center reconciliation isn't.
 
 `super_admin/index.html` returns to **8 screens** (matches the v1.3 SC-ADD-04 catalog narrative as originally authored).
@@ -1460,7 +1549,7 @@ The v4.7 hub redesign over-promised real-time platform-monitoring features that 
 
 ### Trimmed — Tenant Admin screen 5 prompt-versions panel
 
-The v4.4 G9 "Recent versions" panel (3-row table + footnote) was based on a Brady in-conversation request for "minimal indication for JFT to push back if too hard." v4.8 takes that "minimal" framing more literally: collapsed to a single-line indicator showing "Last edited 07 May · v3 · Alice" with a "View history" link and a deferred-feature note. Same intent, much smaller surface.
+The v4.4 G9 "Recent versions" panel (3-row table + footnote) was based on a WGU Program Development in-conversation request for "minimal indication for JFT to push back if too hard." v4.8 takes that "minimal" framing more literally: collapsed to a single-line indicator showing "Last edited 07 May · v3 · Alice" with a "View history" link and a deferred-feature note. Same intent, much smaller surface.
 
 ### Catalog updates
 
@@ -1500,7 +1589,7 @@ These items were re-validated against SOW + scenarios and confirmed contract-gro
 
 ### Lesson learned
 
-In-conversation remarks during prototyping are NOT contract commitments. v4.4–v4.7 conflated the two; v4.8 corrects that. Future iterations should re-cite SOW main-body sections (with literal quotes ≤15 words) before proposing new screens — not "Brady mentioned X" remembered from chat.
+In-conversation remarks during prototyping are NOT contract commitments. v4.4–v4.7 conflated the two; v4.8 corrects that. Future iterations should re-cite SOW main-body sections (with literal quotes ≤15 words) before proposing new screens — not "WGU Program Development mentioned X" remembered from chat.
 
 ---
 
@@ -1536,7 +1625,7 @@ Each scenario used to dead-end at "Back to Portal." Now they invite the next log
 
 ### Why this matters
 
-Per Brady's direction: SC-ADD-02 / 05 / 06 are not three separate demos JFT will build separately — they are one Tenant Admin experience that Alice lives inside as a daily workflow. The polish pass:
+Per WGU Program Development's direction: SC-ADD-02 / 05 / 06 are not three separate demos JFT will build separately — they are one Tenant Admin experience that Alice lives inside as a daily workflow. The polish pass:
 1. Establishes the portal home as the visual centerpiece (hub model, not a launcher).
 2. Makes the cross-scenario data flow visible (the 24h activity feed shows how the three scenarios touch each other in time).
 3. Replaces dead-end completion screens with cross-scenario invitations that reflect realistic operations (deploy → export, export → SLA review, incident response → next config).
@@ -1593,7 +1682,7 @@ The plan called for an interactive browser walk-through using Claude in Chrome M
 
 ## v4.5 — 07 May 2026 — SOW + scenario compliance audit (2 consecutive clean passes)
 
-Comprehensive 2-pass-clean compliance audit per Brady's directive. Every numbered SOW main-body section + every v1.3 scenario step verified against the storyboard. **Pass 3 and Pass 4 both reported 0 issues** — full SOW + scenario compliance achieved. `student/index.html` byte-identical to v4.2 baseline (preservation directive intact).
+Comprehensive 2-pass-clean compliance audit per WGU Program Development's directive. Every numbered SOW main-body section + every v1.3 scenario step verified against the storyboard. **Pass 3 and Pass 4 both reported 0 issues** — full SOW + scenario compliance achieved. `student/index.html` byte-identical to v4.2 baseline (preservation directive intact).
 
 ### Editorial scrub
 
@@ -1637,20 +1726,20 @@ The plan called for an interactive browser walk-through using Claude in Chrome M
 
 ## v4.4 — 07 May 2026 — SOW gap fills against the contract
 
-Eight contract-grounded gaps closed across the three admin portals. **Authority order baked in throughout: contract first, then User Profiles, then Mike's vernacular suggestions deprioritized to "out of scope unless SOW-grounded."** No changes to `student/index.html` (Brady's preservation directive — verified `git diff` shows 0 lines).
+Eight contract-grounded gaps closed across the three admin portals. **Authority order baked in throughout: contract first, then User Profiles, then Miguel's vernacular suggestions deprioritized to "out of scope unless SOW-grounded."** No changes to `student/index.html` (WGU Program Development's preservation directive — verified `git diff` shows 0 lines).
 
 ### Added — 6 new screens
 
 - **`tenant_admin/` screen 26 — Instructor Roster & Course Assignment (G3, §2.5 + §10.8 RBAC).** 7-row instructor table including Course Instructors and Program Mentors (Charlie, Devon, Maya, Priya, Teagan, Noor, Logan/deactivated) with E010/E075/E135 course chips, active-learner counts (rolling enrollment), recent-assignment audit log, idle-warning badges, and bulk-import CTA. Explicit framing: LRPS owns account provisioning; this screen owns *course* assignment.
 - **`tenant_admin/` screen 27 — Subject Lifecycle & Archival (G6, §2.5 module lifecycle + §10.4 audit logging).** Two-section layout: Active Subjects (E010 / E075 / E135 with deployed-version + learner-count + deactivate CTA) and Archived Subjects (E020 legacy / E099 pilot, FERPA-aligned 7-year retention, restore CTA). Right-rail "Deactivate Subject preview" panel with cutover date / retention policy / required-justification / audit warning.
 - **`super_admin/` screen 9 — Third-Party Integrations (G8, §2.4 AI Orchestration + §2.5 system health).** Read-only Connected Services view: OpenRouter.ai (LLM gateway, replacing direct keys for OpenAI/Anthropic/Google), AWS (compute/data/networking), Datadog (APM/logs/synthetic), Entra ID (SSO), GitHub (CI/CD source), Slack (incident channel). Each card has a deep-link button to the vendor console. Explicit credential-management note: JFT owns rotation; rotate via Sev2 ticket, not in-portal.
-- **`super_admin/` screen 10 — Learner Remediation (G1, Brady-clarified Global Admin scope).** LRPS owns account provisioning, so this screen is global-admin-only *coaching-state* remediation: per-objective score reset, reset all progress (subject or cross-subject), force re-diagnostic, pause access, view conversation log. Required justification field (audit-logged with actor/IP/before-after). Recent remediation events table. FERPA-scope clarification at the bottom: progress + score data only; account identity / LMS enrollment / grade-bearing assessments are out of scope.
+- **`super_admin/` screen 10 — Learner Remediation (G1, WGU Program Development-clarified Global Admin scope).** LRPS owns account provisioning, so this screen is global-admin-only *coaching-state* remediation: per-objective score reset, reset all progress (subject or cross-subject), force re-diagnostic, pause access, view conversation log. Required justification field (audit-logged with actor/IP/before-after). Recent remediation events table. FERPA-scope clarification at the bottom: progress + score data only; account identity / LMS enrollment / grade-bearing assessments are out of scope.
 - **`super_admin/` screen 11 — Billing & Cost Centers (G5, §11.1 hosting + support fee schedule + §6.6 token tracking).** Per-tenant cost allocation: 6-row table (PDev / SOB / SOH / SOE / SOIT / Pilot) with cost-center codes, owner emails, MTD spend, budget caps, EOM forecasts, status badges (PDev forecast to exceed). Spend-by-model breakdown via OpenRouter (Claude 56% / GPT-4o 28% / Gemini 16%). 4-row configurable budget-alert preferences.
-- **`instructor/` screen 9 — Learner Search & Individual Lookup (G2, §7.10 + §7.12).** Reframed from Mike's "Gradebook" — the SDP is a practice tool, not a gradebook. Search by name / email / anonymized identifier across all 68 learners in Charlie's three courses, with course + status filters, sortable result table (Sally / Aisha / Daniel / Marcus / Priya / Jordan / Tasha / Riku as a representative cross-section), and per-row "Open profile" CTA that pivots to the existing drill-down. FERPA-scope note: Instructors only see learners in courses they instruct.
+- **`instructor/` screen 9 — Learner Search & Individual Lookup (G2, §7.10 + §7.12).** Reframed from Miguel's "Gradebook" — the SDP is a practice tool, not a gradebook. Search by name / email / anonymized identifier across all 68 learners in Charlie's three courses, with course + status filters, sortable result table (Sally / Aisha / Daniel / Marcus / Priya / Jordan / Tasha / Riku as a representative cross-section), and per-row "Open profile" CTA that pivots to the existing drill-down. FERPA-scope note: Instructors only see learners in courses they instruct.
 
 ### Changed — small edits to existing surfaces
 
-- **`tenant_admin/` screen 5 (AI Prompt Configuration)** — added a minimal "Recent versions" panel (G9) below the existing two-column form, showing the last 3 prompt edits with author, timestamp, and a one-line note. v3 marked as "live"; v2 + v1 read-only. Footnote explicitly defers diff view and rollback for JFT effort estimation. Per Brady: "minimal indication for JFT to see and push back if too hard."
+- **`tenant_admin/` screen 5 (AI Prompt Configuration)** — added a minimal "Recent versions" panel (G9) below the existing two-column form, showing the last 3 prompt edits with author, timestamp, and a one-line note. v3 marked as "live"; v2 + v1 read-only. Footnote explicitly defers diff view and rollback for JFT effort estimation. Per WGU Program Development: "minimal indication for JFT to see and push back if too hard."
 - **`instructor/` screen 2 (Dashboard home)** — eyebrow chip "Active Section · Recommended next" → "Active Course · Recommended next". Stat caption "Spring 2026 · Sally and 27 others" → "28 active learners (rolling enrollment) · Sally + 27 others". "Roster" button → "Search learners" (deep-links to screen 9). E075/E135 cards: "Section" → "Course"; section numbers + Spring 2026 dropped.
 - **`instructor/` screen 3 (Class heatmap)** — added export CTAs (Course report PDF / CSV) and a "Search by name / email" pivot to screen 9 (G10). Breadcrumb "E010 § 042" → "E010".
 - **`instructor/` screen 5 (Sally profile)** — copy "E010 Section 042 · Cohort: Spring 2026" → "E010 · 28 active learners (rolling enrollment)". Breadcrumb sections updated.
@@ -1661,14 +1750,14 @@ Eight contract-grounded gaps closed across the three admin portals. **Authority 
 
 ### Authority decisions documented in this release
 
-Brady's directive: *"the contract rules everything. The User Profiles document is authoritative for persona naming and scope."* Items deprioritized accordingly:
+WGU Program Development's directive: *"the contract rules everything. The User Profiles document is authoritative for persona naming and scope."* Items deprioritized accordingly:
 
-- **Mike's "Course Instructor" rename** — REJECTED in v4.3, stays rejected. The User Profile + SOW §2.5 use `Instructor` as the contract-named user type.
-- **Mike's "Admin" persona** — does not exist. The "global-level technical administrator with full cross-tenant access" *is* Super Admin (Bob) per the User Profile. Account-management functions land in `super_admin/`, not in a new persona and not in Tenant Admin (which is content-focused).
+- **Miguel's "Course Instructor" rename** — REJECTED in v4.3, stays rejected. The User Profile + SOW §2.5 use `Instructor` as the contract-named user type.
+- **Miguel's "Admin" persona** — does not exist. The "global-level technical administrator with full cross-tenant access" *is* Super Admin (Bob) per the User Profile. Account-management functions land in `super_admin/`, not in a new persona and not in Tenant Admin (which is content-focused).
 - **Account merge** — explicitly OUT per SOW §4 ("Manual creation or management of student accounts outside of LTI-based provisioning"). Not implemented.
 - **AI score override authority for Instructors (G7)** — DROPPED. The SDP is a practice tool; coaching scores never feed academic records. There's no record to override.
 - **Tenant Admin notification preferences (G4)** — DROPPED. The §9 Communication Plan is JFT→WGU rollout documentation, not runtime tenant-configurable alerting.
-- **G11 (Tenant Onboarding Wizard) and G12 (Subject Usage Analytics heatmap)** — deferred per Brady direction.
+- **G11 (Tenant Onboarding Wizard) and G12 (Subject Usage Analytics heatmap)** — deferred per WGU Program Development direction.
 
 ### v4.4 size summary
 
@@ -1681,7 +1770,7 @@ Brady's directive: *"the contract rules everything. The User Profiles document i
 
 ## v4.3 — 07 May 2026 — v1.2 catalog cross-reference + LRPS admin labels
 
-Catalog & narrative clarifications driven by a holistic re-read of the v1.2 student catalog (`JFT_SDP_MVP_Scenario_Catalog_v1_2_07APR2026.docx`) plus Mike's vernacular feedback. **No changes to `student/index.html`** — the v1 student screens are deliberately preserved as a baseline; all clarifications live in supporting narrative, READMEs, and the LRPS landing.
+Catalog & narrative clarifications driven by a holistic re-read of the v1.2 student catalog (`JFT_SDP_MVP_Scenario_Catalog_v1_2_07APR2026.docx`) plus Miguel's vernacular feedback. **No changes to `student/index.html`** — the v1 student screens are deliberately preserved as a baseline; all clarifications live in supporting narrative, READMEs, and the LRPS landing.
 
 ### Added
 
@@ -1698,21 +1787,21 @@ Catalog & narrative clarifications driven by a holistic re-read of the v1.2 stud
   - SC-MVP-02 step 10 (Difficulty Advances) — itemizes the three persistent session-stats fields (Sub-section / Tasks completed / Current difficulty) shown across coaching screens.
   - SC-MVP-03 step 7 (Fast-Track Results) — narrates *why* 12 of 13 sub-sections check off from the diagnostic while Functions & Modular Programming alone requires hands-on verification (the diagnostic question pool does not adequately sample module-level skills like `__name__ == "__main__"` guards).
   - SC-MVP-04 step 3 (Re-Assessment Q1) — calls out the "Re-Assessment · Welcome Back" badge prominence and frames the 2-question check as a retention check (not a fresh diagnostic) before coaching resumes at Sally's prior difficulty level.
-- **`lrps/index.html` — "Not for student use" amber badges on the three live SDP admin rows** (SDP-TA / SDP-IN / SDP-SA). Material `block` icon + 10.5px uppercase label in the warning-tint amber. Theme-aware (lighter on dark theme). Mike's feedback: LRPS is admin-visible in some contexts where students might also browse the page, and the admin rows must never be confused for student-facing resources. The student row (SDP-ST) is unchanged.
+- **`lrps/index.html` — "Not for student use" amber badges on the three live SDP admin rows** (SDP-TA / SDP-IN / SDP-SA). Material `block` icon + 10.5px uppercase label in the warning-tint amber. Theme-aware (lighter on dark theme). Miguel's feedback: LRPS is admin-visible in some contexts where students might also browse the page, and the admin rows must never be confused for student-facing resources. The student row (SDP-ST) is unchanged.
 
 ### Verification
 
-- `student/index.html` byte-identical to v4.2 — Brady's preservation directive honored. Verify with `git diff student/index.html` (expects 0 changes).
+- `student/index.html` byte-identical to v4.2 — WGU Program Development's preservation directive honored. Verify with `git diff student/index.html` (expects 0 changes).
 - LRPS screenshots regenerated to capture the new admin-row badges (light + dark themes).
 - All four SC-MVP step narrative expansions parse correctly in both `presentation.html` and `presentation_dark.html`.
 
 ### Out of scope (this release)
 
-- SOW Tier 1 gap fills — pending Brady's per-item green-light against the contract (`JFT_WGU_MSA_SOW_signed_05MAY2026.md`); planned for the next v4.x release.
-- Mike's larger integration suggestions — pending Brady's green-light, *re-targeted against the authoritative User Profiles* (`JFT_SDP_User_Profiles_v1_2_30MAR2026.docx`):
+- SOW Tier 1 gap fills — pending WGU Program Development's per-item green-light against the contract (`JFT_WGU_MSA_SOW_signed_05MAY2026.md`); planned for the next v4.x release.
+- Miguel's larger integration suggestions — pending WGU Program Development's green-light, *re-targeted against the authoritative User Profiles* (`JFT_SDP_User_Profiles_v1_2_30MAR2026.docx`):
   - **Gradebook** — fits within `instructor/` (Charlie). The User Profile lists "Access and export individual and group student performance data" and "Drill into individual student performance records" as primary Instructor goals; a Gradebook view that shows AI scores and supports flagging is consistent.
   - **Account-management operations** (merge / archive / username correction) — fits within `super_admin/` (Bob, the global-level cross-tenant administrator). The User Profile lists "Provisioning, deprovisioning, and manage tenant environments" and "Cross-tenant audit logs" as Super Admin responsibilities. **Not** a Tenant Admin function — that role is content-focused per the User Profile ("content and operations owners, not infrastructure owners").
-  - **Mike's "Course Instructor" rename** — REJECTED. The User Profile and SOW Section 2.5 both use `Instructor` as the contract-named user type. Per Brady: contract and User Profiles are authoritative; colleague-vernacular suggestions yield to those documents.
+  - **Miguel's "Course Instructor" rename** — REJECTED. The User Profile and SOW Section 2.5 both use `Instructor` as the contract-named user type. Per WGU Program Development: contract and User Profiles are authoritative; colleague-vernacular suggestions yield to those documents.
 - Modifications to `student/index.html` — deliberately preserved as v1 baseline; candidates for a future v1.4 student refresh.
 
 ---
@@ -1784,7 +1873,7 @@ Major release adding the three v1.3 admin portals (Tenant Admin, Instructor, Sup
 - **Instructor Dashboard** (`instructor/`) — Charlie. 8 screens covering SC-ADD-03 (At-Risk Intervention). New components: CSS-grid student-competency heatmap (15 learners × 4 competencies, 9-step color scale), per-objective score pills, AI coaching transcript with feedback panels, Audit Trail event log with sha256 hashes.
 - **Super Admin Portal** (`super_admin/`) — Bob. 8 screens covering SC-ADD-04 (Governance & Cost Audit). New components: cross-tenant overview gauges, 30-bar daily cost-spike chart, per-tenant utilization meters, TLS 1.3 compliance report, geo-redundancy region cards, cross-tenant audit log feed.
 - **LRPS Landing** (`lrps/`) — recreation of WGU's internal Learning Resource Provisioning System. Originally faithful to the legacy enterprise aesthetic; restyled with the SDP Design System v1.2 in commit `e735361`. Each persona's secret LRPS deep link maps to a clickable provider row.
-- **Real WGU FY26 Corporation logos** in `assets/`. Theme-aware swap: Full-Color Reverse on light theme, White on dark theme. Wordmark text removed (Brady's branding rule).
+- **Real WGU FY26 Corporation logos** in `assets/`. Theme-aware swap: Full-Color Reverse on light theme, White on dark theme. Wordmark text removed (WGU Program Development's branding rule).
 - **Per-persona LRPS deep links** modeled in each portal's screen 1 (SSO landing → role mapping).
 
 ### Changed
