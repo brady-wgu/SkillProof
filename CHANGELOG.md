@@ -6,6 +6,42 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.37 — 12 May 2026 — D3a build plan (internal planning doc for the two themed surfaces)
+
+Pre-build planning doc added to `_contract_tracking/` so WGU Program Development can review the proposed D3a build phase scope before any storyboard HTML changes proceed. Doc-only release — no UI changes, no tracker reclassifications, no new screens yet.
+
+### What changed
+
+- **New file `_contract_tracking/D3A_BUILD_PLAN.md`** — proposes how to close the 7 true-gap items identified in v4.36. Covers two themed surfaces:
+  - **Data & Integrations Hub** (new `super-11` screen, 5 contract rows: A-6.28, A-8.8, A-8.12, A-8.13, A-8.14). Builds on the Super Admin portal as the 11th screen, following the cross-tenant scope established in v4.22 when SC-ADD-05 was moved to global.
+  - **Help & Resources** (new shared `help-01` surface, 2 contract rows: A-9.14, A-9.15). Proposed as a 6th top-level folder linkable from all admin portals.
+- Lists design constraints (SDP Design System v1.2, code-syntax palette extension scope, external-dashboard pattern from v4.28, JFT-literal-builders rule), open design questions for each surface, tracker-update consequences, and an effort-estimated sequencing recommendation (Help & Resources first, then Data & Integrations).
+- The doc explicitly states it is **not an authorization to build** — WGU review and approval is required before HTML composition proceeds.
+
+### What did NOT change
+
+- 76 screens, no UI changes.
+- `student/index.html` byte-identical (34th consecutive release of the freeze; deployed MVP at `wgu.teamjft.com` untouched).
+- PNG count: 152.
+- `CONTRACT_TRACKER.md` row classifications unchanged from v4.36 (still 7 true gaps, 2 Partial, etc.).
+- `SCREEN_JUSTIFICATIONS.md` unchanged (still 76 rows).
+
+### Files touched
+
+- `_contract_tracking/D3A_BUILD_PLAN.md` — new (planning doc, internal-only since it lives in the Jekyll-excluded `_contract_tracking/` folder).
+- `README.md`, `index.html`, all four non-frozen persona `index.html` files, `presentation.html`, `presentation_dark.html`, `capture_screens.py`, `_contract_tracking/CONTRACT_TRACKER.md`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — version stamps bumped v4.36 → v4.37.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.37 row added; v4.36 → Superseded.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep against the known sensitive-pattern list returns zero matches.
+2. Doc Control: v4.37 Current, v4.36 Superseded in both presentation catalogs.
+3. `student/index.html` byte-identical to v4.36.
+4. `_contract_tracking/D3A_BUILD_PLAN.md` is in the Jekyll-excluded folder; will not be reachable via the live storyboard at `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/D3A_BUILD_PLAN.md` (verify after Pages rebuild).
+
+---
+
 ## v4.36 — 12 May 2026 — D3a re-audit (Gap → Partial downgrades; true-gap list reduced 9 → 7)
 
 Pre-build re-audit of the 9 "Gap" classifications in `CONTRACT_TRACKER.md` (the items listed for D3a prototype gap closure). Verified each gap's current state against what exists in the storyboard after the v4.18 in-place additions and the v4.22 SC-ADD-05 removal. Two items downgrade from Gap to Partial — their medium-fidelity badge coverage on `tenant-08` (Configure AI Coaching Prompt) is adequate for declaring the contract capability without needing a dedicated full-fidelity surface.
