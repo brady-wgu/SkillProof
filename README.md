@@ -178,7 +178,7 @@ Click any persona folder to read its dedicated README.
 
 **Surface:** [`lrps/`](lrps/) · [Live](https://brady-wgu.github.io/JFT_SDP/lrps/) · [README](lrps/README.md)
 
-**Persona:** Brady (the LRPS admin who provisions the deep links) or any WGU staff with LRPS access.
+**Persona:** Lana (the fictional LRPS admin who provisions the deep links) or any WGU staff with LRPS access.
 
 **Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SDP Design System v1.2. Each of the three admin portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. JFT does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
 
@@ -260,7 +260,7 @@ All other surfaces (navbars, cards, forms, alerts, badges, status pills) use can
 
 - Real **WGU FY26 Corporation logos** in [`assets/`](assets/) (White, Full Color, Full Color Reverse)
 - **Theme-aware logo swap:** Full Color Reverse on light theme, White on dark theme — both render correctly on the navy header
-- **Wordmark text dropped** — the logo stands alone (per Brady's branding rule)
+- **Wordmark text dropped** — the logo stands alone (per WGU's branding rule)
 
 ---
 
@@ -323,7 +323,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-The latest release is **v4.18** — SOW-anchored sweep. Brady provided the **literal signed MSA/SOW** (`JFT_WGU_MSA_SOW_signed_05MAY2026.md`); reading the actual contract revealed both **over-trims** (items I removed that are explicitly committed in SOW Appendix A) and **gaps** (contract-grounded features the storyboard never depicted). v4.18 closes both directions in a single batched release. **Restored:** Jira ticketing (§9.1 + §9.4 + §13), vendor-named `model.invoke` in audit log (§16.1 #6.1 explicitly names Claude/OpenAI/Gemini), and PDF + XML export formats (§16.2 #7.14 + §16.3 #8.9). **Added:** real-time webhooks (§16.3 #8.12 + §3.19), GraphQL alongside REST (§16.1 #6.28 + §16.3 #8.13), A/B testing framework for LLM configs (§16.1 #6.8), LaTeX rendering (§16.1 #6.12), default locale + PWA badges (§16.2 #7.6 + #7.7 + §3.7), and 10 new rows on the super_admin Compliance Report FERPA control table covering SOC 2 / ISO 27001 / zero-trust / GDPR / annual pentest / AES-256 at rest / MFA / SIEM / vuln scan + 48-hr patch SLA / BC-DR (§16.5 #10.6, #10.13, #10.14, #10.12, #10.10, #10.16, #10.18, #10.15, #10.9 + #10.19, #10.20). **Kept trimmed:** AWS zone IDs, WGU Policy 8.x, WGU Learning Hub, "1,247 sessions" + "47 operators" + "14 endpoints" + "7 years" + TLS cipher names + named internal services + "JFT 24/7" service-name prefix — none of these are in the SOW. No screens removed (still 77); all in-place text edits + small section additions within existing screens.
+The latest release is **v4.18** — SOW-anchored sweep. WGU Program Development provided the **literal signed MSA/SOW** (`JFT_WGU_MSA_SOW_signed_05MAY2026.md`); reading the actual contract revealed both **over-trims** (items I removed that are explicitly committed in SOW Appendix A) and **gaps** (contract-grounded features the storyboard never depicted). v4.18 closes both directions in a single batched release. **Restored:** Jira ticketing (§9.1 + §9.4 + §13), vendor-named `model.invoke` in audit log (§16.1 #6.1 explicitly names Claude/OpenAI/Gemini), and PDF + XML export formats (§16.2 #7.14 + §16.3 #8.9). **Added:** real-time webhooks (§16.3 #8.12 + §3.19), GraphQL alongside REST (§16.1 #6.28 + §16.3 #8.13), A/B testing framework for LLM configs (§16.1 #6.8), LaTeX rendering (§16.1 #6.12), default locale + PWA badges (§16.2 #7.6 + #7.7 + §3.7), and 10 new rows on the super_admin Compliance Report FERPA control table covering SOC 2 / ISO 27001 / zero-trust / GDPR / annual pentest / AES-256 at rest / MFA / SIEM / vuln scan + 48-hr patch SLA / BC-DR (§16.5 #10.6, #10.13, #10.14, #10.12, #10.10, #10.16, #10.18, #10.15, #10.9 + #10.19, #10.20). **Kept trimmed:** AWS zone IDs, WGU Policy 8.x, WGU Learning Hub, "1,247 sessions" + "47 operators" + "14 endpoints" + "7 years" + TLS cipher names + named internal services + "JFT 24/7" service-name prefix — none of these are in the SOW. No screens removed (still 77); all in-place text edits + small section additions within existing screens.
 
 ---
 

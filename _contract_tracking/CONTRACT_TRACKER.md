@@ -6,8 +6,8 @@
 
 **Version:** v1.0 (initial baseline)
 **Date:** 12 May 2026
-**Author:** Brady Redfearn, WGU Program Development, with Claude (Opus 4.7)
-**Source:** Signed JFT MSA / SOW (executed 03 Mar 2026, Acrobat Sign transaction `CBJCHBCAABAAXnbN-676NL0ECE-wQsHgrWjKo0mm6jVV`)
+**Author:** WGU Program Development
+**Source:** Signed JFT MSA / SOW (executed 2026)
 **Storyboard baseline:** brady-wgu/JFT_SDP at v4.31
 
 ## How to read this file
@@ -19,7 +19,7 @@ Every binding requirement in the contract appears exactly once. Each row carries
 - **Type** — Legal / Process / Feature / Operational / Compliance.
 - **JFT Commitment** — Yes / No / Partial / N/A (legal terms binding both parties without a Yes/No checkbox).
 - **Storyboard Coverage** — specific screen IDs (matching `SCREEN_JUSTIFICATIONS.md`) where this requirement is visualized. **Gap** means no prototype representation yet. **Non-visual** means the requirement is not expressible as a screen (legal / process / infrastructure).
-- **Build Status** — Not Started / In Design / In Dev / Built / Tested / Deployed. Brady updates this column as JFT delivers each row.
+- **Build Status** — Not Started / In Design / In Dev / Built / Tested / Deployed. WGU updates this column as JFT delivers each row.
 - **Owner** — JFT / WGU / Both.
 - **Acceptance** — what "Deployed" looks like for this row.
 - **Notes** — caveats, dependencies, related rows.
@@ -43,12 +43,12 @@ Status convention for MSA rows: most are legal/process obligations that are "Alw
 
 | ID | Source | Requirement | Type | Commitment | Storyboard Coverage | Build Status | Owner | Acceptance | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| MSA-1 | MSA §1 | Provider provides Services per SOW; SOW specifies scope, fees, timeline; acceptance based on substantial conformance | Process | N/A | Non-visual | Active | Both | SOW signed; deliverables match | Operational since 03 Mar 2026. |
-| MSA-2.a | MSA §2.a | Payment Net 60; invoice ap@wgu.edu with WGU PO; final invoice within 30 days of SOW completion | Process | N/A | Non-visual | Active | JFT | Invoices follow terms | Excludes taxes. |
+| MSA-1 | MSA §1 | Provider provides Services per SOW; SOW specifies scope, fees, timeline; acceptance based on substantial conformance | Process | N/A | Non-visual | Active | Both | SOW signed; deliverables match | Operational since 2026. |
+| MSA-2.a | MSA §2.a | Payment per net terms with WGU PO; final invoice within 30 days of SOW completion | Process | N/A | Non-visual | Active | JFT | Invoices follow contract terms | Excludes taxes. |
 | MSA-2.b | MSA §2.b | Out-of-pocket expenses require pre-approval in writing | Process | N/A | Non-visual | Active | JFT | Pre-approval emails on file | |
 | MSA-2.c | MSA §2.c | Provider invoices no later than 90 days after month services rendered; otherwise waives right to payment | Process | N/A | Non-visual | Active | JFT | All invoices within 90-day window | WGU defense against late-billing claims. |
 | MSA-2.d | MSA §2.d | All fees invoiced by and paid to Jellyfish Technologies Ltd., India | Process | N/A | Non-visual | Active | Both | Payments routed to India entity | |
-| MSA-3 | MSA §3 | Term: 12 months from Effective Date or active SOW period, whichever later | Legal | N/A | Non-visual | Active | Both | Term in effect 03 Mar 2026 onward | |
+| MSA-3 | MSA §3 | Term: 12 months from Effective Date or active SOW period, whichever later | Legal | N/A | Non-visual | Active | Both | Term in effect 2026 onward | |
 | MSA-3.a | MSA §3.a | WGU may terminate without penalty with 30 days written notice | Legal | N/A | Non-visual | Active | WGU right | Notice path documented | |
 | MSA-3.b | MSA §3.b | Termination for cause: material breach + 15-day cure; insolvency or 50%+ ownership change triggers immediate termination | Legal | N/A | Non-visual | Active | Both | Cure procedures documented | |
 | MSA-3.c | MSA §3.c | Individual SOW termination for convenience with 10 days notice | Legal | N/A | Non-visual | Active | Both | | |
@@ -62,7 +62,7 @@ Status convention for MSA rows: most are legal/process obligations that are "Alw
 | MSA-5 | MSA §5 | Provider maintains records; provides Customer reasonable access; T&M records include hours, rate, dates | Process | N/A | Non-visual | Active | JFT | Records available within 30 days of WGU request | Fixed-cost SOW; T&M not currently engaged. |
 | MSA-6.a | MSA §6.a | Confidential Information defined; includes business info, trade secrets, curricula, content, student/employee info | Legal | N/A | Non-visual | Active | Both | | |
 | MSA-6.b | MSA §6.b | Non-disclosure standard of care: no third party without consent, no employees/contractors except as needed | Legal | N/A | Non-visual | Active | Both | Confidentiality breaches escalated per MSA-11 | |
-| MSA-6.c | MSA §6.c | **FERPA**: WGU designates JFT a school official; JFT maintains education records per FERPA | Compliance | N/A | Non-visual (operational) | Active | JFT | FERPA-compliant data handling; staff training documented | Cross-references A-10.1, A-10.2, A-10.3. School-official designation effective 03 Mar 2026. |
+| MSA-6.c | MSA §6.c | **FERPA**: WGU designates JFT a school official; JFT maintains education records per FERPA | Compliance | N/A | Non-visual (operational) | Active | JFT | FERPA-compliant data handling; staff training documented | Cross-references A-10.1, A-10.2, A-10.3. School-official designation effective 2026. |
 | MSA-6.d | MSA §6.d | Confidential Information exclusions (lawful prior possession, independent development, public knowledge) | Legal | N/A | Non-visual | Active | Both | | |
 | MSA-7 | MSA §7 | IP retention by each party; Customer data is WGU's; feedback is not Confidential | Legal | N/A | Non-visual | Active | Both | | |
 | MSA-8.a | MSA §8.a | **Work-for-hire**: SDP output is WGU's exclusive property to the extent permitted by law | Legal | N/A | Non-visual | Active | JFT | All deliverables transferred to WGU | Critical for post-pilot WGU operational handoff. |
@@ -87,7 +87,7 @@ MSA totals: 30 rows. All Active. 28 Non-visual; MSA-15.b Digital Accessibility i
 
 | ID | Source | Requirement | Type | Commitment | Storyboard Coverage | Build Status | Owner | Acceptance | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| SOW-1 | SOW §1 Introduction | SDP: production-ready, scalable, secure, multi-tenant SaaS built from prototype | Process | Yes | All persona portals | In Dev | JFT | Production SaaS deployed | Full SOW scope, not MVP-only (per Brady direction 12 May 2026). |
+| SOW-1 | SOW §1 Introduction | SDP: production-ready, scalable, secure, multi-tenant SaaS built from prototype | Process | Yes | All persona portals | In Dev | JFT | Production SaaS deployed | Full SOW scope, not MVP-only (per WGU direction). |
 | SOW-2.2 | SOW §2.2 Discovery | Workflow docs for Students / AI Engine / Tenant Admin / Super Admin; technical architecture outline; implementation roadmap; backlog | Process | Yes | Non-visual (delivered as documents) | In Dev | JFT | Workflow docs, architecture doc, roadmap, backlog approved by WGU | Roles cross-reference User Profiles v1.2. |
 | SOW-2.3 | SOW §2.3 UX/UI Design | Designing UI/UX, WCAG 2.2 AA, iterative reviews, UI component library | Process | Yes | All persona portals | In Dev | JFT | High-fidelity designs + component library | Storyboard is the visual spec. |
 | SOW-2.4 | SOW §2.4 Architecture | Multi-tenant architecture, LTI auth, AI orchestration, API contracts, DB schema, caching/fallback, logging/monitoring, CI/CD | Process | Yes | super-10 (External Tooling) implies infrastructure; otherwise non-visual | In Dev | JFT | Architecture doc + Swagger API specs delivered | Swagger explicitly required per JFT meeting 10 May 2026. |
@@ -107,15 +107,15 @@ MSA totals: 30 rows. All Active. 28 Non-visual; MSA-15.b Digital Accessibility i
 | SOW-9.4 | SOW §9.4 Support Channels | Email · Jira · Video calls · Slack/Teams (optional) · CSM | Process | Yes | tenant-16..tenant-18 | In Dev | JFT | Channels operational | |
 | SOW-9.5 | SOW §9.5 SLAs | P1 <2hr / 4-8hr · P2 <4hr / 24hr · P3 <1 business day / 72hr · P4 <2 business days / next release | Process | Yes | tenant-18 (CSM 2hr response thread) · tenant-20 (SLA dashboard) | In Dev | JFT | SLAs published; first incidents meet targets | |
 | SOW-10 | SOW §10 Team Structure | Technical Architect · PM · AI/LLM Lead · AI/LLM Engineer · Backend Lead · Backend Devs · Frontend Lead · Frontend Devs · UI/UX Lead · UI/UX Designer · QA Lead · Manual & Automation Testers · DevOps & Security Engineer · Customer Success Manager · Support Staff | Process | Yes | Non-visual | Active | JFT | Team rostered; roles assigned | |
-| SOW-11 | SOW §11 Unit Costs | $30/hr × 4,750 hrs = $142,500 total. Monthly hosting + support fees listed but not contracted ($900–$6,400/mo) | Process | N/A | Non-visual | Active | Both | Invoices match unit costs | Hosting/support fees require separate engagement beyond pilot. |
-| SOW-11-Note-1 | SOW §11 Note 1 | Offer-validity expired 15 Dec 2025; SOW signed 03 Mar 2026 functioning as re-affirmation | Legal | N/A | Non-visual | Active | Both | | Worth knowing if future amendments are negotiated. |
+| SOW-11 | SOW §11 Unit Costs | Fixed-cost SOW with hourly rate × contracted hours; monthly hosting + support tiers quoted separately (not under fixed contract) | Process | N/A | Non-visual | Active | Both | Invoices match agreed unit costs | Hosting and support fees require a separate engagement beyond pilot. |
+| SOW-11-Note-1 | SOW §11 Note 1 | Offer-validity window expired prior to signing; signed SOW functions as re-affirmation | Legal | N/A | Non-visual | Active | Both | | Worth knowing if future amendments are negotiated. |
 | SOW-11-Note-4 | SOW §11 Note 4 | Fixed-cost basis; additional dev costs require pre-approval in writing | Legal | N/A | Non-visual | Active | Both | | |
-| SOW-11-Note-5 | SOW §11 Note 5 | Pricing excludes hardware, infrastructure, hosting, 3rd-party licensing — WGU pays directly | Legal | N/A | super-03 (token usage by tenant) · super-04 (cost spike) · super-05 (rate limits) | In Dev | WGU | WGU holds LLM API contracts; spend tracked | LLM API costs are WGU's, hence the Super Admin cost telemetry. |
-| SOW-11.1 | SOW §11.1 Payment Terms | Milestones: 20% initiation / 30% mo 1 / 30% mo 2 / 10% pre-deploy / 10% 30-day post-pilot | Process | N/A | Non-visual | Active | Both | Payment milestone events documented | |
+| SOW-11-Note-5 | SOW §11 Note 5 | Pricing excludes hardware, infrastructure, hosting, third-party licensing — WGU pays those directly | Legal | N/A | super-03 (token usage by tenant) · super-04 (cost spike) · super-05 (rate limits) | In Dev | WGU | WGU holds LLM API contracts; spend tracked | LLM API costs are WGU's, hence the Super Admin cost telemetry. |
+| SOW-11.1 | SOW §11.1 Payment Terms | Milestone-based payment schedule per signed SOW | Process | N/A | Non-visual | Active | Both | Payment milestone events documented | |
 | SOW-12 | SOW §12 Terms and Conditions | Termination on 30-day uncured material breach; deliverables are work-for-hire post-payment | Legal | N/A | Non-visual | Active | Both | | |
 | SOW-13 | SOW §13 Change Management | Jira / email submission; impact analysis; written approval before implementation; tracked to closure | Process | Yes | tenant-16..tenant-18 (Jira workflow illustrated) | Active | Both | Change requests documented via Jira | |
-| SOW-14 | SOW §14 Primary Contacts | JFT: Vivek Sadh (VP-IT, vsadh@jellyfishtechnologies.com); WGU: contact details TBD per §14 | Process | N/A | Non-visual | Active | Both | Contacts current | WGU side of table empty in signed PDF; verify with Brady. |
-| SOW-15 | SOW §15 SOW Acceptance | Signed by both parties 03 Mar 2026 | Legal | N/A | Non-visual | Active | Both | Signed and on file | |
+| SOW-14 | SOW §14 Primary Contacts | Primary contacts on each side per signed SOW | Process | N/A | Non-visual | Active | Both | Contacts kept current per contract | WGU contact roster maintained internally. |
+| SOW-15 | SOW §15 SOW Acceptance | Signed by both parties in 2026 | Legal | N/A | Non-visual | Active | Both | Signed and on file | |
 
 SOW core totals: 28 rows.
 
@@ -302,4 +302,4 @@ Total gaps: 9 out of 92 Appendix A items (~10%). The remaining 83 Appendix A ite
 
 ---
 
-*WGU confidential. Author: Brady Redfearn, Program Development. Not for redistribution outside WGU.*
+*WGU confidential. Author: WGU Program Development. Not for redistribution outside WGU.*

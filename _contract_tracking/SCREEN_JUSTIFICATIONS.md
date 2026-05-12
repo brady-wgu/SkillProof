@@ -6,8 +6,8 @@
 
 **Version:** v1.0 (initial baseline)
 **Date:** 12 May 2026
-**Author:** Brady Redfearn, WGU Program Development, with Claude (Opus 4.7)
-**Source:** brady-wgu/JFT_SDP at v4.31; signed JFT MSA / SOW (executed 03 Mar 2026)
+**Author:** WGU Program Development
+**Source:** brady-wgu/JFT_SDP at v4.31; signed JFT MSA / SOW (executed 2026)
 
 ## How to read this file
 
@@ -31,7 +31,7 @@ Classification policy:
 
 ## Student — Sally · 34 screens · `student/index.html`
 
-> **The student portal is frozen as of v4.31.** Brady authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
+> **The student portal is frozen as of v4.31.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
@@ -179,4 +179,4 @@ LRPS totals: 0 Contract-required · 1 Essential scaffolding · 0 Discretionary.
 
 ---
 
-*WGU confidential. Author: Brady Redfearn, Program Development. Not for redistribution outside WGU.*
+*WGU confidential. Author: WGU Program Development. Not for redistribution outside WGU.*

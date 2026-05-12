@@ -25,7 +25,7 @@ This portal covers **two v1.3 scenarios** in one cohesive Alice experience, plus
 
 ## Source
 
-JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by Brady Redfearn, WGU Program Development. Storyboard rev: **v4.22** (10 May 2026 — JFT-meeting reshape).
+JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development. Storyboard rev: **v4.22** (10 May 2026 — JFT-meeting reshape).
 
 ## SOW references
 
@@ -38,7 +38,7 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 
 - **Renamed in user-facing UI only:** "Tenant Admin Portal" navbar chip → "Content Creator Portal"; "Tenant Admin" persona label visible to Alice → "Content Creator". SOW-referenced terminology ("Tenant Admin" per §2.2 deliverable) preserved in all official documentation, READMEs, and Doc Control rows.
 - **Removed SC-ADD-05 (Data Portability)** — JFT confirmed the in-portal API console is replaced by external Swagger documentation per SOW §2.4 ("API specification using Swagger"); data export scope moved to global / Super Admin per JFT meeting note "Take out the data screen from the tenant admin and leave it on global."
-- **Added 3 new LO management screens (5/6/7)** illustrating one example each of Add / Edit / Remove flows, with per-LO passing threshold + weight inputs integrated. Brady's directive: "Instead of having the passing threshold be on a separate page, let's integrate it into the entry/modification screens for topics/learning objectives."
+- **Added 3 new LO management screens (5/6/7)** illustrating one example each of Add / Edit / Remove flows, with per-LO passing threshold + weight inputs integrated. Per WGU direction, the passing threshold is integrated into the entry/modification screens for topics/learning objectives rather than living on a separate page.
 - **Screen 4 (Topics & LOs)** restructured from row-card topic list to per-LO data table with threshold + weight columns and per-row Edit/Remove icon buttons + "Add Learning Objective" CTA.
 - **Screen 8 (Configure AI Coaching Prompt)** — toggle switches converted to 4 short text-box guardrails (Student profile use / Subject-domain limits / Jailbreak posture / Sandbox use) with a prominent "less is more — long fields make the model more prone to hallucinate" warning per JFT meeting note.
 - **Screen 10 (Scoring & Rubric)** simplified — per-LO threshold + weight columns removed (now on screens 4–7); kept Socratic / Direct / Adaptive global coaching-style picker + per-LO scoring pattern table.

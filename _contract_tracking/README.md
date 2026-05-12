@@ -2,7 +2,7 @@
 
 > **This folder is WGU contract tracking. It is NOT product specification. JFT must not build features for content in this folder.**
 
-This subfolder holds Brady's contract-defense artifacts for the JFT SDP engagement. Two trackers establish bidirectional traceability between the signed JFT MSA / SOW (executed 03 Mar 2026) and the storyboard:
+This subfolder holds WGU's contract-defense artifacts for the JFT SDP engagement. Two trackers establish bidirectional traceability between the signed JFT MSA / SOW and the storyboard:
 
 | File | Direction | Question it answers |
 |:---|:---|:---|
@@ -45,4 +45,4 @@ No conversation about extra work happens without these IDs.
 
 ---
 
-*WGU confidential. Author: Brady Redfearn, Program Development. Not for redistribution outside WGU.*
+*WGU confidential. Author: WGU Program Development. Not for redistribution outside WGU.*

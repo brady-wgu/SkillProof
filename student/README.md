@@ -25,7 +25,7 @@ This is the **v1.2 MVP scope** — the first JFT release. It deploys the existin
 
 ## Source
 
-JFT SDP MVP Scenario Catalog **v1.2** (07 Apr 2026). Authored by Brady Redfearn, WGU Program Development.
+JFT SDP MVP Scenario Catalog **v1.2** (07 Apr 2026). Authored by WGU Program Development.
 
 ## SOW references
 
@@ -60,4 +60,4 @@ Honest call-outs of what the v1 student storyboard does **not** depict. These ar
 6. **Educator feedback loop is invisible from the student storyboard alone.** The catalog assumes that Instructors (SC-ADD-03 / Charlie) can see Sally's coaching transcripts and flag at-risk patterns. That loop is depicted only in `instructor/index.html`; the student storyboard itself does not show "your coach reported X to your instructor" framing or any opt-in/opt-out for sharing.
 7. **WCAG 2.2 AA §2.4.7 (Focus Visible) — heading focus indicator suppressed.** The v1 CSS at `student/index.html` line ~238 includes `h1:focus-visible, …, h6:focus-visible { outline: none; }`, which removes the standard 3px Bright Blue focus ring from headings. This was caught in the v4.6 adversarial accessibility audit. The override exists across the v1 baseline; per the freeze directive, fixing it is out of scope for v1. **All v1.3 admin portals (Tenant Admin / Instructor / Super Admin / LRPS) and the root portal selector were fixed in v4.6** — only `student/index.html` retains the violation. v1.4 student refresh should remove the override (matching the v4.6 fix in the admin portals: just delete the heading-specific override; the standard `:focus-visible` rule above it provides a compliant 3px outline).
 
-These limitations are deliberately preserved in v1 (Brady's directive — the v1 student screens are frozen as a baseline). They are candidates for a v1.4 student refresh.
+These limitations are deliberately preserved in v1 (per WGU direction — the v1 student screens are frozen as a baseline). They are candidates for a v1.4 student refresh.

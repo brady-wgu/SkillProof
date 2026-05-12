@@ -161,7 +161,7 @@
     [data-theme="dark"] .stepper-step .stepper-line { background: #1A2A45; }
     [data-theme="dark"] .stepper-step.complete .stepper-line { background: var(--pgn-color-success-base); }
 
-    /* Logo swap — Brady's rule: white on dark, full-color-reverse on light */
+    /* Logo swap — WGU brand rule: white on dark, full-color-reverse on light */
     [data-theme="dark"] .logo-light { display: none !important; }
     [data-theme="dark"] .logo-dark { display: inline-block !important; }
     .logo-dark { display: none; }
@@ -1882,7 +1882,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <div class="pgn__card-section">
           <table class="pgn__data-table" style="border:none; box-shadow:none;">
             <tr><th style="width:25%;">From</th><td>JFT Customer Success &lt;<a href="#">support@jft.com</a>&gt;</td></tr>
-            <tr><th>To</th><td>Alice &lt;<a href="#">alice@wgu.edu</a>&gt;</td></tr>
+            <tr><th>To</th><td>Alice &lt;<a href="#">alice@example.edu</a>&gt;</td></tr>
             <tr><th>Sent</th><td>09:43:24 UTC · 07 May 2026</td></tr>
             <tr><th>Channels</th><td>Email · Toast (in-portal) · SMS (opt-out)</td></tr>
             <tr><th>Severity</th><td><span class="badge badge-warning">P1 · Critical</span></td></tr>
@@ -2392,7 +2392,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">C</div>
                         <div>
                           <div class="text-strong">Charlie</div>
-                          <div class="micro text-muted">charlie.morgan@wgu.edu</div>
+                          <div class="micro text-muted">charlie.morgan@example.edu</div>
                         </div>
                       </div>
                     </td>
@@ -2408,7 +2408,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-success-base);">D</div>
                         <div>
                           <div class="text-strong">Devon</div>
-                          <div class="micro text-muted">devon.kowalski@wgu.edu</div>
+                          <div class="micro text-muted">devon.kowalski@example.edu</div>
                         </div>
                       </div>
                     </td>
@@ -2424,7 +2424,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-info-base);">M</div>
                         <div>
                           <div class="text-strong">Maya</div>
-                          <div class="micro text-muted">maya.alvarado@wgu.edu</div>
+                          <div class="micro text-muted">maya.alvarado@example.edu</div>
                         </div>
                       </div>
                     </td>
@@ -2440,7 +2440,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #4527A0;">P</div>
                         <div>
                           <div class="text-strong">Priya</div>
-                          <div class="micro text-muted">priya.singh@wgu.edu · Program Mentor</div>
+                          <div class="micro text-muted">priya.singh@example.edu · Program Mentor</div>
                         </div>
                       </div>
                     </td>
@@ -2456,7 +2456,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base); color:#1A1A1A;">T</div>
                         <div>
                           <div class="text-strong">Teagan</div>
-                          <div class="micro text-muted">teagan.brooks@wgu.edu</div>
+                          <div class="micro text-muted">teagan.brooks@example.edu</div>
                         </div>
                       </div>
                     </td>
@@ -2472,7 +2472,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #C13232;">N</div>
                         <div>
                           <div class="text-strong">Noor</div>
-                          <div class="micro text-muted">noor.hassan@wgu.edu · Program Mentor</div>
+                          <div class="micro text-muted">noor.hassan@example.edu · Program Mentor</div>
                         </div>
                       </div>
                     </td>
@@ -2488,7 +2488,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-400);">L</div>
                         <div>
                           <div class="text-strong">Logan</div>
-                          <div class="micro text-muted">logan.fischer@wgu.edu</div>
+                          <div class="micro text-muted">logan.fischer@example.edu</div>
                         </div>
                       </div>
                     </td>
@@ -2987,7 +2987,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 23; // v4.25: Team & Roles (formerly screen 22) moved to Super Admin (Global Admin scope) per Mike-feedback reshape; renumbered old 23->22 (Instructor Roster) and 24->23 (Subject Lifecycle).
+  const TOTAL_SCREENS = 23; // v4.25: Team & Roles (formerly screen 22) moved to Super Admin (Global Admin scope) per WGU-stakeholder-feedback reshape; renumbered old 23->22 (Instructor Roster) and 24->23 (Subject Lifecycle).
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
