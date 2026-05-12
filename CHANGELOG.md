@@ -6,6 +6,38 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.35 — 12 May 2026 — F4: LTI Advantage deep-link reconciliation (lrps + tenant_admin READMEs)
+
+Closes the F4 item that was deferred in v4.33. The Student and Tenant Admin user profile documents describe per-sub-section deep linking (Sally launching into a specific competency module, Alice managing deep link URLs that target sub-sections), but the deployed MVP uses basic LTI 1.3 with a single stable launch URL per course — those are different LTI capabilities. v4.35 reconciles the basic-vs-Advantage scope split in the relevant READMEs so the storyboard narrative aligns with both the contract and the user profile docs.
+
+### What changed
+
+- **`lrps/README.md`** — the bullet "Basic LTI 1.3, not LTI Advantage" rewritten as "Basic LTI 1.3 for the deployed MVP; LTI Advantage post-MVP." Now explicitly notes that LTI Advantage services are in scope per Appendix A §16.3 #8.1 and are what enable the per-sub-section deep linking the Sally and Alice profile documents describe. The basic-vs-Advantage distinction is reframed as a phase boundary, not a contractual exclusion.
+- **`tenant_admin/README.md`** — new section "Deep link management is an LTI Advantage post-MVP capability." Clarifies that Alice's profile description of creating/managing per-sub-section deep links is an LTI Advantage Deep Linking 2.0 capability in scope post-MVP, and that the LRPS provisioning ticket workflow on screen 12 anticipates both the MVP single-URL case and the post-MVP multi-deep-link case.
+
+### What did NOT change
+
+- 76 screens, no UI changes.
+- `student/index.html` byte-identical (32nd consecutive release of the freeze; deployed MVP at `wgu.teamjft.com` not touched).
+- PNG count: 152 (unchanged).
+- No tracker row changes — CONTRACT_TRACKER row A-8.1 already correctly cites "Full LTI 1.3 (including Advantage services)" and notes "Pilot uses Basic LTI 1.3 only; Advantage features are post-pilot per WGU direction."
+
+### Files touched
+
+- `lrps/README.md` — one bullet rewritten with the phase-boundary framing.
+- `tenant_admin/README.md` — new section added after the LRPS provisioning section.
+- `README.md`, `index.html`, `instructor/index.html`, `lrps/index.html`, `super_admin/index.html`, `tenant_admin/index.html`, `presentation.html`, `presentation_dark.html`, `capture_screens.py`, `_contract_tracking/CONTRACT_TRACKER.md`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — version stamps bumped v4.34 → v4.35.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.35 row added; v4.34 → Superseded.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep returns zero sensitive matches.
+2. Doc Control: v4.35 Current, v4.34 Superseded in both presentation catalogs; row counts equal (25 each).
+3. `student/index.html` byte-identical to v4.34.
+
+---
+
 ## v4.34 — 12 May 2026 — Audit follow-up (row-count correction + Doc Control table fixes)
 
 Follow-up to v4.31–v4.33. A structural audit of the trackers and Doc Control tables surfaced three issues to fix:
