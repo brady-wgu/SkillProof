@@ -6,6 +6,59 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.36 — 12 May 2026 — D3a re-audit (Gap → Partial downgrades; true-gap list reduced 9 → 7)
+
+Pre-build re-audit of the 9 "Gap" classifications in `CONTRACT_TRACKER.md` (the items listed for D3a prototype gap closure). Verified each gap's current state against what exists in the storyboard after the v4.18 in-place additions and the v4.22 SC-ADD-05 removal. Two items downgrade from Gap to Partial — their medium-fidelity badge coverage on `tenant-08` (Configure AI Coaching Prompt) is adequate for declaring the contract capability without needing a dedicated full-fidelity surface.
+
+### Re-audit results
+
+| Item | Before | After | Reason |
+|:---|:---|:---|:---|
+| A-6.8 A/B testing framework | Gap | **Partial** | Badge "A/B test variants" exists on tenant-08 (added in v4.18, still in place). Fuller A/B config + results surface is a future enhancement. |
+| A-6.12 LaTeX rendering | Gap | **Partial** | Badge "LaTeX rendering" exists on tenant-08 (added in v4.18, still in place). Inline LaTeX preview is a future enhancement. |
+| A-6.28 GraphQL API | Gap | **Gap** (still) | No UI mention in any current screen. v4.18 added a GraphQL tab on the tenant_admin API Console, but that screen was removed in v4.22. Needs new coverage. |
+| A-8.8 Real-time and batch export | Gap | **Gap** (still) | Removed in v4.22 with SC-ADD-05. Scope moved to global / Super Admin per the v4.22 narrative, but no Super Admin surface for it exists yet. |
+| A-8.12 Webhook support | Gap | **Gap** (still) | Same — removed in v4.22, no replacement. |
+| A-8.13 GraphQL API queries | Gap | **Gap** (still) | Same — removed in v4.22, no replacement. |
+| A-8.14 Data streaming | Gap | **Gap** (still) | Never had storyboard coverage. |
+| A-9.14 Self-service support portal | Gap | **Gap** (still) | Never had coverage. |
+| A-9.15 Video training resources | Gap | **Gap** (still) | Never had coverage. |
+
+### What changed
+
+- `_contract_tracking/CONTRACT_TRACKER.md` — rows A-6.8 and A-6.12 updated: Storyboard Coverage points at `tenant-08` badge, Build Status moves Not Started → In Design, Notes record the downgrade and reference the v4.36 re-audit. The "Gaps requiring D3a follow-up" section is rewritten: total true gaps **7** (was 9), with annotations for each on why it remains a gap (removed in v4.22 vs never built).
+
+### D3a build phase plan (post-re-audit)
+
+The 7 remaining true gaps cluster into two themed surfaces:
+
+- **Data & integrations** — A-6.28 GraphQL API, A-8.8 real-time/batch export, A-8.12 webhooks, A-8.13 GraphQL queries, A-8.14 streaming. Likely a new Super Admin surface that consolidates what v4.22 moved from tenant_admin. 5 contract rows on one surface.
+- **Support & training** — A-9.14 self-service support portal, A-9.15 video training. Likely a new shared Help & Resources surface. 2 contract rows on one surface.
+
+All build work stays on non-MVP surfaces (`student/index.html` remains frozen — deployed MVP at `wgu.teamjft.com` not touched).
+
+### What did NOT change
+
+- 76 screens, no UI changes (no new badges added, no existing badges removed; the v4.18 badges referenced here have been in place since 10 May 2026).
+- `student/index.html` byte-identical (33rd consecutive release of the freeze).
+- PNG count: 152.
+- The 156 contract requirement rows themselves are unchanged; only 2 row classifications + the summary section narrative were edited.
+
+### Files touched
+
+- `_contract_tracking/CONTRACT_TRACKER.md` — A-6.8 + A-6.12 row reclassifications; "Gaps requiring D3a follow-up" summary rewritten.
+- `README.md`, `index.html`, all four non-frozen persona `index.html` files, `presentation.html`, `presentation_dark.html`, `capture_screens.py`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — version stamps bumped v4.35 → v4.36.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.36 row added; v4.35 → Superseded.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep returns zero sensitive matches.
+2. Doc Control: v4.36 Current, v4.35 Superseded in both presentation catalogs.
+3. `student/index.html` byte-identical to v4.35.
+
+---
+
 ## v4.35 — 12 May 2026 — F4: LTI Advantage deep-link reconciliation (lrps + tenant_admin READMEs)
 
 Closes the F4 item that was deferred in v4.33. The Student and Tenant Admin user profile documents describe per-sub-section deep linking (Sally launching into a specific competency module, Alice managing deep link URLs that target sub-sections), but the deployed MVP uses basic LTI 1.3 with a single stable launch URL per course — those are different LTI capabilities. v4.35 reconciles the basic-vs-Advantage scope split in the relevant READMEs so the storyboard narrative aligns with both the contract and the user profile docs.
