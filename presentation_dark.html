@@ -261,7 +261,7 @@
     <div class="hero-meta-item"><div class="value">74</div><div class="label">Screens</div></div>
     <div class="hero-meta-item"><div class="value">4</div><div class="label">Personas</div></div>
   </div>
-  <div class="hero-doc-info">Scenario Catalog v1.3 &middot; 05 May 2026 &middot; SDP Design System v1.2 &middot; Storyboard v4.38<br>Author: WGU Program Development<br><br><a href="https://brady-wgu.github.io/JFT_SDP_MVP/" target="_blank" rel="noopener" style="color: var(--color-sky-blue); opacity: 0.85;">View the Interactive MVP Storyboard &rarr;</a></div>
+  <div class="hero-doc-info">Scenario Catalog v1.3 &middot; 05 May 2026 &middot; SDP Design System v1.2 &middot; Storyboard v4.39<br>Author: WGU Program Development<br><br><a href="https://brady-wgu.github.io/JFT_SDP_MVP/" target="_blank" rel="noopener" style="color: var(--color-sky-blue); opacity: 0.85;">View the Interactive MVP Storyboard &rarr;</a></div>
 </section>
 
 <main class="main-content" id="main-content">
@@ -833,17 +833,31 @@
         <tr><td>1.3++++++++++++++++++++++++</td><td>12 May 2026</td><td>Superseded</td><td>Storyboard v4.35 F4 LTI Advantage deep-link reconciliation. Closes the F4 deferred item from v4.33. Reconciles the basic-vs-Advantage LTI scope split in <code>lrps/README.md</code> and <code>tenant_admin/README.md</code>: the deployed MVP uses basic LTI 1.3 with a single stable launch URL per course; LTI Advantage services (deep linking, grade passback, names/roles) are in scope post-MVP per Appendix A §16.3 #8.1 and are what enable the per-sub-section deep linking described in the Student and Tenant Admin user profile documents. No storyboard UI changes; <code>student/index.html</code> untouched (32nd consecutive release of the freeze).</td></tr>
         <tr><td>1.3+++++++++++++++++++++++++</td><td>12 May 2026</td><td>Superseded</td><td>Storyboard v4.36 D3a pre-build re-audit. Verified each of the 9 "Gap" classifications in <code>CONTRACT_TRACKER.md</code> against the current storyboard state. Two items downgraded Gap &rarr; Partial: A-6.8 A/B testing framework and A-6.12 LaTeX rendering — both have adequate medium-fidelity badge coverage on tenant-08 (Configure AI Coaching Prompt, added in v4.18 and still present). Seven true gaps remain for D3a build phase, clustering into two themed surfaces: Data &amp; integrations (A-6.28 + A-8.8 + A-8.12 + A-8.13 + A-8.14) and Support &amp; training (A-9.14 + A-9.15). No storyboard UI changes; <code>student/index.html</code> untouched (33rd consecutive release of the freeze).</td></tr>
         <tr><td>1.3++++++++++++++++++++++++++</td><td>12 May 2026</td><td>Superseded</td><td>Storyboard v4.37 D3a build plan. Internal planning doc added to <code>_contract_tracking/</code> proposing two themed surfaces to close the 7 true gaps: Data &amp; Integrations Hub as new screen <code>super-11</code> on the Super Admin portal (5 contract rows) and Help &amp; Resources as a new shared surface accessible from all admin portals (2 contract rows). Doc explicitly NOT an authorization to build — WGU review required first. No storyboard UI changes; <code>student/index.html</code> untouched (34th consecutive release of the freeze).</td></tr>
-        <tr><td>1.3+++++++++++++++++++++++++++</td><td>12 May 2026</td><td>Current</td><td>Storyboard v4.38 D3a build phase 1: Help &amp; Resources shared surface. New top-level <code>help/</code> folder paralleling <code>lrps/</code>; brings storyboard surfaces 5 &rarr; 6 and screens 76 &rarr; 77. Single-screen surface closes Appendix A §16.4 #9.14 (self-service support portal: search, 3 cards, updates feed, floating Contact JFT Support FAB) and #9.15 (video training: role-filter chips, featured callout, 3&times;3 video tile grid). Shared persona scope across all admin roles + LRPS admin. <code>student/index.html</code> untouched (35th consecutive release of the freeze). True-gap count: 7 &rarr; 5 after this release; Theme 1 (Support &amp; Training) complete, Theme 2 (Data &amp; Integrations Hub on new <code>super-11</code>) pending.</td></tr>
+        <tr><td>1.3+++++++++++++++++++++++++++</td><td>12 May 2026</td><td>Superseded</td><td>Storyboard v4.38 D3a build phase 1: Help &amp; Resources shared surface. New top-level <code>help/</code> folder paralleling <code>lrps/</code>; brings storyboard surfaces 5 &rarr; 6 and screens 76 &rarr; 77. Single-screen surface closes Appendix A §16.4 #9.14 (self-service support portal: search, 3 cards, updates feed, floating Contact JFT Support FAB) and #9.15 (video training: role-filter chips, featured callout, 3&times;3 video tile grid). Shared persona scope across all admin roles + LRPS admin. <code>student/index.html</code> untouched (35th consecutive release of the freeze). True-gap count: 7 &rarr; 5 after this release; Theme 1 (Support &amp; Training) complete, Theme 2 (Data &amp; Integrations Hub on new <code>super-11</code>) pending.</td></tr>
+        <tr><td>1.3++++++++++++++++++++++++++++</td><td>12 May 2026</td><td>Current</td><td>Storyboard v4.39 WGU production footer deployed across every non-MVP surface (tenant_admin, instructor, super_admin, lrps, help, root portal selector, both presentation catalogs). Footer structure mirrors the tenant-21 Branding preview verbatim: top row = WGU logo + ADA Accommodation; bottom row = copyright + Privacy Policy | Terms of Service | Honor Code (pipe-separated). The screen-reader-only storyboard version stamp is preserved inside the new visible footer. <code>student/index.html</code> intentionally NOT touched per the MVP freeze (36th consecutive release) — if the WGU footer should also land on the student MVP storyboard to mirror the deployed production system at <code>wgu.teamjft.com</code>, confirm and a follow-up commit handles it.</td></tr>
       </tbody>
     </table></div>
   </section>
 
 </main><!-- .main-content -->
 
-<footer class="site-footer" style="margin-left: 260px;">
-  <strong>Western Governors University</strong> | Program Development | JFT SDP<br>
-  Scenario Catalog v1.3 &middot; 05 May 2026 &middot; SDP Design System v1.2 &middot; Storyboard v4.38<br><br>
-  <em>WGU confidential/proprietary. Do not redistribute without authorization.</em>
+<!-- WGU Footer (production design — mirrors the tenant-21 Branding preview pane) -->
+<footer role="contentinfo" style="background: #F5F7FA; border-top: 1px solid #E4E7EB; margin-left: 260px;">
+  <div style="padding: 20px 28px; border-bottom: 1px solid #E4E7EB; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+    <img src="assets/wgu-corporation-full-color.png" alt="WGU" style="height: 28px; width: auto;">
+    <a href="#" onclick="event.preventDefault();" style="font-size: 13px; color: #002855; font-weight: 600; text-decoration: none;">ADA Accommodation</a>
+  </div>
+  <div style="padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+    <span style="font-size: 12px; color: #4A5A6A;">&copy; 2026 Western Governors University &ndash; WGU. All Rights Reserved.</span>
+    <div style="display: flex; gap: 12px; font-size: 13px; align-items: center;">
+      <a href="#" onclick="event.preventDefault();" style="color: #002855; font-weight: 600; text-decoration: none;">Privacy Policy</a>
+      <span style="color: #C5CDD5;">|</span>
+      <a href="#" onclick="event.preventDefault();" style="color: #002855; font-weight: 600; text-decoration: none;">Terms of Service</a>
+      <span style="color: #C5CDD5;">|</span>
+      <a href="#" onclick="event.preventDefault();" style="color: #002855; font-weight: 600; text-decoration: none;">Honor Code</a>
+    </div>
+  </div>
+  <p class="sr-only">JFT SDP Scenario Catalog v1.3 (05 May 2026) — Storyboard v4.39 (dark theme) — WGU confidential/proprietary. Do not redistribute without authorization.</p>
 </footer>
 
 <script>

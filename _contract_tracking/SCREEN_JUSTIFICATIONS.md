@@ -7,7 +7,7 @@
 **Version:** v1.0 (initial baseline)
 **Date:** 12 May 2026
 **Author:** WGU Program Development
-**Source:** brady-wgu/JFT_SDP at v4.38; signed JFT MSA / SOW (executed 2026)
+**Source:** brady-wgu/JFT_SDP at v4.39; signed JFT MSA / SOW (executed 2026)
 
 ## How to read this file
 
@@ -31,7 +31,7 @@ Classification policy:
 
 ## Student — Sally · 34 screens · `student/index.html`
 
-> **The student portal is frozen as of v4.38.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
+> **The student portal is frozen as of v4.39.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
@@ -160,7 +160,7 @@ LRPS totals: 0 Contract-required · 1 Essential scaffolding · 0 Discretionary.
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
-| `help-01` | Help & Resources (search, self-service cards, updates feed, role-filtered video gallery, Contact JFT Support FAB) | SC-ADD-07 (proposed for post-MVP support release) | A-9.14 Self-service support portal · A-9.15 Video training resources | A-9.1 24/7 monitoring (Contact JFT Support entry point) · A-9.4/§9.4 support channels · A-9.11 documentation/training materials | Contract-required | Keep | v4.38 introduced the shared surface. Persona: all admin roles (Tenant Admin / Instructor / Super Admin) plus LRPS admin. The student portal is frozen at v1.2 MVP and cannot link to Help & Resources yet; this is a post-MVP shared surface only. Closes the two true gaps from the v4.36 D3a re-audit for the Support & Training theme. |
+| `help-01` | Help & Resources (search, self-service cards, updates feed, role-filtered video gallery, Contact JFT Support FAB) | SC-ADD-07 (proposed for post-MVP support release) | A-9.14 Self-service support portal · A-9.15 Video training resources | A-9.1 24/7 monitoring (Contact JFT Support entry point) · A-9.4/§9.4 support channels · A-9.11 documentation/training materials | Contract-required | Keep | v4.39 introduced the shared surface. Persona: all admin roles (Tenant Admin / Instructor / Super Admin) plus LRPS admin. The student portal is frozen at v1.2 MVP and cannot link to Help & Resources yet; this is a post-MVP shared surface only. Closes the two true gaps from the v4.36 D3a re-audit for the Support & Training theme. |
 
 Help & Resources totals: 1 Contract-required · 0 Essential scaffolding · 0 Discretionary.
 
