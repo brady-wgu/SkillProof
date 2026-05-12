@@ -1,6 +1,6 @@
 <div align="center">
 
-# JFT SDP — Skills Development Platform
+# JFT SDP — Skill Development Platform
 
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
@@ -21,7 +21,7 @@
 
 ## Overview
 
-The **JFT Skills Development Platform (SDP)** is WGU's AI-powered Python coding coach for students, plus the administrative surfaces around it. This repo holds the **medium-fidelity storyboard** that JFT (Jellyfish Technologies) builds against — a self-contained, offline-capable visual sample of all the major surfaces:
+The **JFT Skill Development Platform (SDP)** is WGU's AI-powered Python coding coach for students, plus the administrative surfaces around it. This repo holds the **medium-fidelity storyboard** that JFT (Jellyfish Technologies) builds against — a self-contained, offline-capable visual sample of all the major surfaces:
 
 - **Sally** (Student) — the v1.2 MVP coaching loop. **JFT shipped this first.** ([student/](student/))
 - **Alice** (Content Creator / PDev content owner; SOW §2.2 role: Tenant Admin) — Course-as-a-Service portal with per-LO threshold + weight + Add/Edit/Remove LO flows, Configure AI Coaching Prompt, LRPS provisioning workflow, Critical Incident Response. ([tenant_admin/](tenant_admin/))

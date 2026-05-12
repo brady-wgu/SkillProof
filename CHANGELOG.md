@@ -34,6 +34,16 @@ What was scrubbed:
 
 Storyboard cost-dashboard mockup numbers (illustrative dollar amounts on `super_admin/index.html` token-usage screens) are intentionally retained as design content — they are clearly placeholder data, not real WGU spend, and JFT needs to see what the cost dashboard layout should look like. If those need further treatment, that is a follow-up commit.
 
+### Product-name correction: Skills → Skill
+
+Audit against the signed MSA/SOW confirmed the product is the **Skill Development Platform** (singular). The repo had been using "Skills Development Platform" (plural) in 9 places across 4 files. Refactored to match the contract:
+
+- `index.html` (root) — page title, source comment, hero `<h1>`
+- `README.md` — top-level heading, Overview paragraph
+- `presentation.html` + `presentation_dark.html` — subtitle, MVP catalog purpose paragraph
+
+The **SDP** abbreviation is unchanged (still stands for the same name, just singular). Generic English usages of "skills" elsewhere in the storyboard (e.g., "her existing skills", "learn new skills" in zyBooks reference copy) are correct English and untouched.
+
 ### Identified gaps (9, for D3a follow-up)
 
 Storyboard Coverage = Gap in `CONTRACT_TRACKER.md` for:
