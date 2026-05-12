@@ -6,6 +6,50 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.44 — 12 May 2026 — GitHub repo + Pages URL update completing the SkillProof rename
+
+Follow-up to v4.43 that finishes the rename by moving the GitHub repo URLs to match the new product name. The v4.43 entry below explicitly deferred this as "a separate operation requiring explicit authorization"; WGU Program Development authorized the URL update shortly after v4.43 merged.
+
+### What changed
+
+- **GitHub repo renamed:** `brady-wgu/JFT_SDP` → `brady-wgu/SkillProof`. The private companion repo was also renamed: `brady-wgu/SDP-v1.2` → `brady-wgu/SkillProof-v1.2`.
+- **GitHub Pages URL changed:** `https://brady-wgu.github.io/JFT_SDP/` → `https://brady-wgu.github.io/SkillProof/`. GitHub maintains an automatic redirect from the old URL for some time so prior bookmarks continue to resolve.
+- **Repo descriptions** updated on both renamed repos to mention the new name and reference the prior name for discoverability.
+- **In-repo URL references updated:**
+  - `README.md` — all 3 badges and the surface-table live links.
+  - All 6 per-persona / help `README.md` files — "Live X" navigation links.
+  - `presentation.html` + `presentation_dark.html` — hero-doc-info "View the Interactive MVP Storyboard →" link target (the old `brady-wgu.github.io/JFT_SDP_MVP/` redirect URL is now also rewritten to the new `SkillProof/` path).
+  - `_contract_tracking/CONTRACT_TRACKER.md`, `SCREEN_JUSTIFICATIONS.md`, `README.md` — repo path + Pages URL references in tracker headers and body.
+  - `CHANGELOG.md` — historical entries' Pages URL references updated for file-internal consistency under the new repo URL.
+- **Local clone** `git remote set-url origin https://github.com/brady-wgu/SkillProof.git` applied.
+
+### What did NOT change
+
+- **DOCX filename references in CHANGELOG history** (e.g., `JFT_SDP_MVP_Scenario_Catalog_v1_2_07APR2026.docx`, `JFT_SDP_User_Profiles_v1_2_30MAR2026.docx`) are intentionally preserved. These are proper-noun identifiers for specific local source documents Brady authored under the old product name; renaming them in history would misrepresent which files existed at those points in time.
+- **Folder structure inside the repo** (`student/`, `tenant_admin/`, etc.) is persona-named and was not affected by either the v4.43 product rename or this v4.44 URL update.
+- **Storyboard surface count** (6) and **screen count** (78) — unchanged.
+
+### Effects users may notice
+
+- Bookmarks of `https://brady-wgu.github.io/JFT_SDP/` continue to resolve via GitHub's automatic redirect, but the canonical URL is now `https://brady-wgu.github.io/SkillProof/`.
+- Anyone else with a local clone of the repo will need to run `git remote set-url origin https://github.com/brady-wgu/SkillProof.git` next time they pull. GitHub's HTTPS redirect still works for a transition period, but switching the remote explicitly avoids surprises.
+
+### Files touched
+
+- `README.md`, all 6 persona/help `README.md` files, `presentation.html`, `presentation_dark.html`, `_contract_tracking/CONTRACT_TRACKER.md`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md`, `_contract_tracking/README.md`, `CHANGELOG.md` — URL rewrites + version-stamp bump.
+- All other repo files received the version-stamp bump only (v4.43 → v4.44 in titles, doc-info banners, badge, capture_screens.py docstring).
+- `presentation.html` + `presentation_dark.html` — new v4.44 Current row in the Doc Control table; v4.43 flipped to Superseded.
+
+### Verification
+
+1. `git remote -v` shows `https://github.com/brady-wgu/SkillProof.git`.
+2. `https://brady-wgu.github.io/SkillProof/` resolves (after Pages rebuild).
+3. `https://brady-wgu.github.io/JFT_SDP/` continues to resolve via the auto-redirect (transitional).
+4. Cleanliness grep against sensitive-pattern list returns zero matches.
+5. Old-URL grep (`brady-wgu.github.io/JFT_SDP`, `brady-wgu/JFT_SDP`) returns zero matches outside the explanatory v4.43/v4.44 CHANGELOG entries themselves.
+
+---
+
 ## v4.43 — 12 May 2026 — Product rename: Skill Development Platform → SkillProof
 
 WGU executive direction delivered late on 12 May 2026: the product previously named **Skill Development Platform** (abbreviated **SDP**) is now branded **SkillProof**. This release applies the rename across every storyboard surface, README, tracker, and toolchain file in the repo.
@@ -25,8 +69,8 @@ WGU executive direction delivered late on 12 May 2026: the product previously na
 
 ### What did NOT change
 
-- **GitHub repo name** `brady-wgu/JFT_SDP` is NOT renamed in this release. Renaming a GitHub repo is a significant operation (changes URLs, breaks existing clones until GitHub's redirect kicks in, affects the published GitHub Pages domain). If WGU wants the repo URL to also reflect the new product name, that's a separate explicit operation to schedule.
-- **GitHub Pages URL** `brady-wgu.github.io/JFT_SDP/` likewise unchanged (follows repo name).
+- **GitHub repo name** `brady-wgu/SkillProof` is NOT renamed in this release. Renaming a GitHub repo is a significant operation (changes URLs, breaks existing clones until GitHub's redirect kicks in, affects the published GitHub Pages domain). If WGU wants the repo URL to also reflect the new product name, that's a separate explicit operation to schedule.
+- **GitHub Pages URL** `brady-wgu.github.io/SkillProof/` likewise unchanged (follows repo name).
 - **Folder structure** (`student/`, `tenant_admin/`, `instructor/`, `super_admin/`, `lrps/`, `help/`) unchanged — persona-named, not product-named.
 - **Contract identifiers** like contract, requirements, Appendix A unchanged. The signed contract continues to reference "Skill Development Platform"; the rename is a marketing / branding decision that does not modify the legal product naming in the executed contract.
 - **Storyboard surface count** (6) and screen count (78) unchanged.
@@ -321,7 +365,7 @@ Shared. Accessible from every admin portal (Tenant Admin / Instructor / Super Ad
 2. Doc Control: v4.38 Current, v4.37 Superseded in both presentation catalogs.
 3. `student/index.html` byte-identical to v4.37.
 4. `help/index.html` validates as well-formed HTML; renders correctly in light and dark themes; non-functional search and chip-filter wired with placeholder JS handlers; floating Contact button stays anchored on scroll.
-5. After Pages rebuild: `https://brady-wgu.github.io/JFT_SDP/help/` returns 200 with the new surface; `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/D3A_BUILD_PLAN.md` continues to return 404 (Jekyll exclusion still holding).
+5. After Pages rebuild: `https://brady-wgu.github.io/SkillProof/help/` returns 200 with the new surface; `https://brady-wgu.github.io/SkillProof/_contract_tracking/D3A_BUILD_PLAN.md` continues to return 404 (Jekyll exclusion still holding).
 
 ### D3a build phase progress
 
@@ -364,7 +408,7 @@ Pre-build planning doc added to `_contract_tracking/` so WGU Program Development
 1. Cleanliness grep against the known sensitive-pattern list returns zero matches.
 2. Doc Control: v4.37 Current, v4.36 Superseded in both presentation catalogs.
 3. `student/index.html` byte-identical to v4.36.
-4. `_contract_tracking/D3A_BUILD_PLAN.md` is in the Jekyll-excluded folder; will not be reachable via the live storyboard at `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/D3A_BUILD_PLAN.md` (verify after Pages rebuild).
+4. `_contract_tracking/D3A_BUILD_PLAN.md` is in the Jekyll-excluded folder; will not be reachable via the live storyboard at `https://brady-wgu.github.io/SkillProof/_contract_tracking/D3A_BUILD_PLAN.md` (verify after Pages rebuild).
 
 ---
 
@@ -594,7 +638,7 @@ WGU's requirement: every storyboard surface must trace to a contract requirement
 
 ### Public-repo sensitive-data sweep
 
-The `brady-wgu/JFT_SDP` repo is intentionally public so the storyboard can be shared with stakeholders inside and outside WGU. v4.31 includes a comprehensive sweep removing business-sensitive data from every file in the repo so anything published is safe for that audience.
+The `brady-wgu/SkillProof` repo is intentionally public so the storyboard can be shared with stakeholders inside and outside WGU. v4.31 includes a comprehensive sweep removing business-sensitive data from every file in the repo so anything published is safe for that audience.
 
 What was scrubbed:
 
@@ -654,7 +698,7 @@ These were either added to in-place compliance tables in v4.18 without dedicated
 1. `_contract_tracking/CONTRACT_TRACKER.md` enumerates 156 rows: contract 35 + requirements core 29 + Appendix A 92 (28 + 14 + 15 + 15 + 20).
 2. `_contract_tracking/SCREEN_JUSTIFICATIONS.md` enumerates 76 screens: student 34 + tenant_admin 23 + instructor 8 + super_admin 10 + lrps 1.
 3. Prototype cleanliness check: `grep -rE "Required by|Contract reference|contract §|TODO|FIXME|XXX" --include="*.html" --exclude-dir=_contract_tracking .` returns zero results.
-4. GitHub Pages exclusion: `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/` returns 404 (Jekyll leading-underscore default exclusion).
+4. GitHub Pages exclusion: `https://brady-wgu.github.io/SkillProof/_contract_tracking/` returns 404 (Jekyll leading-underscore default exclusion).
 5. Doc Control: v4.31 Current, v4.30 Superseded in both presentation catalogs.
 6. Public-repo cleanliness audit: grep against known sensitive-pattern lists (real personal names, real email addresses, contract financial amounts, contract metadata identifiers, specific contract dates) returns zero matches in the repo (excluding the unavoidable `brady-wgu` GitHub username in repo URLs).
 
@@ -2241,7 +2285,7 @@ The plan called for an interactive browser walk-through using Claude in Chrome M
 - `git diff --stat student/index.html` returns **0 lines** (preservation directive intact through v4.5 → v4.6)
 - All 5 modifiable portal files have heading focus-visible override removed (`grep "h[1-6]:focus-visible.*outline:.*none"` returns 0 single-line matches; multi-line override only remains in `student/index.html` which is correctly documented as a v1 limitation)
 - Forbidden terms still 0 hits across deliverable surfaces
-- Live deploy (https://brady-wgu.github.io/JFT_SDP/) currently shows v4.5 / 81 screens; will rebuild to v4.6 on merge
+- Live deploy (https://brady-wgu.github.io/SkillProof/) currently shows v4.5 / 81 screens; will rebuild to v4.6 on merge
 
 ---
 
@@ -2399,7 +2443,7 @@ Pass 2 + Pass 3 (both clean): every workflow sentence and every requirements ref
 Reorganization-only release. No new scenarios or screen content.
 
 ### Changed
-- **Repo renamed** `brady-wgu/JFT_SDP_MVP` → `brady-wgu/JFT_SDP`. The MVP suffix no longer reflects scope (storyboard now spans 4 personas, not just the v1.2 MVP).
+- **Repo renamed** `brady-wgu/SkillProof_MVP` → `brady-wgu/SkillProof`. The MVP suffix no longer reflects scope (storyboard now spans 4 personas, not just the v1.2 MVP).
 - **Per-persona subdirectories.** Each portal moved into its own folder with its own `index.html`, `README.md`, `screenshots/`, and `screenshots_dark/`:
   - `index.html` → `student/index.html`
   - `tenant_admin.html` → `tenant_admin/index.html`
@@ -2419,13 +2463,13 @@ Reorganization-only release. No new scenarios or screen content.
 
 | Old | New |
 |---|---|
-| `/JFT_SDP_MVP/` | `/JFT_SDP/` (now portal selector) |
-| `/JFT_SDP_MVP/` (student) | `/JFT_SDP/student/` |
-| `/JFT_SDP_MVP/tenant_admin.html` | `/JFT_SDP/tenant_admin/` |
-| `/JFT_SDP_MVP/instructor.html` | `/JFT_SDP/instructor/` |
-| `/JFT_SDP_MVP/super_admin.html` | `/JFT_SDP/super_admin/` |
-| `/JFT_SDP_MVP/lrps.html` | `/JFT_SDP/lrps/` |
-| `/JFT_SDP_MVP/presentation.html` | `/JFT_SDP/presentation.html` (path stable) |
+| `/SkillProof/` | `/SkillProof/` (now portal selector) |
+| `/SkillProof/` (student) | `/SkillProof/student/` |
+| `/SkillProof/tenant_admin.html` | `/SkillProof/tenant_admin/` |
+| `/SkillProof/instructor.html` | `/SkillProof/instructor/` |
+| `/SkillProof/super_admin.html` | `/SkillProof/super_admin/` |
+| `/SkillProof/lrps.html` | `/SkillProof/lrps/` |
+| `/SkillProof/presentation.html` | `/SkillProof/presentation.html` (path stable) |
 
 ---
 

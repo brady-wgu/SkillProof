@@ -1,6 +1,6 @@
 # Help & Resources — shared surface
 
-[← Back to root README](../README.md) · [Live surface](https://brady-wgu.github.io/JFT_SDP/help/)
+[← Back to root README](../README.md) · [Live surface](https://brady-wgu.github.io/SkillProof/help/)
 
 ## What this is
 

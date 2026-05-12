@@ -1,6 +1,6 @@
 # Student — Sally · v1.2 MVP
 
-[← Back to root README](../README.md) · [Live storyboard](https://brady-wgu.github.io/JFT_SDP/student/) · [Catalog (light)](../presentation.html#sc-mvp-01) · [Catalog (dark)](../presentation_dark.html#sc-mvp-01)
+[← Back to root README](../README.md) · [Live storyboard](https://brady-wgu.github.io/SkillProof/student/) · [Catalog (light)](../presentation.html#sc-mvp-01) · [Catalog (dark)](../presentation_dark.html#sc-mvp-01)
 
 ![Student storyboard hero](screenshots/sc-mvp-01_step02_screen02.png)
 

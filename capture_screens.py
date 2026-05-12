@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 156 PNGs after capture (v4.43: removed visible storyboard version-stamp paragraphs from inside the WGU footer on all 9 storyboard surfaces — root index, persona portals, help, presentation catalogs, AND student MVP — per WGU direction that the WGU footer is the last visible element on every page (meta-bar follows as storyboard navigation chrome). No UI structural changes; PNG count unchanged from v4.41).
+Total: 156 PNGs after capture (v4.44: removed visible storyboard version-stamp paragraphs from inside the WGU footer on all 9 storyboard surfaces — root index, persona portals, help, presentation catalogs, AND student MVP — per WGU direction that the WGU footer is the last visible element on every page (meta-bar follows as storyboard navigation chrome). No UI structural changes; PNG count unchanged from v4.41).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
