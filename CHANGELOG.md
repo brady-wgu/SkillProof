@@ -6,6 +6,73 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.33 — 12 May 2026 — D2 analysis-findings sweep (per-persona READMEs and root README)
+
+Applies the WGU-side analysis findings F1–F13 (from the pre-build contract-vs-artifact review) to the per-persona READMEs and the root README. These are documentation-layer updates that record decisions and constraints JFT needs to design and build against; they do not change any storyboard UI.
+
+### What changed
+
+**Root README — "Note for JFT" rewritten (F1 + F2 + F10).**
+
+- Clarifies that WGU expects JFT to deliver the **full SOW scope** — every binding requirement in the MSA, the SOW body, and Appendix A — within the contracted engagement window. The first JFT release was an MVP slice (E010 Coding Coach in `student/`); subsequent releases close the rest of Appendix A across the Tenant Admin, Instructor, and Super Admin portals.
+- Distinguishes between the Cicada coaching loop (deployed as-is in the MVP) and the surrounding platform (multi-LLM orchestration, admin portals, observability, exports, integrations, compliance surfaces) which is net-new build work per Appendix A.
+- Notes that WGU runs independent accessibility testing against WCAG 2.2 AA in addition to JFT's own self-checks per §16.2 #7.3, so JFT should plan remediation cycles inside the engagement window.
+
+**`super_admin/README.md` — four new sections (F8 + F9 + F11 + F12).**
+
+- *Device context* — desktop-primary with command-line access; mobile-first applies universally but the operational workflow assumes a desktop session.
+- *Maintenance windows and rolling enrollment* — WGU has no semester break, so maintenance strategy favors blue/green deploys (§16.1 #6.24), in-place rolling updates, and online schema-change patterns; unavoidable downtime is coordinated 14 days in advance per §16.4 #9.12.
+- *LLM API account ownership and spend control* — LLM API costs are excluded from the fixed-cost SOW (§11 Note 5) and WGU's responsibility; rate-limit controls on Screen 5 are the operational lever; a per-day or per-tenant hard spend cap is recommended as a pilot circuit breaker.
+- *Pilot-to-WGU handoff transition* — JFT's technical leads operate the Super Admin surface during pilot; handoff to WGU IT is scoped separately and not part of v1.x storyboard; agreement should be written before the pilot-support period ends.
+
+**`tenant_admin/README.md` — three new sections (F5 + F7 + F12).**
+
+- *Device context* — desktop-primary; course authoring and AI prompt configuration unsuited to mobile.
+- *Tenant Admin portal as the configuration path for the full SOW* — this portal **is** the production configuration mechanism for the SDP; not optional MVP-extension scope; part of binding §16.3 #8.6 multi-tenancy commitment and §2.5 Admin Portal deliverable.
+- *LRPS provisioning is a manual WGU-side handoff* — JFT does not write to LRPS; generic "LTI 1.3 compliance" is not sufficient for end-to-end course launch in WGU's distributed-LMS environment; custom LRPS integration work beyond LTI 1.3 baseline is scoped explicitly.
+
+**`instructor/README.md` — two new sections (F6 + F12).**
+
+- *Device context* — desktop-primary; drilling into transcripts is an extended-session workflow.
+- *Underlying data model — captured from day one* — the question / student response / AI feedback / AI score tuple must be captured per interaction from day one of the student MVP, even though the instructor drill-down UI is post-MVP. Capturing the data early ensures early-window students are not invisible in the eventual instructor view; the MVP catalog's "competency-level progress indicators" minimum is insufficient.
+
+**`student/README.md` — *Device context* added (F12).** Mobile-first per §16.2 #7.2; PWA support per §16.2 #7.7; student is the only mobile-first-optimized surface (admin portals are desktop-primary).
+
+**`lrps/README.md` — *Custom integration boundary* added (F5 elaboration).** WGU's distributed LMS means generic LTI 1.3 compliance is not sufficient; LRPS-specific integration work beyond baseline LTI 1.3 is scoped explicitly.
+
+### Deferred to a later release
+
+- **F4 — LTI Advantage deep-link reconciliation.** The Sally and Alice profile narratives describe per-sub-section deep linking (an LTI Advantage Deep Linking 2.0 capability), but the storyboard launch path uses basic LTI 1.3 with a stable URL. Reconciling this across the storyboard + profile narratives is a screen-level update suitable for a focused future commit.
+
+### Already covered
+
+- **F3 — No code execution.** Documented in `student/README.md` v1 Known Limitations.
+- **F13 — Pricing offer-validity expiry.** Documented in `_contract_tracking/CONTRACT_TRACKER.md` row SOW-11-Note-1.
+
+### What did NOT change
+
+- Storyboard total: 76 screens, no UI changes.
+- `student/index.html` content (30th consecutive release of the freeze).
+- PNG count: 152 (unchanged from v4.32).
+
+### Files touched
+
+- Root `README.md` — "Note for JFT" rewritten; version badge 4.32 → 4.33.
+- `student/README.md`, `instructor/README.md`, `tenant_admin/README.md`, `super_admin/README.md`, `lrps/README.md` — appended analysis-findings sections per the list above.
+- `index.html`, `instructor/index.html`, `lrps/index.html`, `super_admin/index.html`, `tenant_admin/index.html` — version stamps only.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.33 row added; v4.32 → Superseded; version stamps.
+- `capture_screens.py` — docstring version comment.
+- `_contract_tracking/CONTRACT_TRACKER.md`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — version reference bumped.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep against the known sensitive-pattern list returns zero matches in the repo (excluding the unavoidable `brady-wgu` GitHub username in URLs).
+2. Doc Control: v4.33 Current, v4.32 Superseded in both presentation catalogs.
+3. `student/index.html` byte-identical to v4.32 (30th consecutive release of the freeze).
+
+---
+
 ## v4.32 — 12 May 2026 — v4.31 narrative scrub (meta-level cleanup of audit descriptions)
 
 Follow-up to v4.31. During post-merge verification of the public-repo cleanup, the v4.31 CHANGELOG entry and Doc Control row descriptions were found to re-introduce some of the same sensitive specifics they were describing as scrubbed (specific real names, specific real email addresses, the specific signing date). v4.32 generalizes those meta-descriptions so the audit log of what was scrubbed does not itself re-leak the same data.
