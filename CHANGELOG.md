@@ -6,6 +6,62 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.39 — 12 May 2026 — WGU production footer deployed across every non-MVP surface
+
+Per WGU direction: take the WGU learner-facing footer mockup that was previously only a preview pane on `tenant-21` (Branding) and deploy it as the actual visible site footer across every surface in the storyboard.
+
+### What changed
+
+The WGU production footer now appears at the bottom of every page on:
+
+- `tenant_admin/index.html` (visible on all 23 screens via the persistent page-level footer)
+- `instructor/index.html` (8 screens)
+- `super_admin/index.html` (10 screens)
+- `lrps/index.html` (LRPS landing)
+- `help/index.html` (Help & Resources)
+- `index.html` (root portal selector)
+- `presentation.html` (light scenario catalog)
+- `presentation_dark.html` (dark scenario catalog)
+
+Footer structure (mirrors the `tenant-21` Branding preview verbatim):
+
+- **Top row**: WGU corporation logo (left) + `ADA Accommodation` link (right), separated by a thin bottom border.
+- **Bottom row**: `© 2026 Western Governors University – WGU. All Rights Reserved.` (left) + `Privacy Policy | Terms of Service | Honor Code` (right, pipe-separated).
+- Light pale background `#F5F7FA` matching production. Links use Dark Navy `#002855` at 600 weight per WGU FY26 brand.
+
+The screen-reader-only storyboard version stamp (previously the entirety of the `<footer>` content) is preserved inside the new visible footer as a final `<p class="sr-only">` line, so accessibility metadata is retained.
+
+### MVP freeze — student/index.html NOT touched
+
+`student/index.html` corresponds to the JFT-deployed production system at `https://wgu.teamjft.com/`. Per the standing MVP freeze, this file is not modified without explicit per-change authorization. The "deploy the WGU footer across every screen" directive did not name the student MVP specifically. If you want the WGU footer added to `student/index.html` as well (to align the storyboard with whatever footer the deployed production system already has), confirm and I'll do it in a follow-up commit. Otherwise the freeze remains intact — 36th consecutive release of byte-identical `student/index.html`.
+
+### What did NOT change
+
+- Storyboard total: 77 screens (no new screens; only existing footers replaced).
+- `student/index.html` byte-identical (36th consecutive release of the freeze).
+- PNG count: 152 in repo (capture not re-run for v4.39 since no UI changes inside the screen sections themselves; only the page-level footer that's outside the screens). Re-capture optional.
+- Tracker row classifications unchanged.
+
+### Files touched
+
+- `tenant_admin/index.html`, `instructor/index.html`, `super_admin/index.html`, `lrps/index.html` — replaced the existing `<footer role="contentinfo" class="sr-only">` block with the new visible WGU footer (which keeps the version stamp as a final `sr-only` paragraph).
+- `help/index.html` — replaced the dark `site-footer` chrome with the WGU production footer.
+- `index.html` (root) — replaced the existing branded footer text block with the WGU production footer.
+- `presentation.html`, `presentation_dark.html` — replaced the existing `site-footer` (with its `margin-left: 260px` sidebar offset preserved) with the WGU production footer.
+- Version stamps bumped v4.38 → v4.39 across the established files.
+- Doc Control v4.39 row added; v4.38 → Superseded.
+- `capture_screens.py` docstring updated.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep returns zero sensitive matches.
+2. Doc Control: v4.39 Current, v4.38 Superseded in both presentation catalogs.
+3. `student/index.html` byte-identical to v4.38.
+4. Each updated file has exactly one `<footer role="contentinfo">` element near `</body>` with the WGU production footer markup.
+
+---
+
 ## v4.38 — 12 May 2026 — D3a build phase 1: Help & Resources shared surface (closes A-9.14 + A-9.15)
 
 First focused D3a build PR. Implements the **Help & Resources** themed surface described in `_contract_tracking/D3A_BUILD_PLAN.md`, closing two of the seven true gaps from the v4.36 re-audit (the Support & Training theme).

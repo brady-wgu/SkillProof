@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 154 PNGs after capture (v4.38: NEW shared Help & Resources surface added in help/ folder, closing Appendix A §16.4 #9.14 self-service support portal and #9.15 video training resources; storyboard surface count 5 → 6, screen count 76 → 77; PNG count grows 152 → 154 after capture executes locally).
+Total: 154 PNGs after capture (v4.39: WGU production footer (mirrored from tenant-21 Branding preview) deployed as the visible site footer across every non-MVP surface — tenant_admin, instructor, super_admin, lrps, help, root portal selector, and both presentation catalogs. student/index.html intentionally NOT touched per the MVP freeze. PNG counts unchanged from v4.38).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
