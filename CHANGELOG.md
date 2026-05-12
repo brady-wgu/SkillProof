@@ -6,6 +6,76 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.38 — 12 May 2026 — D3a build phase 1: Help & Resources shared surface (closes A-9.14 + A-9.15)
+
+First focused D3a build PR. Implements the **Help & Resources** themed surface described in `_contract_tracking/D3A_BUILD_PLAN.md`, closing two of the seven true gaps from the v4.36 re-audit (the Support & Training theme).
+
+### What's new
+
+- **New top-level folder `help/`** parallel to `lrps/`, following the established 5-surface storyboard pattern. Brings the storyboard surface count from 5 to 6.
+- **`help/index.html`** — single-screen shared surface with:
+  - SDP Design System v1.2 navbar (deep navy header, brand logo + product subtitle, Portals / Scenario Catalog links, theme toggle).
+  - H1 "How can we help?" plus subtitle, search bar (non-functional placeholder, with leading icon + trailing `/` keyboard-hint chip).
+  - **Self-service support section (A-9.14):** three documentation-domain cards (Get Started, Troubleshooting, API Reference) with icons, descriptions, and call-to-action links. Recent updates feed underneath (4 illustrative entries with New/Updated status tags).
+  - **Video training section (A-9.15):** role-filter chips (All roles / Student / Instructor / Tenant Admin / Super Admin) with active-state JS, "New here? Start with these three" gradient featured callout, and a 3×3 grid of nine illustrative video tiles (16:9 placeholder gradient thumbnails with play-icon overlay + duration badge, role-tagged in the metadata strip).
+  - Floating "Contact JFT Support" action button anchored bottom-right; mirrors the Jira ticket workflow on `tenant-16` (the existing SC-ADD-06 Tenant Admin pattern).
+  - Light/dark theme support with `localStorage` persistence (same `sdp-theme` key as the other surfaces).
+  - Meta-bar bottom strip identifying surface + design system + persona scope, matching the LRPS landing pattern.
+- **`help/README.md`** — persona definition (shared across all admin roles + LRPS admin), scope, SOW references (§16.4 #9.14 + #9.15 + supporting), file inventory, component catalog, design notes, future-enhancement list.
+
+### Persona scope
+
+Shared. Accessible from every admin portal (Tenant Admin / Instructor / Super Admin) in production via a Help link in each navbar (admin-navbar link work deferred to a follow-up commit). Reachable directly from the root portal selector once that card is added. The student portal is frozen at v1.2 MVP — student-side linking to Help & Resources is a future capability.
+
+### Tracker updates
+
+- `_contract_tracking/CONTRACT_TRACKER.md`:
+  - Row A-9.14: Storyboard Coverage `Gap` → `help-01 (self-service section: search, 3 cards, updates feed, Contact JFT Support button)`. Build Status moves Not Started → In Design.
+  - Row A-9.15: Storyboard Coverage `Gap` → `help-01 (role-filtered video gallery with 9 tiles + featured callout)`. Build Status moves Not Started → In Design.
+  - "Gaps requiring D3a follow-up" summary: total true gaps **5** (down from 7); A-9.14 and A-9.15 are now struck through with a closure annotation.
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md`:
+  - New "Help & Resources" section added between LRPS and Totals. One new row `help-01` with Primary Grounding `A-9.14 + A-9.15`, Classification = Contract-required, Persona = shared.
+  - Totals table updated: surfaces 5 → 6; total screens 76 → 77; Contract-required 71 → 72.
+
+### Deferred to follow-up
+
+- **Portal selector card** on `index.html` for the new Help & Resources surface — needs the existing root portal card pattern matched. Deferred to a focused follow-up so v4.38 doesn't grow.
+- **Admin portal navbar Help links** (Tenant Admin / Instructor / Super Admin) — each persona index.html navbar gets a Help link. Deferred to the same follow-up.
+- **Screenshot capture for the help surface** — `capture_screens.py` updated to add `help/` to the file list; actual PNG capture runs locally. PNG count rises 152 → 154 (1 light + 1 dark) after capture executes.
+
+### What did NOT change
+
+- The four admin persona screen surfaces (`student/`, `tenant_admin/`, `instructor/`, `super_admin/`, `lrps/`) are UI-unchanged — no edits to any existing storyboard screens.
+- `student/index.html` byte-identical (35th consecutive release of the freeze; deployed MVP at `wgu.teamjft.com` untouched).
+- Screen counts on the existing surfaces unchanged (student 34 / tenant_admin 23 / instructor 8 / super_admin 10 / lrps 1).
+
+### Files touched
+
+- `help/index.html` — new (single-screen shared surface, ~470 lines).
+- `help/README.md` — new (persona, scope, references, components).
+- `_contract_tracking/CONTRACT_TRACKER.md` — rows A-9.14 + A-9.15 updated; gap summary updated.
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — Help & Resources section added; Totals table updated.
+- `README.md`, `index.html`, all four non-frozen persona `index.html` files, `presentation.html`, `presentation_dark.html`, `capture_screens.py` — version stamps bumped v4.37 → v4.38.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.38 row added; v4.37 → Superseded.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep against the known sensitive-pattern list returns zero matches.
+2. Doc Control: v4.38 Current, v4.37 Superseded in both presentation catalogs.
+3. `student/index.html` byte-identical to v4.37.
+4. `help/index.html` validates as well-formed HTML; renders correctly in light and dark themes; non-functional search and chip-filter wired with placeholder JS handlers; floating Contact button stays anchored on scroll.
+5. After Pages rebuild: `https://brady-wgu.github.io/JFT_SDP/help/` returns 200 with the new surface; `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/D3A_BUILD_PLAN.md` continues to return 404 (Jekyll exclusion still holding).
+
+### D3a build phase progress
+
+- **Theme 1 — Support & Training (2 contract rows): DONE in v4.38.**
+- Theme 2 — Data & Integrations Hub (5 contract rows): pending. Targets a new `super-11` screen on the Super Admin portal.
+
+After v4.38, the true-gap count is **5** (down from 7), all in the Data & Integrations Hub theme: A-6.28 GraphQL API, A-8.8 real-time/batch export, A-8.12 webhooks, A-8.13 GraphQL queries, A-8.14 streaming.
+
+---
+
 ## v4.37 — 12 May 2026 — D3a build plan (internal planning doc for the two themed surfaces)
 
 Pre-build planning doc added to `_contract_tracking/` so WGU Program Development can review the proposed D3a build phase scope before any storyboard HTML changes proceed. Doc-only release — no UI changes, no tracker reclassifications, no new screens yet.

@@ -7,7 +7,7 @@
 **Version:** v1.0 (initial baseline)
 **Date:** 12 May 2026
 **Author:** WGU Program Development
-**Source:** brady-wgu/JFT_SDP at v4.37; signed JFT MSA / SOW (executed 2026)
+**Source:** brady-wgu/JFT_SDP at v4.38; signed JFT MSA / SOW (executed 2026)
 
 ## How to read this file
 
@@ -31,7 +31,7 @@ Classification policy:
 
 ## Student — Sally · 34 screens · `student/index.html`
 
-> **The student portal is frozen as of v4.37.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
+> **The student portal is frozen as of v4.38.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
@@ -156,6 +156,16 @@ LRPS totals: 0 Contract-required · 1 Essential scaffolding · 0 Discretionary.
 
 ---
 
+## Help & Resources · 1 screen · `help/index.html`
+
+| ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
+|:---|:---|:---|:---|:---|:---|:---|:---|
+| `help-01` | Help & Resources (search, self-service cards, updates feed, role-filtered video gallery, Contact JFT Support FAB) | SC-ADD-07 (proposed for post-MVP support release) | A-9.14 Self-service support portal · A-9.15 Video training resources | A-9.1 24/7 monitoring (Contact JFT Support entry point) · A-9.4/§9.4 support channels · A-9.11 documentation/training materials | Contract-required | Keep | v4.38 introduced the shared surface. Persona: all admin roles (Tenant Admin / Instructor / Super Admin) plus LRPS admin. The student portal is frozen at v1.2 MVP and cannot link to Help & Resources yet; this is a post-MVP shared surface only. Closes the two true gaps from the v4.36 D3a re-audit for the Support & Training theme. |
+
+Help & Resources totals: 1 Contract-required · 0 Essential scaffolding · 0 Discretionary.
+
+---
+
 ## Totals across all surfaces
 
 | Persona | Screens | Contract-required | Essential scaffolding | Discretionary |
@@ -165,7 +175,8 @@ LRPS totals: 0 Contract-required · 1 Essential scaffolding · 0 Discretionary.
 | Instructor (Charlie) | 8 | 8 | 0 | 0 |
 | Super Admin (Bob) | 10 | 10 | 0 | 0 |
 | LRPS | 1 | 0 | 1 | 0 |
-| **Total** | **76** | **71** | **5** | **0** |
+| Help & Resources (shared) | 1 | 1 | 0 | 0 |
+| **Total** | **77** | **72** | **5** | **0** |
 
 **Zero Discretionary screens at v1.0 baseline.** Every screen is either Contract-required or Essential scaffolding with a written reason.
 

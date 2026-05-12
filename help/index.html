@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JFT SDP — Help &amp; Resources — Storyboard v4.38</title>
+
+  <!--
+    MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
+    Help & Resources shared surface for the JFT SDP v1.3 additional scenarios.
+    Closes Appendix A §16.4 #9.14 (Self-service support portal) and #9.15 (Video training resources).
+    Accessible from all admin portals (Tenant Admin / Instructor / Super Admin) via the Help link in each navbar.
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@300;400;700&family=Material+Icons+Outlined&display=swap" rel="stylesheet">
+
+  <style>
+    /* SDP Design System v1.2 — minimal inline */
+    :root {
+      --color-deep-navy: #001730;
+      --color-dark-navy: #002855;
+      --color-bright-blue: #0070F0;
+      --color-sky-blue: #46B1EF;
+      --color-ice-blue: #EEF6F9;
+      --color-accent-red: #C13232;
+      --color-amber: #FBAE40;
+      --color-text-primary: #001730;
+      --color-text-secondary: #4A5A6A;
+      --color-text-muted: #6C7B89;
+      --color-bg-primary: #FFFFFF;
+      --color-bg-secondary: #F5F7FA;
+      --color-bg-tertiary: #EEF6F9;
+      --color-border: #D4DCE4;
+      --color-success: #2D7A4A;
+      --color-warning: #FBAE40;
+      --color-danger: #C13232;
+    }
+    [data-theme="dark"] {
+      --color-text-primary: #EEF6F9;
+      --color-text-secondary: #B0BCC7;
+      --color-text-muted: #8A9AA8;
+      --color-bg-primary: #001730;
+      --color-bg-secondary: #002855;
+      --color-bg-tertiary: #0E2841;
+      --color-border: #2A3F58;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Lato', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text-primary);
+      background: var(--color-bg-secondary);
+      min-height: 100vh;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Sora', system-ui, sans-serif;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-top: 0;
+    }
+    h1 { font-size: 40px; line-height: 1.2; }
+    h2 { font-size: 28px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; }
+    h3 { font-size: 20px; line-height: 1.4; margin-bottom: 8px; }
+    p { margin-top: 0; color: var(--color-text-secondary); }
+    a { color: var(--color-bright-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; cursor: pointer; }
+    .material-icons-outlined { font-family: 'Material Icons Outlined'; font-feature-settings: 'liga'; vertical-align: middle; }
+
+    /* Navbar */
+    .navbar {
+      background: var(--color-deep-navy);
+      color: #fff;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .navbar-brand .brand-logo {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--color-bright-blue), var(--color-sky-blue));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px;
+    }
+    .navbar-brand .brand-text {
+      display: flex; flex-direction: column;
+    }
+    .navbar-brand .brand-product { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; }
+    .navbar-brand .brand-subtitle { font-size: 12px; opacity: 0.8; }
+    .navbar-actions {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .navbar-link {
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .navbar-link:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.1); }
+
+    /* Container */
+    .container {
+      max-width: 1192px;
+      margin: 0 auto;
+      padding: 48px 32px 96px;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    /* Search bar */
+    .search-wrap {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      box-shadow: 0 2px 8px rgba(0,23,48,0.04);
+    }
+    .search-wrap .material-icons-outlined { color: var(--color-text-muted); font-size: 24px; }
+    .search-wrap input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 16px;
+      color: var(--color-text-primary);
+      background: transparent;
+      padding: 12px 0;
+    }
+    .search-wrap input::placeholder { color: var(--color-text-muted); }
+    .search-wrap .search-hint {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Lato', monospace;
+    }
+
+    /* Card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 16px;
+    }
+    .card {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,23,48,0.08); }
+    .card-icon {
+      width: 48px; height: 48px;
+      background: var(--color-ice-blue);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    [data-theme="dark"] .card-icon { background: var(--color-bg-tertiary); }
+    .card-icon .material-icons-outlined { font-size: 28px; color: var(--color-bright-blue); }
+    .card-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 20px; color: var(--color-text-primary); }
+    .card-body { font-size: 14px; color: var(--color-text-secondary); flex: 1; }
+    .card-link {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-bright-blue);
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+
+    /* Recent updates feed */
+    .updates-feed {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      list-style: none;
+      padding: 8px 0;
+      margin: 16px 0 0;
+    }
+    .updates-feed li {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .updates-feed li:last-child { border-bottom: none; }
+    .updates-feed .update-tag {
+      flex-shrink: 0;
+      background: var(--color-ice-blue);
+      color: var(--color-dark-navy);
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    [data-theme="dark"] .updates-feed .update-tag { background: var(--color-bg-tertiary); color: var(--color-sky-blue); }
+    .updates-feed .update-body { flex: 1; }
+    .updates-feed .update-title { font-weight: 700; color: var(--color-text-primary); }
+    .updates-feed .update-meta { font-size: 13px; color: var(--color-text-muted); margin-top: 2px; }
+
+    /* Role filter chips */
+    .role-chips {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.15s;
+    }
+    .chip:hover { background: var(--color-ice-blue); }
+    [data-theme="dark"] .chip:hover { background: var(--color-bg-tertiary); }
+    .chip.active {
+      background: var(--color-bright-blue);
+      color: #fff;
+      border-color: var(--color-bright-blue);
+    }
+
+    /* Featured row callout */
+    .featured-callout {
+      background: linear-gradient(135deg, var(--color-bright-blue), var(--color-sky-blue));
+      color: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .featured-callout .material-icons-outlined { font-size: 32px; }
+    .featured-callout .featured-text { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 18px; }
+    .featured-callout .featured-sub { font-size: 14px; opacity: 0.9; margin-top: 2px; }
+
+    /* Video gallery */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 16px;
+    }
+    .video-tile {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .video-tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,23,48,0.08); }
+    .video-thumb {
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, var(--color-deep-navy), var(--color-dark-navy));
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-thumb.alt1 { background: linear-gradient(135deg, var(--color-bright-blue), var(--color-sky-blue)); }
+    .video-thumb.alt2 { background: linear-gradient(135deg, var(--color-amber), #E89321); }
+    .video-thumb.alt3 { background: linear-gradient(135deg, #4A5A6A, var(--color-dark-navy)); }
+    .video-thumb .play-icon {
+      width: 56px; height: 56px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-thumb .play-icon .material-icons-outlined { color: var(--color-deep-navy); font-size: 32px; }
+    .video-thumb .duration {
+      position: absolute;
+      bottom: 8px; right: 8px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .video-meta { padding: 16px; }
+    .video-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 16px; color: var(--color-text-primary); margin-bottom: 4px; line-height: 1.3; }
+    .video-role { font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+
+    /* Contact button (floating) */
+    .contact-fab {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      background: var(--color-bright-blue);
+      color: #fff;
+      border: none;
+      padding: 16px 24px;
+      border-radius: 9999px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(0,112,240,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .contact-fab:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,112,240,0.5); }
+    .contact-fab .material-icons-outlined { font-size: 20px; }
+
+    /* Footer */
+    .site-footer {
+      background: var(--color-deep-navy);
+      color: rgba(255,255,255,0.7);
+      padding: 24px 32px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .site-footer strong { color: #fff; font-weight: 600; }
+
+    /* Meta-bar (bottom navigation hint) */
+    .meta-bar {
+      background: var(--color-bg-tertiary);
+      border-top: 1px solid var(--color-border);
+      padding: 12px 32px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .meta-bar .meta-id { background: var(--color-bg-primary); padding: 2px 8px; border-radius: 4px; font-weight: 700; color: var(--color-text-secondary); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .card-grid, .video-grid { grid-template-columns: 1fr; }
+      .container { padding: 32px 16px 80px; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar-brand">
+      <div class="brand-logo">SDP</div>
+      <div class="brand-text">
+        <div class="brand-product">JFT SDP</div>
+        <div class="brand-subtitle">Help &amp; Resources</div>
+      </div>
+    </div>
+    <div class="navbar-actions">
+      <a href="../" class="navbar-link"><span class="material-icons-outlined" style="font-size:18px;">apps</span> Portals</a>
+      <a href="../presentation.html" class="navbar-link">Scenario Catalog</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="material-icons-outlined" id="theme-icon" style="font-size:18px;">dark_mode</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="eyebrow">Documentation &middot; Training &middot; Support</div>
+    <h1>How can we help?</h1>
+    <p style="font-size:18px; max-width: 720px;">Self-service resources for students, instructors, and platform administrators. Find a documentation article, watch a short training video, or open a support ticket with the JFT team.</p>
+
+    <div class="search-wrap" role="search">
+      <span class="material-icons-outlined">search</span>
+      <input type="text" placeholder="Search documentation, video tutorials, API reference..." aria-label="Search help resources">
+      <span class="search-hint">/</span>
+    </div>
+
+    <!-- Self-service support portal (Appendix A §16.4 #9.14) -->
+    <h2>Self-service support</h2>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-icon"><span class="material-icons-outlined">rocket_launch</span></div>
+        <div class="card-title">Get Started</div>
+        <div class="card-body">Onboarding videos, quick-start guides, and orientation tours for each role. New to the SDP? Begin here.</div>
+        <a class="card-link" href="#">Browse get-started library <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><span class="material-icons-outlined">build</span></div>
+        <div class="card-title">Troubleshooting</div>
+        <div class="card-body">Common-issue articles, error code reference, and step-by-step diagnostic guides. Includes the escalation path to JFT Support.</div>
+        <a class="card-link" href="#">Browse troubleshooting <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><span class="material-icons-outlined">api</span></div>
+        <div class="card-title">API Reference</div>
+        <div class="card-body">Full Swagger specification, GraphQL schema, and webhook event documentation. For integration and data export work.</div>
+        <a class="card-link" href="#">Open API docs <span class="material-icons-outlined" style="font-size:16px;">open_in_new</span></a>
+      </div>
+
+    </div>
+
+    <h2>Recent updates</h2>
+    <ul class="updates-feed">
+      <li>
+        <span class="update-tag">New</span>
+        <div class="update-body">
+          <div class="update-title">Configuring LTI Advantage Deep Linking in your tenant</div>
+          <div class="update-meta">Tenant Admin guide &middot; Updated 2 days ago</div>
+        </div>
+      </li>
+      <li>
+        <span class="update-tag">Updated</span>
+        <div class="update-body">
+          <div class="update-title">Rate limit best practices for high-traffic tenants</div>
+          <div class="update-meta">Super Admin guide &middot; Updated 5 days ago</div>
+        </div>
+      </li>
+      <li>
+        <span class="update-tag">New</span>
+        <div class="update-body">
+          <div class="update-title">Reading the class heatmap: identifying at-risk learners early</div>
+          <div class="update-meta">Instructor guide &middot; Updated 1 week ago</div>
+        </div>
+      </li>
+      <li>
+        <span class="update-tag">Updated</span>
+        <div class="update-body">
+          <div class="update-title">Webhook event reference: payload schemas and retry behavior</div>
+          <div class="update-meta">Developer guide &middot; Updated 1 week ago</div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Video training resources (Appendix A §16.4 #9.15) -->
+    <h2>Video training resources</h2>
+    <p style="font-size:14px;">Short, role-specific training videos. Filter by your role to see what is most relevant.</p>
+
+    <div class="role-chips" role="tablist" aria-label="Filter videos by role">
+      <button class="chip active">All roles</button>
+      <button class="chip">Student</button>
+      <button class="chip">Instructor</button>
+      <button class="chip">Tenant Admin</button>
+      <button class="chip">Super Admin</button>
+    </div>
+
+    <div class="featured-callout">
+      <span class="material-icons-outlined">star</span>
+      <div>
+        <div class="featured-text">New here? Start with these three.</div>
+        <div class="featured-sub">A short walkthrough of the SDP for every role &mdash; first launch, first session, first review.</div>
+      </div>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-tile">
+        <div class="video-thumb">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">3:42</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Your first SDP coaching session</div>
+          <div class="video-role">Student</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb alt1">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">5:18</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Reading the class heatmap</div>
+          <div class="video-role">Instructor</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb alt2">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">7:05</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Configuring a new course end-to-end</div>
+          <div class="video-role">Tenant Admin</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb alt3">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">4:52</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Monitoring cross-tenant token spend</div>
+          <div class="video-role">Super Admin</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">2:48</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Returning to a paused coaching session</div>
+          <div class="video-role">Student</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb alt1">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">6:21</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Reviewing AI feedback transcripts</div>
+          <div class="video-role">Instructor</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb alt2">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">8:14</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Add / edit / remove learning objectives</div>
+          <div class="video-role">Tenant Admin</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb alt3">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">5:47</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Responding to a P1 incident</div>
+          <div class="video-role">Super Admin</div>
+        </div>
+      </div>
+
+      <div class="video-tile">
+        <div class="video-thumb alt2">
+          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
+          <span class="duration">4:09</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-title">Deploying a course to production</div>
+          <div class="video-role">Tenant Admin</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div class="meta-bar">
+    <span><span class="meta-id">DEMO ONLY</span> &middot; JFT SDP &middot; Help &amp; Resources &middot; SDP Design System v1.2 &middot; Persona: shared (all admin roles + LRPS)</span>
+  </div>
+
+  <footer class="site-footer">
+    <strong>Western Governors University</strong> | Program Development | JFT SDP<br>
+    JFT SDP Help &amp; Resources Storyboard v4.38 &mdash; Western Governors University
+  </footer>
+
+  <button class="contact-fab" aria-label="Contact JFT Support">
+    <span class="material-icons-outlined">support_agent</span>
+    Contact JFT Support
+  </button>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      document.getElementById('theme-icon').textContent = next === 'dark' ? 'light_mode' : 'dark_mode';
+      try { localStorage.setItem('sdp-theme', next); } catch (e) {}
+    }
+    (function () {
+      try {
+        const saved = localStorage.getItem('sdp-theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.getElementById('theme-icon').textContent = 'light_mode';
+        }
+      } catch (e) {}
+    })();
+    // Chip filter (visual only — non-functional in storyboard)
+    document.querySelectorAll('.role-chips .chip').forEach(c => {
+      c.addEventListener('click', () => {
+        document.querySelectorAll('.role-chips .chip').forEach(x => x.classList.remove('active'));
+        c.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
