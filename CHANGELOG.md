@@ -6,6 +6,40 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.34 — 12 May 2026 — Audit follow-up (row-count correction + Doc Control table fixes)
+
+Follow-up to v4.31–v4.33. A structural audit of the trackers and Doc Control tables surfaced three issues to fix:
+
+### What changed
+
+- **Tracker row count corrected.** The v4.31 CHANGELOG entry, Files touched list, verification step, and Doc Control row descriptions in both presentation catalogs all said "150 rows" for `CONTRACT_TRACKER.md`. Actual count: **156 rows** (MSA 35 + SOW core 29 + Appendix A 92). The error came from initial estimates (MSA ~30, SOW ~28) that didn't account for sub-clauses (MSA-4.b split into 4.b.i…4.b.v, MSA-6 split into 6.a–6.d, MSA-3 split into 3.a–3.d, SOW-9.x and SOW-11 sub-rows). Tracker file `CONTRACT_TRACKER.md` change-log entry self-reference also corrected.
+- **Doc Control table in `presentation_dark.html` had a duplicate v4.25 row.** Two v4.25 entries existed — one at line 790 (marked `Current`, with the "WGU stakeholder-feedback reshape" description that matches the light catalog) and one at line 824 (marked `Superseded`, with an alternate description not in the light catalog at all). The orphan row at line 824 has been removed.
+- **Doc Control table in `presentation_dark.html` v4.25 row status corrected.** The remaining v4.25 row (line 790) was marked `Current` even though v4.33 supersedes it. Flipped to `Superseded` so both catalogs show exactly one `Current` row (v4.34).
+
+### What did NOT change
+
+- Storyboard total: 76 screens, no UI changes.
+- `student/index.html` content (31st consecutive release of the freeze; corresponds to the JFT-deployed MVP at `wgu.teamjft.com` — no design changes to MVP screens).
+- PNG count: 152 (unchanged).
+- The substantive v4.31–v4.33 work (contract trackers, sensitive-data sweep, product-name correction, narrative scrub, D2 analysis-findings sweep) remains intact. v4.34 is bookkeeping only.
+
+### Files touched
+
+- `CHANGELOG.md` — v4.31 row-count references corrected; this entry added.
+- `_contract_tracking/CONTRACT_TRACKER.md` — internal change-log row-count self-reference corrected.
+- `presentation.html` — v4.31 Doc Control row description row-count corrected; version stamps bumped to v4.34; Doc Control v4.34 row added; v4.33 → Superseded.
+- `presentation_dark.html` — v4.31 Doc Control row description row-count corrected; duplicate v4.25 row removed; remaining v4.25 row flipped from Current → Superseded; version stamps bumped; Doc Control v4.34 row added; v4.33 → Superseded.
+- `README.md`, `index.html`, `instructor/index.html`, `lrps/index.html`, `super_admin/index.html`, `tenant_admin/index.html`, `capture_screens.py`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — version stamps bumped v4.33 → v4.34.
+
+### Verification
+
+1. `_contract_tracking/CONTRACT_TRACKER.md` enumerates **156 rows** (verified by precise grep: MSA 35 + SOW core 29 + Appendix A 92).
+2. `_contract_tracking/SCREEN_JUSTIFICATIONS.md` enumerates **76 screens** (unchanged: student 34 + tenant_admin 23 + instructor 8 + super_admin 10 + lrps 1).
+3. Doc Control tables in `presentation.html` and `presentation_dark.html` now both contain the same set of version IDs, the same row count (22 → 23 after v4.34 addition), and exactly one `Current` row each (v4.34).
+4. Cleanliness grep against the known sensitive-pattern list returns zero matches.
+
+---
+
 ## v4.33 — 12 May 2026 — D2 analysis-findings sweep (per-persona READMEs and root README)
 
 Applies the WGU-side analysis findings F1–F13 (from the pre-build contract-vs-artifact review) to the per-persona READMEs and the root README. These are documentation-layer updates that record decisions and constraints JFT needs to design and build against; they do not change any storyboard UI.
@@ -108,7 +142,7 @@ WGU's requirement: every storyboard surface must trace to a contract requirement
 **`_contract_tracking/` folder** (NEW):
 
 - `README.md` — banner README. First sentence: "This folder is WGU contract tracking. It is NOT product specification. JFT must not build features for content in this folder."
-- `CONTRACT_TRACKER.md` — **150 rows** mapping every binding MSA / SOW / Appendix A requirement to storyboard coverage. Columns: ID · Source · Requirement · Type · JFT Commitment · Storyboard Coverage · Build Status · Owner · Acceptance · Notes. WGU Program Development updates Build Status as JFT delivers each row.
+- `CONTRACT_TRACKER.md` — **156 rows** mapping every binding MSA / SOW / Appendix A requirement to storyboard coverage. Columns: ID · Source · Requirement · Type · JFT Commitment · Storyboard Coverage · Build Status · Owner · Acceptance · Notes. WGU Program Development updates Build Status as JFT delivers each row.
 - `SCREEN_JUSTIFICATIONS.md` — **76 screen rows** reverse-mapping every storyboard surface to its contract grounding. Totals: 71 Contract-required · 5 Essential scaffolding · 0 Discretionary.
 
 ### Public-repo sensitive-data sweep
@@ -161,7 +195,7 @@ These were either added to in-place compliance tables in v4.18 without dedicated
 
 ### Files touched
 
-- `_contract_tracking/` (new folder): banner README, Contract Requirements Tracker (150 rows), Screen Justifications Tracker (76 rows). Contract financials and metadata generalized.
+- `_contract_tracking/` (new folder): banner README, Contract Requirements Tracker (156 rows), Screen Justifications Tracker (76 rows). Contract financials and metadata generalized.
 - Repo root `README.md`, `index.html`, `presentation.html`, `presentation_dark.html` — version stamps bumped to v4.31; author attribution generalized; LRPS admin avatar set to a fictional persona; `Skills` → `Skill` product-name correction across visible UI; Doc Control v4.31 row added in both presentation catalogs.
 - Per-persona `index.html` files (`instructor`, `lrps`, `super_admin`, `tenant_admin`) — version stamps bumped; CSS comments and directive references generalized; the User Management table row in Super Admin Screen 9 that had carried a real-staff identifier replaced with a fictional row; storyboard real-organization emails replaced with the reserved `example.edu` test domain. `student/index.html` untouched (29th consecutive release of the freeze).
 - Per-persona `README.md` files — author attribution + directive references generalized.
@@ -170,7 +204,7 @@ These were either added to in-place compliance tables in v4.18 without dedicated
 
 ### Verification
 
-1. `_contract_tracking/CONTRACT_TRACKER.md` enumerates 150 rows: MSA 30 + SOW core 28 + Appendix A 92 (28 + 14 + 15 + 15 + 20).
+1. `_contract_tracking/CONTRACT_TRACKER.md` enumerates 156 rows: MSA 35 + SOW core 29 + Appendix A 92 (28 + 14 + 15 + 15 + 20).
 2. `_contract_tracking/SCREEN_JUSTIFICATIONS.md` enumerates 76 screens: student 34 + tenant_admin 23 + instructor 8 + super_admin 10 + lrps 1.
 3. Prototype cleanliness check: `grep -rE "Required by|Contract reference|MSA §|TODO|FIXME|XXX" --include="*.html" --exclude-dir=_contract_tracking .` returns zero results.
 4. GitHub Pages exclusion: `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/` returns 404 (Jekyll leading-underscore default exclusion).
