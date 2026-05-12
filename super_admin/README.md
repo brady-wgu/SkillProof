@@ -1,6 +1,6 @@
 # Super Admin — Bob · v1.3
 
-[← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/JFT_SDP/super_admin/) · [Catalog](../presentation.html#sc-add-04)
+[← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/SkillProof/super_admin/) · [Catalog](../presentation.html#sc-add-04)
 
 ![Super Admin Portal hero](screenshots/sc-add-04_step02_screen02.png)
 

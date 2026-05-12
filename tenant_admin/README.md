@@ -1,6 +1,6 @@
 # Content Creator (Tenant Admin) — Alice · v1.3
 
-[← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) · [Catalog](../presentation.html#sc-add-02)
+[← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/SkillProof/tenant_admin/) · [Catalog](../presentation.html#sc-add-02)
 
 ![Content Creator Portal hero](screenshots/sc-add-02_step02_screen02.png)
 

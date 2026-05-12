@@ -1,6 +1,6 @@
 # LRPS Landing — Entry point for the admin portals
 
-[← Back to root README](../README.md) · [Live LRPS](https://brady-wgu.github.io/JFT_SDP/lrps/)
+[← Back to root README](../README.md) · [Live LRPS](https://brady-wgu.github.io/SkillProof/lrps/)
 
 ![LRPS landing hero](screenshots/lrps.png)
 

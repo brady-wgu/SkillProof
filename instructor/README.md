@@ -1,6 +1,6 @@
 # Instructor — Charlie · v1.3
 
-[← Back to root README](../README.md) · [Live dashboard](https://brady-wgu.github.io/JFT_SDP/instructor/) · [Catalog](../presentation.html#sc-add-03)
+[← Back to root README](../README.md) · [Live dashboard](https://brady-wgu.github.io/SkillProof/instructor/) · [Catalog](../presentation.html#sc-add-03)
 
 ![Instructor Dashboard hero](screenshots/sc-add-03_step03_screen03.png)
 

@@ -4,10 +4,10 @@
 
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
-[![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/JFT_SDP/)
-[![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation.html)
-[![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.43-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
+[![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/SkillProof/presentation.html)
+[![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/SkillProof/presentation_dark.html)
+[![Version](https://img.shields.io/badge/Version-4.44-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-75-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -37,15 +37,15 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 | Surface | URL | Description |
 |:--------|:----|:------------|
-| **Portal Selector** | [`/`](https://brady-wgu.github.io/JFT_SDP/) | Landing page with cards for every surface. **Start here.** |
-| **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/JFT_SDP/lrps/) | Entry point for all four personas (4 live SkillProof rows + illustrative filler). |
-| **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/JFT_SDP/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
-| **Content Creator Portal** (the requirements: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) | Alice — course config with per-LO threshold + weight + Add/Edit/Remove LO flows, Configure AI Coaching Prompt with file upload, deploy + LRPS provisioning, incident response, plus three Tenant Settings (Branding · Instructor Roster · Subject Lifecycle). Read-only view of other tenants on portal home. 23 screens. |
-| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/JFT_SDP/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
-| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/JFT_SDP/super_admin/) | Bob (Global Admin) — token usage, rate limits, compliance, geo-redundancy, cross-tenant audit log, **User Management** (3-tier role upgrade with min-2-Global-Admins constraint). 9 screens. |
-| **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/JFT_SDP/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
-| **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/JFT_SDP/presentation_dark.html) | Same catalog, dark-theme screenshots. |
-| **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/JFT_SDP/help/) | Shared documentation, training, and support surface accessible from every admin portal. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). Added v4.38. |
+| **Portal Selector** | [`/`](https://brady-wgu.github.io/SkillProof/) | Landing page with cards for every surface. **Start here.** |
+| **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/SkillProof/lrps/) | Entry point for all four personas (4 live SkillProof rows + illustrative filler). |
+| **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP. 34 screens. |
+| **Content Creator Portal** (the requirements: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — course config with per-LO threshold + weight + Add/Edit/Remove LO flows, Configure AI Coaching Prompt with file upload, deploy + LRPS provisioning, incident response, plus three Tenant Settings (Branding · Instructor Roster · Subject Lifecycle). Read-only view of other tenants on portal home. 23 screens. |
+| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — class heatmap → Sally drill-down → Audit Trail. 8 screens. |
+| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob (Global Admin) — token usage, rate limits, compliance, geo-redundancy, cross-tenant audit log, **User Management** (3-tier role upgrade with min-2-Global-Admins constraint). 9 screens. |
+| **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/SkillProof/presentation.html) | All 9 scenarios with workflow narratives and embedded screenshots. |
+| **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/SkillProof/presentation_dark.html) | Same catalog, dark-theme screenshots. |
+| **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/SkillProof/help/) | Shared documentation, training, and support surface accessible from every admin portal. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). Added v4.38. |
 
 **Total: 74 screens · 4 personas · 5 admin/learner surfaces · 1 LRPS entry · 2 reference catalogs.**
 
@@ -54,7 +54,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 ## Repo layout
 
 ```
-JFT_SDP/
+SkillProof/
 ├── index.html                  Portal selector landing
 ├── presentation.html           Scenario catalog (light)
 ├── presentation_dark.html      Scenario catalog (dark)
@@ -99,7 +99,7 @@ Click any persona folder to read its dedicated README.
 
 ### 🎓 Student (v1.2 MVP) — Sally
 
-**Surface:** [`student/`](student/) · [Live](https://brady-wgu.github.io/JFT_SDP/student/) · [README](student/README.md)
+**Surface:** [`student/`](student/) · [Live](https://brady-wgu.github.io/SkillProof/student/) · [README](student/README.md)
 
 **Persona:** Sally — Beginner / Intermediate / Advanced Python knowledge. Launches via LTI 1.3 from her zyBooks course page.
 
@@ -122,7 +122,7 @@ Click any persona folder to read its dedicated README.
 
 ### 🏢 Content Creator (Tenant Admin per the requirements) (v1.3) — Alice
 
-**Surface:** [`tenant_admin/`](tenant_admin/) · [Live](https://brady-wgu.github.io/JFT_SDP/tenant_admin/) · [README](tenant_admin/README.md)
+**Surface:** [`tenant_admin/`](tenant_admin/) · [Live](https://brady-wgu.github.io/SkillProof/tenant_admin/) · [README](tenant_admin/README.md)
 
 **Persona:** Alice — WGU Program Development (PDev) content owner. The requirements calls this role **"Tenant Admin"** (§2.2 deliverable, §2.5 admin portal). Alice's user-facing portal chrome calls it **"Content Creator"** per JFT meeting 10 May 2026 — same role, two names for ease of explanation to non-technical stakeholders. Authenticates via her own secret LRPS deep link.
 
@@ -141,7 +141,7 @@ Click any persona folder to read its dedicated README.
 
 ### 👨‍🏫 Instructor (v1.3) — Charlie
 
-**Surface:** [`instructor/`](instructor/) · [Live](https://brady-wgu.github.io/JFT_SDP/instructor/) · [README](instructor/README.md)
+**Surface:** [`instructor/`](instructor/) · [Live](https://brady-wgu.github.io/SkillProof/instructor/) · [README](instructor/README.md)
 
 **Persona:** Charlie — Instructor (per User Profile + the requirements) for E010 Foundations of Programming (Python), E075 Intermediate Python & Libraries, and E135 OOP with Python.
 
@@ -159,7 +159,7 @@ Click any persona folder to read its dedicated README.
 
 ### 🛡️ Super Admin (v1.3) — Bob
 
-**Surface:** [`super_admin/`](super_admin/) · [Live](https://brady-wgu.github.io/JFT_SDP/super_admin/) · [README](super_admin/README.md)
+**Surface:** [`super_admin/`](super_admin/) · [Live](https://brady-wgu.github.io/SkillProof/super_admin/) · [README](super_admin/README.md)
 
 **Persona:** Bob — WGU platform operations and infrastructure. Authenticates with MFA in addition to SSO.
 
@@ -177,7 +177,7 @@ Click any persona folder to read its dedicated README.
 
 ### 🚪 LRPS Landing (Entry Point)
 
-**Surface:** [`lrps/`](lrps/) · [Live](https://brady-wgu.github.io/JFT_SDP/lrps/) · [README](lrps/README.md)
+**Surface:** [`lrps/`](lrps/) · [Live](https://brady-wgu.github.io/SkillProof/lrps/) · [README](lrps/README.md)
 
 **Persona:** Lana (the fictional LRPS admin who provisions the deep links) or any WGU staff with LRPS access.
 
@@ -269,7 +269,7 @@ All other surfaces (navbars, cards, forms, alerts, badges, status pills) use can
 
 ### Online
 
-The portal selector at [brady-wgu.github.io/JFT_SDP/](https://brady-wgu.github.io/JFT_SDP/) links to every surface. From there you can open any portal directly, or open LRPS first and click into a portal via its provider row.
+The portal selector at [brady-wgu.github.io/SkillProof/](https://brady-wgu.github.io/SkillProof/) links to every surface. From there you can open any portal directly, or open LRPS first and click into a portal via its provider row.
 
 ### Offline
 
