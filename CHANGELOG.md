@@ -6,6 +6,60 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.42 — 12 May 2026 — Footer cleanup: removed visible storyboard version-stamp paragraphs across every surface
+
+WGU Program Development direction: the WGU production footer should be the last visible thing on every page; no storyboard version-stamp text below it. The previous implementation (v4.39 / v4.40) wrapped the version stamp in a `<p class="sr-only">` tag intended to be screen-reader-only, but several surfaces (notably `index.html` root portal selector) do not define the `.sr-only` CSS rule, so the version stamp rendered visibly.
+
+### What changed
+
+Deleted the `<p class="sr-only">JFT SDP [persona] Storyboard v4.XX — Western Governors University …</p>` line from inside the WGU footer on every storyboard surface:
+
+- `student/index.html` (v4.40 stamp removed — first edit since the v4.40 freeze-restart, with explicit authorization for this specific change covering the footer cleanup directive)
+- `tenant_admin/index.html`, `instructor/index.html`, `super_admin/index.html`, `lrps/index.html`, `help/index.html` (v4.41 stamps removed)
+- `index.html` root portal selector (v4.41 stamp + URL + confidentiality notice — the visible leak flagged by WGU Program Development)
+- `presentation.html` + `presentation_dark.html` (v4.39 stamps removed; light + dark catalogs)
+
+The WGU production footer (logo + ADA Accommodation top row; copyright + Privacy Policy | Terms of Service | Honor Code bottom row) is now the last thing on every page. The only thing below the footer remains the `DEMO ONLY` meta-bar (storyboard navigation chrome) which is intentionally retained — it is the only element of the storyboard that JFT will not implement in production.
+
+### Why version info isn't lost
+
+- Storyboard release version still lives in the `<title>` tag of every persona file (browser tab title).
+- Storyboard release version still lives in the meta-bar (`SDP Design System v1.2` reference + Persona identifier).
+- Full version history lives in `CHANGELOG.md` and both presentation catalog Doc Control tables.
+- The hero-doc-info banner at the top of `presentation.html` and `presentation_dark.html` still shows the current catalog version + storyboard version for reviewers.
+
+None of the deleted text was load-bearing; it was redundant metadata duplicated from those other surfaces.
+
+### What did NOT change
+
+- WGU production footer markup (logo + links) — unchanged on all 9 surfaces.
+- Meta-bar (`DEMO ONLY` storyboard navigation chrome) — unchanged.
+- Storyboard surface count (6) and screen count (78).
+- Tracker row classifications.
+
+### Student freeze authorization
+
+`student/index.html` was modified in this release (sr-only paragraph removed). WGU Program Development authorized this specific change:
+
+> "If there's anything else like that on any other pages, including the MVP, remove any additional text. The standard footer should be the last thing on every page, including the MVP screen."
+
+The student freeze counter restarts again after v4.42. Future student-side edits still require explicit per-change authorization.
+
+### Files touched
+
+- `student/index.html`, `tenant_admin/index.html`, `instructor/index.html`, `super_admin/index.html`, `lrps/index.html`, `help/index.html`, `index.html`, `presentation.html`, `presentation_dark.html` — sr-only version-stamp paragraph deleted from inside the WGU footer.
+- `README.md`, all of the above HTML files, `_contract_tracking/CONTRACT_TRACKER.md`, `_contract_tracking/SCREEN_JUSTIFICATIONS.md`, `capture_screens.py` — version stamps bumped v4.41 → v4.42 in the remaining version-stamp locations (HTML `<title>`, presentation hero-doc-info, Doc Control rows, README badge, docstring).
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.42 row added; v4.41 → Superseded.
+- `CHANGELOG.md` — this entry.
+
+### Verification
+
+1. Cleanliness grep against the sensitive-pattern list returns zero matches.
+2. Doc Control: v4.42 Current, v4.41 Superseded in both presentation catalogs.
+3. Visual check: every storyboard page's last visible element is the WGU footer; the meta-bar follows underneath as storyboard navigation chrome. No "Storyboard vX.XX" or "WGU confidential" text visible between the WGU footer and the meta-bar.
+
+---
+
 ## v4.41 — 12 May 2026 — D3a build phase 2: Data & Integrations Hub on Super Admin (closes the final 5 true gaps)
 
 Closes the second themed surface from the v4.37 D3a build plan. Adds a new screen 11 to the Super Admin portal — **Data & Integrations Hub** — consolidating the five remaining Appendix A true gaps in a single cross-tenant surface. After this release, the D3a build phase is **complete**: zero true gaps remain in `CONTRACT_TRACKER.md`.

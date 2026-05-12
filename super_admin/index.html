@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.41</title>
+  <title>JFT SDP — Super Admin Portal — SC-ADD-04 Storyboard v4.42</title>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -2026,7 +2026,7 @@
 </section>
 
 
-<!-- Screen 11: Data & Integrations Hub — v4.41 closes 5 contract rows (A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 streaming). Cross-tenant scope; consolidates data-export functions moved from tenant_admin in v4.22. -->
+<!-- Screen 11: Data & Integrations Hub — v4.42 closes 5 contract rows (A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 streaming). Cross-tenant scope; consolidates data-export functions moved from tenant_admin in v4.22. -->
 <section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -2249,7 +2249,6 @@
       <a href="#" onclick="event.preventDefault();" style="color: #002855; font-weight: 600; text-decoration: none;">Honor Code</a>
     </div>
   </div>
-  <p class="sr-only">JFT SDP Super Admin Portal Storyboard v4.41 — Western Governors University</p>
 </footer>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
@@ -2277,7 +2276,7 @@
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 11; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values. v4.41: screen 11 added (Data & Integrations Hub) closing 5 D3a true gaps — A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 data streaming.
+  const TOTAL_SCREENS = 11; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values. v4.42: screen 11 added (Data & Integrations Hub) closing 5 D3a true gaps — A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 data streaming.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
