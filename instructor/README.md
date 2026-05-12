@@ -50,3 +50,11 @@ JFT SDP User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Auth
 - The conversation transcript on screen 7 surfaces the AI Coach's "LO miss" feedback — this is the intervention point where Charlie decides whether to trust the AI's read and reach out to the learner. Charlie does **not** override AI scores; the SDP is a practice tool, not a gradebook.
 - Source IPs in the Audit Trail (screen 8) are partially masked for the instructor view — full IPs are accessible to Super Admin only via the cross-tenant audit log.
 - v4.4 reframed all "Section 042" / "Spring 2026" copy to course-level. WGU's rolling-enrollment model means there are no fixed cohorts or sections — Charlie advises every learner currently active in his three courses (rolling).
+
+## Device context
+
+Desktop-primary. Drilling into individual learner records and reviewing AI conversation transcripts is an extended-session workflow that doesn't suit mobile screens. The mobile-first commitment in Appendix A §16.2 #7.2 applies universally, so the dashboard renders responsively, but the day-to-day usage pattern assumes a desktop session.
+
+## Underlying data model — captured from day one
+
+The instructor dashboard surfaces individual learner transcripts (Screen 7) and a full audit trail (Screen 8) of AI Coach interactions. To make those surfaces meaningful, **the question / student response / AI feedback / AI score tuple must be captured per interaction from day one of the student MVP**, even though the instructor drill-down UI itself is a post-MVP capability. Capturing the data early ensures that early students whose sessions occurred during the student-only MVP window are not invisible in the eventual instructor view. The MVP catalog narrative mentions storing "competency-level progress indicators and session timestamps" against the student's WGU ID; that minimum is insufficient for the SC-ADD-03 instructor experience and must be expanded to full interaction tuples in the v1.2 build.

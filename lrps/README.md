@@ -69,3 +69,7 @@ The LRPS landing was originally rendered in the legacy enterprise Bootstrap aest
 - The **DEMO ONLY banner** at the top of the table makes it clear to anyone landing here that this is a recreation, not the real LRPS.
 - Container max-width is `1920px` to use the full widescreen viewport — the real LRPS is a data-dense admin tool, and the SDP's default 1192px container made the table too cramped (see commit `8704b3b` for the layout fix).
 - The user avatar shows "Lana" because the real LRPS shows the logged-in WGU admin's identity. In the storyboard context, Lana is the fictional LRPS admin persona who provisions the deep links for Alice, Charlie, and Bob.
+
+## Custom integration boundary for WGU's distributed LMS
+
+WGU does not use a single off-the-shelf LMS (Canvas, Blackboard, Brightspace). It operates a distributed system across multiple platforms with LRPS as the in-house provisioning layer. Generic "LTI 1.3 compliance" claims from vendors do not, by themselves, guarantee compatibility with WGU's environment. Integration testing against the actual LRPS provider table, identity flows, and deep-link URI patterns is required. Any LRPS-specific integration work that goes beyond baseline LTI 1.3 (custom claim shapes, sub-tenant scoping, custom deep-link parameters) is scoped explicitly between JFT and WGU rather than assumed to be free.

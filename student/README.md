@@ -61,3 +61,7 @@ Honest call-outs of what the v1 student storyboard does **not** depict. These ar
 7. **WCAG 2.2 AA §2.4.7 (Focus Visible) — heading focus indicator suppressed.** The v1 CSS at `student/index.html` line ~238 includes `h1:focus-visible, …, h6:focus-visible { outline: none; }`, which removes the standard 3px Bright Blue focus ring from headings. This was caught in the v4.6 adversarial accessibility audit. The override exists across the v1 baseline; per the freeze directive, fixing it is out of scope for v1. **All v1.3 admin portals (Tenant Admin / Instructor / Super Admin / LRPS) and the root portal selector were fixed in v4.6** — only `student/index.html` retains the violation. v1.4 student refresh should remove the override (matching the v4.6 fix in the admin portals: just delete the heading-specific override; the standard `:focus-visible` rule above it provides a compliant 3px outline).
 
 These limitations are deliberately preserved in v1 (per WGU direction — the v1 student screens are frozen as a baseline). They are candidates for a v1.4 student refresh.
+
+## Device context
+
+Mobile-first per Appendix A §16.2 #7.2. WGU students access coursework on a mix of devices — phones, tablets, laptops, and from variable network conditions — so the Coding Coach must work on smaller viewports first and scale up. Progressive Web App support (§16.2 #7.7) is in scope for production. The student portal is the only surface in the storyboard where mobile is the optimization target; the three admin portals are desktop-primary.
