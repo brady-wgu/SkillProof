@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 152 PNGs (v4.34: audit follow-up — corrected tracker row-count claim 150 → 156 across CHANGELOG and Doc Control rows; removed a duplicate v4.25 Doc Control row in presentation_dark.html; flipped the remaining v4.25 row to Superseded; no storyboard UI changes; PNG counts unchanged from v4.33).
+Total: 152 PNGs (v4.35: F4 LTI Advantage post-MVP scope reconciled in lrps + tenant_admin READMEs; no storyboard UI changes; PNG counts unchanged from v4.34).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
