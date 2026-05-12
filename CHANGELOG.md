@@ -6,6 +6,30 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.32 — 12 May 2026 — v4.31 narrative scrub (meta-level cleanup of audit descriptions)
+
+Follow-up to v4.31. During post-merge verification of the public-repo cleanup, the v4.31 CHANGELOG entry and Doc Control row descriptions were found to re-introduce some of the same sensitive specifics they were describing as scrubbed (specific real names, specific real email addresses, the specific signing date). v4.32 generalizes those meta-descriptions so the audit log of what was scrubbed does not itself re-leak the same data.
+
+### What changed
+
+- v4.31 CHANGELOG entry's "Public-repo sensitive-data sweep" section, "Files touched" section, and verification step rewritten with generic descriptors in place of specific names, emails, and dates.
+- Doc Control v4.31 row in both presentation catalogs rewritten with the same generic descriptors.
+- Doc Control v4.32 row added; v4.31 marked Superseded.
+- Version stamps bumped v4.31 → v4.32 across files following the established release pattern.
+
+### What did NOT change
+
+- Storyboard total: 76 screens, no UI changes.
+- `student/index.html` content (30th consecutive release of the freeze).
+- The substantive v4.31 work (contract trackers, sensitive-data sweep, product-name correction). v4.32 only refines the audit narrative.
+
+### Verification
+
+1. Cleanliness grep against the known sensitive-pattern list returns zero matches across the repo (excluding the unavoidable `brady-wgu` GitHub username in repo URLs).
+2. Doc Control: v4.32 Current, v4.31 Superseded in both presentation catalogs.
+
+---
+
 ## v4.31 — 12 May 2026 — Contract tracking foundation (`_contract_tracking/` subfolder)
 
 WGU is establishing bidirectional traceability between the signed JFT MSA / SOW and the storyboard. v4.31 ships the foundation: a new `_contract_tracking/` subfolder with two trackers that defend against "extra work" pushback from JFT and prove contract-completeness back to WGU leadership. The folder is excluded from GitHub Pages by Jekyll's leading-underscore convention, so it never surfaces to JFT through the live storyboard.
@@ -26,17 +50,17 @@ The `brady-wgu/JFT_SDP` repo is intentionally public so the storyboard can be sh
 
 What was scrubbed:
 
-- **Real person attributions.** Author/directive references to real WGU staff replaced with "WGU Program Development", "WGU stakeholder", or "WGU direction". The fictional LRPS admin avatar previously named after a real person is now "Lana" (fictional persona, matching the Sally / Charlie / Alice / Bob storyboard pattern).
-- **Real email addresses.** All `@wgu.edu` addresses in storyboard UI (User Management table in `super_admin/index.html`, Instructor Roster in `tenant_admin/index.html`) changed to `@example.edu`. The User Management row previously labeled after a real WGU stakeholder is now "Miguel" / `miguel.alvarez@example.edu` (fictional).
-- **Contract financials.** Real hourly rate, total contract value, monthly hosting/support tiers, and milestone payment percentages removed from `_contract_tracking/CONTRACT_TRACKER.md`; replaced with semantic equivalents ("fixed-cost SOW with hourly rate × contracted hours", "milestone-based payment schedule per signed SOW").
-- **Contract metadata.** Acrobat Sign transaction ID, specific signing date (03 Mar 2026 → "2026"), and JFT primary contact name + email removed from `_contract_tracking/CONTRACT_TRACKER.md`.
-- **Historical CHANGELOG attributions.** "Brady" and "Mike" replaced throughout historical entries. The User Management storyboard row "Mike" → "Miguel" updates also propagated to CHANGELOG narrative for consistency.
+- **Real person attributions.** Author and directive references to real WGU staff replaced with generic role descriptors (`WGU Program Development`, `WGU stakeholder`, `WGU direction`). The fictional storyboard persona names (Sally, Charlie, Alice, Bob, Jordan, Priya, Devon, and similar) are unchanged. The LRPS admin avatar and one Tenant Admin row in the User Management table that had been labeled with real-staff identifiers are now fully fictional personas.
+- **Real email addresses.** Every real-organization email address in storyboard UI replaced with the reserved `example.edu` test domain so any address rendered is unambiguously fictional.
+- **Contract financials.** Hourly rate, total contract value, monthly hosting/support fee tiers, and milestone payment percentages removed; replaced with semantic equivalents ("fixed-cost SOW with hourly rate × contracted hours", "milestone-based payment schedule per signed SOW").
+- **Contract metadata.** Acrobat Sign transaction ID, the specific signing date (generalized to the year), and JFT primary contact name + email removed.
+- **Historical CHANGELOG attributions.** Real-name references throughout prior entries swept to neutral role descriptors.
 
-Storyboard cost-dashboard mockup numbers (illustrative dollar amounts on `super_admin/index.html` token-usage screens) are intentionally retained as design content — they are clearly placeholder data, not real WGU spend, and JFT needs to see what the cost dashboard layout should look like. If those need further treatment, that is a follow-up commit.
+Storyboard cost-dashboard mockup numbers (illustrative dollar amounts on token-usage screens) are intentionally retained as design content — they are clearly placeholder data, not real WGU spend, and JFT needs to see what the cost dashboard layout should look like. If those need further treatment, that is a follow-up commit.
 
 ### Product-name correction: Skills → Skill
 
-Audit against the signed MSA/SOW confirmed the product is the **Skill Development Platform** (singular). The repo had been using "Skills Development Platform" (plural) in 9 places across 4 files. Refactored to match the contract:
+Audit against the signed MSA/SOW confirmed the product is the **Skill Development Platform** (singular). The repo had been using the plural form in 9 places across 4 files. Refactored to match the contract:
 
 - `index.html` (root) — page title, source comment, hero `<h1>`
 - `README.md` — top-level heading, Overview paragraph
@@ -70,19 +94,12 @@ These were either added to in-place compliance tables in v4.18 without dedicated
 
 ### Files touched
 
-- `_contract_tracking/README.md` — new (banner README + sensitive-data sweep)
-- `_contract_tracking/CONTRACT_TRACKER.md` — new (150 rows) + sweep of contract financials, names, emails, transaction ID, specific signing date
-- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` — new (76 rows) + sweep of author attribution + signing date
-- `README.md` (root) — version badge 4.30 → 4.31; LRPS persona rename Brady → Lana; sweep of author/directive references
-- `index.html` (root) — version stamps; LRPS persona rename Brady → Lana; sweep of historical comment "Mike-feedback" → "WGU-stakeholder-feedback"
-- `presentation.html` + `presentation_dark.html` — Doc Control v4.31 row added (sweep noted); v4.30 → Superseded; version stamps; sweep of author hero + historical Doc Control row narratives
-- `instructor/index.html` — version stamps; CSS comment "Brady's rule" → "WGU brand rule"
-- `lrps/index.html` — version stamps; LRPS persona avatar + table rows + meta-bar "Brady" → "Lana"
-- `super_admin/index.html` — version stamps; comment "per Brady AWS directive" → "per WGU direction for AWS-centric tooling"; User Management row "Mike" / `mike.hassett@wgu.edu` → "Miguel" / `miguel.alvarez@example.edu`; remaining `@wgu.edu` emails → `@example.edu`; audit log row reference Mike → Miguel
-- `tenant_admin/index.html` — version stamps; CSS comment "Brady's rule" → "WGU brand rule"; Instructor Roster `@wgu.edu` emails → `@example.edu`; comment "Mike-feedback reshape" → "WGU-stakeholder-feedback reshape"
-- `student/README.md`, `instructor/README.md`, `super_admin/README.md`, `tenant_admin/README.md`, `lrps/README.md` — author attribution + directive references swept
-- `capture_screens.py` — docstring version comment; comments "per Brady" / "per Mike-feedback" → "per WGU direction" / "per WGU-stakeholder feedback"
-- `CHANGELOG.md` — this entry plus historical sweep of Brady and Mike references throughout prior entries
+- `_contract_tracking/` (new folder): banner README, Contract Requirements Tracker (150 rows), Screen Justifications Tracker (76 rows). Contract financials and metadata generalized.
+- Repo root `README.md`, `index.html`, `presentation.html`, `presentation_dark.html` — version stamps bumped to v4.31; author attribution generalized; LRPS admin avatar set to a fictional persona; `Skills` → `Skill` product-name correction across visible UI; Doc Control v4.31 row added in both presentation catalogs.
+- Per-persona `index.html` files (`instructor`, `lrps`, `super_admin`, `tenant_admin`) — version stamps bumped; CSS comments and directive references generalized; the User Management table row in Super Admin Screen 9 that had carried a real-staff identifier replaced with a fictional row; storyboard real-organization emails replaced with the reserved `example.edu` test domain. `student/index.html` untouched (29th consecutive release of the freeze).
+- Per-persona `README.md` files — author attribution + directive references generalized.
+- `capture_screens.py` — docstring version comment and code comments generalized.
+- `CHANGELOG.md` — this entry plus historical sweep of named-attribution references throughout prior entries.
 
 ### Verification
 
@@ -91,7 +108,7 @@ These were either added to in-place compliance tables in v4.18 without dedicated
 3. Prototype cleanliness check: `grep -rE "Required by|Contract reference|MSA §|TODO|FIXME|XXX" --include="*.html" --exclude-dir=_contract_tracking .` returns zero results.
 4. GitHub Pages exclusion: `https://brady-wgu.github.io/JFT_SDP/_contract_tracking/` returns 404 (Jekyll leading-underscore default exclusion).
 5. Doc Control: v4.31 Current, v4.30 Superseded in both presentation catalogs.
-6. Public-repo cleanliness audit: `grep -rE "Brady|Vivek|Sadh|Pandey|Hassett|Bevan|Perkinson|\bMike\b|@wgu\.edu|@jellyfishtechnologies|03 MAR 2026|03 Mar 2026|142,500|4,750|CBJC" .` returns zero matches (excluding the unavoidable `brady-wgu` GitHub username in repo URLs).
+6. Public-repo cleanliness audit: grep against known sensitive-pattern lists (real personal names, real email addresses, contract financial amounts, contract metadata identifiers, specific contract dates) returns zero matches in the repo (excluding the unavoidable `brady-wgu` GitHub username in repo URLs).
 
 ---
 

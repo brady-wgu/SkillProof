@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 152 PNGs (v4.31: contract tracking foundation added in `_contract_tracking/`; no storyboard UI changes; PNG counts unchanged from v4.30).
+Total: 152 PNGs (v4.32: meta-level narrative scrub in v4.31 CHANGELOG and Doc Control descriptions; no storyboard UI changes; PNG counts unchanged from v4.30).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
