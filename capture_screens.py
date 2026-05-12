@@ -14,7 +14,7 @@ Outputs (per persona):
     super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
 
-Total: 154 PNGs after capture (v4.40: WGU production footer extended to student/index.html with explicit per-change authorization (ending the 36-consecutive-release freeze streak). Footer now present on every storyboard surface. PNG counts unchanged from v4.39).
+Total: 156 PNGs after capture (v4.41: D3a build phase complete — new super-11 Data & Integrations Hub closes the final 5 true gaps; storyboard screen count 77 → 78. PNG count grows 154 → 156 after re-capture executes locally for super-11 light + dark).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
