@@ -6,6 +6,62 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.45 — 13 May 2026 — Full screenshot regeneration after SkillProof rename + footer additions
+
+Every PNG in the repo was rebuilt today. The screenshots had drifted out of sync after a sequence of structural changes earlier in the week:
+
+- **v4.38** added the new Help & Resources shared surface (`help/index.html`); it had never been captured.
+- **v4.39 / v4.40** deployed the WGU production footer globally across all 9 storyboard surfaces.
+- **v4.41** added Super Admin screen 11 (Data & Integrations Hub); the capture script still topped out at screen 10.
+- **v4.42** removed the visible version-stamp paragraph from inside the WGU footer on every page.
+- **v4.43** renamed the product from "Skill Development Platform / SDP" to "SkillProof" across every visible surface.
+- **v4.44** renamed the GitHub repo + Pages URL.
+
+After all that, the existing screenshots showed the old name, the wrong URL, no footer, and a stale version stamp. v4.45 regenerates them in a single pass.
+
+### What changed
+
+- **`capture_screens.py` extended** with three new capture targets:
+  - `super_admin/index.html` screen list expanded from 10 to 11 (adding screen 11, the v4.41 Data & Integrations Hub).
+  - New `help/index.html` capture (single-page surface; 1 PNG light + 1 dark).
+  - New root `index.html` capture writing to `assets/landing/{light,dark}.png`. This is the hero image the README displays at the top of the repo and at the top of the GitHub Pages site.
+- **PNG counts after capture:**
+
+| Surface | Light | Dark |
+|---|---:|---:|
+| `student/screenshots[_dark]/` | 34 | 34 |
+| `tenant_admin/screenshots[_dark]/` | 23 | 23 |
+| `super_admin/screenshots[_dark]/` (was 10) | **11** | **11** |
+| `instructor/screenshots[_dark]/` | 8 | 8 |
+| `lrps/screenshots[_dark]/` | 1 | 1 |
+| `help/screenshots[_dark]/` (new) | **1** | **1** |
+| `assets/landing/` (was stale) | 1 | 1 |
+| **Total per theme** | **79** | **79** |
+
+Grand total **158 PNGs** (76 persona-screens × 2 themes = 152, plus the new help PNGs already counted, plus 2 landing files = **158**).
+
+### What did NOT change
+
+- **No HTML / UI structural changes.** This is purely a screenshot refresh.
+- **Storyboard surface count** (6) and **screen count** (78) — unchanged.
+- **`student/index.html`** — touched only for the version-stamp bump (no logic change). First release since the v4.43/v4.44 freeze-restart sequence.
+
+### Files touched
+
+- `capture_screens.py` — three new portal entries (super_admin screen-11, help, landing) plus a special-case in `out_dir_for` and the inner capture loop for the root `index.html` → `assets/landing/{theme}.png` path.
+- All persona / help `index.html` files, `presentation.html` + `presentation_dark.html`, `_contract_tracking/CONTRACT_TRACKER.md` + `SCREEN_JUSTIFICATIONS.md`, `README.md` — version stamps bumped v4.44 → v4.45.
+- `presentation.html` + `presentation_dark.html` — Doc Control v4.44 flipped to Superseded, new v4.45 Current row added. The v4.43 entry's stale "deferred to v4.45" reference corrected to "deferred to v4.44" (a small carryover bug from the v4.44 release).
+- All `**/screenshots/` and `**/screenshots_dark/` PNGs — regenerated.
+- `assets/landing/light.png` + `dark.png` — regenerated.
+
+### Verification
+
+1. PNG count per persona matches the docstring table above (student 34/34, tenant_admin 23/23, super_admin 11/11, instructor 8/8, lrps 1/1, help 1/1, landing 1/1).
+2. README hero image (`assets/landing/light.png`) now shows the SkillProof-branded portal selector with the WGU footer visible.
+3. v4.45 Current and v4.44 Superseded in both presentation Doc Control tables.
+
+---
+
 ## v4.44 — 12 May 2026 — GitHub repo + Pages URL update completing the SkillProof rename
 
 Follow-up to v4.43 that finishes the rename by moving the GitHub repo URLs to match the new product name. The v4.43 entry below explicitly deferred this as "a separate operation requiring explicit authorization"; WGU Program Development authorized the URL update shortly after v4.43 merged.
