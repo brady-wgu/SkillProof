@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.48</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.49</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1478,29 +1478,6 @@
         </div>
       </div>
 
-      <h2 class="h5 mb-2">Assessment pattern per objective</h2>
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th style="width:10%;">Objective</th>
-            <th style="width:45%;">Title</th>
-            <th style="width:25%;">Topic</th>
-            <th style="width:20%;">Pattern</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>1.1</td><td>Define classes &amp; constructors</td><td>Classes &amp; Objects</td><td>Code + reflection</td></tr>
-          <tr><td>1.2</td><td>Instantiate objects &amp; access state</td><td>Classes &amp; Objects</td><td>Code</td></tr>
-          <tr><td>1.3</td><td>Apply attributes &amp; methods correctly</td><td>Classes &amp; Objects</td><td>Code + explain</td></tr>
-          <tr><td>2.1</td><td>Single inheritance</td><td>Inheritance &amp; Composition</td><td>Code</td></tr>
-          <tr><td>2.2</td><td>Composition over inheritance</td><td>Inheritance &amp; Composition</td><td>Reflection</td></tr>
-          <tr><td>3.1</td><td>Method overriding</td><td>Polymorphism &amp; Encapsulation</td><td>Code + explain</td></tr>
-          <tr><td>3.2</td><td>Property decorators &amp; private state</td><td>Polymorphism &amp; Encapsulation</td><td>Code</td></tr>
-          <tr><td>4.1</td><td>Factory pattern</td><td>Common Design Patterns</td><td>Code</td></tr>
-          <tr><td>4.2</td><td>Strategy pattern</td><td>Common Design Patterns</td><td>Code</td></tr>
-          <tr><td>4.3</td><td>Observer pattern</td><td>Common Design Patterns</td><td>Code + explain</td></tr>
-        </tbody>
-      </table>
     </div>
   </main>
   <div class="floating-actions">
@@ -1679,7 +1656,6 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <tr><th style="width:38%;">Preferred model</th><td>Claude Sonnet 4.5 (Anthropic)</td></tr>
                 <tr><th>Fallback chain</th><td>Claude Sonnet 4.5 &rarr; GPT-5 &rarr; Gemini 2.5 Pro</td></tr>
                 <tr><th>Coaching style</th><td>Socratic (recommended)</td></tr>
-                <tr><th>Assessment pattern</th><td>Per objective &mdash; Code, Code + reflection, or Code + explain</td></tr>
               </table>
 
               <h3 class="eyebrow mb-2"><span class="material-icons-outlined">smart_toy</span>Step 4 · AI Coaching Prompt <span class="badge badge-gray" style="margin-left:6px;">v3</span></h3>
@@ -2425,47 +2401,23 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#">Tenant Settings</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Branding</span>
+        <span>Tenant Settings</span>
       </nav>
-      <h1 id="s21-heading">Branding &amp; Customization</h1>
+      <span class="eyebrow"><span class="material-icons-outlined">corporate_fare</span>Tenant Configuration</span>
+      <h1 id="s21-heading" class="mb-4">Tenant Settings</h1>
 
       <div class="row mb-3">
-        <div class="col-5">
+        <div class="col-7">
           <div class="pgn__card pgn__card-featured">
             <div class="pgn__card-section">
-              <div class="form-group" style="margin-bottom:0;">
-                <label class="form-label" for="b-logo">Tenant logo</label>
-                <div class="d-flex align-items-center gap-2" style="height:44px;">
-                  <div style="width:60px; height:44px; border-radius: var(--pgn-size-border-radius-base); background: var(--pgn-color-bg-light); display:flex; align-items:center; justify-content:center; border: 1px solid var(--pgn-color-gray-200);">
-                    <img src="../assets/wgu-corporation-full-color.png" alt="WGU PDev" style="height:24px; width:auto;">
-                  </div>
-                  <button class="btn btn-outline-primary btn-sm">Upload new&hellip;</button>
-                </div>
-                <div class="form-help">PNG or SVG · max 200&times;60px</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-7">
-          <div class="preview-card" style="border-left-color: var(--pgn-color-info-base);">
-            <div class="preview-label" style="color: var(--pgn-color-info-base);"><span class="material-icons-outlined">preview</span>Learner-facing footer (standardized WGU)</div>
-            <div style="border-radius: var(--pgn-size-border-radius-lg); overflow: hidden; border: 1px solid var(--pgn-color-gray-100); background: #F5F7FA;">
-              <div style="padding: 20px 28px; border-bottom: 1px solid #E4E7EB; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-                <img src="../assets/wgu-corporation-full-color.png" alt="WGU" style="height: 28px; width: auto;">
-                <a href="#" onclick="event.preventDefault();" style="font-size: 13px; color: var(--color-dark-navy); font-weight: 600; text-decoration: none;">ADA Accommodation</a>
-              </div>
-              <div style="padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-                <span style="font-size: 12px; color: var(--pgn-color-gray-700);">&copy; 2026 Western Governors University &ndash; WGU. All Rights Reserved.</span>
-                <div style="display: flex; gap: 12px; font-size: 13px; align-items: center;">
-                  <a href="#" onclick="event.preventDefault();" style="color: var(--color-dark-navy); font-weight: 600; text-decoration: none;">Privacy Policy</a>
-                  <span style="color: var(--pgn-color-gray-300);">|</span>
-                  <a href="#" onclick="event.preventDefault();" style="color: var(--color-dark-navy); font-weight: 600; text-decoration: none;">Terms of Service</a>
-                  <span style="color: var(--pgn-color-gray-300);">|</span>
-                  <a href="#" onclick="event.preventDefault();" style="color: var(--color-dark-navy); font-weight: 600; text-decoration: none;">Honor Code</a>
-                </div>
-              </div>
+              <span class="eyebrow"><span class="material-icons-outlined">badge</span>Tenant identity</span>
+              <h2 class="h5 mb-2">PDev &mdash; Program Development</h2>
+              <table class="pgn__data-table" style="border:none; box-shadow:none;">
+                <tr><th style="width:32%;">Tenant ID</th><td><code>tenant_pdev</code></td></tr>
+                <tr><th>Parent organization</th><td>Western Governors University</td></tr>
+                <tr><th>LRPS launch URL</th><td><code>lrps.wgu.edu/provision/563034848</code></td></tr>
+                <tr><th>Assigned JFT CSM</th><td>Jordan &middot; <a href="#" onclick="event.preventDefault();">support@jft.com</a></td></tr>
+              </table>
             </div>
           </div>
         </div>
@@ -2656,11 +2608,11 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Subject form">03</button>
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives (inline expanders, per-objective passing threshold)">04</button>
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Model &amp; Coaching (model picker + coaching style + assessment pattern per objective)">09</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Model &amp; Coaching (model picker + coaching style)">09</button>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Configure AI Coaching Prompt">08</button>
       <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Deploy review">11</button>
       <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Deploy success + LRPS provisioning ticket">12</button>
-      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Tenant Settings — Branding (§7.9)">21</button>
+      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Tenant Settings (tenant identity card)">21</button>
       <button class="step-btn" onclick="goToScreen(23)" aria-label="Screen 23: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">23</button>
     </nav>
 
