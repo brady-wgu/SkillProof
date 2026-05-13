@@ -6,6 +6,17 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.49 — 13 May 2026 — Follow-on tenant_admin trims (screens 09 + 21)
+
+Two quick follow-ups from the same WGU screen-by-screen walkthrough that drove v4.48.
+
+- **Screen 09 — Assessment pattern per objective table removed.** The 10-row table duplicated screen-04 data with no editing affordance, so it was contributing visual noise without a use case. Matching row also dropped from the screen-11 deploy summary so the review screen doesn't reference data that no longer exists. Meta-bar aria-label and `SCREEN_JUSTIFICATIONS.md` row for `tenant-09` trimmed.
+- **Screen 21 — rebuilt as a clean Tenant Settings landing.** The prior page only had a logo upload + a static preview of the standardized WGU footer (the live footer already renders on every page, so the preview was redundant; the logo affordance isn't in active v1.2 MVP scope). Replaced with a single read-only **Tenant identity** card showing tenant name (`PDev — Program Development`), Tenant ID (`tenant_pdev`), parent organization (`Western Governors University`), LRPS launch URL, and assigned JFT CSM (`Jordan · support@jft.com`). Contract grounding: `A-8.6` multi-tenancy logical isolation + `A-9.7` dedicated CSM. Tracker row updated.
+
+End-of-day sequential renumber pass still deferred per WGU direction.
+
+---
+
 ## v4.48 — 13 May 2026 — Tenant Admin screen-by-screen WGU walkthrough
 
 Brady walked the Tenant Admin flow screen by screen against the literal-builder rule (anything visible on the prototype ships verbatim, so anything visible needs to be in-scope, contract-grounded, and non-commentary). v4.48 bundles every cleanup from that pass into one release.
