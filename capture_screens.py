@@ -50,11 +50,11 @@ PORTALS = [
     {"file": "tenant_admin/index.html", "scenarios": [
         # v4.25: Team & Roles screen (formerly tenant_admin 22) moved to Super Admin per WGU-
         # stakeholder feedback reshape; old 23 (Instructor Roster) -> 22, old 24 (Subject Lifecycle) -> 23.
-        ("sc-add-02", [1, 2, 3, 4, 8, 9, 10, 11, 12, 21, 22, 23]),  # 21 Branding, 22 Instructor Roster, 23 Subject Lifecycle. v4.47: dropped 5/6/7 (LO add/edit/remove screens) — screen 4 now manages topics + LOs inline via expanders.
+        ("sc-add-02", [1, 2, 3, 4, 9, 8, 11, 12, 21, 23]),  # 21 Branding, 23 Subject Lifecycle. v4.47: dropped 5/6/7 (objective add/edit/remove screens) — screen 4 now manages topics + objectives inline via expanders. v4.48: dropped 10 (Scoring style absorbed into screen 9) and reordered 9 before 8 so the model + coaching basics are picked before the custom AI prompt. v4.48: dropped 22 (Instructor Roster moved to super_admin under Global Admin scope).
         ("sc-add-06", [13, 14, 15, 16, 17, 18, 19, 20]),
     ]},
     {"file": "super_admin/index.html", "scenarios": [
-        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]),  # v4.25 screen 9 User Management; v4.28 screen 10 External Tooling & Integrations; v4.41 screen 11 Data & Integrations Hub.
+        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),  # v4.25 screen 9 User Management; v4.28 screen 10 External Tooling & Integrations; v4.41 screen 11 Data & Integrations Hub; v4.48 screen 12 Instructor Roster & Course Assignment (moved from tenant_admin under Global Admin scope).
     ]},
     {"file": "instructor/index.html", "scenarios": [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
