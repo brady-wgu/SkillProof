@@ -6,6 +6,37 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.47 — 13 May 2026 — Tenant Admin LO management collapsed into a single in-place expander surface
+
+Tenant Admin screen 04 (Topics & Learning Objectives) used to be the entry point to a 4-screen flow: a flat data table at 04, then three follow-up screens for Add LO (05), Edit LO (06), and Remove LO (07). For a basic copy/paste/edit operation on short strings, that's heavier than the contract calls for — and JFT, being literal builders, would ship the 4-screen flow verbatim.
+
+v4.47 collapses the entire flow onto screen 04. The new pattern: one collapsible expander per topic, with inline-editable LO text, threshold (%), and weight (×) inputs per row, plus an inline "Add Learning Objective" inside each topic, a "Remove topic" inside each topic, and an "Add Topic" at the bottom.
+
+### What changed
+
+- **`tenant_admin/index.html`:**
+  - Screen 04 main content replaced with `.lo-topics` expander pattern (4 `<details>` blocks, one per topic; native HTML disclosure with caret rotation and light/dark theming).
+  - Screens 05, 06, 07 sections removed.
+  - Meta-bar Flow A buttons for 05 / 06 / 07 removed.
+  - Keyboard arrow navigation patched to skip the 05-07 gap by walking forward/backward to the nearest existing `screen-N` element. `TOTAL_SCREENS` still reads 23 (preserves the comment-grounded historical numbering); the sequential renumber pass is deferred to end of day per WGU direction.
+  - Screen 04 also picked up a one-line lede above the topic list explaining that threshold and weight are editable in place.
+- **Bundled in this release (small earlier edits in the same session):**
+  - Screen 02 subject list rows had `1,284 active learners` / `18 active learners` / `0 active learners` text stripped — "live learners" is not in scope for SkillProof and shouldn't appear on a developer-facing prototype that gets built verbatim.
+  - Screen 04's old "LO Management · Add / Edit / Remove" eyebrows (which lived on the now-deleted 05 / 06 / 07) had been re-labeled to "Learning Objectives · Add / Edit / Remove" prior to the screens being deleted — kept in the diff for traceability.
+- **`capture_screens.py`:** `sc-add-02` screen list updated `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 21, 22, 23]` → `[1, 2, 3, 4, 8, 9, 10, 11, 12, 21, 22, 23]`. Tenant Admin per-persona PNG total drops 23 → 20 (per theme).
+- **Stale PNGs removed:** `tenant_admin/screenshots/sc-add-02_step05_screen05.png`, `step06_screen06.png`, `step07_screen07.png` (and the matching `_dark` files).
+- **`_contract_tracking/SCREEN_JUSTIFICATIONS.md`:** rows for `tenant-05`, `tenant-06`, `tenant-07` collapsed into a single updated `tenant-04` row noting the inline pattern.
+
+### Verification notes
+
+1. `tenant_admin/index.html` no longer contains `<section class="screen" id="screen-5">`, `screen-6`, or `screen-7`. (`grep -c 'id="screen-[567]"' tenant_admin/index.html` returns 0.)
+2. Meta-bar Flow A has 12 buttons (was 15): 01-04, 08-12, 21-23.
+3. Keyboard arrow nav: ArrowRight on screen-04 lands on screen-08; ArrowLeft on screen-08 lands on screen-04.
+4. PNG totals after the next capture run: tenant_admin 20 light + 20 dark = 40 (was 46). Overall storyboard PNG total drops 158 → 152 (158 − 6).
+5. End-of-day renumber pass will re-sequence screens 8-23 → 5-20 and regenerate captures from scratch; capture filenames remain `sc-add-02_stepNN_screenNN.png` with `step_idx` = ordinal in the capture list (so screen-08's PNG will be `step05_screen08.png` until the renumber).
+
+---
+
 ## v4.46 — 13 May 2026 — Favicon (WGU shield) added to every storyboard surface
 
 Browser tabs for the storyboard now show the WGU shield instead of the default page icon. The favicon is the same blue WGU mark already inline in each page's upper-left navbar (`WGU_LOGO_BLUE`), extracted once to `assets/wgu-favicon.png` (48,655 bytes) and referenced via `<link rel="icon" type="image/png" href="…/assets/wgu-favicon.png">` in every HTML head.

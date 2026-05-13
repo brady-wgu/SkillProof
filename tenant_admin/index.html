@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.46</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.47</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -432,6 +432,70 @@
        NUMBERED LIST ROWS (Subjects, Topics)
        ================================================================ */
     .row-list { display: flex; flex-direction: column; gap: var(--pgn-spacing-1); }
+
+    /* Learning Objective topic expanders (screen 4) */
+    .lo-topics { display: flex; flex-direction: column; gap: var(--pgn-spacing-2); }
+    .lo-topic {
+      border: 1px solid var(--pgn-color-gray-300);
+      border-radius: var(--pgn-border-radius-md);
+      background: var(--pgn-color-white);
+      overflow: hidden;
+    }
+    [data-theme="dark"] .lo-topic { border-color: #1F2C44; background: #11192A; }
+    .lo-topic > summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--pgn-spacing-2);
+      padding: 14px 18px;
+      font-weight: 600;
+      color: var(--pgn-color-gray-900);
+      user-select: none;
+    }
+    [data-theme="dark"] .lo-topic > summary { color: #E6E6E6; }
+    .lo-topic > summary::-webkit-details-marker { display: none; }
+    .lo-topic-name { font-size: 16px; }
+    .lo-topic-meta { color: var(--pgn-color-gray-600); font-weight: 400; font-size: 14px; margin-left: var(--pgn-spacing-2); }
+    [data-theme="dark"] .lo-topic-meta { color: #9AA4B7; }
+    .lo-topic-caret { margin-left: auto; transition: transform 0.15s ease; color: var(--pgn-color-gray-700); }
+    .lo-topic[open] > summary .lo-topic-caret { transform: rotate(180deg); }
+    .lo-topic-table { margin: 0; border-top: 1px solid var(--pgn-color-gray-300); }
+    [data-theme="dark"] .lo-topic-table { border-top-color: #1F2C44; }
+    .lo-input {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid var(--pgn-color-gray-300);
+      border-radius: var(--pgn-border-radius-sm);
+      background: var(--pgn-color-white);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--pgn-color-gray-900);
+    }
+    .lo-num {
+      width: 64px;
+      padding: 6px 8px;
+      border: 1px solid var(--pgn-color-gray-300);
+      border-radius: var(--pgn-border-radius-sm);
+      background: var(--pgn-color-white);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--pgn-color-gray-900);
+      text-align: right;
+    }
+    [data-theme="dark"] .lo-input,
+    [data-theme="dark"] .lo-num { background: #0B1322; border-color: #1F2C44; color: #E6E6E6; }
+    .lo-topic-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--pgn-spacing-2);
+      padding: 12px 18px;
+      border-top: 1px solid var(--pgn-color-gray-300);
+      background: var(--pgn-color-gray-100);
+    }
+    [data-theme="dark"] .lo-topic-footer { border-top-color: #1F2C44; background: #0E1626; }
+
     .row-card {
       background: var(--pgn-color-white);
       border: 1px solid var(--pgn-color-gray-100);
@@ -1028,7 +1092,7 @@
               <span class="row-title">E010: Foundations of Programming (Python)</span>
               <span class="badge badge-success">In production</span>
             </div>
-            <div class="row-sub">Live · 1,284 active learners · last deployed 02 May 2026 · prompt v3</div>
+            <div class="row-sub">Live · last deployed 02 May 2026 · prompt v3</div>
           </div>
           <div class="row-actions">
             <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
@@ -1042,7 +1106,7 @@
               <span class="row-title">E135: Object-Oriented Programming with Python</span>
               <span class="badge badge-success">In production</span>
             </div>
-            <div class="row-sub">Live · 18 active learners · last deployed 06 May 2026 · prompt v1</div>
+            <div class="row-sub">Live · last deployed 06 May 2026 · prompt v1</div>
           </div>
           <div class="row-actions">
             <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
@@ -1056,7 +1120,7 @@
               <span class="row-title">E075: Intermediate Python &amp; Libraries</span>
               <span class="badge badge-warning">In staging</span>
             </div>
-            <div class="row-sub">Awaiting acceptance · 0 active learners · last build 04 May 2026</div>
+            <div class="row-sub">Awaiting acceptance · last build 04 May 2026</div>
           </div>
           <div class="row-actions">
             <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
@@ -1213,34 +1277,124 @@
       <span class="eyebrow"><span class="material-icons-outlined">list_alt</span>Step 2 of 5 · Topics &amp; Learning Objectives</span>
       <h1 id="s4-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
 
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th style="width:8%;">#</th>
-            <th style="width:42%;">Learning Objective</th>
-            <th style="width:18%;">Topic</th>
-            <th style="width:12%;" class="num-col">Threshold</th>
-            <th style="width:10%;" class="num-col">Weight</th>
-            <th style="width:10%;">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>1.1</td><td>Define classes &amp; constructors</td><td>Classes &amp; Objects</td><td class="num-col">70%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 1.1" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 1.1" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>1.2</td><td>Instantiate objects &amp; access state</td><td>Classes &amp; Objects</td><td class="num-col">70%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 1.2" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 1.2" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>1.3</td><td>Apply attributes &amp; methods correctly</td><td>Classes &amp; Objects</td><td class="num-col">75%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 1.3" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 1.3" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>2.1</td><td>Single inheritance</td><td>Inheritance &amp; Composition</td><td class="num-col">70%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 2.1" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 2.1" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>2.2</td><td>Composition over inheritance</td><td>Inheritance &amp; Composition</td><td class="num-col">70%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 2.2" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 2.2" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>3.1</td><td>Method overriding</td><td>Polymorphism &amp; Encapsulation</td><td class="num-col">75%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 3.1" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 3.1" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>3.2</td><td>Property decorators &amp; private state</td><td>Polymorphism &amp; Encapsulation</td><td class="num-col">70%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 3.2" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 3.2" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>4.1</td><td>Factory pattern</td><td>Common Design Patterns</td><td class="num-col">65%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 4.1" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 4.1" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>4.2</td><td>Strategy pattern</td><td>Common Design Patterns</td><td class="num-col">65%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 4.2" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 4.2" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-          <tr><td>4.3</td><td>Observer pattern</td><td>Common Design Patterns</td><td class="num-col">65%</td><td class="num-col">1.0×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Edit LO 4.3" onclick="goToScreen(6)"><span class="material-icons-outlined">edit</span></button><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 4.3" onclick="goToScreen(7)"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-        </tbody>
-      </table>
+      <p class="text-muted mb-3">Expand a topic to edit its learning objectives in place. Threshold and weight are editable per row.</p>
+
+      <div class="lo-topics mb-3">
+
+        <details class="lo-topic" open>
+          <summary>
+            <span class="lo-topic-name">Classes &amp; Objects</span>
+            <span class="lo-topic-meta">3 LOs · weight 3.0×</span>
+            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
+          </summary>
+          <table class="pgn__data-table lo-topic-table">
+            <thead>
+              <tr>
+                <th style="width:6%;">#</th>
+                <th style="width:54%;">Learning Objective</th>
+                <th style="width:14%;" class="num-col">Threshold</th>
+                <th style="width:12%;" class="num-col">Weight</th>
+                <th style="width:14%;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1.1</td><td><input class="lo-input" type="text" value="Define classes &amp; constructors"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="70">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 1.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+              <tr><td>1.2</td><td><input class="lo-input" type="text" value="Instantiate objects &amp; access state"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="70">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 1.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+              <tr><td>1.3</td><td><input class="lo-input" type="text" value="Apply attributes &amp; methods correctly"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="75">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 1.3"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+            </tbody>
+          </table>
+          <div class="lo-topic-footer">
+            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
+            <button class="btn btn-tertiary btn-sm" aria-label="Remove Classes &amp; Objects topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
+          </div>
+        </details>
+
+        <details class="lo-topic">
+          <summary>
+            <span class="lo-topic-name">Inheritance &amp; Composition</span>
+            <span class="lo-topic-meta">2 LOs · weight 2.0×</span>
+            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
+          </summary>
+          <table class="pgn__data-table lo-topic-table">
+            <thead>
+              <tr>
+                <th style="width:6%;">#</th>
+                <th style="width:54%;">Learning Objective</th>
+                <th style="width:14%;" class="num-col">Threshold</th>
+                <th style="width:12%;" class="num-col">Weight</th>
+                <th style="width:14%;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2.1</td><td><input class="lo-input" type="text" value="Single inheritance"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="70">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 2.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+              <tr><td>2.2</td><td><input class="lo-input" type="text" value="Composition over inheritance"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="70">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 2.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+            </tbody>
+          </table>
+          <div class="lo-topic-footer">
+            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
+            <button class="btn btn-tertiary btn-sm" aria-label="Remove Inheritance &amp; Composition topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
+          </div>
+        </details>
+
+        <details class="lo-topic">
+          <summary>
+            <span class="lo-topic-name">Polymorphism &amp; Encapsulation</span>
+            <span class="lo-topic-meta">2 LOs · weight 2.0×</span>
+            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
+          </summary>
+          <table class="pgn__data-table lo-topic-table">
+            <thead>
+              <tr>
+                <th style="width:6%;">#</th>
+                <th style="width:54%;">Learning Objective</th>
+                <th style="width:14%;" class="num-col">Threshold</th>
+                <th style="width:12%;" class="num-col">Weight</th>
+                <th style="width:14%;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>3.1</td><td><input class="lo-input" type="text" value="Method overriding"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="75">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 3.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+              <tr><td>3.2</td><td><input class="lo-input" type="text" value="Property decorators &amp; private state"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="70">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 3.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+            </tbody>
+          </table>
+          <div class="lo-topic-footer">
+            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
+            <button class="btn btn-tertiary btn-sm" aria-label="Remove Polymorphism &amp; Encapsulation topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
+          </div>
+        </details>
+
+        <details class="lo-topic">
+          <summary>
+            <span class="lo-topic-name">Common Design Patterns</span>
+            <span class="lo-topic-meta">3 LOs · weight 3.0×</span>
+            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
+          </summary>
+          <table class="pgn__data-table lo-topic-table">
+            <thead>
+              <tr>
+                <th style="width:6%;">#</th>
+                <th style="width:54%;">Learning Objective</th>
+                <th style="width:14%;" class="num-col">Threshold</th>
+                <th style="width:12%;" class="num-col">Weight</th>
+                <th style="width:14%;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>4.1</td><td><input class="lo-input" type="text" value="Factory pattern"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="65">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 4.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+              <tr><td>4.2</td><td><input class="lo-input" type="text" value="Strategy pattern"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="65">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 4.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+              <tr><td>4.3</td><td><input class="lo-input" type="text" value="Observer pattern"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" value="65">%</td><td class="num-col"><input class="lo-num" type="number" min="0" step="0.1" value="1.0">×</td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove LO 4.3"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
+            </tbody>
+          </table>
+          <div class="lo-topic-footer">
+            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
+            <button class="btn btn-tertiary btn-sm" aria-label="Remove Common Design Patterns topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
+          </div>
+        </details>
+
+      </div>
 
       <div class="d-flex gap-2 mb-3">
-        <button class="btn btn-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
-        <button class="btn btn-outline-primary"><span class="material-icons-outlined">create_new_folder</span>Add Topic</button>
+        <button class="btn btn-primary"><span class="material-icons-outlined">create_new_folder</span>Add Topic</button>
         <span class="d-flex align-items-center gap-2 ms-auto text-muted small"><span class="material-icons-outlined" style="font-size:16px;">summarize</span>10 LOs across 4 topics · Total weight 10.0× · Avg threshold 69.5%</span>
       </div>
 
@@ -2699,247 +2853,6 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 </section>
 
 <!-- ================================================================
-     SC-ADD-02 supporting — LO management screens (v4.22)
-     Add LO (screen 5), Edit LO (screen 6), Remove LO (screen 7).
-     Reached from screen 4 (Topics & LOs) via per-row Edit/Remove
-     icons or the "Add Learning Objective" CTA.
-     ================================================================ -->
-
-<!-- Screen 05: Add a Learning Objective (§16.5 #10.8 RBAC + per-LO threshold/weight) -->
-<section class="screen" id="screen-5" aria-labelledby="s5-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-5">
-    <div class="container-narrow">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#">E135</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(4); return false;">Topics &amp; Learning Objectives</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Add Learning Objective</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">add_circle</span>LO Management · Add</span>
-      <h1 id="s5-heading" class="h1 mb-2">Add a Learning Objective</h1>
-
-      <div class="pgn__card pgn__card-featured mb-3">
-        <div class="pgn__card-section">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="lo-topic">Parent topic</label>
-              <select class="form-control" id="lo-topic">
-                <option>1. Classes &amp; Objects</option>
-                <option>2. Inheritance &amp; Composition</option>
-                <option>3. Polymorphism &amp; Encapsulation</option>
-                <option selected>4. Common Design Patterns</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="lo-code">LO code</label>
-              <input class="form-control" id="lo-code" type="text" value="4.4" style="font-family: 'Lato', monospace;">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lo-title">Title</label>
-            <input class="form-control" id="lo-title" type="text" value="Decorator pattern" placeholder="e.g., Decorator pattern">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lo-desc">Description (for the AI coach)</label>
-            <textarea class="form-control" id="lo-desc" rows="3" placeholder="Explain what mastery of this LO looks like…">Recognize when wrapping an existing class with added behavior is preferable to subclassing. Apply Python's @decorator syntax or explicit composition with __call__.</textarea>
-            <div class="form-help">Keep short — long descriptions increase hallucination risk.</div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="lo-threshold">Passing threshold (per-LO)</label>
-              <div class="d-flex align-items-center gap-2">
-                <input class="form-control" id="lo-threshold" type="number" min="0" max="100" value="65" style="width:100px;">
-                <span class="text-muted">%</span>
-                <span class="badge badge-info ms-2">Mastered if learner ≥ 65%</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="lo-weight">Weight (per-LO)</label>
-              <div class="d-flex align-items-center gap-2">
-                <input class="form-control" id="lo-weight" type="number" min="0" step="0.1" value="1.0" style="width:100px;">
-                <span class="text-muted">×</span>
-                <span class="badge badge-info ms-2">Course total: 11.0× after add</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">close</span>Cancel</button>
-    <button class="btn btn-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">check</span>Save &amp; Return</button>
-  </div>
-</section>
-
-<!-- Screen 06: Edit a Learning Objective -->
-<section class="screen" id="screen-6" aria-labelledby="s6-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-6">
-    <div class="container-narrow">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#">E135</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(4); return false;">Topics &amp; Learning Objectives</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Edit LO 1.3</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">edit</span>LO Management · Edit</span>
-      <h1 id="s6-heading" class="h1 mb-2">Edit Learning Objective 1.3</h1>
-
-      <div class="pgn__card pgn__card-featured mb-3">
-        <div class="pgn__card-section">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="lo-topic-edit">Parent topic</label>
-              <select class="form-control" id="lo-topic-edit">
-                <option selected>1. Classes &amp; Objects</option>
-                <option>2. Inheritance &amp; Composition</option>
-                <option>3. Polymorphism &amp; Encapsulation</option>
-                <option>4. Common Design Patterns</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="lo-code-edit">LO code</label>
-              <input class="form-control" id="lo-code-edit" type="text" value="1.3" style="font-family: 'Lato', monospace;">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lo-title-edit">Title</label>
-            <input class="form-control" id="lo-title-edit" type="text" value="Apply attributes &amp; methods correctly">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lo-desc-edit">Description (for the AI coach)</label>
-            <textarea class="form-control" id="lo-desc-edit" rows="3">Demonstrate correct binding of instance vs class attributes; distinguish bound, unbound, and static methods; apply self appropriately. Coach should escalate to verbal explanation when the learner mixes up scope.</textarea>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="lo-threshold-edit">Passing threshold (per-LO)</label>
-              <div class="d-flex align-items-center gap-2">
-                <input class="form-control" id="lo-threshold-edit" type="number" min="0" max="100" value="75" style="width:100px;">
-                <span class="text-muted">%</span>
-                <span class="badge badge-warning ms-2">Was 70% · Δ +5%</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="lo-weight-edit">Weight (per-LO)</label>
-              <div class="d-flex align-items-center gap-2">
-                <input class="form-control" id="lo-weight-edit" type="number" min="0" step="0.1" value="1.0" style="width:100px;">
-                <span class="text-muted">×</span>
-                <span class="badge badge-info ms-2">Unchanged from 1.0×</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="alert alert-info mb-3">
-        <span class="material-icons-outlined">history</span>
-        <div><strong>Edit history:</strong>
-          <ul class="mb-0 mt-1 small">
-            <li>07 May 2026 · Alice · threshold 65% → 70%</li>
-            <li>22 Apr 2026 · Alice · title clarified</li>
-            <li>04 Apr 2026 · Alice · LO created</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">close</span>Cancel</button>
-    <button class="btn btn-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">check</span>Save Changes</button>
-  </div>
-</section>
-
-<!-- Screen 07: Remove a Learning Objective (confirmation + impact preview) -->
-<section class="screen" id="screen-7" aria-labelledby="s7-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-7">
-    <div class="container-narrow">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#">E135</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(4); return false;">Topics &amp; Learning Objectives</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Remove LO 4.3</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">delete_outline</span>LO Management · Remove</span>
-      <h1 id="s7-heading" class="h1 mb-2">Remove Learning Objective 4.3?</h1>
-
-      <div class="alert alert-danger mb-3">
-        <span class="material-icons-outlined">warning</span>
-        <div><strong>This action cannot be undone.</strong></div>
-      </div>
-
-      <div class="pgn__card mb-3">
-        <div class="pgn__card-section">
-          <h2 class="h5 mb-2">LO being removed</h2>
-          <table class="pgn__data-table" style="border:none; box-shadow:none;">
-            <tr><th style="width:30%;">LO code</th><td><strong>4.3</strong></td></tr>
-            <tr><th>Title</th><td>Observer pattern</td></tr>
-            <tr><th>Topic</th><td>Common Design Patterns</td></tr>
-            <tr><th>Passing threshold</th><td>65%</td></tr>
-            <tr><th>Weight</th><td>1.0×</td></tr>
-            <tr><th>Created</th><td>04 Apr 2026 by Alice</td></tr>
-            <tr><th>Last edited</th><td>04 Apr 2026 by Alice (created)</td></tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="pgn__card mb-3">
-        <div class="pgn__card-section">
-          <h2 class="h5 mb-2">Impact preview</h2>
-          <table class="pgn__data-table" style="border:none; box-shadow:none;">
-            <tr><th style="width:50%;">Active learners with this LO in their progress map</th><td>14 learners</td></tr>
-            <tr><th>Historical submissions tied to this LO</th><td>47 submissions (last 60 days)</td></tr>
-            <tr><th>Heatmap column on Instructor dashboard</th><td>Will disappear at next coach refresh</td></tr>
-            <tr><th>Course total weight after removal</th><td>10.0× → 9.0× (−1.0×)</td></tr>
-            <tr><th>Coach behavior</th><td>No longer scores or suggests work on this objective starting at next session</td></tr>
-            <tr><th>Audit trail</th><td>Removal logged with full LO snapshot</td></tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">close</span>Cancel — Keep LO</button>
-    <button class="btn btn-danger" onclick="goToScreen(4)"><span class="material-icons-outlined">delete</span>Confirm Remove</button>
-  </div>
-</section>
-
-<!-- ================================================================
      META BAR — DEMO ONLY
      ================================================================ -->
 <!-- WGU Footer (production design — mirrors the tenant-21 Branding preview pane) -->
@@ -2971,10 +2884,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: SSO landing">01</button>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Subject form">03</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; LOs (with per-LO threshold + weight)">04</button>
-      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Add a Learning Objective">05</button>
-      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Edit a Learning Objective">06</button>
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Remove a Learning Objective">07</button>
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; LOs (inline expanders, per-LO threshold + weight)">04</button>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Configure AI Coaching Prompt">08</button>
       <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Model picker">09</button>
       <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: Scoring style &amp; coaching defaults">10</button>
@@ -3033,8 +2943,16 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     if (!active) return;
     if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
     const n = parseInt(active.id.replace('screen-', ''));
-    if (e.key === 'ArrowRight' && n < TOTAL_SCREENS) goToScreen(n + 1);
-    if (e.key === 'ArrowLeft' && n > 1) goToScreen(n - 1);
+    if (e.key === 'ArrowRight') {
+      let next = n + 1;
+      while (next <= TOTAL_SCREENS && !document.getElementById('screen-' + next)) next++;
+      if (next <= TOTAL_SCREENS) goToScreen(next);
+    }
+    if (e.key === 'ArrowLeft') {
+      let prev = n - 1;
+      while (prev >= 1 && !document.getElementById('screen-' + prev)) prev--;
+      if (prev >= 1) goToScreen(prev);
+    }
   });
 
   function toggleTheme() {
