@@ -8,7 +8,7 @@
 **Date:** 12 May 2026
 **Author:** WGU Program Development
 **Source:** Signed JFT MSA / SOW (executed 2026)
-**Storyboard baseline:** brady-wgu/SkillProof at v4.44
+**Storyboard baseline:** brady-wgu/SkillProof at v4.45
 
 ## How to read this file
 
@@ -132,11 +132,11 @@ SOW core totals: 28 rows.
 | A-6.5 | Fallback mechanisms for LLM service interruptions | Yes | tenant-14, tenant-15 (fallback engaged) · tenant-19 (service restored) | In Dev | JFT | Fallback engages within seconds; demonstrated in SC-ADD-06 | |
 | A-6.6 | Token usage tracking and reporting | Yes | super-03 (per-tenant) · super-04 (drill-down) | In Dev | JFT | Token / cost telemetry by institution / course / provider | Critical for WGU's LLM API cost control (SOW §11 Note 5). |
 | A-6.7 | Configurable standard guardrails on all prompts for all LLMs | Yes | tenant-08 (4 short text-box guardrails) · referenced in student coaching | In Dev | JFT | Centralized guardrails injected into every prompt | |
-| A-6.8 | A/B testing framework for LLM configurations | Yes | tenant-08 ("A/B test variants" badge on Configure AI Coaching Prompt) | In Design | JFT | A/B experiments with statistical reporting | Partial coverage: medium-fidelity badge declares the capability; full A/B test config + results surface is a future enhancement. v4.44 re-audit downgraded Gap → Partial. |
+| A-6.8 | A/B testing framework for LLM configurations | Yes | tenant-08 ("A/B test variants" badge on Configure AI Coaching Prompt) | In Design | JFT | A/B experiments with statistical reporting | Partial coverage: medium-fidelity badge declares the capability; full A/B test config + results surface is a future enhancement. v4.45 re-audit downgraded Gap → Partial. |
 | A-6.9 | Handle multiple concurrent LLM requests per user | Yes | Non-visual (operational) | Not Started | JFT | Concurrent request load test passes | |
 | A-6.10 | Custom fine-tuning capabilities | **No** | Non-visual (out of scope) | Not Applicable | — | — | Only out-of-scope item in Appendix A. RAG used instead. |
 | A-6.11 | Real-time model performance monitoring | Yes | super-02 (KPI gauges) · super-04 (performance trends) | In Dev | JFT | Real-time latency / error / accuracy / fallback metrics | |
-| A-6.12 | LaTeX support for inputs and outputs | Yes | tenant-08 ("LaTeX rendering" badge on Configure AI Coaching Prompt) | In Design | JFT | LaTeX rendering on student + admin screens | Partial coverage: medium-fidelity badge declares the capability; inline LaTeX preview verification surface is a future enhancement. v4.44 re-audit downgraded Gap → Partial. |
+| A-6.12 | LaTeX support for inputs and outputs | Yes | tenant-08 ("LaTeX rendering" badge on Configure AI Coaching Prompt) | In Design | JFT | LaTeX rendering on student + admin screens | Partial coverage: medium-fidelity badge declares the capability; inline LaTeX preview verification surface is a future enhancement. v4.45 re-audit downgraded Gap → Partial. |
 | A-6.13 | Support 50,000+ daily active users | Yes | Non-visual (load test) | Not Started | JFT | k6 load test to 50K+ DAU passes | |
 | A-6.14 | Auto-scaling infrastructure for peak usage | Yes | super-02 (system health) | Not Started | JFT | Auto-scale events observable in monitoring | |
 | A-6.15 | Response times <3s for 95% of requests | Yes | super-02 (KPI) | Not Started | JFT | 95p latency under 3s in production | |
@@ -152,7 +152,7 @@ SOW core totals: 28 rows.
 | A-6.25 | Version control and code documentation | Yes | super-10 GitHub link card | In Dev | JFT | Repo + Confluence docs current | |
 | A-6.26 | Serverless components where appropriate | Yes | Non-visual (architectural) | Not Started | JFT | Serverless functions deployed for bursty jobs | |
 | A-6.27 | Event-driven architecture | Yes | Non-visual (architectural) | Not Started | JFT | Kafka / Pub/Sub / EventBridge backbone operational | |
-| A-6.28 | GraphQL API support | Yes | super-11 (Data & Integrations Hub — GraphQL endpoint card + sample query) | In Design | JFT | GraphQL alongside REST for low over-fetch contexts | v4.44 closed this gap on the new super-11 surface. |
+| A-6.28 | GraphQL API support | Yes | super-11 (Data & Integrations Hub — GraphQL endpoint card + sample query) | In Design | JFT | GraphQL alongside REST for low over-fetch contexts | v4.45 closed this gap on the new super-11 surface. |
 
 § 16.1 totals: 28 rows. 27 Yes commitments + 1 No (A-6.10).
 
@@ -192,13 +192,13 @@ SOW core totals: 28 rows.
 | A-8.5 | Custom LTI extensions | Yes | Non-visual (case-by-case) | Not Started | Both | Extensions scoped on request | |
 | A-8.6 | Multi-tenancy support for different institutions | Yes | tenant-02 (multi-tenant scoping callout) · super-02 (cross-tenant view) | In Dev | JFT | Logical isolation across data, auth, branding per tenant | |
 | A-8.7 | RESTful API for student engagement data export | Yes | Non-visual (Swagger external) | In Dev | JFT | API consumes engagement data with OAuth + filtering + pagination | |
-| A-8.8 | Real-time and batch data export capabilities | Yes | super-11 (Data export section — real-time + batch cards) | In Design | JFT | Real-time webhooks + scheduled batch exports | v4.44 closed this gap on the new super-11 surface. |
+| A-8.8 | Real-time and batch data export capabilities | Yes | super-11 (Data export section — real-time + batch cards) | In Design | JFT | Real-time webhooks + scheduled batch exports | v4.45 closed this gap on the new super-11 surface. |
 | A-8.9 | Support for common data formats (JSON, CSV, XML) | Yes | instructor-03 (Export CTAs) | In Dev | JFT | JSON / CSV / XML exports validated | XML added per v4.18 sweep. |
 | A-8.10 | API rate limiting and authentication | Yes | super-05 (rate limits) | In Dev | JFT | OAuth tokens + tenant-aware rate limits | |
 | A-8.11 | Comprehensive API documentation | Yes | Non-visual (Swagger external) | In Dev | JFT | Swagger + Postman collection published | Per JFT meeting 10 May 2026. |
-| A-8.12 | Webhook support for real-time notifications | Yes | super-11 (Webhook subscriptions section — 4-row event table + register endpoint CTA) | In Design | JFT | Configurable signed webhooks with retry/backoff | v4.44 closed this gap on the new super-11 surface. |
-| A-8.13 | GraphQL API for flexible data queries | Yes | super-11 (GraphQL API section — endpoint card + sample query code block) | In Design | JFT | Optional GraphQL with depth limits + FERPA-aware auth | v4.44 closed this gap on the new super-11 surface. |
-| A-8.14 | Data streaming capabilities | Yes | super-11 (Data streaming section — 3 provider cards Kafka / Kinesis / Pub-Sub) | In Design | JFT | Kafka / Kinesis / Pub/Sub streaming for analytics | v4.44 closed this gap on the new super-11 surface. |
+| A-8.12 | Webhook support for real-time notifications | Yes | super-11 (Webhook subscriptions section — 4-row event table + register endpoint CTA) | In Design | JFT | Configurable signed webhooks with retry/backoff | v4.45 closed this gap on the new super-11 surface. |
+| A-8.13 | GraphQL API for flexible data queries | Yes | super-11 (GraphQL API section — endpoint card + sample query code block) | In Design | JFT | Optional GraphQL with depth limits + FERPA-aware auth | v4.45 closed this gap on the new super-11 surface. |
+| A-8.14 | Data streaming capabilities | Yes | super-11 (Data streaming section — 3 provider cards Kafka / Kinesis / Pub-Sub) | In Design | JFT | Kafka / Kinesis / Pub/Sub streaming for analytics | v4.45 closed this gap on the new super-11 surface. |
 | A-8.15 | Custom integration development | Yes | Non-visual (case-by-case) | Not Started | Both | Custom integrations scoped on request | |
 
 § 16.3 totals: 15 rows. All Yes.
@@ -222,8 +222,8 @@ SOW core totals: 28 rows.
 | A-9.11 | Comprehensive documentation and user training materials | Yes | Non-visual (delivered as docs/videos) | Not Started | JFT | Documentation + training delivered for each role | |
 | A-9.12 | Scheduled maintenance with minimum 2-week notice | Yes | Non-visual (process) | Active | JFT | Maintenance notices on file | Rolling enrollment makes window selection nontrivial. |
 | A-9.13 | Proactive monitoring, alerting, issue resolution | Yes | super-02 (alerts) · tenant-13 (baseline) · tenant-14 (degradation) | In Dev | JFT | Alerts route to on-call engineer | |
-| A-9.14 | Self-service support portal | Yes | help-01 (Help & Resources surface — self-service section: search, 3 cards, updates feed, Contact JFT Support button) | In Design | JFT | Self-service portal scoped + delivered | v4.44 added the surface in a new shared `help/` folder linkable from every admin portal. |
-| A-9.15 | Video training resources | Yes | help-01 (Help & Resources surface — role-filtered video gallery with 9 tiles + featured callout) | In Design | JFT | Video modules per audience in support library | v4.44 added the surface alongside the self-service section in the same shared `help/` folder. |
+| A-9.14 | Self-service support portal | Yes | help-01 (Help & Resources surface — self-service section: search, 3 cards, updates feed, Contact JFT Support button) | In Design | JFT | Self-service portal scoped + delivered | v4.45 added the surface in a new shared `help/` folder linkable from every admin portal. |
+| A-9.15 | Video training resources | Yes | help-01 (Help & Resources surface — role-filtered video gallery with 9 tiles + featured callout) | In Design | JFT | Video modules per audience in support library | v4.45 added the surface alongside the self-service section in the same shared `help/` folder. |
 
 § 16.4 totals: 15 rows. All Yes.
 
@@ -273,22 +273,22 @@ SOW core totals: 28 rows.
 
 ### Gaps requiring D3a follow-up
 
-The following Appendix A rows have Storyboard Coverage = Gap and are first-priority candidates for prototype gap closure (after v4.44 re-audit):
+The following Appendix A rows have Storyboard Coverage = Gap and are first-priority candidates for prototype gap closure (after v4.45 re-audit):
 
 - A-6.28 GraphQL API (no UI mention anywhere in the current storyboard; could be a card on super-10 External Tooling or part of a new data/integrations surface)
 - A-8.8 Real-time and batch data export (had coverage on the tenant_admin SC-ADD-05 Data & APIs landing in v4.18; removed in v4.22 when SC-ADD-05 was deleted and data-export scope moved to global / Super Admin)
 - A-8.12 Webhook support (same — removed in v4.22)
 - A-8.13 GraphQL API queries (same — removed in v4.22)
 - A-8.14 Data streaming (no prior coverage)
-- ~~A-9.14 Self-service support portal~~ (closed in v4.44 on the new `help-01` Help & Resources surface)
-- ~~A-9.15 Video training resources~~ (closed in v4.44 on the new `help-01` Help & Resources surface)
+- ~~A-9.14 Self-service support portal~~ (closed in v4.45 on the new `help-01` Help & Resources surface)
+- ~~A-9.15 Video training resources~~ (closed in v4.45 on the new `help-01` Help & Resources surface)
 
 Total true gaps remaining: **0 out of 92** Appendix A items. D3a build phase complete; all Appendix A items now have at least Partial storyboard coverage.
 
 **Closure history:**
 - **v4.36 D3a re-audit** downgraded A-6.8 (A/B testing framework) and A-6.12 (LaTeX rendering) from Gap to Partial after verifying both badges added in v4.18 are still present on tenant-08 (Configure AI Coaching Prompt). Medium-fidelity badge coverage is adequate for declaring the capability; fuller surfaces are future enhancements but not contract-required.
 - **v4.38 D3a build phase 1** closed A-9.14 (self-service support portal) and A-9.15 (video training resources) on the new `help-01` Help & Resources surface.
-- **v4.44 D3a build phase 2** closed A-6.28 (GraphQL API), A-8.8 (real-time/batch data export), A-8.12 (webhook support), A-8.13 (GraphQL API queries), and A-8.14 (data streaming) on the new `super-11` Data & Integrations Hub surface.
+- **v4.45 D3a build phase 2** closed A-6.28 (GraphQL API), A-8.8 (real-time/batch data export), A-8.12 (webhook support), A-8.13 (GraphQL API queries), and A-8.14 (data streaming) on the new `super-11` Data & Integrations Hub surface.
 
 ### Out-of-scope items (no build expected)
 
@@ -301,7 +301,7 @@ Total true gaps remaining: **0 out of 92** Appendix A items. D3a build phase com
 
 | Version | Date | Status | Notes |
 |:---|:---|:---|:---|
-| 1.0 | 12 May 2026 | Current | Initial baseline. 156 rows enumerated across MSA + SOW + Appendix A. 9 gaps identified for D3a follow-up. Storyboard baseline: v4.44. |
+| 1.0 | 12 May 2026 | Current | Initial baseline. 156 rows enumerated across MSA + SOW + Appendix A. 9 gaps identified for D3a follow-up. Storyboard baseline: v4.45. |
 
 ---
 

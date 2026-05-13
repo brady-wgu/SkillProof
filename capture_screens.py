@@ -1,5 +1,5 @@
-"""Capture all storyboard screens (5 portals × 2 themes) as PNG screenshots,
-writing each portal's outputs into its own per-persona subdirectory.
+"""Capture all storyboard screens (6 portals + landing hero × 2 themes) as PNG
+screenshots, writing each portal's outputs into its own per-persona subdirectory.
 
 Usage:
     1. Start a local HTTP server from the repo root:
@@ -11,15 +11,24 @@ Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
     tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (23 + 23)
     instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
-    super_admin/screenshots/     + super_admin/screenshots_dark/     (10 + 10)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (11 + 11)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
+    help/screenshots/            + help/screenshots_dark/            (1 + 1)
+    assets/landing/light.png     + assets/landing/dark.png           (1 + 1)
 
-Total: 156 PNGs after capture (v4.44: removed visible storyboard version-stamp paragraphs from inside the WGU footer on all 9 storyboard surfaces — root index, persona portals, help, presentation catalogs, AND student MVP — per WGU direction that the WGU footer is the last visible element on every page (meta-bar follows as storyboard navigation chrome). No UI structural changes; PNG count unchanged from v4.41).
+Total: 158 PNGs after capture (v4.45: full regeneration after SkillProof
+product rename (v4.43), repo + Pages URL rename (v4.45), and the global
+WGU footer deployment (v4.39/v4.40) + version-stamp cleanup (v4.42). Adds
+help surface coverage (added v4.38) and super_admin screen 11 Data &
+Integrations Hub (added v4.41) to the capture set. Adds the root portal
+selector hero capture so README badges stay current.
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
     {persona}/screenshots[_dark]/sc-add-NN_stepNN_screenNN.png
     lrps/screenshots[_dark]/lrps.png
+    help/screenshots[_dark]/help.png
+    assets/landing/{light,dark}.png
 """
 import asyncio
 import os
@@ -45,13 +54,19 @@ PORTALS = [
         ("sc-add-06", [13, 14, 15, 16, 17, 18, 19, 20]),
     ]},
     {"file": "super_admin/index.html", "scenarios": [
-        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),  # v4.25: screen 9 (User Management); v4.28: screen 10 (External Tooling & Integrations per WGU direction for AWS-centric tooling).
+        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]),  # v4.25 screen 9 User Management; v4.28 screen 10 External Tooling & Integrations; v4.41 screen 11 Data & Integrations Hub.
     ]},
     {"file": "instructor/index.html", "scenarios": [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
     ]},
     {"file": "lrps/index.html", "scenarios": [
         ("lrps", [None]),  # None = no goToScreen call, just capture as-is
+    ]},
+    {"file": "help/index.html", "scenarios": [
+        ("help", [None]),  # v4.38 single-page help & resources surface; capture as-is.
+    ]},
+    {"file": "index.html", "scenarios": [
+        ("landing", [None]),  # Root portal selector hero; output goes to assets/landing/.
     ]},
 ]
 
@@ -60,7 +75,10 @@ THEMES = ["light", "dark"]
 
 def out_dir_for(portal_file, theme):
     """student/index.html + light  ->  {repo}/student/screenshots
-       student/index.html + dark   ->  {repo}/student/screenshots_dark"""
+       student/index.html + dark   ->  {repo}/student/screenshots_dark
+       index.html + light/dark     ->  {repo}/assets/landing  (special-case root)"""
+    if portal_file == "index.html":
+        return os.path.join(REPO_ROOT, "assets", "landing").replace("\\", "/")
     persona_dir = os.path.dirname(portal_file)
     sub = "screenshots" if theme == "light" else "screenshots_dark"
     return os.path.join(REPO_ROOT, persona_dir, sub).replace("\\", "/")
@@ -91,21 +109,26 @@ async def capture_portal(page, portal, theme):
     for scenario_id, screen_ids in portal["scenarios"]:
         for step_idx, screen_id in enumerate(screen_ids, 1):
             if screen_id is None:
-                # Single-page portal (e.g., lrps) — no goToScreen call.
-                # For LRPS, scroll the live SkillProof rows into view so the M4
+                # Single-page portal (e.g., lrps, help, landing) — no goToScreen call.
+                # For LRPS only, scroll the live SkillProof rows into view so the M4
                 # "Not for student use" badges land in the hero screenshot
                 # (the alphabetically-sorted OEX rows above add no value).
-                await page.evaluate(
-                    "(() => {"
-                    " const row = document.querySelector('tr.live[data-launch=\"../student/\"]');"
-                    " if (row) {"
-                    "   const rect = row.getBoundingClientRect();"
-                    "   window.scrollTo({top: window.scrollY + rect.top - 200, behavior: 'instant'});"
-                    " }"
-                    "})()"
-                )
+                if scenario_id == "lrps":
+                    await page.evaluate(
+                        "(() => {"
+                        " const row = document.querySelector('tr.live[data-launch=\"../student/\"]');"
+                        " if (row) {"
+                        "   const rect = row.getBoundingClientRect();"
+                        "   window.scrollTo({top: window.scrollY + rect.top - 200, behavior: 'instant'});"
+                        " }"
+                        "})()"
+                    )
                 await page.wait_for_timeout(300)
-                fname = f"{out_dir}/{scenario_id}.png"
+                # Special case: root index.html -> assets/landing/{theme}.png
+                if portal["file"] == "index.html":
+                    fname = f"{out_dir}/{theme}.png"
+                else:
+                    fname = f"{out_dir}/{scenario_id}.png"
             else:
                 await page.evaluate(f"goToScreen({screen_id})")
                 await page.evaluate("document.activeElement?.blur()")
