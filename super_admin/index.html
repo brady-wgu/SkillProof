@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.47</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.48</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -882,6 +882,15 @@
               <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">open_in_new</span>
               <h3 class="h5 mt-2 mb-1">External Tooling</h3>
               <p class="small text-muted">AWS &middot; OpenRouter &middot; Redis &middot; Grafana &middot; Jira &middot; GitHub</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(12)">
+            <div class="pgn__card-section">
+              <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">cast_for_education</span>
+              <h3 class="h5 mt-2 mb-1">Instructor Roster</h3>
+              <p class="small text-muted">Course assignment across tenants</p>
             </div>
           </div>
         </div>
@@ -2230,6 +2239,200 @@
   </main>
 </section>
 
+<!-- Screen 12: Instructor Roster & Course Assignment (cross-tenant) — Global Admin owns who teaches what -->
+<section class="screen" id="screen-12" aria-labelledby="s12-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <span class="navbar-chip">Super Admin Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-12">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Super Admin Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>Instructor Roster &amp; Course Assignment</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">manage_accounts</span>Global Admin</span>
+      <h1 id="s12-heading">Instructor Roster &amp; Course Assignment</h1>
+      <p class="mt-1 mb-3">Assign instructors to the courses they will teach. Account creation is handled separately through LRPS; this surface manages course-level access. Cross-tenant scope: select a tenant to view or modify its instructor roster.</p>
+
+      <div class="d-flex align-items-center gap-2 mb-3" style="flex-wrap:wrap;">
+        <label class="form-label mb-0" for="ir-tenant" style="font-size: 13px;">Tenant</label>
+        <select class="form-control" id="ir-tenant" style="max-width: 320px;">
+          <option selected>PDev — Program Development</option>
+          <option>SBE — School of Business</option>
+          <option>SET — School of Engineering &amp; Technology</option>
+          <option>JFT QA Sandbox</option>
+        </select>
+        <span class="text-muted small">Showing roster for PDev.</span>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-8">
+          <div class="pgn__card pgn__card-featured">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="eyebrow"><span class="material-icons-outlined">person_search</span>Instructors · 6 active</span>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-tertiary btn-sm"><span class="material-icons-outlined">upload_file</span>Bulk import (CSV)</button>
+                  <button class="btn btn-primary btn-sm"><span class="material-icons-outlined">person_add</span>Add Instructor</button>
+                </div>
+              </div>
+              <table class="pgn__data-table">
+                <thead>
+                  <tr>
+                    <th>Instructor</th>
+                    <th>Courses</th>
+                    <th>Last active</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">C</div>
+                        <div>
+                          <div class="text-strong">Charlie</div>
+                          <div class="micro text-muted">charlie.morgan@example.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E075</span> <span class="badge badge-info">E135</span></td>
+                    <td>14 min ago</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-success-base);">D</div>
+                        <div>
+                          <div class="text-strong">Devon</div>
+                          <div class="micro text-muted">devon.kowalski@example.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
+                    <td>2 hours ago</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-info-base);">M</div>
+                        <div>
+                          <div class="text-strong">Maya</div>
+                          <div class="micro text-muted">maya.alvarado@example.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E075</span></td>
+                    <td>Yesterday</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #4527A0;">P</div>
+                        <div>
+                          <div class="text-strong">Priya</div>
+                          <div class="micro text-muted">priya.singh@example.edu · Program Mentor</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
+                    <td>Yesterday</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base); color:#1A1A1A;">T</div>
+                        <div>
+                          <div class="text-strong">Teagan</div>
+                          <div class="micro text-muted">teagan.brooks@example.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E075</span></td>
+                    <td>3 days ago</td>
+                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #C13232;">N</div>
+                        <div>
+                          <div class="text-strong">Noor</div>
+                          <div class="micro text-muted">noor.hassan@example.edu · Program Mentor</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-info">E010</span></td>
+                    <td>5 days ago</td>
+                    <td><span class="badge badge-warning">Idle &gt; 5d</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                  </tr>
+                  <tr style="opacity: 0.65;">
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-400);">L</div>
+                        <div>
+                          <div class="text-strong">Logan</div>
+                          <div class="micro text-muted">logan.fischer@example.edu</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="text-muted small">—</span></td>
+                    <td class="text-muted small">22 Mar 2026</td>
+                    <td><span class="badge badge-gray">Deactivated</span></td>
+                    <td><button class="btn btn-tertiary btn-sm">Reactivate</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="pgn__card mb-3">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">insights</span>Coverage (PDev)</span>
+              <h2 class="h5 mb-2">Course &rarr; instructor map</h2>
+              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size:13px;">
+                <tr><th style="background:transparent; padding: 6px 4px;">E010</th><td style="background:transparent; padding: 6px 4px;">4 instructors</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">E075</th><td style="background:transparent; padding: 6px 4px;">3 instructors</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">E135</th><td style="background:transparent; padding: 6px 4px;">3 instructors</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">recent_actors</span>Recent assignments</span>
+              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size: 12px;">
+                <tr><th style="background:transparent; padding: 6px 4px;">06 May 13:18</th><td style="background:transparent; padding: 6px 4px;">Bob assigned Charlie to E135 (PDev)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">02 May 09:44</th><td style="background:transparent; padding: 6px 4px;">Bob deactivated Logan (PDev)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">28 Apr 11:20</th><td style="background:transparent; padding: 6px 4px;">Bob added Noor to E010 (PDev)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">15 Apr 16:05</th><td style="background:transparent; padding: 6px 4px;">Bob added Teagan to E075 (PDev)</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</section>
+
 
 <!-- ================================================================
      META BAR — DEMO ONLY
@@ -2271,13 +2474,14 @@
       <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: User Management (Global Admin upgrades Student / Instructor / Tenant Admin)">09</button>
       <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: External Tooling & Integrations (AWS, OpenRouter, Redis, Grafana, Jira, GitHub) + global configuration">10</button>
       <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Data & Integrations Hub (data export, webhooks, GraphQL, streaming)">11</button>
+      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Instructor Roster & Course Assignment (cross-tenant, Global Admin scope)">12</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 11; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values. v4.45: screen 11 added (Data & Integrations Hub) closing 5 D3a true gaps — A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 data streaming.
+  const TOTAL_SCREENS = 12; // v4.25: screen 9 added (User Management for Global Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / Tenant Admin / Global Admin). v4.28: screen 10 added (External Tooling & Integrations) per WGU direction for AWS-centric tooling — hub page linking out to 3rd party dashboards + global configuration values. v4.45: screen 11 added (Data & Integrations Hub) closing 5 D3a true gaps — A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 data streaming. v4.48: screen 12 added (Instructor Roster & Course Assignment, cross-tenant) — moved from tenant_admin under the principle that Global Admin controls who has access to teach on the platform.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
