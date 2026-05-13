@@ -6,6 +6,18 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.46 — 13 May 2026 — Favicon (WGU shield) added to every storyboard surface
+
+Browser tabs for the storyboard now show the WGU shield instead of the default page icon. The favicon is the same blue WGU mark already inline in each page's upper-left navbar (`WGU_LOGO_BLUE`), extracted once to `assets/wgu-favicon.png` (48,655 bytes) and referenced via `<link rel="icon" type="image/png" href="…/assets/wgu-favicon.png">` in every HTML head.
+
+**Files touched (9):** root `index.html`, `presentation.html`, `presentation_dark.html`, and the six persona / shared surfaces (`student/`, `tenant_admin/`, `instructor/`, `super_admin/`, `lrps/`, `help/`). Path is `assets/wgu-favicon.png` from root and `../assets/wgu-favicon.png` from the persona subdirs.
+
+**No UI changes.** Tab-icon only. Screenshots do not need to be regenerated (captures don't include the browser chrome).
+
+`student/index.html` got the head-only favicon link — no body changes — and remains otherwise frozen at the JFT-deployed v1.2 MVP baseline.
+
+---
+
 ## v4.45 — 13 May 2026 — Full screenshot regeneration after SkillProof rename + footer additions
 
 Every PNG in the repo was rebuilt today. The screenshots had drifted out of sync after a sequence of structural changes earlier in the week:
