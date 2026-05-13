@@ -85,8 +85,7 @@ Student totals: 30 Contract-required · 4 Essential scaffolding · 0 Discretiona
 | `tenant-03` | Create a new Subject | SC-ADD-02 | SOW-2.5 (Course-as-a-Service authoring) | A-10.4 audit on creation | Contract-required | Keep | |
 | `tenant-04` | Topics & Learning Objectives | SC-ADD-02 | SOW-2.5 · A-10.4 audit on edit | A-7.13 data table viz · A-7.3 accessibility | Contract-required | Keep | v4.47: refactored to inline per-topic expanders with editable text + threshold + weight inputs and inline add / remove. Add / Edit / Remove LO operations are now in-place; the prior screens 05 (Add LO), 06 (Edit LO), and 07 (Remove LO) were retired in the same release. |
 | `tenant-08` | Configure the AI Coaching Prompt | SC-ADD-02 | A-6.7 centralized prompt guardrails | A-7.3 | Contract-required | Keep | 4 short text-box guardrails; hallucination warning. |
-| `tenant-09` | Choose the Preferred Model | SC-ADD-02 | A-6.1 multi-LLM · A-6.2 routing by use case | — | Contract-required | Keep | Per-Subject model picker. |
-| `tenant-10` | Scoring style & coaching defaults | SC-ADD-02 | SOW-2.5 (coaching configuration) | A-6.7 | Contract-required | Keep | Socratic / Direct / Adaptive. |
+| `tenant-09` | Model & Coaching (model picker + coaching style + assessment pattern per objective) | SC-ADD-02 | A-6.1 multi-LLM · A-6.2 routing by use case · SOW-2.5 (coaching configuration) | A-6.7 (prompt guardrails on the next step) | Contract-required | Keep | v4.48: absorbed prior tenant-10 (Scoring style — Socratic / Direct / Adaptive) and the assessment-pattern-per-objective table; reordered ahead of tenant-08 so model + coaching basics are chosen before any custom prompt overrides. |
 | `tenant-11` | Deploy E135 to Production | SC-ADD-02 | A-6.24 automated CI/CD pipeline | A-10.4 audit on deploy | Contract-required | Keep | 5-step Stepper (Validate → Build → Test → Deploy → Verify). |
 | `tenant-12` | E135 build succeeded (LRPS provisioning ticket) | SC-ADD-02 | A-6.24 · A-8.1 LTI 1.3 launch URL stability | LRPS coordination (illustrative; not a JFT build) | Contract-required | Keep | Manual handoff to WGU D&D team; JFT does not write to LRPS. |
 | `tenant-13` | All systems operational | SC-ADD-06 | SOW-9.13 proactive monitoring · A-9.1 24/7 monitoring | — | Contract-required | Keep | SC-ADD-06 baseline. |
@@ -98,7 +97,6 @@ Student totals: 30 Contract-required · 4 Essential scaffolding · 0 Discretiona
 | `tenant-19` | Service restored at 11:08:14 UTC | SC-ADD-06 | A-9.2 99.95% uptime · A-6.5 fallback success | — | Contract-required | Keep | |
 | `tenant-20` | 99.95% Uptime SLA (dashboard) | SC-ADD-06 | A-9.2 99.95% uptime · SOW-9.5 SLA verification | A-7.13 visualizations | Contract-required | Keep | Uptime gauge + downtime budget remaining. |
 | `tenant-21` | Branding & Customization | SC-ADD-02 (settings) | A-7.9 customizable interface per institution · A-7.6 multi-language · A-7.7 PWA | A-7.3 | Contract-required | Keep | |
-| `tenant-22` | Instructor Roster & Course Assignment | SC-ADD-02 (settings) | SOW-2.5 · A-10.8 RBAC | A-10.4 audit | Contract-required | Keep | |
 | `tenant-23` | Subject Lifecycle & Archival | SC-ADD-02 (settings) | SOW-2.5 · A-10.4 audit | A-10.2 data retention/deletion | Contract-required | Keep | |
 
 Tenant Admin totals: 23 Contract-required · 0 Essential scaffolding · 0 Discretionary.
@@ -139,6 +137,7 @@ Instructor totals: 8 Contract-required · 0 Essential scaffolding · 0 Discretio
 | `super-09` | User Management (4-tier role taxonomy) | SC-ADD-04 ext | A-10.8 RBAC · SOW-2.5 (instructors/admins management) | A-10.4 audit on elevation | Contract-required | Keep | v4.27 expanded to Student/Instructor/Tenant Admin/Global Admin; v4.29 LTI baseline annotations. |
 | `super-10` | External Tooling & Integrations | SC-ADD-04 ext | SOW-5 Technology Stack · A-6.1 multi-LLM (provider dashboards) | — | Contract-required | Keep | v4.28 hub to AWS / OpenRouter / etc. Avoids duplicating provider UIs. |
 | `super-11` | Data & Integrations Hub (data export · webhooks · GraphQL · streaming) | SC-ADD-04 ext (proposed: SC-ADD-08 Data & Integrations) | A-6.28 GraphQL API · A-8.8 real-time/batch export · A-8.12 webhooks · A-8.13 GraphQL queries · A-8.14 data streaming | A-6.22 REST API · A-8.11 API docs (link card) | Contract-required | Keep | v4.45 closed the remaining 5 D3a true-gap items on this single new surface. Cross-tenant scope; consolidates data-export functions moved from tenant_admin in v4.22. |
+| `super-12` | Instructor Roster & Course Assignment (cross-tenant) | SC-ADD-04 ext | SOW-2.5 · A-10.8 RBAC · A-10.4 audit | A-10.13 platform access governance | Contract-required | Keep | v4.48: moved from tenant_admin (prior `tenant-22`) under WGU direction that Global Admin is the sole controller of platform access. Cross-tenant scope; per-tenant filter at the top. |
 
 Super Admin totals: 11 Contract-required · 0 Essential scaffolding · 0 Discretionary.
 

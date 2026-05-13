@@ -6,6 +6,45 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.48 — 13 May 2026 — Tenant Admin screen-by-screen WGU walkthrough
+
+Brady walked the Tenant Admin flow screen by screen against the literal-builder rule (anything visible on the prototype ships verbatim, so anything visible needs to be in-scope, contract-grounded, and non-commentary). v4.48 bundles every cleanup from that pass into one release.
+
+### Per-screen edits
+
+- **Screen 02** — `active learners` count text stripped from all three Active Subject rows ("Live · 1,284 active learners · …" → "Live · …"). Live-learner telemetry is not in scope for SkillProof.
+- **Screen 03** — Subject Owner dropdown removed; the creator is the implicit owner. Program Subject field promoted out of the now-empty two-column form-row to a standalone form-group.
+- **Screen 04** — Weight column removed entirely from all 4 topic expanders (verified zero hits for `weight` / `weighting` / `weighted` in the signed contract MD). "X LOs · weight Y.Y×" summary descriptors on each topic dropped to "X objectives". Bottom-of-page "Total weight · Avg threshold" summary span removed. Lede rewritten from "Threshold and weight are editable per row" → "The passing threshold is editable per row". Column widths rebalanced after the Weight column was dropped.
+- **Repo-wide `LO`/`LOs` sweep** — every user-visible "LO" abbreviation replaced (`LO 1.3` → `Objective 1.3`, `LO miss` badges → `Objective miss`, `Topics & LOs` → `Topics & Learning Objectives`, `LO Management` → `Learning Objectives`, `3 LOs` → `3 objectives`, standalone `LO` → `objective`). Aria-labels also swept (`Remove LO 1.1` → `Remove Objective 1.1`). Files touched: `tenant_admin/index.html`, `instructor/index.html`, `presentation.html`, `presentation_dark.html`.
+- **Screen 08** — First 4 prompt-config fields converted from single-line `<input>` to `<textarea rows="3">` matching the 5th field. Visible "Full diff & rollback UI deferred for JFT effort estimation." span removed plus its sibling HTML comment.
+- **Repo-wide JFT-note scrub** — all annotations directed at JFT removed from prototype files. `tenant_admin/index.html` lines 1485, 1490, 1058, 1762 (HTML comments + visible note). Preamble comments in `tenant_admin/index.html`, `instructor/index.html`, `student/index.html` cleaned of "JFT has not yet started…" framing. `presentation.html` / `presentation_dark.html` — `<h3>Notes for JFT</h3>` renamed to `<h3>Implementation Notes</h3>` (×4 per file); "JFT will build using this catalog…" reworded; "the final system prompt JFT will send…" reworded; trailing "deferred for JFT effort estimation" clause stripped. **Kept** because they're in-product vendor naming, not annotations: `Contact JFT Support` button, `JFT Support (Jira)` card, `JFT CSM · Jordan`, `JFT-SkillProof-2138` ticket ID, `JFT Proactive Monitoring`, `JFT VPN`, etc.
+- **Screen 09 — merged + reordered** — Old Screen 9 (Model picker) and Old Screen 10 (Scoring style & coaching defaults) collapsed into a single Step 3 surface. New Screen 9 contains: preferred-model radio cards, fallback chain alert, global coaching-style radio cards, and the assessment-pattern-per-objective table. **Physically moved ahead of Screen 8 in the DOM** so the wizard now picks model + coaching basics first, then custom AI prompt overrides on Step 4. Screen 10 deleted. Meta-bar Flow A reordered to show `09` before `08`; button `10` removed. IDs intentionally left disordered (numeric labels `09 08`) — sequential renumber deferred to end of day per WGU direction.
+- **Screen 11 — Deploy** — Subject summary card rebuilt. Single full-width card with a header that pairs the H2 with the Deploy to Staging / Deploy to Production buttons. Below the header: a two-column inner grid carrying four step-grouped subsections (Subject Details · Topics & Learning Objectives · Model & Coaching · AI Coaching Prompt — each with its matching wizard eyebrow icon and a tight key/value table). `Back` button added to floating-actions (was missing). CI/CD Pipeline status card retained below.
+- **Screen 22 (deleted from tenant_admin)** — Instructor Roster & Course Assignment moved to a new `super_admin/screen-12` under the principle that Global Admin is the sole controller of platform access. New screen carries a per-tenant filter dropdown at the top (PDev / SBE / SET / JFT QA Sandbox), Bob as the actor in the recent-assignments log, and drops the `Active learners` column to match the screen-02 telemetry strip. `super_admin TOTAL_SCREENS` bumped 11 → 12. New meta-bar button 12 in super_admin Flow. New portal-home quick-link card (Instructor Roster, `cast_for_education` icon).
+- **Screen 23 — visual de-clutter** — Lede paragraph removed. Eyebrow simplified to `Tenant Configuration`. Archived-subjects card lost its "Read-only · learner data preserved" h2 subtitle and per-row descriptive sub-text ("Replaced by E010 in Apr 2026", "Pilot complete · superseded by separate E125 path"). Both tables lost their `Learners` / `Learners (lifetime)` columns (consistent with screen 02). E135 row sub-text trimmed (`diagnostic in flight` removed). Reason textarea reset to empty + `placeholder="Optional"`. The flagged `— FERPA-aligned; configured at the platform level.` commentary span removed from the Deactivate preview card.
+
+### Bundled side-effects
+
+- `capture_screens.py` — sc-add-02 list `[1,2,3,4,8,9,10,11,12,21,22,23]` → `[1,2,3,4,9,8,11,12,21,23]`; sc-add-04 list `[1-11]` → `[1-12]`. Tenant Admin per-theme PNG total drops 20 → 18; Super Admin rises 11 → 12. Overall storyboard total drops 152 → 150 once captures are regenerated.
+- **Stale PNGs deleted** — `tenant_admin/screenshots[_dark]/sc-add-02_step09_screen10.png`, `sc-add-02_step14_screen22.png`, and the prior step10_screen10 file.
+- **Trackers** — `SCREEN_JUSTIFICATIONS.md` reshuffled: row `tenant-10` absorbed into `tenant-09` with merged grounding; row `tenant-22` removed and replaced with new `super-12` row (grounding: SOW-2.5 · A-10.8 RBAC · A-10.4 audit · A-10.13 platform access governance); prior tenant-05/06/07 had already been absorbed into tenant-04 in v4.47.
+- **Keyboard arrow nav** in `tenant_admin/index.html` already patched in v4.47 to skip non-existent screen IDs; carries over for v4.48's new gaps (no separate change needed).
+
+### Verification
+
+- `grep -c 'id="screen-22"' tenant_admin/index.html` → 0; `grep -c 'id="screen-10"' tenant_admin/index.html` → 0; `grep -c 'id="screen-12"' super_admin/index.html` → 1.
+- `grep -rn '\bLOs\?\b' --include='*.html'` → no matches.
+- `grep -rn 'for JFT\|JFT effort\|JFT meeting\|JFT will' --include='*.html'` → only Doc Control historical rows in the catalog files.
+- `grep -c 'class="step-btn"' tenant_admin/index.html` → 19 (1 active + 18 normal: Flow A 11 + Flow B 8).
+
+### Open items / deferred
+
+- **End-of-day sequential renumber pass** still pending. Today's order on Tenant Admin is `1,2,3,4,9,8,11,12,21,23` and on Super Admin is `1..12`. The 5/6/7/10/22 gaps in tenant_admin and the visually disordered `09→08` reading order will all collapse cleanly during the renumber.
+- **Capture regeneration** held until after the renumber pass so PNGs and filenames land in one batch.
+- **Catalog narrative refresh** (`presentation.html` / `presentation_dark.html` SC-ADD-02 step descriptions) still describes the old 4-screen LO sub-flow and references "weight" on Step 5 of 5. Catalog is Brady-facing, not built by JFT, so the literal-build risk is zero; flagged for a separate focused pass.
+
+---
+
 ## v4.47 — 13 May 2026 — Tenant Admin LO management collapsed into a single in-place expander surface
 
 Tenant Admin screen 04 (Topics & Learning Objectives) used to be the entry point to a 4-screen flow: a flat data table at 04, then three follow-up screens for Add LO (05), Edit LO (06), and Remove LO (07). For a basic copy/paste/edit operation on short strings, that's heavier than the contract calls for — and JFT, being literal builders, would ship the 4-screen flow verbatim.
