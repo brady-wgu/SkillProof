@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — LRPS Landing — Storyboard v4.51</title>
+  <title>SkillProof — LRPS Landing — Storyboard v4.52</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -734,7 +734,7 @@
     <div class="alert alert-info mb-3">
       <span class="material-icons-outlined">key</span>
       <div>
-        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SkillProof: <code>[SkillProof-ST]</code> (LTI <code>role=student</code>, for learners) and <code>[SkillProof-IN]</code> (LTI <code>role=instructor</code>, for <strong>all WGU staff</strong>). Every WGU staff member &mdash; instructors, content creators, platform operators &mdash; lands at the Instructor baseline by default. A Global Admin then manually elevates them to <strong>Tenant Admin</strong> or <strong>Global Admin</strong> in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline. The <code>[SkillProof-TA]</code> and <code>[SkillProof-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
+        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SkillProof: <code>[SkillProof-ST]</code> (LTI <code>role=student</code>, for learners) and <code>[SkillProof-IN]</code> (LTI <code>role=instructor</code>, for <strong>all WGU staff</strong>). Every WGU staff member &mdash; instructors, content creators, platform operators &mdash; lands at the Instructor baseline by default. A Super Admin then manually elevates them to <strong>Tenant Admin</strong> or <strong>Super Admin</strong> in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline. The <code>[SkillProof-TA]</code> and <code>[SkillProof-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
       </div>
     </div>
 
@@ -952,7 +952,7 @@
                   <td class="id-cell">269781303</td>
                   <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-SA]</span>SkillProof Super Admin Portal — Platform Operations <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">(demo) production: SkillProof-IN handshake + Global Admin elevation lookup + MFA</td>
+                  <td class="desc-cell">(demo) production: SkillProof-IN handshake + Super Admin elevation lookup + MFA</td>
                   <td class="driver-cell">SDPSuperAdminProviderDriver</td>
                   <td>Lana</td>
                   <td class="date-cell">07 May 2026</td>
@@ -978,7 +978,7 @@
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">cicada-v1.cgp.wgu.edu/launch?role=student&amp;deprecated=true</td>
                   <td class="driver-cell">LegacyCGPProviderDriver</td>
-                  <td>WGU PDev</td>
+                  <td>School of Technology</td>
                   <td class="date-cell">30 Mar 2026</td>
                   <td class="actions-cell"></td>
                 </tr>
@@ -994,7 +994,7 @@
                 </tr>
                 <tr>
                   <td class="id-cell">269781329</td>
-                  <td class="name-cell"><span class="name-tag">[Panopto]</span>Panopto Lecture Capture — PDev IT</td>
+                  <td class="name-cell"><span class="name-tag">[Panopto]</span>Panopto Lecture Capture — WGU IT</td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">wgu.hosted.panopto.com/Panopto/oauth2/connect/authorize?folder=PDev_IT</td>
                   <td class="driver-cell">PanoptoLTIProviderDriver</td>
@@ -1028,7 +1028,7 @@
                   <td><span class="status-pill"><span class="dot gray"></span>Inactive</span></td>
                   <td class="desc-cell">cicada-v0.cgp.wgu.edu/launch?role=student&amp;retired=true</td>
                   <td class="driver-cell">LegacyCGPProviderDriver</td>
-                  <td>WGU PDev</td>
+                  <td>School of Technology</td>
                   <td class="date-cell">30 Mar 2026</td>
                   <td class="actions-cell"></td>
                 </tr>
@@ -1054,7 +1054,7 @@
                 </tr>
                 <tr>
                   <td class="id-cell">269781371</td>
-                  <td class="name-cell"><span class="name-tag">[ID]</span>Instructional Designer Review — PDev</td>
+                  <td class="name-cell"><span class="name-tag">[ID]</span>Instructional Designer Review — WGU Program Development</td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">pdev-internal.wgu.edu/lrps/id-review/{review_id}</td>
                   <td class="driver-cell">InternalSAMLProviderDriver</td>

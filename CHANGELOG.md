@@ -6,6 +6,80 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.52 — 13 May 2026 — RBAC narrative + Super Admin naming + School-as-Tenant model
+
+Source: Brady's working draft *"SkillProof Authentication, Access Control, and Role Hierarchy"* v1.0 (13 May 2026), authored after the v4.51 release. The doc consolidates SkillProof's auth, role hierarchy, and tenant model. The storyboard had drift in three areas; v4.52 closes it.
+
+### Naming unification
+
+- **Global Admin → Super Admin** swept across every visible UI string in the four persona portals. 25 replacements across `super_admin/`, `tenant_admin/`, `lrps/`, `instructor/`. The User Management gauge card label `GLOBAL ADMINS` → `SUPER ADMINS`. Tracker rows in `SCREEN_JUSTIFICATIONS.md` + `CONTRACT_TRACKER.md` swept too (4 hits). Historical Doc Control rows in the presentation catalog left untouched.
+
+### Tenant model = WGU Schools
+
+Per Brady's RBAC doc: tenants map to the 4 WGU Schools. The PDev division operates SkillProof on behalf of each School.
+
+- `PDev — Program Development` → `School of Technology` (the default example tenant)
+- `tenant_pdev` → `tenant_school_tech`
+- `SBE — School of Business` → `School of Business`
+- `SET — School of Engineering & Technology` → `School of Education`
+- `JFT QA Sandbox` → `Leavitt School of Health`
+- LRPS team-context strings preserved as `WGU Program Development` / `WGU IT` (where the reference is the team doing the work, not the tenant)
+
+### RBAC narrative on SSO landing screens
+
+`tenant-01`, `super-01`, `instructor-01` each gain two new lines:
+
+- **Zero-trust line:** "Authorization verified server-side · link does not grant access" — with a `verified_user` icon.
+- **Default-landing-role line:** "Default landing role for LRPS deep links: Student. WGU staff: Instructor. Tenant Admin / Super Admin require Super Admin elevation."
+
+Contract grounding: A-10.8 RBAC + A-10.14 zero-trust + A-10.18 MFA (the existing super-01 MFA-verified row stays).
+
+### Tenant Admin (`tenant_admin/index.html`) per-screen updates
+
+- **Screen 2 (Portal home)** — *Your Subjects* row badges per row:
+  - E010 → `Read-only` (gray badge) + sub-text `created by another team member`
+  - E135 / E075 / E120 → `Owner` (brand-color badge)
+  - Footer note: "Owner = you created the Skill (write access). Read-only = another team member created it in School of Technology (read access)."
+  - The `View` button replaces `Open` on the Read-only row to signal the scope difference.
+- **Screen 21 (Tenant Settings)** — identity card expanded with two new rows:
+  - `Operated by` → `WGU Program Development`
+  - `Your role scope` → `Tenant Admin · read access to all Skills in School of Technology · write access to Skills you created`
+- **Screen 25 (Activity Log)** — new audit row inserted: `07 May 2026 · 09:00:00 · Bob (Super Admin) · Elevate role · Alice → Tenant Admin (School of Technology)`.
+
+### Super Admin (`super_admin/index.html`) per-screen updates
+
+- **Screen 9 (User Management)** — min-2 banner now reads "Minimum 2 Super Admins required. Downgrade blocked while count = 2." Added info alert: "Skill assignments and Tenant Admin tenant assignments are managed on the Instructor Roster and School / Tenant Management screens. This screen handles role elevation only." All `Global Admin` text inside the page, including the all-caps gauge label, normalized to `Super Admin`.
+- **Screen 12 (Instructor Roster)** — tenant dropdown label `Tenant` → `Tenant (School)`. Added info alert: "Super Admin owns all Skill assignments. Tenant Admins have no provisioning affordance — their access scope is set here."
+- **NEW Screen 13 (School / Tenant Management)** — Super Admin–only surface listing the 4 WGU Schools as tenants. Columns: Name · Tenant ID · Tenant Admins (count + names) · Skills · Created · Status. Per-row Manage button. Top-of-page `+ Create new School` primary button. Info alert: "Creating a new School provisions an isolated tenant (multi-tenant architecture per SOW §16.3 row 8.6). Tenant Admin assignments are made after creation via the row Manage button." Closes the implied multi-school management gap per Brady's RBAC doc.
+
+### Bundled updates
+
+- `super_admin/index.html` `TOTAL_SCREENS` bumped 12 → 13.
+- Meta-bar Flow extended with button `13`.
+- Portal-home (screen 2) gains an 8th quick-link card (School / Tenant Management with `school` icon).
+- `capture_screens.py` sc-add-04 list `[1..12]` → `[1..13]`. Per-theme PNG total rises 12 → 13.
+- `SCREEN_JUSTIFICATIONS.md` adds row `super-13`; SOW §2.5 deviation note updated.
+- `CONTRACT_TRACKER.md` Storyboard Coverage cells refreshed to cite super-13 for A-8.6 multi-tenancy.
+
+### Verification
+
+1. `grep -rn "Global Admin" --include='*.html'` returns only Doc Control historical-narrative rows in the presentation catalog (visible UI is clean).
+2. `grep -rn "\bPDev\b" --include='*.html'` returns only historical Doc Control rows.
+3. `grep -c 'id="screen-13"' super_admin/index.html` → 1.
+4. `grep -c 'id="screen-9"' super_admin/index.html` → 1; `grep -c 'id="screen-12"' super_admin/index.html` → 1.
+5. New badges on tenant-02 verified: `grep -c 'badge-brand">Owner' tenant_admin/index.html` → 3; `grep -c 'badge-gray">Read-only' tenant_admin/index.html` → 1.
+6. Tenant identity card on tenant-21 has both `Operated by` and `Your role scope` rows.
+7. Capture regen deferred to end-of-day sequential renumber pass.
+
+### Open items deferred
+
+- Help link in instructor / super_admin navbars (currently only tenant_admin) — flagged.
+- LTI 1.1 backward-compatibility status — Brady's doc notes "not yet tested"; not surfaced on the storyboard.
+- Student SSO landing screen — `student/index.html` is frozen; addition requires explicit per-change authorization.
+- End-of-day sequential renumber + capture regeneration — still queued.
+
+---
+
 ## v4.51 — 13 May 2026 — Tenant Admin contract-gap closure against the correct signed MSA + SOW
 
 Earlier in the same session, an audit of the Tenant Admin workflow was run against a verification-only contract MD (the wrong file). Brady supplied the correct signed MSA + SOW MD, and the re-audit surfaced 8 Yes-committed Tenant-Admin-scoped requirements with weak or no coverage:
