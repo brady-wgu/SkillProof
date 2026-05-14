@@ -9,7 +9,7 @@ Usage:
 
 Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
-    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (20 + 20)
+    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (22 + 22)
     instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
     super_admin/screenshots/     + super_admin/screenshots_dark/     (11 + 11)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
@@ -50,7 +50,7 @@ PORTALS = [
     {"file": "tenant_admin/index.html", "scenarios": [
         # v4.25: Team & Roles screen (formerly tenant_admin 22) moved to Super Admin per WGU-
         # stakeholder feedback reshape; old 23 (Instructor Roster) -> 22, old 24 (Subject Lifecycle) -> 23.
-        ("sc-add-02", [1, 2, 3, 4, 9, 8, 11, 12, 21, 23]),  # 21 Branding, 23 Subject Lifecycle. v4.47: dropped 5/6/7 (objective add/edit/remove screens) — screen 4 now manages topics + objectives inline via expanders. v4.48: dropped 10 (Scoring style absorbed into screen 9) and reordered 9 before 8 so the model + coaching basics are picked before the custom AI prompt. v4.48: dropped 22 (Instructor Roster moved to super_admin under Global Admin scope).
+        ("sc-add-02", [1, 2, 3, 4, 9, 8, 11, 12, 21, 23, 24, 25]),  # 21 Branding, 23 Subject Lifecycle, 24 Analytics & Reporting, 25 Tenant Activity Log. v4.47: dropped 5/6/7 (objective add/edit/remove screens) — screen 4 now manages topics + objectives inline via expanders. v4.48: dropped 10 (Scoring style absorbed into screen 9) and reordered 9 before 8 so the model + coaching basics are picked before the custom AI prompt. v4.48: dropped 22 (Instructor Roster moved to super_admin under Global Admin scope). v4.51: added 24 (Analytics & Reporting, closes A-7.10..7.14) and 25 (Tenant Activity Log, closes A-10.4 tenant-scoped) against the correct signed contract MD.
         ("sc-add-06", [13, 14, 15, 16, 17, 18, 19, 20]),
     ]},
     {"file": "super_admin/index.html", "scenarios": [
