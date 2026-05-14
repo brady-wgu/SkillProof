@@ -11,7 +11,7 @@ Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
     tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (22 + 22)
     instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
-    super_admin/screenshots/     + super_admin/screenshots_dark/     (11 + 11)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (13 + 13)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
     help/screenshots/            + help/screenshots_dark/            (1 + 1)
     assets/landing/light.png     + assets/landing/dark.png           (1 + 1)
@@ -54,7 +54,7 @@ PORTALS = [
         ("sc-add-06", [13, 14, 15, 16, 17, 18, 19, 20]),
     ]},
     {"file": "super_admin/index.html", "scenarios": [
-        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),  # v4.25 screen 9 User Management; v4.28 screen 10 External Tooling & Integrations; v4.41 screen 11 Data & Integrations Hub; v4.48 screen 12 Instructor Roster & Course Assignment (moved from tenant_admin under Global Admin scope).
+        ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]),  # v4.25 screen 9 User Management; v4.28 screen 10 External Tooling & Integrations; v4.41 screen 11 Data & Integrations Hub; v4.48 screen 12 Instructor Roster & Course Assignment (moved from tenant_admin under Super Admin scope); v4.52 screen 13 School / Tenant Management (Super Admin manages the 4 WGU Schools as tenants).
     ]},
     {"file": "instructor/index.html", "scenarios": [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
