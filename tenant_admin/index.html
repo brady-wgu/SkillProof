@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.50</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.51</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -274,6 +274,17 @@
     }
     .btn-theme-toggle:hover { background: rgba(255,255,255,0.2); }
     .btn-theme-toggle .material-icons-outlined { font-size: 20px; }
+    .navbar-help-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: rgba(255,255,255,0.92); font-size: 14px;
+      text-decoration: none;
+      padding: 8px 12px; border-radius: var(--pgn-size-rounded-pill);
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.06);
+      transition: background 150ms;
+    }
+    .navbar-help-link:hover { background: rgba(255,255,255,0.16); color: #fff; }
+    .navbar-help-link .material-icons-outlined { font-size: 18px; }
     [data-theme="dark"] .theme-icon-light { display: none !important; }
     [data-theme="dark"] .theme-icon-dark { display: inline !important; }
 
@@ -978,6 +989,7 @@
         <span class="material-icons-outlined theme-icon-light">dark_mode</span>
         <span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span>
       </button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1013,6 +1025,7 @@
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1073,6 +1086,30 @@
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(13);"><span class="material-icons-outlined">visibility</span>System Status</button>
                 <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(20);">SLA Dashboard</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(24)">
+            <div class="pgn__card-section">
+              <h3 class="h5 mt-1 mb-2">Analytics &amp; Reporting</h3>
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(24);"><span class="material-icons-outlined">insights</span>Open Analytics</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(24);">Export Reports</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(25)">
+            <div class="pgn__card-section">
+              <h3 class="h5 mt-1 mb-2">Activity Log</h3>
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(25);"><span class="material-icons-outlined">history</span>View Activity</button>
               </div>
             </div>
           </div>
@@ -1194,6 +1231,7 @@
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1249,6 +1287,7 @@
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1395,6 +1434,7 @@
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1492,6 +1532,7 @@
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1603,6 +1644,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1719,6 +1761,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1775,6 +1818,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1890,6 +1934,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -1975,6 +2020,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2026,6 +2072,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2109,6 +2156,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2151,6 +2199,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2237,6 +2286,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2283,6 +2333,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2392,6 +2443,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2447,17 +2499,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                 </div>
               </div>
 
-              <div class="form-group mb-3">
+              <div class="form-group mb-0">
                 <label class="form-label" for="b-color">Accent color</label>
                 <div class="d-flex align-items-center gap-2">
                   <span style="display:inline-block; width:32px; height:32px; border-radius: var(--pgn-size-border-radius-base); background: var(--pgn-color-brand-base); border: 1px solid var(--pgn-color-gray-200);"></span>
                   <input class="form-control" id="b-color" type="text" value="#0070F0" style="max-width: 160px; font-family: monospace;">
                 </div>
-              </div>
-
-              <div class="form-group mb-0">
-                <label class="form-label" for="b-domain">Custom domain</label>
-                <input class="form-control" id="b-domain" type="text" value="pdev.skillproof.wgu.edu">
               </div>
 
               <div class="d-flex gap-2 mt-3">
@@ -2483,6 +2530,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
       <span class="navbar-chip">Content Creator Portal</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
@@ -2621,6 +2669,329 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </div>
 </section>
 
+<!-- Screen 24: Analytics & Reporting (A-7.10 engagement · A-7.11 class insights · A-7.12 program reports · A-7.13 visualization · A-7.14 exports) -->
+<section class="screen" id="screen-24" aria-labelledby="s24-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
+      <span class="navbar-chip">Content Creator Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-24">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>Analytics &amp; Reporting</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">insights</span>Tenant Analytics</span>
+      <h1 id="s24-heading" class="mb-3">Analytics &amp; Reporting</h1>
+
+      <!-- Section A — Engagement (A-7.10 · A-7.13) -->
+      <h2 class="h5 mb-2">Engagement</h2>
+      <div class="row mb-4">
+        <div class="col-7">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">schedule</span>Time on task &middot; last 30 days</span>
+              <h3 class="h5 mb-2">Median 18 min &middot; per session</h3>
+              <svg viewBox="0 0 600 160" role="img" aria-label="Time-on-task trend chart, last 30 days, median 18 minutes per session" style="width:100%; height:160px;">
+                <line x1="0" y1="140" x2="600" y2="140" stroke="var(--pgn-color-gray-200)" stroke-width="1"></line>
+                <line x1="0" y1="100" x2="600" y2="100" stroke="var(--pgn-color-gray-100)" stroke-width="1" stroke-dasharray="2,3"></line>
+                <line x1="0" y1="60" x2="600" y2="60" stroke="var(--pgn-color-gray-100)" stroke-width="1" stroke-dasharray="2,3"></line>
+                <polyline fill="none" stroke="var(--pgn-color-brand-base)" stroke-width="2"
+                  points="20,110 40,98 60,92 80,86 100,82 120,76 140,72 160,68 180,72 200,66 220,60 240,56 260,52 280,48 300,52 320,46 340,42 360,38 380,42 400,36 420,32 440,28 460,32 480,28 500,24 520,28 540,24 560,20 580,24"></polyline>
+                <text x="0" y="155" font-size="11" fill="var(--pgn-color-gray-600)">14 Apr</text>
+                <text x="280" y="155" font-size="11" fill="var(--pgn-color-gray-600)">28 Apr</text>
+                <text x="560" y="155" font-size="11" fill="var(--pgn-color-gray-600)">13 May</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">trending_up</span>Submissions &middot; last 7 days</span>
+              <h3 class="h5 mb-2">428 submissions</h3>
+              <svg viewBox="0 0 360 140" role="img" aria-label="Submissions trend chart, last 7 days, 428 total submissions" style="width:100%; height:140px;">
+                <line x1="0" y1="120" x2="360" y2="120" stroke="var(--pgn-color-gray-200)" stroke-width="1"></line>
+                <rect x="20" y="80" width="32" height="40" fill="var(--pgn-color-brand-base)" opacity="0.85"></rect>
+                <rect x="70" y="60" width="32" height="60" fill="var(--pgn-color-brand-base)" opacity="0.85"></rect>
+                <rect x="120" y="50" width="32" height="70" fill="var(--pgn-color-brand-base)" opacity="0.85"></rect>
+                <rect x="170" y="44" width="32" height="76" fill="var(--pgn-color-brand-base)"></rect>
+                <rect x="220" y="36" width="32" height="84" fill="var(--pgn-color-brand-base)"></rect>
+                <rect x="270" y="68" width="32" height="52" fill="var(--pgn-color-brand-base)" opacity="0.85"></rect>
+                <rect x="320" y="74" width="32" height="46" fill="var(--pgn-color-brand-base)" opacity="0.85"></rect>
+              </svg>
+              <div class="text-muted small mt-2">M &middot; T &middot; W &middot; Th &middot; F &middot; Sa &middot; Su</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section B — Class Insights (A-7.11) -->
+      <h2 class="h5 mb-2">Class Insights</h2>
+      <div class="pgn__card mb-4">
+        <div class="pgn__card-section">
+          <table class="pgn__data-table">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Avg topic mastery</th>
+                <th>Learners below threshold</th>
+                <th>At-risk</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="text-strong">E010 &middot; Foundations of Programming (Python)</div></td>
+                <td>78%</td>
+                <td>9</td>
+                <td><span class="badge badge-warning">3</span></td>
+                <td><a href="../instructor/" class="btn btn-tertiary btn-sm" target="_blank" rel="noopener">Open in Instructor portal</a></td>
+              </tr>
+              <tr>
+                <td><div class="text-strong">E075 &middot; Intermediate Python &amp; Libraries</div></td>
+                <td>71%</td>
+                <td>12</td>
+                <td><span class="badge badge-danger">5</span></td>
+                <td><a href="../instructor/" class="btn btn-tertiary btn-sm" target="_blank" rel="noopener">Open in Instructor portal</a></td>
+              </tr>
+              <tr>
+                <td><div class="text-strong">E135 &middot; OOP with Python</div></td>
+                <td>74%</td>
+                <td>7</td>
+                <td><span class="badge badge-warning">2</span></td>
+                <td><a href="../instructor/" class="btn btn-tertiary btn-sm" target="_blank" rel="noopener">Open in Instructor portal</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Section C — Program Reports (A-7.12 · A-7.14) -->
+      <h2 class="h5 mb-2">Program Reports</h2>
+      <div class="pgn__card mb-3">
+        <div class="pgn__card-section">
+          <div class="row mb-3">
+            <div class="col-4">
+              <label class="form-label" for="rep-range">Date range</label>
+              <select class="form-control" id="rep-range">
+                <option selected>Last 30 days</option>
+                <option>Last 7 days</option>
+                <option>Last quarter</option>
+                <option>Year to date</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="form-label" for="rep-subject">Subjects</label>
+              <select class="form-control" id="rep-subject">
+                <option selected>All subjects</option>
+                <option>E010</option>
+                <option>E075</option>
+                <option>E135</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="form-label" for="rep-topic">Topic</label>
+              <select class="form-control" id="rep-topic">
+                <option selected>All topics</option>
+                <option>Classes &amp; Objects</option>
+                <option>Inheritance &amp; Composition</option>
+                <option>Polymorphism &amp; Encapsulation</option>
+                <option>Common Design Patterns</option>
+              </select>
+            </div>
+          </div>
+
+          <table class="pgn__data-table">
+            <thead>
+              <tr>
+                <th>Report</th>
+                <th>Filters applied</th>
+                <th style="width: 240px;">Export</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="text-strong">Engagement report</div><div class="micro text-muted">Time on task, submissions, active sessions</div></td>
+                <td>Last 30 days &middot; All subjects &middot; All topics</td>
+                <td>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>CSV</button>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">code</span>JSON</button>
+                </td>
+              </tr>
+              <tr>
+                <td><div class="text-strong">Submissions report</div><div class="micro text-muted">Counts, pass rates, attempts per objective</div></td>
+                <td>Last 30 days &middot; All subjects &middot; All topics</td>
+                <td>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>CSV</button>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">code</span>JSON</button>
+                </td>
+              </tr>
+              <tr>
+                <td><div class="text-strong">Topic-mastery report</div><div class="micro text-muted">Mastery distribution and threshold gaps</div></td>
+                <td>Last 30 days &middot; All subjects &middot; All topics</td>
+                <td>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>CSV</button>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">code</span>JSON</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">arrow_back</span>Back to Portal</button>
+  </div>
+</section>
+
+<!-- Screen 25: Tenant Activity Log (A-10.4 tenant-scoped) — mirror of super-08 with implicit tenant=pdev filter -->
+<section class="screen" id="screen-25" aria-labelledby="s25-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
+      <span class="navbar-chip">Content Creator Portal</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-25">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>Activity Log</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">history</span>Tenant Audit</span>
+      <h1 id="s25-heading" class="mb-3">Activity Log &middot; PDev</h1>
+
+      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
+        <span class="badge badge-info">All actions</span>
+        <span class="badge badge-gray">Create</span>
+        <span class="badge badge-gray">Edit</span>
+        <span class="badge badge-gray">Delete</span>
+        <span class="badge badge-gray">Deploy</span>
+        <span class="badge badge-gray">Last 30 days</span>
+        <span class="badge badge-gray">All actors</span>
+      </div>
+
+      <div class="pgn__card mb-3">
+        <div class="pgn__card-section">
+          <table class="pgn__data-table">
+            <thead>
+              <tr>
+                <th>Timestamp (UTC)</th>
+                <th>Actor</th>
+                <th>Action</th>
+                <th>Object</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>13 May 2026 &middot; 14:08:21</td>
+                <td>Alice</td>
+                <td>Deploy</td>
+                <td><code>sub_e135</code> &middot; production</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>13 May 2026 &middot; 13:51:02</td>
+                <td>Alice</td>
+                <td>Edit prompt</td>
+                <td><code>sub_e135</code> &middot; prompt v3</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>13 May 2026 &middot; 11:24:48</td>
+                <td>Alice</td>
+                <td>Edit objective threshold</td>
+                <td><code>sub_e135</code> &middot; Objective 1.3</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>12 May 2026 &middot; 16:02:11</td>
+                <td>Alice</td>
+                <td>Create subject</td>
+                <td><code>sub_e135</code></td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>09 May 2026 &middot; 09:18:55</td>
+                <td>Alice</td>
+                <td>Update branding</td>
+                <td>Tenant settings &middot; logo</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>07 May 2026 &middot; 09:46:33</td>
+                <td>Alice</td>
+                <td>Create incident ticket</td>
+                <td><code>JFT-SkillProof-2138</code></td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>06 May 2026 &middot; 13:18:04</td>
+                <td>Bob (Global Admin)</td>
+                <td>Assign instructor</td>
+                <td>Charlie &rarr; E135</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>04 May 2026 &middot; 22:11:09</td>
+                <td>Alice</td>
+                <td>Deploy</td>
+                <td><code>sub_e075</code> &middot; staging</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>02 May 2026 &middot; 18:34:27</td>
+                <td>Alice</td>
+                <td>Deploy</td>
+                <td><code>sub_e010</code> &middot; production</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>28 Apr 2026 &middot; 11:20:55</td>
+                <td>Bob (Global Admin)</td>
+                <td>Add instructor</td>
+                <td>Noor &rarr; E010</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span class="text-muted small">Showing 10 of 247 events</span>
+            <div class="d-flex gap-1">
+              <button class="btn btn-tertiary btn-sm" disabled><span class="material-icons-outlined">chevron_left</span></button>
+              <button class="btn btn-tertiary btn-sm">1</button>
+              <button class="btn btn-tertiary btn-sm">2</button>
+              <button class="btn btn-tertiary btn-sm">3</button>
+              <button class="btn btn-tertiary btn-sm"><span class="material-icons-outlined">chevron_right</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">arrow_back</span>Back to Portal</button>
+  </div>
+</section>
+
 <!-- ================================================================
      META BAR — DEMO ONLY
      ================================================================ -->
@@ -2660,6 +3031,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Deploy success + LRPS provisioning ticket">12</button>
       <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Tenant Settings (tenant identity + branding)">21</button>
       <button class="step-btn" onclick="goToScreen(23)" aria-label="Screen 23: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">23</button>
+      <button class="step-btn" onclick="goToScreen(24)" aria-label="Screen 24: Analytics &amp; Reporting (A-7.10..7.14)">24</button>
+      <button class="step-btn" onclick="goToScreen(25)" aria-label="Screen 25: Tenant Activity Log (A-10.4 tenant-scoped)">25</button>
     </nav>
 
     <span class="flow-id">Flow B</span>
@@ -2679,7 +3052,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 23; // v4.25: Team & Roles (formerly screen 22) moved to Super Admin (Global Admin scope) per WGU-stakeholder-feedback reshape; renumbered old 23->22 (Instructor Roster) and 24->23 (Subject Lifecycle).
+  const TOTAL_SCREENS = 25; // v4.25: Team & Roles (formerly screen 22) moved to Super Admin (Global Admin scope) per WGU-stakeholder-feedback reshape; renumbered old 23->22 (Instructor Roster) and 24->23 (Subject Lifecycle). v4.51: screens 24 (Analytics & Reporting, closes A-7.10..7.14) and 25 (Tenant Activity Log, closes A-10.4 tenant-scoped) added against the correct signed contract MD.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
