@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.52</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.53</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -977,7 +977,7 @@
      SC-ADD-02 — TENANT ADMIN PORTAL & COURSE CONFIGURATION
      ================================================================ -->
 
-<!-- Screen 1: LRPS deep-link landing → SSO check ====================== -->
+<!-- Screen 01: LRPS deep-link landing → SSO check ====================== -->
 <section class="screen active" id="screen-1" aria-labelledby="s1-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand" aria-label="Western Governors University">
@@ -1021,7 +1021,7 @@
   </main>
 </section>
 
-<!-- Screen 2: Tenant Admin Portal home ============================== -->
+<!-- Screen 02: Tenant Admin Portal home ============================== -->
 <section class="screen" id="screen-2" aria-labelledby="s2-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -1076,18 +1076,18 @@
               <h3 class="h5 mt-1 mb-2">Configure courses</h3>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">add</span>New Subject</button>
-                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(21);">Tenant Settings</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(17);">Tenant Settings</button>
               </div>
             </div>
           </div>
         </div>
         <div class="col-6">
-          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(13)">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(9)">
             <div class="pgn__card-section">
               <h3 class="h5 mt-1 mb-2">System status</h3>
               <div class="d-flex gap-2">
-                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(13);"><span class="material-icons-outlined">visibility</span>System Status</button>
-                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(20);">SLA Dashboard</button>
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(9);"><span class="material-icons-outlined">visibility</span>System Status</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(16);">SLA Dashboard</button>
               </div>
             </div>
           </div>
@@ -1096,22 +1096,22 @@
 
       <div class="row mb-3">
         <div class="col-6">
-          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(24)">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(19)">
             <div class="pgn__card-section">
               <h3 class="h5 mt-1 mb-2">Analytics &amp; Reporting</h3>
               <div class="d-flex gap-2">
-                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(24);"><span class="material-icons-outlined">insights</span>Open Analytics</button>
-                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(24);">Export Reports</button>
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(19);"><span class="material-icons-outlined">insights</span>Open Analytics</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(19);">Export Reports</button>
               </div>
             </div>
           </div>
         </div>
         <div class="col-6">
-          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(25)">
+          <div class="pgn__card pgn__card-featured" style="cursor:pointer; height:100%;" onclick="goToScreen(20)">
             <div class="pgn__card-section">
               <h3 class="h5 mt-1 mb-2">Activity Log</h3>
               <div class="d-flex gap-2">
-                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(25);"><span class="material-icons-outlined">history</span>View Activity</button>
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(20);"><span class="material-icons-outlined">history</span>View Activity</button>
               </div>
             </div>
           </div>
@@ -1187,7 +1187,7 @@
         <button class="btn btn-primary btn-lg" onclick="goToScreen(3)">
           <span class="material-icons-outlined" aria-hidden="true">add</span>New Subject
         </button>
-        <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(21)">
+        <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(17)">
           <span class="material-icons-outlined" aria-hidden="true">tune</span>Tenant Settings
         </button>
       </div>
@@ -1232,7 +1232,7 @@
   </main>
 </section>
 
-<!-- Screen 3: New Subject creation form ============================= -->
+<!-- Screen 03: New Subject creation form ============================= -->
 <section class="screen" id="screen-3" aria-labelledby="s3-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -1288,7 +1288,7 @@
   </div>
 </section>
 
-<!-- Screen 4: Topics & Learning Objectives builder ================== -->
+<!-- Screen 04: Topics & Learning Objectives builder ================== -->
 <section class="screen" id="screen-4" aria-labelledby="s4-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
@@ -1431,12 +1431,12 @@
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(3)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(9)">Next: Model &amp; Coaching<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-primary" onclick="goToScreen(5)">Next: Model &amp; Coaching<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 09: Model + Coaching basics (selected BEFORE the custom AI prompt) ======== -->
-<section class="screen" id="screen-9" aria-labelledby="s9-heading">
+<!-- Screen 05: Model + Coaching basics (selected BEFORE the custom AI prompt) ======== -->
+<section class="screen" id="screen-5" aria-labelledby="s5-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1446,7 +1446,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-9">
+  <main class="screen-main" id="main-5">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
@@ -1456,7 +1456,7 @@
         <span>Model &amp; Coaching</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">memory</span>Step 3 of 5 · Model &amp; Coaching</span>
-      <h1 id="s9-heading" class="h1 mb-2">Choose the model and coaching style</h1>
+      <h1 id="s5-heading" class="h1 mb-2">Choose the model and coaching style</h1>
       <p class="text-muted mb-3">Pick the underlying model and the global coaching style first. Any custom prompt overrides come on the next step.</p>
 
       <h2 class="h5 mb-2">Preferred model</h2>
@@ -1529,12 +1529,12 @@
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(8)">Next: AI Prompt<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-primary" onclick="goToScreen(6)">Next: AI Prompt<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 08: AI prompt configuration =============================== -->
-<section class="screen" id="screen-8" aria-labelledby="s8-heading">
+<!-- Screen 06: AI prompt configuration =============================== -->
+<section class="screen" id="screen-6" aria-labelledby="s6-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1544,7 +1544,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-8">
+  <main class="screen-main" id="main-6">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
@@ -1554,7 +1554,7 @@
         <span>Configure AI Coaching Prompt</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Step 4 of 5 · AI Coaching Prompt</span>
-      <h1 id="s8-heading" class="h1 mb-2">Configure the AI Coaching Prompt</h1>
+      <h1 id="s6-heading" class="h1 mb-2">Configure the AI Coaching Prompt</h1>
 
       <div class="d-flex gap-2 mb-3 align-items-center">
         <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">upload_file</span>Upload advanced config (.txt / .md / .json)</button>
@@ -1637,16 +1637,16 @@ Address the learner by their first name. Never use "student" as the form of addr
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(9)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(11)">Review &amp; Deploy<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(7)">Review &amp; Deploy<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 09: Preferred model picker ================================ -->
+<!-- Screen 05: Preferred model picker ================================ -->
 
 
-<!-- Screen 11: Review & Deploy → CI/CD pipeline ====================== -->
-<section class="screen" id="screen-11" aria-labelledby="s11-heading">
+<!-- Screen 07: Review & Deploy → CI/CD pipeline ====================== -->
+<section class="screen" id="screen-7" aria-labelledby="s7-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1656,7 +1656,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-11">
+  <main class="screen-main" id="main-7">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
@@ -1666,7 +1666,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span>Deploy</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Final Review · CI/CD Pipeline</span>
-      <h1 id="s11-heading" class="h1 mb-2">Deploy E135 to Production</h1>
+      <h1 id="s7-heading" class="h1 mb-2">Deploy E135 to Production</h1>
 
       <p class="text-muted mb-3">Final check before deployment. Review each step's configuration; use Back if anything needs to change.</p>
 
@@ -1676,7 +1676,7 @@ Address the learner by their first name. Never use "student" as the form of addr
             <h2 class="h5 mb-0">Subject summary</h2>
             <div class="d-flex gap-2">
               <button class="btn btn-outline-primary">Deploy to Staging</button>
-              <button class="btn btn-primary" onclick="goToScreen(12)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Production</button>
+              <button class="btn btn-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Production</button>
             </div>
           </div>
 
@@ -1757,13 +1757,13 @@ Address the learner by their first name. Never use "student" as the form of addr
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(12)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Production</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Production</button>
   </div>
 </section>
 
-<!-- Screen 12: Deploy success → live course link ====================== -->
-<section class="screen" id="screen-12" aria-labelledby="s12-heading">
+<!-- Screen 08: Deploy success → live course link ====================== -->
+<section class="screen" id="screen-8" aria-labelledby="s8-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1773,14 +1773,14 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main centered" id="main-12">
+  <main class="screen-main centered" id="main-8">
     <div class="container-narrow">
       <div class="feedback-panel text-center" style="padding: var(--pgn-spacing-5) var(--pgn-spacing-4);">
         <div class="d-flex justify-content-center mb-3">
           <span class="material-icons-outlined text-success" style="font-size:64px;">check_circle</span>
         </div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Deployed to Production</span>
-        <h1 id="s12-heading" class="h2 mb-2">E135 build succeeded</h1>
+        <h1 id="s8-heading" class="h2 mb-2">E135 build succeeded</h1>
         <div class="small text-muted mb-2">Subject ID: <code>e135-oop-python</code> · Build: <code>2026.05.06.1547</code></div>
       </div>
 
@@ -1819,8 +1819,8 @@ Address the learner by their first name. Never use "student" as the form of addr
      SC-ADD-06 — CRITICAL INCIDENT RESPONSE & SLA
      ================================================================ -->
 
-<!-- Screen 13: Portal home with all-green system status ============= -->
-<section class="screen" id="screen-13" aria-labelledby="s13-heading">
+<!-- Screen 09: Portal home with all-green system status ============= -->
+<section class="screen" id="screen-9" aria-labelledby="s9-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1830,7 +1830,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-13">
+  <main class="screen-main" id="main-9">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
@@ -1840,7 +1840,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">monitoring</span>System Status</span>
-          <h1 id="s13-heading">All systems operational</h1>
+          <h1 id="s9-heading">All systems operational</h1>
           <p class="mt-1">JFT Proactive Monitoring shows nominal across all SkillProof services.</p>
         </div>
         <div class="status-legend">
@@ -1865,7 +1865,7 @@ Address the learner by their first name. Never use "student" as the form of addr
               <span class="eyebrow"><span class="material-icons-outlined">history</span>Recent incidents</span>
               <h2 class="h5 mb-2">No incidents in the last 30 days</h2>
               <p class="small text-muted">Last incident: 22 Apr 2026 · Brief API gateway flap · 3m · Self-healed</p>
-              <button class="btn btn-tertiary mt-2" onclick="goToScreen(20)">View incident history<span class="material-icons-outlined">arrow_forward</span></button>
+              <button class="btn btn-tertiary mt-2" onclick="goToScreen(16)">View incident history<span class="material-icons-outlined">arrow_forward</span></button>
             </div>
           </div>
         </div>
@@ -1930,13 +1930,13 @@ Address the learner by their first name. Never use "student" as the form of addr
         </div>
       </div>
 
-      <button class="btn btn-outline-primary" onclick="goToScreen(14)"><span class="material-icons-outlined">science</span>Simulate incident (demo)</button>
+      <button class="btn btn-outline-primary" onclick="goToScreen(10)"><span class="material-icons-outlined">science</span>Simulate incident (demo)</button>
     </div>
   </main>
 </section>
 
-<!-- Screen 14: Alert banner — LLM down, fallback engaged ============ -->
-<section class="screen" id="screen-14" aria-labelledby="s14-heading">
+<!-- Screen 10: Alert banner — LLM down, fallback engaged ============ -->
+<section class="screen" id="screen-10" aria-labelledby="s10-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1946,12 +1946,12 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-14">
+  <main class="screen-main" id="main-10">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(13); return false;">System Status</a>
+        <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Active Incident</span>
       </nav>
@@ -1962,7 +1962,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       </div>
 
       <span class="eyebrow"><span class="material-icons-outlined">crisis_alert</span>Active Incident · 07 May 2026</span>
-      <h1 id="s14-heading" class="h1 mb-2">Service degradation detected</h1>
+      <h1 id="s10-heading" class="h1 mb-2">Service degradation detected</h1>
 
       <h2 class="h5 mb-2">Services</h2>
       <div class="row-list mb-3">
@@ -2013,16 +2013,16 @@ Address the learner by their first name. Never use "student" as the form of addr
       </div>
 
       <div class="d-flex gap-2">
-        <button class="btn btn-primary" onclick="goToScreen(16)"><span class="material-icons-outlined">support_agent</span>Log P1 ticket</button>
-        <button class="btn btn-outline-primary" onclick="goToScreen(15)"><span class="material-icons-outlined">mail</span>View notification</button>
+        <button class="btn btn-primary" onclick="goToScreen(12)"><span class="material-icons-outlined">support_agent</span>Log P1 ticket</button>
+        <button class="btn btn-outline-primary" onclick="goToScreen(11)"><span class="material-icons-outlined">mail</span>View notification</button>
         <button class="btn btn-outline-primary"><span class="material-icons-outlined">timeline</span>Incident timeline</button>
       </div>
     </div>
   </main>
 </section>
 
-<!-- Screen 15: Notification toast / email detail ==================== -->
-<section class="screen" id="screen-15" aria-labelledby="s15-heading">
+<!-- Screen 11: Notification toast / email detail ==================== -->
+<section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2032,19 +2032,19 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-15">
+  <main class="screen-main" id="main-11">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(13); return false;">System Status</a>
+        <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">Incident</a>
+        <a href="#" onclick="goToScreen(10); return false;">Incident</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Notification</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">mail</span>Email + Toast Notification</span>
-      <h1 id="s15-heading" class="h2 mb-2">Service degradation: LLM provider unreachable</h1>
+      <h1 id="s11-heading" class="h2 mb-2">Service degradation: LLM provider unreachable</h1>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section">
@@ -2065,16 +2065,16 @@ Address the learner by their first name. Never use "student" as the form of addr
       </div>
 
       <div class="d-flex gap-2">
-        <button class="btn btn-primary" onclick="goToScreen(16)"><span class="material-icons-outlined">add_task</span>Open Jira ticket</button>
+        <button class="btn btn-primary" onclick="goToScreen(12)"><span class="material-icons-outlined">add_task</span>Open Jira ticket</button>
         <button class="btn btn-outline-primary"><span class="material-icons-outlined">reply</span>Reply</button>
-        <button class="btn btn-tertiary" onclick="goToScreen(14)"><span class="material-icons-outlined">arrow_back</span>Back to incident</button>
+        <button class="btn btn-tertiary" onclick="goToScreen(10)"><span class="material-icons-outlined">arrow_back</span>Back to incident</button>
       </div>
     </div>
   </main>
 </section>
 
-<!-- Screen 16: Jira P1 ticket creation form (SOW §9.1 + §9.4) ========================= -->
-<section class="screen" id="screen-16" aria-labelledby="s16-heading">
+<!-- Screen 12: Jira P1 ticket creation form (SOW §9.1 + §9.4) ========================= -->
+<section class="screen" id="screen-12" aria-labelledby="s12-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2084,19 +2084,19 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-16">
+  <main class="screen-main" id="main-12">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(13); return false;">System Status</a>
+        <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">Incident</a>
+        <a href="#" onclick="goToScreen(10); return false;">Incident</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>New Ticket</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">add_task</span>Step 1 of 1 · New incident ticket</span>
-      <h1 id="s16-heading" class="h1 mb-2">Log a P1 incident in Jira</h1>
+      <h1 id="s12-heading" class="h1 mb-2">Log a P1 incident in Jira</h1>
 
       <div class="ticket-card">
         <div class="form-row">
@@ -2152,13 +2152,13 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(14)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(17)"><span class="material-icons-outlined">send</span>Submit ticket</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(10)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(13)"><span class="material-icons-outlined">send</span>Submit ticket</button>
   </div>
 </section>
 
-<!-- Screen 17: Ticket submitted confirmation ======================== -->
-<section class="screen" id="screen-17" aria-labelledby="s17-heading">
+<!-- Screen 13: Ticket submitted confirmation ======================== -->
+<section class="screen" id="screen-13" aria-labelledby="s13-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2168,14 +2168,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main centered" id="main-17">
+  <main class="screen-main centered" id="main-13">
     <div class="container-narrow">
       <div class="feedback-panel" style="padding: var(--pgn-spacing-5) var(--pgn-spacing-4);">
         <div class="d-flex justify-content-center mb-3">
           <span class="material-icons-outlined text-success" style="font-size:64px;">task_alt</span>
         </div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Ticket Submitted</span>
-        <h1 id="s17-heading" class="h2 text-center mb-3">JFT-SkillProof-2138 created</h1>
+        <h1 id="s13-heading" class="h2 text-center mb-3">JFT-SkillProof-2138 created</h1>
         <p class="text-center mb-4">Severity <strong>P1</strong>. Acknowledged by JFT Support. SLA timer started.</p>
 
         <div class="pgn__card mb-3" style="background:transparent;">
@@ -2192,16 +2192,16 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         </div>
 
         <div class="d-flex gap-2 justify-content-center">
-          <button class="btn btn-primary btn-lg" onclick="goToScreen(18)"><span class="material-icons-outlined">forum</span>View ticket thread</button>
-          <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(13)">Back to system status</button>
+          <button class="btn btn-primary btn-lg" onclick="goToScreen(14)"><span class="material-icons-outlined">forum</span>View ticket thread</button>
+          <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(9)">Back to system status</button>
         </div>
       </div>
     </div>
   </main>
 </section>
 
-<!-- Screen 18: JFT CSM response thread ============================== -->
-<section class="screen" id="screen-18" aria-labelledby="s18-heading">
+<!-- Screen 14: JFT CSM response thread ============================== -->
+<section class="screen" id="screen-14" aria-labelledby="s14-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2211,12 +2211,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-18">
+  <main class="screen-main" id="main-14">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(13); return false;">System Status</a>
+        <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#">Incidents</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2225,7 +2225,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">support_agent</span>JFT Support P1 Response (CSM Jordan as WGU-facing POC)</span>
-          <h1 id="s18-heading">JFT-SkillProof-2138: Primary LLM unreachable</h1>
+          <h1 id="s14-heading">JFT-SkillProof-2138: Primary LLM unreachable</h1>
         </div>
         <div class="d-flex gap-2 align-items-center">
           <span class="badge badge-warning">In Progress</span>
@@ -2279,7 +2279,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <textarea class="form-control" rows="2" placeholder="Reply..."></textarea>
           <div class="d-flex gap-2 mt-2 justify-content-end">
             <button class="btn btn-outline-primary btn-sm">Add attachment</button>
-            <button class="btn btn-primary btn-sm" onclick="goToScreen(19)"><span class="material-icons-outlined">send</span>Send</button>
+            <button class="btn btn-primary btn-sm" onclick="goToScreen(15)"><span class="material-icons-outlined">send</span>Send</button>
           </div>
         </div>
       </div>
@@ -2287,8 +2287,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </main>
 </section>
 
-<!-- Screen 19: Fallback success verification panel ================== -->
-<section class="screen" id="screen-19" aria-labelledby="s19-heading">
+<!-- Screen 15: Fallback success verification panel ================== -->
+<section class="screen" id="screen-15" aria-labelledby="s15-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2298,18 +2298,18 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-19">
+  <main class="screen-main" id="main-15">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(13); return false;">System Status</a>
+        <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>JFT-SkillProof-2138 · Resolved</span>
       </nav>
       <div class="feedback-panel">
         <span class="feedback-label"><span class="material-icons-outlined">check_circle</span>Fallback Verified · Service Restored</span>
-        <h1 id="s19-heading" class="h2 mb-2">Service restored at 11:08:14 UTC</h1>
+        <h1 id="s15-heading" class="h2 mb-2">Service restored at 11:08:14 UTC</h1>
 
         <table class="pgn__data-table mb-3" style="background: var(--pgn-color-white);">
           <thead>
@@ -2327,15 +2327,15 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       </div>
 
       <div class="d-flex gap-2 mt-3">
-        <button class="btn btn-primary" onclick="goToScreen(20)"><span class="material-icons-outlined">leaderboard</span>View SLA dashboard</button>
-        <button class="btn btn-outline-primary" onclick="goToScreen(13)">Back to system status</button>
+        <button class="btn btn-primary" onclick="goToScreen(16)"><span class="material-icons-outlined">leaderboard</span>View SLA dashboard</button>
+        <button class="btn btn-outline-primary" onclick="goToScreen(9)">Back to system status</button>
       </div>
     </div>
   </main>
 </section>
 
-<!-- Screen 20: SLA dashboard — 99.95% uptime maintained ============== -->
-<section class="screen" id="screen-20" aria-labelledby="s20-heading">
+<!-- Screen 16: SLA dashboard — 99.95% uptime maintained ============== -->
+<section class="screen" id="screen-16" aria-labelledby="s16-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2345,17 +2345,17 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-20">
+  <main class="screen-main" id="main-16">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(13); return false;">System Status</a>
+        <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>SLA Dashboard</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">leaderboard</span>Service Level Agreement</span>
-      <h1 id="s20-heading">99.95% Uptime SLA</h1>
+      <h1 id="s16-heading">99.95% Uptime SLA</h1>
       <p class="mt-1 mb-4">Rolling 30-day window. Includes the 1h 24m fallback event from earlier today.</p>
 
       <div class="row mb-3">
@@ -2430,7 +2430,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <span class="eyebrow"><span class="material-icons-outlined">arrow_forward</span>What's next?</span>
           <h2 class="h6 mt-1 mb-2">SLA window verified — common follow-ups</h2>
           <div class="d-flex gap-2" style="flex-wrap:wrap;">
-            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(13)"><span class="material-icons-outlined">file_download</span>Export incident report (CSV)</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">file_download</span>Export incident report (CSV)</button>
             <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">home</span>Portal home</button>
             <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>Configure another Subject</button>
           </div>
@@ -2444,8 +2444,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
      SC-ADD-02 SUPPORTING — TENANT SETTINGS (RBAC + Custom Branding)
      ================================================================ -->
 
-<!-- Screen 21: Tenant Settings — Branding (§7.9) ===================== -->
-<section class="screen" id="screen-21" aria-labelledby="s21-heading">
+<!-- Screen 17: Tenant Settings — Branding (§7.9) ===================== -->
+<section class="screen" id="screen-17" aria-labelledby="s17-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2455,7 +2455,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-21">
+  <main class="screen-main" id="main-17">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
@@ -2463,7 +2463,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span>Tenant Settings</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">corporate_fare</span>Tenant Configuration</span>
-      <h1 id="s21-heading" class="mb-4">Tenant Settings</h1>
+      <h1 id="s17-heading" class="mb-4">Tenant Settings</h1>
 
       <div class="row mb-3">
         <div class="col-7">
@@ -2529,12 +2529,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">arrow_back</span>Back to Portal</button>
-    <button class="btn btn-primary" onclick="goToScreen(23)">Next: Subject Lifecycle<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-primary" onclick="goToScreen(18)">Next: Subject Lifecycle<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 23: Tenant Settings — Subject Lifecycle & Archival (G6 / SOW §2.5 + §10.4) -->
-<section class="screen" id="screen-23" aria-labelledby="s23-heading">
+<!-- Screen 18: Tenant Settings — Subject Lifecycle & Archival (G6 / SOW §2.5 + §10.4) -->
+<section class="screen" id="screen-18" aria-labelledby="s18-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2544,17 +2544,17 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-23">
+  <main class="screen-main" id="main-18">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(21); return false;">Tenant Settings</a>
+        <a href="#" onclick="goToScreen(17); return false;">Tenant Settings</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Subject Lifecycle</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">inventory_2</span>Tenant Configuration</span>
-      <h1 id="s23-heading" class="mb-4">Subject Lifecycle &amp; Archival</h1>
+      <h1 id="s18-heading" class="mb-4">Subject Lifecycle &amp; Archival</h1>
 
       <div class="row mb-3">
         <div class="col-7">
@@ -2673,13 +2673,13 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(21)"><span class="material-icons-outlined">arrow_back</span>Back: Branding</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(17)"><span class="material-icons-outlined">arrow_back</span>Back: Branding</button>
     <button class="btn btn-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">check</span>Done</button>
   </div>
 </section>
 
-<!-- Screen 24: Analytics & Reporting (A-7.10 engagement · A-7.11 class insights · A-7.12 program reports · A-7.13 visualization · A-7.14 exports) -->
-<section class="screen" id="screen-24" aria-labelledby="s24-heading">
+<!-- Screen 19: Analytics & Reporting (A-7.10 engagement · A-7.11 class insights · A-7.12 program reports · A-7.13 visualization · A-7.14 exports) -->
+<section class="screen" id="screen-19" aria-labelledby="s19-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2689,7 +2689,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-24">
+  <main class="screen-main" id="main-19">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
@@ -2697,7 +2697,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span>Analytics &amp; Reporting</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>Tenant Analytics</span>
-      <h1 id="s24-heading" class="mb-3">Analytics &amp; Reporting</h1>
+      <h1 id="s19-heading" class="mb-3">Analytics &amp; Reporting</h1>
 
       <!-- Section A — Engagement (A-7.10 · A-7.13) -->
       <h2 class="h5 mb-2">Engagement</h2>
@@ -2865,8 +2865,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </div>
 </section>
 
-<!-- Screen 25: Tenant Activity Log (A-10.4 tenant-scoped) — mirror of super-08 with implicit tenant=pdev filter -->
-<section class="screen" id="screen-25" aria-labelledby="s25-heading">
+<!-- Screen 20: Tenant Activity Log (A-10.4 tenant-scoped) — mirror of super-08 with implicit tenant=pdev filter -->
+<section class="screen" id="screen-20" aria-labelledby="s20-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2876,7 +2876,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-25">
+  <main class="screen-main" id="main-20">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
@@ -2884,7 +2884,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span>Activity Log</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">history</span>Tenant Audit</span>
-      <h1 id="s25-heading" class="mb-3">Activity Log &middot; School of Technology</h1>
+      <h1 id="s20-heading" class="mb-3">Activity Log &middot; School of Technology</h1>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
         <span class="badge badge-info">All actions</span>
@@ -3041,34 +3041,34 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Subject form">03</button>
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives (inline expanders, per-objective passing threshold)">04</button>
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Model &amp; Coaching (model picker + coaching style)">09</button>
-      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Configure AI Coaching Prompt">08</button>
-      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Deploy review">11</button>
-      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Deploy success + LRPS provisioning ticket">12</button>
-      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Tenant Settings (tenant identity + branding)">21</button>
-      <button class="step-btn" onclick="goToScreen(23)" aria-label="Screen 23: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">23</button>
-      <button class="step-btn" onclick="goToScreen(24)" aria-label="Screen 24: Analytics &amp; Reporting (A-7.10..7.14)">24</button>
-      <button class="step-btn" onclick="goToScreen(25)" aria-label="Screen 25: Tenant Activity Log (A-10.4 tenant-scoped)">25</button>
+      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Model &amp; Coaching (model picker + coaching style)">05</button>
+      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Configure AI Coaching Prompt">06</button>
+      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Deploy review">07</button>
+      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Deploy success + LRPS provisioning ticket">08</button>
+      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: Tenant Settings (tenant identity + branding)">17</button>
+      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">18</button>
+      <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Analytics &amp; Reporting (A-7.10..7.14)">19</button>
+      <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Tenant Activity Log (A-10.4 tenant-scoped)">20</button>
     </nav>
 
     <span class="flow-id">Flow B</span>
     <span class="flow-desc">Critical Incident Response &amp; SLA</span>
     <nav class="flow-nav" aria-label="Incident response screens">
-      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: All systems operational">13</button>
-      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: LLM down, fallback engaged">14</button>
-      <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Notification detail">15</button>
-      <button class="step-btn" onclick="goToScreen(16)" aria-label="Screen 16: P1 ticket creation">16</button>
-      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: Ticket submitted">17</button>
-      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: CSM response thread">18</button>
-      <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Service restored">19</button>
-      <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: SLA dashboard">20</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: All systems operational">09</button>
+      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: LLM down, fallback engaged">10</button>
+      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Notification detail">11</button>
+      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: P1 ticket creation">12</button>
+      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: Ticket submitted">13</button>
+      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: CSM response thread">14</button>
+      <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Service restored">15</button>
+      <button class="step-btn" onclick="goToScreen(16)" aria-label="Screen 16: SLA dashboard">16</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 25; // v4.25: Team & Roles (formerly screen 22) moved to Super Admin (Super Admin scope) per WGU-stakeholder-feedback reshape; renumbered old 23->22 (Instructor Roster) and 24->23 (Subject Lifecycle). v4.51: screens 24 (Analytics & Reporting, closes A-7.10..7.14) and 25 (Tenant Activity Log, closes A-10.4 tenant-scoped) added against the correct signed contract MD.
+  const TOTAL_SCREENS = 20; // v4.53: end-of-day sequential renumber pass. All tenant_admin screens collapsed to sequential 1-20 (was {1,2,3,4,9,8,11,12,13..20,21,23,24,25}). DOM order preserved; only IDs changed. Wizard step 3 of 5 = Model & Coaching (new screen-5); step 4 of 5 = AI Coaching Prompt (new screen-6).
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
