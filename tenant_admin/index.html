@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.51</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.52</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1006,8 +1006,10 @@
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SkillProof-IN]</code></span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>WGU SSO authentication complete</span></div>
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LTI baseline role: Instructor</span></div>
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>Elevation applied: <strong>Tenant Admin</strong> <span class="text-muted small">(by Global Admin Bob, 07 May 2026)</span></span></div>
+            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>Elevation applied: <strong>Tenant Admin</strong> <span class="text-muted small">(by Super Admin Bob, 07 May 2026)</span></span></div>
+            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">verified_user</span><span>Authorization verified server-side &middot; <span class="text-muted small">link does not grant access</span></span></div>
           </div>
+          <p class="text-muted small mt-3 mb-0">Default landing role for LRPS deep links: Student. WGU staff: Instructor. Tenant Admin requires Super Admin elevation.</p>
           <div class="mt-4">
             <button class="btn btn-primary btn-lg" onclick="goToScreen(2)">
               Continue to Portal <span class="material-icons-outlined" aria-hidden="true">arrow_forward</span>
@@ -1118,27 +1120,29 @@
 
       <h2 class="h5 mb-2">Your Subjects</h2>
       <div class="row-list mb-3">
-        <div class="row-card recommended">
+        <div class="row-card">
           <div class="row-num">1</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
               <span class="dot green"></span>
               <span class="row-title">E010: Foundations of Programming (Python)</span>
               <span class="badge badge-success">In production</span>
+              <span class="badge badge-gray">Read-only</span>
             </div>
-            <div class="row-sub">Live · last deployed 02 May 2026 · prompt v3</div>
+            <div class="row-sub">Live · last deployed 02 May 2026 · prompt v3 · created by another team member</div>
           </div>
           <div class="row-actions">
-            <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
+            <button class="btn btn-outline-primary btn-sm">View <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
           </div>
         </div>
-        <div class="row-card">
+        <div class="row-card recommended">
           <div class="row-num">2</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
               <span class="dot green"></span>
               <span class="row-title">E135: Object-Oriented Programming with Python</span>
               <span class="badge badge-success">In production</span>
+              <span class="badge badge-brand">Owner</span>
             </div>
             <div class="row-sub">Live · last deployed 06 May 2026 · prompt v1</div>
           </div>
@@ -1153,6 +1157,7 @@
               <span class="dot amber"></span>
               <span class="row-title">E075: Intermediate Python &amp; Libraries</span>
               <span class="badge badge-warning">In staging</span>
+              <span class="badge badge-brand">Owner</span>
             </div>
             <div class="row-sub">Awaiting acceptance · last build 04 May 2026</div>
           </div>
@@ -1167,6 +1172,7 @@
               <span class="dot gray"></span>
               <span class="row-title">E120: Applied Data Structures (Python)</span>
               <span class="badge badge-gray">Draft</span>
+              <span class="badge badge-brand">Owner</span>
             </div>
             <div class="row-sub">Configuration in progress · saved 06 May 2026 · model: not selected</div>
           </div>
@@ -1175,6 +1181,7 @@
           </div>
         </div>
       </div>
+      <p class="text-muted small mb-3">Owner = you created the Skill (write access). Read-only = another team member created it in School of Technology (read access).</p>
 
       <div class="d-flex gap-2 align-items-center mb-3">
         <button class="btn btn-primary btn-lg" onclick="goToScreen(3)">
@@ -2463,12 +2470,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <div class="pgn__card pgn__card-featured">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">badge</span>Tenant identity</span>
-              <h2 class="h5 mb-2">PDev &mdash; Program Development</h2>
+              <h2 class="h5 mb-2">School of Technology</h2>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:32%;">Tenant ID</th><td><code>tenant_pdev</code></td></tr>
+                <tr><th style="width:32%;">Tenant ID</th><td><code>tenant_school_tech</code></td></tr>
                 <tr><th>Parent organization</th><td>Western Governors University</td></tr>
+                <tr><th>Operated by</th><td>WGU Program Development</td></tr>
                 <tr><th>LRPS launch URL</th><td><code>lrps.wgu.edu/provision/563034848</code></td></tr>
                 <tr><th>Assigned JFT CSM</th><td>Jordan &middot; <a href="#" onclick="event.preventDefault();">support@jft.com</a></td></tr>
+                <tr><th>Your role scope</th><td>Tenant Admin &middot; read access to all Skills in School of Technology &middot; write access to Skills you created</td></tr>
               </table>
             </div>
           </div>
@@ -2483,7 +2492,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                 <label class="form-label" for="b-logo-light">Light theme</label>
                 <div class="d-flex align-items-center gap-2">
                   <div style="width:72px; height:44px; border-radius: var(--pgn-size-border-radius-base); background: #FFFFFF; display:flex; align-items:center; justify-content:center; border: 1px solid var(--pgn-color-gray-200);">
-                    <img src="../assets/wgu-corporation-full-color.png" alt="WGU PDev light" style="height:24px; width:auto;">
+                    <img src="../assets/wgu-corporation-full-color.png" alt="School of Technology logo (light theme)" style="height:24px; width:auto;">
                   </div>
                   <button class="btn btn-outline-primary btn-sm" id="b-logo-light">Upload&hellip;</button>
                 </div>
@@ -2493,7 +2502,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                 <label class="form-label" for="b-logo-dark">Dark theme</label>
                 <div class="d-flex align-items-center gap-2">
                   <div style="width:72px; height:44px; border-radius: var(--pgn-size-border-radius-base); background: #001730; display:flex; align-items:center; justify-content:center; border: 1px solid var(--pgn-color-gray-200);">
-                    <img src="../assets/wgu-corporation-white.png" alt="WGU PDev dark" style="height:24px; width:auto;">
+                    <img src="../assets/wgu-corporation-white.png" alt="School of Technology logo (dark theme)" style="height:24px; width:auto;">
                   </div>
                   <button class="btn btn-outline-primary btn-sm" id="b-logo-dark">Upload&hellip;</button>
                 </div>
@@ -2875,7 +2884,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span>Activity Log</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">history</span>Tenant Audit</span>
-      <h1 id="s25-heading" class="mb-3">Activity Log &middot; PDev</h1>
+      <h1 id="s25-heading" class="mb-3">Activity Log &middot; School of Technology</h1>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
         <span class="badge badge-info">All actions</span>
@@ -2905,6 +2914,13 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                 <td>Alice</td>
                 <td>Deploy</td>
                 <td><code>sub_e135</code> &middot; production</td>
+                <td><span class="badge badge-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>07 May 2026 &middot; 09:00:00</td>
+                <td>Bob (Super Admin)</td>
+                <td>Elevate role</td>
+                <td>Alice &rarr; Tenant Admin (School of Technology)</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
               <tr>
@@ -2944,7 +2960,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               </tr>
               <tr>
                 <td>06 May 2026 &middot; 13:18:04</td>
-                <td>Bob (Global Admin)</td>
+                <td>Bob (Super Admin)</td>
                 <td>Assign instructor</td>
                 <td>Charlie &rarr; E135</td>
                 <td><span class="badge badge-success">Success</span></td>
@@ -2965,7 +2981,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               </tr>
               <tr>
                 <td>28 Apr 2026 &middot; 11:20:55</td>
-                <td>Bob (Global Admin)</td>
+                <td>Bob (Super Admin)</td>
                 <td>Add instructor</td>
                 <td>Noor &rarr; E010</td>
                 <td><span class="badge badge-success">Success</span></td>
@@ -3052,7 +3068,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 25; // v4.25: Team & Roles (formerly screen 22) moved to Super Admin (Global Admin scope) per WGU-stakeholder-feedback reshape; renumbered old 23->22 (Instructor Roster) and 24->23 (Subject Lifecycle). v4.51: screens 24 (Analytics & Reporting, closes A-7.10..7.14) and 25 (Tenant Activity Log, closes A-10.4 tenant-scoped) added against the correct signed contract MD.
+  const TOTAL_SCREENS = 25; // v4.25: Team & Roles (formerly screen 22) moved to Super Admin (Super Admin scope) per WGU-stakeholder-feedback reshape; renumbered old 23->22 (Instructor Roster) and 24->23 (Subject Lifecycle). v4.51: screens 24 (Analytics & Reporting, closes A-7.10..7.14) and 25 (Tenant Activity Log, closes A-10.4 tenant-scoped) added against the correct signed contract MD.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
