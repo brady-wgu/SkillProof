@@ -6,6 +6,61 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.51 — 13 May 2026 — Tenant Admin contract-gap closure against the correct signed MSA + SOW
+
+Earlier in the same session, an audit of the Tenant Admin workflow was run against a verification-only contract MD (the wrong file). Brady supplied the correct signed MSA + SOW MD, and the re-audit surfaced 8 Yes-committed Tenant-Admin-scoped requirements with weak or no coverage:
+
+| Gap | Contract row | Prior state |
+|---|---|---|
+| Student engagement tracking dashboards | A-7.10 | None in tenant_admin |
+| Learning analytics for educators (class insights, at-risk drill-down) | A-7.11 | Only on instructor portal |
+| Usage statistics + reporting (program leaders, filters) | A-7.12 | None in tenant_admin |
+| Data visualization (accessible charts) | A-7.13 | Only SLA gauge on screen 20 |
+| Report exports (CSV / PDF / JSON) | A-7.14 | None in tenant_admin |
+| Self-service support portal | A-9.14 | `help/` surface existed; no navbar link from tenant_admin |
+| Video training resources | A-9.15 | `help/` surface existed; no navbar link from tenant_admin |
+| Audit logging (tenant-scoped) | A-10.4 | Only cross-tenant view on super-08 |
+
+v4.51 closes all 8 on two new screens plus a navbar Help link injection.
+
+### What's new
+
+- **Screen 24 — Analytics & Reporting (NEW).** Three vertically-stacked sections:
+  - **Engagement** (A-7.10 + A-7.13) — Time-on-task SVG line chart and Submissions bar chart, both with accessible `role="img"` + `aria-label`.
+  - **Class Insights** (A-7.11) — Subject-level summary table (Subject · Avg topic mastery · Learners below threshold · At-risk count badge · "Open in Instructor portal" button).
+  - **Program Reports** (A-7.12 + A-7.14) — Filter row (Date range · Subjects · Topic) + 3-row reports table (Engagement · Submissions · Topic-mastery) with per-row CSV / PDF / JSON export buttons.
+  - FERPA-safe: no learner names, counts only.
+- **Screen 25 — Tenant Activity Log (NEW).** Tenant-scoped read-only audit log mirroring the cross-tenant `super-08` view but with implicit `tenant=pdev` filter and no tenant selector. Filter chips (action type, date range, actor) + 5-column table + pagination footer.
+- **Navbar Help link** injected on all 20 tenant_admin screens. Visible between the theme-toggle button and the `Content Creator Portal` chip; opens `../help/index.html`. New `.navbar-help-link` CSS class.
+- **Portal home (screen 2)** gains two new quick-link cards (Analytics & Reporting → 24, Activity Log → 25) on a new row below the existing Configure courses / System status cards.
+- **Meta-bar Flow A** extended with `24` and `25` buttons.
+- **`TOTAL_SCREENS`** bumped `23 → 25`.
+
+### Bundled updates
+
+- `capture_screens.py` sc-add-02 list `[1,2,3,4,9,8,11,12,21,23]` → `[1,2,3,4,9,8,11,12,21,23,24,25]`. Tenant Admin per-theme PNG total rises 20 → 22.
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` new rows `tenant-24` + `tenant-25`; Tenant Admin totals updated to 25 Contract-required.
+- `_contract_tracking/CONTRACT_TRACKER.md` Storyboard Coverage updated for SOW-2.5, A-7.10, A-7.11, A-7.12, A-7.13, A-7.14, A-9.14, A-9.15, A-10.4.
+- **SOW §2.5 instructors deviation note** added to SCREEN_JUSTIFICATIONS — the "instructors" tenant-level control was consciously consolidated under `super-12` (Global Admin) by WGU direction in v4.48. Tenant Admin retains read-only visibility via portal-home subject rows and the new `tenant-24` Class Insights table. Documented as intentional deviation, not a contract gap.
+
+### Re-verification of prior decisions against the correct contract
+
+| Term | Hits in correct contract | Prior decision | Status |
+|---|---|---|---|
+| `weight` / `weighting` / `weighted` | 0 | Weight column removed from screen 04 (v4.48) | Confirmed correct |
+| `active learners` / `live learners` | 0 | Active-learners metadata stripped from subject rows (v4.48) | Confirmed correct |
+| `instructors` (as tenant-level control) | SOW §2.5 lists it | Instructor Roster moved to super-12 (v4.48) | Now documented as conscious deviation |
+
+### Verification
+
+1. `grep -c 'id="screen-2[45]"' tenant_admin/index.html` → 2.
+2. `grep -c 'navbar-help-link"' tenant_admin/index.html` → 20 (18 existing screens + 2 new = 20 navbars) + 3 CSS rules = 23 total occurrences.
+3. `grep -c 'class="step-btn"' tenant_admin/index.html` → 19 (Flow A 11 + Flow B 8; button `01` carries `class="step-btn active"` and matches separately).
+4. Meta-bar Flow A reading: `01 02 03 04 09 08 11 12 21 23 24 25`.
+5. Capture regen deferred to end-of-day sequential renumber pass (per existing deferral).
+
+---
+
 ## v4.50 — 13 May 2026 — Branding restored on Tenant Settings (screen 21)
 
 v4.49 had stripped the branding affordance from screen 21 when rebuilding it as a clean Tenant Settings landing. WGU correctly pushed back: A-7.9 (customizable interface for institutions) is a binding contract commitment ("Logos, colors, domain configurable per tenant") and the branding controls belong on the Settings page rather than deleted.
