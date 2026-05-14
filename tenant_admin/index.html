@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.49</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.50</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -2421,6 +2421,52 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             </div>
           </div>
         </div>
+        <div class="col-5">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">palette</span>Branding</span>
+              <h2 class="h5 mb-3">Tenant logo</h2>
+
+              <div class="form-group mb-3">
+                <label class="form-label" for="b-logo-light">Light theme</label>
+                <div class="d-flex align-items-center gap-2">
+                  <div style="width:72px; height:44px; border-radius: var(--pgn-size-border-radius-base); background: #FFFFFF; display:flex; align-items:center; justify-content:center; border: 1px solid var(--pgn-color-gray-200);">
+                    <img src="../assets/wgu-corporation-full-color.png" alt="WGU PDev light" style="height:24px; width:auto;">
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm" id="b-logo-light">Upload&hellip;</button>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label" for="b-logo-dark">Dark theme</label>
+                <div class="d-flex align-items-center gap-2">
+                  <div style="width:72px; height:44px; border-radius: var(--pgn-size-border-radius-base); background: #001730; display:flex; align-items:center; justify-content:center; border: 1px solid var(--pgn-color-gray-200);">
+                    <img src="../assets/wgu-corporation-white.png" alt="WGU PDev dark" style="height:24px; width:auto;">
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm" id="b-logo-dark">Upload&hellip;</button>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label" for="b-color">Accent color</label>
+                <div class="d-flex align-items-center gap-2">
+                  <span style="display:inline-block; width:32px; height:32px; border-radius: var(--pgn-size-border-radius-base); background: var(--pgn-color-brand-base); border: 1px solid var(--pgn-color-gray-200);"></span>
+                  <input class="form-control" id="b-color" type="text" value="#0070F0" style="max-width: 160px; font-family: monospace;">
+                </div>
+              </div>
+
+              <div class="form-group mb-0">
+                <label class="form-label" for="b-domain">Custom domain</label>
+                <input class="form-control" id="b-domain" type="text" value="pdev.skillproof.wgu.edu">
+              </div>
+
+              <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-outline-primary btn-sm">Cancel</button>
+                <button class="btn btn-primary btn-sm">Save branding</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -2612,7 +2658,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Configure AI Coaching Prompt">08</button>
       <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Deploy review">11</button>
       <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Deploy success + LRPS provisioning ticket">12</button>
-      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Tenant Settings (tenant identity card)">21</button>
+      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Tenant Settings (tenant identity + branding)">21</button>
       <button class="step-btn" onclick="goToScreen(23)" aria-label="Screen 23: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">23</button>
     </nav>
 
