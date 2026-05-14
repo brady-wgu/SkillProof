@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.54</title>
+  <title>SkillProof — Content Creator Portal — Storyboard v4.55</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1311,7 +1311,20 @@
       <span class="eyebrow"><span class="material-icons-outlined">list_alt</span>Step 2 of 5 · Topics &amp; Learning Objectives</span>
       <h1 id="s4-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
 
-      <p class="text-muted mb-3">Expand a topic to edit its learning objectives in place. The passing threshold is editable per row.</p>
+      <p class="text-muted mb-3">Set the overall Skill passing threshold, then expand each topic to edit its learning objectives in place. A student is considered to have passed the Skill once their overall score meets this threshold.</p>
+
+      <div class="pgn__card mb-3">
+        <div class="pgn__card-section">
+          <div class="form-group mb-0">
+            <label class="form-label" for="skill-pass-threshold">Overall Skill passing threshold</label>
+            <div class="d-flex align-items-center gap-2">
+              <input class="lo-num" id="skill-pass-threshold" type="number" min="0" max="100" value="70" style="width: 88px;">
+              <span class="text-muted">%</span>
+              <span class="text-muted small" style="margin-left: 12px;">Average across all learning objectives. Defaults to 70%.</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="lo-topics mb-3">
 
@@ -1695,7 +1708,8 @@ Address the learner by their first name. Never use "student" as the form of addr
               <table class="pgn__data-table mb-3" style="border:none; box-shadow:none;">
                 <tr><th style="width:38%;">Topics</th><td>4 &mdash; Classes &amp; Objects, Inheritance &amp; Composition, Polymorphism &amp; Encapsulation, Common Design Patterns</td></tr>
                 <tr><th>Learning Objectives</th><td>10 total (3 + 2 + 2 + 3 per topic)</td></tr>
-                <tr><th>Passing thresholds</th><td>65% &ndash; 75% per objective (avg 69.5%)</td></tr>
+                <tr><th>Overall Skill passing threshold</th><td>70%</td></tr>
+                <tr><th>Per-objective thresholds</th><td>65% &ndash; 75% (avg 69.5%)</td></tr>
               </table>
             </div>
 
@@ -3040,7 +3054,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: SSO landing">01</button>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Subject form">03</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives (inline expanders, per-objective passing threshold)">04</button>
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives (overall Skill passing threshold + inline expanders with per-objective threshold)">04</button>
       <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Model &amp; Coaching (model picker + coaching style)">05</button>
       <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Configure AI Coaching Prompt">06</button>
       <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Deploy review">07</button>
