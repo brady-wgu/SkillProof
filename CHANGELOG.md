@@ -6,6 +6,26 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.50 — 13 May 2026 — Branding restored on Tenant Settings (screen 21)
+
+v4.49 had stripped the branding affordance from screen 21 when rebuilding it as a clean Tenant Settings landing. WGU correctly pushed back: A-7.9 (customizable interface for institutions) is a binding contract commitment ("Logos, colors, domain configurable per tenant") and the branding controls belong on the Settings page rather than deleted.
+
+Screen 21 is now a two-column layout:
+
+- **Left card — Tenant identity** (unchanged from v4.49): read-only key/value rows for Tenant name, Tenant ID, Parent organization, LRPS launch URL, Assigned JFT CSM.
+- **Right card — Branding** (new): four controls grounded in A-7.9:
+  - Light-theme logo upload (preview swatch on white background)
+  - Dark-theme logo upload (preview swatch on deep-navy background)
+  - Accent color (color swatch + hex input)
+  - Custom domain (text input, defaults to `pdev.skillproof.wgu.edu`)
+  - Cancel / Save branding actions at the bottom of the card
+
+Footer preview not re-added — the standardized WGU footer renders live on every storyboard page, so a static preview is redundant.
+
+Tracker grounding for `tenant-21` restored to include A-7.9 alongside A-8.6 + A-9.7. Meta-bar aria-label updated.
+
+---
+
 ## v4.49 — 13 May 2026 — Follow-on tenant_admin trims (screens 09 + 21)
 
 Two quick follow-ups from the same WGU screen-by-screen walkthrough that drove v4.48.
