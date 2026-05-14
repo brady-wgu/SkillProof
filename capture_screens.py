@@ -9,19 +9,17 @@ Usage:
 
 Outputs (per persona):
     student/screenshots/         + student/screenshots_dark/         (34 + 34)
-    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (22 + 22)
+    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (20 + 20)
     instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
     super_admin/screenshots/     + super_admin/screenshots_dark/     (13 + 13)
     lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
     help/screenshots/            + help/screenshots_dark/            (1 + 1)
     assets/landing/light.png     + assets/landing/dark.png           (1 + 1)
 
-Total: 158 PNGs after capture (v4.45: full regeneration after SkillProof
-product rename (v4.43), repo + Pages URL rename (v4.45), and the global
-WGU footer deployment (v4.39/v4.40) + version-stamp cleanup (v4.42). Adds
-help surface coverage (added v4.38) and super_admin screen 11 Data &
-Integrations Hub (added v4.41) to the capture set. Adds the root portal
-selector hero capture so README badges stay current.
+Total: 156 PNGs after capture (v4.53 end-of-day sequential renumber
+pass). Tenant Admin collapsed to 20 sequential screens (1-20) after
+the disordered v4.48..v4.52 evolution; Super Admin sits at 13 sequential;
+Instructor 8, Student 34, LRPS 1, Help 1, landing 1.
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
@@ -50,8 +48,8 @@ PORTALS = [
     {"file": "tenant_admin/index.html", "scenarios": [
         # v4.25: Team & Roles screen (formerly tenant_admin 22) moved to Super Admin per WGU-
         # stakeholder feedback reshape; old 23 (Instructor Roster) -> 22, old 24 (Subject Lifecycle) -> 23.
-        ("sc-add-02", [1, 2, 3, 4, 9, 8, 11, 12, 21, 23, 24, 25]),  # 21 Branding, 23 Subject Lifecycle, 24 Analytics & Reporting, 25 Tenant Activity Log. v4.47: dropped 5/6/7 (objective add/edit/remove screens) — screen 4 now manages topics + objectives inline via expanders. v4.48: dropped 10 (Scoring style absorbed into screen 9) and reordered 9 before 8 so the model + coaching basics are picked before the custom AI prompt. v4.48: dropped 22 (Instructor Roster moved to super_admin under Global Admin scope). v4.51: added 24 (Analytics & Reporting, closes A-7.10..7.14) and 25 (Tenant Activity Log, closes A-10.4 tenant-scoped) against the correct signed contract MD.
-        ("sc-add-06", [13, 14, 15, 16, 17, 18, 19, 20]),
+        ("sc-add-02", [1, 2, 3, 4, 5, 6, 7, 8, 17, 18, 19, 20]),  # v4.53 end-of-day renumber pass: screens are now sequentially 1-20. Flow A wizard + settings: 1 SSO · 2 portal home · 3 new subject · 4 topics & objectives · 5 model & coaching · 6 AI prompt · 7 deploy review · 8 deploy success · 17 tenant settings · 18 subject lifecycle · 19 analytics & reporting · 20 activity log.
+        ("sc-add-06", [9, 10, 11, 12, 13, 14, 15, 16]),  # v4.53 renumber: Flow B incident response. 9 systems OK · 10 LLM down · 11 notification · 12 P1 ticket · 13 ticket submitted · 14 CSM thread · 15 service restored · 16 SLA dashboard.
     ]},
     {"file": "super_admin/index.html", "scenarios": [
         ("sc-add-04", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]),  # v4.25 screen 9 User Management; v4.28 screen 10 External Tooling & Integrations; v4.41 screen 11 Data & Integrations Hub; v4.48 screen 12 Instructor Roster & Course Assignment (moved from tenant_admin under Super Admin scope); v4.52 screen 13 School / Tenant Management (Super Admin manages the 4 WGU Schools as tenants).

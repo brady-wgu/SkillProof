@@ -6,6 +6,64 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.53 — 13 May 2026 — End-of-day sequential renumber + full screenshot regeneration
+
+Tenant Admin screen IDs collapsed from the disordered set `{1,2,3,4,9,8,11,12,13..20,21,23,24,25}` to sequential `1..20`. DOM order is preserved; only IDs change. This is the JFT delivery state — every screen across every persona portal now reads as a clean numeric sequence with zero gaps.
+
+### Tenant Admin renumber mapping
+
+| Old ID | New ID | Screen |
+|---:|---:|:---|
+| 1 | 1 | SSO landing |
+| 2 | 2 | Portal home |
+| 3 | 3 | New Subject form |
+| 4 | 4 | Topics & Learning Objectives |
+| **9** | **5** | Model & Coaching *(wizard step 3 of 5)* |
+| **8** | **6** | Configure AI Coaching Prompt *(wizard step 4 of 5)* |
+| **11** | **7** | Deploy review |
+| **12** | **8** | Deploy success + LRPS provisioning ticket |
+| **13** | **9** | All systems operational *(Flow B incident)* |
+| **14** | **10** | Service degradation |
+| **15** | **11** | Notification detail |
+| **16** | **12** | P1 ticket creation |
+| **17** | **13** | Ticket submitted |
+| **18** | **14** | CSM response thread |
+| **19** | **15** | Service restored |
+| **20** | **16** | SLA dashboard |
+| **21** | **17** | Tenant Settings |
+| **23** | **18** | Subject Lifecycle |
+| **24** | **19** | Analytics & Reporting |
+| **25** | **20** | Tenant Activity Log |
+
+`TOTAL_SCREENS` 25 → 20.
+
+### Bundled updates
+
+- **Meta-bar Flow A** (wizard + settings): `01 02 03 04 05 06 07 08 17 18 19 20`. **Flow B** (incident response): `09 10 11 12 13 14 15 16`.
+- **`capture_screens.py`** — sc-add-02 list `[1,2,3,4,9,8,11,12,21,23,24,25]` → `[1,2,3,4,5,6,7,8,17,18,19,20]`. sc-add-06 list `[13..20]` → `[9..16]`. Docstring totals adjusted.
+- **`SCREEN_JUSTIFICATIONS.md`** — tenant-* row IDs renumbered, rows re-sorted by new ID. Tenant Admin totals row updated to "20 Contract-required".
+- **`CONTRACT_TRACKER.md`** — tenant-* references in Storyboard Coverage cells swept to new IDs. Historical `tenant-22` reference (deleted-in-v4.48 Instructor Roster, now `super-12`) preserved as a deliberate historical anchor.
+- **Full screenshot regeneration** via the Playwright pipeline (`capture_screens.py`). 156 PNGs total: student 34 + tenant_admin 20 + super_admin 13 + instructor 8 + lrps 1 + help 1 + landing 1, each × 2 themes (light + dark), plus 2 landing assets = **156**.
+
+### What's left unchanged
+
+- `student/index.html` — already sequential 1-34; frozen at JFT-deployed v1.2 MVP; no edits.
+- `instructor/index.html` — already sequential 1-8.
+- `super_admin/index.html` — already sequential 1-13.
+- `lrps/index.html`, `help/index.html` — single-screen surfaces.
+- Doc Control historical rows in the presentation catalog — left as-is to preserve the version timeline.
+
+### Verification
+
+1. `grep -c 'id="screen-' tenant_admin/index.html` → 20 sections; IDs are `1..20` sequential.
+2. `tenant_admin/index.html` `TOTAL_SCREENS` constant → `20`.
+3. Tracker `tenant-*` IDs: 20 rows, all in `01..20` (verified by `grep` sort).
+4. Screenshots: `ls tenant_admin/screenshots/` → 20 PNGs; `ls tenant_admin/screenshots_dark/` → 20 PNGs.
+5. Total PNGs across the repo: 156.
+6. Keyboard arrow nav now works end-to-end without gap-skipping logic — every adjacent ID exists in the DOM.
+
+---
+
 ## v4.52 — 13 May 2026 — RBAC narrative + Super Admin naming + School-as-Tenant model
 
 Source: Brady's working draft *"SkillProof Authentication, Access Control, and Role Hierarchy"* v1.0 (13 May 2026), authored after the v4.51 release. The doc consolidates SkillProof's auth, role hierarchy, and tenant model. The storyboard had drift in three areas; v4.52 closes it.
