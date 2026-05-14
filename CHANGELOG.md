@@ -6,6 +6,62 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.54 — 13 May 2026 — Repo documentation refresh for JFT delivery
+
+Pure documentation pass. Every README and the root portal-selector page now reflects the cumulative state of v4.42 through v4.53. No HTML / UI changes on any persona screen.
+
+### Files touched
+
+- **`README.md` (repo root)** — rebuilt:
+  - Screen badge `75` → `77`.
+  - Surfaces table: tenant_admin `23` → `20`, super_admin `9` → `13`, added Help & Resources row. Total reads `77 screens · 4 personas · 6 surfaces · 2 catalogs`.
+  - Overview paragraphs for Alice + Bob rewritten to current scope (no weight column, no Add/Edit/Remove sub-screens, no instructor roster on tenant_admin; Bob covers User Management + External Tooling + Data & Integrations + Instructor Roster + School / Tenant Management).
+  - "Note for JFT" callout renamed to "Implementation notes (for JFT)" matching the v4.48 sweep.
+  - Repo layout block: PNG counts updated; help/ entry added; favicon noted.
+  - Persona sections refreshed: tenant_admin Alice persona = WGU PDev employee operating School of Technology tenant; super_admin Bob role = Super Admin (not Global Admin); both cite Brady's RBAC working draft as a source.
+  - Shared persona reference table: `Tenant` row rewritten as `School of Technology` + `tenant_school_tech`; new `Operating team` and `All 4 WGU Schools` rows; new `Role taxonomy` row.
+  - Source documents: signed JFT MSA + SOW added; RBAC working draft v1.0 (13 May 2026) added.
+  - Branding section now mentions the WGU shield favicon (v4.46).
+  - For developers list extended with zero-trust authorization note + School-as-Tenant clarification.
+  - Changelog summary block rebuilt — replaces the stale v4.18 narrative with a chronological list of today's major milestones (v4.43-v4.54).
+- **`tenant_admin/README.md`** — rewritten:
+  - Persona = School of Technology operator, not generic PDev content owner.
+  - Scope: removed weight + Add/Edit/Remove framing; added analytics + audit log scope.
+  - SC-ADD-02 narrative rewritten for the current 12-screen wizard + settings path (IDs 1-8, 17-20).
+  - SC-ADD-06 incident IDs corrected to 9-16.
+  - Total: `2 scenarios · 20 screens (sequential 1-20)`.
+  - SOW references column refreshed.
+  - Components list rebuilt: topic expanders, Owner / Read-only badges, tenant identity card, branding card, analytics SVG charts, Class Insights table, Program Reports exports, tenant audit log.
+  - Notes section refreshed for new screen IDs and current behavior; instructor-management deviation explicitly called out.
+  - RBAC working draft added as a source.
+- **`super_admin/README.md`** — rewritten:
+  - Persona blurb adds "minimum 2 Super Admins" lockout rule.
+  - SC-ADD-04 description expanded to enumerate all 13 screens (was 8). User Management, External Tooling, Data & Integrations Hub, Instructor Roster, and School / Tenant Management added.
+  - Total: `1 scenario · 13 screens (sequential 1-13)`.
+  - SOW references extended (§6.28 GraphQL, §8.6/8/10/12/13/14, §10.13/14/16/18).
+  - PNG counts updated.
+  - Components list extended with 4-tier role taxonomy badges + min-2 disabled-downgrade tooltip + External Tooling hub + Data & Integrations Hub + cross-tenant Instructor Roster + School / Tenant Management with `+ Create new School` button.
+  - Notes section updated: zero-trust line, User Management as sole elevator, Instructor Roster as sole skill-assignment surface, new School / Tenant Management screen.
+  - RBAC working draft added as a source.
+- **`instructor/README.md`** — "LO miss" → "Objective miss" (single edit; consistent with the v4.48 LO sweep).
+- **`lrps/README.md`** — verified current; no edits needed.
+- **`student/README.md`** — frozen baseline; no edits.
+- **`index.html` (root portal selector)** — portal-card stats refreshed: Content Creator 23 → 20 screens; Super Admin 9 → 13 screens; Scenario Catalog 150 → 156 screenshots; "All 9 scenarios" → "All scenarios". Top-of-file HTML comment block updated to reflect current surface count + 13-screen super_admin scope.
+
+### Verification
+
+1. `grep -rn '\b23 screens\b\|\b9 screens\b\|\b150 screenshots\b' --include='*.md' --include='*.html'` returns zero (none of those stale counts remain).
+2. `grep -rn 'Global Admin' --include='*.md'` returns zero outside Doc Control historical rows.
+3. `grep -rn '\bPDev\b' --include='*.md'` returns only the contextually-correct "WGU Program Development (PDev) employee" / "PDev team" references — no stale `Tenant | PDev` claims.
+4. README screen badge → 77; total stated in Surfaces table → 77.
+5. Each per-persona README's `Files` block matches its actual `screenshots/` directory PNG count.
+
+### What ships in this release
+
+Pure docs. Zero behavior changes. No screenshot regeneration needed (no source HTML changed). The JFT delivery package is now consistent end-to-end.
+
+---
+
 ## v4.53 — 13 May 2026 — End-of-day sequential renumber + full screenshot regeneration
 
 Tenant Admin screen IDs collapsed from the disordered set `{1,2,3,4,9,8,11,12,13..20,21,23,24,25}` to sequential `1..20`. DOM order is preserved; only IDs change. This is the JFT delivery state — every screen across every persona portal now reads as a clean numeric sequence with zero gaps.
