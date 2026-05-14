@@ -6,6 +6,32 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.55 — 14 May 2026 — Overall Skill passing threshold on Screen 04
+
+Per WGU direction (14 May 2026), Tenant Admin Screen 04 (Topics & Learning Objectives) now carries an **overall Skill passing threshold** alongside the existing per-objective thresholds. A student is considered to have passed the Skill once their overall score meets this threshold; the per-objective thresholds in each topic expander continue to drive each row's pass state.
+
+### What changed
+
+- **Screen 04** — new card above the topic expanders:
+  - Label: `Overall Skill passing threshold`
+  - Editable number input (`0–100`, default `70`) + `%` suffix
+  - Sub-text: *Average across all learning objectives. Defaults to 70%.*
+- **Screen 04 lede** rewritten to describe both thresholds:
+  - *"Set the overall Skill passing threshold, then expand each topic to edit its learning objectives in place. A student is considered to have passed the Skill once their overall score meets this threshold."*
+- **Screen 07 Deploy review — Step 2 summary** now shows two rows:
+  - `Overall Skill passing threshold` → `70%`
+  - `Per-objective thresholds` → `65% – 75% (avg 69.5%)`
+- Meta-bar Flow A aria-label for screen 04 extended to mention the overall threshold.
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md` `tenant-04` row note updated.
+
+### Verification
+
+1. Screen 04 renders the new card immediately above the four topic expanders.
+2. Screen 07 deploy summary shows both threshold rows under Step 2.
+3. No other screen affected; no JS / TOTAL_SCREENS / capture-list changes needed.
+
+---
+
 ## v4.54 — 13 May 2026 — Repo documentation refresh for JFT delivery
 
 Pure documentation pass. Every README and the root portal-selector page now reflects the cumulative state of v4.42 through v4.53. No HTML / UI changes on any persona screen.
