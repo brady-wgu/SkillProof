@@ -6,6 +6,31 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.61 — 18 May 2026 — Light-mode WGU logo fix (owl + wordmark, not wordmark-only)
+
+The navbar's "light mode" logo was wired up to the WRONG asset file. `assets/wgu-corporation-full-color.png` actually contained only the WGU wordmark (no owl), and the navbar's `logo-light` class was pointing at `wgu-corporation-full-color-reverse.png` (a different wordmark-only PNG). Result: stakeholders never saw WGU's real owl + wordmark logo on any prototype surface. This pass swaps the asset and re-wires the navbar to use the correct file in each theme.
+
+### What changed
+
+- **`assets/wgu-corporation-full-color.png`** — REPLACED with the proper full-color owl + WGU wordmark file Brady provided (728×360 PNG, 109409 bytes). The previous wordmark-only file was 2000×910 / 61800 bytes.
+- **Navbar logo references updated across 4 files** (45 occurrences total — every navbar in every screen of every admin portal + root):
+  - `index.html`, `tenant_admin/index.html`, `super_admin/index.html`, `instructor/index.html`
+  - `logo-light` (shown in light mode): was `wgu-corporation-full-color-reverse.png` → now `wgu-corporation-full-color.png`
+  - `logo-dark` (shown in dark mode): was `wgu-corporation-white.png` → now `wgu-corporation-full-color-reverse.png`
+  - The orphaned `wgu-corporation-white.png` file remains for the tenant_admin S17 demo-branding card only.
+
+### Pending (Brady's next upload)
+
+Brady will upload the proper REVERSE file (white owl + white wordmark on transparent, for use on the dark-navy navbar in dark mode). When that lands, it overwrites `assets/wgu-corporation-full-color-reverse.png` and the navbar's dark-mode logo will display correctly without any HTML changes. The footer also currently has a single `<img>` (no light/dark swap) — adding that swap is deferred until the reverse file arrives.
+
+### Verification
+
+1. Visit the root and any admin portal in light mode → navbar logo is the colorful owl + WGU wordmark (matches Brady's brand guidelines).
+2. Hard-refresh to confirm the new 109409-byte asset is served (was 61800 bytes pre-v4.61).
+3. The footer logo in light mode is now correct (it already pointed at `wgu-corporation-full-color.png`; the file content is what changed).
+
+---
+
 ## v4.60 — 18 May 2026 — Global WGU footer: real links + student/ coverage
 
 Wires up the WGU global footer across every storyboard surface. Previously each ADA / Privacy / Terms / Honor link in the footer was a `href="#"` placeholder with `onclick="event.preventDefault();"` — visually present but inert. Now every footer link points at the real WGU policy page, opens in a new tab, and uses `rel="noopener"` for outbound-link safety. Also adds the footer to `student/index.html`, which was the only storyboard surface missing it.
