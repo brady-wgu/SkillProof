@@ -100,16 +100,17 @@ Student totals: 30 Contract-required · 4 Essential scaffolding · 0 Discretiona
 | `tenant-14` | Subject Lifecycle & Archival | SC-ADD-02 (settings) | SOW-2.5 · A-10.4 audit | A-10.2 data retention/deletion | Contract-required | Keep | |
 | `tenant-15` | Analytics & Reporting | SC-ADD-02 (analytics) | A-7.10 student engagement tracking · A-7.11 educator analytics · A-7.12 usage statistics & reporting · A-7.13 data visualization · A-7.14 report exports (CSV / PDF / JSON) | A-7.3 accessibility | Contract-required | Keep | v4.51: closes the analytics half of SOW §2.5 ("tenant-level controls for ... analytics") and the five §16.2 UX commitments that had no tenant_admin surface before this release. Three vertically-stacked sections (Engagement charts · Class Insights table with at-risk drill-down · Program Reports filter row + per-report export bar). FERPA-safe: no learner names, counts only. |
 | `tenant-16` | Tenant Activity Log | SC-ADD-02 (audit) | A-10.4 audit logging (tenant-scoped view) | A-10.8 RBAC scope enforcement | Contract-required | Keep | v4.51: mirror of `super-08` cross-tenant audit log with implicit `tenant=pdev` filter and no tenant selector. Tenant Admin sees only their tenant's actions; cross-tenant audit remains Super Admin scope. |
+| `tenant-21` | Access Denied (zero-trust deny path) | SC-ADD-02 (deny) | A-10.14 zero-trust · A-10.8 RBAC · A-10.4 audit (deny log) | RBAC doc v1.0 §4.2 Figure 6 | Contract-required | Keep | v4.57: Tenant Admin variant of the deny screen — Alice attempts a Super Admin link. Production UI strings only (heading, identity row, required row, two CTAs, log line). |
 
 **SOW §2.5 deviation note** — The Admin Portal commitment in SOW §2.5 lists "Tenant-level controls for configuration, modules, **instructors**, and analytics." The `instructors` control was consciously consolidated under `super-12` (Super Admin) by WGU direction on 13 May 2026 in the v4.48 release, under the principle that Super Admin is the sole controller of platform access. Tenant Admin retains read-only visibility of instructor activity via the portal-home subject rows and the new `tenant-19` Class Insights table; no provisioning, removal, or reassignment affordance exists in tenant_admin. This deviation is intentional and documented; not a contract gap.
 
-Tenant Admin totals: 20 Contract-required · 0 Essential scaffolding · 0 Discretionary.
+Tenant Admin totals: 21 Contract-required · 0 Essential scaffolding · 0 Discretionary.
 
 > Note: `tenant_admin/README.md` references a "Team & Role-Based Access" settings screen alongside Branding / Instructor Roster / Subject Lifecycle. Inventory shows three settings screens (21, 22, 23), not four. Either a Team & Roles screen exists in the HTML without an `id="sN-heading"` anchor (worth grep-confirming during D3a), or the README is stale. Flagged in `CONTRACT_TRACKER.md` row for A-10.8 RBAC.
 
 ---
 
-## Instructor — Charlie · 8 screens · `instructor/index.html`
+## Instructor — Charlie · 9 screens · `instructor/index.html`
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
@@ -121,12 +122,13 @@ Tenant Admin totals: 20 Contract-required · 0 Essential scaffolding · 0 Discre
 | `instructor-06` | Sally's coaching sessions (list) | SC-ADD-03 | A-10.4 audit (session log) · A-7.11 | — | Contract-required | Keep | v4.28 added Outcome column with semantic badges. |
 | `instructor-07` | Conversation transcript (Session 09) | SC-ADD-03 | A-10.4 audit (full Q/R/feedback capture) · SOW-2.5 (transcript review) | A-6.7 guardrails (AI feedback visibility) | Contract-required | Keep | Charlie's intervention decision point. |
 | `instructor-08` | All 47 messages logged (Audit Trail) | SC-ADD-03 | A-10.4 audit logging for all data access/modifications · SOW-9.13 monitoring | — | Contract-required | Keep | FERPA-aware capture-integrity stats. |
+| `instructor-09` | Access Denied (zero-trust deny path) | SC-ADD-03 (deny) | A-10.14 zero-trust · A-10.8 RBAC · A-10.4 audit (deny log) | RBAC doc v1.0 §4.2 Figure 6 | Contract-required | Keep | v4.57: Instructor variant of the deny screen — Charlie attempts a School Admin link. Production UI strings only. |
 
-Instructor totals: 8 Contract-required · 0 Essential scaffolding · 0 Discretionary.
+Instructor totals: 9 Contract-required · 0 Essential scaffolding · 0 Discretionary.
 
 ---
 
-## Super Admin — Bob · 10 screens · `super_admin/index.html`
+## Super Admin — Bob · 14 screens · `super_admin/index.html`
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
@@ -143,8 +145,9 @@ Instructor totals: 8 Contract-required · 0 Essential scaffolding · 0 Discretio
 | `super-11` | Data & Integrations Hub (data export · webhooks · GraphQL · streaming) | SC-ADD-04 ext (proposed: SC-ADD-08 Data & Integrations) | A-6.28 GraphQL API · A-8.8 real-time/batch export · A-8.12 webhooks · A-8.13 GraphQL queries · A-8.14 data streaming | A-6.22 REST API · A-8.11 API docs (link card) | Contract-required | Keep | v4.45 closed the remaining 5 D3a true-gap items on this single new surface. Cross-tenant scope; consolidates data-export functions moved from tenant_admin in v4.22. |
 | `super-12` | Instructor Roster & Course Assignment (cross-tenant) | SC-ADD-04 ext | SOW-2.5 · A-10.8 RBAC · A-10.4 audit | A-10.13 platform access governance | Contract-required | Keep | v4.48: moved from tenant_admin (prior `tenant-22`) under WGU direction that Super Admin is the sole controller of platform access. Cross-tenant scope; per-tenant filter at the top. v4.52: tenant labels normalized to WGU Schools; Skill-assignment authority callout added. |
 | `super-13` | School / Tenant Management | SC-ADD-04 ext | A-8.6 multi-tenancy isolation · A-10.8 RBAC · SOW-2.5 Admin Portal | A-10.4 audit on School creation / deactivation | Contract-required | Keep | v4.52: Super Admin manages the 4 WGU Schools as tenants. List + per-row Manage + top-of-page `Create new School`. Grounding: Brady's RBAC doc v1.0 (13 May 2026) — "tenants = WGU Schools." |
+| `super-14` | Access Denied (zero-trust deny path) | SC-ADD-04 (deny) | A-10.14 zero-trust · A-10.8 RBAC · A-10.4 audit (deny log) | RBAC doc v1.0 §4.2 Figure 6 | Contract-required | Keep | v4.57: Super Admin variant of the deny screen — expired/revoked provisioning. Production UI strings only. |
 
-Super Admin totals: 11 Contract-required · 0 Essential scaffolding · 0 Discretionary.
+Super Admin totals: 14 Contract-required · 0 Essential scaffolding · 0 Discretionary.
 
 ---
 
