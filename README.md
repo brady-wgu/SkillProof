@@ -27,7 +27,7 @@
 - **Alice** (Content Creator; SOW §2.2 role: Tenant Admin) — Course-as-a-Service portal: subject creation wizard, topic + objective expanders with per-objective passing thresholds, AI coaching prompt configuration, model + coaching style selection, CI/CD-driven deploy, LRPS provisioning workflow, tenant settings, subject lifecycle, analytics & reporting, tenant-scoped activity log. ([tenant_admin/](tenant_admin/))
 - **Charlie** (Instructor) — At-Risk Intervention dashboard. ([instructor/](instructor/))
 - **Bob** (Super Admin) — Cross-tenant governance, financial controls, security compliance, user role management, instructor roster, data + integrations hub, school/tenant management. ([super_admin/](super_admin/))
-- Plus **LRPS Landing** ([lrps/](lrps/)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all four personas.
+- Plus **LRPS Landing** at the storyboard root ([`/`](./)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all four personas. **(v4.59: promoted to root; the standalone `/lrps/` URL was retired.)**
 - Plus **Help & Resources** ([help/](help/)) — shared self-service support + video training surface linked from every admin portal's navbar.
 
 Each persona has its own **secret LRPS deep link** in production and authenticates separately. They share the SkillProof Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
@@ -38,17 +38,16 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 | Surface | URL | Description |
 |:--------|:----|:------------|
-| **Portal Selector** | [`/`](https://brady-wgu.github.io/SkillProof/) | Landing page with cards for every surface. **Start here.** |
-| **LRPS Landing** | [`/lrps/`](https://brady-wgu.github.io/SkillProof/lrps/) | Entry point for all four personas (4 live SkillProof rows + illustrative filler). |
-| **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP. **34 screens.** |
-| **Content Creator Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — Subject creation wizard (5 steps), Tenant Settings (identity + branding), Subject Lifecycle, Analytics & Reporting, Tenant Activity Log, plus the SC-ADD-06 incident response flow. Owner / Read-only distinction on the portal home; Help link in every navbar. **20 screens** (sequential 1-20). |
-| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — class heatmap → at-risk drill-down → conversation transcript → Audit Trail. **8 screens.** |
-| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob (Super Admin) — token usage, rate limits, compliance, geo-redundancy, cross-tenant audit log, User Management (4-tier role taxonomy with min-2-Super-Admins constraint), External Tooling hub, Data & Integrations Hub, Instructor Roster & Course Assignment (cross-tenant), School / Tenant Management. **13 screens.** |
+| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point for all four personas (4 live SkillProof rows + illustrative filler). **Start here.** **v4.59:** promoted to root; the standalone `/lrps/` URL was retired. |
+| **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
+| **Content Creator Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — Subject creation wizard (5 steps), Tenant Settings (identity + branding), Subject Lifecycle, Analytics & Reporting, Tenant Activity Log, plus the SC-ADD-06 incident response flow. Owner / Read-only distinction on the portal home; Help link in every navbar. **21 screens** (including Access Denied added v4.57). |
+| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — class heatmap → at-risk drill-down → conversation transcript → Audit Trail. **9 screens** (including Access Denied added v4.57). |
+| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob (Super Admin) — token usage, rate limits, compliance, geo-redundancy, cross-tenant audit log, User Management (4-tier role taxonomy with min-2-Super-Admins constraint), External Tooling hub, Data & Integrations Hub, Instructor Roster & Course Assignment (cross-tenant), School / Tenant Management. **14 screens** (including Access Denied added v4.57). |
 | **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/SkillProof/help/) | Shared self-service support, documentation, and video training surface. Linked from every admin portal navbar. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). |
 | **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/SkillProof/presentation.html) | All scenarios with workflow narratives and embedded screenshots. |
 | **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/SkillProof/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-**Total: 77 screens · 4 personas · 6 surfaces (4 persona portals + LRPS + Help) · 2 reference catalogs.**
+**Total: 64 screens · 4 personas · 6 surfaces (4 persona portals + LRPS root + Help) · 2 reference catalogs.**
 
 ---
 
@@ -56,7 +55,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 ```
 SkillProof/
-├── index.html                  Portal selector landing
+├── index.html                  LRPS Landing (storyboard root, since v4.59)
 ├── presentation.html           Scenario catalog (light)
 ├── presentation_dark.html      Scenario catalog (dark)
 ├── capture_screens.py          Playwright screenshot pipeline
@@ -65,32 +64,27 @@ SkillProof/
 ├── assets/
 │   ├── wgu-corporation-*.png  WGU FY26 corporate logos (3 variants)
 │   ├── wgu-favicon.png        WGU shield (every page's favicon, added v4.46)
-│   └── landing/                Portal-selector hero screenshots (light + dark)
-├── student/                    v1.2 MVP — Sally (frozen at JFT-deployed baseline)
+│   └── landing/                Root (LRPS) hero screenshots (light + dark)
+├── student/                    v1.2 MVP — Sally (rebuilt v4.58 from live wgu.teamjft.com)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            34 PNGs (light)
-│   └── screenshots_dark/       34 PNGs (dark)
-├── tenant_admin/               v1.3 — Alice (sequential 1-20 since v4.53)
+│   ├── screenshots/            18 PNGs (light)
+│   └── screenshots_dark/       18 PNGs (dark)
+├── tenant_admin/               v1.3 — Alice (21 screens since v4.57 Access Denied)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            20 PNGs
-│   └── screenshots_dark/       20 PNGs
-├── instructor/                 v1.3 — Charlie
+│   ├── screenshots/            21 PNGs
+│   └── screenshots_dark/       21 PNGs
+├── instructor/                 v1.3 — Charlie (9 screens since v4.57 Access Denied)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            8 PNGs
-│   └── screenshots_dark/       8 PNGs
-├── super_admin/                v1.3 — Bob (Super Admin, 13 screens since v4.52)
+│   ├── screenshots/            9 PNGs
+│   └── screenshots_dark/       9 PNGs
+├── super_admin/                v1.3 — Bob (14 screens since v4.57 Access Denied)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            13 PNGs
-│   └── screenshots_dark/       13 PNGs
-├── lrps/                       Entry point for the 4 admin/learner portals
-│   ├── index.html
-│   ├── README.md
-│   ├── screenshots/            1 PNG (the LRPS page itself)
-│   └── screenshots_dark/       1 PNG
+│   ├── screenshots/            14 PNGs
+│   └── screenshots_dark/       14 PNGs
 └── help/                       Shared self-service support + training (added v4.38)
     ├── index.html
     ├── screenshots/            1 PNG
@@ -183,7 +177,7 @@ Click any persona folder to read its dedicated README.
 
 ### 🚪 LRPS Landing (Entry Point)
 
-**Surface:** [`lrps/`](lrps/) · [Live](https://brady-wgu.github.io/SkillProof/lrps/) · [README](lrps/README.md)
+**Surface:** [`/` (storyboard root)](./) · [Live](https://brady-wgu.github.io/SkillProof/) — v4.59 promoted to root; the standalone `lrps/` folder was deleted.
 
 **Persona:** Lana (the fictional LRPS admin who provisions the deep links) or any WGU staff with LRPS access.
 
@@ -302,7 +296,7 @@ python -m http.server 63417
 python capture_screens.py
 ```
 
-Output: **156 PNGs total** — student 34 + tenant_admin 20 + super_admin 13 + instructor 8 + lrps 1 + help 1, each × 2 themes (light + dark), plus 2 landing assets. Distributed across the per-persona `screenshots/` and `screenshots_dark/` subdirs.
+Output: **128 PNGs total** — student 18 + tenant_admin 21 + super_admin 14 + instructor 9 + help 1, each × 2 themes (light + dark), plus 2 landing assets (the root LRPS UI). Distributed across the per-persona `screenshots/` and `screenshots_dark/` subdirs.
 
 ---
 
