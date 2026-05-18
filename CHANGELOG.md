@@ -6,6 +6,40 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.60 — 18 May 2026 — Global WGU footer: real links + student/ coverage
+
+Wires up the WGU global footer across every storyboard surface. Previously each ADA / Privacy / Terms / Honor link in the footer was a `href="#"` placeholder with `onclick="event.preventDefault();"` — visually present but inert. Now every footer link points at the real WGU policy page, opens in a new tab, and uses `rel="noopener"` for outbound-link safety. Also adds the footer to `student/index.html`, which was the only storyboard surface missing it.
+
+### Real link map (applied identically across all 8 footers)
+
+| Label | Real URL |
+|---|---|
+| ADA Accommodation | `https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Accommodations-for-Students-with-Disabilities/ta-p/151` |
+| Privacy Policy | `https://www.wgu.edu/privacy.html` |
+| Terms of Service | `https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Terms-of-Use-for-Learning-and-Assessment-Materials/ta-p/77` |
+| Honor Code | `https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Student-Code-of-Conduct/ta-p/129` |
+
+### What changed
+
+- **`index.html`** (root) — 4 placeholder hrefs → real URLs.
+- **`tenant_admin/index.html`** — 4 placeholder hrefs → real URLs.
+- **`super_admin/index.html`** — 4 placeholder hrefs → real URLs.
+- **`instructor/index.html`** — 4 placeholder hrefs → real URLs.
+- **`help/index.html`** — 4 placeholder hrefs → real URLs.
+- **`presentation.html`** — 4 placeholder hrefs → real URLs.
+- **`presentation_dark.html`** — 4 placeholder hrefs → real URLs.
+- **`student/index.html`** — footer ADDED (it was the only surface without one), inserted above the storyboard meta-bar, using the same WGU footer markup as the other 7 surfaces with all 4 real URLs already in place.
+
+All outbound links use `target="_blank" rel="noopener"`. `onclick="event.preventDefault();"` removed everywhere — it was only there to neutralize the `#` href.
+
+### Verification
+
+1. From `https://brady-wgu.github.io/SkillProof/`, click each footer link → opens the corresponding WGU policy page in a new tab.
+2. From each prototype URL (`/student/`, `/tenant_admin/`, `/super_admin/`, `/instructor/`, `/help/`, `/presentation.html`, `/presentation_dark.html`), the footer is present and all 4 links resolve.
+3. `student/index.html` shows the footer rendered between the active screen content and the storyboard meta-bar.
+
+---
+
 ## v4.59 — 18 May 2026 — LRPS promoted to storyboard root; portal selector retired
 
 The storyboard now has **one** entry point: `https://brady-wgu.github.io/SkillProof/` serves what was previously at `/lrps/`. The standalone `lrps/` folder is gone. The old portal-selector landing (6 cards: LRPS, Student, School Admin, Instructor, Super Admin, Scenario Catalog) was removed entirely — it added no value on top of LRPS, which already shows the four persona rows as a deep-link launcher and is the realistic entry point in production.
