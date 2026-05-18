@@ -240,13 +240,13 @@ SOW core totals: 28 rows.
 | A-10.5 | Annual compliance auditing and reporting | Yes | super-06 (compliance report screen) | Not Started | JFT | Annual audit findings shared; critical findings closed | |
 | A-10.6 | SOC 2 Type II certification or equivalent | Yes | super-06 (control row) | In Dev | JFT | SOC 2/ISO-certified cloud + own SOC 2 readiness | v4.18 added explicit row. |
 | A-10.7 | HTTPS / TLS 1.3 for all communications | Yes | super-06 (TLS 1.3 audit) | In Dev | JFT | TLS 1.3 enforced; HSTS; auto certificate management | |
-| A-10.8 | Role-based access control (RBAC) | Yes | super-09 (User Management) · tenant-22 (Roster) · tenant-01 (elevation) | In Dev | JFT | Granular RBAC across UI + API; logged approvals | |
+| A-10.8 | Role-based access control (RBAC) | Yes | super-09 (User Management) · super-12 (Roster) · tenant-01 (elevation) · super-14 / tenant-21 / instructor-09 (Access Denied) | In Dev | JFT | Granular RBAC across UI + API; logged approvals; deny screen surfaces role mismatch | v4.57 added Access Denied screens per RBAC doc v1.0 §4.2 Figure 6. |
 | A-10.9 | Regular security vulnerability assessments | Yes | super-06 (vuln scan + 48hr patch SLA control row) | In Dev | JFT | Vulnerability scans every release; critical < 48hr remediated | |
 | A-10.10 | Penetration testing (annual minimum) | Yes | super-06 (annual pentest control row) | Not Started | JFT | Annual pentest report + remediation plan | |
 | A-10.11 | Data breach response plan and notification procedures | Yes | Non-visual (operational); cross-ref MSA-11 | Active | JFT | Breach playbook tested and current | Cross-references MSA-11 (24-hour notification). |
 | A-10.12 | GDPR compliance for international users | Yes | super-06 (GDPR control row) | Not Started | JFT | GDPR controls activated when international learners scoped | |
 | A-10.13 | ISO 27001 certification | Yes | super-06 (ISO 27001 control row) | Not Started | JFT | ISO 27001 alignment with provider cert + own readiness | v4.18 added explicit row. |
-| A-10.14 | Zero-trust security model | Yes | super-06 (zero-trust authz control row) · super-01 (MFA gating) | In Dev | JFT | Authentication + authorization + encryption at each service call | |
+| A-10.14 | Zero-trust security model | Yes | super-06 (zero-trust control row) · super-01 / tenant-01 / instructor-01 (authorized landing) · super-14 / tenant-21 / instructor-09 (Access Denied) | In Dev | JFT | Authentication + authorization + encryption at each service call; deny screen for unauthorized deep links | v4.57 added per-portal Access Denied screens per RBAC doc v1.0 §4.2 Figure 6. |
 | A-10.15 | Advanced threat detection and monitoring | Yes | super-06 (SIEM control row) | Not Started | JFT | SIEM + cloud-native detection alerts active | |
 | A-10.16 | Encrypt sensitive data at rest and in transit | Yes | super-06 (AES-256 at rest with KMS) | In Dev | JFT | AES-256 at rest + TLS 1.3 in transit; KMS-managed key rotation | |
 | A-10.17 | Dedicated security team and formal security policy | Yes | Non-visual (organizational) | Active | JFT | Security policies documented; annual review evidence | |
