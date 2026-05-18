@@ -6,6 +6,21 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.63 — 18 May 2026 — Light-mode logo asset upgraded to FY26 source-of-truth
+
+The previous `wgu-corporation-full-color.png` was a 728×360 PNG (109409 bytes) — a smaller export of the WGU brand mark. Brady pointed at the canonical 2000×657 file in `_WGU Branding/WGU FY26 Design System/WGU Logos/University Logo/University Logo_Full Color.png` (69826 bytes — fewer bytes despite higher resolution thanks to better PNG compression in the source). Same visual mark (owl + WGU wordmark in full color), higher resolution, official source. Drop-in swap of the file only; no HTML changes.
+
+### What changed
+
+- `assets/wgu-corporation-full-color.png` — replaced with the OneDrive source-of-truth file (2000×657, 69826 bytes).
+
+### Verification
+
+1. Hard-refresh the live site, confirm the navbar/footer logo renders crisper at 2000×657 source resolution.
+2. Asset Content-Length on `https://brady-wgu.github.io/SkillProof/assets/wgu-corporation-full-color.png` should be 69826 bytes after Pages build.
+
+---
+
 ## v4.62 — 18 May 2026 — Light-mode navbar + reverse logo + footer light/dark swap
 
 The header bar was hardcoded dark navy in every theme. Now it's white-with-dark-navy-bottom-border in light mode and dark navy in dark mode, matching the WGU course-portal reference. Also installs the proper dark-mode reverse logo and finishes the footer light/dark swap that was deferred from v4.61.
