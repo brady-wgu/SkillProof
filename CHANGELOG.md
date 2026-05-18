@@ -6,6 +6,30 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.62 — 18 May 2026 — Light-mode navbar + reverse logo + footer light/dark swap
+
+The header bar was hardcoded dark navy in every theme. Now it's white-with-dark-navy-bottom-border in light mode and dark navy in dark mode, matching the WGU course-portal reference. Also installs the proper dark-mode reverse logo and finishes the footer light/dark swap that was deferred from v4.61.
+
+### What changed
+
+- **`assets/wgu-corporation-full-color-reverse.png`** — REPLACED with the proper "University Logo_Full Color Reverse" file from `_WGU Branding/WGU FY26 Design System/WGU Logos/University Logo/` (2000×657, 75639 bytes). Designed for visibility on dark backgrounds.
+- **Navbar CSS — `v4.62 — LIGHT-MODE NAVBAR THEME` block** appended to the `<style>` of 7 files (`index.html`, `tenant_admin/`, `super_admin/`, `instructor/`, `student/`, `help/`, `presentation.html`). Cascade-overrides earlier dark-only rules:
+  - Light mode: `.navbar` / `.navbar-dark` → white bg, dark-navy text, 1px dark-navy bottom border
+  - Dark mode: `.navbar` / `.navbar-dark` → dark-navy bg, white text, no bottom border
+  - All child elements (`.navbar-brand`, `.navbar-brand-text`, `.navbar-chip`, `.navbar-user`, `.avatar`, `.btn-theme-toggle`) get matching light/dark variants
+  - `.navbar-brand-logo:not(img)` selector handles student/'s `<span>` text mark with `!important` (dark box + white text in light mode, inverted in dark)
+- **Footer light/dark logo swap** added to 7 surfaces (root + 6 portals). Each footer now carries two `<img>` elements — `class="logo-light"` showing the colorful owl + WGU and `class="logo-dark"` showing the reverse — toggled by a CSS rule keyed off `[data-theme="dark"]`. The 3 files that didn't already define `.logo-light`/`.logo-dark` (`student/`, `help/`, `presentation.html`) had those rules added.
+- **`presentation_dark.html`** — single footer img swapped to the reverse logo (dark catalog is always dark; no swap needed).
+
+### Verification
+
+1. Visit `/` in light mode → header bar is white, owl + WGU wordmark visible, dark-navy text, thin navy line at the bottom. Footer also shows owl + WGU.
+2. Toggle to dark mode → header bar becomes dark navy, reverse logo (white wordmark) visible, no bottom border. Footer also flips to reverse logo.
+3. Same behavior verified on `/tenant_admin/`, `/super_admin/`, `/instructor/`, `/student/`, `/help/`, `/presentation.html`.
+4. `/presentation_dark.html` continues to render dark (footer shows reverse logo, no light variant).
+
+---
+
 ## v4.61 — 18 May 2026 — Light-mode WGU logo fix (owl + wordmark, not wordmark-only)
 
 The navbar's "light mode" logo was wired up to the WRONG asset file. `assets/wgu-corporation-full-color.png` actually contained only the WGU wordmark (no owl), and the navbar's `logo-light` class was pointing at `wgu-corporation-full-color-reverse.png` (a different wordmark-only PNG). Result: stakeholders never saw WGU's real owl + wordmark logo on any prototype surface. This pass swaps the asset and re-wires the navbar to use the correct file in each theme.
