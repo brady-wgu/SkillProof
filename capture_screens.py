@@ -1,4 +1,4 @@
-"""Capture all storyboard screens (6 portals + landing hero × 2 themes) as PNG
+"""Capture all storyboard screens (5 portals + landing hero × 2 themes) as PNG
 screenshots, writing each portal's outputs into its own per-persona subdirectory.
 
 Usage:
@@ -8,25 +8,24 @@ Usage:
          python capture_screens.py
 
 Outputs (per persona):
-    student/screenshots/         + student/screenshots_dark/         (34 + 34)
-    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (20 + 20)
-    instructor/screenshots/      + instructor/screenshots_dark/      (8 + 8)
-    super_admin/screenshots/     + super_admin/screenshots_dark/     (13 + 13)
-    lrps/screenshots/            + lrps/screenshots_dark/            (1 + 1)
+    student/screenshots/         + student/screenshots_dark/         (18 + 18)
+    tenant_admin/screenshots/    + tenant_admin/screenshots_dark/    (21 + 21)
+    instructor/screenshots/      + instructor/screenshots_dark/      (9 + 9)
+    super_admin/screenshots/     + super_admin/screenshots_dark/     (14 + 14)
     help/screenshots/            + help/screenshots_dark/            (1 + 1)
     assets/landing/light.png     + assets/landing/dark.png           (1 + 1)
 
-Total: 156 PNGs after capture (v4.53 end-of-day sequential renumber
-pass). Tenant Admin collapsed to 20 sequential screens (1-20) after
-the disordered v4.48..v4.52 evolution; Super Admin sits at 13 sequential;
-Instructor 8, Student 34, LRPS 1, Help 1, landing 1.
+Total: 128 PNGs after capture. v4.59 collapsed the standalone LRPS surface into
+the storyboard root — the root `index.html` IS the LRPS UI, captured into
+assets/landing/. v4.58 rebuilt the student section against the live JFT MVP
+(34 -> 18 screens). v4.57 added Access Denied screens to the 3 admin portals
+(tenant 20 -> 21, instructor 8 -> 9, super 13 -> 14).
 
 Naming:
     {persona}/screenshots[_dark]/sc-mvp-NN_stepNN_screenNN.png
     {persona}/screenshots[_dark]/sc-add-NN_stepNN_screenNN.png
-    lrps/screenshots[_dark]/lrps.png
     help/screenshots[_dark]/help.png
-    assets/landing/{light,dark}.png
+    assets/landing/{light,dark}.png   (root LRPS UI hero)
 """
 import asyncio
 import os
@@ -57,14 +56,11 @@ PORTALS = [
     {"file": "instructor/index.html", "scenarios": [
         ("sc-add-03", [1, 2, 3, 4, 5, 6, 7, 8]),  # v4.4 added 9 Learner Search; v4.9 removed it as not in v1.3 catalog narrative.
     ]},
-    {"file": "lrps/index.html", "scenarios": [
-        ("lrps", [None]),  # None = no goToScreen call, just capture as-is
-    ]},
     {"file": "help/index.html", "scenarios": [
         ("help", [None]),  # v4.38 single-page help & resources surface; capture as-is.
     ]},
     {"file": "index.html", "scenarios": [
-        ("landing", [None]),  # Root portal selector hero; output goes to assets/landing/.
+        ("landing", [None]),  # v4.59: root IS the LRPS UI (LRPS folded up). Output goes to assets/landing/.
     ]},
 ]
 
@@ -107,14 +103,14 @@ async def capture_portal(page, portal, theme):
     for scenario_id, screen_ids in portal["scenarios"]:
         for step_idx, screen_id in enumerate(screen_ids, 1):
             if screen_id is None:
-                # Single-page portal (e.g., lrps, help, landing) — no goToScreen call.
-                # For LRPS only, scroll the live SkillProof rows into view so the M4
-                # "Not for student use" badges land in the hero screenshot
-                # (the alphabetically-sorted OEX rows above add no value).
-                if scenario_id == "lrps":
+                # Single-page portal (e.g., help, landing) — no goToScreen call.
+                # v4.59: the root landing IS the LRPS UI now. Scroll the live SkillProof
+                # rows into view so the M4 "Not for student use" badges land in the hero
+                # screenshot (the alphabetically-sorted OEX rows above add no value).
+                if scenario_id == "landing":
                     await page.evaluate(
                         "(() => {"
-                        " const row = document.querySelector('tr.live[data-launch=\"../student/\"]');"
+                        " const row = document.querySelector('tr.live[data-launch=\"student/\"]');"
                         " if (row) {"
                         "   const rect = row.getBoundingClientRect();"
                         "   window.scrollTo({top: window.scrollY + rect.top - 200, behavior: 'instant'});"
