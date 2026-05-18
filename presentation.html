@@ -189,6 +189,80 @@
       .hero h1 { font-size: 24px; }
       .main-content { padding: 0 var(--space-2); }
     }
+
+    /* ================================================================
+       v4.62 — LIGHT-MODE NAVBAR THEME (header bar light in light mode,
+       dark navy only in dark mode). Cascade-overrides earlier rules.
+       ================================================================ */
+    .navbar,
+    .navbar-dark {
+      background: var(--pgn-color-white);
+      color: var(--color-deep-navy);
+      border-bottom: 1px solid var(--color-deep-navy);
+    }
+    .navbar-brand,
+    .navbar-brand-text,
+    .navbar-user {
+      color: var(--color-deep-navy);
+    }
+    .navbar-chip {
+      background: transparent;
+      color: var(--color-deep-navy);
+      border: 1px solid var(--color-deep-navy);
+    }
+    .avatar {
+      background: var(--color-deep-navy);
+      color: #fff;
+    }
+    .btn-theme-toggle {
+      background: var(--pgn-color-bg-light);
+      border: 1px solid var(--pgn-color-gray-200);
+      color: var(--color-deep-navy);
+    }
+    .btn-theme-toggle:hover { background: var(--pgn-color-gray-100); }
+    /* student/ uses a <span class="navbar-brand-logo">WGU</span> text mark;
+       :not(img) targets only the span so img logos are unaffected. */
+    .navbar-brand-logo:not(img) {
+      background: var(--color-deep-navy) !important;
+      color: #fff !important;
+    }
+
+    [data-theme="dark"] .navbar,
+    [data-theme="dark"] .navbar-dark {
+      background: var(--color-deep-navy);
+      color: #fff;
+      border-bottom: none;
+    }
+    [data-theme="dark"] .navbar-brand,
+    [data-theme="dark"] .navbar-brand-text,
+    [data-theme="dark"] .navbar-user {
+      color: #fff;
+    }
+    [data-theme="dark"] .navbar-chip {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.92);
+      border-color: rgba(255,255,255,0.2);
+    }
+    [data-theme="dark"] .avatar {
+      background: var(--pgn-color-info-base);
+      color: #fff;
+    }
+    [data-theme="dark"] .btn-theme-toggle {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+    [data-theme="dark"] .btn-theme-toggle:hover { background: rgba(255,255,255,0.2); }
+    [data-theme="dark"] .navbar-brand-logo:not(img) {
+      background: #fff !important;
+      color: var(--color-deep-navy) !important;
+    }
+
+    /* v4.62 — Footer logo light/dark swap rules (parity with the navbar logo swap) */
+    .logo-light { display: inline-block; }
+    .logo-dark  { display: none; }
+    [data-theme="dark"] .logo-light { display: none !important; }
+    [data-theme="dark"] .logo-dark  { display: inline-block !important; }
   </style>
 </head>
 <body>
@@ -862,7 +936,7 @@
 <!-- WGU Footer (production design — mirrors the tenant-21 Branding preview pane) -->
 <footer role="contentinfo" style="background: #F5F7FA; border-top: 1px solid #E4E7EB; margin-left: 260px;">
   <div style="padding: 20px 28px; border-bottom: 1px solid #E4E7EB; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-    <img src="assets/wgu-corporation-full-color.png" alt="WGU" style="height: 28px; width: auto;">
+    <img class="logo-light" src="assets/wgu-corporation-full-color.png" alt="WGU" style="height: 28px; width: auto;"><img class="logo-dark" src="assets/wgu-corporation-full-color-reverse.png" alt="WGU" style="height: 28px; width: auto;">
     <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Accommodations-for-Students-with-Disabilities/ta-p/151" target="_blank" rel="noopener" style="font-size: 13px; color: #002855; font-weight: 600; text-decoration: none;">ADA Accommodation</a>
   </div>
   <div style="padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
