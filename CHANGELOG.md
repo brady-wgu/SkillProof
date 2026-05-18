@@ -6,6 +6,47 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.57 — 18 May 2026 — RBAC doc v1.0 iteration
+
+Closes the visual gaps surfaced by Brady's RBAC doc v1.0 (`SkillProof_Authentication_Access_Control_Role_Hierarchy_v1_0_18MAY2026.md`). Two governing rules for this iteration: (1) no new instructional / descriptive text on any screen — production UI elements only, since JFT implements pixel-by-pixel; (2) basic universal requirements (e.g. MFA on every 3rd-party service) do not get UI surfaces — they live in policy/infrastructure, not admin chrome.
+
+### What changed
+
+- **Access Denied screen** added to all three admin portals (zero-trust deny path per RBAC doc §4.2 Figure 6).
+  - `tenant_admin/index.html` Screen 21 — Alice → Super Admin link
+  - `super_admin/index.html` Screen 14 — Bob → expired/revoked provisioning
+  - `instructor/index.html` Screen 9 — Charlie → School Admin link
+  - Each screen: heading + `Signed in as` row + `This page requires` row + `Return to your portal` + `Open the correct LRPS link` + log line.
+- **User-profile dropdown with Switch School** added to Tenant Admin chrome (RBAC doc §5, §7).
+  - Single dropdown element, opened by any `.navbar-user` button on any screen
+  - Identity row · School section · radio-style school list with current marked · Sign out
+  - Demo `switchSchool()` updates all `.navbar-chip` + breadcrumb roots
+- **UI label rename** across `tenant_admin/index.html`: chip "Content Creator Portal" → "School Admin · School of Technology"; breadcrumb root, page title, meta-bar, S1 welcome heading, and S6 "Alice (Content Creator)" attribution all updated to match (RBAC doc §2).
+- **Billing & Usage section** added to Tenant Admin Screen 19 Analytics & Reporting (RBAC doc §4.1).
+  - 3 KPI gauges (Token Spend MTD, Cost per active learner, Tokens per session median)
+  - Cost-by-Skill table with trend badges + tenant total
+  - CSV / PDF / JSON export buttons matching existing Program Reports pattern
+- **"Other tenants" peek block removed** from Tenant Admin S2 (RBAC doc §5/§7 tenant isolation).
+- **Landing page (`index.html`)** stats refreshed: 21/9/14 screens for Tenant/Instructor/Super; Tenant card renamed "School Admin Portal"; hero eyebrow → v4.57.
+
+### Out of scope (per Brady, 18 May 2026)
+
+- No MFA / Auth column on Super Admin Screen 10 — MFA is required on every 3rd-party service; this is policy, not UI (rule 2).
+- No third-party MFA drill-down screen — same reason.
+- No audit-event taxonomy screen — backend reference, not UI (rule 2).
+- No changes to `student/index.html` — production-deployed MVP.
+
+### Verification
+
+1. Each admin portal flow-nav has the new Deny screen as its last numbered button.
+2. Tenant Admin avatar (upper-right) opens dropdown; clicking "School of Business" updates chip + breadcrumb on every screen.
+3. Tenant Admin S2 no longer shows "Other tenants" peek; Tenant Admin S19 shows Billing & Usage between Class Insights and Program Reports.
+4. Tenant Admin chip reads "School Admin · School of Technology" on screens 2–20.
+5. Super Admin S10 unchanged (no MFA column).
+6. `git diff --stat student/` returns zero.
+
+---
+
 ## v4.55 — 14 May 2026 — Overall Skill passing threshold on Screen 04
 
 Per WGU direction (14 May 2026), Tenant Admin Screen 04 (Topics & Learning Objectives) now carries an **overall Skill passing threshold** alongside the existing per-objective thresholds. A student is considered to have passed the Skill once their overall score meets this threshold; the per-objective thresholds in each topic expander continue to drive each row's pass state.

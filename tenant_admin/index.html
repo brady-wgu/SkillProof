@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Content Creator Portal — Storyboard v4.55</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.57</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -256,7 +256,48 @@
       font-size: 14px; padding: 8px 16px; border-radius: var(--pgn-size-rounded-pill);
       border: 1px solid rgba(255,255,255,0.2);
     }
-    .navbar-user { display: flex; align-items: center; gap: var(--pgn-spacing-1); color: rgba(255,255,255,0.92); font-size: 14px; }
+    .navbar-user {
+      display: flex; align-items: center; gap: var(--pgn-spacing-1);
+      color: rgba(255,255,255,0.92); font-size: 14px;
+      background: transparent; border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--pgn-size-rounded-pill);
+      padding: 4px 10px 4px 4px; cursor: pointer; font-family: inherit;
+    }
+    .navbar-user:hover, .navbar-user:focus-visible { background: rgba(255,255,255,0.08); outline: none; }
+    .navbar-user .caret { font-size: 18px; opacity: 0.85; }
+
+    /* user-profile dropdown (Tenant Admin · Switch School) */
+    .user-menu {
+      position: absolute; top: 60px; right: 16px;
+      min-width: 268px;
+      background: var(--pgn-color-white);
+      color: var(--pgn-color-gray-900);
+      border: 1px solid var(--pgn-color-gray-200);
+      border-radius: var(--pgn-size-border-radius-base);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.16);
+      padding: 8px 0;
+      z-index: 1200;
+      display: none;
+      font-size: 13px;
+    }
+    .user-menu[data-open="true"] { display: block; }
+    .user-menu-identity { padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+    .user-menu-identity .avatar { width: 36px; height: 36px; font-size: 14px; }
+    .user-menu-name { font-weight: 700; line-height: 1.2; }
+    .user-menu-email { color: var(--pgn-color-gray-600); font-size: 12px; line-height: 1.2; margin-top: 2px; }
+    .user-menu hr { border: none; border-top: 1px solid var(--pgn-color-gray-200); margin: 6px 0; }
+    .user-menu-section { padding: 6px 14px 2px; color: var(--pgn-color-gray-600); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .user-menu-item {
+      display: flex; align-items: center; gap: 8px;
+      width: 100%; padding: 8px 14px;
+      background: transparent; border: none; text-align: left;
+      color: var(--pgn-color-gray-900); font-family: inherit; font-size: 13px;
+      cursor: pointer;
+    }
+    .user-menu-item:hover, .user-menu-item:focus-visible { background: var(--pgn-color-bg-light); outline: none; }
+    .user-menu-item .material-icons-outlined { font-size: 18px; color: var(--pgn-color-success-base); }
+    .user-menu-item.is-current { font-weight: 700; }
+    .user-menu-item.is-other .material-icons-outlined { color: transparent; }
     .avatar {
       width: 32px; height: 32px; border-radius: 50%;
       background: var(--pgn-color-info-base);
@@ -973,6 +1014,29 @@
 
 <a href="#screen-1" class="skip-nav">Skip to main content</a>
 
+<!-- User-profile dropdown · single instance, opened by any .navbar-user button -->
+<div class="user-menu" id="userMenu" role="menu" aria-label="User menu">
+  <div class="user-menu-identity">
+    <div class="avatar" aria-hidden="true">A</div>
+    <div>
+      <div class="user-menu-name">Alice Morgan</div>
+      <div class="user-menu-email">alice.morgan@example.edu</div>
+    </div>
+  </div>
+  <hr>
+  <div class="user-menu-section">School</div>
+  <button type="button" class="user-menu-item is-current" role="menuitemradio" aria-checked="true" data-school="School of Technology" onclick="switchSchool('School of Technology')">
+    <span class="material-icons-outlined">check</span>School of Technology
+  </button>
+  <button type="button" class="user-menu-item is-other" role="menuitemradio" aria-checked="false" data-school="School of Business" onclick="switchSchool('School of Business')">
+    <span class="material-icons-outlined">check</span>School of Business
+  </button>
+  <hr>
+  <button type="button" class="user-menu-item" role="menuitem">
+    <span class="material-icons-outlined" style="color: var(--pgn-color-gray-600);">logout</span>Sign out
+  </button>
+</div>
+
 <!-- ================================================================
      SC-ADD-02 — TENANT ADMIN PORTAL & COURSE CONFIGURATION
      ================================================================ -->
@@ -990,8 +1054,8 @@
         <span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span>
       </button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main centered" id="main-1">
@@ -1000,7 +1064,7 @@
         <div class="pgn__card-section-lg text-center">
           <div class="spinner mb-3" aria-hidden="true"></div>
           <span class="eyebrow">Authenticating</span>
-          <h1 id="s1-heading" class="h2 mb-2">Welcome to the Tenant Admin Portal</h1>
+          <h1 id="s1-heading" class="h2 mb-2">Welcome to the School Admin Portal</h1>
           <p class="mb-4">Verifying your secret LRPS deep link with WGU Single Sign-On.</p>
           <div class="stack-2 text-center" style="display:inline-block; text-align:left;">
             <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SkillProof-IN]</code></span></div>
@@ -1028,14 +1092,14 @@
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-2">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#">Tenant Admin Portal</a>
+        <a href="#">School Admin · School of Technology</a>
       </nav>
 
       <!-- Hero -->
@@ -1192,42 +1256,6 @@
         </button>
       </div>
 
-      <h2 class="h5 mb-2">Other tenants <span class="badge badge-gray" style="font-size:11px; vertical-align: middle;">Read-only</span></h2>
-      <div class="row-list">
-        <div class="row-card" style="background: var(--pgn-color-bg-light);">
-          <div class="row-content">
-            <div class="d-flex align-items-center gap-2">
-              <span class="dot gray"></span>
-              <span class="row-title">School of Business · 12 subjects</span>
-            </div>
-          </div>
-          <div class="row-actions">
-            <button class="btn btn-tertiary btn-sm">View <span class="material-icons-outlined" style="font-size:16px;">visibility</span></button>
-          </div>
-        </div>
-        <div class="row-card" style="background: var(--pgn-color-bg-light);">
-          <div class="row-content">
-            <div class="d-flex align-items-center gap-2">
-              <span class="dot gray"></span>
-              <span class="row-title">School of Health · 8 subjects</span>
-            </div>
-          </div>
-          <div class="row-actions">
-            <button class="btn btn-tertiary btn-sm">View <span class="material-icons-outlined" style="font-size:16px;">visibility</span></button>
-          </div>
-        </div>
-        <div class="row-card" style="background: var(--pgn-color-bg-light);">
-          <div class="row-content">
-            <div class="d-flex align-items-center gap-2">
-              <span class="dot gray"></span>
-              <span class="row-title">School of Education · 5 subjects</span>
-            </div>
-          </div>
-          <div class="row-actions">
-            <button class="btn btn-tertiary btn-sm">View <span class="material-icons-outlined" style="font-size:16px;">visibility</span></button>
-          </div>
-        </div>
-      </div>
     </div>
   </main>
 </section>
@@ -1239,14 +1267,14 @@
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-3">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#">Subjects</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1295,14 +1323,14 @@
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-4">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#">E135</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1455,14 +1483,14 @@
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-5">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#">E135</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1553,14 +1581,14 @@
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-6">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#">E135</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1639,7 +1667,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 
       <div class="d-flex align-items-center gap-2 mt-3" style="font-size:13px; color: var(--pgn-color-gray-700);">
         <span class="material-icons-outlined" style="font-size:16px; color: var(--pgn-color-gray-600);">history</span>
-        <span>Last edited <strong>07 May 2026 · 09:42</strong> · <code>v3</code> · Alice (Content Creator).</span>
+        <span>Last edited <strong>07 May 2026 · 09:42</strong> · <code>v3</code> · Alice (School Admin).</span>
         <a href="#" onclick="event.preventDefault();" class="text-muted small" style="text-decoration: underline;">View history</a>
       </div>
 
@@ -1665,14 +1693,14 @@ Address the learner by their first name. Never use "student" as the form of addr
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-7">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#">E135</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1783,8 +1811,8 @@ Address the learner by their first name. Never use "student" as the form of addr
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main centered" id="main-8">
@@ -1840,14 +1868,14 @@ Address the learner by their first name. Never use "student" as the form of addr
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-9">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>System Status</span>
       </nav>
@@ -1956,14 +1984,14 @@ Address the learner by their first name. Never use "student" as the form of addr
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-10">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2042,14 +2070,14 @@ Address the learner by their first name. Never use "student" as the form of addr
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-11">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2094,14 +2122,14 @@ Address the learner by their first name. Never use "student" as the form of addr
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-12">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2178,8 +2206,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main centered" id="main-13">
@@ -2221,14 +2249,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-14">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2308,14 +2336,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-15">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2355,14 +2383,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-16">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(9); return false;">System Status</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2465,14 +2493,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-17">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Tenant Settings</span>
       </nav>
@@ -2554,14 +2582,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-18">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(17); return false;">Tenant Settings</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2699,14 +2727,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-19">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Analytics &amp; Reporting</span>
       </nav>
@@ -2796,7 +2824,89 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         </div>
       </div>
 
-      <!-- Section C — Program Reports (A-7.12 · A-7.14) -->
+      <!-- Section C — Billing & Usage (RBAC doc §4.1 — tenant-scoped billing + usage) -->
+      <h2 class="h5 mb-2">Billing &amp; Usage</h2>
+      <div class="row mb-3">
+        <div class="col-4">
+          <div class="gauge-card">
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">TOKEN SPEND · MTD</span><span class="dot green"></span></div>
+            <div class="gauge-number">$387</div>
+            <div class="gauge-target">+18% vs prior 30 days · 72% of $540 budget</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="gauge-card">
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">COST PER ACTIVE LEARNER · 30D</span><span class="dot green"></span></div>
+            <div class="gauge-number">$2.18</div>
+            <div class="gauge-target">178 active learners</div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="gauge-card">
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">TOKENS PER SESSION · MEDIAN</span><span class="dot green"></span></div>
+            <div class="gauge-number">4,840</div>
+            <div class="gauge-target">P95 12,600</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pgn__card mb-4">
+        <div class="pgn__card-section">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="eyebrow"><span class="material-icons-outlined">paid</span>Cost by Skill · last 30 days</span>
+            <div class="d-flex gap-2">
+              <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>CSV</button>
+              <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+              <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">code</span>JSON</button>
+            </div>
+          </div>
+          <table class="pgn__data-table">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th class="num-col">Active learners</th>
+                <th class="num-col">Tokens (30d)</th>
+                <th class="num-col">Cost USD (30d)</th>
+                <th class="num-col">Trend</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="text-strong">E010 · Foundations of Programming (Python)</div></td>
+                <td class="num-col">94</td>
+                <td class="num-col">2,148,300</td>
+                <td class="num-col">$172.04</td>
+                <td class="num-col"><span class="badge badge-warning">▲ 22%</span></td>
+              </tr>
+              <tr>
+                <td><div class="text-strong">E075 · Intermediate Python &amp; Libraries</div></td>
+                <td class="num-col">52</td>
+                <td class="num-col">1,478,200</td>
+                <td class="num-col">$118.26</td>
+                <td class="num-col"><span class="badge badge-success">≈ 0%</span></td>
+              </tr>
+              <tr>
+                <td><div class="text-strong">E135 · OOP with Python</div></td>
+                <td class="num-col">32</td>
+                <td class="num-col">962,500</td>
+                <td class="num-col">$96.25</td>
+                <td class="num-col"><span class="badge badge-warning">▲ 9%</span></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Total · School of Technology</th>
+                <th class="num-col">178</th>
+                <th class="num-col">4,589,000</th>
+                <th class="num-col">$386.55</th>
+                <th class="num-col">—</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- Section D — Program Reports (A-7.12 · A-7.14) -->
       <h2 class="h5 mb-2">Program Reports</h2>
       <div class="pgn__card mb-3">
         <div class="pgn__card-section">
@@ -2886,14 +2996,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">Content Creator Portal</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">A</div><span>Alice</span></div>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
   <main class="screen-main" id="main-20">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Content Creator Portal</a>
+        <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Activity Log</span>
       </nav>
@@ -3022,6 +3132,40 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </div>
 </section>
 
+<!-- Screen 21: Access Denied (zero-trust deny path · RBAC doc §4.2 Figure 6) -->
+<section class="screen" id="screen-21" aria-labelledby="s21-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-white.png" alt="WGU"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
+    </div>
+  </header>
+  <main class="screen-main centered" id="main-21">
+    <div class="container-narrow">
+      <div class="pgn__card pgn__card-featured">
+        <div class="pgn__card-section-lg">
+          <div class="text-center mb-3">
+            <span class="material-icons-outlined" style="font-size:56px; color: var(--pgn-color-danger-base);">block</span>
+          </div>
+          <h1 id="s21-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
+          <table class="pgn__data-table" style="border:none; box-shadow:none; margin-bottom: var(--pgn-spacing-3);">
+            <tr><th style="width:42%;">Signed in as</th><td>Alice · School Admin · School of Technology</td></tr>
+            <tr><th>This page requires</th><td>Super Admin</td></tr>
+          </table>
+          <div class="d-flex gap-2 justify-content-center mb-3" style="flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">arrow_back</span>Return to your portal</button>
+            <a class="btn btn-outline-primary" href="../lrps/index.html"><span class="material-icons-outlined">link</span>Open the correct LRPS link</a>
+          </div>
+          <div class="text-center text-muted small">Logged · 18 May 2026 09:42:18 UTC · evt_a4f2c8e1</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
 <!-- ================================================================
      META BAR — DEMO ONLY
      ================================================================ -->
@@ -3045,11 +3189,11 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof Content Creator Portal &middot; SkillProof Design System v1.2 &middot; Persona: Alice</span>
+    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof School Admin Portal &middot; SkillProof Design System v1.2 &middot; Persona: Alice</span>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow A</span>
-    <span class="flow-desc">Content Creator Portal &amp; Course Configuration</span>
+    <span class="flow-desc">School Admin Portal &amp; Course Configuration</span>
     <nav class="flow-nav" aria-label="Course configuration screens">
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: SSO landing">01</button>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
@@ -3063,6 +3207,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">18</button>
       <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Analytics &amp; Reporting (A-7.10..7.14)">19</button>
       <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Tenant Activity Log (A-10.4 tenant-scoped)">20</button>
+      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Access Denied (zero-trust deny path)">21</button>
     </nav>
 
     <span class="flow-id">Flow B</span>
@@ -3082,7 +3227,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 20; // v4.53: end-of-day sequential renumber pass. All tenant_admin screens collapsed to sequential 1-20 (was {1,2,3,4,9,8,11,12,13..20,21,23,24,25}). DOM order preserved; only IDs changed. Wizard step 3 of 5 = Model & Coaching (new screen-5); step 4 of 5 = AI Coaching Prompt (new screen-6).
+  const TOTAL_SCREENS = 21; // v4.57: screen 21 added (Access Denied / zero-trust deny path per RBAC doc §4.2 Figure 6).
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
@@ -3124,6 +3269,58 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       if (prev >= 1) goToScreen(prev);
     }
   });
+
+  // User-profile dropdown + Switch School (demo)
+  function toggleUserMenu(event) {
+    event.stopPropagation();
+    var menu = document.getElementById('userMenu');
+    var trigger = event.currentTarget;
+    var open = menu.getAttribute('data-open') === 'true';
+    if (open) {
+      menu.setAttribute('data-open', 'false');
+      trigger.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    var rect = trigger.getBoundingClientRect();
+    menu.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+    menu.style.right = (window.innerWidth - rect.right) + 'px';
+    menu.setAttribute('data-open', 'true');
+    trigger.setAttribute('aria-expanded', 'true');
+  }
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('userMenu');
+    if (!menu || menu.getAttribute('data-open') !== 'true') return;
+    if (e.target.closest('.user-menu') || e.target.closest('.navbar-user')) return;
+    menu.setAttribute('data-open', 'false');
+    document.querySelectorAll('.navbar-user').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    var menu = document.getElementById('userMenu');
+    if (menu && menu.getAttribute('data-open') === 'true') {
+      menu.setAttribute('data-open', 'false');
+      document.querySelectorAll('.navbar-user').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+    }
+  });
+  function switchSchool(name) {
+    document.querySelectorAll('.navbar-chip').forEach(function(c) {
+      c.textContent = 'School Admin · ' + name;
+    });
+    document.querySelectorAll('a[href="#"]').forEach(function(a) {
+      if (a.textContent.indexOf('School Admin · ') === 0) {
+        a.textContent = 'School Admin · ' + name;
+      }
+    });
+    document.querySelectorAll('.user-menu-item[data-school]').forEach(function(b) {
+      var isThis = b.getAttribute('data-school') === name;
+      b.classList.toggle('is-current', isThis);
+      b.classList.toggle('is-other', !isThis);
+      b.setAttribute('aria-checked', isThis ? 'true' : 'false');
+    });
+    var menu = document.getElementById('userMenu');
+    if (menu) menu.setAttribute('data-open', 'false');
+    document.querySelectorAll('.navbar-user').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+  }
 
   function toggleTheme() {
     var html = document.documentElement;
