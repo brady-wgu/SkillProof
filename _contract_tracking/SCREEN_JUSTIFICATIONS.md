@@ -135,11 +135,11 @@ Super Admin totals: 14 Contract-required · 0 Essential scaffolding · 0 Discret
 
 ---
 
-## LRPS Landing · 1 screen · `lrps/index.html`
+## LRPS Landing (storyboard root) · 1 screen · `index.html`
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
-| `lrps-01` | LRPS Landing (provider table + quick-launch) | LRPS handoff | — | A-8.1 LTI 1.3 launch URL stability (illustration) | Essential scaffolding | Keep | WGU's internal Learning Resource Provisioning System. JFT does not build LRPS; this screen makes the deep-link source feel authentic in the storyboard. Reviewed with JFT 06 Apr 2026 (LRPS team). |
+| `lrps-01` | LRPS Landing (provider table + quick-launch) | LRPS handoff | — | A-8.1 LTI 1.3 launch URL stability (illustration) | Essential scaffolding | Keep | WGU's internal Learning Resource Provisioning System. JFT does not build LRPS; this screen makes the deep-link source feel authentic in the storyboard. Reviewed with JFT 06 Apr 2026 (LRPS team). **v4.59 (18 May 2026):** the LRPS surface was promoted to the storyboard root (`index.html`); the previous separate `/lrps/` URL retired. The portal-selector landing that previously sat at root was removed entirely. |
 
 LRPS totals: 0 Contract-required · 1 Essential scaffolding · 0 Discretionary.
 
@@ -176,7 +176,8 @@ Help & Resources totals: 1 Contract-required · 0 Essential scaffolding · 0 Dis
 | Version | Date | Status | Notes |
 |:---|:---|:---|:---|
 | 1.0 | 12 May 2026 | Superseded | Initial baseline. 76 screens cataloged. 71 Contract-required, 5 Essential scaffolding, 0 Discretionary. |
-| 1.1 | 18 May 2026 | Current | v4.57 RBAC pass added 3 Access Denied screens (tenant-21, super-14, instructor-09). v4.58 student rebuild reduced student count 34→18 to match live MVP (`https://wgu.teamjft.com/`). Original student section preserved at git tag `prototype-v4.57-frozen`. Total: 64 screens, 63 Contract-required, 1 Essential scaffolding, 0 Discretionary. |
+| 1.1 | 18 May 2026 | Superseded | v4.57 RBAC pass added 3 Access Denied screens (tenant-21, super-14, instructor-09). v4.58 student rebuild reduced student count 34→18 to match live MVP (`https://wgu.teamjft.com/`). Original student section preserved at git tag `prototype-v4.57-frozen`. Total: 64 screens, 63 Contract-required, 1 Essential scaffolding, 0 Discretionary. |
+| 1.2 | 18 May 2026 | Current | v4.59 entry-point consolidation. The LRPS surface was promoted to the storyboard root (`index.html`); the standalone `lrps/` folder was deleted and the separate portal-selector landing that previously sat at root was retired entirely. Surface and screen counts unchanged (LRPS-01 still cataloged; file path updated `lrps/index.html` → `index.html`). The 3 admin Access Denied "Open the correct LRPS link" CTAs now point at the storyboard root. |
 
 ---
 

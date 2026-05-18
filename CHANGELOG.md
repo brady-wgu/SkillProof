@@ -6,6 +6,39 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.59 — 18 May 2026 — LRPS promoted to storyboard root; portal selector retired
+
+The storyboard now has **one** entry point: `https://brady-wgu.github.io/SkillProof/` serves what was previously at `/lrps/`. The standalone `lrps/` folder is gone. The old portal-selector landing (6 cards: LRPS, Student, School Admin, Instructor, Super Admin, Scenario Catalog) was removed entirely — it added no value on top of LRPS, which already shows the four persona rows as a deep-link launcher and is the realistic entry point in production.
+
+### What changed
+
+- **`index.html` at the repo root** — wholesale replaced by the content of the previous `lrps/index.html`, with every `../` path prefix stripped to match the new root location. The page is byte-identical to what stakeholders previously saw at `/lrps/` except for the title bump (`Storyboard v4.55` → `Storyboard v4.59` — the LRPS file had a stale version stamp going in).
+- **`lrps/` folder deleted** — `lrps/index.html`, `lrps/README.md`, `lrps/screenshots/lrps.png`, `lrps/screenshots_dark/lrps.png` removed. The old `/lrps/` URL now 404s; no redirect (Brady's call — "we don't need a separate /lrps link anymore").
+- **3 admin Access Denied CTAs retargeted** — each "Open the correct LRPS link" button on `instructor/index.html`, `super_admin/index.html`, and `tenant_admin/index.html` changed `href="../lrps/index.html"` → `href="../"` (back to the storyboard root, which is now the LRPS UI).
+- **`capture_screens.py`** — removed the standalone LRPS portal entry; the `landing` scenario now captures the root (which IS the LRPS UI) into `assets/landing/{light,dark}.png`, applying the same M4-rows scrolling that the LRPS capture used to apply. Docstring totals refreshed (156 → 128 PNGs reflecting v4.58 student rebuild + v4.59 LRPS consolidation).
+- **Trackers + README refreshed** — `SCREEN_JUSTIFICATIONS.md` LRPS section header points at `index.html` (the `lrps-01` contract ID is preserved). README surfaces table no longer lists "Portal Selector" as a separate surface; LRPS is now described as the storyboard root.
+
+### Decision rationale (Brady, 18 May 2026)
+
+The previous root index.html was a 6-card portal selector that introduced unnecessary friction: stakeholders had to click through the selector to reach the LRPS UI, which was itself a deep-link launcher to the four persona portals. Two landing pages serving the same function. Brady's call: the LRPS UI IS the realistic storyboard entry point (it matches how all four personas reach the product in production), so put it at the root and retire the selector.
+
+### Out of scope
+
+- `student/index.html` — no change (v4.58 just shipped; spot-checked that its meta-bar does not link to /lrps/).
+- `help/index.html` — no change.
+- `presentation.html` / `presentation_dark.html` — no change (they describe the storyboard separately).
+- `lrps-01` contract ID in `SCREEN_JUSTIFICATIONS.md` — stays (stable contract reference); only the file-path column updated.
+
+### Verification
+
+1. `https://brady-wgu.github.io/SkillProof/` loads the LRPS UI with the four live SkillProof persona rows clickable.
+2. `https://brady-wgu.github.io/SkillProof/lrps/` 404s (GitHub Pages 404 page).
+3. Each admin portal's Access Denied screen "Open the correct LRPS link" returns to the storyboard root.
+4. `git diff --stat student/` returns zero from v4.58 → v4.59.
+5. Local preview server at port 3000 serves `/` correctly with all WGU logo assets resolving.
+
+---
+
 ## v4.58 — 18 May 2026 — Student portal rebuilt from live MVP
 
 Rebuilt `student/index.html` from screenshots of the deployed JFT MVP at `https://wgu.teamjft.com/`. The original prototype student section is preserved at git tag `prototype-v4.57-frozen` and as a GitHub Release (downloadable `.zip`). Before this pass the prototype student section diverged significantly from what JFT had actually deployed; after this pass the 4-portal storyboard (student + 3 admin prototypes) is a faithful single source of truth — live student behavior on one branch alongside unbuilt admin scope.
