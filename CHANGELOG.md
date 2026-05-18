@@ -6,6 +6,57 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.58 — 18 May 2026 — Student portal rebuilt from live MVP
+
+Rebuilt `student/index.html` from screenshots of the deployed JFT MVP at `https://wgu.teamjft.com/`. The original prototype student section is preserved at git tag `prototype-v4.57-frozen` and as a GitHub Release (downloadable `.zip`). Before this pass the prototype student section diverged significantly from what JFT had actually deployed; after this pass the 4-portal storyboard (student + 3 admin prototypes) is a faithful single source of truth — live student behavior on one branch alongside unbuilt admin scope.
+
+### Decisions locked (Brady, 18 May 2026)
+
+1. **Rollback**: Frozen at git tag `prototype-v4.57-frozen` + GitHub Release. No "parallel directory" — the rebuilt student section replaces `student/index.html` directly on branch `student-live-rebuild`.
+2. **Branding**: SkillProof rebrand applied during the rebuild. Where the live deployment still surfaces "SDP" / "Skill Development Platform" / `localStorage 'sdp-theme'`, the rebuilt prototype uses "SkillProof" / `'skillproof-theme'` (matches the rest of the storyboard). Live deployment can be re-cut with the rebrand later as a separate JFT change. Note: the live navbar pill says "Introduction to Python" (course) and the feature label is "Coding Coach" — neither was rebranded; both kept as-is.
+3. **Persona**: Sally Mitchell throughout. The live captures show Brady's actual WGU account (`BR Brady Redfearn`) in the navbar with body content greeting "Welcome back, Sally". The rebuilt prototype uses `SM Sally Mitchell` everywhere for persona consistency.
+4. **Dark mode**: Light mode only in the rebuild. The moon-icon toggle stays as decoration (matches the captures). Dark mode toggle infrastructure (the `toggleTheme()` JS and `skillproof-theme` localStorage key) is retained for parity with the other 3 portals.
+
+### Screen list (18 unique screens — was 34)
+
+The previous prototype had 34 screens spanning multiple flows. The rebuilt section has 18 screens, matching the actual live MVP's distinct states:
+
+1. **Coding Coach Landing** — 13 Practice Areas card + Begin Diagnostic CTA
+2. **Diagnostic Q1 empty** — Basic Syntax & Data Types prompt
+3. **Diagnostic Q1 typed** — answer entered, Submit active
+4. **Diagnostic Q1 evaluating** — spinner state
+5. **Diagnostic Q1 feedback** — 5-row objective table + Summary + Next focus
+6. **Diagnostic Q13 final** — Introduction to Machine Learning with insufficient feedback
+7. **Diagnostic Results** — "We've established your starting point" with Mastered/Needs Practice columns
+8. **Progress Map** — 13 sub-section cards with status badges
+9. **Coaching Task empty** — Use logical operators, 2-column layout
+10. **Coaching Task feedback** — same task with submitted answer + 2-row feedback table
+11. **Welcome Back returning user** — Sally's prior progress + 13-card grid
+12. **Re-Assessment** — verifying retention with progress bar
+13. **Session Saved** — your-progress-saved snapshot table
+14. **Verification Passed** — Gap resolved, difficulty progression card
+15. **Adaptive Task Foundational** — List Operations
+16. **Adaptive Feedback Correct** — Sally's Answer + green "Correct!" panel
+17. **Adaptive Feedback Incorrect** — Sally's Answer + red panel with correction code
+18. **Adaptive Verification Same Difficulty** — Dictionary Filtering with TIP card
+
+### Out of scope this pass
+
+- `tenant_admin/`, `super_admin/`, `instructor/`, `lrps/`, `help/`, `presentation*.html` — no changes. `git diff` against those paths is zero.
+- Modifying or redeploying the JFT-hosted MVP itself — the prototype tracks what's already live.
+- Brady's small change list (WGU logo specifics, footer format check) — deferred to a Phase 4 follow-up once Brady specifies.
+
+### Verification
+
+1. Tag `prototype-v4.57-frozen` exists locally and on `origin` (commit `43b6daf`).
+2. GitHub Release attached to the tag with downloadable `.zip` source asset.
+3. Storyboard preview at `/student/index.html` renders without console errors (verified 18 May 2026 via local preview server, port 3000).
+4. All 18 step buttons in the meta-bar navigate to their matching screens; screen-1 active by default; arrow keys cycle through.
+5. Navbar consistent across all screens: WGU brand + "Introduction to Python" pill + `SM Sally Mitchell` user chip.
+6. `git diff main..student-live-rebuild --stat` shows changes only in `student/`, `CHANGELOG.md`, and `_contract_tracking/` — zero changes in `tenant_admin/`, `super_admin/`, `instructor/`, `lrps/`, `help/`, `presentation*.html`.
+
+---
+
 ## v4.57 — 18 May 2026 — RBAC doc v1.0 iteration
 
 Closes the visual gaps surfaced by Brady's RBAC doc v1.0 (`SkillProof_Authentication_Access_Control_Role_Hierarchy_v1_0_18MAY2026.md`). Two governing rules for this iteration: (1) no new instructional / descriptive text on any screen — production UI elements only, since JFT implements pixel-by-pixel; (2) basic universal requirements (e.g. MFA on every 3rd-party service) do not get UI surfaces — they live in policy/infrastructure, not admin chrome.

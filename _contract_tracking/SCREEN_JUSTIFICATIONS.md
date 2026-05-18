@@ -29,48 +29,32 @@ Classification policy:
 
 ---
 
-## Student — Sally · 34 screens · `student/index.html`
+## Student — Sally · 18 screens · `student/index.html`
 
-> **The student portal is frozen as of v4.45.** WGU authorizes student-side changes individually. The classifications below document grounding for the existing screens; they do not authorize edits.
+> **The student portal was rebuilt v4.58 from screenshots of the deployed JFT MVP at `https://wgu.teamjft.com/`.** The original 34-screen prototype is preserved at git tag `prototype-v4.57-frozen` + GitHub Release. The 18 screens below match the live MVP's distinct states; the SC-MVP-01 through SC-MVP-04 scenarios are now covered by a single unified flow because the deployed MVP runs one persistent flow for Sally rather than four scripted variants.
 
 | ID | Title | Scenario | Primary Grounding | Supporting Grounding | Classification | Action | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|
-| `student-01` | 1.1 Welcome to Foundations of Programming (zyBooks LTI launch context) | SC-MVP-01 | — | A-8.1 LTI 1.3 launch (illustration) | Essential scaffolding | Keep | Reference design only; zyBooks page is not a JFT deliverable. Documented as such in `student/README.md`. |
-| `student-02` | Coding Coach (welcome) | SC-MVP-01 | SOW-2.5 Student Web Experience · A-8.1 LTI 1.3 launch · A-7.3 WCAG 2.2 AA | A-7.1 responsive · A-7.2 mobile-first | Contract-required | Keep | First post-launch screen after SSO. |
-| `student-03` | Basic Syntax & Data Types (diagnostic) | SC-MVP-01 | SOW-2.5 · A-6.1 multi-LLM · A-6.7 guardrails | A-7.3 accessibility | Contract-required | Keep | Diagnostic question 1. |
-| `student-04` | Control Flow & Logic (diagnostic) | SC-MVP-01 | SOW-2.5 · A-6.1 · A-6.7 | A-7.3 | Contract-required | Keep | Diagnostic question 2. |
-| `student-05` | We've established your starting point (diagnostic results) | SC-MVP-01 | SOW-2.5 · A-7.10 engagement tracking | A-7.13 visualizations | Contract-required | Keep | Diagnostic outcome summary. |
-| `student-06` | Progress Map | SC-MVP-01 | SOW-2.5 · A-7.10 engagement · A-7.13 visualizations | A-7.3 accessibility | Contract-required | Keep | Visualizes Sally's position across 13 sub-sections. |
-| `student-07` | Variables & Assignment (first coaching task) | SC-MVP-01 | SOW-2.5 · A-6.1 · A-6.7 | A-6.12 LaTeX (code blocks) | Contract-required | Keep | First adaptive coaching task. |
-| `student-08` | Your progress has been saved | SC-MVP-01 | SOW-2.5 (session persistence) | A-10.4 audit (session timestamps) | Contract-required | Keep | Exit confirmation. |
-| `student-09` | 1.1 Welcome to Foundations of Programming (SC-MVP-02 entry) | SC-MVP-02 | — | A-8.1 (illustration) | Essential scaffolding | Keep | Reference design. Same as `student-01`. |
-| `student-10` | Coding Coach (SC-MVP-02 welcome) | SC-MVP-02 | SOW-2.5 · A-8.1 · A-7.3 | A-7.1 · A-7.2 | Contract-required | Keep | |
-| `student-11` | Basic Syntax & Data Types | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | Diagnostic across multiple sub-sections. |
-| `student-12` | Control Flow & Logic | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | Diagnostic. |
-| `student-13` | Data Structures: Lists, Tuples, Sets, Dictionaries | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | Diagnostic. |
-| `student-14` | Your Progress Map | SC-MVP-02 | SOW-2.5 · A-7.10 · A-7.13 | A-7.3 | Contract-required | Keep | Progress map after diagnostic. |
-| `student-15` | List Operations (coaching task) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | Foundational difficulty. |
-| `student-16` | Dictionary Iteration (incorrect answer + targeted feedback) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 (specific feedback) | — | Contract-required | Keep | Key feedback-specificity demonstration. |
-| `student-17` | Dictionary Filtering (gap-resolution verification) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | |
-| `student-18` | Gap resolved — difficulty advancing | SC-MVP-02 | SOW-2.5 · A-6.1 (adaptive difficulty) | A-7.10 engagement | Contract-required | Keep | |
-| `student-19` | Your progress has been saved | SC-MVP-02 | SOW-2.5 · A-10.4 | — | Contract-required | Keep | |
-| `student-20` | 1.1 Welcome to Foundations of Programming (SC-MVP-03 entry) | SC-MVP-03 | — | A-8.1 (illustration) | Essential scaffolding | Keep | Reference design. |
-| `student-21` | Coding Coach (SC-MVP-03 welcome) | SC-MVP-03 | SOW-2.5 · A-8.1 · A-7.3 | — | Contract-required | Keep | |
-| `student-22` | Basic Syntax & Data Types (fast-track diagnostic) | SC-MVP-03 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | |
-| `student-23` | Control Flow & Logic | SC-MVP-03 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | |
-| `student-24` | Advanced Data Handling | SC-MVP-03 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | |
-| `student-25` | Data Structures: Lists, Tuples, Sets, Dictionaries | SC-MVP-03 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | |
-| `student-26` | Strong baseline detected | SC-MVP-03 | SOW-2.5 (fast-track logic per Cicada v1) | A-7.10 | Contract-required | Keep | |
-| `student-27` | Write a Python Module (verification task) | SC-MVP-03 | SOW-2.5 · A-6.1 (text-evaluated by LLM) | — | Contract-required | Keep | LLM-only evaluation; no code execution per v1 known limitations. |
-| `student-28` | No coaching gaps identified | SC-MVP-03 | SOW-2.5 · A-7.10 | — | Contract-required | Keep | |
-| `student-29` | 1.1 Welcome to Foundations of Programming (SC-MVP-04 entry) | SC-MVP-04 | — | A-8.1 (illustration) | Essential scaffolding | Keep | Reference design. |
-| `student-30` | Welcome back, Sally (returning learner) | SC-MVP-04 | SOW-2.5 (session resume) · A-10.2 retention (3-year FERPA) | A-7.10 | Contract-required | Keep | Multi-week-break resume path. |
-| `student-31` | Data Structures: Lists, Tuples, Sets, Dictionaries (resume) | SC-MVP-04 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | |
-| `student-32` | Control Flow & Logic (adaptive difficulty drop) | SC-MVP-04 | SOW-2.5 · A-6.1 (regression handling per Cicada v1) | — | Contract-required | Keep | |
-| `student-33` | Dictionary Operations | SC-MVP-04 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | |
-| `student-34` | Your progress has been saved | SC-MVP-04 | SOW-2.5 · A-10.4 | — | Contract-required | Keep | |
+| `student-01` | Coding Coach Landing (Introduction to Python) | SC-MVP-01 | SOW-2.5 Student Web Experience · A-8.1 LTI 1.3 launch · A-7.3 WCAG 2.2 AA | A-7.1 responsive · A-7.2 mobile-first | Contract-required | Keep | Live entry point post-LTI launch. |
+| `student-02` | Diagnostic Q1 empty (Basic Syntax & Data Types) | SC-MVP-01 | SOW-2.5 · A-6.1 multi-LLM · A-6.7 guardrails | A-7.3 | Contract-required | Keep | Diagnostic Q1 — empty answer state. |
+| `student-03` | Diagnostic Q1 typed | SC-MVP-01 | SOW-2.5 · A-6.1 · A-6.7 | A-7.3 | Contract-required | Keep | Q1 with answer entered, Submit active. |
+| `student-04` | Diagnostic Q1 evaluating | SC-MVP-01 | SOW-2.5 · A-6.1 (LLM evaluation in-flight) | — | Contract-required | Keep | Spinner / "Evaluating…" state. |
+| `student-05` | Diagnostic Q1 feedback (5-row objective table) | SC-MVP-01 | SOW-2.5 · A-6.1 · A-6.7 (specific feedback) | A-7.13 visualizations | Contract-required | Keep | Demonstrates objective-by-objective AI feedback with summary + next focus. |
+| `student-06` | Diagnostic Q13 final (Introduction to Machine Learning, insufficient) | SC-MVP-01 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | End-of-diagnostic with "Next: Results" CTA. |
+| `student-07` | Diagnostic Results (We've established your starting point) | SC-MVP-01 | SOW-2.5 · A-7.10 engagement tracking · A-7.13 visualizations | — | Contract-required | Keep | Mastered Topics + Needs Practice columns + baseline %. |
+| `student-08` | Progress Map (13 sub-sections grid) | SC-MVP-01 | SOW-2.5 · A-7.10 · A-7.13 | A-7.3 | Contract-required | Keep | Visualizes Sally's position across 13 sub-sections. |
+| `student-09` | Coaching Task empty (Use logical operators) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | A-6.12 (code blocks) | Contract-required | Keep | 2-column adaptive coaching layout. |
+| `student-10` | Coaching Task feedback (2-row table + Summary + Next focus) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 (specific feedback) | — | Contract-required | Keep | Demonstrates feedback specificity on practice work. |
+| `student-11` | Welcome Back returning user (Sally, 3 weeks later) | SC-MVP-04 | SOW-2.5 (session resume) · A-10.2 retention (3-year FERPA) | A-7.10 | Contract-required | Keep | Multi-week-break resume path. |
+| `student-12` | Re-Assessment (Verifying retention) | SC-MVP-04 | SOW-2.5 · A-6.1 (retention verification per Cicada v1) | A-7.10 | Contract-required | Keep | Welcome Back re-assessment with progress bar. |
+| `student-13` | Session Saved | SC-MVP-01 | SOW-2.5 (session persistence) · A-10.4 audit (session timestamps) | — | Contract-required | Keep | Exit confirmation with session snapshot. |
+| `student-14` | Verification Passed (Gap resolved — difficulty advancing) | SC-MVP-02 | SOW-2.5 · A-6.1 (adaptive difficulty) | A-7.10 engagement | Contract-required | Keep | Foundational → Intermediate → Advanced progression. |
+| `student-15` | Adaptive Task Foundational (List Operations) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | Foundational-difficulty adaptive task. |
+| `student-16` | Adaptive Feedback Correct (Sally's Answer + green Correct! panel) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 | — | Contract-required | Keep | Correct-answer state with "Difficulty will increase" caption. |
+| `student-17` | Adaptive Feedback Incorrect (red panel with correction code) | SC-MVP-02 | SOW-2.5 · A-6.1 · A-6.7 (specific feedback) | — | Contract-required | Keep | Key feedback-specificity demonstration; same-difficulty retry. |
+| `student-18` | Adaptive Verification Same Difficulty (Dictionary Filtering with TIP) | SC-MVP-02 | SOW-2.5 · A-6.1 (verification step per Cicada v1) | — | Contract-required | Keep | Verification step with contextual TIP card. |
 
-Student totals: 30 Contract-required · 4 Essential scaffolding · 0 Discretionary.
+Student totals: 18 Contract-required · 0 Essential scaffolding · 0 Discretionary.
 
 ---
 
@@ -175,15 +159,15 @@ Help & Resources totals: 1 Contract-required · 0 Essential scaffolding · 0 Dis
 
 | Persona | Screens | Contract-required | Essential scaffolding | Discretionary |
 |:---|:---:|:---:|:---:|:---:|
-| Student (Sally) | 34 | 30 | 4 | 0 |
-| Tenant Admin (Alice) | 23 | 23 | 0 | 0 |
-| Instructor (Charlie) | 8 | 8 | 0 | 0 |
-| Super Admin (Bob) | 11 | 11 | 0 | 0 |
+| Student (Sally) | 18 | 18 | 0 | 0 |
+| Tenant Admin (Alice) | 21 | 21 | 0 | 0 |
+| Instructor (Charlie) | 9 | 9 | 0 | 0 |
+| Super Admin (Bob) | 14 | 14 | 0 | 0 |
 | LRPS | 1 | 0 | 1 | 0 |
 | Help & Resources (shared) | 1 | 1 | 0 | 0 |
-| **Total** | **78** | **73** | **5** | **0** |
+| **Total** | **64** | **63** | **1** | **0** |
 
-**Zero Discretionary screens at v1.0 baseline.** Every screen is either Contract-required or Essential scaffolding with a written reason.
+**Zero Discretionary screens at v4.58 baseline.** Every screen is either Contract-required or Essential scaffolding with a written reason.
 
 ---
 
@@ -191,7 +175,8 @@ Help & Resources totals: 1 Contract-required · 0 Essential scaffolding · 0 Dis
 
 | Version | Date | Status | Notes |
 |:---|:---|:---|:---|
-| 1.0 | 12 May 2026 | Current | Initial baseline. 76 screens cataloged. 71 Contract-required, 5 Essential scaffolding, 0 Discretionary. |
+| 1.0 | 12 May 2026 | Superseded | Initial baseline. 76 screens cataloged. 71 Contract-required, 5 Essential scaffolding, 0 Discretionary. |
+| 1.1 | 18 May 2026 | Current | v4.57 RBAC pass added 3 Access Denied screens (tenant-21, super-14, instructor-09). v4.58 student rebuild reduced student count 34→18 to match live MVP (`https://wgu.teamjft.com/`). Original student section preserved at git tag `prototype-v4.57-frozen`. Total: 64 screens, 63 Contract-required, 1 Essential scaffolding, 0 Discretionary. |
 
 ---
 
