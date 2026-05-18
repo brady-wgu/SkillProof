@@ -10,7 +10,7 @@
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
     Help & Resources shared surface for the SkillProof v1.3 additional scenarios.
     Closes Appendix A §16.4 #9.14 (Self-service support portal) and #9.15 (Video training resources).
-    Accessible from all admin portals (Tenant Admin / Instructor / Super Admin) via the Help link in each navbar.
+    Accessible from all admin portals (School Admin / Instructor / Super Admin) via the Help link in each navbar.
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -408,6 +408,41 @@
       <span class="search-hint">/</span>
     </div>
 
+    <!-- Zendesk-style support ticket form (WGU Program Development directive 2026-05-14) -->
+    <h2>Submit a support request</h2>
+    <p style="font-size:14px; max-width: 720px;">Have a question, found a bug, or need a permission change? Send a ticket directly to JFT Support. The request type below routes it to the right team.</p>
+    <form class="support-form" onsubmit="event.preventDefault(); document.getElementById('sf-success').style.display='flex'; this.reset();" style="max-width: 720px; background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div>
+          <label for="sf-name" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Your name</label>
+          <input id="sf-name" type="text" required placeholder="First Last" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+        </div>
+        <div>
+          <label for="sf-email" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Email</label>
+          <input id="sf-email" type="email" required placeholder="you@wgu.edu" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+        </div>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <label for="sf-type" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Request type</label>
+        <select id="sf-type" required style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+          <option value="">Select a type&hellip;</option>
+          <option value="permission">Permission request</option>
+          <option value="feature">Feature request</option>
+          <option value="bug">Bug report</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <label for="sf-desc" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Description</label>
+        <textarea id="sf-desc" rows="6" required placeholder="Briefly describe what you need or what isn't working." style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary); resize: vertical;"></textarea>
+      </div>
+      <button type="submit" style="background: var(--color-bright-blue); color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"><span class="material-icons-outlined" style="font-size:18px;">send</span> Submit ticket</button>
+      <div id="sf-success" style="display:none; align-items:center; gap:8px; margin-top:16px; padding: 12px 16px; background: rgba(45, 122, 74, 0.1); border: 1px solid var(--color-success); border-radius: 6px; color: var(--color-success); font-size: 14px;">
+        <span class="material-icons-outlined">check_circle</span>
+        Ticket submitted &mdash; demo only. In production this would create a Zendesk ticket and email you a confirmation.
+      </div>
+    </form>
+
     <!-- Self-service support portal (Appendix A §16.4 #9.14) -->
     <h2>Self-service support</h2>
     <div class="card-grid">
@@ -441,7 +476,7 @@
         <span class="update-tag">New</span>
         <div class="update-body">
           <div class="update-title">Configuring LTI Advantage Deep Linking in your tenant</div>
-          <div class="update-meta">Tenant Admin guide &middot; Updated 2 days ago</div>
+          <div class="update-meta">School Admin guide &middot; Updated 2 days ago</div>
         </div>
       </li>
       <li>
@@ -475,7 +510,7 @@
       <button class="chip active">All roles</button>
       <button class="chip">Student</button>
       <button class="chip">Instructor</button>
-      <button class="chip">Tenant Admin</button>
+      <button class="chip">School Admin</button>
       <button class="chip">Super Admin</button>
     </div>
 
@@ -518,7 +553,7 @@
         </div>
         <div class="video-meta">
           <div class="video-title">Configuring a new course end-to-end</div>
-          <div class="video-role">Tenant Admin</div>
+          <div class="video-role">School Admin</div>
         </div>
       </div>
 
@@ -562,7 +597,7 @@
         </div>
         <div class="video-meta">
           <div class="video-title">Add / edit / remove learning objectives</div>
-          <div class="video-role">Tenant Admin</div>
+          <div class="video-role">School Admin</div>
         </div>
       </div>
 
@@ -584,7 +619,7 @@
         </div>
         <div class="video-meta">
           <div class="video-title">Deploying a course to production</div>
-          <div class="video-role">Tenant Admin</div>
+          <div class="video-role">School Admin</div>
         </div>
       </div>
 
