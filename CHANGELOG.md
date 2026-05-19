@@ -6,6 +6,55 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.72 — 19 May 2026 — Per-school branding (4 WGU School logos + Switch School)
+
+Brady's JFT note: *"Add the custom branding for each of the 4 schools."* Each WGU School (Technology / Business / Education / Leavitt Health) now has its own logo swapped into the navbar based on the active tenant context. The Switch School menu in the Tenant Admin user profile expands from 2 to all 4 schools.
+
+### What changed
+
+- **8 new logo assets** copied from OneDrive `WGU FY26 Design System / School Logos`:
+  - `assets/school-tech-{light,dark}.png`
+  - `assets/school-business-{light,dark}.png`
+  - `assets/school-education-{light,dark}.png`
+  - `assets/school-health-{light,dark}.png`
+- **tenant_admin navbar logos** (12 navbars × 2 imgs = 24 swaps) → default to `school-tech-*` with `data-school-logo="light"` / `"dark"` markers so JS can update on Switch School.
+- **student/ navbar** — single shared navbar logo swapped from text mark to `school-tech-*` image pair.
+- **instructor/ navbar logos** — same swap (Charlie is in School of Technology in the scenario).
+- **super_admin, help, root index.html** — stay WGU corporate (cross-tenant / utility surfaces).
+- **Switch School menu** in tenant_admin user profile expanded from 2 (Tech, Business) to all 4 schools (added Education + Leavitt Health) using the existing `user-menu-item[data-school]` pattern.
+- **`switchSchool(name)` JS extended** with:
+  - `SCHOOL_SLUGS` map (school name → asset slug)
+  - `TENANT_IDS` map (school name → `tenant_school_*` ID)
+  - `applySchoolLogos(name)` helper that updates every `[data-school-logo]` `src` + `alt`, plus the `[data-tenant-name]` / `[data-tenant-id]` / `[data-tenant-scope]` elements in the Tenant Settings identity card
+  - `localStorage` persistence under key `skillproof-active-school`
+  - On-load restore so refreshing the page preserves the active school
+- **Tenant identity card** on Screen 17 (Tenant Settings) wired with `data-tenant-name`, `data-tenant-id`, `data-tenant-scope` attributes so switching school updates the header + Tenant ID code + role-scope sentence.
+
+### Why
+
+Direct quotes from Brady's JFT meeting notes:
+- *"Add the custom branding for each of the 4 schools"*
+- *"We need a button to switch between tenants"*
+- *"Work on the branding for the tenant admin, this should be SoT"*
+- *"Update the 'Tenant' to be SoT or be explicit. Don't make it [generic]"*
+
+The persistence key (`skillproof-active-school`) mirrors the existing `skillproof-theme` early-init pattern.
+
+### Verification
+
+- tenant_admin Switch School menu shows all 4 schools.
+- Picking School of Business → navbar logo + chip update; refresh page → Business stays selected.
+- Tenant Settings identity card updates header + Tenant ID + role scope on school switch.
+- student/ + instructor/ navbars show School of Technology logo (their default scenario school).
+- super_admin/ + help/ + root navbars still show WGU corporate logo.
+- Dark mode swaps to the `-dark` (reverse) variant of the active school's logo.
+
+### Storyboard stamp
+
+v4.72 across the 6 portals.
+
+---
+
 ## v4.71 — 19 May 2026 — Delete presentation pages and contract-tracking docs
 
 Brady's direction: this repo is for the SkillProof UI prototypes only. Supporting docs (scenario catalogs, contract trackers) are no longer maintained in the public repo. They live in Coda.io now. Reduces the cognitive surface area and cuts the JFT-visible footprint.
