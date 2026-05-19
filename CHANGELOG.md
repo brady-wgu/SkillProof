@@ -6,6 +6,58 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.80 — 19 May 2026 — Audit follow-ups (School identity trim · bigger logos · Zendesk-styled help · student Help link)
+
+Follow-up batch after the v4.79 review. Five-item delivery:
+
+### 1. Screen 17 School identity card simplified
+
+The 6-row info table (Tenant ID, Parent Org, Operated by, LRPS launch URL, Assigned JFT CSM, Your role scope) was redundant — none of those fields are user-modifiable, so the School Admin couldn't act on any of it. Replaced the whole table with a single sentence:
+
+> Tenant ID `tenant_school_tech` · managed centrally by WGU. Contact Vivek for changes.
+
+The school name (h2) stays for context; the Tenant ID stays in a `<code>` for support-ticket reference. Brady's directive: *"Remove almost everything in that box because they are not things the School Admin can change or modify in any way."*
+
+### 2. Header + footer logos enlarged
+
+Bumped logo height from `28px` → `40px` across all 6 portals — both the navbar (`.navbar-brand-logo { height: 40px; }`) and footer image inline styles. Brady's directive: *"The sizes of these in our prototype are WAY too small, so they need to be made much larger to be the same height as the other buttons and labels on the header and footer rows."*
+
+Student portal's old `.navbar-brand-logo { width: 36px; height: 36px; }` rule (which was sized for a square text-mark) was simplified to `height: 40px; width: auto;` to fit the v4.72 school-logo image swap.
+
+### 3. Help form refined to mimic a real Zendesk page
+
+Replaced the bare form with a 2-column Zendesk-style layout on `help/index.html`:
+
+- **Left column**: "WGU Support · powered by Zendesk" badge + h2 + form card with Subject + Description + LRPS-reissue request type + drag-drop Attachments area + Submit / Cancel buttons + success-state with request-ID copy
+- **Right column**: "Suggested articles" aside with 5 article links + response-time note ("usually within 1 business day; P1 paged immediately")
+- Form wrapper carries `id="submit-request"` so Help-button links anchor directly to it
+- Required-field asterisks throughout
+
+### 4. Help buttons across the site route to the form
+
+Every Help button now uses `#submit-request` anchor so clicking lands the user directly on the support form:
+
+- super_admin · tenant_admin · instructor — existing `<a class="navbar-help-link" href="../help/index.html#submit-request">` (or `btn-theme-toggle` variant)
+- **student/** — added a Help icon button (previously had none); now matches admin portals
+
+### 5. Version increment
+
+v4.79 → v4.80 across the 6 portals. Future: every commit/push that ships UI changes should bump this version so Brady can spot when GitHub gets out of sync with local pushes.
+
+### Companion external document
+
+Started `OneDrive\_SkillProof\c_Deliverables\_From Brady to JFT\g_User Documentation\SkillProof_User_Documentation_Outline_v0_1_19MAY2026.md` — a bulleted outline organizing what to include in the eventual user-instruction docs for Tenant Admins, Instructors, Students, and Super Admins. Lives in OneDrive (not the public repo), per Brady's separation of prototype vs. supporting docs.
+
+### Verification
+
+- Screen 17 identity card → reads "School of Technology" + the one-line tenant ID sentence; no other rows
+- Hard-refresh `https://brady-wgu.github.io/SkillProof/` → header WGU logo + each portal navbar logo + footer WGU logo all render at the new 40px height
+- `help/index.html#submit-request` → lands at the form; the Zendesk styling is visible (powered-by badge, sidebar, attachments box)
+- student/ navbar shows a Help icon next to the theme toggle
+- v4.80 title stamp on all 6 portals
+
+---
+
 ## v4.79 — 19 May 2026 — Analytics page iteration (no more timing things)
 
 Phase K — the final phase of the JFT meeting follow-ups. Per Brady's note *"Iterate on the analytics page. No more timing things,"* the arbitrary time-on-task metric is gone, replaced with a more meaningful active-learners trend.
