@@ -6,6 +6,30 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.78 — 19 May 2026 — Help / Support flows + Vivek footer link
+
+Phase J. Wires up the Submit LRPS Ticket button to a real `mailto:` action, refreshes the help page with an LRPS deep-link distribution note, and adds the Vivek technical-contact footer link across all 6 portals.
+
+### What changed
+
+- **tenant_admin Screen 8 (Deploy success)** — Submit LRPS ticket button is now an `<a>` with a `mailto:wgu-lrps-support@wgu.edu` link, pre-filled subject `LRPS Ticket — E135 OOP Python (School of Technology)` and a multi-line body including Tenant Admin, Skill, Build, Destination URL, and a Justification stub. Clicking opens Outlook (or default mail client) with the ticket ready to send. Brady's note: *"Submit LRPS Ticket needs to be working form at WGU or just a mailto: link that opens in Outlook."*
+- **help/index.html** — added an "LRPS deep links" tile to the self-service card grid: *"WGU IT distributes the secret LRPS deep link for each elevated persona (Instructor, Tenant Admin, Super Admin) directly to the user. SkillProof itself does not store or surface these URLs."* Closes Brady's note: *"WGU will send links for the elevated screens."*
+- **Footer — Vivek technical contact** added to all 6 portal footers (`super_admin/`, `tenant_admin/`, `instructor/`, `student/`, `help/`, root `index.html`). Pipe-separated next to Honor Code, `mailto:vivek@wgu.edu` placeholder (swap to the canonical URL when Brady provides it).
+- **Existing Zendesk-style ticket form** on `help/index.html` already had a "In production this would create a Zendesk ticket" success message — kept as the Zendesk-future placeholder per Brady's note.
+
+### Verification
+
+- tenant_admin Screen 8 → click Submit LRPS ticket → mail client opens with pre-filled subject + body
+- help/index.html → Self-service grid shows 4 cards now (Get Started, Troubleshooting, API Reference, LRPS deep links)
+- Every portal footer ends with: ADA · Privacy · Terms · Honor Code · Technical contact: Vivek
+- v4.78 title stamp on all 6 portals
+
+### Storyboard stamp
+
+v4.78 across the 6 portals.
+
+---
+
 ## v4.77 — 19 May 2026 — Super Admin demotion tooltips + Instructor Downgrade affordance
 
 Phase H. Brady's JFT note: *"Demotion to lower levels is also important to remember."* The v4.68 Access Control screen already had Downgrade buttons for Tenant Admins and Super Admin. This release adds context-specific tooltips explaining what each demotion does to scope assignments, and surfaces the missing Instructor → Student demotion affordance.
