@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Help &amp; Resources — Storyboard v4.82</title>
+  <title>SkillProof — Help &amp; Resources — Storyboard v4.83</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -122,6 +122,20 @@
     }
     [data-theme="dark"] .btn-theme-toggle:hover { background: rgba(255,255,255,0.2); }
     [data-theme="dark"] .btn-theme-toggle .material-icons-outlined { color: #fff; }
+    /* v4.83: dark-mode footer theming — applies the dark navy + white text treatment */
+    [data-theme="dark"] footer[role="contentinfo"] {
+      background: var(--color-deep-navy) !important;
+      border-top-color: rgba(255,255,255,0.1) !important;
+    }
+    [data-theme="dark"] footer[role="contentinfo"] > div {
+      border-bottom-color: rgba(255,255,255,0.1) !important;
+    }
+    [data-theme="dark"] footer[role="contentinfo"] a {
+      color: #fff !important;
+    }
+    [data-theme="dark"] footer[role="contentinfo"] span {
+      color: rgba(255,255,255,0.7) !important;
+    }
 
     [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 { color: #EEF6F9; }
     [data-theme="dark"] p { color: #B0BCC7; }
