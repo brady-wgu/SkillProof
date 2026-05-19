@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.57</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.68</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1771,11 +1771,11 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">Super Admin Portal</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>User Management</span>
+        <span>Access Control</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">manage_accounts</span>Super Admin</span>
-      <h1 id="s9-heading">User Management</h1>
-      <p class="mt-1 mb-3">All users who have logged into SkillProof via LTI. Learners land at <strong>Student</strong>; <strong>all WGU staff land at Instructor</strong> by default (whether they actually teach or not). Elevations to <strong>School Admin</strong> or <strong>Super Admin</strong> are applied here by a Super Admin and take effect on the user&rsquo;s next login. Staff who don&rsquo;t need elevated privileges stay at the Instructor baseline.</p>
+      <h1 id="s9-heading">Access Control</h1>
+      <p class="mt-1 mb-3">All four permission scopes the Super Admin alone controls. Role elevation, Tenant Admin school assignments, Instructor skill assignments, and Skill ownership and deployment.</p>
 
       <div class="row mb-3">
         <div class="col-3">
@@ -1809,9 +1809,14 @@
         <div><strong>Minimum 2 Super Admins required.</strong> Downgrade blocked while count = 2.</div>
       </div>
 
+      <div class="alert alert-warning mb-3">
+        <span class="material-icons-outlined">warning_amber</span>
+        <div><strong>Each Skill must have exactly one Owner.</strong> Skills without an Owner block student access.</div>
+      </div>
+
       <div class="alert alert-info mb-3">
         <span class="material-icons-outlined">info</span>
-        <div>Skill assignments and School Admin school assignments are managed on the <a href="#" onclick="goToScreen(12); return false;">Instructor Roster</a> and <a href="#" onclick="goToScreen(13); return false;">School Management</a> screens. This screen handles role elevation only.</div>
+        <div><strong>Each School should have at least one Tenant Admin.</strong> Schools without admins surface as onboarding-incomplete.</div>
       </div>
 
       <div class="row mb-3">
@@ -1819,183 +1824,449 @@
           <div class="pgn__card pgn__card-featured">
             <div class="pgn__card-section">
               <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="eyebrow"><span class="material-icons-outlined">people</span>All users</span>
+                <span class="eyebrow"><span class="material-icons-outlined">tune</span>Access Control</span>
                 <div class="d-flex gap-2 align-items-center">
-                  <input class="form-control form-control-sm" type="text" placeholder="Search by name, email, school…" style="width: 280px; height: 32px; font-size: 13px;">
+                  <input class="form-control form-control-sm" type="text" placeholder="Search users, skills, schools…" style="width: 280px; height: 32px; font-size: 13px;">
                 </div>
               </div>
-              <table class="pgn__data-table">
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>School</th>
-                    <th>Role</th>
-                    <th>Last active</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">B</div>
-                        <div>
-                          <div class="text-strong">Bob (you)</div>
-                          <div class="micro text-muted">bob.taylor@example.edu</div>
+
+              <div class="d-flex gap-1 mb-3" role="tablist" aria-label="Access Control scope">
+                <button type="button" class="btn btn-primary btn-sm" role="tab" id="s9-tab-people" aria-selected="true" aria-controls="s9-panel-people" onclick="goToTab('people')">People · 187</button>
+                <button type="button" class="btn btn-tertiary btn-sm" role="tab" id="s9-tab-skills" aria-selected="false" aria-controls="s9-panel-skills" onclick="goToTab('skills')">Skills · 31</button>
+                <button type="button" class="btn btn-tertiary btn-sm" role="tab" id="s9-tab-schools" aria-selected="false" aria-controls="s9-panel-schools" onclick="goToTab('schools')">Schools · 4</button>
+              </div>
+
+              <!-- TAB PANEL: PEOPLE -->
+              <div id="s9-panel-people" role="tabpanel" aria-labelledby="s9-tab-people">
+                <table class="pgn__data-table">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Role</th>
+                      <th>Scope</th>
+                      <th>Last active</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">B</div>
+                          <div>
+                            <div class="text-strong">Bob (you)</div>
+                            <div class="micro text-muted">bob@example.edu</div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td class="text-muted small">— (cross-school)</td>
-                    <td><span class="badge badge-brand">Super Admin</span><div class="micro text-muted">LTI: Instructor</div></td>
-                    <td>Now</td>
-                    <td class="text-muted small">Cannot downgrade self</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">J</div>
-                        <div>
-                          <div class="text-strong">Jordan</div>
-                          <div class="micro text-muted">jordan.lin@example.edu</div>
+                      </td>
+                      <td><span class="badge badge-brand">Super Admin</span></td>
+                      <td class="text-muted small">— (cross-school)</td>
+                      <td>Now</td>
+                      <td class="text-muted small">Cannot downgrade self</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">J</div>
+                          <div>
+                            <div class="text-strong">Jordan</div>
+                            <div class="micro text-muted">jordan@example.edu</div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td class="text-muted small">— (cross-school)</td>
-                    <td><span class="badge badge-brand">Super Admin</span><div class="micro text-muted">LTI: Instructor</div></td>
-                    <td>2 hours ago</td>
-                    <td><button class="btn btn-tertiary btn-sm" disabled>Downgrade (blocks min 2)</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">A</div>
-                        <div>
-                          <div class="text-strong">Alice</div>
-                          <div class="micro text-muted">alice@example.edu</div>
+                      </td>
+                      <td><span class="badge badge-brand">Super Admin</span></td>
+                      <td class="text-muted small">— (cross-school)</td>
+                      <td>2 hours ago</td>
+                      <td><button class="btn btn-tertiary btn-sm" disabled>Downgrade (blocks min 2)</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">A</div>
+                          <div>
+                            <div class="text-strong">Alice</div>
+                            <div class="micro text-muted">alice@example.edu</div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td>School of Technology</td>
-                    <td><span class="badge badge-info">School Admin</span><div class="micro text-muted">LTI: Instructor</div></td>
-                    <td>15 min ago</td>
-                    <td>
-                      <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                      <button class="btn btn-tertiary btn-sm">Downgrade</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">M</div>
-                        <div>
-                          <div class="text-strong">Miguel</div>
-                          <div class="micro text-muted">miguel.alvarez@example.edu</div>
+                      </td>
+                      <td><span class="badge badge-info">Tenant Admin</span></td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
-                      </div>
-                    </td>
-                    <td>School of Business</td>
-                    <td><span class="badge badge-info">School Admin</span><div class="micro text-muted">LTI: Instructor</div></td>
-                    <td>Yesterday</td>
-                    <td>
-                      <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                      <button class="btn btn-tertiary btn-sm">Downgrade</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base);">C</div>
-                        <div>
-                          <div class="text-strong">Charlie</div>
-                          <div class="micro text-muted">charlie.diaz@example.edu</div>
+                      </td>
+                      <td>15 min ago</td>
+                      <td>
+                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
+                        <button class="btn btn-tertiary btn-sm">Downgrade</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">M</div>
+                          <div>
+                            <div class="text-strong">Miguel</div>
+                            <div class="micro text-muted">miguel@example.edu</div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td>School of Technology</td>
-                    <td><span class="badge badge-warning">Instructor</span><div class="micro text-muted">LTI: Instructor</div></td>
-                    <td>1 day ago</td>
-                    <td>
-                      <button class="btn btn-primary btn-sm">Upgrade to School Admin</button>
-                      <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base);">P</div>
-                        <div>
-                          <div class="text-strong">Priya</div>
-                          <div class="micro text-muted">priya.shah@example.edu</div>
+                      </td>
+                      <td><span class="badge badge-info">Tenant Admin</span></td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
-                      </div>
-                    </td>
-                    <td>School of Health</td>
-                    <td><span class="badge badge-warning">Instructor</span><div class="micro text-muted">LTI: Instructor</div></td>
-                    <td>1 week ago</td>
-                    <td>
-                      <button class="btn btn-primary btn-sm">Upgrade to School Admin</button>
-                      <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">S</div>
-                        <div>
-                          <div class="text-strong">Sally</div>
-                          <div class="micro text-muted">sally.chen@example.edu</div>
+                      </td>
+                      <td>Yesterday</td>
+                      <td>
+                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
+                        <button class="btn btn-tertiary btn-sm">Downgrade</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base);">C</div>
+                          <div>
+                            <div class="text-strong">Charlie</div>
+                            <div class="micro text-muted">charlie@example.edu</div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td>School of Technology</td>
-                    <td><span class="badge badge-gray">Student</span><div class="micro text-muted">LTI: Student</div></td>
-                    <td>2 hours ago</td>
-                    <td>
-                      <button class="btn btn-primary btn-sm">Upgrade to Instructor</button>
-                      <button class="btn btn-outline-primary btn-sm">Upgrade to School Admin</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">D</div>
-                        <div>
-                          <div class="text-strong">Devon</div>
-                          <div class="micro text-muted">devon.park@example.edu</div>
+                      </td>
+                      <td><span class="badge badge-warning">Instructor</span></td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E075<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E135<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add Skill</button>
                         </div>
-                      </div>
-                    </td>
-                    <td>School of Technology</td>
-                    <td><span class="badge badge-gray">Student</span><div class="micro text-muted">LTI: Student</div></td>
-                    <td>3 days ago</td>
-                    <td>
-                      <button class="btn btn-primary btn-sm">Upgrade to Instructor</button>
-                      <button class="btn btn-outline-primary btn-sm">Upgrade to School Admin</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="d-flex justify-content-between align-items-center mt-2 small text-muted">
-                <span>Showing 8 of 187 users</span>
-                <div class="d-flex gap-1">
-                  <button class="btn btn-tertiary btn-sm" disabled>&lsaquo; Prev</button>
-                  <button class="btn btn-tertiary btn-sm">Next &rsaquo;</button>
+                      </td>
+                      <td>1 day ago</td>
+                      <td>
+                        <button class="btn btn-primary btn-sm">Upgrade to Tenant Admin</button>
+                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base);">P</div>
+                          <div>
+                            <div class="text-strong">Priya</div>
+                            <div class="micro text-muted">priya@example.edu</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge badge-warning">Instructor</span></td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E135<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add Skill</button>
+                        </div>
+                      </td>
+                      <td>1 week ago</td>
+                      <td>
+                        <button class="btn btn-primary btn-sm">Upgrade to Tenant Admin</button>
+                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">S</div>
+                          <div>
+                            <div class="text-strong">Sally</div>
+                            <div class="micro text-muted">sally@example.edu</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge badge-gray">Student</span></td>
+                      <td class="text-muted small">— (own record only)</td>
+                      <td>2 hours ago</td>
+                      <td>
+                        <button class="btn btn-primary btn-sm">Upgrade to Instructor</button>
+                        <button class="btn btn-outline-primary btn-sm">Upgrade to Tenant Admin</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">D</div>
+                          <div>
+                            <div class="text-strong">Devon</div>
+                            <div class="micro text-muted">devon@example.edu</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge badge-gray">Student</span></td>
+                      <td class="text-muted small">— (own record only)</td>
+                      <td>3 days ago</td>
+                      <td>
+                        <button class="btn btn-primary btn-sm">Upgrade to Instructor</button>
+                        <button class="btn btn-outline-primary btn-sm">Upgrade to Tenant Admin</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-between align-items-center mt-2 small text-muted">
+                  <span>Showing 8 of 187 users</span>
+                  <div class="d-flex gap-1">
+                    <button class="btn btn-tertiary btn-sm" disabled>&lsaquo; Prev</button>
+                    <button class="btn btn-tertiary btn-sm">Next &rsaquo;</button>
+                  </div>
                 </div>
               </div>
+
+              <!-- TAB PANEL: SKILLS -->
+              <div id="s9-panel-skills" role="tabpanel" aria-labelledby="s9-tab-skills" hidden aria-hidden="true">
+                <table class="pgn__data-table">
+                  <thead>
+                    <tr>
+                      <th>Skill</th>
+                      <th>Owner</th>
+                      <th>Deployed in Schools</th>
+                      <th style="text-align:right;">Instructors</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="text-strong">E010 · Python Foundations</div>
+                        <div class="micro text-muted">Coaching module</div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:24px; height:24px; font-size:11px; background: var(--pgn-color-brand-base);">A</div>
+                          <span>Alice</span>
+                          <button class="btn btn-tertiary btn-sm" type="button" style="margin-left:4px;">Reassign</button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Education<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">3</td>
+                      <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-strong">E075 · Data Structures</div>
+                        <div class="micro text-muted">Coaching module</div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:24px; height:24px; font-size:11px; background: var(--pgn-color-brand-base);">A</div>
+                          <span>Alice</span>
+                          <button class="btn btn-tertiary btn-sm" type="button" style="margin-left:4px;">Reassign</button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
+                      <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-strong">E135 · Algorithms</div>
+                        <div class="micro text-muted">Coaching module</div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:24px; height:24px; font-size:11px; background: var(--pgn-color-info-base);">M</div>
+                          <span>Maya</span>
+                          <button class="btn btn-tertiary btn-sm" type="button" style="margin-left:4px;">Reassign</button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">3</td>
+                      <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-strong">B210 · Accounting Principles</div>
+                        <div class="micro text-muted">Coaching module</div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:24px; height:24px; font-size:11px; background: var(--pgn-color-brand-base);">M</div>
+                          <span>Miguel</span>
+                          <button class="btn btn-tertiary btn-sm" type="button" style="margin-left:4px;">Reassign</button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
+                      <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="text-strong">ED150 · Curriculum Design</div>
+                        <div class="micro text-muted">Coaching module</div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="avatar" style="width:24px; height:24px; font-size:11px; background: var(--pgn-color-brand-base);">R</div>
+                          <span>Renee</span>
+                          <button class="btn btn-tertiary btn-sm" type="button" style="margin-left:4px;">Reassign</button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Education<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">1</td>
+                      <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
+                    </tr>
+                    <tr style="background: rgba(245, 166, 35, 0.08);">
+                      <td>
+                        <div class="text-strong">H320 · Health Informatics</div>
+                        <div class="micro" style="color: var(--pgn-color-warning-base); font-weight:600;"><span class="material-icons-outlined" style="font-size:13px; vertical-align:middle;">warning_amber</span> No owner assigned</div>
+                      </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm" type="button">Assign owner</button>
+                      </td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">Leavitt School of Health<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">0</td>
+                      <td><button class="btn btn-tertiary btn-sm" disabled>Manage</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-between align-items-center mt-2 small text-muted">
+                  <span>Showing 6 of 31 skills</span>
+                  <div class="d-flex gap-1">
+                    <button class="btn btn-tertiary btn-sm" disabled>&lsaquo; Prev</button>
+                    <button class="btn btn-tertiary btn-sm">Next &rsaquo;</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TAB PANEL: SCHOOLS -->
+              <div id="s9-panel-schools" role="tabpanel" aria-labelledby="s9-tab-schools" hidden aria-hidden="true">
+                <div class="d-flex justify-content-end mb-2">
+                  <button class="btn btn-primary btn-sm" type="button" onclick="goToScreen(13); return false;"><span class="material-icons-outlined">add</span>Create new School</button>
+                </div>
+                <table class="pgn__data-table">
+                  <thead>
+                    <tr>
+                      <th>School</th>
+                      <th>Tenant Admins</th>
+                      <th style="text-align:right;">Skills deployed</th>
+                      <th>Created</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><div class="text-strong">School of Technology</div></td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">A</span>Alice<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-info-base);">M</span>Maya<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">14</td>
+                      <td>22 Mar 2026</td>
+                      <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    </tr>
+                    <tr>
+                      <td><div class="text-strong">School of Business</div></td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">M</span>Miguel<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">9</td>
+                      <td>04 Apr 2026</td>
+                      <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    </tr>
+                    <tr>
+                      <td><div class="text-strong">School of Education</div></td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">R</span>Renee<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">6</td>
+                      <td>15 Apr 2026</td>
+                      <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
+                    </tr>
+                    <tr style="background: rgba(13, 110, 253, 0.06);">
+                      <td>
+                        <div class="text-strong">Leavitt School of Health</div>
+                        <div class="micro" style="color: var(--pgn-color-info-base); font-weight:600;"><span class="material-icons-outlined" style="font-size:13px; vertical-align:middle;">pending_actions</span> Onboarding &mdash; needs additional admins</div>
+                      </td>
+                      <td>
+                        <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">T</span>Theo<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
+                        </div>
+                      </td>
+                      <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
+                      <td>05 May 2026</td>
+                      <td><span class="badge badge-info"><span class="dot blue"></span>Onboarding</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
             </div>
           </div>
         </div>
         <div class="col-4">
+          <div class="pgn__card mb-3">
+            <div class="pgn__card-section">
+              <span class="eyebrow"><span class="material-icons-outlined">rule</span>Pending invariant breaches</span>
+              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size:12px;">
+                <tr><th style="background:transparent; padding: 6px 4px; text-align:right; width:32px; color: var(--pgn-color-gray-600);">0</th><td style="background:transparent; padding: 6px 4px;">Schools with zero Tenant Admins</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px; text-align:right; width:32px; color: var(--pgn-color-warning-base);">1</th><td style="background:transparent; padding: 6px 4px;"><a href="#" onclick="goToTab('skills'); return false;">Skill without an Owner</a></td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px; text-align:right; width:32px; color: var(--pgn-color-gray-600);">2</th><td style="background:transparent; padding: 6px 4px;">Tenant Admins assigned to zero Schools</td></tr>
+              </table>
+            </div>
+          </div>
           <div class="pgn__card">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">history</span>Recent role changes</span>
+              <span class="eyebrow"><span class="material-icons-outlined">history</span>Recent access changes</span>
               <table class="pgn__data-table" style="border:none; box-shadow:none; font-size:12px;">
-                <tr><th style="background:transparent; padding: 6px 4px;">10 May 11:42</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Charlie → Instructor (School of Technology)</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">07 May 09:18</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Alice → School Admin (School of Technology)</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">05 May 13:15</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Priya → Instructor (School of Health)</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">02 May 14:30</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Miguel → School Admin (School of Business)</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">28 Apr 10:02</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Jordan → Super Admin</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">22 Mar 16:00</th><td style="background:transparent; padding: 6px 4px;">Bob → Super Admin (initial)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">10 May 11:42</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Charlie &rarr; Instructor (School of Technology)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">09 May 16:08</th><td style="background:transparent; padding: 6px 4px;">Bob added Alice &rarr; School of Business</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">08 May 11:00</th><td style="background:transparent; padding: 6px 4px;">Bob reassigned E010 Owner &rarr; Maya</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">07 May 09:18</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Alice &rarr; Tenant Admin (School of Technology)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">05 May 13:15</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Priya &rarr; Instructor (Leavitt School of Health)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">02 May 14:30</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Miguel &rarr; Tenant Admin (School of Business)</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">28 Apr 10:02</th><td style="background:transparent; padding: 6px 4px;">Bob upgraded Jordan &rarr; Super Admin</td></tr>
+                <tr><th style="background:transparent; padding: 6px 4px;">22 Mar 16:00</th><td style="background:transparent; padding: 6px 4px;">Bob &rarr; Super Admin (initial)</td></tr>
               </table>
             </div>
           </div>
@@ -2383,7 +2654,7 @@
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">manage_accounts</span>Super Admin</span>
       <h1 id="s12-heading">Instructor Roster &amp; Course Assignment</h1>
-      <p class="mt-1 mb-3">Assign instructors to the courses they will teach. Account creation is handled separately through LRPS; this surface manages course-level access. Cross-school scope: select a school to view or modify its instructor roster.</p>
+      <p class="mt-1 mb-3">Coverage view of which instructors are assigned to which Skills, per school. Account creation is handled separately through LRPS. Cross-school scope: select a school to view its current instructor roster. Assignments are made on Access Control.</p>
 
       <div class="d-flex align-items-center gap-2 mb-3" style="flex-wrap:wrap;">
         <label class="form-label mb-0" for="ir-tenant" style="font-size: 13px;">School</label>
@@ -2398,7 +2669,7 @@
 
       <div class="alert alert-info mb-3">
         <span class="material-icons-outlined">info</span>
-        <div><strong>Super Admin owns all Skill assignments.</strong> School Admins have no provisioning affordance &mdash; their access scope is set here.</div>
+        <div><strong>Read-only coverage view.</strong> To assign instructors to skills, open <a href="#" onclick="goToScreen(9); return false;">Access Control &middot; Skills tab</a>. Super Admin owns all assignments; this view shows current per-school coverage for reference.</div>
       </div>
 
       <div class="row mb-3">
@@ -2408,15 +2679,6 @@
               <div class="mb-2">
                 <span class="eyebrow"><span class="material-icons-outlined">person_search</span>Instructors · 6 active</span>
               </div>
-              <div class="alert alert-warning mb-3" role="status" style="border-left-width: 4px;">
-                <span class="material-icons-outlined">pending_actions</span>
-                <div>
-                  <strong>Course assignment workflow &mdash; detail design pending.</strong> WGU Program Development will define how a Super Admin assigns LTI-provisioned users to courses (Skills) across schools. Accounts are not created inside SkillProof; users enter via LRPS &rarr; WGU SSO. The per-row "Manage" button is the current path for editing existing assignments.
-                  <div class="small mt-2" style="font-style: italic;">
-                    Contract anchor(s): SOW §2.5 Admin Portal &middot; §16.5 10.8 Role-based access control.
-                  </div>
-                </div>
-              </div>
               <table class="pgn__data-table">
                 <thead>
                   <tr>
@@ -2424,7 +2686,6 @@
                     <th>Courses</th>
                     <th>Last active</th>
                     <th>Status</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2434,14 +2695,13 @@
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">C</div>
                         <div>
                           <div class="text-strong">Charlie</div>
-                          <div class="micro text-muted">charlie.morgan@example.edu</div>
+                          <div class="micro text-muted">charlie@example.edu</div>
                         </div>
                       </div>
                     </td>
                     <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E075</span> <span class="badge badge-info">E135</span></td>
                     <td>14 min ago</td>
                     <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                   </tr>
                   <tr>
                     <td>
@@ -2449,14 +2709,13 @@
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-success-base);">D</div>
                         <div>
                           <div class="text-strong">Devon</div>
-                          <div class="micro text-muted">devon.kowalski@example.edu</div>
+                          <div class="micro text-muted">devon@example.edu</div>
                         </div>
                       </div>
                     </td>
                     <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
                     <td>2 hours ago</td>
                     <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                   </tr>
                   <tr>
                     <td>
@@ -2464,14 +2723,13 @@
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-info-base);">M</div>
                         <div>
                           <div class="text-strong">Maya</div>
-                          <div class="micro text-muted">maya.alvarado@example.edu</div>
+                          <div class="micro text-muted">maya@example.edu</div>
                         </div>
                       </div>
                     </td>
                     <td><span class="badge badge-info">E075</span></td>
                     <td>Yesterday</td>
                     <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                   </tr>
                   <tr>
                     <td>
@@ -2479,14 +2737,13 @@
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #4527A0;">P</div>
                         <div>
                           <div class="text-strong">Priya</div>
-                          <div class="micro text-muted">priya.singh@example.edu</div>
+                          <div class="micro text-muted">priya@example.edu</div>
                         </div>
                       </div>
                     </td>
                     <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
                     <td>Yesterday</td>
                     <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                   </tr>
                   <tr>
                     <td>
@@ -2494,14 +2751,13 @@
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base); color:#1A1A1A;">T</div>
                         <div>
                           <div class="text-strong">Teagan</div>
-                          <div class="micro text-muted">teagan.brooks@example.edu</div>
+                          <div class="micro text-muted">teagan@example.edu</div>
                         </div>
                       </div>
                     </td>
                     <td><span class="badge badge-info">E075</span></td>
                     <td>3 days ago</td>
                     <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                   </tr>
                   <tr>
                     <td>
@@ -2509,14 +2765,13 @@
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #C13232;">N</div>
                         <div>
                           <div class="text-strong">Noor</div>
-                          <div class="micro text-muted">noor.hassan@example.edu</div>
+                          <div class="micro text-muted">noor@example.edu</div>
                         </div>
                       </div>
                     </td>
                     <td><span class="badge badge-info">E010</span></td>
                     <td>5 days ago</td>
                     <td><span class="badge badge-warning">Idle &gt; 5d</span></td>
-                    <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                   </tr>
                   <tr style="opacity: 0.65;">
                     <td>
@@ -2524,14 +2779,13 @@
                         <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-400);">L</div>
                         <div>
                           <div class="text-strong">Logan</div>
-                          <div class="micro text-muted">logan.fischer@example.edu</div>
+                          <div class="micro text-muted">logan@example.edu</div>
                         </div>
                       </div>
                     </td>
                     <td><span class="text-muted small">—</span></td>
                     <td class="text-muted small">22 Mar 2026</td>
                     <td><span class="badge badge-gray">Deactivated</span></td>
-                    <td><button class="btn btn-tertiary btn-sm">Reactivate</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -2589,8 +2843,13 @@
       <span class="eyebrow"><span class="material-icons-outlined">school</span>Super Admin</span>
       <h1 id="s13-heading" class="mb-3">School Management</h1>
 
+      <div class="alert alert-info mb-3">
+        <span class="material-icons-outlined">info</span>
+        <div><strong>Read-only listing.</strong> To assign Tenant Admins to a school, open <a href="#" onclick="goToScreen(9); return false;">Access Control &middot; Schools tab</a>. New schools are still created from this screen.</div>
+      </div>
+
       <div class="d-flex justify-content-between align-items-start mb-3" style="flex-wrap:wrap; gap:12px;">
-        <p class="text-muted mb-0" style="max-width: 720px;">Each WGU School is an isolated environment in SkillProof. Schools can be created, deactivated, or have their School Admin assignments updated here. Only Super Admin can make changes.</p>
+        <p class="text-muted mb-0" style="max-width: 720px;">Each WGU School is an isolated environment in SkillProof. Schools are created here; Tenant Admin assignments are made on the Access Control screen.</p>
         <button class="btn btn-primary"><span class="material-icons-outlined">add</span>Create new School</button>
       </div>
 
@@ -2601,22 +2860,20 @@
               <tr>
                 <th>School</th>
                 <th>School ID</th>
-                <th>School Admins</th>
-                <th>Skills</th>
+                <th>Tenant Admins</th>
+                <th style="text-align:right;">Skills</th>
                 <th>Created</th>
                 <th>Status</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><div class="text-strong">School of Technology</div></td>
                 <td><code>tenant_school_tech</code></td>
-                <td>3 &middot; <span class="text-muted small">Alice, Devon, Maya</span></td>
+                <td>3 &middot; <span class="text-muted small">Alice, Maya, Devon</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">14</td>
                 <td>22 Mar 2026</td>
                 <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
               </tr>
               <tr>
                 <td><div class="text-strong">School of Business</div></td>
@@ -2625,7 +2882,6 @@
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">9</td>
                 <td>04 Apr 2026</td>
                 <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
               </tr>
               <tr>
                 <td><div class="text-strong">School of Education</div></td>
@@ -2634,7 +2890,6 @@
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">6</td>
                 <td>15 Apr 2026</td>
                 <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
               </tr>
               <tr>
                 <td><div class="text-strong">Leavitt School of Health</div></td>
@@ -2643,7 +2898,6 @@
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
                 <td>05 May 2026</td>
                 <td><span class="badge badge-info"><span class="dot blue"></span>Onboarding</span></td>
-                <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
               </tr>
             </tbody>
           </table>
@@ -2652,7 +2906,7 @@
 
       <div class="alert alert-info">
         <span class="material-icons-outlined">info</span>
-        <div>Creating a new School provisions an isolated environment (multi-tenant architecture per SOW §16.3 row 8.6). School Admin assignments are made after creation via the row Manage button.</div>
+        <div>Creating a new School provisions an isolated environment (multi-tenant architecture per SOW §16.3 row 8.6). Tenant Admin assignments are made afterward on <a href="#" onclick="goToScreen(9); return false;">Access Control &middot; Schools tab</a>.</div>
       </div>
 
     </div>
@@ -2746,7 +3000,28 @@
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 14; // v4.25: screen 9 added (User Management for Super Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / School Admin / Super Admin). v4.28: screen 10 added (External Tooling & Integrations). v4.45: screen 11 added (Data & Integrations Hub). v4.48: screen 12 added (Instructor Roster & Course Assignment, cross-school) — moved from tenant_admin. v4.52: screen 13 added (School Management) — closes the implied multi-school management gap per Brady's RBAC doc v1.0; tenants now model the 4 WGU Schools.
+  const TOTAL_SCREENS = 14; // v4.25: screen 9 added (User Management for Super Admin role upgrade) per WGU-feedback reshape; previous Team & Roles screen relocated here from tenant_admin. v4.27: role taxonomy expanded from 3 tiers to 4 (Student / Instructor / School Admin / Super Admin). v4.28: screen 10 added (External Tooling & Integrations). v4.45: screen 11 added (Data & Integrations Hub). v4.48: screen 12 added (Instructor Roster & Course Assignment, cross-school) — moved from tenant_admin. v4.52: screen 13 added (School Management) — closes the implied multi-school management gap per Brady's RBAC doc v1.0; tenants now model the 4 WGU Schools. v4.68: screen 9 renamed User Management → Access Control with three tabbed sub-sections (People · Skills · Schools) — the four permission scopes Super Admin alone owns per RBAC §7; Screens 12 and 13 demoted to read-only browse views.
+
+  /* Screen 09 (Access Control) tab toggling — People · Skills · Schools */
+  function goToTab(tabId) {
+    var tabs = ['people', 'skills', 'schools'];
+    tabs.forEach(function(id) {
+      var btn = document.getElementById('s9-tab-' + id);
+      var panel = document.getElementById('s9-panel-' + id);
+      if (!btn || !panel) return;
+      var active = id === tabId;
+      btn.classList.toggle('btn-primary', active);
+      btn.classList.toggle('btn-tertiary', !active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      if (active) {
+        panel.removeAttribute('hidden');
+        panel.setAttribute('aria-hidden', 'false');
+      } else {
+        panel.setAttribute('hidden', '');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
