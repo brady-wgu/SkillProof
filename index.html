@@ -811,14 +811,14 @@
           <a class="sidebar-link" href="student/" style="font-size:13px;">
             <span class="dot blue"></span>Student (Sally)
           </a>
-          <a class="sidebar-link" href="tenant_admin/" style="font-size:13px;">
-            <span class="dot blue"></span>Tenant Admin
-          </a>
           <a class="sidebar-link" href="instructor/" style="font-size:13px;">
-            <span class="dot blue"></span>Instructor
+            <span class="dot blue"></span>Instructor (Charlie)
+          </a>
+          <a class="sidebar-link" href="tenant_admin/" style="font-size:13px;">
+            <span class="dot blue"></span>Tenant Admin (Alice)
           </a>
           <a class="sidebar-link" href="super_admin/" style="font-size:13px;">
-            <span class="dot blue"></span>Super Admin
+            <span class="dot blue"></span>Super Admin (Bob)
           </a>
         </div>
       </aside>
@@ -875,26 +875,28 @@
                 </tr>
 
                 <!-- =========================================================
-                     LIVE SkillProof ADMIN ROWS — clickable
+                     LIVE SkillProof ADMIN ROWS — clickable (ordered per
+                     User Profile Catalog v1.3: Student/Instructor/Tenant
+                     Admin/Super Admin, with Student already placed above)
                      ========================================================= -->
-                <tr class="live" tabindex="0" data-launch="tenant_admin/" aria-label="Launch SkillProof Tenant Admin Portal (demo shortcut)">
-                  <td class="id-cell">269781301</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-TA]</span>SkillProof Tenant Admin Portal — Course Configuration <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">(demo) production: SkillProof-IN handshake + Tenant Admin elevation lookup</td>
-                  <td class="driver-cell">SDPTenantAdminProviderDriver</td>
-                  <td>Alice</td>
-                  <td class="date-cell">07 May 2026</td>
-                  <td class="actions-cell">
-                    <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
-                  </td>
-                </tr>
                 <tr class="live" tabindex="0" data-launch="instructor/" aria-label="Launch SkillProof Instructor Dashboard">
                   <td class="id-cell">269781302</td>
                   <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-IN]</span>SkillProof Instructor Dashboard — At-Risk Intervention<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/sdp/instructor/{course_id}</td>
                   <td class="driver-cell">SDPInstructorProviderDriver</td>
+                  <td>Alice</td>
+                  <td class="date-cell">07 May 2026</td>
+                  <td class="actions-cell">
+                    <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
+                  </td>
+                </tr>
+                <tr class="live" tabindex="0" data-launch="tenant_admin/" aria-label="Launch SkillProof Tenant Admin Portal (demo shortcut)">
+                  <td class="id-cell">269781301</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-TA]</span>SkillProof Tenant Admin Portal — Course Configuration <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td class="desc-cell">(demo) production: SkillProof-IN handshake + Tenant Admin elevation lookup</td>
+                  <td class="driver-cell">SDPTenantAdminProviderDriver</td>
                   <td>Alice</td>
                   <td class="date-cell">07 May 2026</td>
                   <td class="actions-cell">
@@ -1076,10 +1078,10 @@
   </div>
   <div class="meta-bar-flows">
     <span style="color: rgba(255,255,255,0.78); font-size:12px;">Quick launch:</span>
-    <a class="meta-flow-link" href="tenant_admin/"><span class="material-icons-outlined">admin_panel_settings</span>Tenant Admin (Alice)</a>
+    <a class="meta-flow-link" href="student/"><span class="material-icons-outlined">person</span>Student (Sally)</a>
     <a class="meta-flow-link" href="instructor/"><span class="material-icons-outlined">school</span>Instructor (Charlie)</a>
+    <a class="meta-flow-link" href="tenant_admin/"><span class="material-icons-outlined">admin_panel_settings</span>Tenant Admin (Alice)</a>
     <a class="meta-flow-link" href="super_admin/"><span class="material-icons-outlined">verified_user</span>Super Admin (Bob)</a>
-    <a class="meta-flow-link" href="student/"><span class="material-icons-outlined">person</span>Student Storyboard (Sally)</a>
   </div>
 </div>
 
