@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.85</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.86</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -996,6 +996,8 @@
     }
     .step-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
     .step-btn.active { background: var(--pgn-color-info-base); border-color: var(--pgn-color-info-base); color: #fff; font-weight: 700; }
+    .meta-link { color: var(--pgn-color-info-base); text-decoration: none; }
+    .meta-link:hover { text-decoration: underline; }
 
     .skip-nav {
       position: absolute; left: -9999px; top: auto;
@@ -3237,36 +3239,37 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
     <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof School Admin Portal &middot; SkillProof Design System v1.2 &middot; Persona: Alice</span>
+    <span style="margin-left:auto;"><a href="../" class="meta-link">&larr; Storyboard Index</a></span>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow A</span>
     <span class="flow-desc">School Admin Portal &amp; Skill Configuration</span>
     <nav class="flow-nav" aria-label="Course configuration screens">
-      <button class="step-btn active" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
-      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Skill form">03</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives (overall Skill passing threshold + inline expanders with per-objective threshold)">04</button>
-      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Model &amp; Coaching (model picker + coaching style)">05</button>
+      <button class="step-btn active" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02 Portal home</button>
+      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Skill form">03 New Skill</button>
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives">04 Topics &amp; LOs</button>
+      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Model, Coaching &amp; Prompt">05 Model &amp; Coaching</button>
       <!-- Screen 06 removed in v4.74 — content folded into Screen 5 -->
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Deploy review">07</button>
-      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Deploy success + LRPS provisioning ticket">08</button>
-      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: School Settings (school identity + branding)">17</button>
-      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Skill Lifecycle (§2.5 + §10.4)">18</button>
-      <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Analytics &amp; Reporting (A-7.10..7.14)">19</button>
-      <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Tenant Activity Log (A-10.4 tenant-scoped)">20</button>
-      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Access Denied (zero-trust deny path)">21</button>
+      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Deploy review">07 Deploy review</button>
+      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Deploy success + LRPS provisioning ticket">08 Deploy success</button>
+      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: School Settings">17 School Settings</button>
+      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Skill Lifecycle">18 Skill Lifecycle</button>
+      <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Analytics &amp; Reporting">19 Analytics</button>
+      <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Activity Log">20 Activity Log</button>
+      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Access Denied">21 Access Denied</button>
     </nav>
 
     <span class="flow-id">Flow B</span>
     <span class="flow-desc">Critical Incident Response &amp; SLA</span>
     <nav class="flow-nav" aria-label="Incident response screens">
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: All systems operational">09</button>
-      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: LLM down, fallback engaged">10</button>
-      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Notification detail">11</button>
-      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: P1 ticket creation">12</button>
-      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: Ticket submitted">13</button>
-      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: CSM response thread">14</button>
-      <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Service restored">15</button>
-      <button class="step-btn" onclick="goToScreen(16)" aria-label="Screen 16: SLA dashboard">16</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: All systems operational">09 All systems OK</button>
+      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: LLM down, fallback engaged">10 LLM down</button>
+      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Notification detail">11 Notification</button>
+      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: P1 ticket creation">12 P1 ticket</button>
+      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: Ticket submitted">13 Ticket submitted</button>
+      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: CSM response thread">14 CSM response</button>
+      <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Service restored">15 Service restored</button>
+      <button class="step-btn" onclick="goToScreen(16)" aria-label="Screen 16: SLA dashboard">16 SLA dashboard</button>
     </nav>
   </div>
 </div>

@@ -8,6 +8,27 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.86 — 19 May 2026 — Apply student-style storyboard shortcut bar to all 3 admin portals
+
+Brady: *"I like the update you did to the student flow shortcut bar at the bottom of the page with the 'back' button in the upper right corner of the shortcut bar that goes back to the LRPS page. I also like that you added a short description along with the screen numbering in that bar. Apply all of those updates to all the other prototype screens in the other 3 user scenarios."*
+
+### What changed
+
+For each of `super_admin/`, `tenant_admin/`, `instructor/`:
+
+1. **`← Storyboard Index` link** added to the upper-right of the meta-bar-header, pointing back to the LRPS root (`../`). Uses the new `.meta-link` CSS rule (mirrors student's pattern).
+2. **Short descriptions** appended to every step-btn label so you can see what each screen is at a glance:
+   - super_admin: `02 Portal home` · `03 Token usage` · `04 Cost spike` · `05 Rate limits` · `06 Compliance` · `07 Geo-redundancy` · `08 Audit log` · `09 Access Control` · `10 External Tooling` · `11 Data Hub` · `12 Instructor Roster` · `13 School Mgmt` · `14 Access Denied`
+   - tenant_admin Flow A: `02 Portal home` · `03 New Skill` · `04 Topics & LOs` · `05 Model & Coaching` · `07 Deploy review` · `08 Deploy success` · `17 School Settings` · `18 Skill Lifecycle` · `19 Analytics` · `20 Activity Log` · `21 Access Denied`
+   - tenant_admin Flow B: `09 All systems OK` · `10 LLM down` · `11 Notification` · `12 P1 ticket` · `13 Ticket submitted` · `14 CSM response` · `15 Service restored` · `16 SLA dashboard`
+   - instructor: `02 Dashboard home` · `03 Class heatmap` · `04 At-risk filter` · `05 Sally profile` · `06 Conversation logs` · `07 Session transcript` · `08 Audit Trail` · `09 Access Denied`
+
+### Storyboard stamp
+
+v4.86 across the 6 portals.
+
+---
+
 ## v4.85 — 19 May 2026 — Remove Screen 01 (SSO landing) from admin portals
 
 Brady: *"Let's remove Screen 01 from the instructor, tenant admin, and super admin. Those are informational only and should have been removed a long time ago when I directed that we only include the screens and features for JFT to implement. No extra features or text or buttons or anything else that is outside of the requirements of the contract language."*
