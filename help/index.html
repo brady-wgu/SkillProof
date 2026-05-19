@@ -3,443 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Help &amp; Resources — Storyboard v4.80</title>
+  <title>SkillProof — Help &amp; Resources — Storyboard v4.81</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
-    MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
-    Help & Resources shared surface for the SkillProof v1.3 additional scenarios.
-    Closes Appendix A §16.4 #9.14 (Self-service support portal) and #9.15 (Video training resources).
-    Accessible from all admin portals (School Admin / Instructor / Super Admin) via the Help link in each navbar.
+    SHARED HELP & RESOURCES surface.
+    Accessible from every portal's navbar Help link (anchor #submit-request).
+    Closes Appendix A §16.4 #9.14 (Self-service support portal).
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@300;400;700&family=Material+Icons+Outlined&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Material+Icons+Outlined&display=swap" rel="stylesheet">
 
   <style>
-    /* SkillProof Design System v1.2 — minimal inline */
+    /* SkillProof Design System v1.2 — Paragon-aligned tokens (matches every portal) */
     :root {
       --color-deep-navy: #001730;
-      --color-dark-navy: #002855;
-      --color-bright-blue: #0070F0;
-      --color-sky-blue: #46B1EF;
-      --color-ice-blue: #EEF6F9;
-      --color-accent-red: #C13232;
-      --color-amber: #FBAE40;
-      --color-text-primary: #001730;
-      --color-text-secondary: #4A5A6A;
-      --color-text-muted: #6C7B89;
-      --color-bg-primary: #FFFFFF;
-      --color-bg-secondary: #F5F7FA;
-      --color-bg-tertiary: #EEF6F9;
-      --color-border: #D4DCE4;
-      --color-success: #2D7A4A;
-      --color-warning: #FBAE40;
-      --color-danger: #C13232;
+      --pgn-color-brand-base: #0070F0;
+      --pgn-color-info-base: #46B1EF;
+      --pgn-color-success-base: #2D7A4A;
+      --pgn-color-warning-base: #FBAE40;
+      --pgn-color-danger-base: #C13232;
+      --pgn-color-gray-100: #F2F2F2;
+      --pgn-color-gray-200: #E4E7EB;
+      --pgn-color-gray-300: #C5CDD5;
+      --pgn-color-gray-600: #4A5A6A;
+      --pgn-color-gray-700: #2C3640;
+      --pgn-color-gray-900: #001730;
+      --pgn-color-bg-light: #F5F7FA;
+      --pgn-size-border-radius-base: 6px;
+      --pgn-size-rounded-pill: 999px;
+      --pgn-color-white: #FFFFFF;
     }
     [data-theme="dark"] {
-      --color-text-primary: #EEF6F9;
-      --color-text-secondary: #B0BCC7;
-      --color-text-muted: #8A9AA8;
-      --color-bg-primary: #001730;
-      --color-bg-secondary: #002855;
-      --color-bg-tertiary: #0E2841;
-      --color-border: #2A3F58;
+      --pgn-color-bg-light: #0E2841;
+      --pgn-color-gray-100: #1A2F46;
+      --pgn-color-gray-200: #2A3F58;
+      --pgn-color-gray-700: #B0BCC7;
+      --pgn-color-gray-900: #EEF6F9;
     }
 
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
       font-family: 'Lato', system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--color-text-primary);
-      background: var(--color-bg-secondary);
+      font-size: 16px; line-height: 1.5;
+      color: var(--pgn-color-gray-900);
+      background: var(--pgn-color-white);
       min-height: 100vh;
     }
-    h1, h2, h3, h4, h5, h6 {
+    [data-theme="dark"] body { background: var(--color-deep-navy); }
+    h1, h2, h3 {
       font-family: 'Sora', system-ui, sans-serif;
-      font-weight: 600;
-      color: var(--color-text-primary);
+      font-weight: 600; color: var(--pgn-color-gray-900);
       margin-top: 0;
     }
-    h1 { font-size: 40px; line-height: 1.2; }
-    h2 { font-size: 28px; line-height: 1.3; margin-top: 48px; margin-bottom: 16px; }
-    h3 { font-size: 20px; line-height: 1.4; margin-bottom: 8px; }
-    p { margin-top: 0; color: var(--color-text-secondary); }
-    a { color: var(--color-bright-blue); text-decoration: none; }
+    h1 { font-size: 36px; line-height: 1.2; margin-bottom: 8px; }
+    h2 { font-size: 22px; line-height: 1.3; margin: 32px 0 12px; }
+    p { margin-top: 0; color: var(--pgn-color-gray-600); }
+    a { color: var(--pgn-color-brand-base); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    code { font-family: 'JetBrains Mono', monospace; background: var(--pgn-color-gray-100); padding: 1px 6px; border-radius: 4px; font-size: 0.92em; }
     button { font-family: inherit; cursor: pointer; }
     .material-icons-outlined { font-family: 'Material Icons Outlined'; font-feature-settings: 'liga'; vertical-align: middle; }
 
-    /* Navbar */
-    .navbar {
-      background: var(--color-deep-navy);
-      color: #fff;
-      padding: 16px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .navbar-brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .navbar-brand .brand-logo {
-      width: 40px; height: 40px;
-      background: linear-gradient(135deg, var(--color-bright-blue), var(--color-sky-blue));
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px;
-    }
-    .navbar-brand .brand-text {
-      display: flex; flex-direction: column;
-    }
-    .navbar-brand .brand-product { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; }
-    .navbar-brand .brand-subtitle { font-size: 12px; opacity: 0.8; }
-    .navbar-actions {
-      display: flex; align-items: center; gap: 16px;
-    }
-    .navbar-link {
-      color: rgba(255,255,255,0.85);
-      font-size: 14px;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: background 0.15s;
-    }
-    .navbar-link:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
-    .theme-toggle {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-    .theme-toggle:hover { background: rgba(255,255,255,0.1); }
-
-    /* Container */
-    .container {
-      max-width: 1192px;
-      margin: 0 auto;
-      padding: 48px 32px 96px;
-    }
-
-    /* Eyebrow */
-    .eyebrow {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-text-muted);
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    /* Search bar */
-    .search-wrap {
-      background: var(--color-bg-primary);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 8px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 16px;
-      box-shadow: 0 2px 8px rgba(0,23,48,0.04);
-    }
-    .search-wrap .material-icons-outlined { color: var(--color-text-muted); font-size: 24px; }
-    .search-wrap input {
-      flex: 1;
-      border: none;
-      outline: none;
-      font-family: inherit;
-      font-size: 16px;
-      color: var(--color-text-primary);
-      background: transparent;
-      padding: 12px 0;
-    }
-    .search-wrap input::placeholder { color: var(--color-text-muted); }
-    .search-wrap .search-hint {
-      font-size: 12px;
-      color: var(--color-text-muted);
-      border: 1px solid var(--color-border);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: 'Lato', monospace;
-    }
-
-    /* Card grid */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 16px;
-    }
-    .card {
-      background: var(--color-bg-primary);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,23,48,0.08); }
-    .card-icon {
-      width: 48px; height: 48px;
-      background: var(--color-ice-blue);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    [data-theme="dark"] .card-icon { background: var(--color-bg-tertiary); }
-    .card-icon .material-icons-outlined { font-size: 28px; color: var(--color-bright-blue); }
-    .card-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 20px; color: var(--color-text-primary); }
-    .card-body { font-size: 14px; color: var(--color-text-secondary); flex: 1; }
-    .card-link {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--color-bright-blue);
-      display: inline-flex; align-items: center; gap: 4px;
-    }
-
-    /* Recent updates feed */
-    .updates-feed {
-      background: var(--color-bg-primary);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      list-style: none;
-      padding: 8px 0;
-      margin: 16px 0 0;
-    }
-    .updates-feed li {
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--color-border);
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .updates-feed li:last-child { border-bottom: none; }
-    .updates-feed .update-tag {
-      flex-shrink: 0;
-      background: var(--color-ice-blue);
-      color: var(--color-dark-navy);
-      padding: 2px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    [data-theme="dark"] .updates-feed .update-tag { background: var(--color-bg-tertiary); color: var(--color-sky-blue); }
-    .updates-feed .update-body { flex: 1; }
-    .updates-feed .update-title { font-weight: 700; color: var(--color-text-primary); }
-    .updates-feed .update-meta { font-size: 13px; color: var(--color-text-muted); margin-top: 2px; }
-
-    /* Role filter chips */
-    .role-chips {
-      display: flex;
-      gap: 8px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-    .chip {
-      background: var(--color-bg-primary);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-secondary);
-      padding: 8px 16px;
-      border-radius: 9999px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: all 0.15s;
-    }
-    .chip:hover { background: var(--color-ice-blue); }
-    [data-theme="dark"] .chip:hover { background: var(--color-bg-tertiary); }
-    .chip.active {
-      background: var(--color-bright-blue);
-      color: #fff;
-      border-color: var(--color-bright-blue);
-    }
-
-    /* Featured row callout */
-    .featured-callout {
-      background: linear-gradient(135deg, var(--color-bright-blue), var(--color-sky-blue));
-      color: #fff;
-      padding: 24px;
-      border-radius: 12px;
-      margin-top: 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .featured-callout .material-icons-outlined { font-size: 32px; }
-    .featured-callout .featured-text { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 18px; }
-    .featured-callout .featured-sub { font-size: 14px; opacity: 0.9; margin-top: 2px; }
-
-    /* Video gallery */
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 16px;
-    }
-    .video-tile {
-      background: var(--color-bg-primary);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .video-tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,23,48,0.08); }
-    .video-thumb {
-      aspect-ratio: 16 / 9;
-      background: linear-gradient(135deg, var(--color-deep-navy), var(--color-dark-navy));
-      position: relative;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .video-thumb.alt1 { background: linear-gradient(135deg, var(--color-bright-blue), var(--color-sky-blue)); }
-    .video-thumb.alt2 { background: linear-gradient(135deg, var(--color-amber), #E89321); }
-    .video-thumb.alt3 { background: linear-gradient(135deg, #4A5A6A, var(--color-dark-navy)); }
-    .video-thumb .play-icon {
-      width: 56px; height: 56px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .video-thumb .play-icon .material-icons-outlined { color: var(--color-deep-navy); font-size: 32px; }
-    .video-thumb .duration {
-      position: absolute;
-      bottom: 8px; right: 8px;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .video-meta { padding: 16px; }
-    .video-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 16px; color: var(--color-text-primary); margin-bottom: 4px; line-height: 1.3; }
-    .video-role { font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
-
-    /* Contact button (floating) */
-    .contact-fab {
-      position: fixed;
-      bottom: 32px; right: 32px;
-      background: var(--color-bright-blue);
-      color: #fff;
-      border: none;
-      padding: 16px 24px;
-      border-radius: 9999px;
-      font-family: 'Sora', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 8px 24px rgba(0,112,240,0.4);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .contact-fab:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,112,240,0.5); }
-    .contact-fab .material-icons-outlined { font-size: 20px; }
-
-    /* Footer */
-    .site-footer {
-      background: var(--color-deep-navy);
-      color: rgba(255,255,255,0.7);
-      padding: 24px 32px;
-      text-align: center;
-      font-size: 13px;
-    }
-    .site-footer strong { color: #fff; font-weight: 600; }
-
-    /* Meta-bar (bottom navigation hint) */
-    .meta-bar {
-      background: var(--color-bg-tertiary);
-      border-top: 1px solid var(--color-border);
-      padding: 12px 32px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      font-size: 13px;
-      color: var(--color-text-muted);
-    }
-    .meta-bar .meta-id { background: var(--color-bg-primary); padding: 2px 8px; border-radius: 4px; font-weight: 700; color: var(--color-text-secondary); }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .card-grid, .video-grid { grid-template-columns: 1fr; }
-      .container { padding: 32px 16px 80px; }
-      h1 { font-size: 32px; }
-    }
-
     /* ================================================================
-       v4.62 — LIGHT-MODE NAVBAR THEME (header bar light in light mode,
-       dark navy only in dark mode). Cascade-overrides earlier rules.
+       NAVBAR — matches the rest of the site (v4.62 light-mode block)
        ================================================================ */
-    .navbar,
-    .navbar-dark {
+    .navbar {
       background: var(--pgn-color-white);
       color: var(--color-deep-navy);
+      padding: 12px 32px;
+      display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--color-deep-navy);
     }
-    .navbar-brand,
-    .navbar-brand-text,
-    .navbar-user {
-      color: var(--color-deep-navy);
-    }
+    .navbar-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--color-deep-navy); }
+    .navbar-brand-logo { height: 40px; width: auto; }
+    .logo-light { display: inline-block; }
+    .logo-dark { display: none; }
+    [data-theme="dark"] .logo-light { display: none !important; }
+    [data-theme="dark"] .logo-dark { display: inline-block !important; }
+    .navbar-right { display: flex; align-items: center; gap: 12px; }
     .navbar-chip {
       background: transparent;
       color: var(--color-deep-navy);
       border: 1px solid var(--color-deep-navy);
-    }
-    .avatar {
-      background: var(--color-deep-navy);
-      color: #fff;
+      padding: 6px 14px; border-radius: var(--pgn-size-rounded-pill);
+      font-size: 13px; font-weight: 600;
     }
     .btn-theme-toggle {
       background: var(--pgn-color-bg-light);
       border: 1px solid var(--pgn-color-gray-200);
       color: var(--color-deep-navy);
+      width: 36px; height: 36px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 150ms; padding: 0;
     }
     .btn-theme-toggle:hover { background: var(--pgn-color-gray-100); }
-    /* v4.70: ensure light-mode navbar icons (help, theme toggle) render crisply against the white navbar */
-    .btn-theme-toggle .material-icons-outlined {
-      color: var(--color-deep-navy);
-      font-weight: 500;
-    }
-    [data-theme="dark"] .btn-theme-toggle .material-icons-outlined {
-      color: #fff;
-    }
-    /* student/ uses a <span class="navbar-brand-logo">WGU</span> text mark;
-       :not(img) targets only the span so img logos are unaffected. */
-    .navbar-brand-logo:not(img) {
-      background: var(--color-deep-navy) !important;
-      color: #fff !important;
-    }
+    .btn-theme-toggle .material-icons-outlined { color: var(--color-deep-navy); font-weight: 500; }
 
-    [data-theme="dark"] .navbar,
-    [data-theme="dark"] .navbar-dark {
+    [data-theme="dark"] .navbar {
       background: var(--color-deep-navy);
       color: #fff;
       border-bottom: none;
     }
     [data-theme="dark"] .navbar-brand,
-    [data-theme="dark"] .navbar-brand-text,
-    [data-theme="dark"] .navbar-user {
-      color: #fff;
-    }
+    [data-theme="dark"] .navbar-brand:hover { color: #fff; }
     [data-theme="dark"] .navbar-chip {
       background: rgba(255,255,255,0.12);
       color: rgba(255,255,255,0.92);
       border-color: rgba(255,255,255,0.2);
-    }
-    [data-theme="dark"] .avatar {
-      background: var(--pgn-color-info-base);
-      color: #fff;
     }
     [data-theme="dark"] .btn-theme-toggle {
       background: rgba(255,255,255,0.12);
@@ -447,377 +121,355 @@
       color: #fff;
     }
     [data-theme="dark"] .btn-theme-toggle:hover { background: rgba(255,255,255,0.2); }
-    [data-theme="dark"] .navbar-brand-logo:not(img) {
-      background: #fff !important;
-      color: var(--color-deep-navy) !important;
+    [data-theme="dark"] .btn-theme-toggle .material-icons-outlined { color: #fff; }
+
+    [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 { color: #EEF6F9; }
+    [data-theme="dark"] p { color: #B0BCC7; }
+    [data-theme="dark"] code { background: rgba(255,255,255,0.08); color: #EEF6F9; }
+
+    /* ================================================================
+       MAIN CONTENT
+       ================================================================ */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 32px 64px;
+    }
+    .eyebrow {
+      font-family: 'Sora', sans-serif;
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--pgn-color-brand-base);
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 8px;
+    }
+    .intro {
+      font-size: 16px; max-width: 760px;
+      margin-bottom: 32px;
     }
 
-    /* v4.62 — Footer logo light/dark swap rules (parity with the navbar logo swap) */
-    .logo-light { display: inline-block; }
-    .logo-dark  { display: none; }
-    [data-theme="dark"] .logo-light { display: none !important; }
-    [data-theme="dark"] .logo-dark  { display: inline-block !important; }
+    /* ================================================================
+       SUPPORT FORM (Zendesk-styled)
+       ================================================================ */
+    .support-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 880px) {
+      .support-grid { grid-template-columns: 1fr; }
+    }
+    .support-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .support-badge {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--pgn-color-brand-base);
+    }
+    .support-form-card {
+      background: var(--pgn-color-white);
+      border: 1px solid var(--pgn-color-gray-200);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    [data-theme="dark"] .support-form-card {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--pgn-color-gray-200);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      display: block; font-weight: 700; font-size: 13px;
+      margin-bottom: 6px; color: var(--pgn-color-gray-900);
+    }
+    .required-asterisk { color: var(--pgn-color-danger-base); }
+    .form-control {
+      width: 100%; padding: 10px 12px;
+      border: 1px solid var(--pgn-color-gray-300);
+      border-radius: var(--pgn-size-border-radius-base);
+      font-family: inherit; font-size: 14px;
+      background: var(--pgn-color-white);
+      color: var(--pgn-color-gray-900);
+    }
+    [data-theme="dark"] .form-control {
+      background: rgba(255,255,255,0.06);
+      border-color: var(--pgn-color-gray-200);
+      color: #EEF6F9;
+    }
+    .form-help {
+      font-size: 12px; color: var(--pgn-color-gray-600);
+      margin: 6px 0 0;
+    }
+    textarea.form-control { resize: vertical; }
+    .attachments-zone {
+      border: 2px dashed var(--pgn-color-gray-300);
+      border-radius: var(--pgn-size-border-radius-base);
+      padding: 16px; text-align: center;
+      background: var(--pgn-color-bg-light);
+      font-size: 13px; color: var(--pgn-color-gray-600);
+    }
+    [data-theme="dark"] .attachments-zone { background: rgba(255,255,255,0.04); }
+    .btn {
+      padding: 12px 24px; border-radius: var(--pgn-size-border-radius-base);
+      font-weight: 700; font-size: 14px;
+      display: inline-flex; align-items: center; gap: 8px;
+      cursor: pointer; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--pgn-color-brand-base); color: #fff; border-color: var(--pgn-color-brand-base); }
+    .btn-outline {
+      background: transparent;
+      color: var(--pgn-color-gray-900);
+      border-color: var(--pgn-color-gray-300);
+    }
+    [data-theme="dark"] .btn-outline { color: #EEF6F9; border-color: var(--pgn-color-gray-200); }
+    .success-toast {
+      display: none; align-items: center; gap: 8px;
+      margin-top: 16px; padding: 12px 16px;
+      background: rgba(45, 122, 74, 0.1);
+      border: 1px solid var(--pgn-color-success-base);
+      border-radius: var(--pgn-size-border-radius-base);
+      color: var(--pgn-color-success-base);
+      font-size: 14px;
+    }
+    .sidebar-card {
+      background: var(--pgn-color-bg-light);
+      border: 1px solid var(--pgn-color-gray-200);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    [data-theme="dark"] .sidebar-card { background: rgba(255,255,255,0.04); }
+
+    /* ================================================================
+       HELP DOCS list (simple — no cards, no videos, no external links)
+       ================================================================ */
+    .docs-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column;
+      border: 1px solid var(--pgn-color-gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    [data-theme="dark"] .docs-list { border-color: var(--pgn-color-gray-200); }
+    .docs-list li {
+      border-bottom: 1px solid var(--pgn-color-gray-200);
+    }
+    .docs-list li:last-child { border-bottom: none; }
+    .docs-list a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px;
+      color: var(--pgn-color-gray-900);
+      text-decoration: none;
+    }
+    [data-theme="dark"] .docs-list a { color: #EEF6F9; }
+    .docs-list a:hover { background: var(--pgn-color-bg-light); text-decoration: none; }
+    [data-theme="dark"] .docs-list a:hover { background: rgba(255,255,255,0.06); }
+    .docs-title { font-weight: 600; font-size: 14px; }
+    .docs-role {
+      font-size: 12px; font-weight: 600;
+      color: var(--pgn-color-brand-base);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-left: 12px;
+    }
+    .docs-chevron { color: var(--pgn-color-gray-300); font-size: 18px; }
+
+    /* ================================================================
+       FOOTER — matches the rest of the site
+       ================================================================ */
+    footer.site-footer {
+      background: #F5F7FA;
+      border-top: 1px solid #E4E7EB;
+    }
+    .footer-top {
+      padding: 20px 28px;
+      border-bottom: 1px solid #E4E7EB;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-bottom {
+      padding: 16px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-copyright { font-size: 12px; color: #4A5A6A; }
+    .footer-links { display: flex; gap: 12px; font-size: 13px; align-items: center; }
+    .footer-links a { color: #002855; font-weight: 600; text-decoration: none; }
+    .footer-divider { color: #C5CDD5; }
   </style>
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="navbar-brand">
-      <div class="brand-logo">SkillProof</div>
-      <div class="brand-text">
-        <div class="brand-product">SkillProof</div>
-        <div class="brand-subtitle">Help &amp; Resources</div>
+<header class="navbar" role="banner">
+  <a href="../" class="navbar-brand" aria-label="SkillProof home">
+    <img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU">
+    <img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU">
+  </a>
+  <div class="navbar-right">
+    <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="material-icons-outlined theme-icon-light">dark_mode</span>
+      <span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span>
+    </button>
+    <span class="navbar-chip">Help &amp; Support</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <span class="eyebrow"><span class="material-icons-outlined" style="font-size:14px;">support</span>Help &amp; Resources</span>
+  <h1>How can we help?</h1>
+  <p class="intro">Open a support ticket below, or browse the documentation list for the most common workflows.</p>
+
+  <!-- ================================================================
+       SUPPORT FORM (Zendesk-styled — id="submit-request" is the anchor used by every portal's Help button)
+       ================================================================ -->
+  <div id="submit-request" class="support-grid">
+
+    <div>
+      <div class="support-header">
+        <span class="material-icons-outlined" style="font-size:20px; color: var(--pgn-color-brand-base);">support_agent</span>
+        <span class="support-badge">WGU Support &middot; powered by Zendesk</span>
       </div>
-    </div>
-    <div class="navbar-actions">
-      <a href="../" class="navbar-link"><span class="material-icons-outlined" style="font-size:18px;">apps</span> Portals</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <span class="material-icons-outlined" id="theme-icon" style="font-size:18px;">dark_mode</span>
-      </button>
-    </div>
-  </header>
+      <h2 style="margin-top:0;">Submit a support request</h2>
+      <p style="font-size:14px; max-width: 720px;">Have a question, found a bug, or need a permission change? A WGU support agent will respond, usually within one business day. Critical (P1) issues get an immediate page.</p>
 
-  <main class="container">
+      <form class="support-form-card" onsubmit="event.preventDefault(); document.getElementById('sf-success').style.display='flex'; this.reset();">
 
-    <div class="eyebrow">Documentation &middot; Training &middot; Support</div>
-    <h1>How can we help?</h1>
-    <p style="font-size:18px; max-width: 720px;">Self-service resources for students, instructors, and platform administrators. Find a documentation article, watch a short training video, or open a support ticket with the JFT team.</p>
-
-    <div class="search-wrap" role="search">
-      <span class="material-icons-outlined">search</span>
-      <input type="text" placeholder="Search documentation, video tutorials, API reference..." aria-label="Search help resources">
-      <span class="search-hint">/</span>
-    </div>
-
-    <!-- Zendesk-style support ticket form -->
-    <div id="submit-request" style="display:grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 32px; max-width: 1080px; margin-bottom: 40px; padding-top: 8px;">
-
-      <div>
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-          <span class="material-icons-outlined" style="font-size:20px; color: var(--color-bright-blue);">support_agent</span>
-          <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--color-bright-blue);">WGU Support &middot; powered by Zendesk</span>
-        </div>
-        <h2 style="margin-top:0;">Submit a support request</h2>
-        <p style="font-size:14px; max-width: 720px;">Have a question, found a bug, or need a permission change? A WGU support agent will respond, usually within one business day. Critical (P1) issues get an immediate page.</p>
-
-        <form class="support-form" onsubmit="event.preventDefault(); document.getElementById('sf-success').style.display='flex'; this.reset();" style="background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 8px; padding: 28px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);">
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-            <div>
-              <label for="sf-name" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Your name<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
-              <input id="sf-name" type="text" required placeholder="First Last" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
-            </div>
-            <div>
-              <label for="sf-email" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Email<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
-              <input id="sf-email" type="email" required placeholder="you@wgu.edu" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
-            </div>
+        <div class="form-row">
+          <div>
+            <label for="sf-name" class="form-label">Your name<span class="required-asterisk">&nbsp;*</span></label>
+            <input id="sf-name" type="text" required placeholder="First Last" class="form-control">
           </div>
-
-          <div style="margin-bottom: 16px;">
-            <label for="sf-type" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Request type<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
-            <select id="sf-type" required style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
-              <option value="">Select a type&hellip;</option>
-              <option value="permission">Permission request</option>
-              <option value="lrps">LRPS deep-link reissue / revoke</option>
-              <option value="bug">Bug report</option>
-              <option value="feature">Feature request</option>
-              <option value="other">Other</option>
-            </select>
-            <p style="font-size:12px; color: var(--color-text-secondary, #6E7780); margin: 6px 0 0;">Routes your ticket to the right team automatically.</p>
+          <div>
+            <label for="sf-email" class="form-label">Email<span class="required-asterisk">&nbsp;*</span></label>
+            <input id="sf-email" type="email" required placeholder="you@wgu.edu" class="form-control">
           </div>
-
-          <div style="margin-bottom: 16px;">
-            <label for="sf-subject" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Subject<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
-            <input id="sf-subject" type="text" required placeholder="Short one-line summary" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
-          </div>
-
-          <div style="margin-bottom: 16px;">
-            <label for="sf-desc" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Description<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
-            <textarea id="sf-desc" rows="6" required placeholder="Briefly describe what you need or what isn't working. Include screenshots, error messages, or the URL where it happened if possible." style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary); resize: vertical;"></textarea>
-          </div>
-
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Attachments</label>
-            <div style="border: 2px dashed var(--color-border); border-radius: 6px; padding: 16px; text-align: center; background: var(--color-bg-secondary, #FAFBFC);">
-              <span class="material-icons-outlined" style="font-size:22px; color: var(--color-text-secondary, #6E7780); vertical-align: middle;">attach_file</span>
-              <span style="font-size:13px; color: var(--color-text-secondary, #6E7780); margin-left:6px;">Drop files here or <a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue);">browse</a> &middot; PNG, JPG, PDF, MD &middot; 10 MB max</span>
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-            <button type="submit" style="background: var(--color-bright-blue); color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"><span class="material-icons-outlined" style="font-size:18px;">send</span>Submit</button>
-            <button type="button" onclick="this.form.reset();" style="background: transparent; color: var(--color-text-primary); border: 1px solid var(--color-border); padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer;">Cancel</button>
-          </div>
-
-          <div id="sf-success" style="display:none; align-items:center; gap:8px; margin-top:16px; padding: 12px 16px; background: rgba(45, 122, 74, 0.1); border: 1px solid var(--color-success); border-radius: 6px; color: var(--color-success); font-size: 14px;">
-            <span class="material-icons-outlined">check_circle</span>
-            Ticket submitted &mdash; demo only. In production this would create a Zendesk ticket and email you a confirmation with the request ID.
-          </div>
-        </form>
-      </div>
-
-      <aside style="padding-top: 56px;">
-        <div style="background: var(--color-bg-secondary, #FAFBFC); border: 1px solid var(--color-border); border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 12px; font-size: 15px;">Suggested articles</h3>
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
-            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Configuring LTI Advantage Deep Linking in your tenant</a></li>
-            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">How to create a new Skill version when a topic must be retired</a></li>
-            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Switching between Schools as a Tenant Admin</a></li>
-            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Webhook event reference and retry behavior</a></li>
-            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Reading the class heatmap: identifying at-risk learners</a></li>
-          </ul>
-          <hr style="margin: 16px 0; border: none; border-top: 1px solid var(--color-border);">
-          <p style="font-size:12px; color: var(--color-text-secondary, #6E7780); margin: 0;">Response time: usually within 1 business day. Critical (P1) tickets are paged immediately.</p>
         </div>
-      </aside>
+
+        <div class="form-group">
+          <label for="sf-type" class="form-label">Request type<span class="required-asterisk">&nbsp;*</span></label>
+          <select id="sf-type" required class="form-control">
+            <option value="">Select a type&hellip;</option>
+            <option value="permission">Permission request</option>
+            <option value="lrps">LRPS deep-link reissue / revoke</option>
+            <option value="bug">Bug report</option>
+            <option value="feature">Feature request</option>
+            <option value="other">Other</option>
+          </select>
+          <p class="form-help">Routes your ticket to the right team automatically.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="sf-subject" class="form-label">Subject<span class="required-asterisk">&nbsp;*</span></label>
+          <input id="sf-subject" type="text" required placeholder="Short one-line summary" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="sf-desc" class="form-label">Description<span class="required-asterisk">&nbsp;*</span></label>
+          <textarea id="sf-desc" rows="6" required placeholder="Briefly describe what you need or what isn't working. Include screenshots, error messages, or the URL where it happened if possible." class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Attachments</label>
+          <div class="attachments-zone">
+            <span class="material-icons-outlined" style="font-size:22px;">attach_file</span>
+            <span style="margin-left:6px;">Drop files here or <a href="#" onclick="event.preventDefault();">browse</a> &middot; PNG, JPG, PDF, MD &middot; 10 MB max</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <button type="submit" class="btn btn-primary"><span class="material-icons-outlined" style="font-size:18px;">send</span>Submit</button>
+          <button type="button" onclick="this.form.reset();" class="btn btn-outline">Cancel</button>
+        </div>
+
+        <div id="sf-success" class="success-toast">
+          <span class="material-icons-outlined">check_circle</span>
+          Ticket submitted &mdash; demo only. In production this would create a Zendesk ticket and email you a confirmation with the request ID.
+        </div>
+      </form>
     </div>
 
-    <!-- Self-service support portal (Appendix A §16.4 #9.14) -->
-    <h2>Self-service support</h2>
-    <div class="card-grid">
-
-      <div class="card">
-        <div class="card-icon"><span class="material-icons-outlined">rocket_launch</span></div>
-        <div class="card-title">Get Started</div>
-        <div class="card-body">Onboarding videos, quick-start guides, and orientation tours for each role. New to the SkillProof? Begin here.</div>
-        <a class="card-link" href="#">Browse get-started library <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></a>
+    <aside>
+      <div class="sidebar-card">
+        <h3 style="margin: 0 0 12px; font-size: 15px;">Suggested articles</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+          <li><a href="#docs">Configuring LTI Advantage Deep Linking in your tenant</a></li>
+          <li><a href="#docs">How to create a new Skill version when a topic must be retired</a></li>
+          <li><a href="#docs">Switching between Schools as a Tenant Admin</a></li>
+          <li><a href="#docs">Reading the class heatmap: identifying at-risk learners</a></li>
+        </ul>
+        <hr style="margin: 16px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
+        <p style="font-size:12px; margin: 0;">Response time: usually within 1 business day. Critical (P1) tickets are paged immediately.</p>
       </div>
-
-      <div class="card">
-        <div class="card-icon"><span class="material-icons-outlined">build</span></div>
-        <div class="card-title">Troubleshooting</div>
-        <div class="card-body">Common-issue articles, error code reference, and step-by-step diagnostic guides. Includes the escalation path to JFT Support.</div>
-        <a class="card-link" href="#">Browse troubleshooting <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-icon"><span class="material-icons-outlined">api</span></div>
-        <div class="card-title">API Reference</div>
-        <div class="card-body">Full Swagger specification, GraphQL schema, and webhook event documentation. For integration and data export work.</div>
-        <a class="card-link" href="#">Open API docs <span class="material-icons-outlined" style="font-size:16px;">open_in_new</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-icon"><span class="material-icons-outlined">link</span></div>
-        <div class="card-title">LRPS deep links</div>
-        <div class="card-body">WGU IT distributes the secret LRPS deep link for each elevated persona (Instructor, Tenant Admin, Super Admin) directly to the user. SkillProof itself does not store or surface these URLs. If you need a link reissued or revoked, file a Permission request via the support form above.</div>
-        <a class="card-link" href="#">Read the LRPS distribution policy <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></a>
-      </div>
-
-    </div>
-
-    <h2>Recent updates</h2>
-    <ul class="updates-feed">
-      <li>
-        <span class="update-tag">New</span>
-        <div class="update-body">
-          <div class="update-title">Configuring LTI Advantage Deep Linking in your tenant</div>
-          <div class="update-meta">School Admin guide &middot; Updated 2 days ago</div>
-        </div>
-      </li>
-      <li>
-        <span class="update-tag">Updated</span>
-        <div class="update-body">
-          <div class="update-title">Rate limit best practices for high-traffic tenants</div>
-          <div class="update-meta">Super Admin guide &middot; Updated 5 days ago</div>
-        </div>
-      </li>
-      <li>
-        <span class="update-tag">New</span>
-        <div class="update-body">
-          <div class="update-title">Reading the class heatmap: identifying at-risk learners early</div>
-          <div class="update-meta">Instructor guide &middot; Updated 1 week ago</div>
-        </div>
-      </li>
-      <li>
-        <span class="update-tag">Updated</span>
-        <div class="update-body">
-          <div class="update-title">Webhook event reference: payload schemas and retry behavior</div>
-          <div class="update-meta">Developer guide &middot; Updated 1 week ago</div>
-        </div>
-      </li>
-    </ul>
-
-    <!-- Video training resources (Appendix A §16.4 #9.15) -->
-    <h2>Video training resources</h2>
-    <p style="font-size:14px;">Short, role-specific training videos. Filter by your role to see what is most relevant.</p>
-
-    <div class="role-chips" role="tablist" aria-label="Filter videos by role">
-      <button class="chip active">All roles</button>
-      <button class="chip">Student</button>
-      <button class="chip">Instructor</button>
-      <button class="chip">School Admin</button>
-      <button class="chip">Super Admin</button>
-    </div>
-
-    <div class="featured-callout">
-      <span class="material-icons-outlined">star</span>
-      <div>
-        <div class="featured-text">New here? Start with these three.</div>
-        <div class="featured-sub">A short walkthrough of SkillProof for every role &mdash; first launch, first session, first review.</div>
-      </div>
-    </div>
-
-    <div class="video-grid">
-
-      <div class="video-tile">
-        <div class="video-thumb">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">3:42</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Your first SkillProof coaching session</div>
-          <div class="video-role">Student</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb alt1">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">5:18</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Reading the class heatmap</div>
-          <div class="video-role">Instructor</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb alt2">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">7:05</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Configuring a new course end-to-end</div>
-          <div class="video-role">School Admin</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb alt3">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">4:52</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Monitoring cross-tenant token spend</div>
-          <div class="video-role">Super Admin</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">2:48</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Returning to a paused coaching session</div>
-          <div class="video-role">Student</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb alt1">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">6:21</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Reviewing AI feedback transcripts</div>
-          <div class="video-role">Instructor</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb alt2">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">8:14</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Add / edit / remove learning objectives</div>
-          <div class="video-role">School Admin</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb alt3">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">5:47</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Responding to a P1 incident</div>
-          <div class="video-role">Super Admin</div>
-        </div>
-      </div>
-
-      <div class="video-tile">
-        <div class="video-thumb alt2">
-          <div class="play-icon"><span class="material-icons-outlined">play_arrow</span></div>
-          <span class="duration">4:09</span>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Deploying a course to production</div>
-          <div class="video-role">School Admin</div>
-        </div>
-      </div>
-
-    </div>
-
-  </main>
-
-  <div class="meta-bar">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof &middot; Help &amp; Resources &middot; SkillProof Design System v1.2 &middot; Persona: shared (all admin roles + LRPS)</span>
+    </aside>
   </div>
 
-  <!-- WGU Footer (production design — mirrors the tenant-21 Branding preview pane) -->
-  <footer role="contentinfo" style="background: #F5F7FA; border-top: 1px solid #E4E7EB;">
-    <div style="padding: 20px 28px; border-bottom: 1px solid #E4E7EB; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-      <img class="logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU" style="height: 40px; width: auto;"><img class="logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU" style="height: 40px; width: auto;">
-      <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Accommodations-for-Students-with-Disabilities/ta-p/151" target="_blank" rel="noopener" style="font-size: 13px; color: #002855; font-weight: 600; text-decoration: none;">ADA Accommodation</a>
-    </div>
-    <div style="padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-      <span style="font-size: 12px; color: #4A5A6A;">&copy; 2026 Western Governors University &ndash; WGU. All Rights Reserved.</span>
-      <div style="display: flex; gap: 12px; font-size: 13px; align-items: center;">
-        <a href="https://www.wgu.edu/privacy.html" target="_blank" rel="noopener" style="color: #002855; font-weight: 600; text-decoration: none;">Privacy Policy</a>
-        <span style="color: #C5CDD5;">|</span>
-        <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Terms-of-Use-for-Learning-and-Assessment-Materials/ta-p/77" target="_blank" rel="noopener" style="color: #002855; font-weight: 600; text-decoration: none;">Terms of Service</a>
-        <span style="color: #C5CDD5;">|</span>
-        <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Student-Code-of-Conduct/ta-p/129" target="_blank" rel="noopener" style="color: #002855; font-weight: 600; text-decoration: none;">Honor Code</a>
-        <span style="color: #C5CDD5;">|</span>
-        <a href="mailto:vivek@wgu.edu" style="color: #002855; font-weight: 600; text-decoration: none;">Technical contact: Vivek</a>
-      </div>
-    </div>
-  </footer>
+  <!-- ================================================================
+       HELP DOCS — single flat list (no cards, no videos, no external links)
+       ================================================================ -->
+  <h2 id="docs">Help docs</h2>
+  <p style="font-size:14px; max-width: 720px;">Common workflows for each persona, grouped by role.</p>
 
-  <button class="contact-fab" aria-label="Contact JFT Support">
-    <span class="material-icons-outlined">support_agent</span>
-    Contact JFT Support
-  </button>
+  <ul class="docs-list">
+    <li><a href="#"><span class="docs-title">Getting started with the Coding Coach</span><span><span class="docs-role">Student</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Resuming a coaching session after a break</span><span><span class="docs-role">Student</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Reading the class heatmap: identifying at-risk learners</span><span><span class="docs-role">Instructor</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Viewing a learner's coaching transcript</span><span><span class="docs-role">Instructor</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Creating a new Skill (4-step wizard)</span><span><span class="docs-role">Tenant Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Retiring a topic from a production Skill</span><span><span class="docs-role">Tenant Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Switching between Schools</span><span><span class="docs-role">Tenant Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Deploying a Skill to Staging vs. Production</span><span><span class="docs-role">Tenant Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Configuring the AI coaching prompt</span><span><span class="docs-role">Tenant Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Uploading a tenant logo</span><span><span class="docs-role">Tenant Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Elevating a user from Instructor to Tenant Admin</span><span><span class="docs-role">Super Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Demotion rules: what happens to scope on downgrade</span><span><span class="docs-role">Super Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Reassigning the Owner of a Skill</span><span><span class="docs-role">Super Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">Adding a new School (tenant)</span><span><span class="docs-role">Super Admin</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+    <li><a href="#"><span class="docs-title">LRPS deep-link distribution policy</span><span><span class="docs-role">All admin roles</span><span class="material-icons-outlined docs-chevron">chevron_right</span></span></a></li>
+  </ul>
 
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      document.getElementById('theme-icon').textContent = next === 'dark' ? 'light_mode' : 'dark_mode';
-      try { localStorage.setItem('skillproof-theme', next); } catch (e) {}
+</main>
+
+<!-- WGU Footer (matches every portal) -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-top">
+    <img class="logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU" style="height: 40px; width: auto;"><img class="logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU" style="height: 40px; width: auto;">
+    <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Accommodations-for-Students-with-Disabilities/ta-p/151" target="_blank" rel="noopener" style="font-size: 13px; color: #002855; font-weight: 600; text-decoration: none;">ADA Accommodation</a>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Western Governors University &ndash; WGU. All Rights Reserved.</span>
+    <div class="footer-links">
+      <a href="https://www.wgu.edu/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      <span class="footer-divider">|</span>
+      <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Terms-of-Use-for-Learning-and-Assessment-Materials/ta-p/77" target="_blank" rel="noopener">Terms of Service</a>
+      <span class="footer-divider">|</span>
+      <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Student-Code-of-Conduct/ta-p/129" target="_blank" rel="noopener">Honor Code</a>
+      <span class="footer-divider">|</span>
+      <a href="mailto:vivek@wgu.edu">Technical contact: Vivek</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
+    document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
+  }
+  (function() {
+    var saved = localStorage.getItem('skillproof-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });
+      document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = ''; });
     }
-    (function () {
-      try {
-        const saved = localStorage.getItem('skillproof-theme');
-        if (saved === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          document.getElementById('theme-icon').textContent = 'light_mode';
-        }
-      } catch (e) {}
-    })();
-    // Chip filter (visual only — non-functional in storyboard)
-    document.querySelectorAll('.role-chips .chip').forEach(c => {
-      c.addEventListener('click', () => {
-        document.querySelectorAll('.role-chips .chip').forEach(x => x.classList.remove('active'));
-        c.classList.add('active');
-      });
-    });
-  </script>
+  })();
+</script>
 
 </body>
 </html>
