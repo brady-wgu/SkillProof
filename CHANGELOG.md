@@ -6,6 +6,58 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.73 — 19 May 2026 — Subject → Skill terminology sweep
+
+Brady's JFT direction: *"Make sure everything is 'topics' and 'learning objectives' for a 'skill'."* The prototype previously used "Subject" as the top-level concept; aligned to "Skill" across the user-visible UI and the persona READMEs. Topics + Learning Objectives stay as the canonical sub-units.
+
+### What changed (user-visible)
+
+**`tenant_admin/index.html`** (the heaviest target — ~40 unique strings):
+
+- Section + heading: "Your Subjects" → "Your Skills", "Subject Lifecycle & Archival" → "Skill Lifecycle & Archival"
+- Wizard steps: "Create a new Subject" / "Step 1 of 5 · Subject Details" / "Subject summary" → Skill variants
+- Buttons + CTAs: "New Subject" / "Configure another Subject" / "Deactivate Subject" / "Create subject" → Skill variants
+- Form labels: "Subject code" / "Subject title" / "Subject-domain limits" → Skill variants
+- Identifier copy: "Subject ID" → "Skill ID" everywhere (form labels + breadcrumb chips + table headers)
+- Breadcrumb hub: "Subjects" → "Skills"
+- Analytics filter label + select id: `<label for="rep-subject">Subjects</label>` + `<select id="rep-subject">` + `All subjects` → `for="rep-skill"`, `id="rep-skill"`, "All Skills"
+- Table headers: `<th>Subject</th>` → `<th>Skill</th>`
+- Active/archived counters: "Active subjects · 3" / "Archived subjects · 2" → Skill plurals
+- Aria-labels for step nav buttons: "Subject form" / "Subject Lifecycle" → Skill variants
+- Deploy success comment: "live course link" → "live Skill link"
+- "Course Configuration" (flow-desc nav + scenario headings) → "Skill Configuration"
+
+**`super_admin/index.html`** (Cost-spike screen + audit feed):
+
+- "Top consuming subjects" → "Top consuming Skills"
+- `<th>Subject</th>` → `<th>Skill</th>` (token usage table)
+- "per-subject rate limits" → "per-Skill rate limits"
+- "Per-subject cap" form label + form ID → Per-Skill / `f-skill`
+- Rate-limit JSON code blocks: `subject: 1500` → `skill: 1500` (both before/after)
+- Audit event code: `subject.deploy` → `skill.deploy`
+
+**Root `index.html`** (LRPS landing illustrative URL):
+
+- Live URL preview: `lti/launch?subject=e010` → `lti/launch?skill=e010`
+
+**READMEs** (persona-facing):
+
+- `tenant_admin/README.md` + top-level `README.md`: "subject creation wizard" → "Skill creation wizard", "Subject Lifecycle" → "Skill Lifecycle", "Subjects, Topics, Learning Objectives" → "Skills, Topics, Learning Objectives", "Course Configuration" scenario titles → "Skill Configuration", and other Subject → Skill in user-visible descriptions.
+
+### What is NOT changed
+
+- **"Program Subject"** form-field label (lines 1396 + 1823 in `tenant_admin/index.html`) — refers to the WGU program/course field that HOSTS a Skill, not the SkillProof internal entity. Brady's directive: *"Leave the course code because it helps with the URL generation automatically."*
+- **"course code"** literal anywhere — preserved for URL-generation consistency.
+- **"data subject rights"** in the GDPR compliance row (`super_admin/index.html` line 1453) — GDPR legal term meaning the individual whose data is processed; not the SkillProof Skill concept.
+- **Historical `CHANGELOG.md` entries** — left intact as a record of the prototype's past states. They describe what the UI looked like at earlier versions.
+- **Audit event timestamps** + scenario filenames like `e135-oop-python` — technical identifiers, not user-visible copy.
+
+### Storyboard stamp
+
+v4.73 across the 6 portals.
+
+---
+
 ## v4.72 — 19 May 2026 — Per-school branding (4 WGU School logos + Switch School)
 
 Brady's JFT note: *"Add the custom branding for each of the 4 schools."* Each WGU School (Technology / Business / Education / Leavitt Health) now has its own logo swapped into the navbar based on the active tenant context. The Switch School menu in the Tenant Admin user profile expands from 2 to all 4 schools.
