@@ -6,6 +6,48 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.75 — 19 May 2026 — Skill Production Governance (topic remove + LO≥1 + deploy stages)
+
+Phase F. Surface the production-Skill rules in the UI so JFT builds the right affordances. When a Skill is in Production, topics cannot be removed and the UI shows that constraint explicitly. Learning Objectives have a `≥ 1 per topic` floor enforced via UI state.
+
+### What changed (tenant_admin/index.html)
+
+**Screen 4 (Topics & Learning Objectives):**
+
+- **Production-status banner** (alert-warning) above the topic list: *"This Skill is in Production. Topics cannot be removed once a Skill is live. To retire a topic, create a new Skill version and link the new LRPS URL in the course. Learning Objective edits (rename, threshold change, add LO) are still allowed."*
+- **LO ≥ 1 banner** (alert-info) below the production banner: *"Every topic must have at least one Learning Objective. Topics without an LO cannot be deployed. When a topic has only one LO, that LO's delete button is disabled until you add another."*
+- **All 4 "Remove topic" buttons disabled** with tooltip: *"Cannot remove topics from a production Skill. Create a new Skill version instead."*
+- **New `enforceLoMinimum()` JS**: scans every topic on load + after `addTopic()`. If a topic has only 1 LO, that LO's delete button is disabled + tooltip; otherwise enables. Hook called from the existing on-load block.
+
+**Screen 7 (Review & Deploy):**
+
+- **Bare 2-button deploy row replaced** with two explanatory cards side-by-side:
+  - **Staging card** (`pgn__card`): *"Visible to Instructors, Tenant Admins, and Super Admins. Students cannot launch the Skill from staging."* + `Deploy to Staging` button
+  - **Production card** (`pgn__card-featured`): *"Visible to everyone, including Students. Topics cannot be removed once deployed; Learning Objective edits (rename, threshold change, add LO) are still allowed."* + `Deploy to Production` button
+- **Step 3 summary table** updated to reflect the v4.74 wizard rebuild: Preferred model = gpt-4o-mini (1M / 1M tokens); Fallback chain = OpenAI siblings; the old Jailbreak/Sandbox rows are gone; replaced with the 3 new prompt fields (Student profile / Examples should be / Other).
+- **Step 4 summary table** removed (no longer a separate wizard step).
+
+### Why
+
+Brady's JFT meeting notes:
+- *"If a skill is changed, what do we do with people when things are updated?"* / *"This is a bigger problem at the topic level"* / *"If it's in prod, we remove the 'remove topic' so it can't be deleted in prod"*
+- *"In the user documentation for tenant admins, we tell them to create a new course if they're going to remove a topic and use that new link instead of removing a topic from a current Skill"*
+- *"Deploy to Staging makes it accessible to everyone except student. Deploy to Production makes it accessible to students and everyone."*
+- *"Every topic needs at least learning objective. We enforce that in the UI and user docs."*
+
+### Verification
+
+- tenant_admin Screen 4: 2 banners (warning + info) visible above the Skill threshold card
+- 4 "Remove topic" buttons disabled with tooltip
+- Screen 7: 2-card layout (Staging + Production) with explanatory copy; Step 3 summary reflects gpt-4o-mini + new prompt fields
+- enforceLoMinimum() runs on load; if you reduce a topic to 1 LO at runtime, that LO's delete becomes disabled (manual test)
+
+### Storyboard stamp
+
+v4.75 across the 6 portals.
+
+---
+
 ## v4.74 — 19 May 2026 — Skill Creation Wizard rebuild (combined Screens 5+6)
 
 Phase E. The wizard's "Model & Coaching" (Screen 5) and "AI Coaching Prompt" (Screen 6) merge into a single Screen 5; preset prompt fields replaced with free-text inputs; jailbreak + sandbox boxes removed (enforced globally per JFT); default model changed to gpt-4o-mini with OpenAI top-3 + OpenRouter browse-all; "Add topic" button wired to insert a new row; MD upload + download flow added.
