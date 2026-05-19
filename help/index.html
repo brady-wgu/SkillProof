@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Help &amp; Resources — Storyboard v4.79</title>
+  <title>SkillProof — Help &amp; Resources — Storyboard v4.80</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -489,40 +489,88 @@
       <span class="search-hint">/</span>
     </div>
 
-    <!-- Zendesk-style support ticket form (WGU Program Development directive 2026-05-14) -->
-    <h2>Submit a support request</h2>
-    <p style="font-size:14px; max-width: 720px;">Have a question, found a bug, or need a permission change? Send a ticket directly to JFT Support. The request type below routes it to the right team.</p>
-    <form class="support-form" onsubmit="event.preventDefault(); document.getElementById('sf-success').style.display='flex'; this.reset();" style="max-width: 720px; background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-        <div>
-          <label for="sf-name" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Your name</label>
-          <input id="sf-name" type="text" required placeholder="First Last" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+    <!-- Zendesk-style support ticket form -->
+    <div id="submit-request" style="display:grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 32px; max-width: 1080px; margin-bottom: 40px; padding-top: 8px;">
+
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <span class="material-icons-outlined" style="font-size:20px; color: var(--color-bright-blue);">support_agent</span>
+          <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--color-bright-blue);">WGU Support &middot; powered by Zendesk</span>
         </div>
-        <div>
-          <label for="sf-email" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Email</label>
-          <input id="sf-email" type="email" required placeholder="you@wgu.edu" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+        <h2 style="margin-top:0;">Submit a support request</h2>
+        <p style="font-size:14px; max-width: 720px;">Have a question, found a bug, or need a permission change? A WGU support agent will respond, usually within one business day. Critical (P1) issues get an immediate page.</p>
+
+        <form class="support-form" onsubmit="event.preventDefault(); document.getElementById('sf-success').style.display='flex'; this.reset();" style="background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 8px; padding: 28px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);">
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <label for="sf-name" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Your name<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
+              <input id="sf-name" type="text" required placeholder="First Last" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+            </div>
+            <div>
+              <label for="sf-email" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Email<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
+              <input id="sf-email" type="email" required placeholder="you@wgu.edu" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label for="sf-type" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Request type<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
+            <select id="sf-type" required style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+              <option value="">Select a type&hellip;</option>
+              <option value="permission">Permission request</option>
+              <option value="lrps">LRPS deep-link reissue / revoke</option>
+              <option value="bug">Bug report</option>
+              <option value="feature">Feature request</option>
+              <option value="other">Other</option>
+            </select>
+            <p style="font-size:12px; color: var(--color-text-secondary, #6E7780); margin: 6px 0 0;">Routes your ticket to the right team automatically.</p>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label for="sf-subject" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Subject<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
+            <input id="sf-subject" type="text" required placeholder="Short one-line summary" style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label for="sf-desc" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Description<span style="color: var(--color-error, #C13232);">&nbsp;*</span></label>
+            <textarea id="sf-desc" rows="6" required placeholder="Briefly describe what you need or what isn't working. Include screenshots, error messages, or the URL where it happened if possible." style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary); resize: vertical;"></textarea>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Attachments</label>
+            <div style="border: 2px dashed var(--color-border); border-radius: 6px; padding: 16px; text-align: center; background: var(--color-bg-secondary, #FAFBFC);">
+              <span class="material-icons-outlined" style="font-size:22px; color: var(--color-text-secondary, #6E7780); vertical-align: middle;">attach_file</span>
+              <span style="font-size:13px; color: var(--color-text-secondary, #6E7780); margin-left:6px;">Drop files here or <a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue);">browse</a> &middot; PNG, JPG, PDF, MD &middot; 10 MB max</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <button type="submit" style="background: var(--color-bright-blue); color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"><span class="material-icons-outlined" style="font-size:18px;">send</span>Submit</button>
+            <button type="button" onclick="this.form.reset();" style="background: transparent; color: var(--color-text-primary); border: 1px solid var(--color-border); padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer;">Cancel</button>
+          </div>
+
+          <div id="sf-success" style="display:none; align-items:center; gap:8px; margin-top:16px; padding: 12px 16px; background: rgba(45, 122, 74, 0.1); border: 1px solid var(--color-success); border-radius: 6px; color: var(--color-success); font-size: 14px;">
+            <span class="material-icons-outlined">check_circle</span>
+            Ticket submitted &mdash; demo only. In production this would create a Zendesk ticket and email you a confirmation with the request ID.
+          </div>
+        </form>
+      </div>
+
+      <aside style="padding-top: 56px;">
+        <div style="background: var(--color-bg-secondary, #FAFBFC); border: 1px solid var(--color-border); border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 12px; font-size: 15px;">Suggested articles</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Configuring LTI Advantage Deep Linking in your tenant</a></li>
+            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">How to create a new Skill version when a topic must be retired</a></li>
+            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Switching between Schools as a Tenant Admin</a></li>
+            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Webhook event reference and retry behavior</a></li>
+            <li><a href="#" onclick="event.preventDefault();" style="color: var(--color-bright-blue); text-decoration: none;">Reading the class heatmap: identifying at-risk learners</a></li>
+          </ul>
+          <hr style="margin: 16px 0; border: none; border-top: 1px solid var(--color-border);">
+          <p style="font-size:12px; color: var(--color-text-secondary, #6E7780); margin: 0;">Response time: usually within 1 business day. Critical (P1) tickets are paged immediately.</p>
         </div>
-      </div>
-      <div style="margin-bottom: 16px;">
-        <label for="sf-type" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Request type</label>
-        <select id="sf-type" required style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary);">
-          <option value="">Select a type&hellip;</option>
-          <option value="permission">Permission request</option>
-          <option value="feature">Feature request</option>
-          <option value="bug">Bug report</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div style="margin-bottom: 16px;">
-        <label for="sf-desc" style="display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px;">Description</label>
-        <textarea id="sf-desc" rows="6" required placeholder="Briefly describe what you need or what isn't working." style="width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font-family: inherit; font-size: 14px; background: var(--color-bg-primary); color: var(--color-text-primary); resize: vertical;"></textarea>
-      </div>
-      <button type="submit" style="background: var(--color-bright-blue); color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"><span class="material-icons-outlined" style="font-size:18px;">send</span> Submit ticket</button>
-      <div id="sf-success" style="display:none; align-items:center; gap:8px; margin-top:16px; padding: 12px 16px; background: rgba(45, 122, 74, 0.1); border: 1px solid var(--color-success); border-radius: 6px; color: var(--color-success); font-size: 14px;">
-        <span class="material-icons-outlined">check_circle</span>
-        Ticket submitted &mdash; demo only. In production this would create a Zendesk ticket and email you a confirmation.
-      </div>
-    </form>
+      </aside>
+    </div>
 
     <!-- Self-service support portal (Appendix A §16.4 #9.14) -->
     <h2>Self-service support</h2>
@@ -722,7 +770,7 @@
   <!-- WGU Footer (production design — mirrors the tenant-21 Branding preview pane) -->
   <footer role="contentinfo" style="background: #F5F7FA; border-top: 1px solid #E4E7EB;">
     <div style="padding: 20px 28px; border-bottom: 1px solid #E4E7EB; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-      <img class="logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU" style="height: 28px; width: auto;"><img class="logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU" style="height: 28px; width: auto;">
+      <img class="logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU" style="height: 40px; width: auto;"><img class="logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU" style="height: 40px; width: auto;">
       <a href="https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Accommodations-for-Students-with-Disabilities/ta-p/151" target="_blank" rel="noopener" style="font-size: 13px; color: #002855; font-weight: 600; text-decoration: none;">ADA Accommodation</a>
     </div>
     <div style="padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
