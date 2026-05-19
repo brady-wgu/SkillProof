@@ -6,6 +6,37 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.67 — 18 May 2026 — Canonical persona order: Student → Instructor → Tenant Admin → Super Admin
+
+Per Brady, persona labels were ordered randomly across the prototype. Aligned every persona listing to the canonical order from the User Profile Catalog v1.3 (13 MAY 2026), which sequences the 4 contract-named user types as Sally (Student) → Charlie (Instructor) → Alice (Tenant Admin) → Bob (Super Admin).
+
+### Reorderings applied to `index.html` (root LRPS landing)
+
+- **Sidebar "Quick Launch · Live"** — was Student, Tenant Admin, Instructor, Super Admin → now Student, Instructor, Tenant Admin, Super Admin. Also added persona first names in parens to match the meta-bar style.
+- **Provider table** — the 3 admin SkillProof rows were Tenant Admin, Instructor, Super Admin → now Instructor, Tenant Admin, Super Admin (Student row was already first).
+- **Meta-bar quick-launch** — was Tenant Admin, Instructor, Super Admin, Student → now Student, Instructor, Tenant Admin, Super Admin.
+
+### Reorderings applied to `README.md`
+
+- Persona bullet list at top
+- Surfaces table portal rows
+- Repo-layout directory tree
+- "Persona sections" detailed write-ups (swapped Tenant Admin section ↔ Instructor section)
+- "4 live SkillProof rows" descriptive list
+
+### Also picked up
+
+- `README.md` LRPS Landing section's "Persona: Lana" line was still stale from before v4.65 (which switched the LRPS user from Lana to Alice across the HTML). Updated to "Persona: Alice (Tenant Admin) — per User Profile Catalog v1.3, Alice's role explicitly includes creating, testing, and updating LRPS deep links for SkillProof."
+
+### Out of scope
+
+- `presentation.html` / `presentation_dark.html` (per v4.66, catalog is not actively used)
+- `_contract_tracking/` markdown files (catalog-aligned reference docs, not the prototype)
+- The User Management table's 4-tier role taxonomy on `super_admin/` Screen 9 — already in canonical order
+- HTML comments referencing the old order (not user-visible)
+
+---
+
 ## v4.66 — 18 May 2026 — Remove Catalog links across the prototype
 
 Brady is not actively using the Scenario Catalog page right now and doesn't want stale links pointing at it. Removed the only 2 navigation links that pointed at `presentation.html`:
