@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — LRPS Landing — Storyboard v4.88</title>
+  <title>SkillProof — LRPS Landing — Storyboard v4.89</title>
   <link rel="icon" type="image/png" href="assets/wgu-favicon.png">
 
   <!--
@@ -492,11 +492,6 @@
     }
     .pgn__data-table tr.live .lrps-name {
       font-weight: 700; color: var(--pgn-color-gray-900);
-      /* Live rows display a no-student-badge; allow it to fit alongside the
-         title without ellipsis truncation. */
-      max-width: none;
-      overflow: visible;
-      text-overflow: clip;
     }
     .pgn__data-table .id-cell {
       font-family: 'Lato', 'Consolas', monospace;
@@ -509,23 +504,7 @@
       color: var(--pgn-color-gray-600);
       margin-right: 8px;
     }
-    .pgn__data-table .name-cell .no-student-badge {
-      display: inline-flex; align-items: center; gap: 4px;
-      margin-left: 10px; padding: 2px 8px;
-      font-size: 10.5px; font-weight: 700; line-height: 1.4;
-      letter-spacing: 0.02em; text-transform: uppercase;
-      color: #B5710B; background: var(--pgn-color-warning-tint);
-      border: 1px solid var(--pgn-color-warning-base);
-      border-radius: var(--pgn-size-border-radius-sm);
-      vertical-align: middle;
-    }
-    .pgn__data-table .name-cell .no-student-badge .material-icons-outlined {
-      font-size: 12px;
-    }
-    [data-theme="dark"] .pgn__data-table .name-cell .no-student-badge {
-      color: var(--color-amber); background: #3A2A0A; border-color: #4F3814;
-    }
-    .pgn__data-table .desc-cell {
+.pgn__data-table .desc-cell {
       font-family: 'Lato', 'Consolas', monospace;
       font-size: 12px;
       color: var(--pgn-color-gray-700);
@@ -906,7 +885,7 @@
                      ========================================================= -->
                 <tr class="live" tabindex="0" data-launch="instructor/" aria-label="Launch SkillProof Instructor Dashboard">
                   <td class="id-cell">269781302</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-IN]</span>SkillProof Instructor Dashboard — At-Risk Intervention<span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-IN]</span>SkillProof Instructor Dashboard — At-Risk Intervention</td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/sdp/instructor/{course_id}</td>
                   <td class="driver-cell">SDPInstructorProviderDriver</td>
@@ -916,9 +895,9 @@
                     <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
                   </td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="tenant_admin/" aria-label="Launch SkillProof Tenant Admin Portal (demo shortcut)">
+                <tr class="live" tabindex="0" data-launch="tenant_admin/" aria-label="Launch SkillProof Tenant Admin Portal">
                   <td class="id-cell">269781301</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-TA]</span>SkillProof Tenant Admin Portal — Course Configuration <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-TA]</span>SkillProof Tenant Admin Portal — Course Configuration</td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">(demo) production: SkillProof-IN handshake + Tenant Admin elevation lookup</td>
                   <td class="driver-cell">SDPTenantAdminProviderDriver</td>
@@ -928,9 +907,9 @@
                     <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
                   </td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="super_admin/" aria-label="Launch SkillProof Super Admin Portal (demo shortcut)">
+                <tr class="live" tabindex="0" data-launch="super_admin/" aria-label="Launch SkillProof Super Admin Portal">
                   <td class="id-cell">269781303</td>
-                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-SA]</span>SkillProof Super Admin Portal — Platform Operations <span class="badge badge-gray" style="margin-left:6px;">demo shortcut</span><span class="no-student-badge" title="Admin-only resource — never surfaced to learners on a student LMS course page"><span class="material-icons-outlined" aria-hidden="true">block</span>Not for student use</span></td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-SA]</span>SkillProof Super Admin Portal — Platform Operations</td>
                   <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
                   <td class="desc-cell">(demo) production: SkillProof-IN handshake + Super Admin elevation lookup + MFA</td>
                   <td class="driver-cell">SDPSuperAdminProviderDriver</td>
@@ -1069,8 +1048,6 @@
             <div class="count-info">View 1–200 of 13,549</div>
           </div>
         </div>
-
-        <p class="text-muted small mt-2 text-center">Build: 20260507 · LRPS v3.4.2 · SkillProof-styled storyboard recreation</p>
       </section>
     </div>
   </div>
