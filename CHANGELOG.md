@@ -6,6 +6,62 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.68 — 19 May 2026 — Access Control hub on Super Admin Screen 09
+
+Brady's RBAC document (`SkillProof_Authentication_Access_Control_Role_Hierarchy_v1_0_18MAY2026.md`, Final 18 MAY 2026) names the Super Admin as the only role that can change access levels — and explicitly calls out the many:one relationships of Skills and Schools. Until v4.67, Screen 09 of `super_admin/` only handled role elevation; the other three permission decisions (Tenant Admin → Schools, Instructor → Skills, Skill → Owner + Schools) were either missing or scattered across Screens 12 and 13.
+
+This release consolidates all four permission scopes onto a redesigned Screen 09 (renamed **Access Control**), introduces an inline chip-cluster editor for many:one assignments, and demotes Screens 12 and 13 to read-only browse views so there is one source of truth for permission writes.
+
+### Why
+
+RBAC v1.0 §7 (verbatim): *"Super Admin is the only role that can change access levels. Super Admins can also assign a new owner of a Skill or change which tenant(s) a Tenant Admin has access to. Super Admins do not switch tenants; they see all tenants by default."*
+
+RBAC v1.0 Figure 2 (Role hierarchy): *"Tenant Admins can hold multiple School assignments."*
+
+RBAC v1.0 §5 (Multi-tenancy): *"An individual Skill coach could easily be duplicated, if necessary, in multiple schools via the platform's planned capabilities."*
+
+### What changed
+
+#### `super_admin/index.html` — Screen 09 rebuilt end-to-end
+
+- Title `User Management` → `Access Control`. Breadcrumb and `<h1>` both updated.
+- New intro paragraph names all four scopes: role elevation, Tenant Admin school assignments, Instructor skill assignments, Skill ownership and deployment.
+- Gauge strip kept at 4 cards (Student / Instructor / Tenant Admin / Super Admin counts). The "Skills without an Owner" indicator moved to the sidebar **Pending invariant breaches** card where it sits alongside the other invariant counts.
+- Three invariant alerts (was two): Minimum 2 Super Admins (existing), Each Skill must have exactly one Owner (new), Each School should have at least one Tenant Admin (new).
+- Single `pgn__card pgn__card-featured` now hosts three tabbed sub-sections:
+  - **People · 187** — refined user table with new Scope column. Tenant Admin rows show their assigned schools as removable chips with `+ Add School`. Instructor rows show assigned Skill IDs (E010 / E075 / E135) as chips with `+ Add Skill`.
+  - **Skills · 31** — Skill | Owner | Deployed in Schools | Instructors | Actions. Each row's Schools cell is a chip cluster. One orphan-skill row tinted warning, with an "Assign owner" CTA replacing the owner avatar.
+  - **Schools · 4** — School | Tenant Admins | Skills deployed | Created | Status. Each row's Tenant Admins cell is a chip cluster with avatar-bearing chips. Onboarding-status row tinted info color. `+ Create new School` button routes to Screen 13 (preserves the existing creation form).
+- Tab strip uses `.btn-primary` (active) / `.btn-tertiary` (inactive) with `role="tablist"`. New `goToTab(tabId)` JS helper toggles `hidden` + `aria-hidden` + `aria-selected` on the panels.
+- Sidebar now has two cards: **Pending invariant breaches** (top) and **Recent access changes** (bottom, scope expanded from "Recent role changes" to cover all four scope types).
+- Chip-with-close pattern reuses the existing `.badge badge-brand` + `material-icons-outlined close` glyph (already in production on Screen 8 audit-log filters, line 1624). No new CSS introduced.
+
+#### `super_admin/index.html` — Screens 12 and 13 demoted
+
+- **Screen 12 (Instructor Roster & Course Assignment)** — top-of-screen banner added: *"Read-only coverage view. To assign instructors to skills, open Access Control · Skills tab."* Per-row Manage buttons removed; Reactivate button on the deactivated row removed. The "Course assignment workflow — detail design pending" alert was superseded by the new banner (its contradictory "per-row Manage button is the current path" sentence is gone).
+- **Screen 13 (School Management)** — banner added: *"Read-only listing. To assign Tenant Admins to a school, open Access Control · Schools tab."* Per-row Manage buttons removed. The `Create new School` button is preserved (creation flow stays here). School-Admins column renamed to **Tenant Admins** for contract alignment.
+
+#### Storyboard version stamps → v4.68 across all portals
+
+- `super_admin/index.html`, `student/index.html`, `instructor/index.html`, `tenant_admin/index.html`, `help/index.html`, root `index.html`, `presentation.html`, `presentation_dark.html`
+
+### Files not modified
+
+- Student, Instructor, Tenant Admin, Help portal body markup — only the `<title>` storyboard stamp.
+- `capture_screens.py` — Screen 09 stays at index 9.
+- Canonical persona names (Sally, Charlie, Alice, Bob) — already aligned per v4.65.
+
+### Verification
+
+- `https://brady-wgu.github.io/SkillProof/super_admin/` → click Screen 09 → breadcrumb + `<h1>` read **Access Control**. Three tabs render; People active by default. Tab click cycles through People / Skills / Schools. Chip clusters render on at least one row in each tab.
+- 4-gauge strip shows STUDENTS / INSTRUCTORS / TENANT ADMINS / SUPER ADMINS. Sidebar invariant breach card flags "1 Skill without an Owner" in warning color with a link to the Skills tab.
+- Skills tab shows the orphaned H320 Health Informatics row tinted warning, with "Assign owner" button instead of an owner avatar.
+- Schools tab shows Leavitt School of Health tinted info color, flagged as "Onboarding — needs additional admins".
+- Screens 12 and 13 each show the read-only banner at top; Manage buttons absent. Screen 13's "Create new School" button still present.
+- Dark mode parity preserved via existing `[data-theme]` tokens.
+
+---
+
 ## v4.67 — 18 May 2026 — Canonical persona order: Student → Instructor → Tenant Admin → Super Admin
 
 Per Brady, persona labels were ordered randomly across the prototype. Aligned every persona listing to the canonical order from the User Profile Catalog v1.3 (13 MAY 2026), which sequences the 4 contract-named user types as Sally (Student) → Charlie (Instructor) → Alice (Tenant Admin) → Bob (Super Admin).
