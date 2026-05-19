@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.75</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.76</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1233,7 +1233,7 @@
               <h3 class="h5 mt-1 mb-2">Configure courses</h3>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">add</span>New Skill</button>
-                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(17);">Tenant Settings</button>
+                <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(17);">School Settings</button>
               </div>
             </div>
           </div>
@@ -1345,7 +1345,7 @@
           <span class="material-icons-outlined" aria-hidden="true">add</span>New Skill
         </button>
         <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(17)">
-          <span class="material-icons-outlined" aria-hidden="true">tune</span>Tenant Settings
+          <span class="material-icons-outlined" aria-hidden="true">tune</span>School Settings
         </button>
       </div>
 
@@ -2587,20 +2587,20 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>Tenant Settings</span>
+        <span>School Settings</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">corporate_fare</span>Tenant Configuration</span>
-      <h1 id="s17-heading" class="mb-4">Tenant Settings</h1>
+      <span class="eyebrow"><span class="material-icons-outlined">corporate_fare</span>School Configuration</span>
+      <h1 id="s17-heading" class="mb-4">School Settings</h1>
 
       <div class="row mb-3">
         <div class="col-7">
           <div class="pgn__card pgn__card-featured">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">badge</span>Tenant identity</span>
+              <span class="eyebrow"><span class="material-icons-outlined">badge</span>School identity</span>
               <h2 class="h5 mb-2" data-tenant-name>School of Technology</h2>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
                 <tr><th style="width:32%;">Tenant ID</th><td><code data-tenant-id>tenant_school_tech</code></td></tr>
-                <tr><th>Parent organization</th><td>Western Governors University</td></tr>
+                <tr><th>Parent Org</th><td>Western Governors University</td></tr>
                 <tr><th>Operated by</th><td>WGU Program Development</td></tr>
                 <tr><th>LRPS launch URL</th><td><code>lrps.wgu.edu/provision/563034848</code></td></tr>
                 <tr><th>Assigned JFT CSM</th><td>Jordan &middot; <a href="#" onclick="event.preventDefault();">support@jft.com</a></td></tr>
@@ -2613,13 +2613,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <div class="pgn__card">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">palette</span>Branding</span>
-              <h2 class="h5 mb-3">Tenant logo</h2>
+              <h2 class="h5 mb-1">School logo</h2>
+              <p class="text-muted small mb-3">Max 2 MB &middot; PNG or SVG &middot; recommended 400 &times; 120 px</p>
 
               <div class="form-group mb-3">
                 <label class="form-label" for="b-logo-light">Light theme</label>
                 <div class="d-flex align-items-center gap-2">
                   <div style="width:72px; height:44px; border-radius: var(--pgn-size-border-radius-base); background: #FFFFFF; display:flex; align-items:center; justify-content:center; border: 1px solid var(--pgn-color-gray-200);">
-                    <img src="../assets/wgu-corporation-full-color.png" alt="School of Technology logo (light theme)" style="height:24px; width:auto;">
+                    <img data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology logo (light theme)" style="height:24px; width:auto;">
                   </div>
                   <button class="btn btn-outline-primary btn-sm" id="b-logo-light">Upload&hellip;</button>
                 </div>
@@ -2629,17 +2630,9 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                 <label class="form-label" for="b-logo-dark">Dark theme</label>
                 <div class="d-flex align-items-center gap-2">
                   <div style="width:72px; height:44px; border-radius: var(--pgn-size-border-radius-base); background: #001730; display:flex; align-items:center; justify-content:center; border: 1px solid var(--pgn-color-gray-200);">
-                    <img src="../assets/wgu-corporation-white.png" alt="School of Technology logo (dark theme)" style="height:24px; width:auto;">
+                    <img data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology logo (dark theme)" style="height:24px; width:auto;">
                   </div>
                   <button class="btn btn-outline-primary btn-sm" id="b-logo-dark">Upload&hellip;</button>
-                </div>
-              </div>
-
-              <div class="form-group mb-0">
-                <label class="form-label" for="b-color">Accent color</label>
-                <div class="d-flex align-items-center gap-2">
-                  <span style="display:inline-block; width:32px; height:32px; border-radius: var(--pgn-size-border-radius-base); background: var(--pgn-color-brand-base); border: 1px solid var(--pgn-color-gray-200);"></span>
-                  <input class="form-control" id="b-color" type="text" value="#0070F0" style="max-width: 160px; font-family: monospace;">
                 </div>
               </div>
 
@@ -2676,7 +2669,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(17); return false;">Tenant Settings</a>
+        <a href="#" onclick="goToScreen(17); return false;">School Settings</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Skill Lifecycle</span>
       </nav>
@@ -3288,8 +3281,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <!-- Screen 06 removed in v4.74 — content folded into Screen 5 -->
       <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Deploy review">07</button>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Deploy success + LRPS provisioning ticket">08</button>
-      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: Tenant Settings (tenant identity + branding)">17</button>
-      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Tenant Settings — Skill Lifecycle (§2.5 + §10.4)">18</button>
+      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: School Settings (school identity + branding)">17</button>
+      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Skill Lifecycle (§2.5 + §10.4)">18</button>
       <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Analytics &amp; Reporting (A-7.10..7.14)">19</button>
       <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Tenant Activity Log (A-10.4 tenant-scoped)">20</button>
       <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Access Denied (zero-trust deny path)">21</button>

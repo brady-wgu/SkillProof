@@ -6,6 +6,44 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.76 — 19 May 2026 — School Settings rebuild (Screen 17)
+
+Phase G. Tenant Settings renamed and simplified per Brady's JFT direction.
+
+### What changed (tenant_admin/index.html · Screen 17)
+
+- **Renamed to "School Settings"** across the surface — breadcrumb, eyebrow, h1, identity card eyebrow ("School identity"), branding h2 ("School logo"). The architectural identifier "Tenant ID" stays as the underlying tech name (matches the SOW).
+- **Removed the accent color box** + the standalone "Accent color" form group. The Save / Cancel buttons remain for the logo upload form.
+- **"Parent organization" → "Parent Org"** (one-line label tweak per Brady's notation).
+- **Logo upload helper text added**: *"Max 2 MB · PNG or SVG · recommended 400 × 120 px"* directly under the School logo heading.
+- **Logo preview images** swapped from WGU corporate (`wgu-corporation-full-color.png` / `wgu-corporation-white.png`) to the active school's logo (`school-tech-*.png` defaults) with the same `data-school-logo` markers used by `switchSchool()` so the previews update when the user changes school.
+- **Cross-screen label sweep** — every other "Tenant Settings" user-visible reference in tenant_admin (Screen 2 quick-action button, hub card, Screen 18 breadcrumb, two step-btn aria-labels) now reads "School Settings" / "Skill Lifecycle".
+
+### Why
+
+Brady's JFT meeting notes:
+- *"Remove accent color box from Screen 17"*
+- *"Update the other text on Screen 17 as well"*
+- *"Parent Org"* (explicit shortening)
+- *"Update the 'Tenant' to be SoT or be explicit. Don't make it [generic]."*
+- *"Size restrictions on the tenant logo upload"*
+
+The architectural identifier "Tenant ID" stays — it's how the multi-tenant infra layer identifies the school underneath. Brady's directive on "tenant" was about user-facing labels that should be more explicit; the data-layer identifier is unchanged.
+
+### Verification
+
+- tenant_admin Screen 17: h1 reads "School Settings"; eyebrow reads "School Configuration"; identity card eyebrow reads "School identity"; branding card reads "School logo" with the size/dimension helper text directly below.
+- Accent color form group absent.
+- Logo previews show the School of Technology owl + wordmark in both light and dark.
+- Switch School in the user menu → previews update along with the navbar logo + identity card (the same `data-school-logo` selectors).
+- Screen 2 hub card + quick-action button + Screen 18 breadcrumb all read "School Settings" now.
+
+### Storyboard stamp
+
+v4.76 across the 6 portals.
+
+---
+
 ## v4.75 — 19 May 2026 — Skill Production Governance (topic remove + LO≥1 + deploy stages)
 
 Phase F. Surface the production-Skill rules in the UI so JFT builds the right affordances. When a Skill is in Production, topics cannot be removed and the UI shows that constraint explicitly. Learning Objectives have a `≥ 1 per topic` floor enforced via UI state.
