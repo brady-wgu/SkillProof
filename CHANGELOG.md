@@ -6,6 +6,35 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.79 — 19 May 2026 — Analytics page iteration (no more timing things)
+
+Phase K — the final phase of the JFT meeting follow-ups. Per Brady's note *"Iterate on the analytics page. No more timing things,"* the arbitrary time-on-task metric is gone, replaced with a more meaningful active-learners trend.
+
+### What changed (tenant_admin/index.html · Screen 19 Analytics & Reporting)
+
+- **Engagement section, left panel** rebuilt:
+  - Eyebrow: "Time on task · last 30 days" → "Active learners · last 30 days"
+  - Subhead: "Median 18 min · per session" → "178 active learners · +14% vs prior 30 days"
+  - Aria-label: "Time-on-task trend chart..." → "Active learners trend chart..."
+  - Icon: `schedule` → `groups`
+  - The existing SVG line chart stays (visually a learner-growth trend); only the framing changes from time-duration to learner-count.
+
+The Submissions chart (right side), Class Insights table, Billing & Usage gauges, Cost by Skill table, and Program Reports section all stay as-is — none used arbitrary timing data.
+
+### Why
+
+Brady's JFT meeting note: *"No more timing things."* Time-on-task per session is an arbitrary unit that doesn't tie to a contractual SLA or a meaningful engagement signal in this prototype. Active-learners-over-time tells a more honest story about engagement that maps to the billing & usage metrics below it.
+
+### What stays as contractually-required SLA timings
+
+Incident Response screens (SC-ADD-06, Screens 14–16) keep their SLA timings — 6-min first response, 60–90 min ETA — because those are signed in SOW §9.5 (P1 SLA = 2-hour response). Those are contractual, not arbitrary.
+
+### Storyboard stamp
+
+v4.79 across the 6 portals.
+
+---
+
 ## v4.78 — 19 May 2026 — Help / Support flows + Vivek footer link
 
 Phase J. Wires up the Submit LRPS Ticket button to a real `mailto:` action, refreshes the help page with an LRPS deep-link distribution note, and adds the Vivek technical-contact footer link across all 6 portals.
