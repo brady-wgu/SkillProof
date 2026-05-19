@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.72</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.73</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1215,10 +1215,10 @@
         <div class="col-6">
           <div class="pgn__card">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">view_list</span>Top consuming subjects</span>
+              <span class="eyebrow"><span class="material-icons-outlined">view_list</span>Top consuming Skills</span>
               <h2 class="h5 mb-2">Where the spend is going</h2>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th>Subject</th><th class="num-col">Tokens</th><th class="num-col">Cost</th><th>Trend</th></tr>
+                <tr><th>Skill</th><th class="num-col">Tokens</th><th class="num-col">Cost</th><th>Trend</th></tr>
                 <tr><td>E010 · Foundations of Programming</td><td class="num-col">42.1M</td><td class="num-col">$1,406</td><td><span class="text-warning">↑ +42%</span></td></tr>
                 <tr><td>E075 · Intermediate Python &amp; Libraries</td><td class="num-col">12.8M</td><td class="num-col">$418</td><td><span class="text-success">→ +6%</span></td></tr>
                 <tr><td>E135 · OOP with Python (just deployed)</td><td class="num-col">4.7M</td><td class="num-col">$68</td><td><span class="text-warning">↑ NEW</span></td></tr>
@@ -1232,7 +1232,7 @@
               <span class="eyebrow"><span class="material-icons-outlined">lightbulb</span>Likely cause</span>
               <h2 class="h5 mb-2">Enrollment surge + AI prompt expansion</h2>
               <p class="small mb-2">On 04 May, School of Technology saw a wave of 28 new learner launches in E010 (including Sally) under WGU&rsquo;s rolling-enrollment model. On the same day, Alice deployed updated AI prompt configuration that increased average tokens-per-session by 22%.</p>
-              <p class="small mb-2"><strong>Recommended action:</strong> review per-subject rate limits before the surge persists into a second week. Adjusting now keeps the school within budget without affecting learner experience.</p>
+              <p class="small mb-2"><strong>Recommended action:</strong> review per-Skill rate limits before the surge persists into a second week. Adjusting now keeps the school within budget without affecting learner experience.</p>
               <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" onclick="goToScreen(5)"><span class="material-icons-outlined">speed</span>Adjust rate limits</button>
                 <button class="btn btn-outline-primary btn-sm">Notify Alice</button>
@@ -1280,8 +1280,8 @@
                   <div class="form-help">Was 3,000 · -20%</div>
                 </div>
                 <div class="form-group">
-                  <label class="form-label" for="f-subject">Per-subject cap</label>
-                  <input class="form-control" id="f-subject" type="text" value="1,200" />
+                  <label class="form-label" for="f-skill">Per-Skill cap</label>
+                  <input class="form-control" id="f-skill" type="text" value="1,200" />
                   <div class="form-help">Was 1,500 · -20%</div>
                 </div>
               </div>
@@ -1334,8 +1334,8 @@
           <tr><th style="width:30%;">Actor</th><td>Bob (Super Admin · Platform Operations)</td></tr>
           <tr><th>Event</th><td><code>tenant.rate_limit.update</code></td></tr>
           <tr><th>School</th><td>School of Technology</td></tr>
-          <tr><th>Before</th><td><code>{ tenant: 3000, subject: 1500, learner: 80, burst: 200/60s }</code></td></tr>
-          <tr><th>After</th><td><code>{ tenant: 2400, subject: 1200, learner: 60, burst: 120/60s }</code></td></tr>
+          <tr><th>Before</th><td><code>{ tenant: 3000, skill: 1500, learner: 80, burst: 200/60s }</code></td></tr>
+          <tr><th>After</th><td><code>{ tenant: 2400, skill: 1200, learner: 60, burst: 120/60s }</code></td></tr>
           <tr><th>Reason</th><td>Enrollment surge in E010 + new prompt config; tighten before week 2 to stay in MTD budget.</td></tr>
           <tr><th>Notify</th><td>Alice (School Admin) via email + portal toast</td></tr>
         </table>
@@ -1725,7 +1725,7 @@
             <td>06 May 14:30:02</td>
             <td>School of Technology</td>
             <td>Alice</td>
-            <td><code>subject.deploy</code> (e135-oop-python)</td>
+            <td><code>skill.deploy</code> (e135-oop-python)</td>
             <td><span class="badge badge-warning">High</span></td>
             <td><span class="badge badge-success">Success</span></td>
             <td>198.51.x.x</td>
