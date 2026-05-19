@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Coding Coach (Student) — Storyboard v4.69 (Live-MVP rebuild)</title>
+  <title>SkillProof — Coding Coach (Student) — Storyboard v4.70 (Live-MVP rebuild)</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -781,6 +781,14 @@
       color: var(--color-deep-navy);
     }
     .btn-theme-toggle:hover { background: var(--pgn-color-gray-100); }
+    /* v4.70: ensure light-mode navbar icons (help, theme toggle) render crisply against the white navbar */
+    .btn-theme-toggle .material-icons-outlined {
+      color: var(--color-deep-navy);
+      font-weight: 500;
+    }
+    [data-theme="dark"] .btn-theme-toggle .material-icons-outlined {
+      color: #fff;
+    }
     /* student/ uses a <span class="navbar-brand-logo">WGU</span> text mark;
        :not(img) targets only the span so img logos are unaffected. */
     .navbar-brand-logo:not(img) {
@@ -870,7 +878,6 @@
             <button class="btn btn-primary btn-lg" onclick="goToScreen(2)">
               <span class="material-icons-outlined">play_arrow</span> Begin Diagnostic
             </button>
-            <span class="time-hint">Takes about 5–8 minutes</span>
           </div>
           <div class="landing-features">
             <span class="feature"><span class="material-icons-outlined">lock</span>Secured via WGU SSO</span>
@@ -1715,7 +1722,6 @@ def count_passing(scores):</textarea>
           <div class="snapshot-row"><span class="snapshot-label">Sub-section</span><span class="snapshot-value">Basic Syntax &amp; Data Types</span></div>
           <div class="snapshot-row"><span class="snapshot-label">Tasks completed</span><span class="snapshot-value">1</span></div>
           <div class="snapshot-row"><span class="snapshot-label">Sub-sections unlocked</span><span class="snapshot-value">1 of 13</span></div>
-          <div class="snapshot-row"><span class="snapshot-label">Session duration</span><span class="snapshot-value">14 min</span></div>
           <div class="snapshot-row"><span class="snapshot-label">Resume next time</span><span class="snapshot-value link">Variables &amp; Assignment — Task 2</span></div>
         </div>
 

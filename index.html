@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — LRPS Landing — Storyboard v4.69</title>
+  <title>SkillProof — LRPS Landing — Storyboard v4.70</title>
   <link rel="icon" type="image/png" href="assets/wgu-favicon.png">
 
   <!--
@@ -709,6 +709,14 @@
       color: var(--color-deep-navy);
     }
     .btn-theme-toggle:hover { background: var(--pgn-color-gray-100); }
+    /* v4.70: ensure light-mode navbar icons (help, theme toggle) render crisply against the white navbar */
+    .btn-theme-toggle .material-icons-outlined {
+      color: var(--color-deep-navy);
+      font-weight: 500;
+    }
+    [data-theme="dark"] .btn-theme-toggle .material-icons-outlined {
+      color: #fff;
+    }
     /* student/ uses a <span class="navbar-brand-logo">WGU</span> text mark;
        :not(img) targets only the span so img logos are unaffected. */
     .navbar-brand-logo:not(img) {

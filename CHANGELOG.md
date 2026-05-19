@@ -6,6 +6,40 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.70 — 19 May 2026 — Site-wide UI polish (help icon, footer logo, sign-out, timing copy)
+
+Phase B of the 11-phase JFT meeting follow-up sweep. Fixes UI bugs that have accumulated since v4.62 plus a copy cleanup.
+
+### What changed
+
+- **Light-mode help icon visibility** — the navbar help icon (and theme-toggle icon) was visually faint in light mode because the icon glyph color was inheriting from a dark-navbar context. Added explicit `color: var(--color-deep-navy)` + `font-weight: 500` for `.btn-theme-toggle .material-icons-outlined` in light mode, with the corresponding `#fff` override for dark mode. Applied across all 7 portal/page navbars: `super_admin/`, `tenant_admin/`, `instructor/`, `student/`, `help/`, root `index.html`, `presentation.html`.
+- **presentation_dark.html footer logo** — line 864 used the reverse (white-on-dark) WGU logo against a light `#F5F7FA` footer background, making it invisible. Swapped to the full-color logo.
+- **Removed the Sign out button** from the Tenant Admin user-profile menu (`tenant_admin/index.html`) — Brady's JFT note: "I don't think we need the sign out button." Authentication is LRPS / SSO-managed; users don't sign out from within SkillProof.
+- **"No more timing things"** — removed arbitrary duration copy that wasn't tied to a contractual SLA:
+  - Student onboarding "Takes about 5–8 minutes" hint on the diagnostic CTA
+  - Student session-snapshot "Session duration · 14 min" row
+  - Analytics-page Median 18 min · per session is deferred to Phase K (v4.79 analytics iteration)
+  - All SLA references (RTO 4hr, RPO 60min, first-response SLAs, 48-hr critical patch, 99.95% uptime) preserved as contractual.
+- **Storyboard stamps** → v4.70 across all 6 portals + 2 presentation pages.
+
+### Why
+
+Quotes from Brady's JFT meeting notes (today + last week):
+- *"Help button disappears in light mode header"*
+- *"Footer in dark mode doesn't have the new logo"*
+- *"I don't think we need the sign out button"*
+- *"No more timing things"*
+
+### Verification
+
+- Help icon glyph visible (deep-navy, bolder weight) in light mode on every portal navbar; visible (white) in dark mode.
+- presentation_dark.html footer shows the full-color WGU logo (visible against the light footer background).
+- tenant_admin user-profile menu has no Sign out button; the menu now ends at School of Business.
+- Student diagnostic CTA + post-session snapshot have no arbitrary duration copy.
+- v4.70 title stamp present in every portal's `<title>`.
+
+---
+
 ## v4.69 — 19 May 2026 — URGENT: LRPS landing reframed to Sally (Student) for leadership preview
 
 Brady is sharing the storyboard URL with leadership for EOD review. The LRPS landing root was framed as Alice's (Tenant Admin's) view since v4.65, since Alice's role per User Profile Catalog v1.3 explicitly includes managing LRPS deep links. For the leadership preview, the framing reverts to Sally (Student) so the entry point matches what an end-learner actually sees when launching the Coding Coach from their LMS course module. The four live persona rows still live on the landing so each portal can be previewed from one URL.
