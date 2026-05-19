@@ -6,6 +6,29 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.64 — 18 May 2026 — LRPS landing cleanup: strip non-essential chrome
+
+Per Brady, the root LRPS landing had too much explanatory text. Stripped the introductory chrome so the page reads as a clean provider table with the 4 live SkillProof rows up top. The h1 "Providers" stays as the page title.
+
+### Removed from root `index.html`
+
+- The breadcrumb (`LRPS › Learning Resources › Providers`)
+- The eyebrow line (`database Learning Resource Provisioning System · v3.4.2`)
+- The intro paragraph (`Provision and launch learning resources across the WGU portfolio...`)
+- The stats block (`13,549 Total providers · 4 Live SkillProof rows`)
+- The `alert-info` Production LTI flow explainer
+- The `alert-warning` DEMO ONLY explainer
+- The 8 filler rows at the top of the provider table (the OEX block 269781201–269781229 and the zyBooks row 269781240)
+
+The 4 live SkillProof rows ([SkillProof-ST] / -TA / -IN / -SA) are now the first rows in the table. Sidebar, footer, and dead CSS rules for the now-unused chrome were left in place — they don't render and removing them adds noise to the diff.
+
+### Verification
+
+1. Visit `/` → no breadcrumb, no intro paragraph, no stats, no alerts, no OEX/zyBooks filler rows.
+2. h1 reads "Providers"; the 4 live SkillProof rows are the first rows in the provider table.
+
+---
+
 ## v4.63 — 18 May 2026 — Light-mode logo asset upgraded to FY26 source-of-truth
 
 The previous `wgu-corporation-full-color.png` was a 728×360 PNG (109409 bytes) — a smaller export of the WGU brand mark. Brady pointed at the canonical 2000×657 file in `_WGU Branding/WGU FY26 Design System/WGU Logos/University Logo/University Logo_Full Color.png` (69826 bytes — fewer bytes despite higher resolution thanks to better PNG compression in the source). Same visual mark (owl + WGU wordmark in full color), higher resolution, official source. Drop-in swap of the file only; no HTML changes.
