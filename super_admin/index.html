@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.76</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.77</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1885,7 +1885,7 @@
                       <td><span class="badge badge-brand">Super Admin</span></td>
                       <td class="text-muted small">— (cross-school)</td>
                       <td>2 hours ago</td>
-                      <td><button class="btn btn-tertiary btn-sm" disabled>Downgrade (blocks min 2)</button></td>
+                      <td><button class="btn btn-tertiary btn-sm" disabled title="Demoting to Tenant Admin requires assignment to at least one School afterward. Currently blocked: minimum 2 Super Admins required at all times.">Downgrade (blocks min 2)</button></td>
                     </tr>
                     <tr>
                       <td>
@@ -1908,7 +1908,7 @@
                       <td>15 min ago</td>
                       <td>
                         <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                        <button class="btn btn-tertiary btn-sm">Downgrade</button>
+                        <button class="btn btn-tertiary btn-sm" title="Demoting to Instructor removes all School assignments and reverts to baseline read-only access on assigned Skills.">Downgrade</button>
                       </td>
                     </tr>
                     <tr>
@@ -1931,7 +1931,7 @@
                       <td>Yesterday</td>
                       <td>
                         <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                        <button class="btn btn-tertiary btn-sm">Downgrade</button>
+                        <button class="btn btn-tertiary btn-sm" title="Demoting to Instructor removes all School assignments and reverts to baseline read-only access on assigned Skills.">Downgrade</button>
                       </td>
                     </tr>
                     <tr>
@@ -1957,6 +1957,7 @@
                       <td>
                         <button class="btn btn-primary btn-sm">Upgrade to Tenant Admin</button>
                         <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
+                        <button class="btn btn-tertiary btn-sm" title="Demoting to Student removes all Skill assignments and reverts to learner-only access.">Downgrade</button>
                       </td>
                     </tr>
                     <tr>
@@ -1981,6 +1982,7 @@
                       <td>
                         <button class="btn btn-primary btn-sm">Upgrade to Tenant Admin</button>
                         <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
+                        <button class="btn btn-tertiary btn-sm" title="Demoting to Student removes all Skill assignments and reverts to learner-only access.">Downgrade</button>
                       </td>
                     </tr>
                     <tr>
