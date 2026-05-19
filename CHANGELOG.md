@@ -8,6 +8,16 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.88 — 19 May 2026 — Strip 'SkillProof Design System v1.2' from HTML comments
+
+Follow-up to v4.87 — Brady's directive was "anywhere," so the phrase was also stripped from the developer comments at the top of each portal file. Each occurrence of `SkillProof Design System v1.2` replaced with `design tokens` so the surrounding comment text still reads.
+
+### Storyboard stamp
+
+v4.88 across the 6 portals.
+
+---
+
 ## v4.87 — 19 May 2026 — Strip 'SkillProof Design System v1.2' meta-bar text + remove unrequested 'Technical contact' footer link
 
 Two clean-up passes per Brady's directive.
