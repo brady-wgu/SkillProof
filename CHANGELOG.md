@@ -6,6 +6,33 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.77 — 19 May 2026 — Super Admin demotion tooltips + Instructor Downgrade affordance
+
+Phase H. Brady's JFT note: *"Demotion to lower levels is also important to remember."* The v4.68 Access Control screen already had Downgrade buttons for Tenant Admins and Super Admin. This release adds context-specific tooltips explaining what each demotion does to scope assignments, and surfaces the missing Instructor → Student demotion affordance.
+
+### What changed (super_admin/index.html · Screen 9 Access Control · People tab)
+
+- **Jordan (Super Admin, disabled Downgrade)** — title tooltip: *"Demoting to Tenant Admin requires assignment to at least one School afterward. Currently blocked: minimum 2 Super Admins required at all times."*
+- **Alice + Miguel (Tenant Admin Downgrade)** — title tooltip: *"Demoting to Instructor removes all School assignments and reverts to baseline read-only access on assigned Skills."*
+- **Charlie + Priya (Instructor)** — added a third button "Downgrade" with title tooltip: *"Demoting to Student removes all Skill assignments and reverts to learner-only access."*
+- Sally + Devon (Student) — stay as-is (Student is the baseline; no lower role to demote to).
+
+### Why
+
+The RBAC doc §7 names Super Admin as the only role that can change access levels, but the prototype only showed the upgrade path clearly. Brady wants the demotion path equally visible so JFT engineers know what data lifecycle their backend has to handle when a downgrade is applied (Schools/Skill assignments dropped, scope reset).
+
+### Verification
+
+- super_admin Screen 9 (People tab) — hover each Downgrade button to see the appropriate tooltip
+- Charlie + Priya rows now have a Downgrade button alongside the two Upgrade buttons
+- Jordan's disabled Downgrade still shows the min-2 rule but the tooltip now also explains what the demotion would do
+
+### Storyboard stamp
+
+v4.77 across the 6 portals.
+
+---
+
 ## v4.76 — 19 May 2026 — School Settings rebuild (Screen 17)
 
 Phase G. Tenant Settings renamed and simplified per Brady's JFT direction.
