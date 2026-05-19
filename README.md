@@ -179,7 +179,7 @@ Click any persona folder to read its dedicated README.
 
 **Surface:** [`/` (storyboard root)](./) · [Live](https://brady-wgu.github.io/SkillProof/) — v4.59 promoted to root; the standalone `lrps/` folder was deleted.
 
-**Persona:** Alice (Tenant Admin) — per User Profile Catalog v1.3, Alice's role explicitly includes creating, testing, and updating LRPS deep links for SkillProof.
+**Persona:** Sally (Student) — this is the LRPS view a learner sees when launching the Coding Coach from her LMS course module. The four live persona rows are present here so stakeholders can preview each persona's portal from one place, but the framing matches the end-learner's entry point.
 
 **Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SkillProof Design System v1.2. Each of the four persona portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. JFT does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
 
