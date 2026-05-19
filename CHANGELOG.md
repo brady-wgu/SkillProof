@@ -8,6 +8,33 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.85 — 19 May 2026 — Remove Screen 01 (SSO landing) from admin portals
+
+Brady: *"Let's remove Screen 01 from the instructor, tenant admin, and super admin. Those are informational only and should have been removed a long time ago when I directed that we only include the screens and features for JFT to implement. No extra features or text or buttons or anything else that is outside of the requirements of the contract language."*
+
+The SSO landing screens were illustrative — they showed the authentication handshake (LRPS deep link verified · WGU SSO complete · LTI role + elevation) but nothing for JFT to build. Auth is contractually LTI 1.3 + WGU SSO; the prototype shouldn't depict the auth ceremony at all.
+
+### What was removed
+
+- `super_admin/index.html` — Screen 1 (~50 lines): "Welcome to the Super Admin Portal" SSO splash + Continue button + meta-bar `01` step-btn
+- `tenant_admin/index.html` — Screen 1 (~45 lines): "Welcome to the School Admin Portal" SSO splash + Continue button + meta-bar `01` step-btn
+- `instructor/index.html` — Screen 1 (~45 lines): "Welcome to the Instructor Dashboard" SSO splash + Continue button + meta-bar `01` step-btn
+
+In each portal, screen-2 (the actual portal home) is now marked `class="screen active"` so it's the default screen on load. The meta-bar's `02` step-btn carries the `active` class.
+
+### What is NOT changed
+
+- `student/` Screen 1 (the Coding Coach intro / Begin Diagnostic landing) stays. It's a legitimate first screen of the student flow, not an SSO splash.
+- LRPS landing (root `index.html`) stays — it's the entry point that distributes to each persona portal.
+- TOTAL_SCREENS counter and arrow-key navigation already had fall-through for missing screen IDs (since v4.74 / v4.85 introduced the screen-1 + screen-6 gaps in admin portals).
+- `goToScreen(2)` references unchanged — that's now the entry point.
+
+### Storyboard stamp
+
+v4.85 across the 6 portals.
+
+---
+
 ## v4.84 — 19 May 2026 — Larger school logos in navbar (so 'School of X' text reads)
 
 Brady: *"Now increase the school-level logo in the upper-left corner to the larger size you did with the standard WGU logo. Right now, it's so small I can't read the lettering for 'School of XXX'."*
