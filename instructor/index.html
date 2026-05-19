@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.82</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.83</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -778,6 +778,20 @@
     }
     [data-theme="dark"] .btn-theme-toggle .material-icons-outlined {
       color: #fff;
+    }
+    /* v4.83: dark-mode footer theming — overrides hardcoded inline footer styles */
+    [data-theme="dark"] footer[role="contentinfo"] {
+      background: var(--color-deep-navy) !important;
+      border-top-color: rgba(255,255,255,0.1) !important;
+    }
+    [data-theme="dark"] footer[role="contentinfo"] > div {
+      border-bottom-color: rgba(255,255,255,0.1) !important;
+    }
+    [data-theme="dark"] footer[role="contentinfo"] a {
+      color: #fff !important;
+    }
+    [data-theme="dark"] footer[role="contentinfo"] span {
+      color: rgba(255,255,255,0.7) !important;
     }
     /* student/ uses a <span class="navbar-brand-logo">WGU</span> text mark;
        :not(img) targets only the span so img logos are unaffected. */

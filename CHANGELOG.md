@@ -8,6 +8,40 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.83 — 19 May 2026 — Dark-mode footer theming (deep navy + white text, all 6 portals)
+
+Brady's directive: *"The dark mode footer needs to have the dark navy background and white text like the header does so it's legible and accessible in dark mode. All you did in the footer was update the logo file. Apply the other dark mode theming and make sure that's also deployed across every page of the prototype."*
+
+The footer markup uses hardcoded inline styles (`background: #F5F7FA`, `color: #002855`, etc.) that don't respond to `[data-theme="dark"]`. Added a CSS override block to each of the 6 portals that targets `footer[role="contentinfo"]` with `!important` to win over the inline styles:
+
+```css
+[data-theme="dark"] footer[role="contentinfo"] {
+  background: var(--color-deep-navy) !important;
+  border-top-color: rgba(255,255,255,0.1) !important;
+}
+[data-theme="dark"] footer[role="contentinfo"] > div {
+  border-bottom-color: rgba(255,255,255,0.1) !important;
+}
+[data-theme="dark"] footer[role="contentinfo"] a { color: #fff !important; }
+[data-theme="dark"] footer[role="contentinfo"] span { color: rgba(255,255,255,0.7) !important; }
+```
+
+Applied identically to root `index.html`, `student/`, `instructor/`, `tenant_admin/`, `super_admin/`, and `help/`.
+
+Light-mode header + footer were already consistent across all 6 portals; no light-mode changes needed.
+
+### Verification
+
+- Toggle dark mode on any portal → footer flips to deep-navy background with white link text, semi-transparent white copyright + divider pipe colors
+- All 6 portals respond identically
+- Light mode unchanged
+
+### Storyboard stamp
+
+v4.83 across the 6 portals.
+
+---
+
 ## v4.82 — 19 May 2026 — Help button in every navbar
 
 Brady's directive: *"The help button should be in the header across ALL pages on the site, no matter what."*
