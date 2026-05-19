@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.71</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.72</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1122,6 +1122,12 @@
   <button type="button" class="user-menu-item is-other" role="menuitemradio" aria-checked="false" data-school="School of Business" onclick="switchSchool('School of Business')">
     <span class="material-icons-outlined">check</span>School of Business
   </button>
+  <button type="button" class="user-menu-item is-other" role="menuitemradio" aria-checked="false" data-school="School of Education" onclick="switchSchool('School of Education')">
+    <span class="material-icons-outlined">check</span>School of Education
+  </button>
+  <button type="button" class="user-menu-item is-other" role="menuitemradio" aria-checked="false" data-school="Leavitt School of Health" onclick="switchSchool('Leavitt School of Health')">
+    <span class="material-icons-outlined">check</span>Leavitt School of Health
+  </button>
 </div>
 
 <!-- ================================================================
@@ -1132,8 +1138,8 @@
 <section class="screen active" id="screen-1" aria-labelledby="s1-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand" aria-label="Western Governors University">
-      <img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU">
-      <img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU">
+      <img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology">
+      <img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology">
     </a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -1175,7 +1181,7 @@
 <!-- Screen 02: Tenant Admin Portal home ============================== -->
 <section class="screen" id="screen-2" aria-labelledby="s2-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -1350,7 +1356,7 @@
 <!-- Screen 03: New Subject creation form ============================= -->
 <section class="screen" id="screen-3" aria-labelledby="s3-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -1406,7 +1412,7 @@
 <!-- Screen 04: Topics & Learning Objectives builder ================== -->
 <section class="screen" id="screen-4" aria-labelledby="s4-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -1566,7 +1572,7 @@
 <!-- Screen 05: Model + Coaching basics (selected BEFORE the custom AI prompt) ======== -->
 <section class="screen" id="screen-5" aria-labelledby="s5-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -1664,7 +1670,7 @@
 <!-- Screen 06: AI prompt configuration =============================== -->
 <section class="screen" id="screen-6" aria-labelledby="s6-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -1776,7 +1782,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 <!-- Screen 07: Review & Deploy → CI/CD pipeline ====================== -->
 <section class="screen" id="screen-7" aria-labelledby="s7-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -1894,7 +1900,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 <!-- Screen 08: Deploy success → live course link ====================== -->
 <section class="screen" id="screen-8" aria-labelledby="s8-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -1951,7 +1957,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 <!-- Screen 09: Portal home with all-green system status ============= -->
 <section class="screen" id="screen-9" aria-labelledby="s9-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2067,7 +2073,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 <!-- Screen 10: Alert banner — LLM down, fallback engaged ============ -->
 <section class="screen" id="screen-10" aria-labelledby="s10-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2153,7 +2159,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 <!-- Screen 11: Notification toast / email detail ==================== -->
 <section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2205,7 +2211,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 <!-- Screen 12: Jira P1 ticket creation form (SOW §9.1 + §9.4) ========================= -->
 <section class="screen" id="screen-12" aria-labelledby="s12-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2289,7 +2295,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 13: Ticket submitted confirmation ======================== -->
 <section class="screen" id="screen-13" aria-labelledby="s13-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2332,7 +2338,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 14: JFT CSM response thread ============================== -->
 <section class="screen" id="screen-14" aria-labelledby="s14-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2419,7 +2425,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 15: Fallback success verification panel ================== -->
 <section class="screen" id="screen-15" aria-labelledby="s15-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2466,7 +2472,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 16: SLA dashboard — 99.95% uptime maintained ============== -->
 <section class="screen" id="screen-16" aria-labelledby="s16-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2576,7 +2582,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 17: Tenant Settings — Branding (§7.9) ===================== -->
 <section class="screen" id="screen-17" aria-labelledby="s17-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2599,14 +2605,14 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <div class="pgn__card pgn__card-featured">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">badge</span>Tenant identity</span>
-              <h2 class="h5 mb-2">School of Technology</h2>
+              <h2 class="h5 mb-2" data-tenant-name>School of Technology</h2>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:32%;">Tenant ID</th><td><code>tenant_school_tech</code></td></tr>
+                <tr><th style="width:32%;">Tenant ID</th><td><code data-tenant-id>tenant_school_tech</code></td></tr>
                 <tr><th>Parent organization</th><td>Western Governors University</td></tr>
                 <tr><th>Operated by</th><td>WGU Program Development</td></tr>
                 <tr><th>LRPS launch URL</th><td><code>lrps.wgu.edu/provision/563034848</code></td></tr>
                 <tr><th>Assigned JFT CSM</th><td>Jordan &middot; <a href="#" onclick="event.preventDefault();">support@jft.com</a></td></tr>
-                <tr><th>Your role scope</th><td>Tenant Admin &middot; read access to all Skills in School of Technology &middot; write access to Skills you created</td></tr>
+                <tr><th>Your role scope</th><td data-tenant-scope>Tenant Admin &middot; read access to all Skills in School of Technology &middot; write access to Skills you created</td></tr>
               </table>
             </div>
           </div>
@@ -2665,7 +2671,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 18: Tenant Settings — Subject Lifecycle & Archival (G6 / SOW §2.5 + §10.4) -->
 <section class="screen" id="screen-18" aria-labelledby="s18-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -2810,7 +2816,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 19: Analytics & Reporting (A-7.10 engagement · A-7.11 class insights · A-7.12 program reports · A-7.13 visualization · A-7.14 exports) -->
 <section class="screen" id="screen-19" aria-labelledby="s19-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -3079,7 +3085,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 20: Tenant Activity Log (A-10.4 tenant-scoped) — mirror of super-08 with implicit tenant=pdev filter -->
 <section class="screen" id="screen-20" aria-labelledby="s20-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -3222,7 +3228,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 <!-- Screen 21: Access Denied (zero-trust deny path · RBAC doc §4.2 Figure 6) -->
 <section class="screen" id="screen-21" aria-labelledby="s21-heading">
   <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a class="navbar-help-link" href="../help/index.html" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
@@ -3389,6 +3395,39 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       document.querySelectorAll('.navbar-user').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
     }
   });
+  /* v4.72: per-school branding — slug + tenant ID maps drive the navbar logo + identity-card swap */
+  var SCHOOL_SLUGS = {
+    'School of Technology': 'school-tech',
+    'School of Business': 'school-business',
+    'School of Education': 'school-education',
+    'Leavitt School of Health': 'school-health'
+  };
+  var TENANT_IDS = {
+    'School of Technology': 'tenant_school_tech',
+    'School of Business': 'tenant_school_business',
+    'School of Education': 'tenant_school_education',
+    'Leavitt School of Health': 'tenant_school_health'
+  };
+
+  function applySchoolLogos(name) {
+    var slug = SCHOOL_SLUGS[name] || 'school-tech';
+    document.querySelectorAll('[data-school-logo="light"]').forEach(function(img) {
+      img.setAttribute('src', '../assets/' + slug + '-light.png');
+      img.setAttribute('alt', name);
+    });
+    document.querySelectorAll('[data-school-logo="dark"]').forEach(function(img) {
+      img.setAttribute('src', '../assets/' + slug + '-dark.png');
+      img.setAttribute('alt', name);
+    });
+    /* Update the tenant identity card on Tenant Settings */
+    document.querySelectorAll('[data-tenant-name]').forEach(function(el) { el.textContent = name; });
+    var tenantId = TENANT_IDS[name] || 'tenant_school_tech';
+    document.querySelectorAll('[data-tenant-id]').forEach(function(el) { el.textContent = tenantId; });
+    document.querySelectorAll('[data-tenant-scope]').forEach(function(el) {
+      el.textContent = 'Tenant Admin · read access to all Skills in ' + name + ' · write access to Skills you created';
+    });
+  }
+
   function switchSchool(name) {
     document.querySelectorAll('.navbar-chip').forEach(function(c) {
       c.textContent = 'School Admin · ' + name;
@@ -3404,6 +3443,8 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       b.classList.toggle('is-other', !isThis);
       b.setAttribute('aria-checked', isThis ? 'true' : 'false');
     });
+    applySchoolLogos(name);
+    localStorage.setItem('skillproof-active-school', name);
     var menu = document.getElementById('userMenu');
     if (menu) menu.setAttribute('data-open', 'false');
     document.querySelectorAll('.navbar-user').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
@@ -3425,6 +3466,11 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });
       document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = ''; });
+    }
+    /* v4.72: restore active school on load (per-school branding) */
+    var school = localStorage.getItem('skillproof-active-school');
+    if (school && SCHOOL_SLUGS[school]) {
+      switchSchool(school);
     }
   })();
 
