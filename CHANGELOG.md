@@ -8,6 +8,29 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.89 — 19 May 2026 — Strip superfluous labels (LRPS demo shortcut + Not for student use + build stamp) and passive governance banners
+
+Two cleanup passes per Brady's directive.
+
+### What changed
+
+- **LRPS landing** (`index.html`) — removed three label families:
+  - `demo shortcut` badges on the Tenant Admin + Super Admin rows (×2 elements)
+  - `(demo shortcut)` suffix trimmed from the two corresponding `aria-label`s
+  - `Not for student use` badges on the Instructor, Tenant Admin, Super Admin rows (×3 elements)
+  - Footer build stamp paragraph `Build: 20260507 · LRPS v3.4.2 · SkillProof-styled storyboard recreation`
+  - Associated CSS: `.no-student-badge` rule block + the comment + `max-width / overflow / text-overflow` overrides in `.pgn__data-table tr.live .lrps-name` that existed solely to accommodate the badge
+- **Tenant Admin Screen 4** (`tenant_admin/index.html`) — removed both passive informational alert banners:
+  - "This Skill is in Production. Topics cannot be removed once a Skill is live…"
+  - "Every topic must have at least one Learning Objective…"
+  - These rules are now enforced exclusively by action-triggered UI (disabled `Remove topic` buttons with `title=` tooltip + `enforceLoMinimum()` JS) — the same enforcement that was already in place. Rules themselves migrate to user instruction docs.
+
+### Storyboard stamp
+
+v4.89 across the 6 portals.
+
+---
+
 ## v4.88 — 19 May 2026 — Strip 'SkillProof Design System v1.2' from HTML comments
 
 Follow-up to v4.87 — Brady's directive was "anywhere," so the phrase was also stripped from the developer comments at the top of each portal file. Each occurrence of `SkillProof Design System v1.2` replaced with `design tokens` so the surrounding comment text still reads.
