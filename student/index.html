@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Coding Coach (Student) — Storyboard v4.83 (Live-MVP rebuild)</title>
+  <title>SkillProof — Coding Coach (Student) — Storyboard v4.84 (Live-MVP rebuild)</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -225,6 +225,8 @@
     .navbar-brand-logo {
       height: 40px; width: auto;
     }
+    /* v4.84: school logos have a stacked WGU + School name layout; bump to 64px so 'School of X' text reads */
+    .navbar-brand-logo[data-school-logo] { height: 64px; }
     .navbar-brand-text {
       font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
     }

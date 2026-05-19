@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Help &amp; Resources — Storyboard v4.83</title>
+  <title>SkillProof — Help &amp; Resources — Storyboard v4.84</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -80,6 +80,8 @@
     }
     .navbar-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--color-deep-navy); }
     .navbar-brand-logo { height: 40px; width: auto; }
+    /* v4.84: school logos have a stacked WGU + School name layout; bump to 64px so 'School of X' text reads */
+    .navbar-brand-logo[data-school-logo] { height: 64px; }
     .logo-light { display: inline-block; }
     .logo-dark { display: none; }
     [data-theme="dark"] .logo-light { display: none !important; }
