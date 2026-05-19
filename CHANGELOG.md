@@ -6,6 +6,32 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.69 — 19 May 2026 — URGENT: LRPS landing reframed to Sally (Student) for leadership preview
+
+Brady is sharing the storyboard URL with leadership for EOD review. The LRPS landing root was framed as Alice's (Tenant Admin's) view since v4.65, since Alice's role per User Profile Catalog v1.3 explicitly includes managing LRPS deep links. For the leadership preview, the framing reverts to Sally (Student) so the entry point matches what an end-learner actually sees when launching the Coding Coach from their LMS course module. The four live persona rows still live on the landing so each portal can be previewed from one URL.
+
+### What changed
+
+- **`index.html`** meta-bar persona line: `Persona: Alice (Tenant Admin · manages SkillProof LRPS links per User Profile Catalog v1.3)` → `Persona: Sally (Student · this is the LRPS view a learner sees when launching the Coding Coach from their LMS course module)`.
+- **`README.md`** LRPS Landing section "Persona:" line: reverted the v4.67 Alice framing to a Sally-centered description.
+- **Storyboard stamps** → v4.69 in all 6 portals + 2 presentation pages.
+
+### Why
+
+Direct quote from Brady's JFT meeting notes (last week): *"LRPS link directing to /tenant-admin — Put this back to the /student view so I can send to leadership tomorrow at EOD."*
+
+### What is NOT in this release
+
+This is the first of 11 phases (v4.69 – v4.79) integrating the JFT meeting follow-ups. Subsequent releases will address: site-wide UI polish (help icon, footer logo, sign-out removal), per-school branding (4 logo asset swap), Subject → Skill terminology, Skill Creation Wizard rebuild, Skill production governance, Tenant Settings rebuild, RBAC tooltips, contract-tracking visibility cleanup, help/support flows, and analytics iteration.
+
+### Verification
+
+- `https://brady-wgu.github.io/SkillProof/` meta-bar reads "Persona: Sally (Student)..."
+- All 4 live rows (Student / Instructor / Tenant Admin / Super Admin) still launch their target portals.
+- v4.69 title stamp present in every portal's `<title>` and presentation page.
+
+---
+
 ## v4.68 — 19 May 2026 — Access Control hub on Super Admin Screen 09
 
 Brady's RBAC document (`SkillProof_Authentication_Access_Control_Role_Hierarchy_v1_0_18MAY2026.md`, Final 18 MAY 2026) names the Super Admin as the only role that can change access levels — and explicitly calls out the many:one relationships of Skills and Schools. Until v4.67, Screen 09 of `super_admin/` only handled role elevation; the other three permission decisions (Tenant Admin → Schools, Instructor → Skills, Skill → Owner + Schools) were either missing or scattered across Screens 12 and 13.
