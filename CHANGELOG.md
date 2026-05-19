@@ -8,6 +8,25 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.84 — 19 May 2026 — Larger school logos in navbar (so 'School of X' text reads)
+
+Brady: *"Now increase the school-level logo in the upper-left corner to the larger size you did with the standard WGU logo. Right now, it's so small I can't read the lettering for 'School of XXX'."*
+
+The school logos have a stacked WGU + horizontal line + school-name layout, so at the 40px shared height set in v4.80 the school-name text portion was only ~13px tall — illegible. Bumped to **64px** specifically for school logos via the `[data-school-logo]` attribute selector, leaving the WGU corporate logos at 40px:
+
+```css
+.navbar-brand-logo { height: 40px; width: auto; }
+.navbar-brand-logo[data-school-logo] { height: 64px; }
+```
+
+Applied to all 6 portals (only the school-logo navbars in `tenant_admin/`, `student/`, `instructor/` actually pick up the override; the others have WGU corporate logos without the data attribute).
+
+### Storyboard stamp
+
+v4.84 across the 6 portals.
+
+---
+
 ## v4.83 — 19 May 2026 — Dark-mode footer theming (deep navy + white text, all 6 portals)
 
 Brady's directive: *"The dark mode footer needs to have the dark navy background and white text like the header does so it's legible and accessible in dark mode. All you did in the footer was update the logo file. Apply the other dark mode theming and make sure that's also deployed across every page of the prototype."*
