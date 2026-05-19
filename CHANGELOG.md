@@ -6,6 +6,60 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.74 — 19 May 2026 — Skill Creation Wizard rebuild (combined Screens 5+6)
+
+Phase E. The wizard's "Model & Coaching" (Screen 5) and "AI Coaching Prompt" (Screen 6) merge into a single Screen 5; preset prompt fields replaced with free-text inputs; jailbreak + sandbox boxes removed (enforced globally per JFT); default model changed to gpt-4o-mini with OpenAI top-3 + OpenRouter browse-all; "Add topic" button wired to insert a new row; MD upload + download flow added.
+
+### What changed (tenant_admin/index.html)
+
+- **Screen 5 rebuilt end-to-end** as Step 3 of 4:
+  - **Model picker** now defaults to **gpt-4o-mini** (Recommended); top-3 alternatives are **gpt-4o** + **gpt-4-turbo** (all OpenAI per Brady's "default to OpenAI models" direction). Each card carries the relevant cost / latency / context-window badges. `1M input / 1M output tokens` callout on gpt-4o-mini.
+  - **"Browse all OpenRouter models"** `<details>` block expands to a 6-row table covering Claude (Sonnet/Haiku), Gemini (Pro/Flash), Llama-3.3-70b, Mistral-large-2.
+  - **Fallback chain** alert updated to OpenAI siblings.
+  - **"Global coaching style"** → **"Coaching style"** (heading and intro copy). The 3 radio options (Socratic / Direct / Adaptive) stay.
+  - **NEW inline "AI coaching prompt" section** below the coaching style, dividing line above for visual separation:
+    - **MD upload + download buttons** — preferred format `.md`. Upload disables the three text inputs + status hint. Download exports current values to `skill-prompt-config.md`.
+    - **3 free-text inputs** with example placeholders (blank by default):
+      - "Student profile" → `"The student is a data scientist"`
+      - "Examples should be" → `"All examples should be data science related"`
+      - "Other" → `"Anything else you want this Skill to do explicitly"`
+    - **Compiled prompt preview** column showing the assembled prompt.
+    - Last-edited metadata + A/B test + LaTeX badges preserved from old Screen 6.
+  - **Floating actions** updated: Next → goToScreen(7) (skipping the now-deleted Screen 6).
+- **Screen 6 deleted entirely.** Stub comment `<!-- Screen 06: REMOVED in v4.74 — content folded into Screen 5 per JFT meeting -->`. `TOTAL_SCREENS` stays at 21 (max ID); arrow-key navigation already had fall-through for missing screens.
+- **Step counter** on the remaining wizard screens: "of 5" → "of 4". Screens 3 (Skill Details), 4 (Topics & LOs), and 5 (Model + Coaching + Prompt) carry the new step counts.
+- **Screen 7 Back button**: `goToScreen(6)` → `goToScreen(5)`.
+- **Meta-bar step-btn 06** removed from Flow A nav.
+- **"Add Topic" button** on Screen 4 now wired to `addTopic()` — clones the last topic block, clears its values, opens it inline, and scrolls into view. (Previously the button had no JS handler.)
+
+### Why
+
+Brady's JFT meeting notes:
+- *"Put Screen 06 at the bottom of Screen 05 for tenant admin"*
+- *"'Preset' buttons won't work as well as the direct text input"*
+- *"Remove the jailbreak/prompt-injection box. This is done at the code-level globally."*
+- *"Remove the Code execution sandbox text box from Screen 06 as well, it's already enforced in the global codebase."*
+- *"If you upload an MD config file on Screen 06, it should disable all the other text boxes. And you need a download button. MD file is the preferred format."*
+- *"Add an example of what each of these boxes is: 'The student is a data scientist' / 'All examples should be data science related' / 'Anything else you want this explicitly.' These are blank by default."*
+- *"OpenRouter options: Cheapest and fastest option. Default is 4o-mini... Default to OpenAI models. Recommend a top 3, then have a list of everything else. Remove the Global coaching style."*
+- *"Need a view for the 'Add topic' button, which is a new line."*
+
+### Verification
+
+- tenant_admin Screen 5: combined heading "Choose the model, coaching style, and AI prompt"; eyebrow "Step 3 of 4 · Model, Coaching & Prompt"
+- gpt-4o-mini default-selected (Recommended badge); top-3 alternatives are OpenAI siblings; `Browse all OpenRouter models` details expands to 6-row table
+- "Coaching style" heading (no "Global")
+- 3 blank text inputs below with the 3 placeholder examples; MD upload button + Download config button visible
+- Screen 4 Add Topic button now appends a new collapsible topic when clicked
+- Floating actions on Screen 5 advance to Screen 7
+- Screen 6 returns 404 (or skipped) — direct browsing to `#screen-6` does nothing
+
+### Storyboard stamp
+
+v4.74 across the 6 portals.
+
+---
+
 ## v4.73 — 19 May 2026 — Subject → Skill terminology sweep
 
 Brady's JFT direction: *"Make sure everything is 'topics' and 'learning objectives' for a 'skill'."* The prototype previously used "Subject" as the top-level concept; aligned to "Skill" across the user-visible UI and the persona READMEs. Topics + Learning Objectives stay as the canonical sub-units.
