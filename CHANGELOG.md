@@ -6,6 +6,17 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.66 — 18 May 2026 — Remove Catalog links across the prototype
+
+Brady is not actively using the Scenario Catalog page right now and doesn't want stale links pointing at it. Removed the only 2 navigation links that pointed at `presentation.html`:
+
+- **`index.html`** (root LRPS landing) — meta-bar "Catalog" quick-launch link removed
+- **`help/index.html`** — top-nav "Scenario Catalog" link removed
+
+The catalog pages themselves (`presentation.html` and `presentation_dark.html`) are NOT deleted — they still exist at their URLs for anyone with a direct link. Only the in-prototype navigation pointing to them is gone.
+
+---
+
 ## v4.65 — 18 May 2026 — Canonical persona names (User Profile Catalog v1.3)
 
 Per Brady, persona names had drifted across the prototype. Realigned to the source-of-truth User Profile Catalog v1.3 (13 MAY 2026) and Scenario Catalog v1.3 (13 MAY 2026). The catalog defines exactly 4 contract-named user types with **first names only**: Sally, Charlie, Alice, Bob. Last names that had been added during prototype iteration are removed.
