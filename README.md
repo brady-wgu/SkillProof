@@ -5,9 +5,7 @@
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Catalog](https://img.shields.io/badge/Catalog-Light-001730?style=for-the-badge)](https://brady-wgu.github.io/SkillProof/presentation.html)
-[![Catalog Dark](https://img.shields.io/badge/Catalog-Dark-0E2841?style=for-the-badge)](https://brady-wgu.github.io/SkillProof/presentation_dark.html)
-[![Version](https://img.shields.io/badge/Version-4.55-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.71-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-77-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -44,10 +42,8 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **Content Creator Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — Subject creation wizard (5 steps), Tenant Settings (identity + branding), Subject Lifecycle, Analytics & Reporting, Tenant Activity Log, plus the SC-ADD-06 incident response flow. Owner / Read-only distinction on the portal home; Help link in every navbar. **21 screens** (including Access Denied added v4.57). |
 | **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob (Super Admin) — token usage, rate limits, compliance, geo-redundancy, cross-tenant audit log, **Access Control** (tabbed People · Skills · Schools — role elevation + Tenant Admin → Schools + Instructor → Skills + Skill ownership / deployment; min-2-Super-Admins enforcement; orphan-Skill and no-Admin invariants surfaced), External Tooling hub, Data & Integrations Hub, Instructor Roster (read-only coverage view as of v4.68), School Management (read-only listing + Create new School). **14 screens** (including Access Denied added v4.57). |
 | **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/SkillProof/help/) | Shared self-service support, documentation, and video training surface. Linked from every admin portal navbar. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). |
-| **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/SkillProof/presentation.html) | All scenarios with workflow narratives and embedded screenshots. |
-| **Scenario Catalog (Dark)** | [`/presentation_dark.html`](https://brady-wgu.github.io/SkillProof/presentation_dark.html) | Same catalog, dark-theme screenshots. |
 
-**Total: 64 screens · 4 personas · 6 surfaces (4 persona portals + LRPS root + Help) · 2 reference catalogs.**
+**Total: 64 screens · 4 personas · 6 surfaces (4 persona portals + LRPS root + Help).**
 
 ---
 
@@ -56,8 +52,6 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 ```
 SkillProof/
 ├── index.html                  LRPS Landing (storyboard root, since v4.59)
-├── presentation.html           Scenario catalog (light)
-├── presentation_dark.html      Scenario catalog (dark)
 ├── capture_screens.py          Playwright screenshot pipeline
 ├── README.md                   This file
 ├── CHANGELOG.md                Version history
@@ -116,7 +110,7 @@ Click any persona folder to read its dedicated README.
 
 **Source:** SkillProof MVP Scenario Catalog v1.2 (07 Apr 2026).
 
-**v1.2 catalog alignment:** 100% (34/34 screens depict every step described in the catalog). UX detail beyond the visual design — `Need a Hint?` interaction, persistent session-stats display, fast-track threshold reasoning, re-assessment retention framing — is elaborated in [`presentation.html`](presentation.html). Honest call-outs of what v1 does **not** depict (no real Python execution, no mid-task pause, no error recovery, no re-assessment failure path, etc.) are enumerated in [student/README.md](student/README.md#v1-known-limitations). The v1 student screens are deliberately frozen as a baseline — see that file for the full list of v1.4+ candidate gaps.
+**v1.2 catalog alignment:** 100% (34/34 screens depict every step described in the catalog). Honest call-outs of what v1 does **not** depict (no real Python execution, no mid-task pause, no error recovery, no re-assessment failure path, etc.) are enumerated in [student/README.md](student/README.md#v1-known-limitations). The v1 student screens are deliberately frozen as a baseline — see that file for the full list of v1.4+ candidate gaps.
 
 ---
 
@@ -217,7 +211,7 @@ Canonical strings used across all surfaces. Use these verbatim when adding new s
 | **Role taxonomy** | `Student → Instructor → Tenant Admin → Super Admin` | 4-tier RBAC. Only Super Admin can change roles; minimum 2 Super Admins always. |
 | **Storyboard version** | `v4.x` | Tracks the visual prototype, not the underlying SkillProof product. SkillProof product versions follow the catalog: v1.2 MVP, v1.3 Additional, etc. |
 
-If you need to change any of these, update them everywhere in the same commit — `Glob` for the literal string across all portals, `presentation.html` / `presentation_dark.html`, and all per-persona READMEs before opening the PR.
+If you need to change any of these, update them everywhere in the same commit — `Glob` for the literal string across all portals and all per-persona READMEs before opening the PR.
 
 ---
 

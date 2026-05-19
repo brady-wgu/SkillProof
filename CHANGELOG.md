@@ -6,6 +6,31 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.71 — 19 May 2026 — Delete presentation pages and contract-tracking docs
+
+Brady's direction: this repo is for the SkillProof UI prototypes only. Supporting docs (scenario catalogs, contract trackers) are no longer maintained in the public repo. They live in Coda.io now. Reduces the cognitive surface area and cuts the JFT-visible footprint.
+
+### What was deleted
+
+- `presentation.html`, `presentation_dark.html` — the scenario catalog pages
+- `_contract_tracking/CONTRACT_TRACKER.md`
+- `_contract_tracking/SCREEN_JUSTIFICATIONS.md`
+- `_contract_tracking/D3A_BUILD_PLAN.md`
+- `_contract_tracking/README.md`
+- All in-repo references to the above (badges, surface table rows, repo-layout tree, per-persona README "Catalog" links)
+
+Note: git history still contains these files at older commits. No history rewrite was performed; that's a separate operation if needed later.
+
+### What stays
+
+The 6 UI surfaces (4 persona portals + LRPS root + Help) are now the entire repo deliverable. All future phases ship UI changes only.
+
+### Storyboard stamp
+
+v4.71 across all 6 portals.
+
+---
+
 ## v4.70 — 19 May 2026 — Site-wide UI polish (help icon, footer logo, sign-out, timing copy)
 
 Phase B of the 11-phase JFT meeting follow-up sweep. Fixes UI bugs that have accumulated since v4.62 plus a copy cleanup.
