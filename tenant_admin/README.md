@@ -10,7 +10,7 @@
 
 ## Scope
 
-Multi-tenancy + RBAC, Course-as-a-Service authoring (Subjects, Topics, Learning Objectives with per-objective passing thresholds), AI coaching prompt configuration, model selection + coaching style, CI/CD-driven deploys, post-deploy LRPS provisioning ticket workflow, the Support Plan / SLA workflow (SC-ADD-06), tenant identity + branding, subject lifecycle / archival, analytics + reporting, and tenant-scoped audit log.
+Multi-tenancy + RBAC, Course-as-a-Service authoring (Skills, Topics, Learning Objectives with per-objective passing thresholds), AI coaching prompt configuration, model selection + coaching style, CI/CD-driven deploys, post-deploy LRPS provisioning ticket workflow, the Support Plan / SLA workflow (SC-ADD-06), tenant identity + branding, Skill lifecycle / archival, analytics + reporting, and tenant-scoped audit log.
 
 ## Scenarios
 
@@ -18,7 +18,7 @@ This portal covers **two v1.3 scenarios** in one cohesive Alice experience:
 
 | ID | Description | Screens | Screen IDs |
 |:---|:------------|:-------:|:----------:|
-| **SC-ADD-02** | **Content Creator Portal & Course Configuration.** SSO + role elevation (1) → multi-tenant portal home with Owner / Read-only subject distinction (2) → New Subject form (3) → Topics & Learning Objectives with inline per-topic expanders carrying editable text + per-objective passing threshold + inline Add / Remove (4) → Model & Coaching (model picker + fallback chain + coaching style) (5) → Configure AI Coaching Prompt with five 200-char guardrail fields and a 600-char addendum + hallucination warning (6) → Deploy review with full subject summary (7) → Deploy success + LRPS provisioning ticket (8) → Tenant Settings (identity card + branding card) (17) → Subject Lifecycle & Archival (18) → Analytics & Reporting (Engagement + Class Insights + Program Reports with CSV/PDF/JSON exports) (19) → Tenant Activity Log (tenant-scoped audit) (20). | 12 | 1-8, 17-20 |
+| **SC-ADD-02** | **Content Creator Portal & Skill Configuration.** SSO + role elevation (1) → multi-tenant portal home with Owner / Read-only Skill distinction (2) → New Skill form (3) → Topics & Learning Objectives with inline per-topic expanders carrying editable text + per-objective passing threshold + inline Add / Remove (4) → Model & Coaching (model picker + fallback chain + coaching style) (5) → Configure AI Coaching Prompt with five 200-char guardrail fields and a 600-char addendum + hallucination warning (6) → Deploy review with full Skill summary (7) → Deploy success + LRPS provisioning ticket (8) → Tenant Settings (identity card + branding card) (17) → Skill Lifecycle & Archival (18) → Analytics & Reporting (Engagement + Class Insights + Program Reports with CSV/PDF/JSON exports) (19) → Tenant Activity Log (tenant-scoped audit) (20). | 12 | 1-8, 17-20 |
 | **SC-ADD-06** | **Critical Incident Response & SLA Verification.** All-systems-operational baseline (9) → service degradation detected (10) → email + toast notification (11) → P1 ticket creation in Jira (12) → JFT-SkillProof-2138 confirmation (13) → JFT CSM Jordan response thread, 2-hr P1 SLA per §9.5 (14) → service restored (15) → 99.95% Uptime SLA dashboard (16). | 8 | 9-16 |
 
 **Total: 2 scenarios · 20 screens (sequential 1-20).**
@@ -33,7 +33,7 @@ This portal covers **two v1.3 scenarios** in one cohesive Alice experience:
 
 | Scenario | SOW refs | Where covered |
 |:---------|:---------|:--------------|
-| SC-ADD-02 | §2.2 ("Tenant Admin" deliverable name), §2.5 (Admin Portal — Course Configuration, modules, analytics; **instructors** consciously consolidated under Super Admin per v4.48 deviation), §16.1 #6.7 (guardrails), #6.8 (A/B testing — badge), #6.12 (LaTeX — badge), §16.2 #7.9 (Custom Branding), #7.10 (engagement tracking), #7.11 (educator analytics), #7.12 (usage stats), #7.13 (visualization), #7.14 (report exports), §16.3 #8.6 (Multi-tenancy), §16.4 #9.7 (CSM), #9.14 (self-service support — Help nav link), #9.15 (video training — Help nav link), §16.5 #10.4 (Audit logging — tenant-scoped view on screen 20), #10.8 (RBAC), #10.14 (zero-trust — SSO landing line) | Multi-tenant scoping callout + Owner/Read-only on screen 2; topic + objective expanders with passing thresholds on screen 4; Model & Coaching radio cards on screen 5; AI Coaching Prompt (5 guardrail fields + LaTeX/A-B-test badges) on screen 6; deploy step summary on screen 7; LRPS provisioning ticket on screen 8; Tenant Settings (identity + branding) on screen 17; Subject Lifecycle on screen 18; Analytics & Reporting (engagement charts · class insights table · program reports with CSV/PDF/JSON exports) on screen 19; Tenant Activity Log on screen 20; Help link in every navbar. |
+| SC-ADD-02 | §2.2 ("Tenant Admin" deliverable name), §2.5 (Admin Portal — Skill Configuration, modules, analytics; **instructors** consciously consolidated under Super Admin per v4.48 deviation), §16.1 #6.7 (guardrails), #6.8 (A/B testing — badge), #6.12 (LaTeX — badge), §16.2 #7.9 (Custom Branding), #7.10 (engagement tracking), #7.11 (educator analytics), #7.12 (usage stats), #7.13 (visualization), #7.14 (report exports), §16.3 #8.6 (Multi-tenancy), §16.4 #9.7 (CSM), #9.14 (self-service support — Help nav link), #9.15 (video training — Help nav link), §16.5 #10.4 (Audit logging — tenant-scoped view on screen 20), #10.8 (RBAC), #10.14 (zero-trust — SSO landing line) | Multi-tenant scoping callout + Owner/Read-only on screen 2; topic + objective expanders with passing thresholds on screen 4; Model & Coaching radio cards on screen 5; AI Coaching Prompt (5 guardrail fields + LaTeX/A-B-test badges) on screen 6; deploy step summary on screen 7; LRPS provisioning ticket on screen 8; Tenant Settings (identity + branding) on screen 17; Skill Lifecycle on screen 18; Analytics & Reporting (engagement charts · class insights table · program reports with CSV/PDF/JSON exports) on screen 19; Tenant Activity Log on screen 20; Help link in every navbar. |
 | SC-ADD-06 | §6.5 (AI Fallback), §9.1 (Jira ticketing), §9.4 (channel), §9.2 (Uptime), §9.5 (SLAs), §9.7 (CSM), §9.10 (Response time), §9.13 (Monitoring) | All systems baseline → fallback → Jira ticket → CSM response thread → service restored → SLA dashboard across screens 9-16. |
 
 ## Files
@@ -46,7 +46,7 @@ This portal covers **two v1.3 scenarios** in one cohesive Alice experience:
 
 - 5-step **Stepper** for the CI/CD pipeline (Validate → Build → Test → Deploy → Verify)
 - **Topic expanders** (`<details>` / `<summary>` with caret rotation) carrying inline editable objective text + per-objective passing threshold + inline Add / Remove
-- **Owner / Read-only badges** on the portal-home subject list distinguishing write scope from read scope within the same tenant
+- **Owner / Read-only badges** on the portal-home Skill list distinguishing write scope from read scope within the same tenant
 - **Tenant identity card** with read-only key/value rows (Tenant ID, parent org, Operated by, LRPS launch URL, assigned JFT CSM, Your role scope)
 - **Branding card** with light-theme + dark-theme logo upload swatches and accent-color picker
 - **Analytics SVG charts** (time-on-task line chart + submissions bar chart, both with `role="img"` + accessible `aria-label`)
@@ -64,10 +64,10 @@ This portal covers **two v1.3 scenarios** in one cohesive Alice experience:
 
 - The "Deploy to Production" CTA triggers the simulated CI/CD pipeline. The Stepper component models the live progression through Validate → Build → Test → Deploy → Verify with status badges per step.
 - After deploy, the **LRPS provisioning ticket** workflow on screen 8 is a manual handoff: JFT does not write to LRPS; the WGU D&D team owns provisioning. The screen shows the production URL + auto-filled ticket justification for Alice to submit.
-- Tenant scoping is enforced at every layer: Subject creation locks the Program Subject field; deploys are audit-logged per SOW §10.4; the Tenant Activity Log on screen 20 only shows actions for Alice's School of Technology tenant (cross-tenant audit is Super Admin scope).
+- Tenant scoping is enforced at every layer: Skill creation locks the Program Subject field; deploys are audit-logged per SOW §10.4; the Tenant Activity Log on screen 20 only shows actions for Alice's School of Technology tenant (cross-tenant audit is Super Admin scope).
 - The chat thread on screen 14 demonstrates the JFT Support P1 response SLA (§9.5, <2-hr target). CSM Jordan is shown as the WGU-facing POC; the SLA itself is owned by JFT Support, not the CSM. First reply at 6 minutes, full resolution at 1h 24m.
 - The wizard's Step 3 (Model & Coaching, screen 5) is intentionally before Step 4 (AI Coaching Prompt, screen 6) — model + coaching basics are chosen before any custom prompt overrides.
-- Instructor management is **not** a tenant-level affordance in this portal. SOW §2.5 lists "instructors" as a tenant-level control, but WGU consolidated that under Super Admin (`super-12` Instructor Roster) in v4.48 because Super Admin is the sole controller of platform access. Tenant Admin retains read-only visibility of instructor activity via the portal-home subject rows and the Class Insights table on screen 19.
+- Instructor management is **not** a tenant-level affordance in this portal. SOW §2.5 lists "instructors" as a tenant-level control, but WGU consolidated that under Super Admin (`super-12` Instructor Roster) in v4.48 because Super Admin is the sole controller of platform access. Tenant Admin retains read-only visibility of instructor activity via the portal-home Skill rows and the Class Insights table on screen 19.
 
 ## Device context
 

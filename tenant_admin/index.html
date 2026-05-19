@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.72</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.73</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
     Tenant Admin storyboard for the SkillProof v1.3 additional scenarios.
     Persona: Alice (Tenant Admin, Program Development content owner).
-    Scenarios: SC-ADD-02 (Portal & Course Configuration),
+    Scenarios: SC-ADD-02 (Portal & Skill Configuration),
                SC-ADD-05 (Data Portability),
                SC-ADD-06 (Critical Incident Response & SLA).
 
@@ -479,7 +479,7 @@
     .radio-card-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
 
     /* ================================================================
-       NUMBERED LIST ROWS (Subjects, Topics)
+       NUMBERED LIST ROWS (Skills, Topics)
        ================================================================ */
     .row-list { display: flex; flex-direction: column; gap: var(--pgn-spacing-1); }
 
@@ -1232,7 +1232,7 @@
             <div class="pgn__card-section">
               <h3 class="h5 mt-1 mb-2">Configure courses</h3>
               <div class="d-flex gap-2">
-                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">add</span>New Subject</button>
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">add</span>New Skill</button>
                 <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(17);">Tenant Settings</button>
               </div>
             </div>
@@ -1275,7 +1275,7 @@
         </div>
       </div>
 
-      <h2 class="h5 mb-2">Your Subjects</h2>
+      <h2 class="h5 mb-2">Your Skills</h2>
       <div class="row-list mb-3">
         <div class="row-card">
           <div class="row-num">1</div>
@@ -1342,7 +1342,7 @@
 
       <div class="d-flex gap-2 align-items-center mb-3">
         <button class="btn btn-primary btn-lg" onclick="goToScreen(3)">
-          <span class="material-icons-outlined" aria-hidden="true">add</span>New Subject
+          <span class="material-icons-outlined" aria-hidden="true">add</span>New Skill
         </button>
         <button class="btn btn-outline-primary btn-lg" onclick="goToScreen(17)">
           <span class="material-icons-outlined" aria-hidden="true">tune</span>Tenant Settings
@@ -1353,7 +1353,7 @@
   </main>
 </section>
 
-<!-- Screen 03: New Subject creation form ============================= -->
+<!-- Screen 03: New Skill creation form ============================= -->
 <section class="screen" id="screen-3" aria-labelledby="s3-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
@@ -1369,22 +1369,22 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(2); return false;">School Admin · School of Technology</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#">Subjects</a>
+        <a href="#">Skills</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>New Subject</span>
+        <span>New Skill</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">edit</span>Step 1 of 5 · Subject Details</span>
-      <h1 id="s3-heading" class="h1 mb-2">Create a new Subject</h1>
+      <span class="eyebrow"><span class="material-icons-outlined">edit</span>Step 1 of 5 · Skill Details</span>
+      <h1 id="s3-heading" class="h1 mb-2">Create a new Skill</h1>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section-lg">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="f-code">Subject code</label>
+              <label class="form-label" for="f-code">Skill code</label>
               <input class="form-control" id="f-code" type="text" value="E135" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="f-title">Subject title</label>
+              <label class="form-label" for="f-title">Skill title</label>
               <input class="form-control" id="f-title" type="text" value="Object-Oriented Programming with Python" />
             </div>
           </div>
@@ -1711,7 +1711,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="f-domain">Subject-domain limits</label>
+              <label class="form-label" for="f-domain">Skill-domain limits</label>
               <textarea class="form-control" id="f-domain" rows="3" maxlength="200">Refuse off-topic requests politely. Stay within E135 OOP scope; redirect to mentors for anything else.</textarea>
             </div>
 
@@ -1807,7 +1807,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="pgn__card pgn__card-featured mb-3">
         <div class="pgn__card-section">
           <div class="d-flex justify-content-between align-items-start mb-3" style="flex-wrap:wrap; gap:12px;">
-            <h2 class="h5 mb-0">Subject summary</h2>
+            <h2 class="h5 mb-0">Skill summary</h2>
             <div class="d-flex gap-2">
               <button class="btn btn-outline-primary">Deploy to Staging</button>
               <button class="btn btn-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Production</button>
@@ -1816,7 +1816,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 
           <div class="row">
             <div class="col-6">
-              <h3 class="eyebrow mb-2"><span class="material-icons-outlined">edit</span>Step 1 · Subject Details</h3>
+              <h3 class="eyebrow mb-2"><span class="material-icons-outlined">edit</span>Step 1 · Skill Details</h3>
               <table class="pgn__data-table mb-3" style="border:none; box-shadow:none;">
                 <tr><th style="width:38%;">Code</th><td>E135</td></tr>
                 <tr><th>Title</th><td>Object-Oriented Programming with Python</td></tr>
@@ -1897,7 +1897,7 @@ Address the learner by their first name. Never use "student" as the form of addr
   </div>
 </section>
 
-<!-- Screen 08: Deploy success → live course link ====================== -->
+<!-- Screen 08: Deploy success → live Skill link ======================= -->
 <section class="screen" id="screen-8" aria-labelledby="s8-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
@@ -1916,7 +1916,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         </div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Deployed to Production</span>
         <h1 id="s8-heading" class="h2 mb-2">E135 build succeeded</h1>
-        <div class="small text-muted mb-2">Subject ID: <code>e135-oop-python</code> · Build: <code>2026.05.06.1547</code></div>
+        <div class="small text-muted mb-2">Skill ID: <code>e135-oop-python</code> · Build: <code>2026.05.06.1547</code></div>
       </div>
 
       <div class="pgn__card pgn__card-featured mt-3" style="text-align:left;">
@@ -1930,7 +1930,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 
           <div class="form-group mb-3">
             <label class="form-label" for="lrps-justification">Ticket justification</label>
-            <textarea class="form-control" id="lrps-justification" rows="3">New SkillProof subject E135 deployed. Requesting LRPS deep-link provisioning. Tenant: pdev. Build: e135-oop-python 2026.05.06.1547.</textarea>
+            <textarea class="form-control" id="lrps-justification" rows="3">New SkillProof Skill E135 deployed. Requesting LRPS deep-link provisioning. Tenant: pdev. Build: e135-oop-python 2026.05.06.1547.</textarea>
           </div>
 
           <div class="d-flex gap-2 mb-3">
@@ -2567,7 +2567,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <div class="d-flex gap-2" style="flex-wrap:wrap;">
             <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">file_download</span>Export incident report (CSV)</button>
             <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">home</span>Portal home</button>
-            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>Configure another Subject</button>
+            <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>Configure another Skill</button>
           </div>
         </div>
       </div>
@@ -2664,11 +2664,11 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">arrow_back</span>Back to Portal</button>
-    <button class="btn btn-primary" onclick="goToScreen(18)">Next: Subject Lifecycle<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-primary" onclick="goToScreen(18)">Next: Skill Lifecycle<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 18: Tenant Settings — Subject Lifecycle & Archival (G6 / SOW §2.5 + §10.4) -->
+<!-- Screen 18: Tenant Settings — Skill Lifecycle & Archival (G6 / SOW §2.5 + §10.4) -->
 <section class="screen" id="screen-18" aria-labelledby="s18-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
@@ -2686,23 +2686,23 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(17); return false;">Tenant Settings</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>Subject Lifecycle</span>
+        <span>Skill Lifecycle</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">inventory_2</span>Tenant Configuration</span>
-      <h1 id="s18-heading" class="mb-4">Subject Lifecycle &amp; Archival</h1>
+      <h1 id="s18-heading" class="mb-4">Skill Lifecycle &amp; Archival</h1>
 
       <div class="row mb-3">
         <div class="col-7">
           <div class="pgn__card pgn__card-featured">
             <div class="pgn__card-section">
               <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="eyebrow"><span class="material-icons-outlined">play_circle</span>Active subjects · 3</span>
-                <button class="btn btn-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>New Subject</button>
+                <span class="eyebrow"><span class="material-icons-outlined">play_circle</span>Active Skills · 3</span>
+                <button class="btn btn-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>New Skill</button>
               </div>
               <table class="pgn__data-table">
                 <thead>
                   <tr>
-                    <th>Subject</th>
+                    <th>Skill</th>
                     <th>Deployed</th>
                     <th>Status</th>
                     <th></th>
@@ -2712,7 +2712,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                   <tr>
                     <td>
                       <div class="text-strong">E010 · Foundations of Programming (Python)</div>
-                      <div class="micro text-muted">Subject ID <code>sub_e010</code> · prompt v3</div>
+                      <div class="micro text-muted">Skill ID <code>sub_e010</code> · prompt v3</div>
                     </td>
                     <td>04 May 2026</td>
                     <td><span class="badge badge-success"><span class="dot green"></span>Live</span></td>
@@ -2721,7 +2721,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                   <tr>
                     <td>
                       <div class="text-strong">E075 · Intermediate Python &amp; Libraries</div>
-                      <div class="micro text-muted">Subject ID <code>sub_e075</code> · prompt v2</div>
+                      <div class="micro text-muted">Skill ID <code>sub_e075</code> · prompt v2</div>
                     </td>
                     <td>14 Apr 2026</td>
                     <td><span class="badge badge-success"><span class="dot green"></span>Live</span></td>
@@ -2730,7 +2730,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                   <tr>
                     <td>
                       <div class="text-strong">E135 · OOP with Python</div>
-                      <div class="micro text-muted">Subject ID <code>sub_e135</code> · prompt v1</div>
+                      <div class="micro text-muted">Skill ID <code>sub_e135</code> · prompt v1</div>
                     </td>
                     <td>02 May 2026</td>
                     <td><span class="badge badge-info"><span class="dot blue"></span>Ramping</span></td>
@@ -2743,11 +2743,11 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
           <div class="pgn__card mt-3">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">archive</span>Archived subjects · 2</span>
+              <span class="eyebrow"><span class="material-icons-outlined">archive</span>Archived Skills · 2</span>
               <table class="pgn__data-table mt-2">
                 <thead>
                   <tr>
-                    <th>Subject</th>
+                    <th>Skill</th>
                     <th>Archived</th>
                     <th>Retention until</th>
                     <th></th>
@@ -2775,7 +2775,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         <div class="col-5">
           <div class="pgn__card pgn__card-featured" style="border-left: 4px solid var(--pgn-color-warning-base);">
             <div class="pgn__card-section">
-              <span class="eyebrow" style="color: #B5710B;"><span class="material-icons-outlined">remove_circle_outline</span>Deactivate Subject · preview</span>
+              <span class="eyebrow" style="color: #B5710B;"><span class="material-icons-outlined">remove_circle_outline</span>Deactivate Skill · preview</span>
               <h2 class="h5 mb-2">Deactivate E010 · Foundations of Programming (Python)?</h2>
 
               <div class="form-group mb-3">
@@ -2883,7 +2883,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           <table class="pgn__data-table">
             <thead>
               <tr>
-                <th>Subject</th>
+                <th>Skill</th>
                 <th>Avg topic mastery</th>
                 <th>Learners below threshold</th>
                 <th>At-risk</th>
@@ -3014,9 +3014,9 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               </select>
             </div>
             <div class="col-4">
-              <label class="form-label" for="rep-subject">Subjects</label>
-              <select class="form-control" id="rep-subject">
-                <option selected>All subjects</option>
+              <label class="form-label" for="rep-skill">Skills</label>
+              <select class="form-control" id="rep-skill">
+                <option selected>All Skills</option>
                 <option>E010</option>
                 <option>E075</option>
                 <option>E135</option>
@@ -3045,7 +3045,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <tbody>
               <tr>
                 <td><div class="text-strong">Engagement report</div><div class="micro text-muted">Time on task, submissions, active sessions</div></td>
-                <td>Last 30 days &middot; All subjects &middot; All topics</td>
+                <td>Last 30 days &middot; All Skills &middot; All topics</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>CSV</button>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
@@ -3054,7 +3054,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               </tr>
               <tr>
                 <td><div class="text-strong">Submissions report</div><div class="micro text-muted">Counts, pass rates, attempts per objective</div></td>
-                <td>Last 30 days &middot; All subjects &middot; All topics</td>
+                <td>Last 30 days &middot; All Skills &middot; All topics</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>CSV</button>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
@@ -3063,7 +3063,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               </tr>
               <tr>
                 <td><div class="text-strong">Topic-mastery report</div><div class="micro text-muted">Mastery distribution and threshold gaps</div></td>
-                <td>Last 30 days &middot; All subjects &middot; All topics</td>
+                <td>Last 30 days &middot; All Skills &middot; All topics</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">download</span>CSV</button>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
@@ -3157,7 +3157,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               <tr>
                 <td>12 May 2026 &middot; 16:02:11</td>
                 <td>Alice</td>
-                <td>Create subject</td>
+                <td>Create Skill</td>
                 <td><code>sub_e135</code></td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
@@ -3286,18 +3286,18 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow A</span>
-    <span class="flow-desc">School Admin Portal &amp; Course Configuration</span>
+    <span class="flow-desc">School Admin Portal &amp; Skill Configuration</span>
     <nav class="flow-nav" aria-label="Course configuration screens">
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: SSO landing">01</button>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
-      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Subject form">03</button>
+      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Skill form">03</button>
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives (overall Skill passing threshold + inline expanders with per-objective threshold)">04</button>
       <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Model &amp; Coaching (model picker + coaching style)">05</button>
       <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Configure AI Coaching Prompt">06</button>
       <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Deploy review">07</button>
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Deploy success + LRPS provisioning ticket">08</button>
       <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: Tenant Settings (tenant identity + branding)">17</button>
-      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Tenant Settings — Subject Lifecycle (§2.5 + §10.4)">18</button>
+      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Tenant Settings — Skill Lifecycle (§2.5 + §10.4)">18</button>
       <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Analytics &amp; Reporting (A-7.10..7.14)">19</button>
       <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Tenant Activity Log (A-10.4 tenant-scoped)">20</button>
       <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Access Denied (zero-trust deny path)">21</button>
