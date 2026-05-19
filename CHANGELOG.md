@@ -8,6 +8,22 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.87 — 19 May 2026 — Strip 'SkillProof Design System v1.2' meta-bar text + remove unrequested 'Technical contact' footer link
+
+Two clean-up passes per Brady's directive.
+
+### What changed
+
+- **Meta-bar header** in 4 portals (root LRPS, instructor, tenant_admin, super_admin) — removed the `· SkillProof Design System v1.2 ·` segment. Now reads `DEMO ONLY · [Portal name] · Persona: [Name]`.
+- **Footer** in all 6 portals (root, student, instructor, tenant_admin, super_admin, help) — removed the `| Technical contact: Vivek` `mailto:vivek@wgu.edu` link I had added in v4.78 without explicit ask. Footer now ends at Honor Code.
+- **Screen 17 identity card** in tenant_admin — removed the `Contact Vivek for changes` mention; now reads `Tenant ID tenant_school_tech · managed centrally by WGU.` and stops there.
+
+### Storyboard stamp
+
+v4.87 across the 6 portals.
+
+---
+
 ## v4.86 — 19 May 2026 — Apply student-style storyboard shortcut bar to all 3 admin portals
 
 Brady: *"I like the update you did to the student flow shortcut bar at the bottom of the page with the 'back' button in the upper right corner of the shortcut bar that goes back to the LRPS page. I also like that you added a short description along with the screen numbering in that bar. Apply all of those updates to all the other prototype screens in the other 3 user scenarios."*
