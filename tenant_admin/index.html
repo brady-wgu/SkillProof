@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.84</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.85</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1150,52 +1150,10 @@
      SC-ADD-02 — TENANT ADMIN PORTAL & COURSE CONFIGURATION
      ================================================================ -->
 
-<!-- Screen 01: LRPS deep-link landing → SSO check ====================== -->
-<section class="screen active" id="screen-1" aria-labelledby="s1-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand" aria-label="Western Governors University">
-      <img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology">
-      <img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology">
-    </a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
-        <span class="material-icons-outlined theme-icon-light">dark_mode</span>
-        <span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span>
-      </button>
-      <a class="navbar-help-link" href="../help/index.html#submit-request" aria-label="Help & Resources"><span class="material-icons-outlined">help_outline</span>Help</a>
-      <span class="navbar-chip">School Admin · School of Technology</span>
-      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
-    </div>
-  </header>
-  <main class="screen-main centered" id="main-1">
-    <div class="container-narrow">
-      <div class="pgn__card pgn__card-featured">
-        <div class="pgn__card-section-lg text-center">
-          <div class="spinner mb-3" aria-hidden="true"></div>
-          <span class="eyebrow">Authenticating</span>
-          <h1 id="s1-heading" class="h2 mb-2">Welcome to the School Admin Portal</h1>
-          <p class="mb-4">Verifying your secret LRPS deep link with WGU Single Sign-On.</p>
-          <div class="stack-2 text-center" style="display:inline-block; text-align:left;">
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LRPS deep link verified <code style="background:var(--pgn-color-bg-light); padding:1px 6px; border-radius:3px; font-size:12px;">[SkillProof-IN]</code></span></div>
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>WGU SSO authentication complete</span></div>
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>LTI baseline role: Instructor</span></div>
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">check_circle</span><span>Elevation applied: <strong>Tenant Admin</strong> <span class="text-muted small">(by Super Admin Bob, 07 May 2026)</span></span></div>
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined text-success">verified_user</span><span>Authorization verified server-side &middot; <span class="text-muted small">link does not grant access</span></span></div>
-          </div>
-          <p class="text-muted small mt-3 mb-0">Default landing role for LRPS deep links: Student. WGU staff: Instructor. Tenant Admin requires Super Admin elevation.</p>
-          <div class="mt-4">
-            <button class="btn btn-primary btn-lg" onclick="goToScreen(2)">
-              Continue to Portal <span class="material-icons-outlined" aria-hidden="true">arrow_forward</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</section>
+<!-- Screen 1 (SSO landing) REMOVED in v4.85 — informational only, not in JFT scope -->
 
 <!-- Screen 02: Tenant Admin Portal home ============================== -->
-<section class="screen" id="screen-2" aria-labelledby="s2-heading">
+<section class="screen active" id="screen-2" aria-labelledby="s2-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -3284,8 +3242,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <span class="flow-id">Flow A</span>
     <span class="flow-desc">School Admin Portal &amp; Skill Configuration</span>
     <nav class="flow-nav" aria-label="Course configuration screens">
-      <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: SSO landing">01</button>
-      <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
+      <button class="step-btn active" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Skill form">03</button>
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives (overall Skill passing threshold + inline expanders with per-objective threshold)">04</button>
       <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Model &amp; Coaching (model picker + coaching style)">05</button>
