@@ -8,6 +8,31 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.82 — 19 May 2026 — Help button in every navbar
+
+Brady's directive: *"The help button should be in the header across ALL pages on the site, no matter what."*
+
+The LRPS landing root (`index.html`) had no Help button. Added one next to the theme toggle (matches the `.btn-theme-toggle` icon pattern used by other admin portals, links to `help/index.html#submit-request`).
+
+The help page itself (`help/index.html`) also got a Help icon button in its navbar — it re-anchors to the form on the same page (`#submit-request`).
+
+All 6 portals now carry a Help icon in their navbar:
+
+| Portal | Pattern | Target |
+|---|---|---|
+| `/` (LRPS landing) | `.btn-theme-toggle` icon link | `help/index.html#submit-request` |
+| `student/` | `.btn-theme-toggle` icon link | `../help/index.html#submit-request` |
+| `instructor/` | `.btn-theme-toggle` icon link | `../help/index.html#submit-request` |
+| `tenant_admin/` | `.navbar-help-link` pill (existing) | `../help/index.html#submit-request` |
+| `super_admin/` | `.btn-theme-toggle` icon link | `../help/index.html#submit-request` |
+| `help/` | `.btn-theme-toggle` icon link | `#submit-request` (re-anchor) |
+
+### Storyboard stamp
+
+v4.82 across the 6 portals.
+
+---
+
 ## v4.81 — 19 May 2026 — Help page rewrite + remove floating support pill + CHANGELOG prune
 
 Four-item batch from the second audit follow-up.
