@@ -6,6 +6,41 @@ The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, n
 
 ---
 
+## v4.65 — 18 May 2026 — Canonical persona names (User Profile Catalog v1.3)
+
+Per Brady, persona names had drifted across the prototype. Realigned to the source-of-truth User Profile Catalog v1.3 (13 MAY 2026) and Scenario Catalog v1.3 (13 MAY 2026). The catalog defines exactly 4 contract-named user types with **first names only**: Sally, Charlie, Alice, Bob. Last names that had been added during prototype iteration are removed.
+
+### Canonical mapping applied
+
+| Persona | Catalog name | Prior drift | Now |
+|---|---|---|---|
+| Student | Sally | "Sally Mitchell" (student navbar + comment); avatar "SM" | "Sally" / "S" |
+| Tenant Admin | Alice | "Alice Morgan" (user menu); `alice.morgan@example.edu` | "Alice" / `alice@example.edu` |
+| Instructor | Charlie | ✓ already correct | (no change) |
+| Super Admin | Bob | ✓ already correct | (no change) |
+| LRPS landing user | (no canonical persona) | "Lana" with wrong avatar "B" | **Alice** with avatar "A" — User Profile Catalog v1.3 says Alice's role explicitly includes "Creating, testing, and updating deep link URLs that target specific sub-sections of the platform, then placing those links in the LMS as LRPS resources within the appropriate course modules" |
+
+### Files touched
+
+- `index.html` — navbar user "Lana / B" → "Alice / A"; 4 LRPS provider rows "Created By Lana" → "Created By Alice"; meta-bar persona label updated to reference User Profile Catalog v1.3
+- `student/index.html` — navbar "Sally Mitchell / SM" → "Sally / S"; v4.58 rebuild-decisions comment updated to drop "Mitchell"
+- `tenant_admin/index.html` — user-menu identity "Alice Morgan" + `alice.morgan@example.edu` → "Alice" + `alice@example.edu`
+- `super_admin/index.html` — User Management table row for Alice: email `alice.morgan@example.edu` → `alice@example.edu`
+
+### Verification
+
+All 5 portal navbars (root LRPS landing + 4 admin/student portals) show canonical first names with matching single-letter avatar initials. Verified locally via `preview_eval`:
+
+| Surface | Avatar | Name |
+|---|:-:|---|
+| `/` | A | Alice |
+| `/student/` | S | Sally |
+| `/tenant_admin/` | A | Alice |
+| `/super_admin/` | B | Bob |
+| `/instructor/` | C | Charlie |
+
+---
+
 ## v4.64 — 18 May 2026 — LRPS landing cleanup: strip non-essential chrome
 
 Per Brady, the root LRPS landing had too much explanatory text. Stripped the introductory chrome so the page reads as a clean provider table with the 4 live SkillProof rows up top. The h1 "Providers" stays as the page title.
