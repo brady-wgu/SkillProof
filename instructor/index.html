@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.85</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.86</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -728,6 +728,8 @@
     }
     .step-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
     .step-btn.active { background: var(--pgn-color-info-base); border-color: var(--pgn-color-info-base); color: #fff; font-weight: 700; }
+    .meta-link { color: var(--pgn-color-info-base); text-decoration: none; }
+    .meta-link:hover { text-decoration: underline; }
 
     .skip-nav {
       position: absolute; left: -9999px; top: auto;
@@ -1599,19 +1601,20 @@ for s in scores:
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
     <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof Instructor Dashboard &middot; SkillProof Design System v1.2 &middot; Persona: Charlie</span>
+    <span style="margin-left:auto;"><a href="../" class="meta-link">&larr; Storyboard Index</a></span>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow</span>
     <span class="flow-desc">Instructor Dashboard &amp; At-Risk Intervention</span>
     <nav class="flow-nav" aria-label="At-risk intervention screens">
-      <button class="step-btn active" onclick="goToScreen(2)" aria-label="Screen 02: Dashboard home">02</button>
-      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Class heatmap">03</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: At-risk filter">04</button>
-      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Sally profile">05</button>
-      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Conversation logs">06</button>
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Session transcript">07</button>
-      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Audit Trail">08</button>
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Access Denied (zero-trust deny path)">09</button>
+      <button class="step-btn active" onclick="goToScreen(2)" aria-label="Screen 02: Dashboard home">02 Dashboard home</button>
+      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Class heatmap">03 Class heatmap</button>
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: At-risk filter">04 At-risk filter</button>
+      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Sally profile">05 Sally profile</button>
+      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Conversation logs">06 Conversation logs</button>
+      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Session transcript">07 Session transcript</button>
+      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Audit Trail">08 Audit Trail</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Access Denied (zero-trust deny path)">09 Access Denied</button>
     </nav>
   </div>
 </div>
