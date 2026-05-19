@@ -24,8 +24,8 @@
 **SkillProof** is WGU's AI-powered Python coding coach for students, plus the administrative surfaces around it. This repo holds the **medium-fidelity storyboard** that JFT (Jellyfish Technologies) builds against — a self-contained, offline-capable visual sample of all the major surfaces:
 
 - **Sally** (Student) — the v1.2 MVP coaching loop. **JFT shipped this first.** ([student/](student/))
-- **Alice** (Content Creator; SOW §2.2 role: Tenant Admin) — Course-as-a-Service portal: subject creation wizard, topic + objective expanders with per-objective passing thresholds, AI coaching prompt configuration, model + coaching style selection, CI/CD-driven deploy, LRPS provisioning workflow, tenant settings, subject lifecycle, analytics & reporting, tenant-scoped activity log. ([tenant_admin/](tenant_admin/))
 - **Charlie** (Instructor) — At-Risk Intervention dashboard. ([instructor/](instructor/))
+- **Alice** (Content Creator; SOW §2.2 role: Tenant Admin) — Course-as-a-Service portal: subject creation wizard, topic + objective expanders with per-objective passing thresholds, AI coaching prompt configuration, model + coaching style selection, CI/CD-driven deploy, LRPS provisioning workflow, tenant settings, subject lifecycle, analytics & reporting, tenant-scoped activity log. ([tenant_admin/](tenant_admin/))
 - **Bob** (Super Admin) — Cross-tenant governance, financial controls, security compliance, user role management, instructor roster, data + integrations hub, school/tenant management. ([super_admin/](super_admin/))
 - Plus **LRPS Landing** at the storyboard root ([`/`](./)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all four personas. **(v4.59: promoted to root; the standalone `/lrps/` URL was retired.)**
 - Plus **Help & Resources** ([help/](help/)) — shared self-service support + video training surface linked from every admin portal's navbar.
@@ -40,8 +40,8 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 |:--------|:----|:------------|
 | **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point for all four personas (4 live SkillProof rows + illustrative filler). **Start here.** **v4.59:** promoted to root; the standalone `/lrps/` URL was retired. |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
-| **Content Creator Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — Subject creation wizard (5 steps), Tenant Settings (identity + branding), Subject Lifecycle, Analytics & Reporting, Tenant Activity Log, plus the SC-ADD-06 incident response flow. Owner / Read-only distinction on the portal home; Help link in every navbar. **21 screens** (including Access Denied added v4.57). |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — class heatmap → at-risk drill-down → conversation transcript → Audit Trail. **9 screens** (including Access Denied added v4.57). |
+| **Content Creator Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — Subject creation wizard (5 steps), Tenant Settings (identity + branding), Subject Lifecycle, Analytics & Reporting, Tenant Activity Log, plus the SC-ADD-06 incident response flow. Owner / Read-only distinction on the portal home; Help link in every navbar. **21 screens** (including Access Denied added v4.57). |
 | **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob (Super Admin) — token usage, rate limits, compliance, geo-redundancy, cross-tenant audit log, User Management (4-tier role taxonomy with min-2-Super-Admins constraint), External Tooling hub, Data & Integrations Hub, Instructor Roster & Course Assignment (cross-tenant), School / Tenant Management. **14 screens** (including Access Denied added v4.57). |
 | **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/SkillProof/help/) | Shared self-service support, documentation, and video training surface. Linked from every admin portal navbar. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). |
 | **Scenario Catalog (Light)** | [`/presentation.html`](https://brady-wgu.github.io/SkillProof/presentation.html) | All scenarios with workflow narratives and embedded screenshots. |
@@ -70,16 +70,16 @@ SkillProof/
 │   ├── README.md
 │   ├── screenshots/            18 PNGs (light)
 │   └── screenshots_dark/       18 PNGs (dark)
-├── tenant_admin/               v1.3 — Alice (21 screens since v4.57 Access Denied)
-│   ├── index.html
-│   ├── README.md
-│   ├── screenshots/            21 PNGs
-│   └── screenshots_dark/       21 PNGs
 ├── instructor/                 v1.3 — Charlie (9 screens since v4.57 Access Denied)
 │   ├── index.html
 │   ├── README.md
 │   ├── screenshots/            9 PNGs
 │   └── screenshots_dark/       9 PNGs
+├── tenant_admin/               v1.3 — Alice (21 screens since v4.57 Access Denied)
+│   ├── index.html
+│   ├── README.md
+│   ├── screenshots/            21 PNGs
+│   └── screenshots_dark/       21 PNGs
 ├── super_admin/                v1.3 — Bob (14 screens since v4.57 Access Denied)
 │   ├── index.html
 │   ├── README.md
@@ -120,6 +120,24 @@ Click any persona folder to read its dedicated README.
 
 ---
 
+### 👨‍🏫 Instructor (v1.3) — Charlie
+
+**Surface:** [`instructor/`](instructor/) · [Live](https://brady-wgu.github.io/SkillProof/instructor/) · [README](instructor/README.md)
+
+**Persona:** Charlie — Instructor (per User Profile + SOW §2.5) for E010 Foundations of Programming (Python), E075 Intermediate Python & Libraries, and E135 OOP with Python.
+
+**Scope:** Educator-facing analytics and learner engagement tracking. SkillProof is a practice tool — coaching scores never feed academic records.
+
+**Scenarios (1, 8 screens; sequential 1-8):**
+
+| ID | Description | Screens |
+|:---|:------------|:-------:|
+| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** Course overview → class heatmap (15 learners × 4 competencies, 9-step color scale; export CTAs per §7.14) → at-risk filter → Sally drill-down → conversation transcript with AI feedback → Audit Trail event log. | 8 |
+
+**Source:** SkillProof User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
+
+---
+
 ### 🏢 Content Creator (Tenant Admin per SOW §2.2) (v1.3) — Alice
 
 **Surface:** [`tenant_admin/`](tenant_admin/) · [Live](https://brady-wgu.github.io/SkillProof/tenant_admin/) · [README](tenant_admin/README.md)
@@ -136,24 +154,6 @@ Click any persona folder to read its dedicated README.
 | **SC-ADD-06** | **Critical Incident Response & SLA.** Primary LLM provider down → fallback engaged → P1 ticket in **Jira** (§9.1 + §9.4) → JFT Support 2-hr P1 response per §9.5 → service restored → 99.95% uptime SLA verified. | 8 |
 
 **Source:** SkillProof User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026) + WGU working draft *"SkillProof Authentication, Access Control, and Role Hierarchy" v1.0* (13 May 2026).
-
----
-
-### 👨‍🏫 Instructor (v1.3) — Charlie
-
-**Surface:** [`instructor/`](instructor/) · [Live](https://brady-wgu.github.io/SkillProof/instructor/) · [README](instructor/README.md)
-
-**Persona:** Charlie — Instructor (per User Profile + SOW §2.5) for E010 Foundations of Programming (Python), E075 Intermediate Python & Libraries, and E135 OOP with Python.
-
-**Scope:** Educator-facing analytics and learner engagement tracking. SkillProof is a practice tool — coaching scores never feed academic records.
-
-**Scenarios (1, 8 screens; sequential 1-8):**
-
-| ID | Description | Screens |
-|:---|:------------|:-------:|
-| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** Course overview → class heatmap (15 learners × 4 competencies, 9-step color scale; export CTAs per §7.14) → at-risk filter → Sally drill-down → conversation transcript with AI feedback → Audit Trail event log. | 8 |
-
-**Source:** SkillProof User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026).
 
 ---
 
@@ -179,12 +179,12 @@ Click any persona folder to read its dedicated README.
 
 **Surface:** [`/` (storyboard root)](./) · [Live](https://brady-wgu.github.io/SkillProof/) — v4.59 promoted to root; the standalone `lrps/` folder was deleted.
 
-**Persona:** Lana (the fictional LRPS admin who provisions the deep links) or any WGU staff with LRPS access.
+**Persona:** Alice (Tenant Admin) — per User Profile Catalog v1.3, Alice's role explicitly includes creating, testing, and updating LRPS deep links for SkillProof.
 
 **Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SkillProof Design System v1.2. Each of the four persona portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. JFT does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
 
 The LRPS surface includes:
-- 4 live SkillProof rows (Student, Tenant Admin, Instructor, Super Admin) — clickable, deep-linked
+- 4 live SkillProof rows (Student, Instructor, Tenant Admin, Super Admin) — clickable, deep-linked
 - Illustrative filler rows (OEX modules, zyBooks, Pearson, ProctorU, Coursera, Cicada legacy, Panopto, etc.) for realistic LRPS density
 - A meta-bar quick-launch with chips to all surfaces + the catalog
 
