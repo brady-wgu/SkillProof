@@ -773,43 +773,9 @@
 <main id="main-content" style="padding: var(--pgn-spacing-5) 0;">
   <div class="container">
 
-    <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-      <a href="#">LRPS</a>
-      <span class="material-icons-outlined">chevron_right</span>
-      <a href="#">Learning Resources</a>
-      <span class="material-icons-outlined">chevron_right</span>
-      <span>Providers</span>
-    </nav>
-
     <div class="page-header">
       <div>
-        <span class="eyebrow"><span class="material-icons-outlined">database</span>Learning Resource Provisioning System · v3.4.2</span>
         <h1>Providers</h1>
-        <p class="mt-1">Provision and launch learning resources across the WGU portfolio. Each row corresponds to a registered provider; live SkillProof rows deep-link to the corresponding portal.</p>
-      </div>
-      <div class="page-stats">
-        <div class="page-stat">
-          <div class="page-stat-num">13,549</div>
-          <div class="page-stat-label">Total providers</div>
-        </div>
-        <div class="page-stat">
-          <div class="page-stat-num text-success">4</div>
-          <div class="page-stat-label">Live SkillProof rows</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="alert alert-info mb-3">
-      <span class="material-icons-outlined">key</span>
-      <div>
-        <strong>Production LTI flow.</strong> Only 2 LRPS rows route real users into the SkillProof: <code>[SkillProof-ST]</code> (LTI <code>role=student</code>, for learners) and <code>[SkillProof-IN]</code> (LTI <code>role=instructor</code>, for <strong>all WGU staff</strong>). Every WGU staff member &mdash; instructors, content creators, platform operators &mdash; lands at the Instructor baseline by default. A Super Admin then manually elevates them to <strong>Tenant Admin</strong> or <strong>Super Admin</strong> in the User Management screen if their job requires those privileges; staff who only need read access stay at the Instructor baseline. The <code>[SkillProof-TA]</code> and <code>[SkillProof-SA]</code> rows below are <em>storyboard demo shortcuts</em>; they do not represent separate LTI provisioning paths.
-      </div>
-    </div>
-
-    <div class="alert alert-warning mb-3">
-      <span class="material-icons-outlined">info</span>
-      <div>
-        <strong>DEMO ONLY.</strong> This is the SkillProof-styled recreation of WGU&rsquo;s internal Learning Resource Provisioning System (LRPS). The four highlighted SkillProof rows are live &mdash; click to launch the corresponding portal (one per persona: Student, Tenant Admin, Instructor, Super Admin). All other rows are illustrative only.
       </div>
     </div>
 
@@ -895,87 +861,6 @@
               </thead>
               <tbody>
 
-                <!-- Filler rows (illustrative only) -->
-                <tr>
-                  <td class="id-cell">269781201</td>
-                  <td class="name-cell"><span class="name-tag">[4560016]</span><span class="text-muted">OEX</span> · Course Summary</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell" title="https://cgp-oex.wgu.edu/lti_provider/courses/course-v1:WGUx+C841x+2021_T3/block-v1:WGUx+C841x+2021_T3+type@vertical+block@9c2f1d&hellip;">cgp-oex.wgu.edu/lti_provider/&hellip;/block@9c2f1d</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Alonzo</td>
-                  <td class="date-cell">29 May 2025</td>
-                  <td class="actions-cell"></td>
-                </tr>
-                <tr>
-                  <td class="id-cell">269781205</td>
-                  <td class="name-cell"><span class="name-tag">[4560016]</span><span class="text-muted">OEX</span> · Introduction</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">cgp-oex.wgu.edu/lti_provider/&hellip;/block@eca08f</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Alonzo</td>
-                  <td class="date-cell">29 May 2025</td>
-                  <td class="actions-cell"></td>
-                </tr>
-                <tr>
-                  <td class="id-cell">269781210</td>
-                  <td class="name-cell"><span class="name-tag">[4560016]</span><span class="text-muted">OEX</span> · Knowledge Check</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">cgp-oex.wgu.edu/lti_provider/&hellip;/block@f9303b</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Alonzo</td>
-                  <td class="date-cell">29 May 2025</td>
-                  <td class="actions-cell"></td>
-                </tr>
-                <tr>
-                  <td class="id-cell">269781214</td>
-                  <td class="name-cell"><span class="name-tag">[4560016]</span><span class="text-muted">OEX</span> · Learning Objectives</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">cgp-oex.wgu.edu/lti_provider/&hellip;/block@7236c9</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Alonzo</td>
-                  <td class="date-cell">29 May 2025</td>
-                  <td class="actions-cell"></td>
-                </tr>
-                <tr>
-                  <td class="id-cell">269781219</td>
-                  <td class="name-cell"><span class="name-tag">[4560016]</span><span class="text-muted">OEX</span> · Move Ahead If Ready</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">cgp-oex.wgu.edu/lti_provider/&hellip;/block@4e3461</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Alonzo</td>
-                  <td class="date-cell">29 May 2025</td>
-                  <td class="actions-cell"></td>
-                </tr>
-                <tr>
-                  <td class="id-cell">269781224</td>
-                  <td class="name-cell"><span class="name-tag">[4560016]</span><span class="text-muted">OEX</span> · Prepare for the Assessment</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">cgp-oex.wgu.edu/lti_provider/&hellip;/block@3bc15a</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Alonzo</td>
-                  <td class="date-cell">29 May 2025</td>
-                  <td class="actions-cell"></td>
-                </tr>
-                <tr>
-                  <td class="id-cell">269781229</td>
-                  <td class="name-cell"><span class="name-tag">[4560016]</span><span class="text-muted">OEX</span> · Readings &amp; Resources</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">cgp-oex.wgu.edu/lti_provider/&hellip;/block@c3b6a2</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Alonzo</td>
-                  <td class="date-cell">29 May 2025</td>
-                  <td class="actions-cell"></td>
-                </tr>
-                <tr>
-                  <td class="id-cell">269781240</td>
-                  <td class="name-cell"><span class="name-tag">[4560042]</span><span class="text-muted">zyBooks</span> · Foundations of Programming (Python)</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">learn.zybooks.com/zybook/WGUE010PythonAY2026/launch</td>
-                  <td class="driver-cell">BasicLTIProviderDriver</td>
-                  <td>Lana</td>
-                  <td class="date-cell">12 Apr 2026</td>
-                  <td class="actions-cell"></td>
-                </tr>
                 <tr class="live" tabindex="0" data-launch="student/" aria-label="Launch SkillProof Coding Coach (Student)">
                   <td class="id-cell">269781248</td>
                   <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-ST]</span>SkillProof Coding Coach — Student (LTI 1.3)</td>
