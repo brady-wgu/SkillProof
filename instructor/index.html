@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.94</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.95</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -163,7 +163,7 @@
     [data-theme="dark"] .alert-success { background: #0A2E1A; border-color: #145025; color: #6FBA86; }
     [data-theme="dark"] .feedback-panel.success { background: #0A2E1A; border-color: var(--pgn-color-success-base); }
     [data-theme="dark"] .feedback-panel.warning { background: #3A2A0A; border-color: var(--color-amber); }
-    [data-theme="dark"] .floating-actions { background: rgba(13, 26, 46, 0.95); border-color: #1A2A45; }
+    /* .floating-actions is now an in-flow block — no dark-mode override needed (v4.95). */
 
     /* Logo swap — WGU brand rule: white on dark, full-color-reverse on light */
     [data-theme="dark"] .logo-light { display: none !important; }
@@ -544,18 +544,14 @@
     .w-100 { width: 100%; }
 
     /* ================================================================
-       FLOATING BOTTOM-RIGHT ACTIONS (SkillProof signature)
+       PAGE BOTTOM ACTIONS — in-flow, right-aligned, just above footer
+       (v4.95: replaced position:fixed overlay with accessible in-flow block)
        ================================================================ */
     .floating-actions {
-      position: fixed; bottom: 200px; right: var(--pgn-spacing-4);
       display: flex; gap: var(--pgn-spacing-2);
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(8px);
-      padding: var(--pgn-spacing-2);
-      border-radius: var(--pgn-size-border-radius-lg);
-      border: 1px solid var(--pgn-color-gray-100);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      z-index: 100;
+      justify-content: flex-end;
+      margin-top: var(--pgn-spacing-5);
+      padding: var(--pgn-spacing-3) 0;
     }
 
     /* ================================================================
@@ -1012,14 +1008,13 @@
         <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Skills deployed in E010</span>
         <h2 class="h4 mb-3">Skills (2 active)</h2>
 
-        <div class="section-card recommended mb-3" onclick="goToScreen(3)" style="cursor:pointer;">
+        <div class="section-card recommended mb-3" onclick="goToScreen(3)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
-              <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Active</span>
-              <h3 class="h5 mb-1">Python Skill</h3>
+              <h3 class="h5 mb-1">Python Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
               <p class="small text-muted">AI coaching module for Python foundations · 4 Topics · ~32 Learning Objectives</p>
             </div>
-            <span class="badge badge-warning">4 learners at risk</span>
+            <a href="#" onclick="event.stopPropagation(); goToScreen(4); return false;" class="badge badge-warning" style="text-decoration:none;" title="View the 4 at-risk learners on this Skill">4 learners at risk</a>
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Practicing</div></div>
@@ -1033,11 +1028,10 @@
           </div>
         </div>
 
-        <div class="section-card" onclick="goToScreen(3)" style="cursor:pointer;">
+        <div class="section-card" onclick="goToScreen(3)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Git & Version Control Skill heatmap">
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
-              <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Active</span>
-              <h3 class="h5 mb-1">Git &amp; Version Control Skill</h3>
+              <h3 class="h5 mb-1">Git &amp; Version Control Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
               <p class="small text-muted">AI coaching module for source control with Git · 3 Topics · ~18 Learning Objectives</p>
             </div>
             <span class="badge badge-success">0 at risk</span>
@@ -1054,14 +1048,23 @@
         </div>
       </div>
 
-      <!-- Learner roster (at-risk focus) -->
+      <!-- Learner roster (with status filter) -->
       <div class="mb-3">
         <div class="d-flex justify-content-between align-items-end mb-2">
           <div>
             <span class="eyebrow"><span class="material-icons-outlined">people</span>Course roster</span>
-            <h2 class="h4 mb-0">Learners needing attention (4 of 28)</h2>
+            <h2 class="h4 mb-0">Learners in E010</h2>
           </div>
-          <button class="btn btn-tertiary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">grid_view</span>View full roster (heatmap)</button>
+          <button class="btn btn-tertiary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">grid_view</span>Open Python Skill heatmap</button>
+        </div>
+
+        <div class="d-flex gap-2 mt-2 mb-2" style="flex-wrap:wrap;">
+          <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+          <button class="chip-filter">All (28)</button>
+          <button class="chip-filter">Mastery (7)</button>
+          <button class="chip-filter">On track (17)</button>
+          <button class="chip-filter">Watch list (1)</button>
+          <button class="chip-filter active danger"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
         </div>
 
         <div class="pgn__card">
@@ -1079,36 +1082,36 @@
               </thead>
               <tbody>
                 <tr style="cursor:pointer;" onclick="goToScreen(5)">
-                  <td><strong>Sally</strong></td>
+                  <td>Sally</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="num-col"><span class="score-pill low">38</span></td>
                   <td class="num-col"><span class="score-pill med">62</span></td>
                   <td class="small text-muted">06 May 17:54</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" onclick="goToScreen(4)">
+                <tr style="cursor:pointer;" onclick="goToScreen(5)">
                   <td>B.F.</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="num-col"><span class="score-pill low">43</span></td>
                   <td class="num-col"><span class="score-pill med">71</span></td>
                   <td class="small text-muted">04 May 21:18</td>
-                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
+                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" onclick="goToScreen(4)">
+                <tr style="cursor:pointer;" onclick="goToScreen(5)">
                   <td>C.S.</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="num-col"><span class="score-pill low">45</span></td>
                   <td class="num-col text-muted">—</td>
                   <td class="small text-muted">02 May 14:33</td>
-                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
+                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" onclick="goToScreen(4)">
+                <tr style="cursor:pointer;" onclick="goToScreen(5)">
                   <td>H.D.</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="num-col"><span class="score-pill low">42</span></td>
                   <td class="num-col text-muted">—</td>
                   <td class="small text-muted">06 May 16:02</td>
-                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
+                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
               </tbody>
             </table>
