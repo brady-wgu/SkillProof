@@ -16,9 +16,9 @@ Educator-facing analytics and student engagement tracking. The instructor's prim
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** LRPS landing → SSO → dashboard home (3 active courses with KPIs, no traditional sections per WGU's rolling-enrollment model) → class heatmap (15 learners × 4 competencies, 9-step red→green color scale; Export Course Report (PDF) / CSV CTAs per §7.14) → at-risk filter applied (Sally identified) → Sally drill-down (8-row per-objective scores) → conversation log list (9 sessions) → session 09 transcript with AI feedback panels inline → Audit Trail confirmation (47 messages captured, 10-row event log). | 8 |
+| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** LRPS landing → SSO → **Screen 01 dashboard home** (3 active Courses with KPIs + Skills nested in each Course card) → **Screen 02 Course view** (E010 detail with aggregate Course metrics + Skills deployed in the Course) → **Screen 03 Skill view = class heatmap** (Python Skill, 15 learners × 4 Topics, 9-step red→green color scale; Export Course Report (PDF) / CSV CTAs per §7.14) → Screen 04 at-risk filter applied (Sally identified) → Screen 05 Sally drill-down (8-row per-Learning Objective scores) → Screen 06 conversation log list (9 sessions) → Screen 07 session 09 transcript with AI feedback panels inline → Screen 08 Audit Trail confirmation (47 messages captured, 10-row event log) → Screen 09 Access Denied (zero-trust deny path, cross-portal pattern). | 9 |
 
-**Total: 1 scenario · 8 screens.**
+**Total: 1 scenario · 9 screens (v4.92 renumbered 01-09 with new Course view at Screen 02).**
 
 ## Source
 
