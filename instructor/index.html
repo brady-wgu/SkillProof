@@ -866,7 +866,7 @@
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">school</span>Your Courses</span>
           <h1 id="s2-heading">Instructor Dashboard</h1>
-          <p class="mt-1">Engagement and competency analytics for the courses you teach.</p>
+          <p class="mt-1">Engagement and Skill analytics for the courses you teach.</p>
         </div>
         <div class="status-legend">
           <span class="status-legend-item"><span class="dot green"></span>On track</span>
@@ -888,7 +888,7 @@
             </div>
             <div class="d-flex gap-3" style="flex-wrap:wrap;">
               <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Active learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg competency</div></div>
+              <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg Skill score</div></div>
               <div class="section-stat"><div class="section-stat-num danger">4</div><div class="section-stat-label">At risk</div></div>
               <div class="section-stat"><div class="section-stat-num">17</div><div class="section-stat-label">On track</div></div>
               <div class="section-stat"><div class="section-stat-num">7</div><div class="section-stat-label">Mastery achieved</div></div>
@@ -968,8 +968,8 @@
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">grid_view</span>Data Visualization · Student Heatmap</span>
-          <h1 id="s3-heading">Class heatmap — competency mastery</h1>
-          <p class="mt-1">Each cell shows a learner's AI-scored competency (0–100) per WGU competency unit. Cells refresh after every coaching session.</p>
+          <h1 id="s3-heading">Class heatmap — Topic mastery</h1>
+          <p class="mt-1">Each cell shows a learner's AI-scored Topic mastery (0–100). Topics refresh after every coaching session.</p>
         </div>
         <div class="d-flex gap-2 align-items-center" style="flex-wrap:wrap;">
           <span class="text-muted small">Export:</span>
@@ -990,7 +990,7 @@
       <div class="heatmap-card">
         <div class="heatmap-grid">
           <!-- Header row -->
-          <div class="heatmap-corner">Learner ↓ · Competency →</div>
+          <div class="heatmap-corner">Learner ↓ · Topic →</div>
           <div class="heatmap-col-label">Identifies Python<br>Constructs</div>
           <div class="heatmap-col-label">Executes<br>Python Code</div>
           <div class="heatmap-col-label">Manipulates<br>Data Structures</div>
@@ -1110,7 +1110,7 @@
       <div class="mb-3">
         <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>Filtered: At risk only</span>
         <h1 id="s4-heading">4 learners need attention</h1>
-        <p class="mt-1">Filter narrowed to AI-scored competency &lt; 60 across two or more units. Click any row to drill in.</p>
+        <p class="mt-1">Filter narrowed to AI-scored Topic mastery &lt; 60 across two or more Topics. Click any row to drill in.</p>
       </div>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
@@ -1126,7 +1126,7 @@
         <div class="col-8">
           <div class="heatmap-card">
             <div class="heatmap-grid">
-              <div class="heatmap-corner">Learner ↓ · Competency →</div>
+              <div class="heatmap-corner">Learner ↓ · Topic →</div>
               <div class="heatmap-col-label">Identifies Python<br>Constructs</div>
               <div class="heatmap-col-label">Executes<br>Python Code</div>
               <div class="heatmap-col-label">Manipulates<br>Data Structures</div>
@@ -1155,7 +1155,7 @@
               <span class="eyebrow"><span class="material-icons-outlined">summarize</span>Course summary</span>
               <h2 class="h5 mb-2">At-risk pattern</h2>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:60%;">Lowest competency</th><td><strong>Manipulates Data Structures</strong></td></tr>
+                <tr><th style="width:60%;">Lowest Topic score</th><td><strong>Manipulates Data Structures</strong></td></tr>
                 <tr><th>Avg score (at-risk)</th><td>42.4</td></tr>
                 <tr><th>Common gap</th><td>List comprehensions, dict access patterns</td></tr>
                 <tr><th>Total sessions</th><td>27 in last 7 days</td></tr>
@@ -1213,7 +1213,7 @@
           <h1 id="s5-heading">Sally</h1>
           <p class="mt-1">Anonymized identifier <code>lnr_4a3b2c1d</code> · E010 · 28 active learners (rolling enrollment)</p>
         </div>
-        <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored competency: Low</span>
+        <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
       <div class="row mb-3">
@@ -1224,8 +1224,8 @@
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
                 <tr><th style="width:55%;">Last active</th><td>06 May 2026 17:54 UTC</td></tr>
                 <tr><th>Sessions</th><td>9</td></tr>
-                <tr><th>Stuck on</th><td><strong>Lists &amp; comprehensions</strong> (Objective 3.1)</td></tr>
-                <tr><th>objective misses (last 9 sessions)</th><td><span class="badge badge-danger">14</span></td></tr>
+                <tr><th>Stuck on</th><td><strong>Lists &amp; comprehensions</strong> (Learning Objective 3.1)</td></tr>
+                <tr><th>Learning Objective misses (last 9 sessions)</th><td><span class="badge badge-danger">14</span></td></tr>
                 <tr><th>Diagnostic complete</th><td><span class="badge badge-success">Yes</span></td></tr>
                 <tr><th>Mastery achieved</th><td><span class="badge badge-danger">0 of 4</span></td></tr>
               </table>
@@ -1235,13 +1235,13 @@
         <div class="col-8">
           <div class="pgn__card">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">grading</span>Per-objective scores</span>
+              <span class="eyebrow"><span class="material-icons-outlined">grading</span>Per-Learning Objective scores</span>
               <h2 class="h5 mb-2">Where the gap is</h2>
               <table class="pgn__data-table">
                 <thead>
                   <tr>
-                    <th>Competency</th>
-                    <th>Objective</th>
+                    <th>Topic</th>
+                    <th>Learning Objective</th>
                     <th class="num-col">Score</th>
                     <th>Pattern</th>
                     <th>Last attempt</th>
@@ -1314,7 +1314,7 @@
             <th>Session</th>
             <th>Date</th>
             <th>Topic</th>
-            <th>Objective</th>
+            <th>Learning Objective</th>
             <th>Outcome</th>
             <th class="num-col">AI score</th>
             <th>Audit</th>
@@ -1382,7 +1382,7 @@
 
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Lists &amp; comprehensions · 5 AI feedback panels &middot; 3 objective misses</span>
+          <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Lists &amp; comprehensions · 5 AI feedback panels &middot; 3 Learning Objective misses</span>
           <h1 id="s7-heading">Conversation transcript</h1>
           <p class="mt-1">All 47 messages captured by the Audit Trail. AI feedback panels shown inline.</p>
         </div>
@@ -1498,7 +1498,7 @@ for s in scores:
         <h1 id="s8-heading" class="h2 mb-2">All 47 messages logged</h1>
         <div class="d-flex gap-3" style="flex-wrap:wrap;">
           <div class="section-stat"><div class="section-stat-num">47</div><div class="section-stat-label">Messages</div></div>
-          <div class="section-stat"><div class="section-stat-num danger">3</div><div class="section-stat-label">objective misses</div></div>
+          <div class="section-stat"><div class="section-stat-num danger">3</div><div class="section-stat-label">Learning Objective misses</div></div>
           <div class="section-stat"><div class="section-stat-num warning">5</div><div class="section-stat-label">AI escalations</div></div>
           <div class="section-stat"><div class="section-stat-num">0</div><div class="section-stat-label">Events dropped</div></div>
           <div class="section-stat"><div class="section-stat-num">100%</div><div class="section-stat-label">Capture integrity</div></div>
