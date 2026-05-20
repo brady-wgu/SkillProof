@@ -206,7 +206,7 @@ Canonical strings used across all surfaces. Use these verbatim when adding new s
 | **Operating team** | `WGU Program Development` | PDev employees operate the School-tenants. Distinct from a tenant name — PDev does the work *on behalf of* each School. |
 | **All 4 WGU Schools (example tenant set)** | `School of Technology`, `School of Business`, `School of Education`, `Leavitt School of Health` | Per WGU's School-as-Tenant model. Additional Schools can be created via super_admin screen 13. |
 | **LMS course identifier** | `WGUE010PythonAY2026` | The LRPS-registered LMS course slug zyBooks renders. Visible on Screen 1 of every SC-MVP scenario. |
-| **13 sub-sections** | Basic Syntax & Data Types · Control Flow & Logic · Data Structures: Lists, Tuples, Sets, Dictionaries · Functions & Modular Programming · Object-Oriented Programming · Error Handling & Exceptions · File I/O & Persistence · Iterators & Generators · Decorators & Closures · Concurrency Basics · Standard Library Essentials · Testing & Debugging · Packaging & Environments | The full Cicada v1 SkillProof sub-section taxonomy. Order is significant: Progress Map renders in this order. |
+| **13 Topics** | Basic Syntax & Data Types · Control Flow & Logic · Data Structures: Lists, Tuples, Sets, Dictionaries · Functions & Modular Programming · Object-Oriented Programming · Error Handling & Exceptions · File I/O & Persistence · Iterators & Generators · Decorators & Closures · Concurrency Basics · Standard Library Essentials · Testing & Debugging · Packaging & Environments | The full Cicada v1 SkillProof Topic taxonomy within the Python Skill of E010. Order is significant: Progress Map renders in this order. |
 | **Cost-spike date (SC-ADD-04)** | `04 May 2026` | Bob's cost audit drill-down references this date as the spike origin. |
 | **Role taxonomy** | `Student → Instructor → Tenant Admin → Super Admin` | 4-tier RBAC. Only Super Admin can change roles; minimum 2 Super Admins always. |
 | **Storyboard version** | `v4.x` | Tracks the visual prototype, not the underlying SkillProof product. SkillProof product versions follow the catalog: v1.2 MVP, v1.3 Additional, etc. |
@@ -246,7 +246,7 @@ Two specialized UI domains use deliberately extended palettes for clarity and in
 | Domain | Tokens | Where used | Justification |
 |:---|:---|:---|:---|
 | **Code-block syntax highlighting** | GitHub-style: `--code-keyword: #ff7b72`, `--code-function: #79c0ff`, `--code-string: #a5d6ff`, `--code-bg: #0d1117`, `--code-border: #30363d` | `tenant_admin/index.html` (prompt preview); `student/index.html` (read-only Python code editors) | Industry-standard code coloring (matches GitHub / VS Code dark themes). FY26 navy/blue would be unreadable for code tokens. |
-| **Heatmap gradient** (9-step) | `--heat-1` through `--heat-9` (red → green via amber midpoints) | `instructor/index.html` screen 3 (15-learner × 4-competency class heatmap) | Sequential data visualization needs perceptually distinct steps; FY26 has no diverging-scale tokens. |
+| **Heatmap gradient** (9-step) | `--heat-1` through `--heat-9` (red → green via amber midpoints) | `instructor/index.html` screen 3 (15-learner × 4-Topic class heatmap) | Sequential data visualization needs perceptually distinct steps; FY26 has no diverging-scale tokens. |
 
 All other surfaces (navbars, cards, forms, alerts, badges, status pills) use canonical FY26 tokens only.
 

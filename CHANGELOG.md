@@ -8,6 +8,62 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.91 — 20 May 2026 — Correct hierarchy terminology: Topic / Learning Objective (replaces v4.90 mislabeling)
+
+Mid-session correction after Brady clarified the full 6-level platform hierarchy. v4.90 had renamed Topics as Skills in the student portal — wrong granularity. v4.91 corrects to the canonical hierarchy: **Platform > School > Course > Skill > Topic > Learning Objective**.
+
+### What changed (corrections to v4.90)
+
+- **Student portal** — "13 Skills" / "sub-sections" → **"13 Topics"** (8 instances: sidebar card label, aria-label, footer note, progress map stats, welcome-back table rows, session snapshot rows)
+- **Help portal** — reverted the v4.90 meaning-change bug: "Retiring a Skill from production" → **"Retiring a Topic from a production Skill"** (the original intent was Topic-level lifecycle, not Skill-level)
+
+### What changed (new in v4.91)
+
+- **Instructor portal (all 8 screens)** — "competency" / "Competency" / "objective" / "Objective" replaced in user-facing copy:
+  - S2 stat tile: "Avg competency" → "Avg Skill score"
+  - S3 heading + cell labels: "competency mastery" + "Competency →" → "Topic mastery" + "Topic →"
+  - S4 filter description + summary: "Lowest competency" → "Lowest Topic score"
+  - S5 badge: "AI-scored competency: Low" → "AI-scored Skill mastery: Low"
+  - S5 table headers: "Competency" → "Topic", "Objective" → "Learning Objective"
+  - S5 profile: "(Objective 3.1)" → "(Learning Objective 3.1)", "objective misses" → "Learning Objective misses"
+  - S5 eyebrow: "Per-objective scores" → "Per-Learning Objective scores"
+  - S6 table header: "Objective" → "Learning Objective"
+  - S7 eyebrow: "3 objective misses" → "3 Learning Objective misses"
+  - S8 stat tile: "objective misses" → "Learning Objective misses"
+- **READMEs** — terminology fixes in `README.md`, `instructor/README.md`, `student/README.md`, `tenant_admin/README.md` (8 instances across "sub-sections", "competency", "Program Subject")
+- **Coda RBAC doc** — replaced v4.90 4-level callout with corrected 6-level Canonical Terminology block (Platform → School → Course → Skill → Topic → Learning Objective) plus enforced terminology rules
+
+### What is NOT changed
+
+- "objective miss" badges in instructor S6 / S7 (e.g., `objective miss × 3`) — retained as established SkillProof event-term shorthand, sanctioned in the RBAC callout
+- CSS class names like `.practice-areas-card` — internal selectors retained for v4.91; rename deferred to a follow-up commit
+- CHANGELOG historical entries (e.g., v4.73 "Program Subject" note) — immutable history
+
+### Storyboard stamp
+
+v4.91 across the 6 portals.
+
+---
+
+## v4.90 — 20 May 2026 — Standardize Skill/Course/School/Platform hierarchy terminology site-wide (initial pass, superseded by v4.91)
+
+Initial hierarchy standardization based on Brady's 4-level model (Platform / School / Course / Skill). Subsequently corrected by v4.91 after Brady clarified the full 6-level model adds Topic and Learning Objective beneath Skill. See v4.91 for the canonical hierarchy.
+
+### What changed
+
+- Student portal — "Practice Areas" / "sub-sections" → "Skills" (later corrected to "Topics" in v4.91)
+- Student portal — added `E010` Course node to all 6 coaching breadcrumbs (retained in v4.91)
+- Super Admin portal — "Coaching module" → "Skill" (5 instances; retained)
+- Tenant Admin portal — "Program Subject" → "Course" (2 instances; retained)
+- Help portal — "Retiring a topic from a production Skill" → "Retiring a Skill from production" (reverted in v4.91 as meaning-change)
+- Coda RBAC doc — added hierarchy callout (later replaced with 6-level version in v4.91); fixed §4.1 Instructor-assigned-to-Course error (retained)
+
+### Storyboard stamp
+
+v4.90 (superseded by v4.91 same day).
+
+---
+
 ## v4.89 — 19 May 2026 — Strip superfluous labels (LRPS demo shortcut + Not for student use + build stamp) and passive governance banners
 
 Two cleanup passes per Brady's directive.
