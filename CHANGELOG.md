@@ -8,6 +8,49 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.97 — 20 May 2026 — S3 Skill heatmap: filter wiring, ARIA grid, hover tooltips, back button, copy fixes
+
+Resolves S3 (Python Skill heatmap) walkthrough findings S3-01 through S3-10.
+
+### Behavior changes (S3-02, S3-03, S3-04, S3-10)
+
+Added a v4.97 hydration block to the JS that runs on initial S3 setup:
+- **`hydrateHeatmap()`** — converts the heatmap into a proper ARIA grid:
+  - `role="grid"`, `aria-readonly="true"`, `aria-label` describing the grid dimensions
+  - Each column header gets `role="columnheader"` + `aria-colindex`
+  - Each row label gets `role="rowheader"` + `aria-rowindex` + `data-row-status` (mastery/on-track/watch/at-risk based on the 15 visible learners)
+  - Each cell gets `role="gridcell"` + `aria-rowindex` + `aria-colindex`
+  - Each cell gets a `title` tooltip: `"Sally · Manipulates Data Structures · Score 28/100"`
+  - Each row label is now clickable → S5 (Sally profile placeholder) with cursor:pointer + hover effect + aria-label
+- **`filterHeatmap(status)`** — actually filters the heatmap:
+  - Hides/shows rows based on `data-row-status` attribute
+  - Updates the active chip styling
+  - Updates the "Showing X of N learners" footer dynamically
+  - Wired to chip onclicks via `data-filter-status` attribute
+
+### Copy and layout changes
+
+- **S3-01** — Renamed export button "Course report (PDF)" → **"Python Skill report (PDF)"** (Skill-level naming per the metric ladder)
+- **S3-05** — Added the in-flow Back button block: **"Back to Course view"** → S2 (was missing entirely)
+- **S3-07** — Removed `.heatmap-row-label.sally` CSS rule (red tinting + bold) — Sally's row now renders in default plaintext; heatmap-cell colors carry the at-risk cue
+- **S3-08** — Removed the bottom alert "4 learners at risk. Sally lowest on Manipulates Data Structures" — heatmap colors and the red-dot status make the same point
+- **S3-09** — Renamed eyebrow "Python Skill · Class heatmap" → **"Python Skill · Heatmap"** (no "class"; rolling enrollment, no fixed cohort)
+- Removed the "Sample design only" banner from S3 (per Brady's directive)
+
+### Known follow-up (S3-06)
+
+The 4 heatmap column names ("Identifies Python Constructs", "Executes Python Code", "Manipulates Data Structures", "Creates Functional Programs") roll up Sally's 8 Learning Objectives — that satisfies the "Topic rolling up LOs" rule per Brady's exception. But the **13 Topics on the student portal don't match the 4 Topics in the instructor heatmap.** Hierarchical content reconciliation is a separate pass.
+
+### S3-11 deferred
+
+Cell-click drill-down to per-Topic Learning Objective breakdown — nice-to-have, not blocking.
+
+### Storyboard stamp
+
+v4.97 instructor portal. Other 5 portals unchanged.
+
+---
+
 ## v4.96 — 20 May 2026 — Relocate Course Roster from S2 to S1 (cross-Course at-risk view)
 
 Per Brady's second-pass feedback: the "Course Roster" on S2 (Course Detail) was conceptually misplaced — S2 should hold only Skill-specific data per the metric ladder. The roster data belonged on S1 (cross-Course view) or S3 (per-Skill view; the heatmap already serves that role).
