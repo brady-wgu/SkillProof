@@ -8,6 +8,48 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.92 — 20 May 2026 — Instructor portal: Course view inserted as Screen 02, screens renumbered 01-09, S2 findings cleared
+
+Resumes the S2 critical walkthrough by acting on Brady's verdict on S2-01 through S2-06 (per session findings). Major architectural change to the instructor flow.
+
+### What changed
+
+- **Screen renumbering: all 8 instructor screens renumbered 01-09 starting at Screen 01 (Dashboard)** — the original Screen 01 (SSO splash) was removed in v4.85; this pass closes that gap. New navigation hierarchy:
+  - **Screen 01** — Instructor Dashboard (Course list with Skills nested in each Course card)
+  - **Screen 02** — Course view (NEW — aggregate Course metrics + Skills deployed in the Course)
+  - **Screen 03** — Skill view (Python Skill heatmap, was old Screen 03 reframed as Skill-level)
+  - **Screen 04** — At-risk filter applied
+  - **Screen 05** — Sally drill-down
+  - **Screen 06** — Coaching sessions
+  - **Screen 07** — Session transcript
+  - **Screen 08** — Audit trail
+  - **Screen 09** — Access denied
+- **Screen 01 Dashboard restructure** — Each Course card now shows its Skills nested inline. E010 card shows the Python Skill with mastery stats + Open Heatmap CTA. E075 and E135 show their Skills (Python Intermediate, Libraries, OOP, Design Patterns) as compact rows.
+- **Screen 02 Course view (new)** — Opens when instructor clicks `E010 · Foundations of Programming (Python)` from Dashboard, or via the "Open Course details" link. Shows Course aggregate metrics, Skills deployed in the Course, and per-Skill drill-down CTAs.
+- **Screen 03 Skill view (relabeling)** — Heatmap now framed as a Skill-level view. Header reads `Python Skill — Topic mastery`, breadcrumb now reads `Instructor Dashboard › E010 › Python Skill › Heatmap` (Skill node added).
+- **Breadcrumbs across S3-S8** — `goToScreen(2)` (Dashboard) updated to `goToScreen(1)` everywhere; E010 link in S4/S5/S6 breadcrumbs now routes to Course view (S2) instead of Heatmap (S3).
+- **Floating "Back to dashboard" actions on S8 and S9** — updated to `goToScreen(1)`.
+- **Meta-bar** — 9 buttons starting at "01 Dashboard home" with new "02 Course view" and "03 Skill view" labels.
+- **TOTAL_SCREENS comment** updated to note v4.92 renumbering.
+
+### S2 walkthrough findings resolved (S2-01 through S2-06)
+
+- **S2-01 + S2-03** (dead E075/E135 cards + E010-only drill-down) — Resolved by the new Course view + Skills-nested-in-Course pattern. Course cards no longer have dead `cursor:pointer`; all Skill drill-downs are explicit clickable elements.
+- **S2-04** (redundant alert "4 learners flagged at-risk in E010 today") — Removed entirely.
+- **S2-05** (degenerate single-item breadcrumb on entry screen) — Removed.
+- **S2-06** ("Diagnostic in flight" on E135) — Removed. E135 now shows real KPIs (18 learners, 71% Avg Skill score, 0 at risk).
+
+### Known follow-ups
+
+- Screenshots in `instructor/screenshots/` and `instructor/screenshots_dark/` are still numbered against the old 02-09 sequence. Regeneration deferred until the storyboard fully stabilizes.
+- S7 and S8 breadcrumbs still skip the Course + Python Skill layers (`Dashboard › Sally › ...`) — pragmatic shortcut for the deeper screens; can be revisited.
+
+### Storyboard stamp
+
+v4.92 across the instructor portal. Other 5 portals stay at v4.91 (no changes).
+
+---
+
 ## v4.91 — 20 May 2026 — Correct hierarchy terminology: Topic / Learning Objective (replaces v4.90 mislabeling)
 
 Mid-session correction after Brady clarified the full 6-level platform hierarchy. v4.90 had renamed Topics as Skills in the student portal — wrong granularity. v4.91 corrects to the canonical hierarchy: **Platform > School > Course > Skill > Topic > Learning Objective**.

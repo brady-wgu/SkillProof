@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.91</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.92</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -846,8 +846,130 @@
 
 <!-- Screen 1 (SSO landing) REMOVED in v4.85 — informational only, not in JFT scope -->
 
-<!-- Screen 2: Instructor Dashboard home ============================ -->
-<section class="screen active" id="screen-2" aria-labelledby="s2-heading">
+<!-- Screen 1: Instructor Dashboard home (Course list with Skills inline) ============== -->
+<section class="screen active" id="screen-1" aria-labelledby="s1-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
+      <span class="navbar-chip">Instructor Dashboard</span>
+      <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
+    </div>
+  </header>
+  <main class="screen-main" id="main-1">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <span class="eyebrow"><span class="material-icons-outlined">school</span>Your Courses</span>
+          <h1 id="s1-heading">Instructor Dashboard</h1>
+          <p class="mt-1">Engagement and Skill analytics for the courses you teach.</p>
+        </div>
+        <div class="status-legend">
+          <span class="status-legend-item"><span class="dot green"></span>On track</span>
+          <span class="status-legend-item"><span class="dot amber"></span>Watch list</span>
+          <span class="status-legend-item"><span class="dot red"></span>At risk</span>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-8">
+          <div class="section-card recommended">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="eyebrow"><span class="material-icons-outlined">trending_up</span>Active Course · Recommended next</span>
+                <h2 class="h4 mb-1"><a href="#" onclick="goToScreen(2); return false;" style="text-decoration:none; color:inherit;">E010 · Foundations of Programming (Python)</a></h2>
+                <p class="small text-muted">28 active learners (rolling enrollment) · Sally + 27 others · last activity 14 min ago</p>
+              </div>
+              <span class="badge badge-warning"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>4 at risk</span>
+            </div>
+            <div class="d-flex gap-3 mb-3" style="flex-wrap:wrap;">
+              <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Active learners</div></div>
+              <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num danger">4</div><div class="section-stat-label">At risk</div></div>
+              <div class="section-stat"><div class="section-stat-num">17</div><div class="section-stat-label">On track</div></div>
+              <div class="section-stat"><div class="section-stat-num">7</div><div class="section-stat-label">Mastery achieved</div></div>
+              <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions this week</div></div>
+            </div>
+
+            <!-- Skills in this Course -->
+            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 12px; margin-top: 4px;">
+              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE (1 active)</strong></div>
+              <div class="pgn__card" onclick="goToScreen(3)" style="cursor:pointer; margin-bottom: 0;">
+                <div class="pgn__card-section" style="padding: 12px 16px;">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="text-strong">Python Skill</div>
+                      <div class="micro text-muted">28 learners · 76% avg Topic mastery · 4 Topics · <span style="color: var(--pgn-color-danger-base);">4 at risk</span></div>
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2 mt-3">
+              <button class="btn btn-tertiary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">launch</span>Open Course details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="section-card">
+            <div>
+              <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
+              <h2 class="h5 mb-1">E075 · Intermediate Python &amp; Libraries</h2>
+              <p class="small text-muted">22 active learners (rolling enrollment)</p>
+            </div>
+            <div class="d-flex gap-3 mt-3 mb-3" style="flex-wrap:wrap;">
+              <div class="section-stat"><div class="section-stat-num">22</div><div class="section-stat-label">Learners</div></div>
+              <div class="section-stat"><div class="section-stat-num">82%</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num warning">1</div><div class="section-stat-label">Watch</div></div>
+            </div>
+            <!-- Skills in this Course -->
+            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px; margin-top: 4px;">
+              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE (2 active)</strong></div>
+              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px; margin-bottom: 6px;">
+                <div class="text-strong small">Python Intermediate Skill</div>
+                <div class="micro text-muted">22 learners · 85% avg Topic mastery</div>
+              </div>
+              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px;">
+                <div class="text-strong small">Libraries Skill <span class="micro text-muted">(NumPy/Pandas)</span></div>
+                <div class="micro text-muted">22 learners · 78% avg Topic mastery</div>
+              </div>
+            </div>
+          </div>
+          <div class="section-card mt-3">
+            <div>
+              <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
+              <h2 class="h5 mb-1">E135 · OOP with Python</h2>
+              <p class="small text-muted">Recently launched · 18 active learners</p>
+            </div>
+            <div class="d-flex gap-3 mt-3 mb-3" style="flex-wrap:wrap;">
+              <div class="section-stat"><div class="section-stat-num">18</div><div class="section-stat-label">Learners</div></div>
+              <div class="section-stat"><div class="section-stat-num">71%</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num">0</div><div class="section-stat-label">At risk</div></div>
+            </div>
+            <!-- Skills in this Course -->
+            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px; margin-top: 4px;">
+              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE (2 active)</strong></div>
+              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px; margin-bottom: 6px;">
+                <div class="text-strong small">OOP Skill</div>
+                <div class="micro text-muted">18 learners · 73% avg Topic mastery</div>
+              </div>
+              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px;">
+                <div class="text-strong small">Design Patterns Skill</div>
+                <div class="micro text-muted">18 learners · 69% avg Topic mastery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- Screen 2: Course view (Skills in selected Course) ================== -->
+<section class="screen" id="screen-2" aria-labelledby="s2-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -860,78 +982,77 @@
   <main class="screen-main" id="main-2">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#">Instructor Dashboard</a>
+        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>E010</span>
       </nav>
-      <div class="d-flex justify-content-between align-items-center mb-3">
+
+      <div class="alert alert-warning mb-3" role="status" style="border-left-width: 4px;">
+        <span class="material-icons-outlined">pending_actions</span>
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">school</span>Your Courses</span>
-          <h1 id="s2-heading">Instructor Dashboard</h1>
-          <p class="mt-1">Engagement and Skill analytics for the courses you teach.</p>
-        </div>
-        <div class="status-legend">
-          <span class="status-legend-item"><span class="dot green"></span>On track</span>
-          <span class="status-legend-item"><span class="dot amber"></span>Watch list</span>
-          <span class="status-legend-item"><span class="dot red"></span>At risk</span>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-8">
-          <div class="section-card recommended" onclick="goToScreen(3)" style="cursor:pointer;">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <span class="eyebrow"><span class="material-icons-outlined">trending_up</span>Active Course · Recommended next</span>
-                <h2 class="h4 mb-1">E010 · Foundations of Programming (Python)</h2>
-                <p class="small text-muted">28 active learners (rolling enrollment) · Sally + 27 others · last activity 14 min ago</p>
-              </div>
-              <span class="badge badge-warning"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>4 at risk</span>
-            </div>
-            <div class="d-flex gap-3" style="flex-wrap:wrap;">
-              <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Active learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg Skill score</div></div>
-              <div class="section-stat"><div class="section-stat-num danger">4</div><div class="section-stat-label">At risk</div></div>
-              <div class="section-stat"><div class="section-stat-num">17</div><div class="section-stat-label">On track</div></div>
-              <div class="section-stat"><div class="section-stat-num">7</div><div class="section-stat-label">Mastery achieved</div></div>
-              <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions this week</div></div>
-            </div>
-            <div class="d-flex gap-2 mt-3">
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open heatmap</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="section-card" style="cursor:pointer;">
-            <div>
-              <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
-              <h2 class="h5 mb-1">E075 · Intermediate Python &amp; Libraries</h2>
-              <p class="small text-muted">22 active learners (rolling enrollment)</p>
-            </div>
-            <div class="d-flex gap-3 mt-3" style="flex-wrap:wrap;">
-              <div class="section-stat"><div class="section-stat-num">22</div><div class="section-stat-label">Learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">82%</div><div class="section-stat-label">Avg comp.</div></div>
-              <div class="section-stat"><div class="section-stat-num warning">1</div><div class="section-stat-label">Watch</div></div>
-            </div>
-          </div>
-          <div class="section-card mt-3" style="cursor:pointer;">
-            <div>
-              <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
-              <h2 class="h5 mb-1">E135 · OOP with Python</h2>
-              <p class="small text-muted">Recently launched · 18 active learners</p>
-            </div>
-            <div class="d-flex gap-3 mt-3" style="flex-wrap:wrap;">
-              <div class="section-stat"><div class="section-stat-num">18</div><div class="section-stat-label">Learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">—</div><div class="section-stat-label">Diagnostic in flight</div></div>
-            </div>
+          <strong>Sample design only.</strong> Course-level view for E010 (in-scope per SC-ADD-03). Equivalent views for E075/E135 will share the same pattern at production time.
+          <div class="small mt-2" style="font-style: italic;">
+            Contract anchor(s): §16.2 7.11 Learning analytics dashboard for educators.
           </div>
         </div>
       </div>
 
-      <div class="alert alert-info">
-        <span class="material-icons-outlined">priority_high</span>
-        <div><strong>4 learners flagged at-risk in E010 today.</strong></div>
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <span class="eyebrow"><span class="material-icons-outlined">school</span>Course detail</span>
+          <h1 id="s2-heading">E010 · Foundations of Programming (Python)</h1>
+          <p class="mt-1">School of Technology · 28 active learners (rolling enrollment) · last activity 14 min ago</p>
+        </div>
+        <span class="badge badge-warning" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">priority_high</span>4 learners at risk</span>
+      </div>
+
+      <!-- Course-level aggregate KPIs -->
+      <div class="pgn__card mb-3">
+        <div class="pgn__card-section">
+          <span class="eyebrow"><span class="material-icons-outlined">analytics</span>Course aggregate metrics</span>
+          <h2 class="h5 mb-2">Across all Skills in this Course</h2>
+          <div class="d-flex gap-3" style="flex-wrap:wrap;">
+            <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Active learners</div></div>
+            <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg Skill score</div></div>
+            <div class="section-stat"><div class="section-stat-num danger">4</div><div class="section-stat-label">At risk</div></div>
+            <div class="section-stat"><div class="section-stat-num">17</div><div class="section-stat-label">On track</div></div>
+            <div class="section-stat"><div class="section-stat-num">7</div><div class="section-stat-label">Mastery achieved</div></div>
+            <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions this week</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills deployed in this Course -->
+      <div class="mb-3">
+        <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Skills deployed in E010</span>
+        <h2 class="h4 mb-3">Coaching modules (1 active)</h2>
+
+        <div class="section-card recommended" onclick="goToScreen(3)" style="cursor:pointer;">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+              <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Skill · Active</span>
+              <h3 class="h5 mb-1">Python Skill</h3>
+              <p class="small text-muted">AI coaching module for Python foundations · 4 Topics · ~32 Learning Objectives</p>
+            </div>
+            <span class="badge badge-warning">4 learners at risk</span>
+          </div>
+          <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
+            <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Practicing</div></div>
+            <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg Topic mastery</div></div>
+            <div class="section-stat"><div class="section-stat-num">4</div><div class="section-stat-label">Topics</div></div>
+            <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions / week</div></div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
+            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(4);"><span class="material-icons-outlined">priority_high</span>View at-risk learners</button>
+          </div>
+        </div>
       </div>
     </div>
   </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Back to Dashboard</button>
+  </div>
 </section>
 
 <!-- Screen 3: Data Visualization → Student Heatmap ================== -->
@@ -948,9 +1069,11 @@
   <main class="screen-main" id="main-3">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Instructor Dashboard</a>
+        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#">E010</a>
+        <a href="#" onclick="goToScreen(2); return false;">E010</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <a href="#" onclick="return false;" title="Python Skill in E010">Python Skill</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Heatmap</span>
       </nav>
@@ -967,9 +1090,9 @@
 
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">grid_view</span>Data Visualization · Student Heatmap</span>
-          <h1 id="s3-heading">Class heatmap — Topic mastery</h1>
-          <p class="mt-1">Each cell shows a learner's AI-scored Topic mastery (0–100). Topics refresh after every coaching session.</p>
+          <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Python Skill · Class heatmap</span>
+          <h1 id="s3-heading">Python Skill — Topic mastery</h1>
+          <p class="mt-1">Each cell shows a learner's AI-scored Topic mastery (0–100) for the Python Skill in E010. Topics refresh after every coaching session.</p>
         </div>
         <div class="d-flex gap-2 align-items-center" style="flex-wrap:wrap;">
           <span class="text-muted small">Export:</span>
@@ -1090,9 +1213,9 @@
   <main class="screen-main" id="main-4">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Instructor Dashboard</a>
+        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(3); return false;">E010</a>
+        <a href="#" onclick="goToScreen(2); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Heatmap · At risk</span>
       </nav>
@@ -1188,9 +1311,9 @@
   <main class="screen-main" id="main-5">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Instructor Dashboard</a>
+        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(3); return false;">E010</a>
+        <a href="#" onclick="goToScreen(2); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(4); return false;">At risk</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1285,9 +1408,9 @@
   <main class="screen-main" id="main-6">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Instructor Dashboard</a>
+        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(3); return false;">E010</a>
+        <a href="#" onclick="goToScreen(2); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(5); return false;">Sally</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1361,7 +1484,7 @@
   <main class="screen-main" id="main-7">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Instructor Dashboard</a>
+        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(5); return false;">Sally</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1474,7 +1597,7 @@ for s in scores:
   <main class="screen-main" id="main-8">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(2); return false;">Instructor Dashboard</a>
+        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(5); return false;">Sally</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -1534,7 +1657,7 @@ for s in scores:
       <div class="d-flex gap-2">
         <button class="btn btn-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">arrow_back</span>Back to transcript</button>
         <button class="btn btn-outline-primary"><span class="material-icons-outlined">file_download</span>Export full log (JSON)</button>
-        <button class="btn btn-tertiary" onclick="goToScreen(2)"><span class="material-icons-outlined">dashboard</span>Back to dashboard</button>
+        <button class="btn btn-tertiary" onclick="goToScreen(1)"><span class="material-icons-outlined">dashboard</span>Back to dashboard</button>
       </div>
     </div>
   </main>
@@ -1564,7 +1687,7 @@ for s in scores:
             <tr><th>This page requires</th><td>School Admin</td></tr>
           </table>
           <div class="d-flex gap-2 justify-content-center mb-3" style="flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="goToScreen(2)"><span class="material-icons-outlined">arrow_back</span>Return to your dashboard</button>
+            <button class="btn btn-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Return to your dashboard</button>
             <a class="btn btn-outline-primary" href="../"><span class="material-icons-outlined">link</span>Open the correct LRPS link</a>
           </div>
           <div class="text-center text-muted small">Logged · 18 May 2026 14:22:07 UTC · evt_b1d5e342</div>
@@ -1605,8 +1728,9 @@ for s in scores:
     <span class="flow-id">Flow</span>
     <span class="flow-desc">Instructor Dashboard &amp; At-Risk Intervention</span>
     <nav class="flow-nav" aria-label="At-risk intervention screens">
-      <button class="step-btn active" onclick="goToScreen(2)" aria-label="Screen 02: Dashboard home">02 Dashboard home</button>
-      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Class heatmap">03 Class heatmap</button>
+      <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: Dashboard home">01 Dashboard home</button>
+      <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Course view (E010)">02 Course view</button>
+      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Skill view (Python Skill heatmap)">03 Skill view</button>
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: At-risk filter">04 At-risk filter</button>
       <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Sally profile">05 Sally profile</button>
       <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Conversation logs">06 Conversation logs</button>
@@ -1619,7 +1743,7 @@ for s in scores:
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 9; // v4.57: screen 9 added (Access Denied / zero-trust deny path per RBAC doc §4.2 Figure 6).
+  const TOTAL_SCREENS = 9; // v4.57: screen 9 added (Access Denied / zero-trust deny path per RBAC doc §4.2 Figure 6). v4.92: renumbered 01-09 starting at Dashboard; new Screen 02 (Course view) inserted between Dashboard and Skill heatmap.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
