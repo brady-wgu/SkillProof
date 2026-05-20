@@ -8,6 +8,35 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.94 — 20 May 2026 — Instructor S1 Dashboard: full E010 card clickable, regional click routing
+
+Follow-up to v4.93 per Brady's directive: the big E010 Course card on the Dashboard needs more clickable regions, not just the title link and "Open Course details" button.
+
+### What changed (instructor portal only)
+
+- **Entire E010 Course card now clickable** → routes to **S2 Course view**.
+  - `<div class="section-card recommended">` gained `onclick="goToScreen(2)"`, `cursor:pointer`, `role="button"`, `tabindex="0"`, and `aria-label="Open E010 Course details"`.
+  - The course-title `<a>` link was simplified (still readable as a course title, no longer needs its own onclick — the parent card handles navigation).
+- **Skill region clicks now route to S3** correctly via `event.stopPropagation()`.
+  - Python Skill nested card and Git Skill nested card both got `event.stopPropagation(); goToScreen(3);` on their onclick, so clicks inside the Skills region don't bubble up to the parent E010 card.
+- **"4 at risk" header badge is now a clickable link** → routes to **S4 At-risk filter** (consistent with the same badge on S2). Uses `event.stopPropagation()` to prevent bubbling to the parent E010 card.
+
+### Click-region map verified (functional test)
+
+| Clicked region | Lands on |
+|---|---|
+| E010 card body (KPIs, eyebrow, title, subtitle) | **S2** Course view |
+| `4 at risk` header badge | **S4** At-risk filter |
+| Python Skill nested card | **S3** Skill view (heatmap) |
+| Git Skill nested card | **S3** Skill view (heatmap) |
+| Either "Open Heatmap" button inside Skill cards | **S3** Skill view (heatmap) |
+
+### Storyboard stamp
+
+v4.94 across the instructor portal. Other 5 portals stay at v4.91.
+
+---
+
 ## v4.93 — 20 May 2026 — Instructor S2 Course view refined: Skill-level metrics only, second Skill added, learner roster surfaced
 
 Resolves the S2 (Course view) walkthrough findings S2-07 through S2-12 per Brady's verdicts.
