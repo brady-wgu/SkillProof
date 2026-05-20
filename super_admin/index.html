@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.91</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.95</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -138,7 +138,7 @@
     [data-theme="dark"] .alert-success { background: #0A2E1A; border-color: #145025; color: #6FBA86; }
     [data-theme="dark"] .feedback-panel.success { background: #0A2E1A; border-color: var(--pgn-color-success-base); }
     [data-theme="dark"] .feedback-panel.warning { background: #3A2A0A; border-color: var(--color-amber); }
-    [data-theme="dark"] .floating-actions { background: rgba(13, 26, 46, 0.95); border-color: #1A2A45; }
+    /* .floating-actions is now an in-flow block — no dark-mode override needed (v4.95). */
     [data-theme="dark"] .spike-bar { background: #1A2A45; }
     [data-theme="dark"] .spike-bar.spike { background: var(--pgn-color-warning-base); }
 
@@ -538,18 +538,14 @@
     .w-100 { width: 100%; }
 
     /* ================================================================
-       FLOATING BOTTOM-RIGHT ACTIONS
+       PAGE BOTTOM ACTIONS — in-flow, right-aligned, just above footer
+       (v4.95: replaced position:fixed overlay with accessible in-flow block)
        ================================================================ */
     .floating-actions {
-      position: fixed; bottom: 200px; right: var(--pgn-spacing-4);
       display: flex; gap: var(--pgn-spacing-2);
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(8px);
-      padding: var(--pgn-spacing-2);
-      border-radius: var(--pgn-size-border-radius-lg);
-      border: 1px solid var(--pgn-color-gray-100);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      z-index: 100;
+      justify-content: flex-end;
+      margin-top: var(--pgn-spacing-5);
+      padding: var(--pgn-spacing-3) 0;
     }
 
     /* ================================================================

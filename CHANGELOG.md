@@ -8,6 +8,46 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.95 — 20 May 2026 — S2 second-pass refinements + cross-portal floating-actions accessibility fix
+
+Resolves S2-13 through S2-19 from the S2 (Course view) second-pass walkthrough, plus a cross-portal layout fix to remove the floating-overlay button.
+
+### S2 Course view refinements (instructor portal)
+
+- **S2-13 — Python Skill card "4 learners at risk" badge now clickable** → routes to S4 At-risk filter (matches the S1 E010 card pattern). Uses `event.stopPropagation()` so it doesn't bubble up to the card-level S3 navigation.
+- **S2-14 — Skill cards on S2 now have full a11y attributes:** `role="button"`, `tabindex="0"`, `aria-label` ("Open Python Skill heatmap" / "Open Git & Version Control Skill heatmap"). Matches the S1 E010 card a11y pattern.
+- **S2-15 — Replaced uninformative "Active" eyebrow with a "Live" status badge** inline with the Skill title. Cross-platform status terminology proposed: **Testing** (amber/warning) for Skills under verification by admins/instructors, and **Live** (green/success) for Skills deployed to students with Topics locked. Recommended for ALL 4 user types (Student, Instructor, Tenant Admin, Super Admin) — "Testing" is clearer than "Test", "Live" is less technical than "Production"/"Prod".
+- **S2-16 — Renamed "View full roster (heatmap)" button** to **"Open Python Skill heatmap"** — specific to which Skill's heatmap opens (was ambiguous with 2 Skills now in E010).
+- **S2-18 — Removed `<strong>` bold from Sally's name in Roster table.** All learner names now render in default plaintext (matches default font styling site-wide).
+- **S2-19 — Added chip-filter bar to Course Roster:** All (28) · Mastery (7) · On track (17) · Watch list (1) · At risk (4) [active]. Same pattern as the S3 heatmap filter.
+- **Bonus:** Renamed roster heading from "Learners needing attention (4 of 28)" to **"Learners in E010"** — the filter chip below now communicates which subset is shown, no need to bake "4 of 28" into the heading.
+- **Bonus:** All 4 at-risk row "View profile" buttons now route to **S5 Sally profile** (was S4 for non-Sally rows). Matches Brady's "clicking this row goes to Screen 05" verdict — JFT will parameterize per-learner profile in production.
+
+### S2-17 — Cross-portal floating-actions accessibility fix (3 admin portals)
+
+The old `.floating-actions` CSS used `position: fixed; bottom: 200px; right: 32px;` to overlay the page — caused overlap with content (e.g., the roster table on S2) and broke keyboard/screen-reader flow.
+
+**New `.floating-actions` rule** (applied to instructor, super_admin, and tenant_admin portals):
+```css
+.floating-actions {
+  display: flex; gap: var(--pgn-spacing-2);
+  justify-content: flex-end;
+  margin-top: var(--pgn-spacing-5);
+  padding: var(--pgn-spacing-3) 0;
+}
+```
+
+- Removed: `position: fixed`, `bottom`, `right`, `background`, `backdrop-filter`, `padding`, `border-radius`, `border`, `box-shadow`, `z-index`
+- Added: in-flow flex layout, right-aligned, vertical spacing above the footer
+- Removed associated dark-mode override (no overlay → no background to override)
+- Net effect: the Back/return button now renders at the bottom-right of the page content, just above the footer — matches the student portal's `.pm-bottom-actions` pattern
+
+### Storyboard stamp
+
+v4.95 across instructor, super_admin, tenant_admin. Student and help portals stay at v4.91.
+
+---
+
 ## v4.94 — 20 May 2026 — Instructor S1 Dashboard: full E010 card clickable, regional click routing
 
 Follow-up to v4.93 per Brady's directive: the big E010 Course card on the Dashboard needs more clickable regions, not just the title link and "Open Course details" button.
