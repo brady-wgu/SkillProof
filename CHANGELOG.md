@@ -8,6 +8,30 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.98 — 20 May 2026 — S4 At-risk filter: extend v4.97 patterns + breadcrumb + summary card relabel
+
+Extends the v4.97 S3 hydration to S4 (At-risk filter) and applies the same cleanup playbook.
+
+### Behavior changes
+
+- **Generalized `hydrateHeatmap()`** — now hydrates both `#screen-3` (15 visible learners) and `#screen-4` (4 at-risk learners) with the same ARIA grid + tooltips + clickable rows pattern. Status maps per screen so the row-level data-row-status is correct on both.
+- **S4 row labels now clickable** → S5 (all 4 at-risk rows: Sally, B.F., C.S., H.D.) — was only Sally before.
+- **S4 cells get hover tooltips**: `"Sally · Identifies Python Constructs · Score 42/100"` etc.
+- **Filter chips on S4 wired** — All/Mastery/On track/Watch now navigate to S3 AND apply that filter (using `goToScreen(3); filterHeatmap('xxx');`). The At risk chip remains the active state.
+
+### Copy and layout
+
+- **Removed "Sample design only" banner** from S4 (matches S3 removal)
+- **Fixed breadcrumb formatting**: was "Heatmap · At risk" as a single span; now properly split into "Heatmap" (clickable to S3) + chevron + "At risk" (current page)
+- **Removed Sally's inconsistent arrow icon** + her bespoke onclick handlers on row+cells — Sally now renders identically to the other 3 at-risk learners, all hydrated by the JS
+- **Right summary card eyebrow** "Course summary" → **"Python Skill summary"** (Skill-level naming per the metric ladder)
+
+### Storyboard stamp
+
+v4.98 instructor portal. Other 5 portals unchanged.
+
+---
+
 ## v4.97 — 20 May 2026 — S3 Skill heatmap: filter wiring, ARIA grid, hover tooltips, back button, copy fixes
 
 Resolves S3 (Python Skill heatmap) walkthrough findings S3-01 through S3-10.
