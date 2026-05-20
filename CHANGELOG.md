@@ -8,6 +8,35 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.93 — 20 May 2026 — Instructor S2 Course view refined: Skill-level metrics only, second Skill added, learner roster surfaced
+
+Resolves the S2 (Course view) walkthrough findings S2-07 through S2-12 per Brady's verdicts.
+
+### What changed (instructor portal only)
+
+- **Removed** the "Course aggregate metrics" card (`Across all Skills in this Course` with 6 KPI tiles) — duplicated S1 Dashboard E010 KPIs and violated the "Skill-level perspective" rule for S2.
+- **Removed** the "Sample design only" disclaimer banner from S2.
+- **Renamed** section heading `Coaching modules (1 active)` → `Skills (2 active)` (terminology enforcement — "module" is on the banned-terms list per the RBAC canonical hierarchy callout).
+- **Made the header badge `4 learners at risk` a real link** — now routes to S4 At-risk filter (was non-clickable static badge).
+- **Dropped redundant "Skill" from card eyebrows** — eyebrow now reads `Active` instead of `Skill · Active` (the card title `Python Skill` already names the entity).
+- **Added a second Skill — Git & Version Control Skill** — appears on S2 (full card with KPIs + Open Heatmap CTA) and on S1 Dashboard's E010 card (compact row). Course E010 now shows `SKILLS IN THIS COURSE (2 active)` instead of `(1 active)`. Sample data: 22 learners practicing, 68% avg Topic mastery, 3 Topics, 0 at risk.
+- **Added a Course Roster section to S2** — `Learners needing attention (4 of 28)` compact table showing the 4 at-risk learners (Sally, B.F., C.S., H.D.) with per-Skill scores across both Python Skill and Git Skill. "—" indicates learner has not started practicing that Skill yet. Each row links to the at-risk filter or Sally's profile.
+- **NO time-related metrics anywhere** — per Brady's directive: no "time-on-platform", no "average session length", no "time-since-last-active" beyond the human-readable "last active" timestamp.
+
+### Followed Brady's framing of the metric ladder
+
+| Screen | Granularity | Example KPIs |
+|---|---|---|
+| **S1 Dashboard** | per-Course | 28 active learners · 76% Avg Skill score · 4 at risk |
+| **S2 Course view** | per-Skill | Python Skill: 28 practicing, 76% avg Topic mastery; Git Skill: 22 practicing, 68% |
+| **S3 Skill view (heatmap)** | per-Topic | Cell = learner × Topic mastery within one Skill |
+
+### Storyboard stamp
+
+v4.93 across the instructor portal. Other 5 portals stay at v4.91.
+
+---
+
 ## v4.92 — 20 May 2026 — Instructor portal: Course view inserted as Screen 02, screens renumbered 01-09, S2 findings cleared
 
 Resumes the S2 critical walkthrough by acting on Brady's verdict on S2-01 through S2-06 (per session findings). Major architectural change to the instructor flow.
