@@ -8,6 +8,45 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.96 — 20 May 2026 — Relocate Course Roster from S2 to S1 (cross-Course at-risk view)
+
+Per Brady's second-pass feedback: the "Course Roster" on S2 (Course Detail) was conceptually misplaced — S2 should hold only Skill-specific data per the metric ladder. The roster data belonged on S1 (cross-Course view) or S3 (per-Skill view; the heatmap already serves that role).
+
+### What changed (instructor portal only)
+
+**S2 — Removed the entire Course Roster section:**
+- "COURSE ROSTER" eyebrow + "Learners in E010" H2 — gone
+- "Open Python Skill heatmap" standalone button — gone (each Skill card already has its own "Open Heatmap" button)
+- Chip-filter bar (All / Mastery / On track / Watch list / At risk) — gone
+- Roster table with per-Skill score columns — gone
+- "—" footnote — gone
+
+**S2 is now focused on Skill-level data only:** breadcrumb → header → 2 Skill cards → Back to Dashboard. Clean and on-spec.
+
+**S1 — Added cross-Course "Learners needing attention" section** below the 3 Course cards:
+- "ACROSS ALL YOUR COURSES" eyebrow
+- H2: "Learners needing attention"
+- Chip-filter bar with cross-Course totals: All (68) · Mastery (7) · On track (56) · Watch list (1) · At risk (4) [active]
+- 4-row table: Learner | Course | Status | Last active | View profile
+- All 4 at-risk learners currently in E010 (placeholder data); Course column shows which Course they're at-risk in
+- Each row → S5 (Sally profile); "View profile" buttons → S5
+
+### Conceptual model after v4.96
+
+| Screen | Data scope | What's there |
+|---|---|---|
+| **S1 Dashboard** | Multi-Course + cross-Course roster | 3 Course cards + at-risk roster across all Courses |
+| **S2 Course Detail** | Per-Skill within one Course | Skills (2 active) + Skill KPIs |
+| **S3 Skill View** | Per-Topic within one Skill (the heatmap) | Topic × Learner grid |
+| **S4 At-risk Filter** | Per-Skill at-risk subset | Filtered heatmap |
+| **S5 Sally Profile** | Individual learner | Per-Learning-Objective scores |
+
+### Storyboard stamp
+
+v4.96 across the instructor portal. Other 5 portals stay at v4.91 (or v4.95 for tenant_admin / super_admin which got the floating-actions fix).
+
+---
+
 ## v4.95 — 20 May 2026 — S2 second-pass refinements + cross-portal floating-actions accessibility fix
 
 Resolves S2-13 through S2-19 from the S2 (Course view) second-pass walkthrough, plus a cross-portal layout fix to remove the floating-overlay button.
