@@ -8,6 +8,35 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.103 — 21 May 2026 — Horizontal scroll discoverability: fade + scrollbar + hint label
+
+Per Brady: "I like the scroll, but let's make it a little more obvious and clear that there is more to see. I don't want the user thinking there is nothing else to look at to the right of this viewport."
+
+### Three complementary cues added to S3 + S4 heatmaps
+
+1. **Right-edge fade gradient** — `.heatmap-scroll-container::after` pseudo-element renders a 56px-wide white→transparent gradient on the right edge. Signals visually that content is cut off. Fades out (`opacity:0`) when the user has scrolled to the right edge via JS-toggled `.at-end` class.
+2. **Prominent brand-blue scrollbar** — `.heatmap-card::-webkit-scrollbar` styled 12px tall with `--pgn-color-brand-base` thumb. `scrollbar-color` set for Firefox. Visible affordance even when no scrolling has happened.
+3. **Italic hint label below the heatmap** — pill-style block with `swap_horiz` icon, brand-blue text on brand-tint background: *"Scroll horizontally to see all 13 Topics — try the scrollbar below, shift + mouse wheel, or trackpad swipe"*. Educates users on the available scroll methods. Dims to 50% opacity when scrolled to right end.
+
+### Wiring
+
+- Wrapped both heatmaps in `<div class="heatmap-scroll-container">` (was `.heatmap-card` directly).
+- Added `<div class="heatmap-scroll-hint" role="note">` as sibling below each `.heatmap-card`.
+- New JS function `setupHeatmapScrollState(screenSelector)` listens for `scroll`, window `resize`, and uses `ResizeObserver` to recalculate when the heatmap first becomes visible (handles the display:none → visible transition when user navigates to S3 or S4). Toggles `.at-end` class on the container when `scrollLeft >= scrollWidth - clientWidth - 4`.
+
+### Behavior
+
+- On page load: fade gradient + hint at full opacity → signals "more to the right"
+- User scrolls right: fade gradient stays visible until reaching the end
+- Scrolled to right edge: fade gradient opacity goes to 0, hint dims to 50% → signals "you've seen everything"
+- Viewport wider than 1580px (no scroll needed): `.at-end` is automatically added, so fade + dim are applied
+
+### Storyboard stamp
+
+v4.103 instructor portal.
+
+---
+
 ## v4.102 — 21 May 2026 — S3/S4 heatmaps + S6 sessions expanded to 13 canonical Topics
 
 Per Brady (21 May 2026): "Let's see what happens when you have many more topics. I would expect this to naturally maximize at ~20 topics, so 13 is a great average to visualize. Update those related heatmaps and session information now."
