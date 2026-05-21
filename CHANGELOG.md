@@ -8,6 +8,21 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.104 — 21 May 2026 — S3 header: shorten description, keep PDF + CSV co-located
+
+Per Brady: "This line is awkward on S3: '[the description text]' with the CSV button next to it. Reduce this descriptive text by 50% and update the placement of the CSV download button to be co-located with the Python Skill report button."
+
+### What changed (S3 only)
+
+- **Description text shortened ~50%**: was "Each cell shows a learner's AI-scored Topic mastery (0–100) for the Python Skill in E010. Topics refresh after every coaching session." (130 chars). Now: **"AI-scored Topic mastery (0–100) per learner. Updates after each coaching session."** (81 chars). Information density preserved; Skill+Course context is already in the eyebrow + breadcrumb above.
+- **PDF + CSV buttons now lock together on one line**: the right-side Export container had `flex-wrap: wrap` which let the CSV button drop to a new row when the parent row got tight. Changed to `flex-wrap: nowrap` + `white-space: nowrap` + `flex-shrink: 0` so the Export label + PDF button + CSV button stay co-located as a single horizontal group regardless of the left-side text length.
+
+### Storyboard stamp
+
+v4.104 instructor portal.
+
+---
+
 ## v4.103 — 21 May 2026 — Horizontal scroll discoverability: fade + scrollbar + hint label
 
 Per Brady: "I like the scroll, but let's make it a little more obvious and clear that there is more to see. I don't want the user thinking there is nothing else to look at to the right of this viewport."
