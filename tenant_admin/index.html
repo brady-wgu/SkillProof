@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.112</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.113</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -2467,7 +2467,15 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       </div>
 
       <h2 class="h5 mb-2">Recent incidents</h2>
-      <table class="pgn__data-table mb-3">
+
+      <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
+        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+        <button class="chip-filter active" data-filter-incident="all" onclick="filterIncidents('all')">All (4)</button>
+        <button class="chip-filter" data-filter-incident="auto" onclick="filterIncidents('auto')">Auto-resolved (3)</button>
+        <button class="chip-filter danger" data-filter-incident="jft" onclick="filterIncidents('jft')"><span class="material-icons-outlined" style="font-size:14px;">engineering</span>JFT engaged (1)</button>
+      </div>
+
+      <table class="pgn__data-table mb-3" id="incidents-table">
         <thead>
           <tr>
             <th>Date</th>
@@ -2479,7 +2487,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-incident-cat="auto">
             <td>07 May 2026</td>
             <td>09:43 – 11:08</td>
             <td>Primary LLM provider outage</td>
@@ -2487,7 +2495,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <td><span class="badge badge-success">Auto-fallback</span></td>
             <td>0 sessions failed</td>
           </tr>
-          <tr>
+          <tr data-incident-cat="auto">
             <td>22 Apr 2026</td>
             <td>02:14 – 02:17</td>
             <td>API gateway brief flap</td>
@@ -2495,7 +2503,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <td><span class="badge badge-success">Self-healed</span></td>
             <td>0 sessions failed</td>
           </tr>
-          <tr>
+          <tr data-incident-cat="auto">
             <td>09 Apr 2026</td>
             <td>14:02 – 14:08</td>
             <td>Telemetry buffer back-pressure</td>
@@ -2503,7 +2511,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
             <td><span class="badge badge-success">Auto-scale</span></td>
             <td>0 events dropped</td>
           </tr>
-          <tr>
+          <tr data-incident-cat="jft">
             <td>27 Mar 2026</td>
             <td>23:11 – 23:48</td>
             <td>Auth provider rate-limit anomaly</td>
@@ -2639,7 +2647,13 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                 <span class="eyebrow"><span class="material-icons-outlined">play_circle</span>Active Skills · 3</span>
                 <button class="btn btn-primary btn-sm" onclick="goToScreen(3)"><span class="material-icons-outlined">add</span>New Skill</button>
               </div>
-              <table class="pgn__data-table">
+              <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
+                <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+                <button class="chip-filter active" data-filter-lifecycle="all" onclick="filterSkillLifecycle('all')">All (3)</button>
+                <button class="chip-filter" data-filter-lifecycle="live" onclick="filterSkillLifecycle('live')">Live (2)</button>
+                <button class="chip-filter" data-filter-lifecycle="ramping" onclick="filterSkillLifecycle('ramping')">Ramping (1)</button>
+              </div>
+              <table class="pgn__data-table" id="active-skills-table">
                 <thead>
                   <tr>
                     <th>Skill</th>
@@ -2649,7 +2663,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr data-lifecycle-cat="live">
                     <td>
                       <div class="text-strong">E010 · Foundations of Programming (Python)</div>
                       <div class="micro text-muted">Skill ID <code>sub_e010</code> · prompt v3</div>
@@ -2658,7 +2672,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                     <td><span class="badge badge-success"><span class="dot green"></span>Live</span></td>
                     <td><button class="btn btn-tertiary btn-sm">Deactivate…</button></td>
                   </tr>
-                  <tr>
+                  <tr data-lifecycle-cat="live">
                     <td>
                       <div class="text-strong">E075 · Intermediate Python &amp; Libraries</div>
                       <div class="micro text-muted">Skill ID <code>sub_e075</code> · prompt v2</div>
@@ -2667,7 +2681,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
                     <td><span class="badge badge-success"><span class="dot green"></span>Live</span></td>
                     <td><button class="btn btn-tertiary btn-sm">Deactivate…</button></td>
                   </tr>
-                  <tr>
+                  <tr data-lifecycle-cat="ramping">
                     <td>
                       <div class="text-strong">E135 · OOP with Python</div>
                       <div class="micro text-muted">Skill ID <code>sub_e135</code> · prompt v1</div>
@@ -3475,14 +3489,16 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
 
   /* v4.112: chip-filter helpers — generic table-row hide/show by data-attr.
      Matches the instructor + super_admin portal patterns. Supports multi-category
-     rows via space-separated values in data-attr. */
-  function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr) {
+     rows via space-separated values in data-attr.
+     v4.113: optional 5th param rowSelector lets you scope rows to a specific
+     table when a screen has multiple tables (default: scopeSelector + ' tbody tr'). */
+  function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr, rowSelector) {
     document.querySelectorAll(scopeSelector + ' .chip-filter').forEach(function(c) {
       c.classList.remove('active');
     });
     var activeChip = document.querySelector(scopeSelector + ' .chip-filter[' + chipAttr + '="' + filterValue + '"]');
     if (activeChip) activeChip.classList.add('active');
-    document.querySelectorAll(scopeSelector + ' tbody tr').forEach(function(row) {
+    document.querySelectorAll(rowSelector || (scopeSelector + ' tbody tr')).forEach(function(row) {
       var cat = row.getAttribute(dataAttr) || '';
       var cats = cat.split(/\s+/).filter(Boolean);
       row.style.display = (filterValue === 'all' || cats.indexOf(filterValue) !== -1) ? '' : 'none';
@@ -3492,6 +3508,16 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   /* S20 Tenant Activity Log — filter by action type */
   function filterActivityLog(filter) {
     chipFilterTable('#screen-20', filter, 'data-activity-cat', 'data-filter-activity');
+  }
+
+  /* S16 SLA history Recent Incidents — filter by resolution path */
+  function filterIncidents(filter) {
+    chipFilterTable('#screen-16', filter, 'data-incident-cat', 'data-filter-incident', '#incidents-table tbody tr');
+  }
+
+  /* S18 Skill Lifecycle Active Skills — filter by lifecycle stage */
+  function filterSkillLifecycle(filter) {
+    chipFilterTable('#screen-18', filter, 'data-lifecycle-cat', 'data-filter-lifecycle', '#active-skills-table tbody tr');
   }
 
   // Restore theme on load

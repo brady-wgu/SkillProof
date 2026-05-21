@@ -8,6 +8,59 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.113 — 21 May 2026 — Chip-filter rollout (continued): Tenant Admin S16 Incidents + S18 Skill Lifecycle + multi-table helper
+
+Continues the chip-filter rollout from v4.112. Two more tenant_admin tables wired up.
+
+### Helper extended (cross-portal)
+
+`chipFilterTable()` got an optional 5th param `rowSelector` (instructor + super_admin + tenant_admin all updated). When a screen has multiple `<table>` elements, the row selector can target a specific table (e.g., `'#active-skills-table tbody tr'`) so the chip only filters the intended table — the other tables on the screen are unaffected.
+
+### Tenant Admin S16 SLA history — Recent Incidents
+
+Added chip filter above the 4-row incidents table:
+- All (4)
+- Auto-resolved (3) — Auto-fallback, Self-healed, Auto-scale events
+- JFT engaged (1) — danger-tinted chip; matches the warning-badge visual signal
+
+`data-incident-cat` on each row; new `filterIncidents()` JS function. Targets `#incidents-table tbody tr` so the helper doesn't touch any other table on S16.
+
+### Tenant Admin S18 Skill Lifecycle — Active Skills
+
+Added chip filter above the 3-row Active Skills table:
+- All (3)
+- Live (2) — E010, E075
+- Ramping (1) — E135, freshly deployed
+
+`data-lifecycle-cat` on each row; new `filterSkillLifecycle()` JS function. Targets `#active-skills-table tbody tr` so the Archived Skills table below is not filtered.
+
+> Note: "Ramping" is a third lifecycle state distinct from the platform-wide "Testing / Live" convention introduced in v4.95. Where Testing means "pre-deploy verification by admins" and Live means "deployed to students", Ramping signals "newly deployed and being monitored for early uptake metrics." Worth a follow-up conversation on whether Ramping is a real state or should collapse into Live.
+
+### Live verification
+
+- **S16** filter "JFT engaged" → 1 visible (Auth provider rate-limit anomaly) ✓
+- **S18** filter "Live" → 2 visible (E010, E075) ✓
+- **S18** filter "Ramping" → 1 visible (E135) ✓
+- **S18** Archived Skills table unaffected by filters (2 rows always visible) ✓
+
+### Still deferred (next pass)
+
+| Surface | Reason |
+|---|---|
+| Super Admin Schools tab (4 rows) | Too few rows |
+| Super Admin S4 Per-school cost breakdown (4 rows) | Too few rows |
+| Super Admin S10–S13 operational tables | Need per-screen judgment |
+| Tenant Admin S2 "Your Skills" row-list | Uses `.row-card` not `<table>` — helper would need extension to support |
+| Tenant Admin S4 lo-topic-tables (×4) | Already grouped by Topic — chip filter redundant |
+| Tenant Admin S9/S10 Services tables | Operational health views — re-evaluate |
+| Student Progress Map | Re-evaluate after student portal walkthrough |
+
+### Storyboard stamp
+
+v4.113 across instructor + super_admin + tenant_admin portals.
+
+---
+
 ## v4.112 — 21 May 2026 — Chip-filter rollout (continued): Super Admin Skills tab + Tenant Admin Activity Log
 
 Continues the global chip-filter rollout started in v4.109. Brady (21 May 2026): *"Add filter chips to all tables globally."*
