@@ -8,6 +8,29 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.110 — 21 May 2026 — S8 audit log: drop Payload + Hash columns
+
+Per Brady: "Let's remove the Payload column from this page as well. I don't think it's helpful, along with the Hash column."
+
+### What changed
+
+S8 Audit Trail event log table now has **4 columns** (was 6):
+- `#` · `Date` · `Event type` · `Source`
+
+Removed:
+- `Payload` — byte counts (128 B, 412 B, 2.1 KB, etc.) — forensic noise; doesn't help an instructor decide anything
+- `Hash (sha256, first 8)` — first 8 chars of sha256 hash per event — useful for cryptographic chain-of-custody verification, but not actionable for an instructor's read
+
+### Production note for JFT
+
+The underlying §10.4 audit data model in production must still capture payload size + cryptographic hash per event (immutable chain-of-custody is a hard contract requirement). The instructor-facing display drops these for clarity. They remain available via the JSON export (the "Export Session 09 Audit Log" → JSON button at top-right) and visible only to Super Admin in the cross-tenant audit log.
+
+### Storyboard stamp
+
+v4.110 instructor portal.
+
+---
+
 ## v4.109 — 21 May 2026 — S8 Audit Trail walkthrough + cross-platform chip-filter rollout + "no LO-aggregate data" rule + "Capture integrity" removal
 
 Three threads landed:
