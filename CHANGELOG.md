@@ -8,6 +8,62 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.112 — 21 May 2026 — Chip-filter rollout (continued): Super Admin Skills tab + Tenant Admin Activity Log
+
+Continues the global chip-filter rollout started in v4.109. Brady (21 May 2026): *"Add filter chips to all tables globally."*
+
+### What changed
+
+**Super Admin S9 Access Control · Skills tab** — added chip filter:
+- All (6 of 31)
+- Technology (3) · Business (1) · Education (2) · Health (1)
+- No owner (1) — danger-tinted chip, matches the warning-row visual signal
+
+Each Skill row gets a `data-skill-cat` attribute with space-separated category tags (e.g., `data-skill-cat="tech education"` for a Skill deployed in both schools). New JS function `filterSkillsTable()` calls the generic `chipFilterTable()` helper.
+
+**Tenant Admin S20 Activity Log** — replaced the decorative-only badge row (All actions / Create / Edit / Delete / Deploy / Last 30 days / All actors) with a functional chip-filter:
+- All actions (11)
+- Create (2) · Edit (3) · Deploy (3) · Role changes (3)
+
+Each row gets `data-activity-cat` matching its action type. New JS function `filterActivityLog()` + new `chipFilterTable()` helper added to tenant_admin's JS block.
+
+### Helper extension — multi-category rows
+
+The `chipFilterTable()` helper in all three portals (instructor, super_admin, tenant_admin) was extended to support **space-separated multi-category values** in the data attribute:
+
+```js
+// Before: cat === filterValue
+// After:  cats.split(/\s+/).indexOf(filterValue) !== -1
+```
+
+This lets a row belong to multiple chip categories simultaneously (e.g., a Skill deployed in both Technology and Education schools matches both filters).
+
+### Live verification (cross-portal)
+
+- **Super Admin Skills tab** filter "Technology" → 3 visible (E010, E075, E135) ✓
+- **Super Admin Skills tab** filter "No owner" → 1 visible (H320 Health Informatics) ✓
+- **Tenant Admin Activity Log** filter "Deploy" → 3 visible (E135 prod, E075 staging, E010 prod) ✓
+- **Tenant Admin Activity Log** filter "Role changes" → 3 visible (Bob's role elevations + instructor assignment) ✓
+
+### Still deferred (next chip-filter commit)
+
+| Surface | Reason |
+|---|---|
+| Super Admin Schools tab (4 rows) | Too few rows to filter |
+| Super Admin S4 Per-school cost breakdown (4 rows) | Too few rows |
+| Super Admin S10–S13 operational tables | Need per-screen judgment |
+| Tenant Admin S2 "Your Skills" row-list (4 rows) | Uses `.row-card` not `<table>`; helper needs row-selector parameter to support |
+| Tenant Admin S16 Recent incidents | Worth doing in a follow-up |
+| Tenant Admin S18 Skill Lifecycle | Worth doing in a follow-up |
+| Tenant Admin S4 lo-topic-tables (×4) | Already grouped by Topic — chip filter would be redundant |
+| Student Progress Map | Re-evaluate after student walkthrough |
+
+### Storyboard stamp
+
+v4.112 instructor + super_admin + tenant_admin portals.
+
+---
+
 ## v4.111 — 21 May 2026 — S9 Access Denied walkthrough complete — instructor portal walkthrough done
 
 Resolves S9-01 through S9-05 per Brady's verdicts. Closes the instructor portal walkthrough (S1-S9 all complete).

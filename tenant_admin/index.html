@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.107</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.112</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -3044,13 +3044,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
       <h1 id="s20-heading" class="mb-3">Activity Log &middot; School of Technology</h1>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="badge badge-info">All actions</span>
-        <span class="badge badge-gray">Create</span>
-        <span class="badge badge-gray">Edit</span>
-        <span class="badge badge-gray">Delete</span>
-        <span class="badge badge-gray">Deploy</span>
-        <span class="badge badge-gray">Last 30 days</span>
-        <span class="badge badge-gray">All actors</span>
+        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+        <button class="chip-filter active" data-filter-activity="all" onclick="filterActivityLog('all')">All actions (11)</button>
+        <button class="chip-filter" data-filter-activity="create" onclick="filterActivityLog('create')">Create (2)</button>
+        <button class="chip-filter" data-filter-activity="edit" onclick="filterActivityLog('edit')">Edit (3)</button>
+        <button class="chip-filter" data-filter-activity="deploy" onclick="filterActivityLog('deploy')">Deploy (3)</button>
+        <button class="chip-filter" data-filter-activity="role-change" onclick="filterActivityLog('role-change')">Role changes (3)</button>
       </div>
 
       <div class="pgn__card mb-3">
@@ -3066,77 +3065,77 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-activity-cat="deploy">
                 <td>13 May 2026 &middot; 14:08:21</td>
                 <td>Alice</td>
                 <td>Deploy</td>
                 <td><code>sub_e135</code> &middot; production</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="role-change">
                 <td>07 May 2026 &middot; 09:00:00</td>
                 <td>Bob (Super Admin)</td>
                 <td>Elevate role</td>
                 <td>Alice &rarr; Tenant Admin (School of Technology)</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="edit">
                 <td>13 May 2026 &middot; 13:51:02</td>
                 <td>Alice</td>
                 <td>Edit prompt</td>
                 <td><code>sub_e135</code> &middot; prompt v3</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="edit">
                 <td>13 May 2026 &middot; 11:24:48</td>
                 <td>Alice</td>
                 <td>Edit objective threshold</td>
                 <td><code>sub_e135</code> &middot; Objective 1.3</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="create">
                 <td>12 May 2026 &middot; 16:02:11</td>
                 <td>Alice</td>
                 <td>Create Skill</td>
                 <td><code>sub_e135</code></td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="edit">
                 <td>09 May 2026 &middot; 09:18:55</td>
                 <td>Alice</td>
                 <td>Update branding</td>
                 <td>Tenant settings &middot; logo</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="create">
                 <td>07 May 2026 &middot; 09:46:33</td>
                 <td>Alice</td>
                 <td>Create incident ticket</td>
                 <td><code>JFT-SkillProof-2138</code></td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="role-change">
                 <td>06 May 2026 &middot; 13:18:04</td>
                 <td>Bob (Super Admin)</td>
                 <td>Assign instructor</td>
                 <td>Charlie &rarr; E135</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="deploy">
                 <td>04 May 2026 &middot; 22:11:09</td>
                 <td>Alice</td>
                 <td>Deploy</td>
                 <td><code>sub_e075</code> &middot; staging</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="deploy">
                 <td>02 May 2026 &middot; 18:34:27</td>
                 <td>Alice</td>
                 <td>Deploy</td>
                 <td><code>sub_e010</code> &middot; production</td>
                 <td><span class="badge badge-success">Success</span></td>
               </tr>
-              <tr>
+              <tr data-activity-cat="role-change">
                 <td>28 Apr 2026 &middot; 11:20:55</td>
                 <td>Bob (Super Admin)</td>
                 <td>Add instructor</td>
@@ -3472,6 +3471,27 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
     localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
+  }
+
+  /* v4.112: chip-filter helpers — generic table-row hide/show by data-attr.
+     Matches the instructor + super_admin portal patterns. Supports multi-category
+     rows via space-separated values in data-attr. */
+  function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr) {
+    document.querySelectorAll(scopeSelector + ' .chip-filter').forEach(function(c) {
+      c.classList.remove('active');
+    });
+    var activeChip = document.querySelector(scopeSelector + ' .chip-filter[' + chipAttr + '="' + filterValue + '"]');
+    if (activeChip) activeChip.classList.add('active');
+    document.querySelectorAll(scopeSelector + ' tbody tr').forEach(function(row) {
+      var cat = row.getAttribute(dataAttr) || '';
+      var cats = cat.split(/\s+/).filter(Boolean);
+      row.style.display = (filterValue === 'all' || cats.indexOf(filterValue) !== -1) ? '' : 'none';
+    });
+  }
+
+  /* S20 Tenant Activity Log — filter by action type */
+  function filterActivityLog(filter) {
+    chipFilterTable('#screen-20', filter, 'data-activity-cat', 'data-filter-activity');
   }
 
   // Restore theme on load

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.109</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.112</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -2011,6 +2011,15 @@
 
               <!-- TAB PANEL: SKILLS -->
               <div id="s9-panel-skills" role="tabpanel" aria-labelledby="s9-tab-skills" hidden aria-hidden="true">
+                <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
+                  <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+                  <button class="chip-filter active" data-filter-skill="all" onclick="filterSkillsTable('all')">All (6 of 31)</button>
+                  <button class="chip-filter" data-filter-skill="tech" onclick="filterSkillsTable('tech')">Technology (3)</button>
+                  <button class="chip-filter" data-filter-skill="business" onclick="filterSkillsTable('business')">Business (1)</button>
+                  <button class="chip-filter" data-filter-skill="education" onclick="filterSkillsTable('education')">Education (2)</button>
+                  <button class="chip-filter" data-filter-skill="health" onclick="filterSkillsTable('health')">Health (1)</button>
+                  <button class="chip-filter danger" data-filter-skill="no-owner" onclick="filterSkillsTable('no-owner')"><span class="material-icons-outlined" style="font-size:14px;">warning_amber</span>No owner (1)</button>
+                </div>
                 <table class="pgn__data-table">
                   <thead>
                     <tr>
@@ -2022,7 +2031,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr data-skill-cat="tech education">
                       <td>
                         <div class="text-strong">E010 · Python Foundations</div>
                         <div class="micro text-muted">Skill</div>
@@ -2044,7 +2053,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">3</td>
                       <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                     </tr>
-                    <tr>
+                    <tr data-skill-cat="tech">
                       <td>
                         <div class="text-strong">E075 · Data Structures</div>
                         <div class="micro text-muted">Skill</div>
@@ -2065,7 +2074,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
                       <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                     </tr>
-                    <tr>
+                    <tr data-skill-cat="tech">
                       <td>
                         <div class="text-strong">E135 · Algorithms</div>
                         <div class="micro text-muted">Skill</div>
@@ -2086,7 +2095,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">3</td>
                       <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                     </tr>
-                    <tr>
+                    <tr data-skill-cat="business">
                       <td>
                         <div class="text-strong">B210 · Accounting Principles</div>
                         <div class="micro text-muted">Skill</div>
@@ -2107,7 +2116,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
                       <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                     </tr>
-                    <tr>
+                    <tr data-skill-cat="education">
                       <td>
                         <div class="text-strong">ED150 · Curriculum Design</div>
                         <div class="micro text-muted">Skill</div>
@@ -2128,7 +2137,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">1</td>
                       <td><button class="btn btn-tertiary btn-sm">Manage</button></td>
                     </tr>
-                    <tr style="background: rgba(245, 166, 35, 0.08);">
+                    <tr style="background: rgba(245, 166, 35, 0.08);" data-skill-cat="health no-owner">
                       <td>
                         <div class="text-strong">H320 · Health Informatics</div>
                         <div class="micro" style="color: var(--pgn-color-warning-base); font-weight:600;"><span class="material-icons-outlined" style="font-size:13px; vertical-align:middle;">warning_amber</span> No owner assigned</div>
@@ -3053,7 +3062,9 @@
   }
 
   /* v4.109: chip-filter helpers — generic table-row hide/show by data-attr.
-     Matches the instructor portal pattern so JFT can reuse the same component. */
+     Matches the instructor portal pattern so JFT can reuse the same component.
+     v4.112: supports multi-category rows via space-separated values in data-attr,
+     e.g., data-skill-cat="tech education" matches both "tech" and "education" chips. */
   function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr) {
     document.querySelectorAll(scopeSelector + ' .chip-filter').forEach(function(c) {
       c.classList.remove('active');
@@ -3061,14 +3072,20 @@
     var activeChip = document.querySelector(scopeSelector + ' .chip-filter[' + chipAttr + '="' + filterValue + '"]');
     if (activeChip) activeChip.classList.add('active');
     document.querySelectorAll(scopeSelector + ' tbody tr').forEach(function(row) {
-      var cat = row.getAttribute(dataAttr);
-      row.style.display = (filterValue === 'all' || cat === filterValue) ? '' : 'none';
+      var cat = row.getAttribute(dataAttr) || '';
+      var cats = cat.split(/\s+/).filter(Boolean);
+      row.style.display = (filterValue === 'all' || cats.indexOf(filterValue) !== -1) ? '' : 'none';
     });
   }
 
   /* S9 Access Control · People tab — filter by user role */
   function filterUsersTable(filter) {
     chipFilterTable('#s9-panel-people', filter, 'data-user-cat', 'data-filter-user');
+  }
+
+  /* S9 Access Control · Skills tab — filter by School deployment + owner status */
+  function filterSkillsTable(filter) {
+    chipFilterTable('#s9-panel-skills', filter, 'data-skill-cat', 'data-filter-skill');
   }
 
   (function() {
