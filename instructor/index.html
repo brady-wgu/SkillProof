@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.102</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.103</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -600,6 +600,69 @@
       gap: 2px;
       min-width: 1580px;
     }
+
+    /* v4.103: heatmap horizontal-scroll discoverability cues:
+       1) right-edge fade gradient signals more content beyond the viewport
+       2) high-contrast brand-blue scrollbar so the affordance is visible
+       3) "Scroll horizontally" hint text below the heatmap card */
+    .heatmap-scroll-container {
+      position: relative;
+    }
+    .heatmap-scroll-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 18px; /* leave room for the scrollbar */
+      right: 0;
+      width: 56px;
+      background: linear-gradient(to left, var(--pgn-color-bg-base) 15%, rgba(255,255,255,0));
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity 0.2s ease;
+    }
+    .heatmap-scroll-container.at-end::after {
+      opacity: 0;
+    }
+    [data-theme="dark"] .heatmap-scroll-container::after {
+      background: linear-gradient(to left, var(--pgn-color-bg-base) 15%, rgba(13,26,46,0));
+    }
+    .heatmap-card {
+      /* v4.103: force a visible, branded scrollbar so the scroll affordance is obvious */
+      scrollbar-color: var(--pgn-color-brand-base) var(--pgn-color-gray-100);
+      scrollbar-width: auto;
+    }
+    .heatmap-card::-webkit-scrollbar {
+      height: 12px;
+    }
+    .heatmap-card::-webkit-scrollbar-track {
+      background: var(--pgn-color-gray-100);
+      border-radius: 6px;
+    }
+    .heatmap-card::-webkit-scrollbar-thumb {
+      background: var(--pgn-color-brand-base);
+      border-radius: 6px;
+      border: 2px solid var(--pgn-color-gray-100);
+    }
+    .heatmap-card::-webkit-scrollbar-thumb:hover {
+      background: var(--pgn-color-primary-base);
+    }
+    .heatmap-scroll-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: var(--pgn-color-brand-base);
+      background: var(--pgn-color-brand-tint);
+      border-radius: var(--pgn-size-border-radius-sm);
+      font-style: italic;
+      transition: opacity 0.2s ease;
+    }
+    .heatmap-scroll-container.at-end .heatmap-scroll-hint {
+      opacity: 0.5;
+    }
     .heatmap-corner {
       background: transparent;
       padding: 8px;
@@ -1165,6 +1228,7 @@
         <button class="chip-filter danger" data-filter-status="at-risk" onclick="filterHeatmap('at-risk')"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
       </div>
 
+      <div class="heatmap-scroll-container">
       <div class="heatmap-card">
         <div class="heatmap-grid">
           <!-- Header row: 1 corner + 13 Topic columns (canonical taxonomy) -->
@@ -1254,6 +1318,11 @@
           <span class="text-muted" style="margin-left: var(--pgn-spacing-3);">Showing 15 of 28 learners — scroll for full roster.</span>
         </div>
       </div>
+      <div class="heatmap-scroll-hint" role="note">
+        <span class="material-icons-outlined" style="font-size:14px;">swap_horiz</span>
+        Scroll horizontally to see all 13 Topics — try the scrollbar below, shift + mouse wheel, or trackpad swipe
+      </div>
+      </div><!-- /.heatmap-scroll-container -->
 
     </div>
   </main>
@@ -1302,6 +1371,7 @@
 
       <div class="row">
         <div class="col-8">
+          <div class="heatmap-scroll-container">
           <div class="heatmap-card">
             <div class="heatmap-grid">
               <!-- Header row: 1 corner + 13 Topic columns (canonical taxonomy) -->
@@ -1333,6 +1403,11 @@
               <div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h3">42</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">20</div>
             </div>
           </div>
+          <div class="heatmap-scroll-hint" role="note">
+            <span class="material-icons-outlined" style="font-size:14px;">swap_horiz</span>
+            Scroll horizontally to see all 13 Topics — try the scrollbar below, shift + mouse wheel, or trackpad swipe
+          </div>
+          </div><!-- /.heatmap-scroll-container -->
         </div>
         <div class="col-4">
           <div class="pgn__card pgn__card-featured">
@@ -1952,6 +2027,39 @@ for s in scores:
 
   // Run hydration once on initial load
   hydrateHeatmap();
+
+  /* v4.103: heatmap scroll-state toggling — when the heatmap-card is scrolled to
+     the right edge, hide the fade gradient + dim the hint (signals "you've seen
+     everything"). Recalculates on scroll, resize, and on screen activation
+     (ResizeObserver catches the transition from display:none → visible). */
+  function setupHeatmapScrollState(screenSelector) {
+    var container = document.querySelector(screenSelector + ' .heatmap-scroll-container');
+    if (!container) return;
+    var card = container.querySelector('.heatmap-card');
+    if (!card) return;
+    function update() {
+      // If the card isn't visible yet (clientWidth === 0), don't draw conclusions
+      if (card.clientWidth === 0) return;
+      var max = card.scrollWidth - card.clientWidth;
+      if (max <= 4) {
+        // no horizontal scroll needed (very wide viewport)
+        container.classList.add('at-end');
+      } else {
+        container.classList.toggle('at-end', card.scrollLeft >= max - 4);
+      }
+    }
+    card.addEventListener('scroll', update);
+    window.addEventListener('resize', update);
+    if (typeof ResizeObserver !== 'undefined') {
+      // Fires when the card transitions from display:none (clientWidth 0) to
+      // visible — i.e., when the user navigates to this screen for the first time.
+      var ro = new ResizeObserver(update);
+      ro.observe(card);
+    }
+    update();
+  }
+  setupHeatmapScrollState('#screen-3');
+  setupHeatmapScrollState('#screen-4');
 </script>
 
 </body>
