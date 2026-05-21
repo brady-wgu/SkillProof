@@ -8,6 +8,71 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.102 — 21 May 2026 — S3/S4 heatmaps + S6 sessions expanded to 13 canonical Topics
+
+Per Brady (21 May 2026): "Let's see what happens when you have many more topics. I would expect this to naturally maximize at ~20 topics, so 13 is a great average to visualize. Update those related heatmaps and session information now."
+
+### CSS
+
+`.heatmap-grid` grid-template-columns expanded from 4 to **13 columns**:
+```css
+grid-template-columns: 160px repeat(13, minmax(108px, 1fr));
+min-width: 1580px;
+```
+Container's `overflow-x: auto` kicks in on smaller viewports for horizontal scroll. Designed to scale up to ~20 Topics per Brady's expected ceiling.
+
+### S3 (Skill heatmap)
+
+- Column headers: 4 action-statement labels → **13 canonical Topic names** matching the student portal taxonomy (Basic Syntax & Data Types · Control Flow & Logic · Functions & Modular Programming · Data Structures: Lists, Tuples, Sets, Dictionaries · Working with Files & I/O · Error Handling & Debugging · Object-Oriented Programming (OOP) · Python Libraries & Modules · Advanced Data Handling · Regular Expressions & String Manipulation · Working with Databases · Introduction to Automation · Introduction to Machine Learning).
+- All 15 visible learner rows now have **13 cells each** (195 cells total). Score distributions per learner status:
+  - Mastery (A.J., K.L., M.K., D.W.): scores 84–98 (h7–h9 darker greens)
+  - On-track (P.A., J.T., R.M., E.G., N.B., L.O.): scores 63–82 (h5–h7 light greens)
+  - Watch (T.V.): scores 54–68 (h3–h5 amber/transitional)
+  - At-risk (Sally, B.F., C.S., H.D.): scores 15–62 (h1–h3 reds), with Sally's exact 13 values matching her S5 Per-Topic table
+
+### S4 (At-risk mini-heatmap)
+
+- Same column expansion: 4 → 13 canonical Topic names.
+- 4 at-risk rows × 13 cells (52 cells total).
+- Right-side summary card "Lowest Topic score" value updated from "Manipulates Data Structures" → **"Data Structures: Lists, Tuples, Sets, Dictionaries"** (canonical name).
+
+### S6 (Coaching sessions list)
+
+Topic column values updated from action-statement labels to canonical Topic names. Mapping based on each session's LO context:
+
+| Session | Old Topic | New Topic |
+|---|---|---|
+| 09 | Manipulates Data Structures | Data Structures: Lists, Tuples, Sets, Dictionaries |
+| 08 | Manipulates Data Structures | Data Structures: Lists, Tuples, Sets, Dictionaries |
+| 07 | Identifies Python Constructs | Control Flow & Logic |
+| 06 | Executes Python Code | Error Handling & Debugging |
+| 05 | Creates Functional Programs | Functions & Modular Programming |
+| 04 | Creates Functional Programs | Functions & Modular Programming |
+| 03 | Executes Python Code | Basic Syntax & Data Types |
+| 02 | Identifies Python Constructs | Basic Syntax & Data Types |
+| 01 | Diagnostic | Diagnostic (all 13 Topics) |
+
+LO column values (Lists & comprehensions, Define variables & types, etc.) stay unchanged — those were already LO-level and remain accurate within their canonical Topic.
+
+### Canonical Topic taxonomy now consistent across
+
+| Surface | Status |
+|---|---|
+| Student portal sidebar/snapshot | ✅ 13 Topics (canonical source) |
+| S1 Dashboard (no Topic surface) | n/a |
+| S2 Course view Skill cards | shows count "4 Topics" / "3 Topics" — count only, no names |
+| **S3 heatmap (this commit)** | ✅ 13 canonical Topics |
+| **S4 mini-heatmap (this commit)** | ✅ 13 canonical Topics |
+| S5 Sally Per-Topic table | ✅ 13 canonical Topics (from v4.101) |
+| **S6 sessions Topic column (this commit)** | ✅ Canonical Topic names |
+| S7 transcript eyebrow | "Lists & comprehensions" — LO-level reference, accurate |
+
+### Storyboard stamp
+
+v4.102 instructor portal.
+
+---
+
 ## v4.101 — 21 May 2026 — S5 Topic naming aligned to student-portal canonical taxonomy; all 13 Topics scored
 
 Per Brady (21 May 2026): "It says the diagnostic assessment was completed, so all 13 topics should have scores and last attempts. Do not leave those rows blank. Also, use the actual topic names, you have those in the student storyboard view, those are not mysteries or in need of random generation."
