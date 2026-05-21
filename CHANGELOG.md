@@ -8,6 +8,62 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.99 — 21 May 2026 — S5 Sally Profile rewrite + global no-"LO"-abbreviation + global date-only display
+
+Three threads landed in this commit per Brady's S5 walkthrough verdicts + two cross-portal global directives.
+
+### S5 Sally Profile — rewrite to Topic-level only
+
+- **Removed** the "Sample design only" banner.
+- **Eyebrow** "AT-RISK LEARNER PROFILE" → **"LEARNER PROFILE"** (generic; every learner row on S1's cross-Course roster routes here regardless of status).
+- **Removed** the "Anonymized identifier `lnr_4a3b2c1d` · E010 · 28 active learners (rolling enrollment)" subtitle entirely — H1 "Sally" stands alone.
+- **Profile card simplifications:**
+  - LAST ACTIVE: "06 May 2026 17:54 UTC" → **"06 May 2026"** (date only)
+  - STUCK ON: "Lists & comprehensions (Learning Objective 3.1)" → **STUCK ON TOPIC: "Manipulates Data Structures"** (Topic-level only)
+  - **Removed** the "Learning Objective misses (last 9 sessions): 14" row — instructor reviews specific LO data via S6/S7 logs and transcript
+  - MASTERY ACHIEVED "0 of 4" → **TOPICS MASTERED "0 of 13"** (aligned to the 13 Topics that make up the Python Skill)
+- **Right card rebuilt as Per-Topic scores:**
+  - Eyebrow "PER-LEARNING OBJECTIVE SCORES" → **"PER-TOPIC SCORES"**
+  - Removed `Learning Objective` and `Pattern` columns
+  - Removed all 8 LO rows; replaced with 4 Topic rows (Sally's per-Topic averages: Identifies Python Constructs 42 · Executes Python Code 55 · Manipulates Data Structures 28 · Creates Functional Programs 38)
+  - Every row clickable → S6 (Conversation logs for that Topic)
+  - Caption added: "Click any row to open Sally's conversation logs for that Topic."
+- **Back button** label: "Back" → **"Back to At-risk filter"** (consistent with other screens)
+
+### Global directive 1 — no "LO" abbreviation anywhere
+
+Per Brady (21 May 2026): never shorten "Learning Objective" to "LO" in any user-facing surface.
+
+- **tenant_admin/index.html**: 3 instances replaced
+  - Production section copy: "(rename, threshold change, add LO)" → "(rename, threshold change, add Learning Objective)"
+  - Meta-bar button label: "04 Topics & LOs" → "04 Topics & Learning Objectives"
+  - JS tooltip in `enforceLoMinimum()`: "Add another LO before removing..." → "Add another Learning Objective..."
+- **Coda RBAC canonical hierarchy callout**: removed the previous sanction of "LO" as acceptable shorthand. Now reads: *"'Learning Objective' is the correct term for each individual LLM coaching target. Never abbreviate to 'LO' anywhere in UI copy, code, docs, or communication (Brady's directive, 2026-05-21)."*
+- "objective miss" event-term shorthand in badges is **still allowed** (Brady didn't ban that specific shorthand).
+
+### Global directive 2 — date-only display in student + instructor views
+
+Per Brady: no time-of-day timestamps in student or instructor views. Apply globally.
+
+- **instructor/index.html** — stripped times from:
+  - S1 cross-Course at-risk roster (4 rows: e.g., "06 May 17:54" → "06 May 2026")
+  - S6 Coaching sessions list (9 rows: e.g., "06 May 18:21 UTC" → "06 May 2026")
+  - S7 Conversation transcript chat-meta (7 spans removed: e.g., `<span>18:21:04</span>` deleted; conversation date stays in S7 eyebrow)
+  - S8 Audit Trail event log (10 rows: e.g., "2026-05-06 18:21:00" → "06 May 2026")
+  - S9 Access Denied footer: "Logged · 18 May 2026 14:22:07 UTC · evt_b1d5e342" → "Logged · 18 May 2026 · evt_b1d5e342"
+- **student/index.html** — no changes needed (already date-only).
+- **Note for §10.4 forensic audit logging**: S8 displays date-only per Brady's directive; the underlying audit-log data model in production must still retain full timestamps for forensic value. Display ≠ storage.
+
+### Known follow-up
+
+**S5-09 (new):** the Python Skill heatmap on S3 currently shows 4 Topic columns, but the canonical truth (per Brady) is 13 Topics in the Python Skill (matching the student-portal Topic taxonomy). S5 now displays "0 of 13 Topics mastered" while S3 displays 4 columns. Hierarchical content reconciliation is a separate pass — flagged earlier as S3-06 and now reinforced.
+
+### Storyboard stamp
+
+v4.99 instructor + tenant_admin portals. Other 4 portals unchanged.
+
+---
+
 ## v4.98 — 20 May 2026 — S4 At-risk filter: extend v4.97 patterns + breadcrumb + summary card relabel
 
 Extends the v4.97 S3 hydration to S4 (At-risk filter) and applies the same cleanup playbook.
