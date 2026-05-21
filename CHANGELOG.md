@@ -8,6 +8,54 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.101 — 21 May 2026 — S5 Topic naming aligned to student-portal canonical taxonomy; all 13 Topics scored
+
+Per Brady (21 May 2026): "It says the diagnostic assessment was completed, so all 13 topics should have scores and last attempts. Do not leave those rows blank. Also, use the actual topic names, you have those in the student storyboard view, those are not mysteries or in need of random generation."
+
+### What changed (S5 only)
+
+**Replaced all 13 Topic rows with the canonical student-portal Topic taxonomy**, and gave Sally a diagnostic-baseline score on every Topic. Diagnostic-only Topics show "30 Apr 2026" (diagnostic date); coached Topics show their last-coaching-session date.
+
+| # | Topic | Score | Last attempt |
+|---|---|---|---|
+| 1 | Basic Syntax & Data Types | 62 | 01 May 2026 |
+| 2 | Control Flow & Logic | 28 | 05 May 2026 |
+| 3 | Functions & Modular Programming | 44 | 04 May 2026 |
+| 4 | Data Structures: Lists, Tuples, Sets, Dictionaries | 22 | 06 May 2026 |
+| 5 | Working with Files & I/O | 38 | 30 Apr 2026 |
+| 6 | Error Handling & Debugging | 33 | 05 May 2026 |
+| 7 | Object-Oriented Programming (OOP) | 41 | 30 Apr 2026 |
+| 8 | Python Libraries & Modules | 25 | 30 Apr 2026 |
+| 9 | Advanced Data Handling | 18 | 30 Apr 2026 |
+| 10 | Regular Expressions & String Manipulation | 22 | 30 Apr 2026 |
+| 11 | Working with Databases | 30 | 30 Apr 2026 |
+| 12 | Introduction to Automation | 19 | 30 Apr 2026 |
+| 13 | Introduction to Machine Learning | 15 | 30 Apr 2026 |
+
+- Every Topic has a real score (no em-dashes, no "Not yet attempted") — consistent with "Diagnostic Complete: Yes" in the Profile card.
+- Topics with continued coaching (#1, 2, 3, 4, 6) have last-attempt dates after diagnostic (30 Apr); the other 8 are at diagnostic baseline.
+- **Profile card "Stuck on Topic"** updated from "Manipulates Data Structures" → **"Data Structures: Lists, Tuples, Sets, Dictionaries"** (matches table row #4, the canonical student-portal Topic name).
+
+### Cross-screen alignment status (after v4.101)
+
+| Screen | Topic naming convention | Reconciled to student-portal taxonomy? |
+|---|---|---|
+| **Student portal** (sidebar, progress map, snapshot) | Basic Syntax & Data Types, Control Flow & Logic, ... | ✅ Canonical source |
+| **S5 instructor profile** (this commit) | Same as student portal | ✅ Aligned |
+| **S3 instructor heatmap** | Identifies Python Constructs, Executes Python Code, Manipulates Data Structures, Creates Functional Programs | ❌ Still uses old 4 action-statement labels |
+| **S4 at-risk mini-heatmap** | Same 4 action-statement labels as S3 | ❌ Still uses old labels |
+| **S6 coaching sessions list** | Topic column shows 4 action-statement labels | ❌ Still uses old labels |
+
+### Open follow-up — explicit
+
+**S3-06 / S5-09 reconciliation still pending.** S3 heatmap columns, S4 mini-heatmap columns, and S6 "Topic" column values all reference the 4 old action-statement labels. With S5 + student portal now using the 13 canonical Topic names, the heatmaps need to either expand to 13 columns OR be restructured around the canonical taxonomy. This is the next coordinated cross-screen pass.
+
+### Storyboard stamp
+
+v4.101 instructor portal.
+
+---
+
 ## v4.100 — 21 May 2026 — S5 Per-Topic table populated to all 13 Python Skill Topics
 
 Per Brady: "Populate the rest of the per-topic scores table with the other Python topic areas so JFT doesn't think I only listed 4 on purpose."
