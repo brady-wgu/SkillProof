@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.107</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.108</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1606,28 +1606,20 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(5); return false;">Sally</a>
+        <a href="#" onclick="goToScreen(2); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(6); return false;">Logs</a>
+        <a href="#" onclick="goToScreen(3); return false;">Python Skill</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <a href="#" onclick="goToScreen(5); return false;">Sally</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Session 09</span>
       </nav>
 
-      <div class="alert alert-warning mb-3" role="status" style="border-left-width: 4px;">
-        <span class="material-icons-outlined">pending_actions</span>
-        <div>
-          <strong>Sample design only.</strong> WGU Program Development will identify the specific transcript-review content WGU needs. This screen demonstrates the contract requirements quoted below but is not the final design.
-          <div class="small mt-2" style="font-style: italic;">
-            Contract anchor(s): §16.5 10.4 Audit logging &middot; §16.1 6.7 Centralized prompt guardrails.
-          </div>
-        </div>
-      </div>
-
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Lists &amp; comprehensions · 5 AI feedback panels &middot; 3 Learning Objective misses</span>
+          <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Data Structures: Lists, Tuples, Sets, Dictionaries</span>
           <h1 id="s7-heading">Conversation transcript</h1>
-          <p class="mt-1">All 47 messages captured by the Audit Trail · AI score 0.15 · AI feedback panels shown inline.</p>
+          <p class="mt-1">All 47 messages captured by the Audit Trail. AI score 0.15 · 5 feedback panels · 3 Learning Objective misses.</p>
         </div>
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
           <span class="text-muted small">Export Session 09 Transcript</span>
@@ -1636,16 +1628,23 @@
         </div>
       </div>
 
+      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
+        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+        <button class="chip-filter active" data-filter-msg="all" onclick="filterTranscript('all')">All messages (47)</button>
+        <button class="chip-filter" data-filter-msg="ai-feedback" onclick="filterTranscript('ai-feedback')">AI feedback only (5)</button>
+        <button class="chip-filter danger" data-filter-msg="miss" onclick="filterTranscript('miss')"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>Objective misses only (3)</button>
+      </div>
+
       <div class="chat-card mb-3">
         <div class="chat-thread">
-          <div class="chat-row them">
+          <div class="chat-row them" data-msg-type="prompt">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-gray">Prompt</span></div>
               <div class="chat-text">Earlier you used a list to track scores. Can you rewrite that block to compute the average using a list comprehension instead of an index loop?</div>
             </div>
           </div>
-          <div class="chat-row">
+          <div class="chat-row" data-msg-type="learner">
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>Sally</strong></div>
@@ -1655,28 +1654,28 @@ for i in range(len(scores)):
 avg = total / len(scores)</div>
             </div>
           </div>
-          <div class="chat-row them">
+          <div class="chat-row them" data-msg-type="feedback-miss">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
               <div class="chat-text">That's a working sum, but it's not a comprehension yet — you're still iterating by index. A comprehension would let you express "give me each score, transformed if needed" as a single expression. Try writing it as <code>sum(s for s in scores) / len(scores)</code>, then see if you can collapse it to one line using <code>sum(scores) / len(scores)</code>. Where do you think the comprehension fits if you wanted only positive scores?</div>
             </div>
           </div>
-          <div class="chat-row">
+          <div class="chat-row" data-msg-type="learner">
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>Sally</strong></div>
               <div class="chat-text">I'm not sure. I used a loop because that's what the textbook showed.</div>
             </div>
           </div>
-          <div class="chat-row them">
+          <div class="chat-row them" data-msg-type="reframe">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-info">Reframe</span></div>
               <div class="chat-text">Both styles work. The comprehension is more idiomatic in Python and easier to read once you're comfortable with it. Let's slow down: write a list comprehension that returns the squares of each score. Just that — no average yet.</div>
             </div>
           </div>
-          <div class="chat-row">
+          <div class="chat-row" data-msg-type="learner">
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>Sally</strong></div>
@@ -1685,7 +1684,7 @@ for s in scores:
     squares.append(s * s)</div>
             </div>
           </div>
-          <div class="chat-row them">
+          <div class="chat-row them" data-msg-type="feedback-miss">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
@@ -1700,6 +1699,9 @@ for s in scores:
       </div>
     </div>
   </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">arrow_back</span>Back to Conversation logs</button>
+  </div>
 </section>
 
 <!-- Screen 8: Audit Trail confirmation =============================== -->
@@ -2089,6 +2091,31 @@ for s in scores:
   }
   setupHeatmapScrollState('#screen-3');
   setupHeatmapScrollState('#screen-4');
+
+  /* v4.108: S7 transcript filter — hide/show chat-rows by message type.
+     - "all" shows everything
+     - "ai-feedback" hides learner messages, leaving only AI prompts / feedback / reframes
+     - "miss" shows only feedback bubbles tagged as objective miss
+     Note: AI-only filter strips conversational context — JFT may want a different
+     pattern in production (e.g., scroll-to-next-miss); this is a prototype demo. */
+  function filterTranscript(filter) {
+    document.querySelectorAll('#screen-7 .chip-filter').forEach(function(c) {
+      c.classList.remove('active', 'danger');
+    });
+    var activeChip = document.querySelector('#screen-7 .chip-filter[data-filter-msg="' + filter + '"]');
+    if (activeChip) {
+      activeChip.classList.add('active');
+      if (filter === 'miss') activeChip.classList.add('danger');
+    }
+    document.querySelectorAll('#screen-7 .chat-row').forEach(function(row) {
+      var type = row.dataset.msgType;
+      var show = false;
+      if (filter === 'all') show = true;
+      else if (filter === 'ai-feedback') show = (type !== 'learner');
+      else if (filter === 'miss') show = (type === 'feedback-miss');
+      row.style.display = show ? '' : 'none';
+    });
+  }
 </script>
 
 </body>
