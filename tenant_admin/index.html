@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.99</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.107</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1404,16 +1404,16 @@
       <span class="eyebrow"><span class="material-icons-outlined">list_alt</span>Step 2 of 4 · Topics &amp; Learning Objectives</span>
       <h1 id="s4-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
 
-      <p class="text-muted mb-3">Set the overall Skill passing threshold, then expand each topic to edit its learning objectives in place. A student is considered to have passed the Skill once their overall score meets this threshold.</p>
+      <p class="text-muted mb-3">Set the overall Skill passing threshold on the 0.00–1.00 scale, then expand each Topic to edit its Learning Objectives in place. A Student is considered to have passed the Skill once their overall score meets this threshold.</p>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section">
           <div class="form-group mb-0">
             <label class="form-label" for="skill-pass-threshold">Overall Skill passing threshold</label>
             <div class="d-flex align-items-center gap-2">
-              <input class="lo-num" id="skill-pass-threshold" type="number" min="0" max="100" value="70" style="width: 88px;">
-              <span class="text-muted">%</span>
-              <span class="text-muted small" style="margin-left: 12px;">Average across all learning objectives. Defaults to 70%.</span>
+              <input class="lo-num" id="skill-pass-threshold" type="number" min="0" max="1" step="0.01" value="0.70" style="width: 88px;">
+              <span class="text-muted small">(0.00–1.00 scale)</span>
+              <span class="text-muted small" style="margin-left: 12px;">Average across all Learning Objectives. Defaults to 0.70.</span>
             </div>
           </div>
         </div>
@@ -1768,7 +1768,7 @@ Address the learner by their first name. Never use "student" as the form of addr
               <table class="pgn__data-table mb-3" style="border:none; box-shadow:none;">
                 <tr><th style="width:38%;">Topics</th><td>4 &mdash; Classes &amp; Objects, Inheritance &amp; Composition, Polymorphism &amp; Encapsulation, Common Design Patterns</td></tr>
                 <tr><th>Learning Objectives</th><td>10 total (3 + 2 + 2 + 3 per topic)</td></tr>
-                <tr><th>Overall Skill passing threshold</th><td>70%</td></tr>
+                <tr><th>Overall Skill passing threshold</th><td>0.70</td></tr>
                 <tr><th>Per-objective thresholds</th><td>65% &ndash; 75% (avg 69.5%)</td></tr>
               </table>
             </div>
