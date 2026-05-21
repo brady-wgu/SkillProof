@@ -8,6 +8,42 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.108 — 21 May 2026 — S7 Conversation Transcript walkthrough complete
+
+Resolves S7-01 through S7-07 per Brady's verdicts.
+
+### What changed
+
+- **S7-01** Removed "Sample design only" banner.
+- **S7-02** Added in-flow `.floating-actions` block at the bottom-right: **"Back to Conversation logs"** → S6.
+- **S7-03** Expanded breadcrumb from `Dashboard › Sally › Logs › Session 09` to **`Dashboard › E010 › Python Skill › Sally › Session 09`** (5 levels, full Course + Skill context). Removed the "Logs" intermediate — the Back button covers immediate-parent navigation.
+- **S7-04** Trimmed description: dropped redundant "AI feedback panels shown inline" (already in description) → **"All 47 messages captured by the Audit Trail. AI score 0.15 · 5 feedback panels · 3 Learning Objective misses."**
+- **S7-05** Reorganized eyebrow: removed counts (5 feedback panels, 3 Learning Objective misses) → moved into description. Eyebrow now reads **"Session 09 · 06 May 2026 · Data Structures: Lists, Tuples, Sets, Dictionaries"** (Topic-level context only).
+- **S7-06** Replaced LO reference "Lists & comprehensions" with the canonical Topic name **"Data Structures: Lists, Tuples, Sets, Dictionaries"** in the eyebrow. Brady's directive: *"Topics are what we show the Instructor in detail, not the learning objectives."*
+- **S7-07** Added a chip-filter bar above the chat thread:
+  - **All messages (47)** — default active
+  - **AI feedback only (5)** — hides learner-side bubbles; shows AI prompts/feedback/reframes
+  - **Objective misses only (3)** — shows only AI feedback bubbles with the "objective miss" badge
+  - Each chat-row now has `data-msg-type` attribute: `prompt`, `learner`, `feedback-miss`, `reframe`
+  - New JS function `filterTranscript(filter)` toggles row visibility and chip active state
+
+### Live verification
+
+- Filter "Objective misses only" → 2 visible bubbles (matches the 2 feedback-miss data-msg-type rows; 1 more lives in the hidden 36 messages)
+- Filter "AI feedback only" → 4 visible (3 AI feedback/reframe/prompt rows on the AI side)
+- Filter "All" → 7 visible (all rows restored)
+- Back button label: "Back to Conversation logs" ✓
+
+### Note for JFT
+
+The chat-row filter currently hides learner-side messages when "AI feedback only" is selected — this strips conversational context. Production may want a different pattern (e.g., scroll-to-next-miss with highlight, or a "show in context" toggle that keeps the surrounding turn visible). This is a prototype demo of the filter UX.
+
+### Storyboard stamp
+
+v4.108 instructor portal.
+
+---
+
 ## v4.107 — 21 May 2026 — S6 Conversation Logs rewrite + platform-wide 0-1 scoring standardization
 
 Two threads landed together: the S6 walkthrough verdicts (most of S6-01 through S6-09) and a cross-platform scoring scale change.
