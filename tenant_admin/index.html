@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.113</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.114</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1248,8 +1248,18 @@
       </div>
 
       <h2 class="h5 mb-2">Your Skills</h2>
-      <div class="row-list mb-3">
-        <div class="row-card">
+
+      <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
+        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+        <button class="chip-filter active" data-filter-yourskill="all" onclick="filterYourSkills('all')">All Skills (4)</button>
+        <button class="chip-filter" data-filter-yourskill="live" onclick="filterYourSkills('live')">In production (2)</button>
+        <button class="chip-filter" data-filter-yourskill="staging" onclick="filterYourSkills('staging')">In staging (1)</button>
+        <button class="chip-filter" data-filter-yourskill="draft" onclick="filterYourSkills('draft')">Draft (1)</button>
+        <button class="chip-filter" data-filter-yourskill="owner" onclick="filterYourSkills('owner')">Owned by me (3)</button>
+      </div>
+
+      <div class="row-list mb-3" id="your-skills-list">
+        <div class="row-card" data-yourskill-cat="live">
           <div class="row-num">1</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
@@ -1264,7 +1274,7 @@
             <button class="btn btn-outline-primary btn-sm">View <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
           </div>
         </div>
-        <div class="row-card recommended">
+        <div class="row-card recommended" data-yourskill-cat="live owner">
           <div class="row-num">2</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
@@ -1279,7 +1289,7 @@
             <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
           </div>
         </div>
-        <div class="row-card">
+        <div class="row-card" data-yourskill-cat="staging owner">
           <div class="row-num">3</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
@@ -1294,7 +1304,7 @@
             <button class="btn btn-outline-primary btn-sm">Open <span class="material-icons-outlined" style="font-size:16px;">arrow_forward</span></button>
           </div>
         </div>
-        <div class="row-card">
+        <div class="row-card" data-yourskill-cat="draft owner">
           <div class="row-num">4</div>
           <div class="row-content">
             <div class="d-flex align-items-center gap-2">
@@ -3518,6 +3528,12 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
   /* S18 Skill Lifecycle Active Skills — filter by lifecycle stage */
   function filterSkillLifecycle(filter) {
     chipFilterTable('#screen-18', filter, 'data-lifecycle-cat', 'data-filter-lifecycle', '#active-skills-table tbody tr');
+  }
+
+  /* S2 Portal home Your Skills — filter by Skill status + ownership.
+     Uses .row-card list (not <table>), so passes a custom rowSelector. */
+  function filterYourSkills(filter) {
+    chipFilterTable('#screen-2', filter, 'data-yourskill-cat', 'data-filter-yourskill', '#your-skills-list .row-card');
   }
 
   // Restore theme on load

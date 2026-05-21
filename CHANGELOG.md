@@ -8,6 +8,66 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.114 — 21 May 2026 — Chip-filter rollout (continued): Tenant Admin S2 "Your Skills" row-list
+
+Continues the chip-filter rollout. Demonstrates the v4.113 `rowSelector` param working for non-table row layouts.
+
+### Tenant Admin S2 Portal Home — "Your Skills"
+
+Added chip filter above the 4-card list of Alice's Skills. **This list uses `.row-card` elements (not `<table>` rows), so the filter passes `'#your-skills-list .row-card'` as the row selector** — proves the helper extension from v4.113 works for non-table layouts too.
+
+Chip filter:
+- All Skills (4)
+- In production (2) — E010, E135
+- In staging (1) — E075
+- Draft (1) — E120
+- Owned by me (3) — E135, E075, E120 (E010 is read-only because Alice didn't create it)
+
+Each card has `data-yourskill-cat` with space-separated tags (e.g., E135 = `"live owner"`, E120 = `"draft owner"`). The Owned-by-me filter matches against multiple primary statuses, so it correctly counts 3 cards.
+
+### Live verification
+
+- Filter "In production" → 2 cards visible (E010, E135) ✓
+- Filter "Owned by me" → 3 cards visible (E135, E075, E120) ✓
+- Filter "Draft" → 1 card visible (E120) ✓
+
+### Coverage summary across chip-filter rollout (v4.96 → v4.114)
+
+| Portal | Screen / Surface | Filter type | Status |
+|---|---|---|---|
+| Instructor | S1 Cross-Course Roster | Status | ✅ |
+| Instructor | S3 Skill heatmap | Status | ✅ |
+| Instructor | S4 At-risk mini-heatmap | Status | ✅ |
+| Instructor | S5 Per-Topic table | Coaching activity | ✅ |
+| Instructor | S6 Sessions list | Session type | ✅ |
+| Instructor | S7 Transcript | Message type | ✅ |
+| Instructor | S8 Audit events | Event category | ✅ |
+| Super Admin | S9 People tab | Role | ✅ |
+| Super Admin | S9 Skills tab | School + owner status | ✅ |
+| Tenant Admin | S2 Your Skills | Production/staging/draft + owner | ✅ |
+| Tenant Admin | S16 Recent Incidents | Auto-resolved / JFT engaged | ✅ |
+| Tenant Admin | S18 Skill Lifecycle (Active) | Live / Ramping | ✅ |
+| Tenant Admin | S20 Activity Log | Action type | ✅ |
+| **Total** | **13 tables/lists across 3 portals** | | |
+
+### Still deferred
+
+| Surface | Reason |
+|---|---|
+| Super Admin S9 Schools tab (4 rows) | Too few rows |
+| Super Admin S4 Per-school cost breakdown (4 rows) | Too few rows |
+| Super Admin S10–S13 operational tables | Re-evaluate per screen |
+| Tenant Admin S4 lo-topic-tables (×4) | Already grouped by Topic |
+| Tenant Admin S9/S10 Services tables | Operational health views |
+| Tenant Admin S18 Archived Skills (2 rows) | Too few rows |
+| Student Progress Map | Re-evaluate after student walkthrough |
+
+### Storyboard stamp
+
+v4.114 tenant_admin portal. Instructor + super_admin stay at v4.113.
+
+---
+
 ## v4.113 — 21 May 2026 — Chip-filter rollout (continued): Tenant Admin S16 Incidents + S18 Skill Lifecycle + multi-table helper
 
 Continues the chip-filter rollout from v4.112. Two more tenant_admin tables wired up.
