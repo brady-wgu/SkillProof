@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.95</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.99</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1802,7 +1802,7 @@ Address the learner by their first name. Never use "student" as the form of addr
           <div class="pgn__card pgn__card-featured" style="height: 100%;">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Production</span>
-              <p class="small mb-2">Visible to everyone, including Students. Topics cannot be removed once deployed; Learning Objective edits (rename, threshold change, add LO) are still allowed.</p>
+              <p class="small mb-2">Visible to everyone, including Students. Topics cannot be removed once deployed; Learning Objective edits (rename, threshold change, add Learning Objective) are still allowed.</p>
               <button class="btn btn-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Production</button>
             </div>
           </div>
@@ -3231,7 +3231,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
     <nav class="flow-nav" aria-label="Course configuration screens">
       <button class="step-btn active" onclick="goToScreen(2)" aria-label="Screen 02: Portal home">02 Portal home</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: New Skill form">03 New Skill</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives">04 Topics &amp; LOs</button>
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Topics &amp; Learning Objectives">04 Topics &amp; Learning Objectives</button>
       <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Model, Coaching &amp; Prompt">05 Model &amp; Coaching</button>
       <!-- Screen 06 removed in v4.74 — content folded into Screen 5 -->
       <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Deploy review">07 Deploy review</button>
@@ -3272,7 +3272,7 @@ Requesting JFT incident response per the 99.95% Uptime SLA.</textarea>
         if (!deleteBtn) return;
         if (rowCount <= 1) {
           deleteBtn.setAttribute('disabled', '');
-          deleteBtn.setAttribute('title', 'Each topic must have at least one Learning Objective. Add another LO before removing this one.');
+          deleteBtn.setAttribute('title', 'Each topic must have at least one Learning Objective. Add another Learning Objective before removing this one.');
         } else {
           deleteBtn.removeAttribute('disabled');
           deleteBtn.removeAttribute('title');

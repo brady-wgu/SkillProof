@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.98</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.99</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1005,28 +1005,28 @@
                   <td>Sally</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
-                  <td class="small text-muted">06 May 17:54</td>
+                  <td class="small text-muted">06 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
                 <tr style="cursor:pointer;" onclick="goToScreen(5)">
                   <td>B.F.</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
-                  <td class="small text-muted">04 May 21:18</td>
+                  <td class="small text-muted">04 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
                 <tr style="cursor:pointer;" onclick="goToScreen(5)">
                   <td>C.S.</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
-                  <td class="small text-muted">02 May 14:33</td>
+                  <td class="small text-muted">02 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
                 <tr style="cursor:pointer;" onclick="goToScreen(5)">
                   <td>H.D.</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
-                  <td class="small text-muted">06 May 16:02</td>
+                  <td class="small text-muted">06 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
               </tbody>
@@ -1364,21 +1364,10 @@
         <span>Sally</span>
       </nav>
 
-      <div class="alert alert-warning mb-3" role="status" style="border-left-width: 4px;">
-        <span class="material-icons-outlined">pending_actions</span>
-        <div>
-          <strong>Sample design only.</strong> WGU Program Development will identify the specific Instructor drill-down content WGU needs. This screen demonstrates the contract requirements quoted below but is not the final design.
-          <div class="small mt-2" style="font-style: italic;">
-            Contract anchor(s): §16.2 7.10 Student engagement tracking &middot; §16.2 7.11 Educator drill-down.
-          </div>
-        </div>
-      </div>
-
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>At-risk learner profile</span>
+          <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
           <h1 id="s5-heading">Sally</h1>
-          <p class="mt-1">Anonymized identifier <code>lnr_4a3b2c1d</code> · E010 · 28 active learners (rolling enrollment)</p>
         </div>
         <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
@@ -1389,12 +1378,11 @@
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">person</span>Profile</span>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:55%;">Last active</th><td>06 May 2026 17:54 UTC</td></tr>
+                <tr><th style="width:55%;">Last active</th><td>06 May 2026</td></tr>
                 <tr><th>Sessions</th><td>9</td></tr>
-                <tr><th>Stuck on</th><td><strong>Lists &amp; comprehensions</strong> (Learning Objective 3.1)</td></tr>
-                <tr><th>Learning Objective misses (last 9 sessions)</th><td><span class="badge badge-danger">14</span></td></tr>
+                <tr><th>Stuck on Topic</th><td><strong>Manipulates Data Structures</strong></td></tr>
                 <tr><th>Diagnostic complete</th><td><span class="badge badge-success">Yes</span></td></tr>
-                <tr><th>Mastery achieved</th><td><span class="badge badge-danger">0 of 4</span></td></tr>
+                <tr><th>Topics mastered</th><td><span class="badge badge-danger">0 of 13</span></td></tr>
               </table>
             </div>
           </div>
@@ -1402,27 +1390,22 @@
         <div class="col-8">
           <div class="pgn__card">
             <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">grading</span>Per-Learning Objective scores</span>
+              <span class="eyebrow"><span class="material-icons-outlined">grading</span>Per-Topic scores</span>
               <h2 class="h5 mb-2">Where the gap is</h2>
+              <p class="small text-muted">Click any row to open Sally's conversation logs for that Topic.</p>
               <table class="pgn__data-table">
                 <thead>
                   <tr>
                     <th>Topic</th>
-                    <th>Learning Objective</th>
                     <th class="num-col">Score</th>
-                    <th>Pattern</th>
                     <th>Last attempt</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Identifies Python Constructs</td><td>Define variables &amp; types</td><td class="num-col"><span class="score-pill med">62</span></td><td>Code + reflection</td><td>05 May</td></tr>
-                  <tr><td>Identifies Python Constructs</td><td>Use control flow correctly</td><td class="num-col"><span class="score-pill low">22</span></td><td>Code</td><td>05 May</td></tr>
-                  <tr><td>Executes Python Code</td><td>Run and observe output</td><td class="num-col"><span class="score-pill med">66</span></td><td>Code</td><td>06 May</td></tr>
-                  <tr><td>Executes Python Code</td><td>Read tracebacks &amp; debug</td><td class="num-col"><span class="score-pill low">44</span></td><td>Reflection</td><td>06 May</td></tr>
-                  <tr><td>Manipulates Data Structures</td><td>Lists &amp; comprehensions</td><td class="num-col"><span class="score-pill low">15</span></td><td>Code + explain</td><td>06 May</td></tr>
-                  <tr><td>Manipulates Data Structures</td><td>Dictionaries &amp; lookup</td><td class="num-col"><span class="score-pill low">41</span></td><td>Code</td><td>06 May</td></tr>
-                  <tr><td>Creates Functional Programs</td><td>Define &amp; call functions</td><td class="num-col"><span class="score-pill med">54</span></td><td>Code + explain</td><td>04 May</td></tr>
-                  <tr><td>Creates Functional Programs</td><td>Decompose a small problem</td><td class="num-col"><span class="score-pill low">22</span></td><td>Reflection</td><td>04 May</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)"><td>Identifies Python Constructs</td><td class="num-col"><span class="score-pill low">42</span></td><td>05 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)"><td>Executes Python Code</td><td class="num-col"><span class="score-pill med">55</span></td><td>06 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)"><td>Manipulates Data Structures</td><td class="num-col"><span class="score-pill low">28</span></td><td>06 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)"><td>Creates Functional Programs</td><td class="num-col"><span class="score-pill low">38</span></td><td>04 May 2026</td></tr>
                 </tbody>
               </table>
             </div>
@@ -1433,7 +1416,7 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
     <button class="btn btn-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">forum</span>View conversation logs</button>
   </div>
 </section>
@@ -1491,7 +1474,7 @@
         <tbody>
           <tr style="cursor:pointer;" onclick="goToScreen(7)">
             <td><strong>09</strong></td>
-            <td>06 May 18:21 UTC</td>
+            <td>06 May 2026</td>
             <td>Manipulates Data Structures</td>
             <td>Lists &amp; comprehensions</td>
             <td><span class="badge badge-danger">objective miss &times; 3</span></td>
@@ -1499,14 +1482,14 @@
             <td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td>
             <td><span class="material-icons-outlined" style="color: var(--pgn-color-brand-base);">arrow_forward</span></td>
           </tr>
-          <tr><td>08</td><td>06 May 16:02 UTC</td><td>Manipulates Data Structures</td><td>Dictionaries &amp; lookup</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">41</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>07</td><td>05 May 19:48 UTC</td><td>Identifies Python Constructs</td><td>Use control flow correctly</td><td><span class="badge badge-danger">objective miss &times; 4</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>06</td><td>05 May 17:30 UTC</td><td>Executes Python Code</td><td>Read tracebacks &amp; debug</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">44</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>05</td><td>04 May 14:18 UTC</td><td>Creates Functional Programs</td><td>Decompose a small problem</td><td><span class="badge badge-warning">Stuck (no progress)</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>04</td><td>04 May 11:55 UTC</td><td>Creates Functional Programs</td><td>Define &amp; call functions</td><td><span class="badge badge-warning">Partial progress</span></td><td class="num-col"><span class="score-pill med">54</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>03</td><td>02 May 20:10 UTC</td><td>Executes Python Code</td><td>Run and observe output</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">66</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>02</td><td>01 May 16:43 UTC</td><td>Identifies Python Constructs</td><td>Define variables &amp; types</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">62</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>01</td><td>30 Apr 14:21 UTC</td><td>Diagnostic</td><td>Initial assessment</td><td><span class="badge badge-gray">Baseline</span></td><td class="num-col"><span class="score-pill low">38</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>08</td><td>06 May 2026</td><td>Manipulates Data Structures</td><td>Dictionaries &amp; lookup</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">41</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>07</td><td>05 May 2026</td><td>Identifies Python Constructs</td><td>Use control flow correctly</td><td><span class="badge badge-danger">objective miss &times; 4</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>06</td><td>05 May 2026</td><td>Executes Python Code</td><td>Read tracebacks &amp; debug</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">44</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>05</td><td>04 May 2026</td><td>Creates Functional Programs</td><td>Decompose a small problem</td><td><span class="badge badge-warning">Stuck (no progress)</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>04</td><td>04 May 2026</td><td>Creates Functional Programs</td><td>Define &amp; call functions</td><td><span class="badge badge-warning">Partial progress</span></td><td class="num-col"><span class="score-pill med">54</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>03</td><td>02 May 2026</td><td>Executes Python Code</td><td>Run and observe output</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">66</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>02</td><td>01 May 2026</td><td>Identifies Python Constructs</td><td>Define variables &amp; types</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">62</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>01</td><td>30 Apr 2026</td><td>Diagnostic</td><td>Initial assessment</td><td><span class="badge badge-gray">Baseline</span></td><td class="num-col"><span class="score-pill low">38</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
         </tbody>
       </table>
 
@@ -1564,14 +1547,14 @@
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:21:04</span><span class="badge badge-gray">Prompt</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-gray">Prompt</span></div>
               <div class="chat-text">Earlier you used a list to track scores. Can you rewrite that block to compute the average using a list comprehension instead of an index loop?</div>
             </div>
           </div>
           <div class="chat-row">
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong><span>18:23:41</span></div>
+              <div class="chat-meta"><strong>Sally</strong></div>
               <div class="chat-text" style="font-family: 'Lato', monospace; font-size: 13px;">total = 0
 for i in range(len(scores)):
     total += scores[i]
@@ -1581,28 +1564,28 @@ avg = total / len(scores)</div>
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:23:55</span><span class="badge badge-warning">Feedback · objective miss</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
               <div class="chat-text">That's a working sum, but it's not a comprehension yet — you're still iterating by index. A comprehension would let you express "give me each score, transformed if needed" as a single expression. Try writing it as <code>sum(s for s in scores) / len(scores)</code>, then see if you can collapse it to one line using <code>sum(scores) / len(scores)</code>. Where do you think the comprehension fits if you wanted only positive scores?</div>
             </div>
           </div>
           <div class="chat-row">
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong><span>18:26:12</span></div>
+              <div class="chat-meta"><strong>Sally</strong></div>
               <div class="chat-text">I'm not sure. I used a loop because that's what the textbook showed.</div>
             </div>
           </div>
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:26:24</span><span class="badge badge-info">Reframe</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-info">Reframe</span></div>
               <div class="chat-text">Both styles work. The comprehension is more idiomatic in Python and easier to read once you're comfortable with it. Let's slow down: write a list comprehension that returns the squares of each score. Just that — no average yet.</div>
             </div>
           </div>
           <div class="chat-row">
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong><span>18:32:48</span></div>
+              <div class="chat-meta"><strong>Sally</strong></div>
               <div class="chat-text" style="font-family: 'Lato', monospace; font-size: 13px;">squares = []
 for s in scores:
     squares.append(s * s)</div>
@@ -1611,7 +1594,7 @@ for s in scores:
           <div class="chat-row them">
             <div class="chat-avatar ai" aria-hidden="true">AI</div>
             <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span>18:33:01</span><span class="badge badge-warning">Feedback · objective miss</span></div>
+              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
               <div class="chat-text">Almost there. The shape of a comprehension is <code>[expression for item in iterable]</code>. Your loop body says <code>append(s * s)</code> — the expression is <code>s * s</code>, the item is <code>s</code>, the iterable is <code>scores</code>. Put those in the bracket form. (Continued for 36 more messages …)</div>
             </div>
           </div>
@@ -1685,16 +1668,16 @@ for s in scores:
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td>2026-05-06 18:21:00</td><td>session.start</td><td>SkillProof Coach</td><td class="num-col">128 B</td><td><code>a3f2b1c4</code></td></tr>
-          <tr><td>2</td><td>2026-05-06 18:21:04</td><td>ai.prompt</td><td>SkillProof Coach</td><td class="num-col">412 B</td><td><code>1c8e7d2a</code></td></tr>
-          <tr><td>3</td><td>2026-05-06 18:23:41</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">186 B</td><td><code>9f4d6e0b</code></td></tr>
-          <tr><td>4</td><td>2026-05-06 18:23:42</td><td>guardrail.pass</td><td>SkillProof Coach</td><td class="num-col">96 B</td><td><code>2b7c5a91</code></td></tr>
-          <tr><td>5</td><td>2026-05-06 18:23:49</td><td>model.invoke</td><td>Anthropic Claude Sonnet 4.5</td><td class="num-col">2.1 KB</td><td><code>4e8a3c7d</code></td></tr>
-          <tr><td>6</td><td>2026-05-06 18:23:55</td><td>ai.feedback</td><td>SkillProof Coach</td><td class="num-col">624 B</td><td><code>6d9b2e15</code></td></tr>
-          <tr><td>7</td><td>2026-05-06 18:23:56</td><td>score.update</td><td>SkillProof Coach</td><td class="num-col">112 B</td><td><code>8c3f1a47</code></td></tr>
-          <tr><td>8</td><td>2026-05-06 18:26:12</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">94 B</td><td><code>5a2e9b08</code></td></tr>
-          <tr><td>9</td><td>2026-05-06 18:26:24</td><td>ai.feedback</td><td>SkillProof Coach</td><td class="num-col">388 B</td><td><code>7e4d8c63</code></td></tr>
-          <tr><td>10</td><td>2026-05-06 18:32:48</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">142 B</td><td><code>0f1c4d9e</code></td></tr>
+          <tr><td>1</td><td>06 May 2026</td><td>session.start</td><td>SkillProof Coach</td><td class="num-col">128 B</td><td><code>a3f2b1c4</code></td></tr>
+          <tr><td>2</td><td>06 May 2026</td><td>ai.prompt</td><td>SkillProof Coach</td><td class="num-col">412 B</td><td><code>1c8e7d2a</code></td></tr>
+          <tr><td>3</td><td>06 May 2026</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">186 B</td><td><code>9f4d6e0b</code></td></tr>
+          <tr><td>4</td><td>06 May 2026</td><td>guardrail.pass</td><td>SkillProof Coach</td><td class="num-col">96 B</td><td><code>2b7c5a91</code></td></tr>
+          <tr><td>5</td><td>06 May 2026</td><td>model.invoke</td><td>Anthropic Claude Sonnet 4.5</td><td class="num-col">2.1 KB</td><td><code>4e8a3c7d</code></td></tr>
+          <tr><td>6</td><td>06 May 2026</td><td>ai.feedback</td><td>SkillProof Coach</td><td class="num-col">624 B</td><td><code>6d9b2e15</code></td></tr>
+          <tr><td>7</td><td>06 May 2026</td><td>score.update</td><td>SkillProof Coach</td><td class="num-col">112 B</td><td><code>8c3f1a47</code></td></tr>
+          <tr><td>8</td><td>06 May 2026</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">94 B</td><td><code>5a2e9b08</code></td></tr>
+          <tr><td>9</td><td>06 May 2026</td><td>ai.feedback</td><td>SkillProof Coach</td><td class="num-col">388 B</td><td><code>7e4d8c63</code></td></tr>
+          <tr><td>10</td><td>06 May 2026</td><td>learner.submission</td><td>Sally · 198.51.x.x</td><td class="num-col">142 B</td><td><code>0f1c4d9e</code></td></tr>
         </tbody>
       </table>
 
@@ -1734,7 +1717,7 @@ for s in scores:
             <button class="btn btn-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Return to your dashboard</button>
             <a class="btn btn-outline-primary" href="../"><span class="material-icons-outlined">link</span>Open the correct LRPS link</a>
           </div>
-          <div class="text-center text-muted small">Logged · 18 May 2026 14:22:07 UTC · evt_b1d5e342</div>
+          <div class="text-center text-muted small">Logged · 18 May 2026 · evt_b1d5e342</div>
         </div>
       </div>
     </div>
