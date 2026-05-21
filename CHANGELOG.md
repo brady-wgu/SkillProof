@@ -8,6 +8,47 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.111 — 21 May 2026 — S9 Access Denied walkthrough complete — instructor portal walkthrough done
+
+Resolves S9-01 through S9-05 per Brady's verdicts. Closes the instructor portal walkthrough (S1-S9 all complete).
+
+### What changed
+
+- **S9-01** Added scope to the required-role row: "This page requires: School Admin" → **"This page requires: School Admin - School of Technology"**. Satisfies RBAC §4.2 Figure 6 requirement to name the role AND scope.
+- **S9-02** Used the full UI-label form **"School Admin - School of Technology"** per the canonical RBAC doc convention ("School Admin - <School Name>" with hyphen).
+- **S9-03** Reframed the audit disclosure from muted footer text to a small explicit notice with `info` icon: *"ⓘ This access attempt has been recorded in the audit log (evt_b1d5e342 · 18 May 2026)."* — still subtle but communicates the policy intent more directly.
+- **S9-04** Moved the "Open the correct LRPS link" explanation into a hover **tooltip** on the button: *"Returns you to the WGU LRPS portal where your role-correct deep links are listed."* Brady's directive: minimize all on-screen text outside of tooltips at all times.
+- **S9-05** **Removed the navbar chip** ("Instructor Dashboard") on S9 only — the chip was misleading on a deny screen where the user has just been told they can't access where they tried to go.
+- **S9-06** Skipped — security best practice is to NOT reveal what specific resource was attempted past the deny boundary. Current behavior is correct.
+
+### New UI principle (from Brady, 21 May 2026)
+
+> *"I want to minimize all text displayed to the user on the screen outside of a hover tooltip at all times."*
+
+This becomes a global guideline for future passes: any explanatory text that can live in a tooltip (`title` attribute) should — keep the visible UI clean.
+
+### Instructor portal walkthrough — STATUS: COMPLETE
+
+All 9 instructor screens walked, critiqued, and resolved over the multi-session pass:
+
+| Screen | Status |
+|---|---|
+| S1 Instructor Dashboard | ✅ Closed |
+| S2 Course view | ✅ Closed |
+| S3 Skill heatmap | ✅ Closed |
+| S4 At-risk filter | ✅ Closed |
+| S5 Sally drill-down | ✅ Closed |
+| S6 Conversation logs | ✅ Closed |
+| S7 Conversation transcript | ✅ Closed |
+| S8 Audit Trail | ✅ Closed |
+| S9 Access Denied | ✅ Closed (this commit) |
+
+### Storyboard stamp
+
+v4.111 instructor portal.
+
+---
+
 ## v4.110 — 21 May 2026 — S8 audit log: drop Payload + Hash columns
 
 Per Brady: "Let's remove the Payload column from this page as well. I don't think it's helpful, along with the Hash column."

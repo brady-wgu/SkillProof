@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.110</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.111</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1812,7 +1812,6 @@ for s in scores:
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Instructor Dashboard</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
     </div>
   </header>
@@ -1826,13 +1825,16 @@ for s in scores:
           <h1 id="s9-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
           <table class="pgn__data-table" style="border:none; box-shadow:none; margin-bottom: var(--pgn-spacing-3);">
             <tr><th style="width:42%;">Signed in as</th><td>Charlie · Instructor · School of Technology</td></tr>
-            <tr><th>This page requires</th><td>School Admin</td></tr>
+            <tr><th>This page requires</th><td>School Admin - School of Technology</td></tr>
           </table>
           <div class="d-flex gap-2 justify-content-center mb-3" style="flex-wrap:wrap;">
             <button class="btn btn-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Return to your dashboard</button>
-            <a class="btn btn-outline-primary" href="../"><span class="material-icons-outlined">link</span>Open the correct LRPS link</a>
+            <a class="btn btn-outline-primary" href="../" title="Returns you to the WGU LRPS portal where your role-correct deep links are listed."><span class="material-icons-outlined">link</span>Open the correct LRPS link</a>
           </div>
-          <div class="text-center text-muted small">Logged · 18 May 2026 · evt_b1d5e342</div>
+          <div class="text-center text-muted small d-flex align-items-center justify-content-center" style="gap:6px;">
+            <span class="material-icons-outlined" style="font-size:14px;">info</span>
+            <span>This access attempt has been recorded in the audit log (evt_b1d5e342 · 18 May 2026).</span>
+          </div>
         </div>
       </div>
     </div>
