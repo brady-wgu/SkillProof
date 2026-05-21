@@ -8,6 +8,60 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.105 — 21 May 2026 — Platform-wide data-export button pattern: "Export [Context]" + format-only buttons in upper-right
+
+Per Brady: "The label should say 'Export Python Skill Report' and then the 2 buttons are 'PDF' and 'CSV'. You should be able to derive this pattern and execute it across the platform in a similar manner so all these 'data export' features are displayed in a similar fashion across the platform, in the upper, right corner of the screen."
+
+### The standardized pattern
+
+```
+<div class="d-flex justify-content-between align-items-start mb-3">
+  <div><!-- eyebrow + h1 + description --></div>
+  <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
+    <span class="text-muted small">Export [Context Name]</span>
+    <button class="btn btn-outline-primary btn-sm" aria-label="Export [Context] as PDF">
+      <span class="material-icons-outlined">picture_as_pdf</span>PDF
+    </button>
+    <!-- one button per format: PDF · CSV · MD · JSON -->
+  </div>
+</div>
+```
+
+Rules:
+- Label communicates **what's being exported** (e.g., "Export Python Skill Report", "Export Session 09 Transcript", "Export Session 09 Audit Log").
+- Buttons are **format-only**: PDF, CSV, MD, JSON. Each has its own format-appropriate Material icon (picture_as_pdf, table_view, description, data_object).
+- Every button gets a descriptive `aria-label` (e.g., "Export Python Skill Report as PDF") so screen readers hear the full intent.
+- Group lives in the **upper-right of the screen**, inline with the H1 and eyebrow. Locked together via `flex-shrink:0` + `flex-wrap:nowrap` + `white-space:nowrap`.
+
+### Applied to (instructor portal)
+
+**S3 Skill heatmap**
+- Old: "Export:" + button "Python Skill report (PDF)" + button "CSV"
+- New: "Export Python Skill Report" + [PDF] + [CSV]
+
+**S7 Conversation transcript**
+- Old: 2 export buttons at the bottom alongside "View Audit Trail" — full label inside the button text ("Export transcript (PDF)")
+- New: upper-right "Export Session 09 Transcript" + [PDF] + [MD]
+- Old upper-right badges (47 messages captured, AI score: 15) folded into the description line: "All 47 messages captured by the Audit Trail · AI score 15 · AI feedback panels shown inline."
+- Bottom row simplified to just "View Audit Trail"
+
+**S8 Audit Trail**
+- Old: 1 export button at the bottom ("Export full log (JSON)") between two navigation buttons
+- New: upper-right "Export Session 09 Audit Log" + [JSON]
+- Feedback-panel restructured into a flex-justify-between row with the panel on left and the Export group on right
+- Bottom row simplified to just navigation (Back to transcript, Back to dashboard)
+
+### Not changed in this pass
+
+- **`super_admin` inline "Export" buttons** in tables (lines ~1019, 1594) — these are per-row inline actions, not screen-level exports. Different UX context.
+- **`tenant_admin` "Export Reports" + "Export incident report (CSV)" buttons** — these are CTAs inside content cards, also inline rather than screen-level. Pattern doesn't fit directly. Flagged for a future pass if Brady wants in-card export buttons standardized.
+
+### Storyboard stamp
+
+v4.105 instructor portal.
+
+---
+
 ## v4.104 — 21 May 2026 — S3 header: shorten description, keep PDF + CSV co-located
 
 Per Brady: "This line is awkward on S3: '[the description text]' with the CSV button next to it. Reduce this descriptive text by 50% and update the placement of the CSV download button to be co-located with the Python Skill report button."
