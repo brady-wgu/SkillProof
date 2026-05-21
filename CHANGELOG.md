@@ -8,6 +8,83 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.109 — 21 May 2026 — S8 Audit Trail walkthrough + cross-platform chip-filter rollout + "no LO-aggregate data" rule + "Capture integrity" removal
+
+Three threads landed:
+
+### Thread 1: S8 Audit Trail walkthrough (S8-01 through S8-06)
+
+- **S8-01** Removed "Sample design only" banner.
+- **S8-02** Expanded breadcrumb to **`Dashboard › E010 › Python Skill › Sally › Session 09 › Audit Trail`** (6 levels, full Course + Skill context — matches the S7 expansion).
+- **S8-03** Renamed column header **"Timestamp (UTC)" → "Date"** (values were already date-only since v4.99 — header was lying to the user).
+- **S8-04** Stat tile label **"Learning Objective misses" → "AI evaluation misses"** (Brady's "no LO-aggregate-data" principle).
+- **S8-05** Moved bottom buttons into the in-flow `.floating-actions` block (consistent with S2/S3/S5/S6/S7).
+- **S8-06** Standardized **Source column** to `[Actor type]: [Identifier]` — e.g., `AI: SkillProof Coach`, `Learner: Sally (198.51.x.x)`, `Model: Anthropic Claude Sonnet 4.5`, `Guardrail: SkillProof Coach`.
+
+### Thread 2: "No Learning Objective-level data in aggregate" — new global rule
+
+Brady (21 May 2026): *"No learning-objective-level data. Stop suggesting we keep that level of detail because most students will never have data across all learning objectives, only across topics consistently."*
+
+- **S8 stat tile** renamed "Learning Objective misses" → "AI evaluation misses".
+- **S7 description** updated: "3 Learning Objective misses" → **"3 AI evaluation misses"**.
+- The per-message **"Feedback · objective miss"** badge inside the actual transcript chat thread (S7) **stays** — it's event-level AI evaluation feedback at the moment the AI judged a turn, not aggregate LO data.
+
+### Thread 3: "Capture integrity" removal (platform-wide)
+
+Brady (21 May 2026): *"I have no idea what that means at all or what that tells the instructor. Remove 'Capture Integrity' entirely from all UIs across the platform."*
+
+- **S8** stat tile "1.00 Capture integrity" — removed.
+- Cross-platform grep confirmed no other instances of "Capture integrity" across student, instructor, tenant_admin, super_admin, help portals.
+
+### Thread 4: Chip-filter rollout — multi-portal pass (partial)
+
+Brady (21 May 2026): *"Add filter chips to all tables globally. This works well on the screens we have already reviewed, so apply them to the entire platform for all tables."*
+
+New filters added in this pass:
+
+| Surface | Filter chips | Categories |
+|---|---|---|
+| **Instructor S5** Sally Per-Topic table | All Topics (13) · Coached since diagnostic (5) · Diagnostic only (8) | `data-topic-cat` |
+| **Instructor S6** Coaching sessions | All sessions (9) · Diagnostic (1) · Coaching (8) | `data-session-cat` |
+| **Instructor S8** Audit event log | All events (47) · AI events (12) · Learner submissions (18) · Model invocations (9) · Guardrails (8) | `data-event-cat` |
+| **Super Admin S9** Access Control · People tab | All (8 of 187) · Super Admin (2) · Tenant Admin (2) · Instructor (2) · Student (2) | `data-user-cat` |
+
+Existing chip-filtered tables (unchanged):
+- Instructor S1 cross-Course at-risk roster (v4.96)
+- Instructor S3 Topic mastery heatmap (v4.97)
+- Instructor S4 At-risk mini-heatmap (v4.98)
+- Instructor S7 Transcript message filter (v4.108)
+
+New reusable helper added: `chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr)` in both instructor and super_admin portals — factors out the duplicated logic across screen-specific wrapper functions. JFT can reuse this for production tables.
+
+**Deferred to follow-up commit** — partial pass only:
+
+| Portal | Tables not yet filtered | Reason |
+|---|---|---|
+| Super Admin S9 | Skills tab (31 rows), Schools tab (4 rows) | Skills tab worth doing next; Schools tab is only 4 rows so chip-filter has low value |
+| Super Admin S4 | Per-school cost breakdown (4 rows) | Only 4 rows; chip filter would have 1-2 items per chip |
+| Super Admin S10, S11, S12, S13 | Various operational/Skill-management tables | Need per-screen judgment on chip categories |
+| Tenant Admin | Skill builder LO tables (×4), Skill lifecycle, activity log, Settings tables | Each table needs context-specific chip categories |
+| Student portal | Progress Map detail rows | Re-evaluate after student walkthrough |
+
+All deferred tables documented as the natural next pass; they're not skipped permanently.
+
+### Live verification
+
+- **S5** filter "Coached since diagnostic" → 5 visible ✓
+- **S6** filter "Diagnostic" → 1 visible ✓
+- **S8** filter "Learner submissions" → 3 visible ✓
+- **S8** stats: 4 tiles (47 Messages · 3 AI evaluation misses · 5 AI escalations · 0 Events dropped) — Capture integrity removed ✓
+- **S8** breadcrumb: 5 links + current page (6 levels) ✓
+- **S8** column header: "Date" (was Timestamp UTC) ✓
+- **S8** Source: "AI: SkillProof Coach" / "Learner: Sally (198.51.x.x)" / "Model: Anthropic Claude Sonnet 4.5" / "Guardrail: SkillProof Coach" ✓
+
+### Storyboard stamp
+
+v4.109 instructor + super_admin portals. Tenant admin + student portals stay at v4.107.
+
+---
+
 ## v4.108 — 21 May 2026 — S7 Conversation Transcript walkthrough complete
 
 Resolves S7-01 through S7-07 per Brady's verdicts.

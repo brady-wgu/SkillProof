@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.95</title>
+  <title>SkillProof — Super Admin Portal — SC-ADD-04 Storyboard v4.109</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1815,6 +1815,14 @@
 
               <!-- TAB PANEL: PEOPLE -->
               <div id="s9-panel-people" role="tabpanel" aria-labelledby="s9-tab-people">
+                <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
+                  <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+                  <button class="chip-filter active" data-filter-user="all" onclick="filterUsersTable('all')">All (8 of 187)</button>
+                  <button class="chip-filter" data-filter-user="super" onclick="filterUsersTable('super')">Super Admin (2)</button>
+                  <button class="chip-filter" data-filter-user="tenant" onclick="filterUsersTable('tenant')">Tenant Admin (2)</button>
+                  <button class="chip-filter" data-filter-user="instructor" onclick="filterUsersTable('instructor')">Instructor (2)</button>
+                  <button class="chip-filter" data-filter-user="student" onclick="filterUsersTable('student')">Student (2)</button>
+                </div>
                 <table class="pgn__data-table">
                   <thead>
                     <tr>
@@ -1826,7 +1834,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr data-user-cat="super">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">B</div>
@@ -1841,7 +1849,7 @@
                       <td>Now</td>
                       <td class="text-muted small">Cannot downgrade self</td>
                     </tr>
-                    <tr>
+                    <tr data-user-cat="super">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--color-deep-navy);">J</div>
@@ -1856,7 +1864,7 @@
                       <td>2 hours ago</td>
                       <td><button class="btn btn-tertiary btn-sm" disabled title="Demoting to Tenant Admin requires assignment to at least one School afterward. Currently blocked: minimum 2 Super Admins required at all times.">Downgrade (blocks min 2)</button></td>
                     </tr>
-                    <tr>
+                    <tr data-user-cat="tenant">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">A</div>
@@ -1880,7 +1888,7 @@
                         <button class="btn btn-tertiary btn-sm" title="Demoting to Instructor removes all School assignments and reverts to baseline read-only access on assigned Skills.">Downgrade</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr data-user-cat="tenant">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">M</div>
@@ -1903,7 +1911,7 @@
                         <button class="btn btn-tertiary btn-sm" title="Demoting to Instructor removes all School assignments and reverts to baseline read-only access on assigned Skills.">Downgrade</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr data-user-cat="instructor">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base);">C</div>
@@ -1929,7 +1937,7 @@
                         <button class="btn btn-tertiary btn-sm" title="Demoting to Student removes all Skill assignments and reverts to learner-only access.">Downgrade</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr data-user-cat="instructor">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base);">P</div>
@@ -1954,7 +1962,7 @@
                         <button class="btn btn-tertiary btn-sm" title="Demoting to Student removes all Skill assignments and reverts to learner-only access.">Downgrade</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr data-user-cat="student">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">S</div>
@@ -1972,7 +1980,7 @@
                         <button class="btn btn-outline-primary btn-sm">Upgrade to Tenant Admin</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr data-user-cat="student">
                       <td>
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">D</div>
@@ -3042,6 +3050,25 @@
     document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
     localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
+  }
+
+  /* v4.109: chip-filter helpers — generic table-row hide/show by data-attr.
+     Matches the instructor portal pattern so JFT can reuse the same component. */
+  function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr) {
+    document.querySelectorAll(scopeSelector + ' .chip-filter').forEach(function(c) {
+      c.classList.remove('active');
+    });
+    var activeChip = document.querySelector(scopeSelector + ' .chip-filter[' + chipAttr + '="' + filterValue + '"]');
+    if (activeChip) activeChip.classList.add('active');
+    document.querySelectorAll(scopeSelector + ' tbody tr').forEach(function(row) {
+      var cat = row.getAttribute(dataAttr);
+      row.style.display = (filterValue === 'all' || cat === filterValue) ? '' : 'none';
+    });
+  }
+
+  /* S9 Access Control · People tab — filter by user role */
+  function filterUsersTable(filter) {
+    chipFilterTable('#s9-panel-people', filter, 'data-user-cat', 'data-filter-user');
   }
 
   (function() {
