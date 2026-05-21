@@ -8,6 +8,81 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.107 — 21 May 2026 — S6 Conversation Logs rewrite + platform-wide 0-1 scoring standardization
+
+Two threads landed together: the S6 walkthrough verdicts (most of S6-01 through S6-09) and a cross-platform scoring scale change.
+
+### Phase 1: S6 Coaching Sessions List rewrite
+
+Resolves S6-01 through S6-09 per Brady's verdicts:
+
+- **S6-01** Removed "Sample design only" banner.
+- **S6-02** **All 9 rows clickable → S7** (was only session 09). `cursor: pointer` + onclick.
+- **S6-03** Added in-flow **Back to Sally's profile** button → S5.
+- **S6-04** Eyebrow "AI Coaching · Conversation logs" → **"Python Skill · Conversation logs"**.
+- **S6-05** Removed the Audit column (every row was an identical "Captured" badge). Replaced with a footer note: *"All 9 sessions captured to the Audit Trail. View full event log on the Audit Trail screen."* (clickable → S8).
+- **S6-06** Added upper-right Export group: **"Export Sally's Conversation Log"** + [PDF] + [CSV] following the v4.105 pattern.
+- **S6-07** (modified per Brady) Removed the Outcome column entirely. AI score column carries the signal alone.
+- **S6-08** Description trimmed: *"Most recent first. Click any row to read the full transcript."*
+- **S6-09** (modified per Brady) Removed the Learning Objective column entirely. *"Too much information. The transcript is what tells the story to the instructor because not all Learning Objectives will be answered by the student unless they spend a lot of time using the Skill."*
+
+Final table is 4 columns: Session · Date · Topic · AI score.
+
+### Phase 2: Platform-wide 0-1 scoring standardization
+
+Per Brady (21 May 2026): "The actual scoring by the LLM is zero-to-one scale, I believe. JFT knows how the code works, so they are already doing this point-to-percent translation somewhere, but my prototype UI needs to display this consistently at all levels and to all users."
+
+**The new convention:** All scores display as 0.00–1.00 decimals (2 decimal places). Eliminates the 0-100 percent translation step JFT's UI was doing on top of the 0-1 data model.
+
+**Implementation — instructor portal:**
+
+- **New `standardizeScoresTo0to1()` JS function** runs on page load before `hydrateHeatmap()`. Targets:
+  - `.score-pill` (S5 Per-Topic table = 13 cells, S6 sessions list = 9 cells)
+  - `.heatmap-cell` (S3 = 195 cells, S4 = 52 cells)
+  - `.section-stat-num` with `^\d+%$` pattern (S1 Course-card avg, S2 Skill-card avg)
+  - Pure-integer guard so re-running doesn't double-transform
+- **Hydrated heatmap cell tooltips** updated from "Score X/100" → "Score X.XX (of 1.00)".
+- **S1 inline Skill rows** (6 instances across E010/E075/E135) — source edits: e.g., "76% avg Topic mastery" → "0.76 avg Topic mastery".
+- **S3 description**: "AI-scored Topic mastery (0–100)" → **"(0.00–1.00)"**.
+- **S3 legend bar** numbers: "0 25 50 75 100" → **"0.00 0.25 0.50 0.75 1.00"**.
+- **S4 filter description**: "Topic mastery < 60" → **"< 0.60"**.
+- **S4 summary card** rows: "Avg score (at-risk): 42.4" → **"0.42"**; "Mastery threshold: 80%" → **"0.80 (set by Alice)"**.
+- **S7 description**: "AI score 15" → **"AI score 0.15"**.
+
+**Implementation — student portal:**
+- Baseline result header: "Overall 12%" → **"Overall 0.12"**.
+- result-skill-score cells: "100%" → **"1.00"**, "0%" (×3) → **"0.00"**.
+- pm-card-sub: "Completed · Score 100%" → **"1.00"**, "Score 0%" (×2) → **"0.00"**.
+
+**Implementation — tenant_admin portal:**
+- Form input "Overall Skill passing threshold": `min="0" max="100" value="70"` with `%` suffix → `min="0" max="1" step="0.01" value="0.70"` with "(0.00–1.00 scale)" hint. Default text "Defaults to 70%." → "Defaults to 0.70."
+- Detail-table row "70%" → **"0.70"**.
+- Skill-detail intro text now reads: *"Set the overall Skill passing threshold on the 0.00–1.00 scale..."*
+
+**Sample verification (live runtime):**
+- S1 E010 Avg Skill Score: `0.76` ✓
+- S3 first heatmap cell (A.J. on Basic Syntax): `0.98` ✓
+- S4 first heatmap cell (Sally on Basic Syntax): `0.62` ✓
+- S4 Mastery threshold: `0.80 (set by Alice)` ✓
+- S5 Sally first row (Basic Syntax & Data Types): `0.62` ✓
+- S6 session 09 row: `0.15` ✓
+
+### Note for JFT
+
+The prototype source HTML now uses 0-1 displayed values directly (matching the underlying LLM data model). Where the JS hydrates from integer 0-100 stored in the markup, it's documented as a temporary prototype-time transformation; production should serialize 0-1 floats end-to-end and skip the conversion entirely.
+
+### Storyboard stamp
+
+v4.107 across instructor, student, and tenant_admin portals. Super admin + help unchanged (no scoring surfaces).
+
+---
+
+## v4.106 — 21 May 2026 — S6 Coaching Sessions List rewrite (Phase 1 of v4.107)
+
+Folded into v4.107.
+
+---
+
 ## v4.105 — 21 May 2026 — Platform-wide data-export button pattern: "Export [Context]" + format-only buttons in upper-right
 
 Per Brady: "The label should say 'Export Python Skill Report' and then the 2 buttons are 'PDF' and 'CSV'. You should be able to derive this pattern and execute it across the platform in a similar manner so all these 'data export' features are displayed in a similar fashion across the platform, in the upper, right corner of the screen."
