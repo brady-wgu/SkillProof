@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.101</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.102</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -594,9 +594,11 @@
     }
     .heatmap-grid {
       display: grid;
-      grid-template-columns: 140px repeat(4, minmax(140px, 1fr));
+      /* v4.102: expanded to 13 columns to match the canonical Python Skill Topic taxonomy.
+         Designed to scale up to ~20 columns per Brady's expected Topic-count ceiling. */
+      grid-template-columns: 160px repeat(13, minmax(108px, 1fr));
       gap: 2px;
-      min-width: 700px;
+      min-width: 1580px;
     }
     .heatmap-corner {
       background: transparent;
@@ -1165,61 +1167,70 @@
 
       <div class="heatmap-card">
         <div class="heatmap-grid">
-          <!-- Header row -->
+          <!-- Header row: 1 corner + 13 Topic columns (canonical taxonomy) -->
           <div class="heatmap-corner">Learner ↓ · Topic →</div>
-          <div class="heatmap-col-label">Identifies Python<br>Constructs</div>
-          <div class="heatmap-col-label">Executes<br>Python Code</div>
-          <div class="heatmap-col-label">Manipulates<br>Data Structures</div>
-          <div class="heatmap-col-label">Creates Functional<br>Programs</div>
+          <div class="heatmap-col-label">Basic Syntax<br>&amp; Data Types</div>
+          <div class="heatmap-col-label">Control Flow<br>&amp; Logic</div>
+          <div class="heatmap-col-label">Functions &amp;<br>Modular Programming</div>
+          <div class="heatmap-col-label">Data Structures:<br>Lists, Tuples, Sets, Dicts</div>
+          <div class="heatmap-col-label">Working with<br>Files &amp; I/O</div>
+          <div class="heatmap-col-label">Error Handling<br>&amp; Debugging</div>
+          <div class="heatmap-col-label">Object-Oriented<br>Programming (OOP)</div>
+          <div class="heatmap-col-label">Python Libraries<br>&amp; Modules</div>
+          <div class="heatmap-col-label">Advanced<br>Data Handling</div>
+          <div class="heatmap-col-label">Regular Expressions<br>&amp; String Manipulation</div>
+          <div class="heatmap-col-label">Working with<br>Databases</div>
+          <div class="heatmap-col-label">Introduction<br>to Automation</div>
+          <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
-          <!-- Mastery rows -->
+          <!-- Mastery rows (4) -->
           <div class="heatmap-row-label"><span class="dot green"></span>A.J.</div>
-          <div class="heatmap-cell h9">98</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h9">97</div><div class="heatmap-cell h9">95</div>
+          <div class="heatmap-cell h9">98</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h9">95</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">93</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h9">95</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">93</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h9">95</div><div class="heatmap-cell h8">90</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>K.L.</div>
-          <div class="heatmap-cell h9">95</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h8">90</div>
+          <div class="heatmap-cell h9">95</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h8">94</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">93</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h8">90</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>M.K.</div>
-          <div class="heatmap-cell h8">91</div><div class="heatmap-cell h9">94</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">90</div>
+          <div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">94</div><div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">87</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">87</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>D.W.</div>
-          <div class="heatmap-cell h8">89</div><div class="heatmap-cell h7">86</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">88</div>
+          <div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">85</div><div class="heatmap-cell h8">87</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">85</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h7">84</div>
 
-          <!-- On track -->
+          <!-- On-track rows (6) -->
           <div class="heatmap-row-label"><span class="dot green"></span>P.A.</div>
-          <div class="heatmap-cell h7">82</div><div class="heatmap-cell h7">80</div><div class="heatmap-cell h6">76</div><div class="heatmap-cell h7">81</div>
+          <div class="heatmap-cell h7">82</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">80</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h7">79</div><div class="heatmap-cell h7">80</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h6">73</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>J.T.</div>
-          <div class="heatmap-cell h7">81</div><div class="heatmap-cell h6">78</div><div class="heatmap-cell h7">82</div><div class="heatmap-cell h7">80</div>
+          <div class="heatmap-cell h7">81</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">82</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">79</div><div class="heatmap-cell h7">80</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">74</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>R.M.</div>
-          <div class="heatmap-cell h6">78</div><div class="heatmap-cell h6">75</div><div class="heatmap-cell h7">82</div><div class="heatmap-cell h6">76</div>
+          <div class="heatmap-cell h7">78</div><div class="heatmap-cell h6">73</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h7">82</div><div class="heatmap-cell h6">72</div><div class="heatmap-cell h6">74</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h6">73</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h6">72</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h5">69</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>E.G.</div>
-          <div class="heatmap-cell h6">76</div><div class="heatmap-cell h6">74</div><div class="heatmap-cell h5">70</div><div class="heatmap-cell h6">78</div>
+          <div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h6">74</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h6">72</div><div class="heatmap-cell h6">73</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h5">67</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>N.B.</div>
-          <div class="heatmap-cell h5">71</div><div class="heatmap-cell h6">76</div><div class="heatmap-cell h5">70</div><div class="heatmap-cell h6">75</div>
+          <div class="heatmap-cell h6">71</div><div class="heatmap-cell h5">67</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h5">65</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h5">64</div>
 
           <div class="heatmap-row-label"><span class="dot green"></span>L.O.</div>
-          <div class="heatmap-cell h5">70</div><div class="heatmap-cell h5">71</div><div class="heatmap-cell h6">76</div><div class="heatmap-cell h5">68</div>
+          <div class="heatmap-cell h6">70</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h5">67</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h5">65</div><div class="heatmap-cell h5">67</div><div class="heatmap-cell h5">64</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h5">65</div><div class="heatmap-cell h5">63</div>
 
-          <!-- Watch -->
+          <!-- Watch row (1) -->
           <div class="heatmap-row-label"><span class="dot amber"></span>T.V.</div>
-          <div class="heatmap-cell h4">62</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h4">60</div><div class="heatmap-cell h4">64</div>
+          <div class="heatmap-cell h5">62</div><div class="heatmap-cell h4">58</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h5">60</div><div class="heatmap-cell h4">59</div><div class="heatmap-cell h5">61</div><div class="heatmap-cell h5">64</div><div class="heatmap-cell h4">56</div><div class="heatmap-cell h4">58</div><div class="heatmap-cell h4">55</div><div class="heatmap-cell h4">57</div><div class="heatmap-cell h4">56</div><div class="heatmap-cell h3">54</div>
 
-          <!-- At-risk -->
-          <div class="heatmap-row-label sally"><span class="dot red"></span>Sally</div>
-          <div class="heatmap-cell h2">42</div><div class="heatmap-cell h3">55</div><div class="heatmap-cell h1">28</div><div class="heatmap-cell h2">38</div>
+          <!-- At-risk rows (4) -->
+          <div class="heatmap-row-label"><span class="dot red"></span>Sally</div>
+          <div class="heatmap-cell h5">62</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h3">41</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h1">18</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h1">19</div><div class="heatmap-cell h1">15</div>
 
           <div class="heatmap-row-label"><span class="dot red"></span>B.F.</div>
-          <div class="heatmap-cell h2">44</div><div class="heatmap-cell h2">40</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">46</div>
+          <div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h3">46</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">22</div>
 
           <div class="heatmap-row-label"><span class="dot red"></span>C.S.</div>
-          <div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">50</div>
+          <div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">50</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div>
 
           <div class="heatmap-row-label"><span class="dot red"></span>H.D.</div>
-          <div class="heatmap-cell h2">35</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">42</div><div class="heatmap-cell h2">40</div>
+          <div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h3">42</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">20</div>
         </div>
 
         <div class="heatmap-legend mt-3">
@@ -1293,26 +1304,33 @@
         <div class="col-8">
           <div class="heatmap-card">
             <div class="heatmap-grid">
+              <!-- Header row: 1 corner + 13 Topic columns (canonical taxonomy) -->
               <div class="heatmap-corner">Learner ↓ · Topic →</div>
-              <div class="heatmap-col-label">Identifies Python<br>Constructs</div>
-              <div class="heatmap-col-label">Executes<br>Python Code</div>
-              <div class="heatmap-col-label">Manipulates<br>Data Structures</div>
-              <div class="heatmap-col-label">Creates Functional<br>Programs</div>
+              <div class="heatmap-col-label">Basic Syntax<br>&amp; Data Types</div>
+              <div class="heatmap-col-label">Control Flow<br>&amp; Logic</div>
+              <div class="heatmap-col-label">Functions &amp;<br>Modular Programming</div>
+              <div class="heatmap-col-label">Data Structures:<br>Lists, Tuples, Sets, Dicts</div>
+              <div class="heatmap-col-label">Working with<br>Files &amp; I/O</div>
+              <div class="heatmap-col-label">Error Handling<br>&amp; Debugging</div>
+              <div class="heatmap-col-label">Object-Oriented<br>Programming (OOP)</div>
+              <div class="heatmap-col-label">Python Libraries<br>&amp; Modules</div>
+              <div class="heatmap-col-label">Advanced<br>Data Handling</div>
+              <div class="heatmap-col-label">Regular Expressions<br>&amp; String Manipulation</div>
+              <div class="heatmap-col-label">Working with<br>Databases</div>
+              <div class="heatmap-col-label">Introduction<br>to Automation</div>
+              <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
               <div class="heatmap-row-label"><span class="dot red"></span>Sally</div>
-              <div class="heatmap-cell h2">42</div>
-              <div class="heatmap-cell h3">55</div>
-              <div class="heatmap-cell h1">28</div>
-              <div class="heatmap-cell h2">38</div>
+              <div class="heatmap-cell h5">62</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h3">41</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h1">18</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h1">19</div><div class="heatmap-cell h1">15</div>
 
               <div class="heatmap-row-label"><span class="dot red"></span>B.F.</div>
-              <div class="heatmap-cell h2">44</div><div class="heatmap-cell h2">40</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">46</div>
+              <div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h3">46</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">22</div>
 
               <div class="heatmap-row-label"><span class="dot red"></span>C.S.</div>
-              <div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">50</div>
+              <div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">50</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div>
 
               <div class="heatmap-row-label"><span class="dot red"></span>H.D.</div>
-              <div class="heatmap-cell h2">35</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">42</div><div class="heatmap-cell h2">40</div>
+              <div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h3">42</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">20</div>
             </div>
           </div>
         </div>
@@ -1322,7 +1340,7 @@
               <span class="eyebrow"><span class="material-icons-outlined">summarize</span>Python Skill summary</span>
               <h2 class="h5 mb-2">At-risk pattern</h2>
               <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:60%;">Lowest Topic score</th><td><strong>Manipulates Data Structures</strong></td></tr>
+                <tr><th style="width:60%;">Lowest Topic score</th><td><strong>Data Structures: Lists, Tuples, Sets, Dictionaries</strong></td></tr>
                 <tr><th>Avg score (at-risk)</th><td>42.4</td></tr>
                 <tr><th>Common gap</th><td>List comprehensions, dict access patterns</td></tr>
                 <tr><th>Total sessions</th><td>27 in last 7 days</td></tr>
@@ -1484,21 +1502,21 @@
           <tr style="cursor:pointer;" onclick="goToScreen(7)">
             <td><strong>09</strong></td>
             <td>06 May 2026</td>
-            <td>Manipulates Data Structures</td>
+            <td>Data Structures: Lists, Tuples, Sets, Dictionaries</td>
             <td>Lists &amp; comprehensions</td>
             <td><span class="badge badge-danger">objective miss &times; 3</span></td>
             <td class="num-col"><span class="score-pill low">15</span></td>
             <td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td>
             <td><span class="material-icons-outlined" style="color: var(--pgn-color-brand-base);">arrow_forward</span></td>
           </tr>
-          <tr><td>08</td><td>06 May 2026</td><td>Manipulates Data Structures</td><td>Dictionaries &amp; lookup</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">41</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>07</td><td>05 May 2026</td><td>Identifies Python Constructs</td><td>Use control flow correctly</td><td><span class="badge badge-danger">objective miss &times; 4</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>06</td><td>05 May 2026</td><td>Executes Python Code</td><td>Read tracebacks &amp; debug</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">44</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>05</td><td>04 May 2026</td><td>Creates Functional Programs</td><td>Decompose a small problem</td><td><span class="badge badge-warning">Stuck (no progress)</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>04</td><td>04 May 2026</td><td>Creates Functional Programs</td><td>Define &amp; call functions</td><td><span class="badge badge-warning">Partial progress</span></td><td class="num-col"><span class="score-pill med">54</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>03</td><td>02 May 2026</td><td>Executes Python Code</td><td>Run and observe output</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">66</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>02</td><td>01 May 2026</td><td>Identifies Python Constructs</td><td>Define variables &amp; types</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">62</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
-          <tr><td>01</td><td>30 Apr 2026</td><td>Diagnostic</td><td>Initial assessment</td><td><span class="badge badge-gray">Baseline</span></td><td class="num-col"><span class="score-pill low">38</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>08</td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td>Dictionaries &amp; lookup</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">41</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>07</td><td>05 May 2026</td><td>Control Flow &amp; Logic</td><td>Use control flow correctly</td><td><span class="badge badge-danger">objective miss &times; 4</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>06</td><td>05 May 2026</td><td>Error Handling &amp; Debugging</td><td>Read tracebacks &amp; debug</td><td><span class="badge badge-danger">objective miss &times; 2</span></td><td class="num-col"><span class="score-pill low">44</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>05</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td>Decompose a small problem</td><td><span class="badge badge-warning">Stuck (no progress)</span></td><td class="num-col"><span class="score-pill low">22</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>04</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td>Define &amp; call functions</td><td><span class="badge badge-warning">Partial progress</span></td><td class="num-col"><span class="score-pill med">54</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>03</td><td>02 May 2026</td><td>Basic Syntax &amp; Data Types</td><td>Run and observe output</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">66</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>02</td><td>01 May 2026</td><td>Basic Syntax &amp; Data Types</td><td>Define variables &amp; types</td><td><span class="badge badge-info">Progress</span></td><td class="num-col"><span class="score-pill med">62</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
+          <tr><td>01</td><td>30 Apr 2026</td><td>Diagnostic (all 13 Topics)</td><td>Initial assessment</td><td><span class="badge badge-gray">Baseline</span></td><td class="num-col"><span class="score-pill low">38</span></td><td><span class="badge badge-success"><span class="material-icons-outlined" style="font-size:12px;">verified</span>Captured</span></td><td></td></tr>
         </tbody>
       </table>
 
