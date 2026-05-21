@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.112</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.113</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -2121,15 +2121,15 @@ for s in scores:
      This factors out the duplicated logic across filterHeatmap/filterTranscript/
      filterAuditEvents/etc., though each screen still has its own thin wrapper
      so the onclick markup stays simple and JFT-readable.
-     v4.112: supports multi-category rows via space-separated values in data-attr,
-     e.g., data-skill-cat="tech education" matches both "tech" and "education" chips. */
-  function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr) {
+     v4.112: supports multi-category rows via space-separated values in data-attr.
+     v4.113: optional 5th param rowSelector for screens with multiple tables. */
+  function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr, rowSelector) {
     document.querySelectorAll(scopeSelector + ' .chip-filter').forEach(function(c) {
       c.classList.remove('active');
     });
     var activeChip = document.querySelector(scopeSelector + ' .chip-filter[' + chipAttr + '="' + filterValue + '"]');
     if (activeChip) activeChip.classList.add('active');
-    document.querySelectorAll(scopeSelector + ' tbody tr').forEach(function(row) {
+    document.querySelectorAll(rowSelector || (scopeSelector + ' tbody tr')).forEach(function(row) {
       var cat = row.getAttribute(dataAttr) || '';
       var cats = cat.split(/\s+/).filter(Boolean);
       row.style.display = (filterValue === 'all' || cats.indexOf(filterValue) !== -1) ? '' : 'none';
