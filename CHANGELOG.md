@@ -8,6 +8,44 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.100 — 21 May 2026 — S5 Per-Topic table populated to all 13 Python Skill Topics
+
+Per Brady: "Populate the rest of the per-topic scores table with the other Python topic areas so JFT doesn't think I only listed 4 on purpose."
+
+### What changed
+
+Extended S5's Per-Topic scores table from 4 rows to **all 13 Topics** of the Python Skill, matching the canonical taxonomy:
+
+| # | Topic | Sally's score | Last attempt |
+|---|---|---|---|
+| 1 | Identifies Python Constructs | 42 | 05 May 2026 |
+| 2 | Executes Python Code | 55 | 06 May 2026 |
+| 3 | Manipulates Data Structures | 28 | 06 May 2026 |
+| 4 | Creates Functional Programs | 38 | 04 May 2026 |
+| 5 | Working with Files & I/O | 44 | 02 May 2026 |
+| 6 | Error Handling & Debugging | 33 | 30 Apr 2026 |
+| 7 | Object-Oriented Programming (OOP) | — | Not yet attempted |
+| 8 | Python Libraries & Modules | — | Not yet attempted |
+| 9 | Advanced Data Handling | — | Not yet attempted |
+| 10 | Regular Expressions & String Manipulation | — | Not yet attempted |
+| 11 | Working with Databases | — | Not yet attempted |
+| 12 | Introduction to Automation | — | Not yet attempted |
+| 13 | Introduction to Machine Learning | — | Not yet attempted |
+
+- Sally's profile reflects an at-risk learner: scores on 6 of 13 Topics (all low/med), 7 Topics not yet attempted.
+- All 13 rows clickable → S6 conversation logs (consistent affordance). Unstarted Topics will show empty-state in production per JFT implementation.
+- "0 of 13 Topics mastered" in the Profile card now reads correctly against the table.
+
+### Known follow-up (reiterated)
+
+Rows 1–4 (action-statement names like "Identifies Python Constructs") and rows 5–13 (student-portal Topic names like "Working with Files & I/O") use **two different naming conventions** within the same table. The S3 heatmap and rows 1–4 of this S5 table use the original action-statement labels; rows 5–13 + the student portal use the descriptive Topic-name convention. Hierarchical content reconciliation — picking ONE convention and applying it everywhere — remains the open S3-06 / S5-09 follow-up.
+
+### Storyboard stamp
+
+v4.100 instructor portal.
+
+---
+
 ## v4.99 — 21 May 2026 — S5 Sally Profile rewrite + global no-"LO"-abbreviation + global date-only display
 
 Three threads landed in this commit per Brady's S5 walkthrough verdicts + two cross-portal global directives.
