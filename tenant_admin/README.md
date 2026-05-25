@@ -2,6 +2,8 @@
 
 [← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/SkillProof/tenant_admin/)
 
+![School Admin Dashboard hero](screenshots/sc-add-02_step01_screen01.png)
+
 ## Persona
 
 **Alice** — WGU **Program Development (PDev)** employee, operating the **School of Technology** tenant. The SOW (§2.2 deliverable list, §2.5 admin portal sub-area) refers to this role as **"Tenant Admin"**; throughout the storyboard chrome the role is now called **"School Admin"** (per Brady's terminology lock, 24 May 2026) to align with the WGU multi-tenancy model where each tenant maps to a WGU School. The SOW term and the storyboard term refer to the same role. Alice authenticates via her own secret LRPS deep link and is scoped to her School(s) — currently School of Technology, where she manages Skills like Foundations of Programming (Python) and OOP with Python.
