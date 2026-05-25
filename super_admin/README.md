@@ -2,6 +2,8 @@
 
 [← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/SkillProof/super_admin/)
 
+![Super Admin Dashboard hero](screenshots/sc-add-04_step01_screen01.png)
+
 ## Persona
 
 **Bob** — WGU platform operations and infrastructure. Authenticates via his own secret LRPS deep link **plus MFA**. Cross-tenant scope: he sees every School-tenant on the platform and is the sole controller of platform access, role elevation, and tenant lifecycle. WGU's RBAC model requires **a minimum of 2 Super Admins at all times** as a lockout-prevention guarantee. Initial WGU Super Admins are kept out of the public repo per data-hygiene policy; the generic "Bob" persona stands in for them in the storyboard.
