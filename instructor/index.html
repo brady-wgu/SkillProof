@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.113</title>
+  <title>SkillProof — Instructor Dashboard — SC-ADD-03 Storyboard v4.117</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -381,6 +381,10 @@
     .row-card.at-risk {
       background: var(--pgn-color-danger-tint);
       border-color: var(--pgn-color-danger-base);
+    }
+    .row-card.flagged {
+      background: var(--pgn-color-warning-tint);
+      border-color: var(--pgn-color-warning-base);
     }
     .row-num {
       width: 32px; height: 32px; border-radius: 50%;
@@ -944,7 +948,7 @@
             </div>
             <div class="d-flex gap-3 mb-3" style="flex-wrap:wrap;">
               <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Active learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num">0.76</div><div class="section-stat-label">Avg Skill score</div></div>
               <div class="section-stat"><div class="section-stat-num danger">4</div><div class="section-stat-label">At risk</div></div>
               <div class="section-stat"><div class="section-stat-num">17</div><div class="section-stat-label">On track</div></div>
               <div class="section-stat"><div class="section-stat-num">7</div><div class="section-stat-label">Mastery achieved</div></div>
@@ -984,7 +988,7 @@
           </div>
         </div>
         <div class="col-4">
-          <div class="section-card">
+          <div class="section-card" onclick="goToScreen(2)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open E075 Course details">
             <div>
               <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
               <h2 class="h5 mb-1">E075 · Intermediate Python &amp; Libraries</h2>
@@ -992,7 +996,7 @@
             </div>
             <div class="d-flex gap-3 mt-3 mb-3" style="flex-wrap:wrap;">
               <div class="section-stat"><div class="section-stat-num">22</div><div class="section-stat-label">Learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">82%</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num">0.82</div><div class="section-stat-label">Avg Skill score</div></div>
               <div class="section-stat"><div class="section-stat-num warning">1</div><div class="section-stat-label">Watch</div></div>
             </div>
             <!-- Skills in this Course -->
@@ -1008,7 +1012,7 @@
               </div>
             </div>
           </div>
-          <div class="section-card mt-3">
+          <div class="section-card mt-3" onclick="goToScreen(2)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open E135 Course details">
             <div>
               <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
               <h2 class="h5 mb-1">E135 · OOP with Python</h2>
@@ -1016,7 +1020,7 @@
             </div>
             <div class="d-flex gap-3 mt-3 mb-3" style="flex-wrap:wrap;">
               <div class="section-stat"><div class="section-stat-num">18</div><div class="section-stat-label">Learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">71%</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num">0.71</div><div class="section-stat-label">Avg Skill score</div></div>
               <div class="section-stat"><div class="section-stat-num">0</div><div class="section-stat-label">At risk</div></div>
             </div>
             <!-- Skills in this Course -->
@@ -1046,11 +1050,11 @@
 
         <div class="d-flex gap-2 mt-2 mb-2" style="flex-wrap:wrap;">
           <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-          <button class="chip-filter">All (68)</button>
-          <button class="chip-filter">Mastery (7)</button>
-          <button class="chip-filter">On track (56)</button>
-          <button class="chip-filter">Watch list (1)</button>
-          <button class="chip-filter active danger"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
+          <button class="chip-filter" data-filter-status="all" onclick="filterAtRiskRoster('all')">All (68)</button>
+          <button class="chip-filter" data-filter-status="mastery" onclick="filterAtRiskRoster('mastery')">Mastery (7)</button>
+          <button class="chip-filter" data-filter-status="on-track" onclick="filterAtRiskRoster('on-track')">On track (56)</button>
+          <button class="chip-filter" data-filter-status="watch" onclick="filterAtRiskRoster('watch')">Watch list (1)</button>
+          <button class="chip-filter active danger" data-filter-status="at-risk" onclick="filterAtRiskRoster('at-risk')"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
         </div>
 
         <div class="pgn__card">
@@ -1066,34 +1070,35 @@
                 </tr>
               </thead>
               <tbody>
-                <tr style="cursor:pointer;" onclick="goToScreen(5)">
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
                   <td>Sally</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">06 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" onclick="goToScreen(5)">
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
                   <td>B.F.</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">04 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" onclick="goToScreen(5)">
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
                   <td>C.S.</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">02 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" onclick="goToScreen(5)">
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
                   <td>H.D.</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">06 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
                 </tr>
+                <tr class="no-matches-row" style="display:none;"><td colspan="5" class="small text-muted" style="padding: 16px; text-align: center;">[Demo] No sample learners in this filter — open the Skill heatmap for the full roster.</td></tr>
               </tbody>
             </table>
           </div>
@@ -1131,6 +1136,16 @@
         <a href="#" onclick="goToScreen(4); return false;" class="badge badge-warning" style="padding:8px 14px; font-size:14px; text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:16px;">priority_high</span>4 learners at risk</a>
       </div>
 
+      <div class="d-flex justify-content-end mb-3">
+        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
+          <span class="text-muted small">Export E010 Course Report</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export E010 Course Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export E010 Course Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export E010 Course Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export E010 Course Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
+        </div>
+      </div>
+
       <!-- Skills deployed in this Course -->
       <div class="mb-3">
         <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Skills deployed in E010</span>
@@ -1146,7 +1161,7 @@
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Practicing</div></div>
-            <div class="section-stat"><div class="section-stat-num">76%</div><div class="section-stat-label">Avg Topic mastery</div></div>
+            <div class="section-stat"><div class="section-stat-num">0.76</div><div class="section-stat-label">Avg Topic mastery</div></div>
             <div class="section-stat"><div class="section-stat-num">4</div><div class="section-stat-label">Topics</div></div>
             <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
@@ -1166,7 +1181,7 @@
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">22</div><div class="section-stat-label">Practicing</div></div>
-            <div class="section-stat"><div class="section-stat-num">68%</div><div class="section-stat-label">Avg Topic mastery</div></div>
+            <div class="section-stat"><div class="section-stat-num">0.68</div><div class="section-stat-label">Avg Topic mastery</div></div>
             <div class="section-stat"><div class="section-stat-num">3</div><div class="section-stat-label">Topics</div></div>
             <div class="section-stat"><div class="section-stat-num">87</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
@@ -1206,16 +1221,19 @@
         <span>Heatmap</span>
       </nav>
 
-      <div class="d-flex justify-content-between align-items-end mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Python Skill · Heatmap</span>
-          <h1 id="s3-heading">Python Skill — Topic mastery</h1>
-          <p class="mt-1">AI-scored Topic mastery (0.00–1.00) per learner. Updates after each coaching session.</p>
-        </div>
+      <div class="mb-3">
+        <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Python Skill · Heatmap</span>
+        <h1 id="s3-heading">Python Skill — Topic mastery</h1>
+        <p class="mt-1">AI-scored Topic mastery (0.00–1.00) per learner. Updates after each coaching session.</p>
+      </div>
+
+      <div class="d-flex justify-content-end mb-3">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
           <span class="text-muted small">Export Python Skill Report</span>
           <button class="btn btn-outline-primary btn-sm" aria-label="Export Python Skill Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
           <button class="btn btn-outline-primary btn-sm" aria-label="Export Python Skill Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Python Skill Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Python Skill Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -1248,53 +1266,53 @@
           <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
           <!-- Mastery rows (4) -->
-          <div class="heatmap-row-label"><span class="dot green"></span>A.J.</div>
-          <div class="heatmap-cell h9">98</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h9">95</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">93</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h9">95</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">93</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h9">95</div><div class="heatmap-cell h8">90</div>
+          <div class="heatmap-row-label">A.J.</div>
+          <div class="heatmap-cell h9">0.98</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>K.L.</div>
-          <div class="heatmap-cell h9">95</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h9">96</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h8">94</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">93</div><div class="heatmap-cell h8">92</div><div class="heatmap-cell h8">90</div>
+          <div class="heatmap-row-label">K.L.</div>
+          <div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>M.K.</div>
-          <div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">94</div><div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">87</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">91</div><div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">87</div>
+          <div class="heatmap-row-label">M.K.</div>
+          <div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.87</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>D.W.</div>
-          <div class="heatmap-cell h8">89</div><div class="heatmap-cell h8">85</div><div class="heatmap-cell h8">87</div><div class="heatmap-cell h8">90</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">85</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h8">88</div><div class="heatmap-cell h8">86</div><div class="heatmap-cell h7">84</div>
+          <div class="heatmap-row-label">D.W.</div>
+          <div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h7">0.84</div>
 
           <!-- On-track rows (6) -->
-          <div class="heatmap-row-label"><span class="dot green"></span>P.A.</div>
-          <div class="heatmap-cell h7">82</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">80</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h7">79</div><div class="heatmap-cell h7">80</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h6">73</div>
+          <div class="heatmap-row-label">P.A.</div>
+          <div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h6">0.73</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>J.T.</div>
-          <div class="heatmap-cell h7">81</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">82</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">79</div><div class="heatmap-cell h7">80</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h7">77</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">74</div>
+          <div class="heatmap-row-label">J.T.</div>
+          <div class="heatmap-cell h7">0.81</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.74</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>R.M.</div>
-          <div class="heatmap-cell h7">78</div><div class="heatmap-cell h6">73</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h7">82</div><div class="heatmap-cell h6">72</div><div class="heatmap-cell h6">74</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h6">73</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h6">72</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h5">69</div>
+          <div class="heatmap-row-label">R.M.</div>
+          <div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.69</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>E.G.</div>
-          <div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h6">74</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h6">72</div><div class="heatmap-cell h6">73</div><div class="heatmap-cell h7">78</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h5">67</div>
+          <div class="heatmap-row-label">E.G.</div>
+          <div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.67</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>N.B.</div>
-          <div class="heatmap-cell h6">71</div><div class="heatmap-cell h5">67</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h6">70</div><div class="heatmap-cell h7">75</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h5">65</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h5">64</div>
+          <div class="heatmap-row-label">N.B.</div>
+          <div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.64</div>
 
-          <div class="heatmap-row-label"><span class="dot green"></span>L.O.</div>
-          <div class="heatmap-cell h6">70</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h6">71</div><div class="heatmap-cell h7">76</div><div class="heatmap-cell h5">67</div><div class="heatmap-cell h5">69</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h5">65</div><div class="heatmap-cell h5">67</div><div class="heatmap-cell h5">64</div><div class="heatmap-cell h5">66</div><div class="heatmap-cell h5">65</div><div class="heatmap-cell h5">63</div>
+          <div class="heatmap-row-label">L.O.</div>
+          <div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.63</div>
 
           <!-- Watch row (1) -->
-          <div class="heatmap-row-label"><span class="dot amber"></span>T.V.</div>
-          <div class="heatmap-cell h5">62</div><div class="heatmap-cell h4">58</div><div class="heatmap-cell h5">68</div><div class="heatmap-cell h5">60</div><div class="heatmap-cell h4">59</div><div class="heatmap-cell h5">61</div><div class="heatmap-cell h5">64</div><div class="heatmap-cell h4">56</div><div class="heatmap-cell h4">58</div><div class="heatmap-cell h4">55</div><div class="heatmap-cell h4">57</div><div class="heatmap-cell h4">56</div><div class="heatmap-cell h3">54</div>
+          <div class="heatmap-row-label">T.V.</div>
+          <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.60</div><div class="heatmap-cell h4">0.59</div><div class="heatmap-cell h5">0.61</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h4">0.55</div><div class="heatmap-cell h4">0.57</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h3">0.54</div>
 
           <!-- At-risk rows (4) -->
-          <div class="heatmap-row-label"><span class="dot red"></span>Sally</div>
-          <div class="heatmap-cell h5">62</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h3">41</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h1">18</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h1">19</div><div class="heatmap-cell h1">15</div>
+          <div class="heatmap-row-label">Sally</div>
+          <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
 
-          <div class="heatmap-row-label"><span class="dot red"></span>B.F.</div>
-          <div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h3">46</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">22</div>
+          <div class="heatmap-row-label">B.F.</div>
+          <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
 
-          <div class="heatmap-row-label"><span class="dot red"></span>C.S.</div>
-          <div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">50</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div>
+          <div class="heatmap-row-label">C.S.</div>
+          <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
 
-          <div class="heatmap-row-label"><span class="dot red"></span>H.D.</div>
-          <div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h3">42</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">20</div>
+          <div class="heatmap-row-label">H.D.</div>
+          <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
         </div>
 
         <div class="heatmap-legend mt-3">
@@ -1357,7 +1375,7 @@
       <div class="mb-3">
         <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>Filtered: At risk only</span>
         <h1 id="s4-heading">4 learners need attention</h1>
-        <p class="mt-1">Filter narrowed to AI-scored Topic mastery &lt; 0.60 across two or more Topics. Click any row to drill in.</p>
+        <p class="mt-1">Filter narrowed to the at-risk threshold set by your School Admin (AI-scored Topic mastery &lt; 0.60 across two or more Topics). Click any row to drill in.</p>
       </div>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
@@ -1390,17 +1408,17 @@
               <div class="heatmap-col-label">Introduction<br>to Automation</div>
               <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
-              <div class="heatmap-row-label"><span class="dot red"></span>Sally</div>
-              <div class="heatmap-cell h5">62</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h3">41</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h1">18</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h1">19</div><div class="heatmap-cell h1">15</div>
+              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for Sally" title="View profile for Sally">Sally</div>
+              <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
 
-              <div class="heatmap-row-label"><span class="dot red"></span>B.F.</div>
-              <div class="heatmap-cell h3">44</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h3">46</div><div class="heatmap-cell h2">33</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">22</div>
+              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for B.F." title="View profile for B.F.">B.F.</div>
+              <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
 
-              <div class="heatmap-row-label"><span class="dot red"></span>C.S.</div>
-              <div class="heatmap-cell h3">52</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h3">50</div><div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">38</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div>
+              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for C.S." title="View profile for C.S.">C.S.</div>
+              <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
 
-              <div class="heatmap-row-label"><span class="dot red"></span>H.D.</div>
-              <div class="heatmap-cell h2">35</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h3">52</div><div class="heatmap-cell h3">42</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">36</div><div class="heatmap-cell h3">40</div><div class="heatmap-cell h2">28</div><div class="heatmap-cell h2">25</div><div class="heatmap-cell h2">30</div><div class="heatmap-cell h2">32</div><div class="heatmap-cell h2">22</div><div class="heatmap-cell h2">20</div>
+              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for H.D." title="View profile for H.D.">H.D.</div>
+              <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
             </div>
           </div>
           <div class="heatmap-scroll-hint" role="note">
@@ -1419,7 +1437,7 @@
                 <tr><th>Avg score (at-risk)</th><td>0.42</td></tr>
                 <tr><th>Common gap</th><td>List comprehensions, dict access patterns</td></tr>
                 <tr><th>Total sessions</th><td>27 in last 7 days</td></tr>
-                <tr><th>Mastery threshold</th><td>0.80 (set by Alice)</td></tr>
+                <tr><th>Mastery threshold</th><td>0.80 (set by School Admin)</td></tr>
               </table>
             </div>
           </div>
@@ -1465,6 +1483,16 @@
         <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
+      <div class="d-flex justify-content-end mb-3">
+        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
+          <span class="text-muted small">Export Sally's Topic Mastery Report</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
+        </div>
+      </div>
+
       <div class="row mb-3">
         <div class="col-4">
           <div class="pgn__card">
@@ -1503,19 +1531,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">62</span></td><td>01 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">28</span></td><td>05 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">44</span></td><td>04 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">22</span></td><td>06 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Working with Files &amp; I/O</td><td class="num-col"><span class="score-pill low">38</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">33</span></td><td>05 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Object-Oriented Programming (OOP)</td><td class="num-col"><span class="score-pill low">41</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Python Libraries &amp; Modules</td><td class="num-col"><span class="score-pill low">25</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Advanced Data Handling</td><td class="num-col"><span class="score-pill low">18</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Regular Expressions &amp; String Manipulation</td><td class="num-col"><span class="score-pill low">22</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Working with Databases</td><td class="num-col"><span class="score-pill low">30</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Introduction to Automation</td><td class="num-col"><span class="score-pill low">19</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Introduction to Machine Learning</td><td class="num-col"><span class="score-pill low">15</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td><td>01 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.28</span></td><td>05 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.44</span></td><td>04 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>06 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Working with Files &amp; I/O</td><td class="num-col"><span class="score-pill low">0.38</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.33</span></td><td>05 May 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Object-Oriented Programming (OOP)</td><td class="num-col"><span class="score-pill low">0.41</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Python Libraries &amp; Modules</td><td class="num-col"><span class="score-pill low">0.25</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Advanced Data Handling</td><td class="num-col"><span class="score-pill low">0.18</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Regular Expressions &amp; String Manipulation</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Working with Databases</td><td class="num-col"><span class="score-pill low">0.30</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Introduction to Automation</td><td class="num-col"><span class="score-pill low">0.19</span></td><td>30 Apr 2026</td></tr>
+                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Introduction to Machine Learning</td><td class="num-col"><span class="score-pill low">0.15</span></td><td>30 Apr 2026</td></tr>
                 </tbody>
               </table>
             </div>
@@ -1554,16 +1582,19 @@
         <span>Conversation logs</span>
       </nav>
 
-      <div class="d-flex justify-content-between align-items-start mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">forum</span>Python Skill · Conversation logs</span>
-          <h1 id="s6-heading">Sally's coaching sessions</h1>
-          <p class="mt-1">Most recent first. Click any row to read the full transcript.</p>
-        </div>
+      <div class="mb-3">
+        <span class="eyebrow"><span class="material-icons-outlined">forum</span>Python Skill · Conversation logs</span>
+        <h1 id="s6-heading">Sally's coaching sessions</h1>
+        <p class="mt-1">Most recent first. Click any row to read the full transcript.</p>
+      </div>
+
+      <div class="d-flex justify-content-end mb-3">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
           <span class="text-muted small">Export Sally's Conversation Log</span>
           <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
           <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -1584,15 +1615,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td><strong>09</strong></td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">15</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>08</td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">41</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>07</td><td>05 May 2026</td><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">22</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>06</td><td>05 May 2026</td><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">44</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>05</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">22</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>04</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill med">54</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>03</td><td>02 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">66</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>02</td><td>01 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">62</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="diagnostic"><td>01</td><td>30 Apr 2026</td><td>Diagnostic (all 13 Topics)</td><td class="num-col"><span class="score-pill low">38</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td><strong>09</strong></td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.15</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>08</td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.41</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>07</td><td>05 May 2026</td><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.22</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>06</td><td>05 May 2026</td><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.44</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>05</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.22</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>04</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill med">0.54</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>03</td><td>02 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.66</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>02</td><td>01 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td></tr>
+          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="diagnostic"><td>01</td><td>30 Apr 2026</td><td>Diagnostic (all 13 Topics)</td><td class="num-col"><span class="score-pill low">0.38</span></td></tr>
         </tbody>
       </table>
 
@@ -1630,16 +1661,19 @@
         <span>Session 09</span>
       </nav>
 
-      <div class="d-flex justify-content-between align-items-start mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Data Structures: Lists, Tuples, Sets, Dictionaries</span>
-          <h1 id="s7-heading">Conversation transcript</h1>
-          <p class="mt-1">All 47 messages captured by the Audit Trail. AI score 0.15 · 5 feedback panels · 3 AI evaluation misses.</p>
-        </div>
+      <div class="mb-3">
+        <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Data Structures: Lists, Tuples, Sets, Dictionaries</span>
+        <h1 id="s7-heading">Conversation transcript</h1>
+        <p class="mt-1">All 47 messages captured by the Audit Trail. AI score 0.15 · 5 feedback panels · 3 Objective misses.</p>
+      </div>
+
+      <div class="d-flex justify-content-end mb-3">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
           <span class="text-muted small">Export Session 09 Transcript</span>
           <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
           <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -1663,7 +1697,7 @@
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text" style="font-family: 'Lato', monospace; font-size: 13px;">total = 0
+              <div class="chat-text" style="font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; font-size: 13px; white-space: pre-wrap;">total = 0
 for i in range(len(scores)):
     total += scores[i]
 avg = total / len(scores)</div>
@@ -1694,7 +1728,7 @@ avg = total / len(scores)</div>
             <div class="chat-avatar" aria-hidden="true">S</div>
             <div class="chat-bubble">
               <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text" style="font-family: 'Lato', monospace; font-size: 13px;">squares = []
+              <div class="chat-text" style="font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; font-size: 13px; white-space: pre-wrap;">squares = []
 for s in scores:
     squares.append(s * s)</div>
             </div>
@@ -1752,13 +1786,16 @@ for s in scores:
           <h1 id="s8-heading" class="h2 mb-2">All 47 messages logged</h1>
           <div class="d-flex gap-3" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">47</div><div class="section-stat-label">Messages</div></div>
-            <div class="section-stat"><div class="section-stat-num danger">3</div><div class="section-stat-label">AI evaluation misses</div></div>
+            <div class="section-stat"><div class="section-stat-num danger">3</div><div class="section-stat-label">Objective misses</div></div>
             <div class="section-stat"><div class="section-stat-num warning">5</div><div class="section-stat-label">AI escalations</div></div>
             <div class="section-stat"><div class="section-stat-num">0</div><div class="section-stat-label">Events dropped</div></div>
           </div>
         </div>
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap; padding-top: var(--pgn-spacing-2);">
           <span class="text-muted small">Export Session 09 Audit Log</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as Markdown"><span class="material-icons-outlined">description</span>MD</button>
           <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
@@ -2013,6 +2050,27 @@ for s in scores:
     hydrateOneHeatmap('#screen-4');
   }
 
+    /* v4.116: at-risk roster filter for S1 instructor dashboard.
+     Mirrors S3 filterHeatmap pattern but scoped to the at-risk roster table.
+     Hides rows not matching the selected status; toggles the "no-matches" placeholder. */
+  function filterAtRiskRoster(status) {
+    document.querySelectorAll('#screen-1 .chip-filter[data-filter-status]').forEach(function(chip) {
+      chip.classList.remove('active');
+      if (chip.dataset.filterStatus === 'at-risk') chip.classList.add('danger');
+      else chip.classList.remove('danger');
+    });
+    var activeChip = document.querySelector('#screen-1 .chip-filter[data-filter-status="' + status + '"]');
+    if (activeChip) activeChip.classList.add('active');
+    var visible = 0;
+    document.querySelectorAll('#screen-1 tr[data-row-status]').forEach(function(row) {
+      var shouldShow = (status === 'all' || row.dataset.rowStatus === status);
+      row.style.display = shouldShow ? '' : 'none';
+      if (shouldShow) visible++;
+    });
+    var noMatch = document.querySelector('#screen-1 .no-matches-row');
+    if (noMatch) noMatch.style.display = (visible === 0) ? '' : 'none';
+  }
+
   function filterHeatmap(status) {
     var grid = document.querySelector('#screen-3 .heatmap-grid');
     if (!grid) return;
@@ -2040,39 +2098,10 @@ for s in scores:
     }
   }
 
-  /* v4.107: Standardize all displayed scores to the 0-1 LLM-native scale.
-     The LLM produces 0.00-1.00 scores per Learning Objective; this prototype
-     previously displayed them as 0-100 integers. Brady's directive (21 May
-     2026): match the underlying scale across all instructor + student views.
-     JFT's production data layer already uses 0-1, so this eliminates a
-     translation step that was happening only for display.
-     Runs BEFORE hydrateHeatmap so tooltips read the new 0-1 cell text. */
-  function standardizeScoresTo0to1() {
-    function toScore(text) {
-      // Only transform pure integers (0-100); skip values already containing a decimal.
-      if (!/^\d+$/.test(text)) return null;
-      var val = parseInt(text, 10);
-      if (val < 0 || val > 100) return null;
-      return (val / 100).toFixed(2);
-    }
-    document.querySelectorAll('.score-pill').forEach(function(pill) {
-      var converted = toScore(pill.textContent.trim());
-      if (converted !== null) pill.textContent = converted;
-    });
-    document.querySelectorAll('.heatmap-cell').forEach(function(cell) {
-      var converted = toScore(cell.textContent.trim());
-      if (converted !== null) cell.textContent = converted;
-    });
-    document.querySelectorAll('.section-stat-num').forEach(function(el) {
-      var text = el.textContent.trim();
-      // Match pure-integer percentages like "76%"; skip counts ("28") and dashes ("—").
-      if (/^\d+%$/.test(text)) {
-        var val = parseInt(text, 10);
-        if (val >= 0 && val <= 100) el.textContent = (val / 100).toFixed(2);
-      }
-    });
-  }
-  standardizeScoresTo0to1();
+  /* v4.116: score normalization is now source-of-truth (0.00-1.00 literals).
+     Removed standardizeScoresTo0to1() per Brady verdict F2:B on 2026-05-23 —
+     strict source alignment. JFT builds verbatim from prototype, so legacy
+     percent + bare-integer score literals were converted in-place. */
 
   // Run hydration once on initial load (after score standardization so tooltips reflect 0-1)
   hydrateHeatmap();
