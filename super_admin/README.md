@@ -1,29 +1,37 @@
-# Super Admin — Bob · v1.3
+# Super Admin Portal — Bob · v1.3
 
 [← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/SkillProof/super_admin/)
 
-![Super Admin Portal hero](screenshots/sc-add-04_step02_screen02.png)
-
 ## Persona
 
-**Bob** — WGU platform operations and infrastructure. Authenticates via his own secret LRPS deep link **plus MFA**. Cross-tenant scope: he sees every School-tenant on the platform and is the sole controller of platform access, role elevation, and tenant lifecycle. WGU's RBAC model requires **a minimum of 2 Super Admins at all times** as a lockout-prevention guarantee.
+**Bob** — WGU platform operations and infrastructure. Authenticates via his own secret LRPS deep link **plus MFA**. Cross-tenant scope: he sees every School-tenant on the platform and is the sole controller of platform access, role elevation, and tenant lifecycle. WGU's RBAC model requires **a minimum of 2 Super Admins at all times** as a lockout-prevention guarantee. Initial WGU Super Admins are kept out of the public repo per data-hygiene policy; the generic "Bob" persona stands in for them in the storyboard.
 
 ## Scope
 
-Cross-tenant governance, financial controls, security compliance, global resource management, role elevation, instructor-to-Skill assignment, and tenant (School) lifecycle. Bob's responsibilities span billing/cost (token usage, rate limits), security/compliance (TLS 1.3, FERPA, zero-trust, SOC 2 / ISO 27001 / GDPR), operational resilience (geo-redundancy, audit log, data + integrations hub), and platform access governance (user role elevation, instructor roster across Schools, creating new School tenants).
+Cross-tenant governance, financial controls, security compliance, global resource management, role elevation, instructor-to-Skill assignment, tenant (School) lifecycle, **per-School Settings** (branding, default thresholds, retention — moved from the School Admin in v4.114), and the **full drill-chain inherited from School Admin / Instructor** (the Super Admin can dig down into any School / Course / Skill / Topic / Learner to investigate, just like a School Admin can — they just have to drill down to reach it; it's not their primary surface).
+
+Bob's responsibilities span:
+
+- **Cost + rate** (token usage, rate limits, cost spike drill-down)
+- **Compliance + audit** (TLS 1.3, FERPA, SOC 2 / ISO 27001 / GDPR, geo-redundancy, cross-tenant audit log)
+- **Access + people** (4-tier role taxonomy: Student / Instructor / School Admin / Super Admin; min-2-Super-Admins enforcement; sole elevator role; instructor roster across Schools)
+- **Platform tools** (External Tooling hub: AWS / OpenRouter / Redis / Grafana / Jira / GitHub + Data & Integrations Hub)
+- **Schools** (per-School lifecycle + settings: branding, default Skill passing threshold, monthly token budget, conversation/audit log retention)
+- **Drill-down** (Course view → Skill heatmap → At-risk filter → Learner profile → Conv logs → Transcript → Audit Trail; New Skill wizard; consolidated 4-level Analytics)
 
 ## Scenarios
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-04** | **Super Admin Governance, Cost Audit, Access Control, and Tenant Management.** LRPS landing → SSO + MFA (SAML 2.0 SP per §16.3 #8.2; MFA per §16.5 #10.18) → portal home (KPI gauges + active alerts + recent platform events + 8 quick-link cards) → Token Usage Tracking (per-tenant breakdown with utilization meters; School of Technology flagged with spike) → cost-spike drill-down (30-bar daily cost chart, top consuming Skills, "likely cause" diagnosis) → Global Rate Limits config (form + before/after projection + pending audit-trail entry preview) → **Compliance Report — TLS 1.3 + FERPA** (encryption audit §10.7 across all data paths + FERPA privacy audit §10.1 with a 16-row FERPA control table referencing 34 CFR §§99.10 / 99.31 / 99.32 / 99.37 plus generic WGU institutional policies, and explicit SOW §16.5 control rows for SOC 2 Type II (#10.6), ISO 27001 (#10.13), zero-trust authorization (#10.14), GDPR (#10.12), annual penetration testing (#10.10), AES-256 at rest with cloud KMS (#10.16), MFA for privileged accounts (#10.18), threat detection / SIEM (#10.15), vulnerability scanning + 48-hr critical patch SLA (#10.9 + #10.19), and BC/DR with RTO ≤ 4hr + RPO ≤ 60min (#10.20)) → Geo-redundancy (3 region cards with replication lag, recent failover tests, RTO under 4-hr target) → cross-tenant audit log feed → **User Management** (4-tier role taxonomy: Student / Instructor / Tenant Admin / Super Admin; min-2-Super-Admins enforcement; sole elevator role) → **External Tooling & Integrations** (AWS / OpenRouter / Redis / Grafana / Jira / GitHub hub + global config) → **Data & Integrations Hub** (real-time + batch export, webhooks, GraphQL endpoint, Kafka / Kinesis / Pub-Sub streaming) → **Instructor Roster & Course Assignment** (cross-tenant view with per-School filter; Super Admin owns all Skill assignments) → **School / Tenant Management** (the 4 WGU Schools as tenants + `+ Create new School` affordance). | 13 |
+| **SC-ADD-04** | **Super Admin Governance, Cost Audit, Access Control, Tenant Management, and Drill-Down.** Super Admin Dashboard with 4 clickable KPI gauges + maintenance alert + Model performance (LLM SLA per provider) + Active alerts + Recent platform events + 10-card Quick Links (S1) → Token Usage Tracking with per-School breakdown (S2) → Cost spike drill-down with 30-day trend (S3) → Global Rate Limits config (S4) → Compliance Report (TLS 1.3 + FERPA + SOC 2 + ISO 27001 + GDPR + AES-256 + MFA + BC/DR) (S5) → Geo-Redundancy (3 regions + RTO/RPO targets) (S6) → Cross-tenant Audit Log (S7) → Access Control (People · Skills · Schools tabs; 4-tier roles; min-2-SA enforcement) (S8) → External Tooling hub (S9) → Data & Integrations Hub (S10) → Instructor Roster across Schools (S11) → **Schools & Settings** (4 WGU Schools as tenants + per-School Settings panel: Branding, Default Thresholds, Data Retention; `+ Create new School`) (S12) → Access Denied (S13). **Plus the inherited drill-chain (S14–S26):** Course view → Skill heatmap → At-risk filter → Learner profile → Conv logs → Transcript → Audit Trail (S14–S20) → 5-step New Skill wizard (S21–S25) → 4-level consolidated Analytics with School/Course/Skill/Topic zoom (S26). | 26 |
 
-**Total: 1 scenario · 13 screens (sequential 1-13).**
+**Total: 1 scenario · 26 screens (sequential 1–26).**
 
 ## Source
 
 - SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026)
-- WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.0** (13 May 2026) — drives the Super Admin naming unification, the min-2-Super-Admins enforcement banner on screen 9, the Skill-assignment authority callout on screen 12, and the new School / Tenant Management surface on screen 13.
+- WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.2** (24 May 2026)
+- Storyboard rev: **v4.118** (24 May 2026 — Phase 1 polish + drill-chain expansion + School Settings)
 
 ## SOW references
 
@@ -31,46 +39,37 @@ Cross-tenant governance, financial controls, security compliance, global resourc
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (13 screens, sequential 1-13)
-- `screenshots/` — 13 light-theme PNGs at 1440×900
-- `screenshots_dark/` — 13 dark-theme PNGs
+- [`index.html`](index.html) — interactive storyboard (26 screens, sequential 1–26)
+- `screenshots/` — light-theme PNGs at 1440×900 (regenerate after each significant redesign)
+- `screenshots_dark/` — dark-theme PNGs
 
 ## Components introduced in this portal
 
-- **`.spike-card`** + **`.spike-chart`** — 30-bar CSS daily cost trend (no SVG; just `<div>` bars with height % styling). Last days of the spike are highlighted via `.spike` and `.spike.danger` classes.
-- **`.util-meter`** — inline mini-bar with right-aligned numeric value (used in the per-tenant token-usage table)
-- **`.region-card`** — region card with side-stripe color (success / warning / danger), region name + location, and stat-row table
-- **`.gauge-card`** with `.center` variant — KPI gauges (numeric + label + thin progress bar + target sub-text)
-- **`.gauge-number`** color variants (`good`, `warning`, `danger`)
-- Pending-audit-trail preview panel on the Rate Limits screen — shows the audit log entry that will be written when "Apply" is clicked
-- **4-tier role taxonomy badges** (Student / Instructor / Tenant Admin / Super Admin) on screen 9, with disabled `Downgrade` button + tooltip when count = 2
-- **External Tooling hub** cards on screen 10 linking out to AWS / OpenRouter / Redis / Grafana / Jira / GitHub
-- **Data & Integrations Hub** cards on screen 11 (real-time + batch data export · webhook subscriptions · GraphQL endpoint · Kafka / Kinesis / Pub-Sub streaming)
-- **Cross-tenant Instructor Roster** on screen 12 with per-tenant filter dropdown (4 WGU Schools)
-- **School / Tenant Management** table on screen 13 with `+ Create new School` button — the affordance for adding new School-tenants as WGU expands the platform
+- **Clickable KPI gauges** on S1 — each of the 4 gauges (Schools / Active Learners / Token Spend MTD / Rate Limit Headroom) is a drill-in to the relevant downstream surface (S12 / S26 / S2 / S4 respectively); `role="button"` + `tabindex="0"` + `aria-label`
+- **Compact horizontal-layout Quick Links cards** (10 cards in col-3 4+4+2 grid; reordered so Drill + Analytics + Governance lead row 1)
+- **`.spike-card`** + **`.spike-chart`** — 30-bar CSS daily cost trend (no SVG; just `<div>` bars with height % styling); last days of spike highlighted via `.spike` and `.spike.danger` classes
+- **`.util-meter`** — inline mini-bar with right-aligned numeric value (used in per-tenant token-usage table)
+- **`.region-card`** — region card with side-stripe color (success / warning / danger), region name + location, stat-row table
+- **`.gauge-card`** with `.center` variant and `.gauge-number` color variants (`good`, `warning`, `danger`)
+- **Pending-audit-trail preview panel** on the Rate Limits screen — shows the audit log entry that will be written when "Apply" is clicked
+- **4-tier role taxonomy badges** (Student / Instructor / School Admin / Super Admin) on S8, with disabled `Downgrade` button + tooltip when count = 2
+- **External Tooling hub** cards on S9 linking out to AWS / OpenRouter / Redis / Grafana / Jira / GitHub
+- **Data & Integrations Hub** cards on S10 (real-time + batch export · webhooks · GraphQL endpoint · Kafka/Kinesis/Pub-Sub streaming)
+- **Cross-tenant Instructor Roster** on S11 with per-tenant filter dropdown (4 WGU Schools)
+- **Schools & Settings** on S12 with per-School Settings panel (Branding: logo + primary color; Default Thresholds: Skill passing % + monthly token budget $; Data Retention: conversation logs + audit log)
+- **Inherited drill-chain** (S14–S20, mirrored from School Admin) with navbar swapped to WGU corporate logo + Super Admin chip + Bob/B user; breadcrumbs rewritten to "Super Admin Dashboard" root
+- **Inherited Skill Creation Wizard** (S21–S25) with `<input list="">` + `<datalist>` combobox typeahead for Course Number + Course Title
+- **Inherited 4-level Analytics** (S26) with School Rollup → Per-Course → Per-Skill → Per-Topic; PDF / CSV / MD / JSON download per section
 
 ## Notes
 
-- The portal models a privileged session: the SSO landing on screen 1 includes an MFA verification step + a "Privileged session" warning that all actions are logged to the cross-tenant audit trail + a zero-trust line ("Server-side authorization · link does not grant access").
-- Cost spike workflow on screens 3-5 is end-to-end: identify the high-consumption tenant (School of Technology) → drill down to see the 30-day trend with last 4 days as a visible spike → adjust rate limits → see the projected effect (MTD spend back inside budget) → "Apply" writes an audit log entry.
-- The Compliance Report on screen 6 covers both encryption (§10.7) and FERPA (§10.1) — TLS 1.3 verification across all data paths plus FERPA privacy controls including staff training, audit retention, data deletion thresholds, and explicit FERPA control mapping to 34 CFR sections.
-- The cross-tenant audit log on screen 8 deliberately includes events from all the other v1.3 personas (Alice, Charlie, JFT CSM, system) so you can see how cross-tenant operations are surfaced to the Super Admin role.
-- **User Management on screen 9** is the only place where role elevation happens. Default LTI baseline is `Instructor` for WGU staff; elevations to Tenant Admin or Super Admin are applied here by a Super Admin and take effect on the user's next login. Min-2-Super-Admins is enforced via a disabled `Downgrade` button + tooltip on every Super Admin row when the count drops to 2.
-- **Instructor Roster on screen 12** is the sole place for Skill-to-instructor mappings. SOW §2.5 lists "instructors" as a tenant-level control; WGU consolidated that under Super Admin in v4.48 because Super Admin is the sole controller of platform access. The info alert on screen 12 makes this explicit: "Super Admin owns all Skill assignments. Tenant Admins have no provisioning affordance."
-- **School / Tenant Management on screen 13** lists the 4 WGU Schools as tenants and exposes a `+ Create new School` affordance for adding additional School-tenants. This closes the implied multi-school management gap as WGU expands SkillProof beyond the initial deployment.
-
-## Device context
-
-Desktop-primary, with command-line access for cloud infrastructure operations outside SkillProof. The mobile-first commitment in Appendix A §16.2 #7.2 applies universally across the storyboard, so the Super Admin portal is responsive and accessible on smaller viewports, but the operational workflow assumes a desktop session with multiple panels open at once.
-
-## Maintenance windows and rolling enrollment
-
-WGU operates a rolling enrollment model: students enroll on the first of any month and progress at their own pace. There is no semester break and no naturally low-traffic window for production maintenance. Maintenance strategy must therefore favor approaches that minimize or eliminate user-visible downtime: blue/green deploys (committed in §16.1 #6.24), in-place rolling updates for stateless services, and database migrations executed via online schema-change patterns. Where a downtime window is unavoidable, it should land in a designated low-risk timeframe coordinated with WGU operations at least 14 days in advance per §16.4 #9.12.
-
-## LLM API account ownership and spend control
-
-LLM API costs are excluded from the fixed-cost SOW per §11 Note 5 — WGU is responsible for those charges directly. Account ownership and provisioning specifics are coordinated separately between WGU IT and JFT engineering. The cost telemetry rendered in this portal (Token Usage by Tenant on Screen 3, cost-spike drill-down on Screen 4) is the primary control surface for WGU to monitor spend. The rate-limit controls on Screen 5 are the operational lever for tightening per-tenant ceilings. A per-day or per-tenant hard spend cap acting as a circuit breaker is recommended for the pilot phase; the value of that cap is a WGU operational decision.
-
-## Pilot-to-WGU handoff transition
-
-During the pilot phase, JFT's technical leads operate this Super Admin surface on WGU's behalf, with the platform hosted and managed under the fixed-cost SOW. At a future date, the Super Admin role transitions to WGU IT. The handoff protocol, target date, and identity-provider integration for WGU IT access to cloud infrastructure (separate from the SkillProof application console, which uses WGU SSO via SAML per §16.3 #8.2) are scoped separately and not part of the v1.x storyboard. JFT and WGU should agree the handoff plan in writing well before the SOW pilot-support period ends.
+- The portal models a privileged session: SSO + MFA verification + "Privileged session" warning + zero-trust line ("Server-side authorization · link does not grant access").
+- **Cost spike workflow on S2–S4** is end-to-end: identify the high-consumption School (School of Technology) → drill down to see the 30-day trend with last 4 days as a visible spike → adjust rate limits → see the projected effect (MTD spend back inside budget) → "Apply" writes an audit log entry.
+- **Compliance Report on S5** covers both encryption (§10.7) and FERPA (§10.1) — TLS 1.3 verification across all data paths plus FERPA privacy controls including staff training, audit retention, data deletion thresholds, and explicit FERPA control mapping to 34 CFR sections.
+- **Cross-tenant audit log on S7** deliberately includes events from all v1.3 personas (Alice, Charlie, JFT CSM, system) so you can see how cross-tenant operations are surfaced to the Super Admin role.
+- **User Management on S8** is the only place where role elevation happens. Default LTI baseline is `Instructor` for WGU staff; elevations to School Admin or Super Admin are applied here by a Super Admin and take effect on the user's next login. Min-2-Super-Admins is enforced via a disabled `Downgrade` button + tooltip on every Super Admin row when the count drops to 2.
+- **Instructor Roster on S11** is the sole place for Skill-to-instructor mappings. SOW §2.5 lists "instructors" as a tenant-level control; WGU consolidated that under Super Admin in v4.48 because Super Admin is the sole controller of platform access.
+- **Schools & Settings on S12** lists the 4 WGU Schools as tenants and exposes a `+ Create new School` affordance + per-School Settings (moved from the School Admin portal in v4.114 — TA only manages Courses + Skills now).
+- **Drill-chain (S14–S26)** mirrors the School Admin's structure. The Super Admin can dig into any School / Course / Skill / Topic / Learner / Session to investigate, but this is a diagnostic capability — not the Super Admin's primary surface. Headers indicate Super Admin scope (WGU corporate logo, "Super Admin" chip, Bob/B user).
+- **Score scale rule (F42)**: AI-scored values use 0.00–1.00 (heatmap cells, session scores). Human-entered passing thresholds use 0–100% (S11 LO thresholds, S13 Skill summary, S26 displays).
+- **Lifecycle terminology**: Draft / Staging / Live (locked 24 May 2026; "Production" is not used).
