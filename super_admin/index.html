@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.127</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.128</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -841,28 +841,28 @@
 
       <div class="row mb-3" style="flex-wrap: nowrap;">
         <div style="flex: 1 1 0; min-width: 0;">
-          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for Courses">
+          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(23)" role="button" tabindex="0" aria-label="Open Analytics for Courses">
             <div class="text-muted small mb-1">COURSES</div>
             <div class="gauge-number">16</div>
             <div class="gauge-target">across 4 Schools</div>
           </div>
         </div>
         <div style="flex: 1 1 0; min-width: 0;">
-          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for Skills">
+          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(23)" role="button" tabindex="0" aria-label="Open Analytics for Skills">
             <div class="text-muted small mb-1">SKILLS</div>
             <div class="gauge-number">28</div>
             <div class="gauge-target">deployed across 16 Courses</div>
           </div>
         </div>
         <div style="flex: 1 1 0; min-width: 0;">
-          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for sessions">
+          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(23)" role="button" tabindex="0" aria-label="Open Analytics for sessions">
             <div class="text-muted small mb-1">SESSIONS · LAST 7 DAYS</div>
             <div class="gauge-number">12,400</div>
             <div class="gauge-target">+8% vs prior 7 days</div>
           </div>
         </div>
         <div style="flex: 1 1 0; min-width: 0;">
-          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for active learners">
+          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(23)" role="button" tabindex="0" aria-label="Open Analytics for active learners">
             <div class="text-muted small mb-1">ACTIVE LEARNERS</div>
             <div class="gauge-number">3,842</div>
             <div class="gauge-target">+12% vs prior 30 days</div>
@@ -880,7 +880,7 @@
       <!-- Toolbar: navigation links as blue outline buttons (mirrors TA dashboard) -->
       <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(14)"><span class="material-icons-outlined">manage_search</span>Course Drill-Down</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(26)"><span class="material-icons-outlined">analytics</span>Analytics</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(23)"><span class="material-icons-outlined">analytics</span>Analytics</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">school</span>Schools &amp; Settings</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(8)"><span class="material-icons-outlined">manage_accounts</span>User Management</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">paid</span>Token Usage</button>
@@ -2836,7 +2836,7 @@
 
       <div class="d-flex justify-content-between align-items-start mb-3" style="flex-wrap:wrap; gap:12px;">
         <p class="text-muted mb-0" style="max-width: 720px;">Each WGU School is an isolated environment in SkillProof. Schools are created here; School Admin assignments are made on the Access Control screen.</p>
-        <button class="btn btn-primary" onclick="goToScreen(27)"><span class="material-icons-outlined">add</span>Create new School</button>
+        <button class="btn btn-primary" onclick="goToScreen(24)"><span class="material-icons-outlined">add</span>Create new School</button>
       </div>
 
       <div class="pgn__card pgn__card-featured mb-3">
@@ -3063,7 +3063,7 @@
         <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Skills deployed in E010</span>
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h2 class="h4 mb-0">Skills (2 active)</h2>
-          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(21);"><span class="material-icons-outlined">add</span>New Skill in this Course</button>
+          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(18);"><span class="material-icons-outlined">add</span>New Skill in this Course</button>
         </div>
 
         <div class="section-card recommended mb-3" onclick="goToScreen(15)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
@@ -3078,7 +3078,7 @@
             <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(21);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(18);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); alert('Archive Skill (wireframe — would surface a confirmation dialog and move the Skill to Archived state)');"><span class="material-icons-outlined">archive</span>Archive</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(15);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
@@ -3096,7 +3096,7 @@
             <div class="section-stat"><div class="section-stat-num">87</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(21);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(18);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); alert('Archive Skill (wireframe — would surface a confirmation dialog and move the Skill to Archived state)');"><span class="material-icons-outlined">archive</span>Archive</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(15);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
@@ -3422,7 +3422,6 @@
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">grading</span>Per-Topic scores</span>
               <h2 class="h5 mb-2">Where the gap is</h2>
-              <p class="small text-muted">Click any row to open Sally's conversation logs for that Topic.</p>
 
               <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
                 <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
@@ -3440,19 +3439,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="coached"><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td><td>01 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="coached"><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.28</span></td><td>05 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="coached"><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.44</span></td><td>04 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="coached"><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>06 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Working with Files &amp; I/O</td><td class="num-col"><span class="score-pill low">0.38</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="coached"><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.33</span></td><td>05 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Object-Oriented Programming (OOP)</td><td class="num-col"><span class="score-pill low">0.41</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Python Libraries &amp; Modules</td><td class="num-col"><span class="score-pill low">0.25</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Advanced Data Handling</td><td class="num-col"><span class="score-pill low">0.18</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Regular Expressions &amp; String Manipulation</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Working with Databases</td><td class="num-col"><span class="score-pill low">0.30</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Introduction to Automation</td><td class="num-col"><span class="score-pill low">0.19</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(18)" data-topic-cat="diagnostic-only"><td>Introduction to Machine Learning</td><td class="num-col"><span class="score-pill low">0.15</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td><td>01 May 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.28</span></td><td>05 May 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.44</span></td><td>04 May 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>06 May 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Working with Files &amp; I/O</td><td class="num-col"><span class="score-pill low">0.38</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.33</span></td><td>05 May 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Object-Oriented Programming (OOP)</td><td class="num-col"><span class="score-pill low">0.41</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Python Libraries &amp; Modules</td><td class="num-col"><span class="score-pill low">0.25</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Advanced Data Handling</td><td class="num-col"><span class="score-pill low">0.18</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Regular Expressions &amp; String Manipulation</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Working with Databases</td><td class="num-col"><span class="score-pill low">0.30</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Introduction to Automation</td><td class="num-col"><span class="score-pill low">0.19</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Introduction to Machine Learning</td><td class="num-col"><span class="score-pill low">0.15</span></td><td>30 Apr 2026</td></tr>
                 </tbody>
               </table>
             </div>
@@ -3464,10 +3463,10 @@
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(16)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
-    <button class="btn btn-primary" onclick="goToScreen(18)"><span class="material-icons-outlined">forum</span>View conversation logs</button>
   </div>
 </section>
-<!-- Screen 18 (mirrored from TA S6): inherits TA drill-down for SA scope -->
+
+<!-- Screen 21 (mirrored from TA S10): inherits TA drill-down for SA scope -->
 <section class="screen" id="screen-18" aria-labelledby="s18-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
@@ -3479,286 +3478,6 @@
     </div>
   </header>
   <main class="screen-main" id="main-18">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(17); return false;">Sally</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Conversation logs</span>
-      </nav>
-
-      <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">forum</span>Python Skill · Conversation logs</span>
-        <h1 id="s18-heading">Sally's coaching sessions</h1>
-        <p class="mt-1">Most recent first. Click any row to read the full transcript.</p>
-      </div>
-
-      <div class="d-flex justify-content-end mb-3">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Sally's Conversation Log</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally's Conversation Log as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter active" data-filter-session="all" onclick="filterSessions('all')">All sessions (9)</button>
-        <button class="chip-filter" data-filter-session="diagnostic" onclick="filterSessions('diagnostic')">Diagnostic (1)</button>
-        <button class="chip-filter" data-filter-session="coaching" onclick="filterSessions('coaching')">Coaching (8)</button>
-      </div>
-
-      <table class="pgn__data-table">
-        <thead>
-          <tr>
-            <th>Session</th>
-            <th>Date</th>
-            <th>Topic</th>
-            <th class="num-col">AI score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td><strong>09</strong></td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.15</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td>08</td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.41</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td>07</td><td>05 May 2026</td><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.22</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td>06</td><td>05 May 2026</td><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.44</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td>05</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.22</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td>04</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill med">0.54</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td>03</td><td>02 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.66</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="coaching"><td>02</td><td>01 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(19)" data-session-cat="diagnostic"><td>01</td><td>30 Apr 2026</td><td>Diagnostic (all 13 Topics)</td><td class="num-col"><span class="score-pill low">0.38</span></td></tr>
-        </tbody>
-      </table>
-
-      <p class="small text-muted mt-2">All 9 sessions captured to the Audit Trail. <a href="#" onclick="goToScreen(20); return false;">View full event log on the Audit Trail screen</a>.</p>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(17)"><span class="material-icons-outlined">arrow_back</span>Back to Sally's profile</button>
-  </div>
-</section>
-<!-- Screen 19 (mirrored from TA S7): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-19" aria-labelledby="s19-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-19">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(15); return false;">Python Skill</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(17); return false;">Sally</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Session 09</span>
-      </nav>
-
-      <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Data Structures: Lists, Tuples, Sets, Dictionaries</span>
-        <h1 id="s19-heading">Conversation transcript</h1>
-        <p class="mt-1">All 47 messages captured by the Audit Trail. AI score 0.15 · 5 feedback panels · 3 Objective misses.</p>
-      </div>
-
-      <div class="d-flex justify-content-end mb-3">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Session 09 Transcript</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Session 09 Transcript as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter active" data-filter-msg="all" onclick="filterTranscript('all')">All messages (47)</button>
-        <button class="chip-filter" data-filter-msg="ai-feedback" onclick="filterTranscript('ai-feedback')">AI feedback only (5)</button>
-        <button class="chip-filter danger" data-filter-msg="miss" onclick="filterTranscript('miss')"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>Objective misses only (3)</button>
-      </div>
-
-      <div class="chat-card mb-3">
-        <div class="chat-thread">
-          <div class="chat-row them" data-msg-type="prompt">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-gray">Prompt</span></div>
-              <div class="chat-text">Earlier you used a list to track scores. Can you rewrite that block to compute the average using a list comprehension instead of an index loop?</div>
-            </div>
-          </div>
-          <div class="chat-row" data-msg-type="learner">
-            <div class="chat-avatar" aria-hidden="true">S</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text" style="font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; font-size: 13px; white-space: pre-wrap;">total = 0
-for i in range(len(scores)):
-    total += scores[i]
-avg = total / len(scores)</div>
-            </div>
-          </div>
-          <div class="chat-row them" data-msg-type="feedback-miss">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
-              <div class="chat-text">That's a working sum, but it's not a comprehension yet — you're still iterating by index. A comprehension would let you express "give me each score, transformed if needed" as a single expression. Try writing it as <code>sum(s for s in scores) / len(scores)</code>, then see if you can collapse it to one line using <code>sum(scores) / len(scores)</code>. Where do you think the comprehension fits if you wanted only positive scores?</div>
-            </div>
-          </div>
-          <div class="chat-row" data-msg-type="learner">
-            <div class="chat-avatar" aria-hidden="true">S</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text">I'm not sure. I used a loop because that's what the textbook showed.</div>
-            </div>
-          </div>
-          <div class="chat-row them" data-msg-type="reframe">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-info">Reframe</span></div>
-              <div class="chat-text">Both styles work. The comprehension is more idiomatic in Python and easier to read once you're comfortable with it. Let's slow down: write a list comprehension that returns the squares of each score. Just that — no average yet.</div>
-            </div>
-          </div>
-          <div class="chat-row" data-msg-type="learner">
-            <div class="chat-avatar" aria-hidden="true">S</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text" style="font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; font-size: 13px; white-space: pre-wrap;">squares = []
-for s in scores:
-    squares.append(s * s)</div>
-            </div>
-          </div>
-          <div class="chat-row them" data-msg-type="feedback-miss">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
-              <div class="chat-text">Almost there. The shape of a comprehension is <code>[expression for item in iterable]</code>. Your loop body says <code>append(s * s)</code> — the expression is <code>s * s</code>, the item is <code>s</code>, the iterable is <code>scores</code>. Put those in the bracket form. (Continued for 36 more messages …)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex gap-2">
-        <button class="btn btn-primary" onclick="goToScreen(20)"><span class="material-icons-outlined">verified</span>View Audit Trail</button>
-      </div>
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(18)"><span class="material-icons-outlined">arrow_back</span>Back to Conversation logs</button>
-  </div>
-</section>
-<!-- Screen 20 (mirrored from TA S8): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-20" aria-labelledby="s20-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-20">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(15); return false;">Python Skill</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(17); return false;">Sally</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(19); return false;">Session 09</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Audit Trail</span>
-      </nav>
-
-      <div class="d-flex justify-content-between align-items-start mb-3" style="gap: var(--pgn-spacing-3);">
-        <div class="feedback-panel" style="flex: 1; margin-bottom: 0;">
-          <span class="feedback-label"><span class="material-icons-outlined">verified</span>Audit Trail Captured</span>
-          <h1 id="s20-heading" class="h2 mb-2">All 47 messages logged</h1>
-          <div class="d-flex gap-3" style="flex-wrap:wrap;">
-            <div class="section-stat"><div class="section-stat-num">47</div><div class="section-stat-label">Messages</div></div>
-            <div class="section-stat"><div class="section-stat-num danger">3</div><div class="section-stat-label">Objective misses</div></div>
-            <div class="section-stat"><div class="section-stat-num warning">5</div><div class="section-stat-label">AI escalations</div></div>
-            <div class="section-stat"><div class="section-stat-num">0</div><div class="section-stat-label">Events dropped</div></div>
-          </div>
-        </div>
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap; padding-top: var(--pgn-spacing-2);">
-          <span class="text-muted small">Export Session 09 Audit Log</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Session 09 Audit Log as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
-
-      <h2 class="h5 mb-2">Event log (first 10 of 47)</h2>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter active" data-filter-event="all" onclick="filterAuditEvents('all')">All events (47)</button>
-        <button class="chip-filter" data-filter-event="ai" onclick="filterAuditEvents('ai')">AI events (12)</button>
-        <button class="chip-filter" data-filter-event="learner" onclick="filterAuditEvents('learner')">Learner submissions (18)</button>
-        <button class="chip-filter" data-filter-event="model" onclick="filterAuditEvents('model')">Model invocations (9)</button>
-        <button class="chip-filter" data-filter-event="guardrail" onclick="filterAuditEvents('guardrail')">Guardrails (8)</button>
-      </div>
-
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Date</th>
-            <th>Event type</th>
-            <th>Source</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-event-cat="ai"><td>1</td><td>06 May 2026</td><td>session.start</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="ai"><td>2</td><td>06 May 2026</td><td>ai.prompt</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="learner"><td>3</td><td>06 May 2026</td><td>learner.submission</td><td>Learner: Sally (198.51.x.x)</td></tr>
-          <tr data-event-cat="guardrail"><td>4</td><td>06 May 2026</td><td>guardrail.pass</td><td>Guardrail: SkillProof Coach</td></tr>
-          <tr data-event-cat="model"><td>5</td><td>06 May 2026</td><td>model.invoke</td><td>Model: Anthropic Claude Sonnet 4.5</td></tr>
-          <tr data-event-cat="ai"><td>6</td><td>06 May 2026</td><td>ai.feedback</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="ai"><td>7</td><td>06 May 2026</td><td>score.update</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="learner"><td>8</td><td>06 May 2026</td><td>learner.submission</td><td>Learner: Sally (198.51.x.x)</td></tr>
-          <tr data-event-cat="ai"><td>9</td><td>06 May 2026</td><td>ai.feedback</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="learner"><td>10</td><td>06 May 2026</td><td>learner.submission</td><td>Learner: Sally (198.51.x.x)</td></tr>
-        </tbody>
-      </table>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(19)"><span class="material-icons-outlined">arrow_back</span>Back to transcript</button>
-    <button class="btn btn-tertiary" onclick="goToScreen(1)"><span class="material-icons-outlined">dashboard</span>Back to dashboard</button>
-  </div>
-</section>
-<!-- Screen 21 (mirrored from TA S10): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-21" aria-labelledby="s21-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-21">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -3766,7 +3485,7 @@ for s in scores:
         <span>New Skill</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">edit</span>Step 1 of 5 · Skill Details</span>
-      <h1 id="s21-heading" class="h1 mb-2">Create a new Skill</h1>
+      <h1 id="s18-heading" class="h1 mb-2">Create a new Skill</h1>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section-lg">
@@ -3837,11 +3556,11 @@ for s in scores:
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(22)">Next: Topics<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-primary" onclick="goToScreen(19)">Next: Topics<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 <!-- Screen 22 (mirrored from TA S11): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-22" aria-labelledby="s22-heading">
+<section class="screen" id="screen-19" aria-labelledby="s19-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -3851,7 +3570,7 @@ for s in scores:
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-22">
+  <main class="screen-main" id="main-19">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -3859,7 +3578,7 @@ for s in scores:
         <span>Topics &amp; Learning Objectives</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">list_alt</span>Step 2 of 5 · Topics &amp; Learning Objectives</span>
-      <h1 id="s22-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
+      <h1 id="s19-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
 
       <p class="text-muted mb-3">Set the overall Skill passing threshold on the 0-100% scale, then expand each Topic to edit its Learning Objectives in place. A Student is considered to have passed the Skill once their overall score meets this threshold.</p>
 
@@ -3993,12 +3712,12 @@ for s in scores:
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(21)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(23)">Next: Model &amp; Prompt<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(18)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(20)">Next: Model &amp; Prompt<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 <!-- Screen 23 (mirrored from TA S12): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-23" aria-labelledby="s23-heading">
+<section class="screen" id="screen-20" aria-labelledby="s20-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -4008,7 +3727,7 @@ for s in scores:
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-23">
+  <main class="screen-main" id="main-20">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -4016,7 +3735,7 @@ for s in scores:
         <span>Model &amp; Prompt</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">memory</span>Step 3 of 5 · Model &amp; Prompt</span>
-      <h1 id="s23-heading" class="h1 mb-2">Choose the model and AI prompt</h1>
+      <h1 id="s20-heading" class="h1 mb-2">Choose the model and AI prompt</h1>
       <p class="text-muted mb-3">Pick the underlying model and configure the AI coaching prompt.</p>
 
       <h2 class="h5 mb-2">Preferred model</h2>
@@ -4148,12 +3867,12 @@ Address the learner by their first name. Never use "student" as the form of addr
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(22)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(24)">Review &amp; Deploy<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(19)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(21)">Review &amp; Deploy<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 <!-- Screen 24 (mirrored from TA S13): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-24" aria-labelledby="s24-heading">
+<section class="screen" id="screen-21" aria-labelledby="s21-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -4163,7 +3882,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-24">
+  <main class="screen-main" id="main-21">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -4171,7 +3890,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span>Review &amp; Deploy</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Step 4 of 5 · Review &amp; Deploy</span>
-      <h1 id="s24-heading" class="h1 mb-2">Deploy OOP Skill to Live</h1>
+      <h1 id="s21-heading" class="h1 mb-2">Deploy OOP Skill to Live</h1>
 
       <p class="text-muted mb-3">Final check before deployment. Review each step's configuration; use Back if anything needs to change.</p>
 
@@ -4229,7 +3948,7 @@ Address the learner by their first name. Never use "student" as the form of addr
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Live</span>
               <p class="small mb-2">Visible to everyone, including Students. Topics cannot be removed once the Skill is Live; Learning Objective edits (rename, threshold change, add Learning Objective) are still allowed.</p>
-              <button class="btn btn-primary" onclick="goToScreen(25)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
+              <button class="btn btn-primary" onclick="goToScreen(22)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
             </div>
           </div>
         </div>
@@ -4272,12 +3991,12 @@ Address the learner by their first name. Never use "student" as the form of addr
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(23)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(25)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(20)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(22)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
   </div>
 </section>
 <!-- Screen 25 (mirrored from TA S14): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-25" aria-labelledby="s25-heading">
+<section class="screen" id="screen-22" aria-labelledby="s22-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -4287,14 +4006,14 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main centered" id="main-25">
+  <main class="screen-main centered" id="main-22">
     <div class="container-narrow">
       <div class="feedback-panel text-center" style="padding: var(--pgn-spacing-5) var(--pgn-spacing-4);">
         <div class="d-flex justify-content-center mb-3">
           <span class="material-icons-outlined text-success" style="font-size:64px;">check_circle</span>
         </div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Deployed to Live</span>
-        <h1 id="s25-heading" class="h2 mb-2">OOP Skill build succeeded</h1>
+        <h1 id="s22-heading" class="h2 mb-2">OOP Skill build succeeded</h1>
       </div>
 
       <div class="pgn__card pgn__card-featured mt-3" style="text-align:left;">
@@ -4322,11 +4041,11 @@ Address the learner by their first name. Never use "student" as the form of addr
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">dashboard</span>Back to Dashboard</button>
-    <button class="btn btn-primary" onclick="goToScreen(21)"><span class="material-icons-outlined">add</span>Create another Skill</button>
+    <button class="btn btn-primary" onclick="goToScreen(18)"><span class="material-icons-outlined">add</span>Create another Skill</button>
   </div>
 </section>
 <!-- Screen 26 (mirrored from TA S15): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-26" aria-labelledby="s26-heading">
+<section class="screen" id="screen-23" aria-labelledby="s23-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -4336,7 +4055,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-26">
+  <main class="screen-main" id="main-23">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -4344,7 +4063,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span>Analytics &amp; Reporting</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
-      <h1 id="s26-heading" class="mb-3">Analytics &amp; Reporting</h1>
+      <h1 id="s23-heading" class="mb-3">Analytics &amp; Reporting</h1>
       <!-- Section 1 — SCHOOL ROLLUP -->
       <span class="eyebrow"><span class="material-icons-outlined">domain</span>Level 1 of 4 · School</span>
       <h2 class="h4 mb-2">School of Technology — rollup</h2>
@@ -5254,7 +4973,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 </section>
 
 <!-- Screen 27: Create new School (SA-only, provisions a new tenant) ===== -->
-<section class="screen" id="screen-27" aria-labelledby="s27-heading">
+<section class="screen" id="screen-24" aria-labelledby="s24-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -5264,7 +4983,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-27">
+  <main class="screen-main" id="main-24">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -5274,7 +4993,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span>New School</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">domain_add</span>School</span>
-      <h1 id="s27-heading" class="h1 mb-2">Create a new School</h1>
+      <h1 id="s24-heading" class="h1 mb-2">Create a new School</h1>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section-lg">
@@ -5368,7 +5087,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Access Control (People &middot; Skills &middot; Schools)">08 Access Control</button>
       <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Instructor Roster">11 Instructor Roster</button>
       <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Schools &amp; Settings">12 Schools &amp; Settings</button>
-      <button class="step-btn" onclick="goToScreen(27)" aria-label="Screen 27: Create new School">27 New School</button>
+      <button class="step-btn" onclick="goToScreen(24)" aria-label="Screen 24: Create new School">24 New School</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
@@ -5394,34 +5113,31 @@ Address the learner by their first name. Never use "student" as the form of addr
       <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Skill heatmap">15 Skill heatmap</button>
       <button class="step-btn" onclick="goToScreen(16)" aria-label="Screen 16: At-risk filter">16 At-risk filter</button>
       <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: Learner profile">17 Learner profile</button>
-      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: Conversation logs">18 Conv logs</button>
-      <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Session transcript">19 Transcript</button>
-      <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Audit Trail">20 Audit Trail</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow G</span>
     <span class="flow-desc">Skill Creation Wizard</span>
     <nav class="flow-nav" aria-label="Skill creation wizard screens">
-      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: New Skill form">21 New Skill</button>
-      <button class="step-btn" onclick="goToScreen(22)" aria-label="Screen 22: Topics &amp; Learning Objectives">22 Topics &amp; LO</button>
-      <button class="step-btn" onclick="goToScreen(23)" aria-label="Screen 23: Model &amp; Prompt">23 Model &amp; Prompt</button>
-      <button class="step-btn" onclick="goToScreen(24)" aria-label="Screen 24: Review &amp; Deploy">24 Review &amp; Deploy</button>
-      <button class="step-btn" onclick="goToScreen(25)" aria-label="Screen 25: Deploy success">25 Deploy success</button>
+      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: New Skill form">18 New Skill</button>
+      <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Topics &amp; Learning Objectives">19 Topics &amp; LO</button>
+      <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Model &amp; Prompt">20 Model &amp; Prompt</button>
+      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Review &amp; Deploy">21 Review &amp; Deploy</button>
+      <button class="step-btn" onclick="goToScreen(22)" aria-label="Screen 22: Deploy success">22 Deploy success</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow H</span>
     <span class="flow-desc">Analytics &amp; Activity Log</span>
     <nav class="flow-nav" aria-label="Analytics screens">
-      <button class="step-btn" onclick="goToScreen(26)" aria-label="Screen 26: Analytics &amp; Activity Log (4-level zoom)">26 Analytics</button>
+      <button class="step-btn" onclick="goToScreen(23)" aria-label="Screen 23: Analytics &amp; Activity Log (4-level zoom)">23 Analytics</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 27; // v4.117: drill-chain mirror inherited from TA (S14-S26: Course view through 4-level Analytics). v4.126 (26 May 2026): added S27 New School (SA-only tenant provisioning) per JFT meeting + Brady directive — wired from S12 Schools & Settings "+ Create new School" button. Total: 13 original SA platform-ops + 13 TA-mirror drill chain (S14-S26) + 1 SA tenant creation (S27).
+  const TOTAL_SCREENS = 24; // v4.128 (26 May 2026): S18 Conv logs / S19 Transcript / S20 Audit Trail removed per contract scope (conversations not stored — single Q+A); drill chain stops at S17 Learner profile. S21-S27 renumbered to S18-S24. Total: 13 SA platform-ops (S1-S13) + 4 drill (S14-S17) + 5 wizard (S18-S22) + 1 analytics (S23) + 1 New School (S24).
 
   /* Screen 09 (Access Control) tab toggling — People · Skills · Schools */
   function goToTab(tabId) {
