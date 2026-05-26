@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — Storyboard v4.120</title>
+  <title>SkillProof — Instructor Dashboard — Storyboard v4.121</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1585,7 +1585,6 @@
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">grading</span>Per-Topic scores</span>
               <h2 class="h5 mb-2">Where the gap is</h2>
-              <p class="small text-muted">Click any row to open Sally's conversation logs for that Topic.</p>
 
               <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
                 <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
@@ -1603,19 +1602,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td><td>01 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.28</span></td><td>05 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.44</span></td><td>04 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>06 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Working with Files &amp; I/O</td><td class="num-col"><span class="score-pill low">0.38</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="coached"><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.33</span></td><td>05 May 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Object-Oriented Programming (OOP)</td><td class="num-col"><span class="score-pill low">0.41</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Python Libraries &amp; Modules</td><td class="num-col"><span class="score-pill low">0.25</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Advanced Data Handling</td><td class="num-col"><span class="score-pill low">0.18</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Regular Expressions &amp; String Manipulation</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Working with Databases</td><td class="num-col"><span class="score-pill low">0.30</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Introduction to Automation</td><td class="num-col"><span class="score-pill low">0.19</span></td><td>30 Apr 2026</td></tr>
-                  <tr style="cursor:pointer;" onclick="goToScreen(6)" data-topic-cat="diagnostic-only"><td>Introduction to Machine Learning</td><td class="num-col"><span class="score-pill low">0.15</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td><td>01 May 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.28</span></td><td>05 May 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.44</span></td><td>04 May 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>06 May 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Working with Files &amp; I/O</td><td class="num-col"><span class="score-pill low">0.38</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="coached"><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.33</span></td><td>05 May 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Object-Oriented Programming (OOP)</td><td class="num-col"><span class="score-pill low">0.41</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Python Libraries &amp; Modules</td><td class="num-col"><span class="score-pill low">0.25</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Advanced Data Handling</td><td class="num-col"><span class="score-pill low">0.18</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Regular Expressions &amp; String Manipulation</td><td class="num-col"><span class="score-pill low">0.22</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Working with Databases</td><td class="num-col"><span class="score-pill low">0.30</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Introduction to Automation</td><td class="num-col"><span class="score-pill low">0.19</span></td><td>30 Apr 2026</td></tr>
+                  <tr data-topic-cat="diagnostic-only"><td>Introduction to Machine Learning</td><td class="num-col"><span class="score-pill low">0.15</span></td><td>30 Apr 2026</td></tr>
                 </tbody>
               </table>
             </div>
@@ -1627,311 +1626,27 @@
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
-    <button class="btn btn-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">forum</span>View conversation logs</button>
   </div>
 </section>
 
-<!-- Screen 6: Conversation log list ================================ -->
+<!-- Screen 6: Access Denied (zero-trust deny path · RBAC doc §4.2 Figure 6) -->
 <section class="screen" id="screen-6" aria-labelledby="s6-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
       <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
       <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Instructor Dashboard</span>
       <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-6">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(2); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(5); return false;">Sally</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Conversation logs</span>
-      </nav>
-
-      <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">forum</span>Python Skill · Conversation logs</span>
-        <h1 id="s6-heading">Sally's coaching sessions</h1>
-        <p class="mt-1">Most recent first. Click any row to read the full transcript.</p>
-      </div>
-
-      <div class="d-flex justify-content-end mb-3">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Sally's Conversation Log</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally's Conversation Log as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Conversation Log as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter active" data-filter-session="all" onclick="filterSessions('all')">All sessions (9)</button>
-        <button class="chip-filter" data-filter-session="diagnostic" onclick="filterSessions('diagnostic')">Diagnostic (1)</button>
-        <button class="chip-filter" data-filter-session="coaching" onclick="filterSessions('coaching')">Coaching (8)</button>
-      </div>
-
-      <table class="pgn__data-table">
-        <thead>
-          <tr>
-            <th>Session</th>
-            <th>Date</th>
-            <th>Topic</th>
-            <th class="num-col">AI score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td><strong>09</strong></td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.15</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>08</td><td>06 May 2026</td><td>Data Structures: Lists, Tuples, Sets, Dictionaries</td><td class="num-col"><span class="score-pill low">0.41</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>07</td><td>05 May 2026</td><td>Control Flow &amp; Logic</td><td class="num-col"><span class="score-pill low">0.22</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>06</td><td>05 May 2026</td><td>Error Handling &amp; Debugging</td><td class="num-col"><span class="score-pill low">0.44</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>05</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill low">0.22</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>04</td><td>04 May 2026</td><td>Functions &amp; Modular Programming</td><td class="num-col"><span class="score-pill med">0.54</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>03</td><td>02 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.66</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="coaching"><td>02</td><td>01 May 2026</td><td>Basic Syntax &amp; Data Types</td><td class="num-col"><span class="score-pill med">0.62</span></td></tr>
-          <tr style="cursor:pointer;" onclick="goToScreen(7)" data-session-cat="diagnostic"><td>01</td><td>30 Apr 2026</td><td>Diagnostic (all 13 Topics)</td><td class="num-col"><span class="score-pill low">0.38</span></td></tr>
-        </tbody>
-      </table>
-
-      <p class="small text-muted mt-2">All 9 sessions captured to the Audit Trail. <a href="#" onclick="goToScreen(8); return false;">View full event log on the Audit Trail screen</a>.</p>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">arrow_back</span>Back to Sally's profile</button>
-  </div>
-</section>
-
-<!-- Screen 7: Conversation transcript with AI feedback ============== -->
-<section class="screen" id="screen-7" aria-labelledby="s7-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Instructor Dashboard</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-7">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(2); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(3); return false;">Python Skill</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(5); return false;">Sally</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Session 09</span>
-      </nav>
-
-      <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">forum</span>Session 09 · 06 May 2026 · Data Structures: Lists, Tuples, Sets, Dictionaries</span>
-        <h1 id="s7-heading">Conversation transcript</h1>
-        <p class="mt-1">All 47 messages captured by the Audit Trail. AI score 0.15 · 5 feedback panels · 3 Objective misses.</p>
-      </div>
-
-      <div class="d-flex justify-content-end mb-3">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Session 09 Transcript</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Session 09 Transcript as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Transcript as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter active" data-filter-msg="all" onclick="filterTranscript('all')">All messages (47)</button>
-        <button class="chip-filter" data-filter-msg="ai-feedback" onclick="filterTranscript('ai-feedback')">AI feedback only (5)</button>
-        <button class="chip-filter danger" data-filter-msg="miss" onclick="filterTranscript('miss')"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>Objective misses only (3)</button>
-      </div>
-
-      <div class="chat-card mb-3">
-        <div class="chat-thread">
-          <div class="chat-row them" data-msg-type="prompt">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-gray">Prompt</span></div>
-              <div class="chat-text">Earlier you used a list to track scores. Can you rewrite that block to compute the average using a list comprehension instead of an index loop?</div>
-            </div>
-          </div>
-          <div class="chat-row" data-msg-type="learner">
-            <div class="chat-avatar" aria-hidden="true">S</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text" style="font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; font-size: 13px; white-space: pre-wrap;">total = 0
-for i in range(len(scores)):
-    total += scores[i]
-avg = total / len(scores)</div>
-            </div>
-          </div>
-          <div class="chat-row them" data-msg-type="feedback-miss">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
-              <div class="chat-text">That's a working sum, but it's not a comprehension yet — you're still iterating by index. A comprehension would let you express "give me each score, transformed if needed" as a single expression. Try writing it as <code>sum(s for s in scores) / len(scores)</code>, then see if you can collapse it to one line using <code>sum(scores) / len(scores)</code>. Where do you think the comprehension fits if you wanted only positive scores?</div>
-            </div>
-          </div>
-          <div class="chat-row" data-msg-type="learner">
-            <div class="chat-avatar" aria-hidden="true">S</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text">I'm not sure. I used a loop because that's what the textbook showed.</div>
-            </div>
-          </div>
-          <div class="chat-row them" data-msg-type="reframe">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-info">Reframe</span></div>
-              <div class="chat-text">Both styles work. The comprehension is more idiomatic in Python and easier to read once you're comfortable with it. Let's slow down: write a list comprehension that returns the squares of each score. Just that — no average yet.</div>
-            </div>
-          </div>
-          <div class="chat-row" data-msg-type="learner">
-            <div class="chat-avatar" aria-hidden="true">S</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>Sally</strong></div>
-              <div class="chat-text" style="font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; font-size: 13px; white-space: pre-wrap;">squares = []
-for s in scores:
-    squares.append(s * s)</div>
-            </div>
-          </div>
-          <div class="chat-row them" data-msg-type="feedback-miss">
-            <div class="chat-avatar ai" aria-hidden="true">AI</div>
-            <div class="chat-bubble">
-              <div class="chat-meta"><strong>SkillProof Coach</strong><span class="badge badge-warning">Feedback · objective miss</span></div>
-              <div class="chat-text">Almost there. The shape of a comprehension is <code>[expression for item in iterable]</code>. Your loop body says <code>append(s * s)</code> — the expression is <code>s * s</code>, the item is <code>s</code>, the iterable is <code>scores</code>. Put those in the bracket form. (Continued for 36 more messages …)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex gap-2">
-        <button class="btn btn-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">verified</span>View Audit Trail</button>
-      </div>
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">arrow_back</span>Back to Conversation logs</button>
-  </div>
-</section>
-
-<!-- Screen 8: Audit Trail confirmation =============================== -->
-<section class="screen" id="screen-8" aria-labelledby="s8-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Instructor Dashboard</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-8">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(2); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(3); return false;">Python Skill</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(5); return false;">Sally</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(7); return false;">Session 09</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Audit Trail</span>
-      </nav>
-
-      <div class="d-flex justify-content-between align-items-start mb-3" style="gap: var(--pgn-spacing-3);">
-        <div class="feedback-panel" style="flex: 1; margin-bottom: 0;">
-          <span class="feedback-label"><span class="material-icons-outlined">verified</span>Audit Trail Captured</span>
-          <h1 id="s8-heading" class="h2 mb-2">All 47 messages logged</h1>
-          <div class="d-flex gap-3" style="flex-wrap:wrap;">
-            <div class="section-stat"><div class="section-stat-num">47</div><div class="section-stat-label">Messages</div></div>
-            <div class="section-stat"><div class="section-stat-num danger">3</div><div class="section-stat-label">Objective misses</div></div>
-            <div class="section-stat"><div class="section-stat-num warning">5</div><div class="section-stat-label">AI escalations</div></div>
-            <div class="section-stat"><div class="section-stat-num">0</div><div class="section-stat-label">Events dropped</div></div>
-          </div>
-        </div>
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap; padding-top: var(--pgn-spacing-2);">
-          <span class="text-muted small">Export Session 09 Audit Log</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Session 09 Audit Log as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Session 09 Audit Log as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
-
-      <h2 class="h5 mb-2">Event log (first 10 of 47)</h2>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter active" data-filter-event="all" onclick="filterAuditEvents('all')">All events (47)</button>
-        <button class="chip-filter" data-filter-event="ai" onclick="filterAuditEvents('ai')">AI events (12)</button>
-        <button class="chip-filter" data-filter-event="learner" onclick="filterAuditEvents('learner')">Learner submissions (18)</button>
-        <button class="chip-filter" data-filter-event="model" onclick="filterAuditEvents('model')">Model invocations (9)</button>
-        <button class="chip-filter" data-filter-event="guardrail" onclick="filterAuditEvents('guardrail')">Guardrails (8)</button>
-      </div>
-
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Date</th>
-            <th>Event type</th>
-            <th>Source</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-event-cat="ai"><td>1</td><td>06 May 2026</td><td>session.start</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="ai"><td>2</td><td>06 May 2026</td><td>ai.prompt</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="learner"><td>3</td><td>06 May 2026</td><td>learner.submission</td><td>Learner: Sally (198.51.x.x)</td></tr>
-          <tr data-event-cat="guardrail"><td>4</td><td>06 May 2026</td><td>guardrail.pass</td><td>Guardrail: SkillProof Coach</td></tr>
-          <tr data-event-cat="model"><td>5</td><td>06 May 2026</td><td>model.invoke</td><td>Model: Anthropic Claude Sonnet 4.5</td></tr>
-          <tr data-event-cat="ai"><td>6</td><td>06 May 2026</td><td>ai.feedback</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="ai"><td>7</td><td>06 May 2026</td><td>score.update</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="learner"><td>8</td><td>06 May 2026</td><td>learner.submission</td><td>Learner: Sally (198.51.x.x)</td></tr>
-          <tr data-event-cat="ai"><td>9</td><td>06 May 2026</td><td>ai.feedback</td><td>AI: SkillProof Coach</td></tr>
-          <tr data-event-cat="learner"><td>10</td><td>06 May 2026</td><td>learner.submission</td><td>Learner: Sally (198.51.x.x)</td></tr>
-        </tbody>
-      </table>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">arrow_back</span>Back to transcript</button>
-    <button class="btn btn-tertiary" onclick="goToScreen(1)"><span class="material-icons-outlined">dashboard</span>Back to dashboard</button>
-  </div>
-</section>
-
-<!-- Screen 9: Access Denied (zero-trust deny path · RBAC doc §4.2 Figure 6) -->
-<section class="screen" id="screen-9" aria-labelledby="s9-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
-    </div>
-  </header>
-  <main class="screen-main centered" id="main-9">
+  <main class="screen-main centered" id="main-6">
     <div class="container-narrow">
       <div class="pgn__card pgn__card-featured">
         <div class="pgn__card-section-lg">
           <div class="text-center mb-3">
             <span class="material-icons-outlined" style="font-size:56px; color: var(--pgn-color-danger-base);">block</span>
           </div>
-          <h1 id="s9-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
+          <h1 id="s6-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
           <table class="pgn__data-table" style="border:none; box-shadow:none; margin-bottom: var(--pgn-spacing-3);">
             <tr><th style="width:42%;">Signed in as</th><td>Charlie · Instructor · School of Technology</td></tr>
             <tr><th>This page requires</th><td>School Admin - School of Technology</td></tr>
@@ -1986,17 +1701,14 @@ for s in scores:
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Skill view (Python Skill heatmap)">03 Skill view</button>
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: At-risk filter">04 At-risk filter</button>
       <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Sally profile">05 Sally profile</button>
-      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Conversation logs">06 Conversation logs</button>
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Session transcript">07 Session transcript</button>
-      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Audit Trail">08 Audit Trail</button>
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Access Denied (zero-trust deny path)">09 Access Denied</button>
+      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Access Denied (zero-trust deny path)">06 Access Denied</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 9; // v4.57: screen 9 added (Access Denied / zero-trust deny path per RBAC doc §4.2 Figure 6). v4.92: renumbered 01-09 starting at Dashboard; new Screen 02 (Course view) inserted between Dashboard and Skill heatmap.
+  const TOTAL_SCREENS = 6; // v4.121 (26 May 2026): S06 Conversation logs / S07 Session transcript / S08 Audit Trail removed per contract scope confirmation — JFT confirmed conversations are not stored (single Q+A only, not multi-turn). "Capture integrity" terminology removed from Coda lock 23 May 2026. Drill chain stops at S05 Learner profile; S09 Access Denied renumbered to S06.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
