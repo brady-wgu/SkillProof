@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.139</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.140</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -256,6 +256,12 @@
     .row { display: flex; flex-wrap: wrap; gap: var(--pgn-spacing-3); }
     .col-6 { flex: 0 0 calc(50% - 12px); min-width: 0; }
     .col-12 { flex: 0 0 100%; }
+    .col { flex: 1 1 0; min-width: 0; }
+    .col-3 { flex: 0 0 calc(25% - 18px); min-width: 0; }
+    .col-4 { flex: 0 0 calc(33.333% - 16px); min-width: 0; }
+    .col-5 { flex: 0 0 calc(41.666% - 14.4px); min-width: 0; }
+    .col-7 { flex: 0 0 calc(58.333% - 14.4px); min-width: 0; }
+    .col-8 { flex: 0 0 calc(66.666% - 12px); min-width: 0; }
     .stack-1 > * + * { margin-top: var(--pgn-spacing-1); }
     .stack-2 > * + * { margin-top: var(--pgn-spacing-2); }
     .stack-3 > * + * { margin-top: var(--pgn-spacing-3); }
@@ -1411,36 +1417,36 @@
       </div>
 
       <!-- KPI gauges (5 tiles in 1 row: Courses / Skills / Sessions / Learners / Token Spend) -->
-      <div class="row mb-3">
-        <div class="col">
+      <div class="row mb-3" style="flex-wrap: nowrap;">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card">
             <div class="text-muted small mb-1">COURSES</div>
             <div class="gauge-number">4</div>
             <div class="gauge-target">all in your School scope</div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card">
             <div class="text-muted small mb-1">SKILLS</div>
             <div class="gauge-number">7</div>
             <div class="gauge-target">5 live · 1 staging · 1 draft</div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card">
             <div class="text-muted small mb-1">SESSIONS THIS WEEK</div>
             <div class="gauge-number">680</div>
             <div class="gauge-target"><a href="#" onclick="goToScreen(15); return false;" class="kpi-link">+47 vs last week</a></div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card">
             <div class="text-muted small mb-1">LEARNERS</div>
             <div class="gauge-number">90</div>
             <div class="gauge-target"><a href="#" onclick="goToScreen(15); return false;" class="kpi-link">across 4 Courses · cross-Skill</a></div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card">
             <div class="text-muted small mb-1">TOKEN SPEND · MTD</div>
             <div class="gauge-number">$387</div>
