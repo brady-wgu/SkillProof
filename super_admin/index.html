@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.120</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.121</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -215,6 +215,9 @@
     .col-6 { flex: 0 0 calc(50% - 12px); min-width: 0; }
     .col-8 { flex: 0 0 calc(66.666% - 12px); min-width: 0; }
     .col-12 { flex: 0 0 100%; }
+    .col { flex: 1 1 0; min-width: 0; }
+    .col-5 { flex: 0 0 calc(41.666% - 14.4px); min-width: 0; }
+    .col-7 { flex: 0 0 calc(58.333% - 14.4px); min-width: 0; }
     .stack-1 > * + * { margin-top: var(--pgn-spacing-1); }
     .stack-2 > * + * { margin-top: var(--pgn-spacing-2); }
     .stack-3 > * + * { margin-top: var(--pgn-spacing-3); }
@@ -837,36 +840,36 @@
         <h1 id="s1-heading">Super Admin Dashboard</h1>
       </div>
 
-      <div class="row mb-3">
-        <div class="col">
+      <div class="row mb-3" style="flex-wrap: nowrap;">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for Courses">
             <div class="text-muted small mb-1">COURSES</div>
             <div class="gauge-number">16</div>
             <div class="gauge-target">across 4 Schools</div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for Skills">
             <div class="text-muted small mb-1">SKILLS</div>
             <div class="gauge-number">28</div>
             <div class="gauge-target">deployed across 16 Courses</div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for sessions">
             <div class="text-muted small mb-1">SESSIONS · LAST 7 DAYS</div>
             <div class="gauge-number">12,400</div>
             <div class="gauge-target">+8% vs prior 7 days</div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for active learners">
             <div class="text-muted small mb-1">ACTIVE LEARNERS</div>
             <div class="gauge-number">3,842</div>
             <div class="gauge-target">+12% vs prior 30 days</div>
           </div>
         </div>
-        <div class="col">
+        <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(2)" role="button" tabindex="0" aria-label="Open Token Usage tracking">
             <div class="text-muted small mb-1">TOKEN SPEND · MTD</div>
             <div class="gauge-number warning">$4,287</div>
