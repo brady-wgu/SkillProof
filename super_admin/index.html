@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.123</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.124</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -877,6 +877,21 @@
         </div>
       </div>
 
+      <!-- Toolbar: navigation links as blue outline buttons (mirrors TA dashboard) -->
+      <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(14)"><span class="material-icons-outlined">manage_search</span>Course Drill-Down</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(26)"><span class="material-icons-outlined">analytics</span>Analytics</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">school</span>Schools &amp; Settings</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(8)"><span class="material-icons-outlined">manage_accounts</span>User Management</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">paid</span>Token Usage</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4)"><span class="material-icons-outlined">speed</span>Rate Limits</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(5)"><span class="material-icons-outlined">verified_user</span>Compliance</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(6)"><span class="material-icons-outlined">public</span>Geo-Redundancy</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">cast_for_education</span>Instructor Roster</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">open_in_new</span>External Tooling</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(7)"><span class="material-icons-outlined">history</span>Logs</button>
+      </div>
+
       <div class="pgn__card mb-3">
         <div class="pgn__card-section">
           <span class="eyebrow"><span class="material-icons-outlined">domain</span>Per-School Summary</span>
@@ -951,113 +966,6 @@
         </div>
       </div>
 
-      <h2 class="h5 mb-2">Quick links</h2>
-      <div class="row">
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(14)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">manage_search</span>
-                <h3 class="h6 mb-0">Course Drill-Down</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(26)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">analytics</span>
-                <h3 class="h6 mb-0">Analytics</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(12)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">school</span>
-                <h3 class="h6 mb-0">Schools &amp; Settings</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(8)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">manage_accounts</span>
-                <h3 class="h6 mb-0">User Management</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(2)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">paid</span>
-                <h3 class="h6 mb-0">Token Usage</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(4)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">speed</span>
-                <h3 class="h6 mb-0">Rate Limits</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(5)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">verified_user</span>
-                <h3 class="h6 mb-0">Compliance</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(6)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">public</span>
-                <h3 class="h6 mb-0">Geo-Redundancy</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(11)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">cast_for_education</span>
-                <h3 class="h6 mb-0">Instructor Roster</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="pgn__card" style="cursor:pointer;" onclick="goToScreen(9)">
-            <div class="pgn__card-section" style="padding: 14px 16px;">
-              <div class="d-flex align-items-center gap-2">
-                <span class="material-icons-outlined" style="font-size:24px; color:var(--pgn-color-brand-base); flex-shrink:0;">open_in_new</span>
-                <h3 class="h6 mb-0">External Tooling</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center mt-4 mb-3">
-        <button class="btn btn-outline-primary" onclick="goToScreen(7)" aria-label="View Platform Logs"><span class="material-icons-outlined">history</span>View Platform Logs</button>
-      </div>
     </div>
   </main>
 </section>
