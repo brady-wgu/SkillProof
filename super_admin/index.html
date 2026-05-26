@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.128</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.129</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1367,7 +1367,7 @@
         </div>
         <div class="col-3">
           <div class="gauge-card center">
-            <div class="gauge-number good" style="font-size:32px;">Per policy</div>
+            <div class="gauge-number good">3 yr</div>
             <div class="gauge-label">Audit trail retention</div>
             <div class="gauge-target text-muted small mt-1">FERPA-aligned · cross-school log immutable</div>
           </div>
@@ -1404,7 +1404,6 @@
           <tr><td>GDPR controls (international learners)</td><td>EU regulation</td><td><span class="badge badge-info">Activated on demand</span></td><td>Quarterly review</td><td>Lawful basis tracking, consent, data subject rights — engaged when international learners are in scope</td></tr>
           <tr><td>Penetration testing (annual minimum)</td><td>WGU institutional policy</td><td><span class="badge badge-success">Scheduled</span></td><td>Last: 14 Feb 2026 · Next: 14 Feb 2027</td><td>Independent third-party pentest; high findings remediated within agreed window</td></tr>
           <tr><td>Encryption at rest (AES-256)</td><td>WGU institutional policy</td><td><span class="badge badge-success">Enforced</span></td><td>07 May 2026</td><td>AES-256 for DBs, object storage, and backups · cloud KMS-managed keys with regular rotation</td></tr>
-          <tr><td>MFA for privileged accounts</td><td>WGU institutional policy</td><td><span class="badge badge-success">100% adoption</span></td><td>07 May 2026</td><td>TOTP or hardware keys required for cloud consoles, code repos, production access · WGU SSO extends to institutional users</td></tr>
           <tr><td>Threat detection / SIEM</td><td>WGU institutional policy</td><td><span class="badge badge-success">24/7</span></td><td>07 May 2026</td><td>Cloud-native threat detection + SIEM correlation routes anomalies to 24/7 security response</td></tr>
           <tr><td>Vulnerability scanning + 48-hr critical patch SLA</td><td>WGU institutional policy</td><td><span class="badge badge-success">Active</span></td><td>Per-release scan</td><td>Automated scans on every release · critical findings remediated within 48 hours</td></tr>
           <tr><td>Business Continuity &amp; DR (RTO ≤ 4hr, RPO ≤ 60min)</td><td>WGU institutional policy</td><td><span class="badge badge-success">Validated</span></td><td>Last drill: 22 Apr 2026</td><td>Multi-zone redundancy, automated backups, periodic recovery drills · 100% successful recovery within RTO/RPO targets</td></tr>
@@ -1570,7 +1569,7 @@
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">history</span>Platform Logs</span>
           <h1 id="s7-heading">Logs</h1>
-          <p class="mt-1">Every privileged action across every School. FERPA-aligned retention.</p>
+          <p class="mt-1">Every privileged action across every School. 3-year FERPA-aligned retention.</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
           <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">file_download</span>Export</button>
@@ -1699,11 +1698,47 @@
             <td><span class="badge badge-success">All controls pass</span></td>
             <td>internal</td>
           </tr>
+          <tr>
+            <td>04 May 22:10:33</td>
+            <td>School of Business</td>
+            <td>Charlie</td>
+            <td><code>authz.denied</code> (cross-School access attempt, B210)</td>
+            <td><span class="badge badge-warning">High</span></td>
+            <td><span class="badge badge-danger">Denied</span></td>
+            <td>203.0.113.x</td>
+          </tr>
+          <tr>
+            <td>04 May 16:45:02</td>
+            <td>School of Technology</td>
+            <td>Alice</td>
+            <td><code>skill.config.update</code> (E010 Python, AI prompt revised)</td>
+            <td><span class="badge badge-info">Info</span></td>
+            <td><span class="badge badge-success">Success</span></td>
+            <td>203.0.113.x</td>
+          </tr>
+          <tr>
+            <td>04 May 10:12:55</td>
+            <td>School of Technology</td>
+            <td>Charlie</td>
+            <td><code>student.record.access</code> (Sally, E010 mastery view)</td>
+            <td><span class="badge badge-info">Info</span></td>
+            <td><span class="badge badge-success">Authorized</span></td>
+            <td>203.0.113.x</td>
+          </tr>
+          <tr>
+            <td>04 May 08:30:00</td>
+            <td>School of Technology</td>
+            <td>System (LRPS)</td>
+            <td><code>lti.deeplink.update</code> (E135 OOP, launch URL rotated)</td>
+            <td><span class="badge badge-info">Info</span></td>
+            <td><span class="badge badge-success">Success</span></td>
+            <td>internal</td>
+          </tr>
         </tbody>
       </table>
 
       <div class="d-flex justify-content-between align-items-center">
-        <span class="text-muted small">Showing 11 of 4,287 events in the last 24h. Retention: per institutional policy (FERPA-aligned).</span>
+        <span class="text-muted small">Showing 15 of 4,287 events in the last 24h. Retention: 3 years (FERPA-aligned).</span>
         <div class="d-flex gap-2">
           <button class="btn btn-tertiary btn-sm" disabled>← Newer</button>
           <button class="btn btn-tertiary btn-sm">Older →</button>
@@ -2368,6 +2403,22 @@
         </div>
       </div>
 
+      <div class="row mb-3">
+        <div class="col-4">
+          <div class="pgn__card">
+            <div class="pgn__card-section">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">key</span>
+                <span class="badge badge-success">Rotation current</span>
+              </div>
+              <h3 class="h5 mt-2 mb-1">Secrets Manager</h3>
+              <p class="small text-muted mb-2">API keys &middot; LLM provider keys &middot; service-account credentials</p>
+              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open Secrets Manager</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <h2 class="h5 mb-2">Global configuration</h2>
       <div class="pgn__card pgn__card-featured">
         <div class="pgn__card-section">
@@ -2402,7 +2453,7 @@
               </tr>
               <tr>
                 <td><strong>Storage retention</strong></td>
-                <td>Per institutional policy</td>
+                <td>3 years</td>
                 <td>AWS Console (above)</td>
                 <td>FERPA-aligned</td>
               </tr>
