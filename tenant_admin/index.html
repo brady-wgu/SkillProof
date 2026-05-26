@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.141</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.142</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -2423,30 +2423,16 @@ for s in scores:
       <div class="pgn__card mb-3">
         <div class="pgn__card-section-lg">
 
-          <!-- Parent Course context: Course Number + Course Title (typeahead + add-new) -->
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="f-course-number">Course Number</label>
-              <input class="form-control" id="f-course-number" type="text" list="course-numbers-list" value="E135" placeholder="Type to search or add new..." autocomplete="off" oninput="autofillCourseTitle(this.value)" />
-              <datalist id="course-numbers-list">
-                <option value="E010">Foundations of Programming (Python)</option>
-                <option value="E075">Intermediate Python &amp; Libraries</option>
-                <option value="E120">Applied Data Structures (Python)</option>
-                <option value="E135">Object-Oriented Programming with Python</option>
-              </datalist>
-              <p class="small text-muted mt-1" style="margin-bottom:0;">Pick an existing Course or type a new code (e.g., E180) to create one.</p>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="f-course-title">Course Title</label>
-              <input class="form-control" id="f-course-title" type="text" list="course-titles-list" value="Object-Oriented Programming with Python" placeholder="Type to search or add new..." autocomplete="off" />
-              <datalist id="course-titles-list">
-                <option value="Foundations of Programming (Python)"></option>
-                <option value="Intermediate Python &amp; Libraries"></option>
-                <option value="Applied Data Structures (Python)"></option>
-                <option value="Object-Oriented Programming with Python"></option>
-              </datalist>
-              <p class="small text-muted mt-1" style="margin-bottom:0;">Auto-fills from Course Number; override to retitle or to add a new Course.</p>
-            </div>
+          <!-- Parent Course (single dropdown — pick from existing Courses; use + New Course on Dashboard to add) -->
+          <div class="form-group">
+            <label class="form-label" for="f-course">Course</label>
+            <select class="form-control" id="f-course">
+              <option value="E010">E010 &middot; Foundations of Programming (Python)</option>
+              <option value="E075">E075 &middot; Intermediate Python &amp; Libraries</option>
+              <option value="E120">E120 &middot; Applied Data Structures (Python)</option>
+              <option value="E135" selected>E135 &middot; Object-Oriented Programming with Python</option>
+            </select>
+            <p class="small text-muted mt-1" style="margin-bottom:0;">To add a new Course, use the <strong>+ New Course</strong> button on the dashboard.</p>
           </div>
 
           <div class="form-row">
@@ -2465,25 +2451,6 @@ for s in scores:
           </div>
         </div>
       </div>
-
-      <script>
-        /* v4.130: S10 New Skill — auto-fill Course Title when Course Number matches a known Course */
-        (function() {
-          window.autofillCourseTitle = function(numValue) {
-            var map = {
-              'E010': 'Foundations of Programming (Python)',
-              'E075': 'Intermediate Python & Libraries',
-              'E120': 'Applied Data Structures (Python)',
-              'E135': 'Object-Oriented Programming with Python'
-            };
-            var key = (numValue || '').trim().toUpperCase();
-            var titleInput = document.getElementById('f-course-title');
-            if (titleInput && map[key]) {
-              titleInput.value = map[key];
-            }
-          };
-        })();
-      </script>
 
     </div>
   </main>
