@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.142</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.143</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1458,6 +1458,8 @@
       <!-- Toolbar -->
       <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
         <button class="btn btn-primary btn-sm" onclick="goToScreen(10)"><span class="material-icons-outlined">add</span>New Skill</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(16)"><span class="material-icons-outlined">create_new_folder</span>New Course</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(17)"><span class="material-icons-outlined">archive</span>Archived Skills</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(15)"><span class="material-icons-outlined">insights</span>Analytics</button>
       </div>
 
@@ -3877,6 +3879,125 @@ Address the learner by their first name. Never use "student" as the form of addr
   </div>
 </section>
 
+<!-- Screen 16: Create new Course (folders for organizing Skills) ====== -->
+<section class="screen" id="screen-16" aria-labelledby="s16-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
+    </div>
+  </header>
+  <main class="screen-main" id="main-16">
+    <div class="container-narrow">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>New Course</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">create_new_folder</span>Course</span>
+      <h1 id="s16-heading" class="h1 mb-2">Create a new Course</h1>
+
+      <div class="pgn__card mb-3">
+        <div class="pgn__card-section-lg">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="f-new-course-code">Course Code</label>
+              <input class="form-control" id="f-new-course-code" type="text" placeholder="e.g., E180" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-new-course-title">Course Title</label>
+              <input class="form-control" id="f-new-course-title" type="text" placeholder="e.g., Applied Machine Learning" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Cancel</button>
+    <button class="btn btn-primary" onclick="alert('Create Course (wireframe — would add the Course to your School and return to the dashboard with it pre-populated)'); goToScreen(1);"><span class="material-icons-outlined">check</span>Create Course</button>
+  </div>
+</section>
+
+<!-- Screen 17: Archived Skills (Restore + Permanently delete) ======== -->
+<section class="screen" id="screen-17" aria-labelledby="s17-heading">
+  <header class="navbar navbar-dark" role="banner">
+    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
+    <div class="navbar-right">
+      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
+      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
+      <span class="navbar-chip">School Admin · School of Technology</span>
+      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
+    </div>
+  </header>
+  <main class="screen-main" id="main-17">
+    <div class="container">
+      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
+        <span class="material-icons-outlined">chevron_right</span>
+        <span>Archived Skills</span>
+      </nav>
+      <span class="eyebrow"><span class="material-icons-outlined">archive</span>Archive</span>
+      <h1 id="s17-heading" class="h1 mb-2">Archived Skills</h1>
+      <p class="text-muted mb-3">Archived Skills are hidden from the active Course view but retained. Restore to return to active, or permanently delete to remove all data after the retention window.</p>
+
+      <div class="pgn__card mb-3">
+        <div class="pgn__card-section">
+          <table class="pgn__data-table">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Parent Course</th>
+                <th>Owner</th>
+                <th>Archived</th>
+                <th>Last activity</th>
+                <th style="width: 280px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="text-strong">Legacy Python Basics Skill</div><div class="micro text-muted"><code>pyt-000</code></div></td>
+                <td>E010 · Foundations of Programming (Python)</td>
+                <td>Alice</td>
+                <td>12 Mar 2026</td>
+                <td>04 Mar 2026</td>
+                <td>
+                  <button class="btn btn-outline-primary btn-sm" onclick="alert('Restore Skill (wireframe — would move the Skill back to active state in its parent Course)');"><span class="material-icons-outlined">unarchive</span>Restore</button>
+                  <button class="btn btn-tertiary btn-sm" onclick="alert('Permanently delete Skill (wireframe — would surface a confirmation dialog and permanently remove all data)');" style="color: var(--pgn-color-danger-base);"><span class="material-icons-outlined">delete_forever</span>Permanently delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td><div class="text-strong">Deprecated SQL Skill</div><div class="micro text-muted"><code>sql-001</code></div></td>
+                <td>E075 · Intermediate Python &amp; Libraries</td>
+                <td>Alice</td>
+                <td>28 Feb 2026</td>
+                <td>20 Feb 2026</td>
+                <td>
+                  <button class="btn btn-outline-primary btn-sm" onclick="alert('Restore Skill (wireframe — would move the Skill back to active state in its parent Course)');"><span class="material-icons-outlined">unarchive</span>Restore</button>
+                  <button class="btn btn-tertiary btn-sm" onclick="alert('Permanently delete Skill (wireframe — would surface a confirmation dialog and permanently remove all data)');" style="color: var(--pgn-color-danger-base);"><span class="material-icons-outlined">delete_forever</span>Permanently delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <span class="material-icons-outlined">info</span>
+        <div>Skills are archived first, then permanently deleted later. Default retention before permanent delete: <strong>180 days</strong> (configurable per School in Super Admin settings).</div>
+      </div>
+
+    </div>
+  </main>
+  <div class="floating-actions">
+    <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Back to Dashboard</button>
+  </div>
+</section>
+
 <!-- ================================================================
      META BAR — DEMO ONLY
      ================================================================ -->
@@ -3933,12 +4054,19 @@ Address the learner by their first name. Never use "student" as the form of addr
     <nav class="flow-nav" aria-label="Tenant reporting screens">
       <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Analytics + Activity Log">15 Analytics &amp; Activity Log</button>
     </nav>
+
+    <span class="flow-id">Flow D</span>
+    <span class="flow-desc">Course &amp; Archive Management</span>
+    <nav class="flow-nav" aria-label="Course and archive management screens">
+      <button class="step-btn" onclick="goToScreen(16)" aria-label="Screen 16: Create new Course">16 New Course</button>
+      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: Archived Skills">17 Archived Skills</button>
+    </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 15; // v4.124 (24 May 2026): School Settings removed from TA — moved to Super Admin scope per Brady's directive (TA only manages Courses and Skills). Total: 9 mirror screens (S1-S9) + 5 wizard (S10-S14) + 1 reporting (S15 Analytics+Activity Log).
+  const TOTAL_SCREENS = 17; // v4.143 (26 May 2026): added S16 New Course (organizational folder creation) + S17 Archived Skills (Restore / Permanently delete) per JFT meeting. Total: 9 mirror (S1-S9) + 5 wizard (S10-S14) + 1 reporting (S15) + 2 management (S16-S17).
 
   /* v4.75: enforce minimum 1 Learning Objective per topic — disables the last LO's delete button when topic count == 1 */
   function enforceLoMinimum() {
