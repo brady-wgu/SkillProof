@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Instructor Dashboard — Storyboard v4.118</title>
+  <title>SkillProof — Instructor Dashboard — Storyboard v4.119</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -934,109 +934,182 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-8">
-          <div class="section-card recommended" onclick="goToScreen(2)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open E010 Course details">
-            <div class="d-flex justify-content-between align-items-start mb-3">
+      <!-- Courses section: 2-col grid, filter + search + sort row -->
+      <span class="eyebrow"><span class="material-icons-outlined">school</span>Courses you teach</span>
+      <h2 class="h4 mb-2">3 Courses · 6 Skills · 68 learners</h2>
+
+      <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
+        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
+        <button class="chip-filter active" data-filter-course="all" onclick="filterCourses('all')">All Courses (3)</button>
+        <button class="chip-filter danger" data-filter-course="at-risk" onclick="filterCourses('at-risk')"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (1)</button>
+        <button class="chip-filter" data-filter-course="watch" onclick="filterCourses('watch')">Watch list (1)</button>
+        <button class="chip-filter" data-filter-course="on-track" onclick="filterCourses('on-track')">On track (1)</button>
+        <span style="margin-left:auto;" class="d-flex align-items-center gap-2">
+          <span class="d-flex align-items-center" style="position:relative;">
+            <span class="material-icons-outlined" style="position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:16px; color:var(--pgn-color-gray-500); pointer-events:none;">search</span>
+            <input type="search" id="course-search" placeholder="Search code or name..." oninput="searchCourses(this.value)" aria-label="Search courses by code or name" style="padding: 4px 8px 4px 28px; border: 1px solid var(--pgn-color-gray-200); border-radius: 6px; font-size: 13px; background: var(--pgn-color-white); color: var(--pgn-color-gray-700); width: 200px;" />
+          </span>
+          <span class="text-muted small">Sort:</span>
+          <select onchange="sortCourses(this.value)" style="padding: 4px 8px; border: 1px solid var(--pgn-color-gray-200); border-radius: 6px; font-size: 13px; background: var(--pgn-color-white); color: var(--pgn-color-gray-700);">
+            <option value="code">Course code</option>
+            <option value="learners">Most active learners</option>
+            <option value="score">Highest avg score</option>
+            <option value="recent">Recently active</option>
+          </select>
+        </span>
+      </div>
+
+      <div class="row mb-3" id="courses-grid">
+        <!-- E010 -->
+        <div class="col-6 mb-3" data-course-cat="at-risk" data-course-code="E010" data-course-name="Foundations of Programming (Python)" data-course-learners="28" data-course-score="0.76" data-course-activity="2026-05-14T14:46:00">
+          <div class="section-card" onclick="goToScreen(2)" style="cursor:pointer; height:100%;" role="button" tabindex="0" aria-label="Open E010 Course details">
+            <div class="d-flex justify-content-between align-items-start mb-2">
               <div>
-                <span class="eyebrow"><span class="material-icons-outlined">trending_up</span>Active Course · Recommended next</span>
-                <h2 class="h4 mb-1">E010 · Foundations of Programming (Python)</h2>
-                <p class="small text-muted">28 active learners (rolling enrollment) · Sally + 27 others · last activity 14 min ago</p>
+                <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
+                <h3 class="h5 mb-1">E010 · Foundations of Programming (Python)</h3>
+                <p class="small text-muted mb-0">28 active learners · last activity 14 min ago</p>
               </div>
               <a href="#" onclick="event.stopPropagation(); goToScreen(4); return false;" class="badge badge-warning" style="text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>4 at risk</a>
             </div>
-            <div class="d-flex gap-3 mb-3" style="flex-wrap:wrap;">
-              <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Active learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">0.76</div><div class="section-stat-label">Avg Skill score</div></div>
+            <div class="d-flex gap-3 mb-2" style="flex-wrap:wrap;">
+              <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Learners</div></div>
+              <div class="section-stat"><div class="section-stat-num">0.76</div><div class="section-stat-label">Avg score</div></div>
               <div class="section-stat"><div class="section-stat-num danger">4</div><div class="section-stat-label">At risk</div></div>
-              <div class="section-stat"><div class="section-stat-num">17</div><div class="section-stat-label">On track</div></div>
-              <div class="section-stat"><div class="section-stat-num">7</div><div class="section-stat-label">Mastery achieved</div></div>
-              <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions this week</div></div>
+              <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions/wk</div></div>
             </div>
-
-            <!-- Skills in this Course -->
-            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 12px; margin-top: 4px;">
-              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE (2 active)</strong></div>
-              <div class="pgn__card mb-2" onclick="event.stopPropagation(); goToScreen(3);" style="cursor:pointer;">
-                <div class="pgn__card-section" style="padding: 12px 16px;">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <div class="text-strong">Python Skill</div>
-                      <div class="micro text-muted">28 learners · 0.76 avg Topic mastery · 4 Topics · <span style="color: var(--pgn-color-danger-base);">4 at risk</span></div>
-                    </div>
-                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
-                  </div>
+            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px;">
+              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+                <div class="d-flex justify-content-between align-items-center" style="width:100%;">
+                  <span><span class="text-strong">Python Skill</span> <span class="micro text-muted">· 0.76 · 4 at risk</span></span>
+                  <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
                 </div>
-              </div>
-              <div class="pgn__card" onclick="event.stopPropagation(); goToScreen(3);" style="cursor:pointer; margin-bottom: 0;">
-                <div class="pgn__card-section" style="padding: 12px 16px;">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <div class="text-strong">Git &amp; Version Control Skill</div>
-                      <div class="micro text-muted">22 learners · 0.68 avg Topic mastery · 3 Topics · 0 at risk</div>
-                    </div>
-                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
-                  </div>
+              </button>
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+                <div class="d-flex justify-content-between align-items-center" style="width:100%;">
+                  <span><span class="text-strong">Git &amp; Version Control Skill</span> <span class="micro text-muted">· 0.68 · 0 at risk</span></span>
+                  <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
                 </div>
-              </div>
-            </div>
-
-            <div class="d-flex gap-2 mt-3">
-              <button class="btn btn-tertiary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">launch</span>Open Course details</button>
+              </button>
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="section-card" onclick="goToScreen(2)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open E075 Course details">
-            <div>
-              <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
-              <h2 class="h5 mb-1">E075 · Intermediate Python &amp; Libraries</h2>
-              <p class="small text-muted">22 active learners (rolling enrollment)</p>
+
+        <!-- E075 -->
+        <div class="col-6 mb-3" data-course-cat="watch" data-course-code="E075" data-course-name="Intermediate Python &amp; Libraries" data-course-learners="22" data-course-score="0.82" data-course-activity="2026-05-04T00:00:00">
+          <div class="section-card" onclick="goToScreen(2)" style="cursor:pointer; height:100%;" role="button" tabindex="0" aria-label="Open E075 Course details">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
+                <h3 class="h5 mb-1">E075 · Intermediate Python &amp; Libraries</h3>
+                <p class="small text-muted mb-0">22 active learners (rolling enrollment)</p>
+              </div>
+              <span class="badge badge-warning"><span class="material-icons-outlined" style="font-size:14px;">visibility</span>1 watch</span>
             </div>
-            <div class="d-flex gap-3 mt-3 mb-3" style="flex-wrap:wrap;">
+            <div class="d-flex gap-3 mb-2" style="flex-wrap:wrap;">
               <div class="section-stat"><div class="section-stat-num">22</div><div class="section-stat-label">Learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">0.82</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num">0.82</div><div class="section-stat-label">Avg score</div></div>
               <div class="section-stat"><div class="section-stat-num warning">1</div><div class="section-stat-label">Watch</div></div>
+              <div class="section-stat"><div class="section-stat-num">137</div><div class="section-stat-label">Sessions/wk</div></div>
             </div>
-            <!-- Skills in this Course -->
-            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px; margin-top: 4px;">
-              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE (2 active)</strong></div>
-              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px; margin-bottom: 6px;">
-                <div class="text-strong small">Python Intermediate Skill</div>
-                <div class="micro text-muted">22 learners · 0.85 avg Topic mastery</div>
-              </div>
-              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px;">
-                <div class="text-strong small">Libraries Skill <span class="micro text-muted">(NumPy/Pandas)</span></div>
-                <div class="micro text-muted">22 learners · 0.78 avg Topic mastery</div>
-              </div>
+            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px;">
+              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+                <div class="d-flex justify-content-between align-items-center" style="width:100%;">
+                  <span><span class="text-strong">Python Intermediate Skill</span> <span class="micro text-muted">· 0.85 · 0 at risk</span></span>
+                  <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
+                </div>
+              </button>
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+                <div class="d-flex justify-content-between align-items-center" style="width:100%;">
+                  <span><span class="text-strong">Libraries Skill</span> <span class="micro text-muted">· 0.78 · 1 watch</span></span>
+                  <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
+                </div>
+              </button>
             </div>
           </div>
-          <div class="section-card mt-3" onclick="goToScreen(2)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open E135 Course details">
-            <div>
-              <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
-              <h2 class="h5 mb-1">E135 · OOP with Python</h2>
-              <p class="small text-muted">Recently launched · 18 active learners</p>
+        </div>
+
+        <!-- E135 -->
+        <div class="col-6 mb-3" data-course-cat="on-track" data-course-code="E135" data-course-name="OOP with Python" data-course-learners="18" data-course-score="0.71" data-course-activity="2026-05-14T14:00:00">
+          <div class="section-card" onclick="goToScreen(2)" style="cursor:pointer; height:100%;" role="button" tabindex="0" aria-label="Open E135 Course details">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <span class="eyebrow"><span class="material-icons-outlined">school</span>Course</span>
+                <h3 class="h5 mb-1">E135 · OOP with Python</h3>
+                <p class="small text-muted mb-0">Recently launched · 18 active learners</p>
+              </div>
+              <span class="badge badge-success">On track</span>
             </div>
-            <div class="d-flex gap-3 mt-3 mb-3" style="flex-wrap:wrap;">
+            <div class="d-flex gap-3 mb-2" style="flex-wrap:wrap;">
               <div class="section-stat"><div class="section-stat-num">18</div><div class="section-stat-label">Learners</div></div>
-              <div class="section-stat"><div class="section-stat-num">0.71</div><div class="section-stat-label">Avg Skill score</div></div>
+              <div class="section-stat"><div class="section-stat-num">0.71</div><div class="section-stat-label">Avg score</div></div>
               <div class="section-stat"><div class="section-stat-num">0</div><div class="section-stat-label">At risk</div></div>
+              <div class="section-stat"><div class="section-stat-num">44</div><div class="section-stat-label">Sessions/wk</div></div>
             </div>
-            <!-- Skills in this Course -->
-            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px; margin-top: 4px;">
-              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE (2 active)</strong></div>
-              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px; margin-bottom: 6px;">
-                <div class="text-strong small">OOP Skill</div>
-                <div class="micro text-muted">18 learners · 0.73 avg Topic mastery</div>
-              </div>
-              <div style="padding: 8px 10px; background: var(--pgn-color-bg-light); border-radius: 6px;">
-                <div class="text-strong small">Design Patterns Skill</div>
-                <div class="micro text-muted">18 learners · 0.69 avg Topic mastery</div>
-              </div>
+            <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px;">
+              <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+                <div class="d-flex justify-content-between align-items-center" style="width:100%;">
+                  <span><span class="text-strong">OOP Skill</span> <span class="micro text-muted">· 0.73 · 0 at risk</span></span>
+                  <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
+                </div>
+              </button>
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+                <div class="d-flex justify-content-between align-items-center" style="width:100%;">
+                  <span><span class="text-strong">Design Patterns Skill</span> <span class="micro text-muted">· 0.69 · 0 at risk</span></span>
+                  <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
+                </div>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <script>
+        /* v4.119: Instructor S1 Course filter+search+sort (ports TA pattern) */
+        (function() {
+          function applyCourseFilters() {
+            var activeChip = document.querySelector('#screen-1 .chip-filter[data-filter-course].active');
+            var filter = activeChip ? activeChip.getAttribute('data-filter-course') : 'all';
+            var searchInput = document.getElementById('course-search');
+            var query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+            document.querySelectorAll('#courses-grid > [data-course-cat]').forEach(function(card) {
+              var cats = (card.getAttribute('data-course-cat') || '').split(/\s+/).filter(Boolean);
+              var catMatch = (filter === 'all' || cats.indexOf(filter) !== -1);
+              var code = (card.getAttribute('data-course-code') || '').toLowerCase();
+              var name = (card.getAttribute('data-course-name') || '').toLowerCase();
+              var searchMatch = !query || code.indexOf(query) !== -1 || name.indexOf(query) !== -1;
+              card.style.display = (catMatch && searchMatch) ? '' : 'none';
+            });
+          }
+          window.filterCourses = function(filter) {
+            document.querySelectorAll('#screen-1 .chip-filter[data-filter-course]').forEach(function(c) {
+              c.classList.remove('active');
+            });
+            var activeChip = document.querySelector('#screen-1 .chip-filter[data-filter-course="' + filter + '"]');
+            if (activeChip) activeChip.classList.add('active');
+            applyCourseFilters();
+          };
+          window.searchCourses = function(query) { applyCourseFilters(); };
+          window.sortCourses = function(sortBy) {
+            var grid = document.getElementById('courses-grid');
+            if (!grid) return;
+            var cards = Array.from(grid.querySelectorAll('[data-course-cat]'));
+            cards.sort(function(a, b) {
+              var av, bv;
+              switch (sortBy) {
+                case 'code':     av = a.dataset.courseCode;             bv = b.dataset.courseCode;             return av < bv ? -1 : (av > bv ? 1 : 0);
+                case 'learners': return parseInt(b.dataset.courseLearners, 10) - parseInt(a.dataset.courseLearners, 10);
+                case 'score':    return parseFloat(b.dataset.courseScore || 0) - parseFloat(a.dataset.courseScore || 0);
+                case 'recent':   av = b.dataset.courseActivity || ''; bv = a.dataset.courseActivity || ''; return av < bv ? -1 : (av > bv ? 1 : 0);
+                default: return 0;
+              }
+            });
+            cards.forEach(function(card) { grid.appendChild(card); });
+          };
+        })();
+      </script>
 
       <!-- Cross-Course at-risk roster -->
       <div class="mb-3">
