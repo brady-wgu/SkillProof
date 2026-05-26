@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.118</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.120</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -838,96 +838,114 @@
       </div>
 
       <div class="row mb-3">
-        <div class="col-3">
-          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(12)" role="button" tabindex="0" aria-label="Open Schools and Settings">
-            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SCHOOLS</span><span class="dot green"></span></div>
-            <div class="gauge-number">4</div>
-            <div class="gauge-target">All 4 WGU Schools onboarded</div>
+        <div class="col">
+          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for Courses">
+            <div class="text-muted small mb-1">COURSES</div>
+            <div class="gauge-number">16</div>
+            <div class="gauge-target">across 4 Schools</div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col">
+          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for Skills">
+            <div class="text-muted small mb-1">SKILLS</div>
+            <div class="gauge-number">28</div>
+            <div class="gauge-target">deployed across 16 Courses</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for sessions">
+            <div class="text-muted small mb-1">SESSIONS · LAST 7 DAYS</div>
+            <div class="gauge-number">12,400</div>
+            <div class="gauge-target">+8% vs prior 7 days</div>
+          </div>
+        </div>
+        <div class="col">
           <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(26)" role="button" tabindex="0" aria-label="Open Analytics for active learners">
-            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">ACTIVE LEARNERS</span><span class="dot green"></span></div>
+            <div class="text-muted small mb-1">ACTIVE LEARNERS</div>
             <div class="gauge-number">3,842</div>
             <div class="gauge-target">+12% vs prior 30 days</div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col">
           <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(2)" role="button" tabindex="0" aria-label="Open Token Usage tracking">
-            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">TOKEN SPEND · MTD</span><span class="dot amber"></span></div>
+            <div class="text-muted small mb-1">TOKEN SPEND · MTD</div>
             <div class="gauge-number warning">$4,287</div>
             <div class="gauge-target">73% of $5,900 budget</div>
           </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card" style="cursor:pointer;" onclick="goToScreen(4)" role="button" tabindex="0" aria-label="Open Rate Limits configuration">
-            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">RATE LIMIT HEADROOM</span><span class="dot green"></span></div>
-            <div class="gauge-number good">62%</div>
-            <div class="gauge-target">peak load 38% of cap</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="alert alert-info mb-3" role="status" style="border-left-width: 4px;">
-        <span class="material-icons-outlined">schedule</span>
-        <div>
-          <strong>Next scheduled maintenance: Sun 25 May 2026, 02:00&ndash;04:00 UTC.</strong> 11 days notice given &middot; LMS rollback plan attached &middot; affects all schools.
         </div>
       </div>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="eyebrow"><span class="material-icons-outlined">speed</span>Model performance &middot; last 1h</span>
-            <span class="badge badge-success">All providers healthy</span>
-          </div>
-          <table class="pgn__data-table" style="border:none; box-shadow:none;">
+          <span class="eyebrow"><span class="material-icons-outlined">domain</span>Per-School Summary</span>
+          <table class="pgn__data-table mt-2">
             <thead>
               <tr>
-                <th>Provider</th>
-                <th class="num-col">P50 latency</th>
-                <th class="num-col">P95 latency</th>
-                <th class="num-col">Error %</th>
-                <th class="num-col">Fallback %</th>
+                <th>School</th>
+                <th>School Admin</th>
+                <th class="num-col">Courses</th>
+                <th class="num-col">Skills</th>
+                <th class="num-col">Active Learners</th>
+                <th class="num-col">Sessions · 7d</th>
+                <th class="num-col">Cost · MTD</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><strong>Anthropic Claude Sonnet 4.5</strong> <span class="badge badge-brand" style="font-size:11px;">Primary</span></td><td class="num-col">412 ms</td><td class="num-col">892 ms</td><td class="num-col">0.02%</td><td class="num-col">&mdash;</td></tr>
-              <tr><td>OpenAI GPT-4o</td><td class="num-col">387 ms</td><td class="num-col">821 ms</td><td class="num-col">0.04%</td><td class="num-col">0.8%</td></tr>
-              <tr><td>Google Gemini 1.5 Pro</td><td class="num-col">443 ms</td><td class="num-col">918 ms</td><td class="num-col">0.05%</td><td class="num-col">0.3%</td></tr>
+              <tr style="background: var(--pgn-color-warning-tint); cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Technology data">
+                <td><strong>School of Technology</strong></td>
+                <td>Alice</td>
+                <td class="num-col">4</td>
+                <td class="num-col">7</td>
+                <td class="num-col">90</td>
+                <td class="num-col">680</td>
+                <td class="num-col"><strong>$387</strong></td>
+                <td><a href="#" onclick="event.stopPropagation(); goToScreen(3); return false;" class="badge badge-warning" style="text-decoration:none;" title="Cost spike — drill into details"><span class="material-icons-outlined" style="font-size:12px;">trending_up</span>Spike</a></td>
+              </tr>
+              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Business data">
+                <td><strong>School of Business</strong></td>
+                <td>Diane</td>
+                <td class="num-col">5</td>
+                <td class="num-col">9</td>
+                <td class="num-col">1,402</td>
+                <td class="num-col">4,360</td>
+                <td class="num-col">$1,408</td>
+                <td><span class="text-muted small">—</span></td>
+              </tr>
+              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Education data">
+                <td><strong>School of Education</strong></td>
+                <td>James</td>
+                <td class="num-col">4</td>
+                <td class="num-col">7</td>
+                <td class="num-col">1,248</td>
+                <td class="num-col">4,140</td>
+                <td class="num-col">$1,287</td>
+                <td><span class="text-muted small">—</span></td>
+              </tr>
+              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into Leavitt School of Health data">
+                <td><strong>Leavitt School of Health</strong></td>
+                <td>Priya</td>
+                <td class="num-col">3</td>
+                <td class="num-col">5</td>
+                <td class="num-col">1,102</td>
+                <td class="num-col">3,220</td>
+                <td class="num-col">$1,205</td>
+                <td><span class="text-muted small">—</span></td>
+              </tr>
             </tbody>
+            <tfoot>
+              <tr>
+                <th>Platform total</th>
+                <th>—</th>
+                <th class="num-col">16</th>
+                <th class="num-col">28</th>
+                <th class="num-col">3,842</th>
+                <th class="num-col">12,400</th>
+                <th class="num-col">$4,287</th>
+                <th></th>
+              </tr>
+            </tfoot>
           </table>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <div class="pgn__card pgn__card-featured">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">notifications_active</span>Active alerts · 1</span>
-              <h2 class="h5 mb-2">School of Technology token usage spike</h2>
-              <p class="small mb-2">School <strong>School of Technology &mdash; Foundations of Programming (Python)</strong> reached <strong>89% of monthly budget</strong> with 11 days left in the period. Spike began 04 May after a wave of 15 new learner launches in E010.</p>
-              <div class="d-flex gap-2">
-                <button class="btn btn-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">paid</span>Open Token Usage</button>
-                <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4)">Adjust Rate Limits</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="pgn__card">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">timeline</span>Recent platform events</span>
-              <h2 class="h5 mb-2">Last 24h</h2>
-              <div class="row-list" style="gap:0;">
-                <div class="d-flex gap-2 align-items-center" style="padding:6px 0; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;"><span class="dot amber"></span><span class="text-muted" style="min-width:60px;">11:08 UTC</span><span>Incident resolved · School of Technology (1h 24m)</span></div>
-                <div class="d-flex gap-2 align-items-center" style="padding:6px 0; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;"><span class="dot blue"></span><span class="text-muted" style="min-width:60px;">09:43 UTC</span><span>LLM fallback engaged · School of Technology</span></div>
-                <div class="d-flex gap-2 align-items-center" style="padding:6px 0; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;"><span class="dot green"></span><span class="text-muted" style="min-width:60px;">06:00 UTC</span><span>Compliance scan complete · all schools pass</span></div>
-                <div class="d-flex gap-2 align-items-center" style="padding:6px 0; border-bottom:1px solid var(--pgn-color-gray-100); font-size:13px;"><span class="dot blue"></span><span class="text-muted" style="min-width:60px;">02:14 UTC</span><span>API gateway flap · 3m · self-healed</span></div>
-                <div class="d-flex gap-2 align-items-center" style="padding:6px 0; font-size:13px;"><span class="dot green"></span><span class="text-muted" style="min-width:60px;">00:00 UTC</span><span>Daily geo-redundancy probe · all regions ✓</span></div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1033,6 +1051,10 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4 mb-3">
+        <button class="btn btn-outline-primary" onclick="goToScreen(7)" aria-label="View Platform Logs"><span class="material-icons-outlined">history</span>View Platform Logs</button>
       </div>
     </div>
   </main>
@@ -1632,13 +1654,13 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>Audit Log</span>
+        <span>Logs</span>
       </nav>
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-          <span class="eyebrow"><span class="material-icons-outlined">history</span>Platform Audit Trail</span>
-          <h1 id="s7-heading">Cross-school audit log</h1>
-          <p class="mt-1">Every privileged action across every school. FERPA-aligned retention per institutional policy.</p>
+          <span class="eyebrow"><span class="material-icons-outlined">history</span>Platform Logs</span>
+          <h1 id="s7-heading">Logs</h1>
+          <p class="mt-1">Every privileged action across every School. FERPA-aligned retention.</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
           <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">file_download</span>Export</button>
@@ -5363,7 +5385,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <nav class="flow-nav" aria-label="Compliance and audit screens">
       <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Compliance Report">05 Compliance</button>
       <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Geo-Redundancy">06 Geo-Redundancy</button>
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Cross-school Audit Log">07 Audit Log</button>
+      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Logs">07 Logs</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
