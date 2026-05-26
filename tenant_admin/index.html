@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — School Admin Portal — Storyboard v4.144</title>
+  <title>SkillProof — School Admin Portal — Storyboard v4.145</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -3756,10 +3756,10 @@ Address the learner by their first name. Never use "student" as the form of addr
         <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
           <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
           <button class="chip-filter active" data-filter-activity="all" onclick="filterActivityLog('all')">All actions (11)</button>
-          <button class="chip-filter" data-filter-activity="create" onclick="filterActivityLog('create')">Create (1)</button>
+          <button class="chip-filter" data-filter-activity="create" onclick="filterActivityLog('create')">Create (3)</button>
           <button class="chip-filter" data-filter-activity="edit" onclick="filterActivityLog('edit')">Edit (3)</button>
           <button class="chip-filter" data-filter-activity="deploy" onclick="filterActivityLog('deploy')">Deploy (3)</button>
-          <button class="chip-filter" data-filter-activity="role-change" onclick="filterActivityLog('role-change')">Role changes (2)</button>
+          <button class="chip-filter" data-filter-activity="archive" onclick="filterActivityLog('archive')">Archive (2)</button>
         </div>
 
         <div class="pgn__card mb-3">
@@ -3780,13 +3780,6 @@ Address the learner by their first name. Never use "student" as the form of addr
                   <td>Alice</td>
                   <td>Deploy</td>
                   <td><code>oop-001</code> &middot; Live</td>
-                  <td><span class="badge badge-success">Success</span></td>
-                </tr>
-                <tr data-activity-cat="role-change">
-                  <td>07 May 2026 &middot; 09:00:00</td>
-                  <td>Bob (Super Admin)</td>
-                  <td>Elevate role</td>
-                  <td>Alice &rarr; Tenant Admin (School of Technology)</td>
                   <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="edit">
@@ -3810,20 +3803,6 @@ Address the learner by their first name. Never use "student" as the form of addr
                   <td><code>oop-001</code></td>
                   <td><span class="badge badge-success">Success</span></td>
                 </tr>
-                <tr data-activity-cat="edit">
-                  <td>09 May 2026 &middot; 09:18:55</td>
-                  <td>Alice</td>
-                  <td>Update branding</td>
-                  <td>Tenant settings &middot; logo</td>
-                  <td><span class="badge badge-success">Success</span></td>
-                </tr>
-                <tr data-activity-cat="role-change">
-                  <td>06 May 2026 &middot; 13:18:04</td>
-                  <td>Bob (Super Admin)</td>
-                  <td>Assign instructor</td>
-                  <td>Charlie &rarr; E135</td>
-                  <td><span class="badge badge-success">Success</span></td>
-                </tr>
                 <tr data-activity-cat="deploy">
                   <td>04 May 2026 &middot; 22:11:09</td>
                   <td>Alice</td>
@@ -3838,18 +3817,39 @@ Address the learner by their first name. Never use "student" as the form of addr
                   <td><code>pyt-001</code> &middot; Live</td>
                   <td><span class="badge badge-success">Success</span></td>
                 </tr>
-                <tr data-activity-cat="role-change">
-                  <td>28 Apr 2026 &middot; 11:20:55</td>
-                  <td>Bob (Super Admin)</td>
-                  <td>Add instructor</td>
-                  <td>Noor &rarr; E010</td>
-                  <td><span class="badge badge-success">Success</span></td>
-                </tr>
                 <tr data-activity-cat="edit">
                   <td>26 Apr 2026 &middot; 14:55:21</td>
                   <td>Alice</td>
                   <td>Edit topic</td>
                   <td><code>pyt-001</code> &middot; Classes &amp; Objects</td>
+                  <td><span class="badge badge-success">Success</span></td>
+                </tr>
+                <tr data-activity-cat="create">
+                  <td>10 Apr 2026 &middot; 09:42:30</td>
+                  <td>Alice</td>
+                  <td>Create Course</td>
+                  <td>E135 &middot; OOP with Python</td>
+                  <td><span class="badge badge-success">Success</span></td>
+                </tr>
+                <tr data-activity-cat="create">
+                  <td>22 Mar 2026 &middot; 13:18:55</td>
+                  <td>Alice</td>
+                  <td>Create Course</td>
+                  <td>E010 &middot; Foundations of Programming (Python)</td>
+                  <td><span class="badge badge-success">Success</span></td>
+                </tr>
+                <tr data-activity-cat="archive">
+                  <td>12 Mar 2026 &middot; 16:08:14</td>
+                  <td>Alice</td>
+                  <td>Archive Skill</td>
+                  <td><code>pyt-000</code> &middot; Legacy Python Basics</td>
+                  <td><span class="badge badge-success">Success</span></td>
+                </tr>
+                <tr data-activity-cat="archive">
+                  <td>28 Feb 2026 &middot; 11:22:08</td>
+                  <td>Alice</td>
+                  <td>Archive Skill</td>
+                  <td><code>sql-001</code> &middot; Deprecated SQL Skill</td>
                   <td><span class="badge badge-success">Success</span></td>
                 </tr>
               </tbody>
