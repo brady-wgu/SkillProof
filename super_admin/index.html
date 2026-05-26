@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.124</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.125</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1637,11 +1637,11 @@
             <td>internal</td>
           </tr>
           <tr>
-            <td>07 May 09:42:18</td>
+            <td>07 May 09:00:00</td>
             <td>School of Technology</td>
-            <td>Alice</td>
-            <td><code>data.export.create</code> (engagement-metrics-school_tech-e010)</td>
-            <td><span class="badge badge-info">Info</span></td>
+            <td>Bob (you)</td>
+            <td><code>rbac.role.elevate</code> (Alice &rarr; School Admin)</td>
+            <td><span class="badge badge-warning">High</span></td>
             <td><span class="badge badge-success">Success</span></td>
             <td>198.51.x.x</td>
           </tr>
@@ -1655,29 +1655,11 @@
             <td>internal</td>
           </tr>
           <tr>
-            <td>06 May 18:21:00</td>
+            <td>06 May 13:18:04</td>
             <td>School of Technology</td>
-            <td>System (SkillProof Coach)</td>
-            <td><code>session.start</code> (lnr_4a3b2c1d)</td>
+            <td>Bob (you)</td>
+            <td><code>rbac.instructor.assign</code> (Charlie &rarr; E135)</td>
             <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">Success</span></td>
-            <td>internal</td>
-          </tr>
-          <tr>
-            <td>06 May 17:23:48</td>
-            <td>School of Technology</td>
-            <td>Charlie</td>
-            <td><code>conversation_log.read</code> (lnr_4a3b2c1d)</td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">Success</span></td>
-            <td>198.51.x.x</td>
-          </tr>
-          <tr>
-            <td>06 May 14:30:02</td>
-            <td>School of Technology</td>
-            <td>Alice</td>
-            <td><code>skill.deploy</code> (e135-oop-python)</td>
-            <td><span class="badge badge-warning">High</span></td>
             <td><span class="badge badge-success">Success</span></td>
             <td>198.51.x.x</td>
           </tr>
@@ -1694,9 +1676,27 @@
             <td>06 May 00:00:01</td>
             <td>all</td>
             <td>System (Geo)</td>
-            <td><code>failover.probe</code> (Primary → DR)</td>
+            <td><code>failover.probe</code> (Primary &rarr; DR)</td>
             <td><span class="badge badge-info">Info</span></td>
             <td><span class="badge badge-success">3m 14s</span></td>
+            <td>internal</td>
+          </tr>
+          <tr>
+            <td>05 May 14:30:00</td>
+            <td>Leavitt School of Health</td>
+            <td>Bob (you)</td>
+            <td><code>tenant.school.create</code> (school_of_health)</td>
+            <td><span class="badge badge-warning">High</span></td>
+            <td><span class="badge badge-success">Success</span></td>
+            <td>198.51.x.x</td>
+          </tr>
+          <tr>
+            <td>05 May 06:00:01</td>
+            <td>all</td>
+            <td>System (Compliance scanner)</td>
+            <td><code>compliance.ferpa.scan.complete</code></td>
+            <td><span class="badge badge-info">Info</span></td>
+            <td><span class="badge badge-success">All controls pass</span></td>
             <td>internal</td>
           </tr>
         </tbody>
