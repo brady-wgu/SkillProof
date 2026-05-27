@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.134</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.135</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -879,12 +879,12 @@
 
       <!-- Toolbar: navigation links as blue outline buttons (mirrors TA dashboard) -->
       <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(8)"><span class="material-icons-outlined">manage_accounts</span>Access Control</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">school</span>Schools</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(23)"><span class="material-icons-outlined">analytics</span>Analytics</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">tune</span>Platform Settings</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">open_in_new</span>External Tools</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(7)"><span class="material-icons-outlined">history</span>Logs</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">manage_accounts</span>Access Control</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4)"><span class="material-icons-outlined">school</span>Schools</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(6)"><span class="material-icons-outlined">analytics</span>Analytics</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">tune</span>Platform Settings</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(13)"><span class="material-icons-outlined">open_in_new</span>External Tools</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(15)"><span class="material-icons-outlined">history</span>Logs</button>
       </div>
 
       <div class="pgn__card mb-3">
@@ -903,7 +903,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Technology data">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into School of Technology data">
                 <td><strong>School of Technology</strong></td>
                 <td>Alice</td>
                 <td class="num-col">4</td>
@@ -912,7 +912,7 @@
                 <td class="num-col">680</td>
                 <td class="num-col"><strong>$387</strong></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Business data">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into School of Business data">
                 <td><strong>School of Business</strong></td>
                 <td>Diane</td>
                 <td class="num-col">5</td>
@@ -921,7 +921,7 @@
                 <td class="num-col">4,360</td>
                 <td class="num-col">$1,408</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Education data">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into School of Education data">
                 <td><strong>School of Education</strong></td>
                 <td>James</td>
                 <td class="num-col">4</td>
@@ -930,7 +930,7 @@
                 <td class="num-col">4,140</td>
                 <td class="num-col">$1,287</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into Leavitt School of Health data">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into Leavitt School of Health data">
                 <td><strong>Leavitt School of Health</strong></td>
                 <td>Priya</td>
                 <td class="num-col">3</td>
@@ -960,7 +960,7 @@
 </section>
 
 <!-- Screen 2: Token Usage Tracking dashboard (§6.6) ================== -->
-<section class="screen" id="screen-2" aria-labelledby="s2-heading">
+<section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -970,7 +970,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-2">
+  <main class="screen-main" id="main-11">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -980,7 +980,7 @@
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">paid</span>Cost &amp; Usage</span>
-          <h1 id="s2-heading">Platform Settings</h1>
+          <h1 id="s11-heading">Platform Settings</h1>
           <p class="mt-1">Aggregate spend across all schools for the current billing period (May 2026).</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
@@ -1042,7 +1042,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr style="background: var(--pgn-color-warning-tint); cursor:pointer;" onclick="goToScreen(3)">
+          <tr style="background: var(--pgn-color-warning-tint); cursor:pointer;" onclick="goToScreen(12)">
             <td><strong>School of Technology</strong> <span class="badge badge-warning"><span class="material-icons-outlined" style="font-size:12px;">priority_high</span>Spike</span></td>
             <td>Alice</td>
             <td class="num-col">50.0M</td>
@@ -1068,12 +1068,25 @@
         <span class="material-icons-outlined">priority_high</span>
         <div><strong>School of Technology flagged.</strong></div>
       </div>
+
+      <h2 class="h5 mb-2">Rate limits</h2>
+      <p class="small text-muted mb-2">Global request and token limits. Enforced in OpenRouter and platform code &mdash; not editable here.</p>
+      <table class="pgn__data-table mb-3">
+        <thead><tr><th>Limit</th><th class="num-col">Value</th></tr></thead>
+        <tbody>
+          <tr><td>Per-School request cap</td><td class="num-col">3,000 / hour</td></tr>
+          <tr><td>Per-Skill request cap</td><td class="num-col">1,500 / hour</td></tr>
+          <tr><td>Per-learner request cap</td><td class="num-col">80 / hour</td></tr>
+          <tr><td>Burst policy</td><td class="num-col">200 req / 60s</td></tr>
+          <tr><td>LLM token cap per session</td><td class="num-col">50,000 tokens</td></tr>
+        </tbody>
+      </table>
     </div>
   </main>
 </section>
 
 <!-- Screen 3: High-consumption tenant drill-down (cost spike) ======== -->
-<section class="screen" id="screen-3" aria-labelledby="s3-heading">
+<section class="screen" id="screen-12" aria-labelledby="s12-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1083,19 +1096,19 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-3">
+  <main class="screen-main" id="main-12">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(2); return false;">Platform Settings</a>
+        <a href="#" onclick="goToScreen(11); return false;">Platform Settings</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>School of Technology</span>
       </nav>
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>School Drill-Down · Cost Spike Detected</span>
-          <h1 id="s3-heading">School of Technology — Foundations of Programming (Python)</h1>
+          <h1 id="s12-heading">School of Technology — Foundations of Programming (Python)</h1>
           <p class="mt-1">School Admin: <strong>Alice</strong> · 1,284 active learners · 89% of monthly budget consumed.</p>
         </div>
         <span class="badge badge-warning" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_up</span>+34% week-over-week</span>
@@ -1174,7 +1187,7 @@
               <p class="small mb-2">On 04 May, School of Technology saw a wave of 28 new learner launches in E010 under WGU&rsquo;s rolling-enrollment model. On the same day, Alice deployed updated AI prompt configuration that increased average tokens-per-session by 22%.</p>
               <p class="small mb-2"><strong>Recommended action:</strong> review per-Skill rate limits before the surge persists into a second week. Adjusting now keeps the school within budget without affecting learner experience.</p>
               <div class="d-flex gap-2">
-                <button class="btn btn-primary btn-sm" onclick="goToScreen(4)"><span class="material-icons-outlined">speed</span>Adjust rate limits</button>
+                <button class="btn btn-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">speed</span>View rate limits</button>
                 <button class="btn btn-outline-primary btn-sm">Notify Alice</button>
               </div>
             </div>
@@ -1186,358 +1199,11 @@
   </main>
 </section>
 
-<!-- Screen 4: Global Rate Limits config + applied (§6.4) ============= -->
-<section class="screen" id="screen-4" aria-labelledby="s4-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-4">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Rate Limits</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">speed</span>Global Rate Limits</span>
-      <h1 id="s4-heading" class="h1 mb-2">Tighten rate limits — School of Technology</h1>
 
-      <div class="row mb-3">
-        <div class="col-6">
-          <div class="pgn__card pgn__card-featured">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">tune</span>New limits</span>
-              <h2 class="h5 mb-3">Configuration</h2>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="f-tenant">School cap (req/hour)</label>
-                  <input class="form-control" id="f-tenant" type="text" value="2,400" />
-                  <div class="form-help">Was 3,000 · -20%</div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="f-skill">Per-Skill cap</label>
-                  <input class="form-control" id="f-skill" type="text" value="1,200" />
-                  <div class="form-help">Was 1,500 · -20%</div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="f-user">Per-learner cap (req/hour)</label>
-                  <input class="form-control" id="f-user" type="text" value="60" />
-                  <div class="form-help">Was 80 · -25%</div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="f-burst">Burst policy</label>
-                  <input class="form-control" id="f-burst" type="text" value="120 req in 60s" />
-                  <div class="form-help">Was 200 in 60s</div>
-                </div>
-              </div>
-              <div class="form-group" style="margin-bottom:0;">
-                <label class="form-label" for="f-reason">Audit note (required)</label>
-                <input class="form-control" id="f-reason" type="text" value="Enrollment surge in E010 + new prompt config; tighten before week 2 to stay in MTD budget." />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="pgn__card">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">preview</span>Projected effect</span>
-              <h2 class="h5 mb-3">Before / after</h2>
-              <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <thead>
-                  <tr><th>Metric</th><th>Before</th><th>After</th><th>Δ</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>MTD projection</td><td>$5,948</td><td><strong class="text-success">$5,612</strong></td><td><span class="text-success">-$336</span></td></tr>
-                  <tr><td>Within budget</td><td><span class="badge badge-danger">No</span></td><td><span class="badge badge-success">Yes</span></td><td>—</td></tr>
-                  <tr><td>Avg learner latency</td><td>213 ms</td><td>~ 218 ms</td><td>+5 ms</td></tr>
-                  <tr><td>P95 latency</td><td>892 ms</td><td>~ 920 ms</td><td>+28 ms</td></tr>
-                  <tr><td>Sessions throttled (est.)</td><td>0</td><td>~ 12 / day</td><td>+12</td></tr>
-                  <tr><td>Likely user-visible impact</td><td>—</td><td colspan="2"><span class="text-success">Imperceptible · within SLA</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="feedback-panel mt-3">
-        <span class="feedback-label"><span class="material-icons-outlined">verified</span>Audit trail · Pending entry</span>
-        <p class="small mb-2">When you click "Apply", an audit log entry will be written:</p>
-        <table class="pgn__data-table" style="background: var(--pgn-color-bg-base);">
-          <tr><th style="width:30%;">Actor</th><td>Bob (Super Admin · Platform Operations)</td></tr>
-          <tr><th>Event</th><td><code>tenant.rate_limit.update</code></td></tr>
-          <tr><th>School</th><td>School of Technology</td></tr>
-          <tr><th>Before</th><td><code>{ tenant: 3000, skill: 1500, learner: 80, burst: 200/60s }</code></td></tr>
-          <tr><th>After</th><td><code>{ tenant: 2400, skill: 1200, learner: 60, burst: 120/60s }</code></td></tr>
-          <tr><th>Reason</th><td>Enrollment surge in E010 + new prompt config; tighten before week 2 to stay in MTD budget.</td></tr>
-          <tr><th>Notify</th><td>Alice (School Admin) via email + portal toast</td></tr>
-        </table>
-      </div>
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(3)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">speed</span>Apply &amp; notify</button>
-  </div>
-</section>
-
-<!-- Screen 5: Compliance Report — TLS 1.3 verification (§10.7) ====== -->
-<section class="screen" id="screen-5" aria-labelledby="s5-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-5">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Compliance Report</span>
-      </nav>
-      <div class="d-flex justify-content-between align-items-end mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">verified_user</span>Compliance · Encryption + Privacy Audit</span>
-          <h1 id="s5-heading">Compliance report</h1>
-          <p class="mt-1">TLS 1.3 enforcement, certificate validity, and FERPA privacy controls across all SkillProof data paths and schools.</p>
-        </div>
-        <div class="d-flex gap-2 align-items-center">
-          <span class="badge badge-success" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">verified</span>All paths pass</span>
-          <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>Generate PDF</button>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-3">
-          <div class="gauge-card center">
-            <div class="gauge-number good" style="font-size:36px;">All paths</div>
-            <div class="gauge-label">TLS 1.3</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card center">
-            <div class="gauge-number good">100%</div>
-            <div class="gauge-label">Cert validity</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card center">
-            <div class="gauge-number">3 days</div>
-            <div class="gauge-label">Soonest cert expiry</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card center">
-            <div class="gauge-number good">07 May 06:00</div>
-            <div class="gauge-label">Last automated scan</div>
-          </div>
-        </div>
-      </div>
-
-      <h2 class="h5 mb-2">FERPA privacy compliance</h2>
-      <div class="row mb-3">
-        <div class="col-3">
-          <div class="gauge-card center">
-            <div class="gauge-number good">100%</div>
-            <div class="gauge-label">Staff FERPA training (last 30 days)</div>
-            <div class="gauge-target text-muted small mt-1">All operators current per institutional policy</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card center">
-            <div class="gauge-number good">3 yr</div>
-            <div class="gauge-label">Audit trail retention</div>
-            <div class="gauge-target text-muted small mt-1">FERPA-aligned · cross-school log immutable</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card center">
-            <div class="gauge-number good">3 yr</div>
-            <div class="gauge-label">Inactive learner data retention</div>
-            <div class="gauge-target text-muted small mt-1">Auto-purge after 3 yr inactivity</div>
-          </div>
-        </div>
-      </div>
-
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th>FERPA control</th>
-            <th>Reference</th>
-            <th>Status</th>
-            <th>Last verified</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Educational records access controls</td><td>34 CFR §99.31</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>RBAC + per-school scoping enforced at every layer</td></tr>
-          <tr><td>Right to inspect / request correction</td><td>34 CFR §99.10</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>Self-service via student portal · correction requests handled per institutional policy (within the 45-day regulatory window)</td></tr>
-          <tr><td>Directory information opt-out</td><td>34 CFR §99.37</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>Honored at LTI launch · propagated through all telemetry</td></tr>
-          <tr><td>Data retention &amp; deletion</td><td>34 CFR §99.32</td><td><span class="badge badge-success">Verified</span></td><td>07 May 2026</td><td>3-year inactivity threshold · automated purge with audit entry</td></tr>
-          <tr><td>Data breach response playbook + annual drill</td><td>MSA §11 + WGU institutional policy</td><td><span class="badge badge-success">Verified</span></td><td>22 Jan 2026 (last tabletop)</td><td>Playbook documented &middot; 24-hr customer notification per MSA §11 &middot; Q1 tabletop complete &middot; next drill 22 Jul 2026</td></tr>
-          <tr><td>Staff FERPA training (annual)</td><td>WGU institutional policy</td><td><span class="badge badge-success">100% current</span></td><td>30 Apr 2026</td><td>Tracked per institutional policy · auto-suspended access after 365 days of inactivity</td></tr>
-          <tr><td>SOC 2 Type II posture</td><td>Industry standard</td><td><span class="badge badge-success">Inherited (cloud provider)</span></td><td>Quarterly review</td><td>Hosted on SOC 2 / ISO-certified cloud; JFT SOC 2 readiness in progress</td></tr>
-          <tr><td>ISO 27001 alignment</td><td>Industry standard</td><td><span class="badge badge-success">Aligned</span></td><td>Annual review</td><td>Controls aligned with ISO 27001; cloud-provider certification inherited</td></tr>
-          <tr><td>Zero-trust authorization model</td><td>Industry standard</td><td><span class="badge badge-success">Enforced</span></td><td>07 May 2026</td><td>Every service call requires authentication, authorization, and encryption</td></tr>
-          <tr><td>GDPR controls (international learners)</td><td>EU regulation</td><td><span class="badge badge-info">Activated on demand</span></td><td>Quarterly review</td><td>Lawful basis tracking, consent, data subject rights — engaged when international learners are in scope</td></tr>
-          <tr><td>Penetration testing (annual minimum)</td><td>WGU institutional policy</td><td><span class="badge badge-success">Scheduled</span></td><td>Last: 14 Feb 2026 · Next: 14 Feb 2027</td><td>Independent third-party pentest; high findings remediated within agreed window</td></tr>
-          <tr><td>Encryption at rest (AES-256)</td><td>WGU institutional policy</td><td><span class="badge badge-success">Enforced</span></td><td>07 May 2026</td><td>AES-256 for DBs, object storage, and backups · cloud KMS-managed keys with regular rotation</td></tr>
-          <tr><td>Threat detection / SIEM</td><td>WGU institutional policy</td><td><span class="badge badge-success">24/7</span></td><td>07 May 2026</td><td>Cloud-native threat detection + SIEM correlation routes anomalies to 24/7 security response</td></tr>
-          <tr><td>Vulnerability scanning + 48-hr critical patch SLA</td><td>WGU institutional policy</td><td><span class="badge badge-success">Active</span></td><td>Per-release scan</td><td>Automated scans on every release · critical findings remediated within 48 hours</td></tr>
-          <tr><td>Business Continuity &amp; DR (RTO ≤ 4hr, RPO ≤ 60min)</td><td>WGU institutional policy</td><td><span class="badge badge-success">Validated</span></td><td>Last drill: 22 Apr 2026</td><td>Multi-zone redundancy, automated backups, periodic recovery drills · 100% successful recovery within RTO/RPO targets</td></tr>
-        </tbody>
-      </table>
-
-      <h2 class="h5 mb-2">Service-by-service encryption status</h2>
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th>Service / data path</th>
-            <th>Encryption</th>
-            <th>TLS version</th>
-            <th>Cert expiry</th>
-            <th>Last scan</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>API Gateway (api.sdp.wgu.edu)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-09-12</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Auth — WGU SSO bridge</td><td>HTTPS + mTLS</td><td><strong>1.3</strong></td><td>2026-08-01</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Model Router → primary LLM provider</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-12-04</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Model Router → fallback LLM providers</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2027-01-18</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>School DB (in-transit)</td><td>TLS</td><td><strong>1.3</strong></td><td>2026-11-05</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Audit Trail store (in-transit)</td><td>TLS</td><td><strong>1.3</strong></td><td>2026-11-05</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Telemetry pipeline (in-transit)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-09-30</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>Data Export Service (egress)</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-09-12</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>LRPS deep-link bridge</td><td>HTTPS</td><td><strong>1.3</strong></td><td>2026-08-15</td><td>06:00 UTC</td><td><span class="badge badge-success">Pass</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </main>
-</section>
-
-<!-- Screen 6: Geo-redundancy status (§9.5, §10.1) ==================== -->
-<section class="screen" id="screen-6" aria-labelledby="s6-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-6">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Geo-Redundancy</span>
-      </nav>
-      <div class="d-flex justify-content-between align-items-end mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">public</span>Geo-Redundancy</span>
-          <h1 id="s6-heading">Cross-region resilience</h1>
-          <p class="mt-1">Active-active deployment across three regions. Daily synthetic failover probes confirm replication integrity.</p>
-        </div>
-        <div class="d-flex gap-2 align-items-center">
-          <span class="badge badge-success" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">verified</span>All regions healthy</span>
-          <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">play_circle</span>Run failover test</button>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-4">
-          <div class="region-card">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <div>
-                <div class="region-name">Primary region <span class="badge badge-brand">US East</span></div>
-                <div class="region-loc">Active region serving most learners</div>
-              </div>
-              <span class="dot green"></span>
-            </div>
-            <div class="region-stat-row"><span class="region-stat-label">Status</span><span class="region-stat-value text-success">Operational</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Active learners</span><span class="region-stat-value">2,401</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">P50 latency</span><span class="region-stat-value">187 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">P95 latency</span><span class="region-stat-value">412 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Replication lag (out)</span><span class="region-stat-value">— (source)</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Last failover test</span><span class="region-stat-value">07 May 00:00 UTC ✓</span></div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="region-card">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <div>
-                <div class="region-name">Secondary region <span class="badge badge-info">US West</span></div>
-                <div class="region-loc">Hot standby for failover</div>
-              </div>
-              <span class="dot green"></span>
-            </div>
-            <div class="region-stat-row"><span class="region-stat-label">Status</span><span class="region-stat-value text-success">Operational · standby</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Active learners</span><span class="region-stat-value">1,156</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">P50 latency</span><span class="region-stat-value">204 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">P95 latency</span><span class="region-stat-value">468 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Replication lag (in)</span><span class="region-stat-value text-success">142 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Last failover test</span><span class="region-stat-value">07 May 00:00 UTC ✓</span></div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="region-card">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <div>
-                <div class="region-name">DR region <span class="badge badge-info">EU</span></div>
-                <div class="region-loc">Disaster-recovery region</div>
-              </div>
-              <span class="dot green"></span>
-            </div>
-            <div class="region-stat-row"><span class="region-stat-label">Status</span><span class="region-stat-value text-success">Operational · DR</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Active learners</span><span class="region-stat-value">285</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">P50 latency</span><span class="region-stat-value">231 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">P95 latency</span><span class="region-stat-value">512 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Replication lag (in)</span><span class="region-stat-value text-success">218 ms</span></div>
-            <div class="region-stat-row"><span class="region-stat-label">Last failover test</span><span class="region-stat-value">07 May 00:00 UTC ✓</span></div>
-          </div>
-        </div>
-      </div>
-
-      <h2 class="h5 mb-2">Recent failover tests</h2>
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>From</th>
-            <th>To</th>
-            <th class="num-col">RTO target</th>
-            <th class="num-col">RTO actual</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>07 May 00:00 UTC</td><td>Synthetic probe</td><td>Primary</td><td>Secondary</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">2m 41s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>06 May 00:00 UTC</td><td>Synthetic probe</td><td>Primary</td><td>DR</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">3m 14s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>22 Apr 14:00 UTC</td><td>Quarterly DR drill</td><td>Primary</td><td>Secondary</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">8m 12s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
-          <tr><td>22 Jan 14:00 UTC</td><td>Quarterly DR drill</td><td>Primary</td><td>DR</td><td class="num-col">&lt; 4 hr</td><td class="num-col"><strong class="text-success">11m 48s</strong></td><td><span class="badge badge-success">Pass</span></td></tr>
-        </tbody>
-      </table>
-
-    </div>
-  </main>
-</section>
 
 <!-- Screen 7: Cross-school audit log feed ============================ -->
-<section class="screen" id="screen-7" aria-labelledby="s7-heading">
+<section class="screen" id="screen-15" aria-labelledby="s15-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1547,7 +1213,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-7">
+  <main class="screen-main" id="main-15">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -1557,7 +1223,7 @@
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">history</span>Platform Logs</span>
-          <h1 id="s7-heading">Logs</h1>
+          <h1 id="s15-heading">Logs</h1>
           <p class="mt-1">Every privileged action across every School. FERPA-aligned retention.</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
@@ -1706,7 +1372,7 @@
 
 
 <!-- Screen 8: Access Control (Super Admin role upgrade) — v4.25 per WGU-feedback reshape; v4.27 expanded role taxonomy to 4 tiers (Student → Instructor → School Admin → Super Admin) and added Sally + Charlie persona rows -->
-<section class="screen" id="screen-8" aria-labelledby="s8-heading">
+<section class="screen" id="screen-2" aria-labelledby="s2-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1716,7 +1382,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-8">
+  <main class="screen-main" id="main-2">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -1724,7 +1390,7 @@
         <span>Access Control</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">manage_accounts</span>Super Admin</span>
-      <h1 id="s8-heading">Access Control</h1>
+      <h1 id="s2-heading">Access Control</h1>
       <p class="mt-1 mb-3">All four permission scopes the Super Admin alone controls. Role elevation, School Admin school assignments, Instructor Course assignments, and Skill ownership and deployment.</p>
 
       <div class="row mb-3">
@@ -2141,7 +1807,7 @@
               <!-- TAB PANEL: SCHOOLS -->
               <div id="s9-panel-schools" role="tabpanel" aria-labelledby="s9-tab-schools" hidden aria-hidden="true">
                 <div class="d-flex justify-content-end mb-2">
-                  <button class="btn btn-primary btn-sm" type="button" onclick="goToScreen(12); return false;"><span class="material-icons-outlined">add</span>Create new School</button>
+                  <button class="btn btn-primary btn-sm" type="button" onclick="goToScreen(4); return false;"><span class="material-icons-outlined">add</span>Create new School</button>
                 </div>
                 <table class="pgn__data-table">
                   <thead>
@@ -2254,7 +1920,7 @@
 </section>
 
 <!-- Screen 9: External Tooling & Integrations — v4.28 per WGU direction for AWS-centric tooling. Hub page that links out to 3rd party dashboards (AWS / OpenRouter / Redis / Grafana / Jira / GitHub) + surfaces global configuration values that are enforced outside the SkillProof (student 5000-char limit, Redis token cap, OpenRouter provider chain). -->
-<section class="screen" id="screen-9" aria-labelledby="s9-heading">
+<section class="screen" id="screen-13" aria-labelledby="s13-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2264,7 +1930,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-9">
+  <main class="screen-main" id="main-13">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -2272,7 +1938,7 @@
         <span>External Tooling</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">open_in_new</span>Super Admin</span>
-      <h1 id="s9-heading">External Tooling &amp; Integrations</h1>
+      <h1 id="s13-heading">External Tooling &amp; Integrations</h1>
       <p class="mt-1 mb-3">Some platform functions are managed in 3rd party dashboards. This page surfaces those integrations + global configuration values that live outside the SkillProof.</p>
 
       <h2 class="h5 mb-2">External dashboards</h2>
@@ -2408,7 +2074,7 @@
 
 
 <!-- Screen 10: Data & Integrations Hub — v4.45 closes 5 contract rows (A-6.28 GraphQL API + A-8.8 real-time/batch export + A-8.12 webhooks + A-8.13 GraphQL queries + A-8.14 streaming). Cross-school scope; consolidates data-export functions moved from tenant_admin in v4.22. -->
-<section class="screen" id="screen-10" aria-labelledby="s10-heading">
+<section class="screen" id="screen-14" aria-labelledby="s14-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2418,7 +2084,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-10">
+  <main class="screen-main" id="main-14">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -2426,7 +2092,7 @@
         <span>Data &amp; Integrations</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">hub</span>Super Admin</span>
-      <h1 id="s10-heading">Data &amp; Integrations Hub</h1>
+      <h1 id="s14-heading">Data &amp; Integrations Hub</h1>
       <p class="mt-1 mb-3">Cross-school data export, real-time event streaming, and developer-facing API surfaces for downstream consumption. Scope moved here from the Content Creator Portal in v4.22 per the global scoping decision.</p>
 
       <!-- Real-time + batch data export (A-8.8) -->
@@ -2611,196 +2277,9 @@
   </main>
 </section>
 
-<!-- Screen 11: Instructor Roster & Course Assignment (cross-school) — Super Admin owns who teaches what -->
-<section class="screen" id="screen-11" aria-labelledby="s11-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-11">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Instructor Roster &amp; Course Assignment</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">manage_accounts</span>Super Admin</span>
-      <h1 id="s11-heading">Instructor Roster &amp; Course Assignment</h1>
-      <p class="mt-1 mb-3">Coverage view of which instructors are assigned to which Courses, per school. Account creation is handled separately through LRPS. Cross-school scope: select a school to view its current instructor roster. Assignments are made on Access Control.</p>
-
-      <div class="d-flex align-items-center gap-2 mb-3" style="flex-wrap:wrap;">
-        <label class="form-label mb-0" for="ir-tenant" style="font-size: 13px;">School</label>
-        <select class="form-control" id="ir-tenant" style="max-width: 320px;">
-          <option selected>School of Technology</option>
-          <option>School of Business</option>
-          <option>School of Education</option>
-          <option>Leavitt School of Health</option>
-        </select>
-        <span class="text-muted small">Showing roster for School of Technology.</span>
-      </div>
-
-      <div class="alert alert-info mb-3">
-        <span class="material-icons-outlined">info</span>
-        <div><strong>Read-only coverage view.</strong> To assign instructors to Courses, open <a href="#" onclick="goToScreen(8); return false;">Access Control &middot; People tab</a>. Super Admin owns all assignments; this view shows current per-school coverage for reference.</div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-8">
-          <div class="pgn__card pgn__card-featured">
-            <div class="pgn__card-section">
-              <div class="mb-2">
-                <span class="eyebrow"><span class="material-icons-outlined">person_search</span>Instructors · 6 active</span>
-              </div>
-              <table class="pgn__data-table">
-                <thead>
-                  <tr>
-                    <th>Instructor</th>
-                    <th>Courses</th>
-                    <th>Last active</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-brand-base);">C</div>
-                        <div>
-                          <div class="text-strong">Charlie</div>
-                          <div class="micro text-muted">charlie@example.edu</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E075</span> <span class="badge badge-info">E135</span></td>
-                    <td>14 min ago</td>
-                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-success-base);">D</div>
-                        <div>
-                          <div class="text-strong">Devon</div>
-                          <div class="micro text-muted">devon@example.edu</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
-                    <td>2 hours ago</td>
-                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-info-base);">M</div>
-                        <div>
-                          <div class="text-strong">Maya</div>
-                          <div class="micro text-muted">maya@example.edu</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td><span class="badge badge-info">E075</span></td>
-                    <td>Yesterday</td>
-                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #4527A0;">P</div>
-                        <div>
-                          <div class="text-strong">Priya</div>
-                          <div class="micro text-muted">priya@example.edu</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td><span class="badge badge-info">E010</span> <span class="badge badge-info">E135</span></td>
-                    <td>Yesterday</td>
-                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-warning-base); color:#1A1A1A;">T</div>
-                        <div>
-                          <div class="text-strong">Teagan</div>
-                          <div class="micro text-muted">teagan@example.edu</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td><span class="badge badge-info">E075</span></td>
-                    <td>3 days ago</td>
-                    <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: #C13232;">N</div>
-                        <div>
-                          <div class="text-strong">Noor</div>
-                          <div class="micro text-muted">noor@example.edu</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td><span class="badge badge-info">E010</span></td>
-                    <td>5 days ago</td>
-                    <td><span class="badge badge-warning">Idle &gt; 5d</span></td>
-                  </tr>
-                  <tr style="opacity: 0.65;">
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-400);">L</div>
-                        <div>
-                          <div class="text-strong">Logan</div>
-                          <div class="micro text-muted">logan@example.edu</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td><span class="text-muted small">—</span></td>
-                    <td class="text-muted small">22 Mar 2026</td>
-                    <td><span class="badge badge-gray">Deactivated</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="pgn__card mb-3">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">insights</span>Coverage (School of Technology)</span>
-              <h2 class="h5 mb-2">Course &rarr; instructor map</h2>
-              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size:13px;">
-                <tr><th style="background:transparent; padding: 6px 4px;">E010</th><td style="background:transparent; padding: 6px 4px;">4 instructors</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">E075</th><td style="background:transparent; padding: 6px 4px;">3 instructors</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">E135</th><td style="background:transparent; padding: 6px 4px;">3 instructors</td></tr>
-              </table>
-            </div>
-          </div>
-          <div class="pgn__card">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">recent_actors</span>Recent assignments</span>
-              <table class="pgn__data-table" style="border:none; box-shadow:none; font-size: 12px;">
-                <tr><th style="background:transparent; padding: 6px 4px;">06 May 13:18</th><td style="background:transparent; padding: 6px 4px;">Bob assigned Charlie to E135 (School of Technology)</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">02 May 09:44</th><td style="background:transparent; padding: 6px 4px;">Bob deactivated Logan (School of Technology)</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">28 Apr 11:20</th><td style="background:transparent; padding: 6px 4px;">Bob added Noor to E010 (School of Technology)</td></tr>
-                <tr><th style="background:transparent; padding: 6px 4px;">15 Apr 16:05</th><td style="background:transparent; padding: 6px 4px;">Bob added Teagan to E075 (School of Technology)</td></tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-</section>
 
 <!-- Screen 12: Schools & Settings — Super Admin manages the school list and per-school School Admin assignments (A-8.6 multi-tenancy + A-10.8 RBAC + SOW §2.5 Admin Portal) -->
-<section class="screen" id="screen-12" aria-labelledby="s12-heading">
+<section class="screen" id="screen-4" aria-labelledby="s4-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2810,7 +2289,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-12">
+  <main class="screen-main" id="main-4">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -2818,16 +2297,16 @@
         <span>School Management</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">school</span>Super Admin</span>
-      <h1 id="s12-heading" class="mb-3">School Management</h1>
+      <h1 id="s4-heading" class="mb-3">School Management</h1>
 
       <div class="alert alert-info mb-3">
         <span class="material-icons-outlined">info</span>
-        <div><strong>School roster.</strong> Per-School Settings (branding, thresholds, retention) are managed here. To assign School Admins to a school, open <a href="#" onclick="goToScreen(8); return false;">Access Control &middot; Schools tab</a>.</div>
+        <div><strong>School roster.</strong> Per-School Settings (branding, thresholds, retention) are managed here. To assign School Admins to a school, open <a href="#" onclick="goToScreen(2); return false;">Access Control &middot; Schools tab</a>.</div>
       </div>
 
       <div class="d-flex justify-content-between align-items-start mb-3" style="flex-wrap:wrap; gap:12px;">
         <p class="text-muted mb-0" style="max-width: 720px;">Each WGU School is an isolated environment in SkillProof. Schools are created here; School Admin assignments are made on the Access Control screen.</p>
-        <button class="btn btn-primary" onclick="goToScreen(24)"><span class="material-icons-outlined">add</span>Create new School</button>
+        <button class="btn btn-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">add</span>Create new School</button>
       </div>
 
       <div class="pgn__card pgn__card-featured mb-3">
@@ -2884,7 +2363,7 @@
 
       <div class="alert alert-info">
         <span class="material-icons-outlined">info</span>
-        <div>Creating a new School provisions an isolated environment (multi-tenant architecture per SOW §16.3 row 8.6). School Admin assignments are made afterward on <a href="#" onclick="goToScreen(8); return false;">Access Control &middot; Schools tab</a>.</div>
+        <div>Creating a new School provisions an isolated environment (multi-tenant architecture per SOW §16.3 row 8.6). School Admin assignments are made afterward on <a href="#" onclick="goToScreen(2); return false;">Access Control &middot; Schools tab</a>.</div>
       </div>
 
       <!-- School Settings wireframe panel (moved from TA per Brady directive v4.124) -->
@@ -2974,7 +2453,7 @@
 </section>
 
 <!-- Screen 13: Access Denied (zero-trust deny path · RBAC doc §4.2 Figure 6) -->
-<section class="screen" id="screen-13" aria-labelledby="s13-heading">
+<section class="screen" id="screen-3" aria-labelledby="s3-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2984,14 +2463,14 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main centered" id="main-13">
+  <main class="screen-main centered" id="main-3">
     <div class="container-narrow">
       <div class="pgn__card pgn__card-featured">
         <div class="pgn__card-section-lg">
           <div class="text-center mb-3">
             <span class="material-icons-outlined" style="font-size:56px; color: var(--pgn-color-danger-base);">block</span>
           </div>
-          <h1 id="s13-heading" class="h2 text-center mb-3">You don't have access to this resource</h1>
+          <h1 id="s3-heading" class="h2 text-center mb-3">You don't have access to this resource</h1>
           <table class="pgn__data-table" style="border:none; box-shadow:none; margin-bottom: var(--pgn-spacing-3);">
             <tr><th style="width:42%;">Signed in as</th><td>Bob · Super Admin · Platform Operations</td></tr>
             <tr><th>This resource requires</th><td>Active provisioning · link expired or revoked</td></tr>
@@ -3010,7 +2489,7 @@
 
 
 <!-- Screen 14 (mirrored from TA S2): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-14" aria-labelledby="s14-heading">
+<section class="screen" id="screen-7" aria-labelledby="s7-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -3020,7 +2499,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-14">
+  <main class="screen-main" id="main-7">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -3031,7 +2510,7 @@
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">school</span>Course detail</span>
-          <h1 id="s14-heading">E010 · Foundations of Programming (Python)</h1>
+          <h1 id="s7-heading">E010 · Foundations of Programming (Python)</h1>
           <p class="mt-1">School of Technology · 28 active learners (rolling enrollment) · last activity 14 min ago</p>
         </div>
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:wrap;">
@@ -3054,10 +2533,9 @@
         <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Skills deployed in E010</span>
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h2 class="h4 mb-0">Skills (2 active)</h2>
-          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(18);"><span class="material-icons-outlined">add</span>New Skill in this Course</button>
         </div>
 
-        <div class="section-card recommended mb-3" onclick="goToScreen(15)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
+        <div class="section-card recommended mb-3" onclick="goToScreen(8)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
           <div class="mb-2">
             <h3 class="h5 mb-1">Python Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
             <p class="small text-muted">AI coaching module for Python foundations · 4 Topics · ~32 Learning Objectives</p>
@@ -3069,13 +2547,11 @@
             <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(18);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
-            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); alert('Archive Skill (wireframe — would surface a confirmation dialog and move the Skill to Archived state)');"><span class="material-icons-outlined">archive</span>Archive</button>
-            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(15);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
+            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(8);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
         </div>
 
-        <div class="section-card" onclick="goToScreen(15)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Git & Version Control Skill heatmap">
+        <div class="section-card" onclick="goToScreen(8)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Git & Version Control Skill heatmap">
           <div class="mb-2">
             <h3 class="h5 mb-1">Git &amp; Version Control Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
             <p class="small text-muted">AI coaching module for source control with Git · 3 Topics · ~18 Learning Objectives</p>
@@ -3087,9 +2563,7 @@
             <div class="section-stat"><div class="section-stat-num">87</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(18);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
-            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); alert('Archive Skill (wireframe — would surface a confirmation dialog and move the Skill to Archived state)');"><span class="material-icons-outlined">archive</span>Archive</button>
-            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(15);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
+            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(8);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
         </div>
       </div>
@@ -3101,7 +2575,7 @@
   </div>
 </section>
 <!-- Screen 15 (mirrored from TA S3): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-15" aria-labelledby="s15-heading">
+<section class="screen" id="screen-8" aria-labelledby="s8-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -3111,12 +2585,12 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-15">
+  <main class="screen-main" id="main-8">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">E010</a>
+        <a href="#" onclick="goToScreen(7); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="return false;" title="Python Skill in E010">Python Skill</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -3125,7 +2599,7 @@
 
       <div class="mb-3">
         <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Python Skill · Heatmap</span>
-        <h1 id="s15-heading">Python Skill — Topic mastery</h1>
+        <h1 id="s8-heading">Python Skill — Topic mastery</h1>
         <p class="mt-1">AI-scored Topic mastery (0.00–1.00) per learner. Updates after each coaching session.</p>
       </div>
 
@@ -3247,11 +2721,11 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(14)"><span class="material-icons-outlined">arrow_back</span>Back to Course view</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">arrow_back</span>Back to Course view</button>
   </div>
 </section>
 <!-- Screen 16 (mirrored from TA S4): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-16" aria-labelledby="s16-heading">
+<section class="screen" id="screen-9" aria-labelledby="s9-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -3261,30 +2735,30 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-16">
+  <main class="screen-main" id="main-9">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">E010</a>
+        <a href="#" onclick="goToScreen(7); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(15); return false;">Heatmap</a>
+        <a href="#" onclick="goToScreen(8); return false;">Heatmap</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>At risk</span>
       </nav>
 
       <div class="mb-3">
         <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>Filtered: At risk only</span>
-        <h1 id="s16-heading">4 learners need attention</h1>
+        <h1 id="s9-heading">4 learners need attention</h1>
         <p class="mt-1">Filter narrowed to the at-risk threshold set by your School Admin (AI-scored Topic mastery &lt; 0.60 across two or more Topics). Click any row to drill in.</p>
       </div>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
         <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter" onclick="goToScreen(15); filterHeatmap('all');">All (28)</button>
-        <button class="chip-filter" onclick="goToScreen(15); filterHeatmap('mastery');">Mastery (7)</button>
-        <button class="chip-filter" onclick="goToScreen(15); filterHeatmap('on-track');">On track (17)</button>
-        <button class="chip-filter" onclick="goToScreen(15); filterHeatmap('watch');">Watch list (1)</button>
+        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('all');">All (28)</button>
+        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('mastery');">Mastery (7)</button>
+        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('on-track');">On track (17)</button>
+        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('watch');">Watch list (1)</button>
         <button class="chip-filter active danger"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
       </div>
 
@@ -3309,16 +2783,16 @@
               <div class="heatmap-col-label">Introduction<br>to Automation</div>
               <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
-              <div class="heatmap-row-label" onclick="goToScreen(17)" role="rowheader" tabindex="0" aria-label="View profile for Sally" title="View profile for Sally">Sally</div>
+              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for Sally" title="View profile for Sally">Sally</div>
               <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
 
-              <div class="heatmap-row-label" onclick="goToScreen(17)" role="rowheader" tabindex="0" aria-label="View profile for B.F." title="View profile for B.F.">B.F.</div>
+              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for B.F." title="View profile for B.F.">B.F.</div>
               <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
 
-              <div class="heatmap-row-label" onclick="goToScreen(17)" role="rowheader" tabindex="0" aria-label="View profile for C.S." title="View profile for C.S.">C.S.</div>
+              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for C.S." title="View profile for C.S.">C.S.</div>
               <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
 
-              <div class="heatmap-row-label" onclick="goToScreen(17)" role="rowheader" tabindex="0" aria-label="View profile for H.D." title="View profile for H.D.">H.D.</div>
+              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for H.D." title="View profile for H.D.">H.D.</div>
               <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
             </div>
           </div>
@@ -3348,12 +2822,12 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(15)"><span class="material-icons-outlined">arrow_back</span>Back to full heatmap</button>
-    <button class="btn btn-primary" onclick="goToScreen(17)">Open Sally's profile<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">arrow_back</span>Back to full heatmap</button>
+    <button class="btn btn-primary" onclick="goToScreen(10)">Open Sally's profile<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 <!-- Screen 17 (mirrored from TA S5): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-17" aria-labelledby="s17-heading">
+<section class="screen" id="screen-10" aria-labelledby="s10-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -3363,14 +2837,14 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-17">
+  <main class="screen-main" id="main-10">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(14); return false;">E010</a>
+        <a href="#" onclick="goToScreen(7); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(16); return false;">At risk</a>
+        <a href="#" onclick="goToScreen(9); return false;">At risk</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Sally</span>
       </nav>
@@ -3378,7 +2852,7 @@
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
-          <h1 id="s17-heading">Sally</h1>
+          <h1 id="s10-heading">Sally</h1>
         </div>
         <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
@@ -3453,590 +2927,17 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(16)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(9)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
   </div>
 </section>
 
 <!-- Screen 21 (mirrored from TA S10): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-18" aria-labelledby="s18-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-18">
-    <div class="container-narrow">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>New Skill</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">edit</span>Step 1 of 5 · Skill Details</span>
-      <h1 id="s18-heading" class="h1 mb-2">Create a new Skill</h1>
-
-      <div class="pgn__card mb-3">
-        <div class="pgn__card-section-lg">
-
-          <!-- Parent Course context: Course Number + Course Title (typeahead + add-new) -->
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="f-course-number">Course Number</label>
-              <input class="form-control" id="f-course-number" type="text" list="course-numbers-list" value="E135" placeholder="Type to search or add new..." autocomplete="off" oninput="autofillCourseTitle(this.value)" />
-              <datalist id="course-numbers-list">
-                <option value="E010">Foundations of Programming (Python)</option>
-                <option value="E075">Intermediate Python &amp; Libraries</option>
-                <option value="E120">Applied Data Structures (Python)</option>
-                <option value="E135">Object-Oriented Programming with Python</option>
-              </datalist>
-              <p class="small text-muted mt-1" style="margin-bottom:0;">Pick an existing Course or type a new code (e.g., E180) to create one.</p>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="f-course-title">Course Title</label>
-              <input class="form-control" id="f-course-title" type="text" list="course-titles-list" value="Object-Oriented Programming with Python" placeholder="Type to search or add new..." autocomplete="off" />
-              <datalist id="course-titles-list">
-                <option value="Foundations of Programming (Python)"></option>
-                <option value="Intermediate Python &amp; Libraries"></option>
-                <option value="Applied Data Structures (Python)"></option>
-                <option value="Object-Oriented Programming with Python"></option>
-              </datalist>
-              <p class="small text-muted mt-1" style="margin-bottom:0;">Auto-fills from Course Number; override to retitle or to add a new Course.</p>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="f-code">Skill code</label>
-              <input class="form-control" id="f-code" type="text" value="OOP-001" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="f-title">Skill name</label>
-              <input class="form-control" id="f-title" type="text" value="OOP Skill" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-desc">Description</label>
-            <textarea class="form-control" id="f-desc" rows="3">A scaffolded introduction to OOP fundamentals using Python: classes, inheritance, polymorphism, encapsulation, and pattern recognition. Designed as the OOP Skill within Course E135.</textarea>
-          </div>
-        </div>
-      </div>
-
-      <script>
-        /* v4.130: S10 New Skill — auto-fill Course Title when Course Number matches a known Course */
-        (function() {
-          window.autofillCourseTitle = function(numValue) {
-            var map = {
-              'E010': 'Foundations of Programming (Python)',
-              'E075': 'Intermediate Python & Libraries',
-              'E120': 'Applied Data Structures (Python)',
-              'E135': 'Object-Oriented Programming with Python'
-            };
-            var key = (numValue || '').trim().toUpperCase();
-            var titleInput = document.getElementById('f-course-title');
-            if (titleInput && map[key]) {
-              titleInput.value = map[key];
-            }
-          };
-        })();
-      </script>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(19)">Next: Topics<span class="material-icons-outlined">arrow_forward</span></button>
-  </div>
-</section>
 <!-- Screen 22 (mirrored from TA S11): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-19" aria-labelledby="s19-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-19">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Topics &amp; Learning Objectives</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">list_alt</span>Step 2 of 5 · Topics &amp; Learning Objectives</span>
-      <h1 id="s19-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
-
-      <p class="text-muted mb-3">Set the overall Skill passing threshold on the 0-100% scale, then expand each Topic to edit its Learning Objectives in place. A Student is considered to have passed the Skill once their overall score meets this threshold.</p>
-
-      <div class="pgn__card mb-3">
-        <div class="pgn__card-section">
-          <div class="form-group mb-0">
-            <label class="form-label" for="skill-pass-threshold">Overall Skill passing threshold</label>
-            <div class="d-flex align-items-center gap-2">
-              <input class="lo-num" id="skill-pass-threshold" type="number" min="0" max="100" step="1" value="70" style="width: 88px;">
-              <span class="text-muted small">(0-100% scale)</span>
-              <span class="text-muted small" style="margin-left: 12px;">Average across all Learning Objectives. Defaults to 70%.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lo-topics mb-3">
-
-        <details class="lo-topic" open>
-          <summary>
-            <span class="lo-topic-name">Classes &amp; Objects</span>
-            <span class="lo-topic-meta">3 objectives</span>
-            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
-          </summary>
-          <table class="pgn__data-table lo-topic-table">
-            <thead>
-              <tr>
-                <th style="width:8%;">#</th>
-                <th style="width:60%;">Learning Objective</th>
-                <th style="width:16%;" class="num-col">Threshold (%)</th>
-                <th style="width:16%;">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>1.1</td><td><input class="lo-input" type="text" value="Define classes &amp; constructors"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="70"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 1.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-              <tr><td>1.2</td><td><input class="lo-input" type="text" value="Instantiate objects &amp; access state"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="70"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 1.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-              <tr><td>1.3</td><td><input class="lo-input" type="text" value="Apply attributes &amp; methods correctly"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="75"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 1.3"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-            </tbody>
-          </table>
-          <div class="lo-topic-footer">
-            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
-            <button class="btn btn-tertiary btn-sm" aria-label="Remove Classes &amp; Objects topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
-          </div>
-        </details>
-
-        <details class="lo-topic">
-          <summary>
-            <span class="lo-topic-name">Inheritance &amp; Composition</span>
-            <span class="lo-topic-meta">2 objectives</span>
-            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
-          </summary>
-          <table class="pgn__data-table lo-topic-table">
-            <thead>
-              <tr>
-                <th style="width:8%;">#</th>
-                <th style="width:60%;">Learning Objective</th>
-                <th style="width:16%;" class="num-col">Threshold (%)</th>
-                <th style="width:16%;">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>2.1</td><td><input class="lo-input" type="text" value="Single inheritance"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="70"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 2.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-              <tr><td>2.2</td><td><input class="lo-input" type="text" value="Composition over inheritance"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="70"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 2.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-            </tbody>
-          </table>
-          <div class="lo-topic-footer">
-            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
-            <button class="btn btn-tertiary btn-sm" aria-label="Remove Inheritance &amp; Composition topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
-          </div>
-        </details>
-
-        <details class="lo-topic">
-          <summary>
-            <span class="lo-topic-name">Polymorphism &amp; Encapsulation</span>
-            <span class="lo-topic-meta">2 objectives</span>
-            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
-          </summary>
-          <table class="pgn__data-table lo-topic-table">
-            <thead>
-              <tr>
-                <th style="width:8%;">#</th>
-                <th style="width:60%;">Learning Objective</th>
-                <th style="width:16%;" class="num-col">Threshold (%)</th>
-                <th style="width:16%;">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>3.1</td><td><input class="lo-input" type="text" value="Method overriding"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="75"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 3.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-              <tr><td>3.2</td><td><input class="lo-input" type="text" value="Property decorators &amp; private state"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="70"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 3.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-            </tbody>
-          </table>
-          <div class="lo-topic-footer">
-            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
-            <button class="btn btn-tertiary btn-sm" aria-label="Remove Polymorphism &amp; Encapsulation topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
-          </div>
-        </details>
-
-        <details class="lo-topic">
-          <summary>
-            <span class="lo-topic-name">Common Design Patterns</span>
-            <span class="lo-topic-meta">3 objectives</span>
-            <span class="material-icons-outlined lo-topic-caret">expand_more</span>
-          </summary>
-          <table class="pgn__data-table lo-topic-table">
-            <thead>
-              <tr>
-                <th style="width:8%;">#</th>
-                <th style="width:60%;">Learning Objective</th>
-                <th style="width:16%;" class="num-col">Threshold (%)</th>
-                <th style="width:16%;">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>4.1</td><td><input class="lo-input" type="text" value="Factory pattern"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="65"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 4.1"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-              <tr><td>4.2</td><td><input class="lo-input" type="text" value="Strategy pattern"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="65"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 4.2"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-              <tr><td>4.3</td><td><input class="lo-input" type="text" value="Observer pattern"></td><td class="num-col"><input class="lo-num" type="number" min="0" max="100" step="1" value="65"></td><td><button class="btn btn-tertiary btn-icon btn-sm" aria-label="Remove Objective 4.3"><span class="material-icons-outlined">delete_outline</span></button></td></tr>
-            </tbody>
-          </table>
-          <div class="lo-topic-footer">
-            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">add</span>Add Learning Objective</button>
-            <button class="btn btn-tertiary btn-sm" aria-label="Remove Common Design Patterns topic"><span class="material-icons-outlined">delete_outline</span>Remove topic</button>
-          </div>
-        </details>
-
-      </div>
-
-      <div class="d-flex gap-2 mb-3">
-        <button type="button" class="btn btn-primary" onclick="addTopic();"><span class="material-icons-outlined">create_new_folder</span>Add Topic</button>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(18)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(20)">Next: Model &amp; Prompt<span class="material-icons-outlined">arrow_forward</span></button>
-  </div>
-</section>
 <!-- Screen 23 (mirrored from TA S12): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-20" aria-labelledby="s20-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-20">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Model &amp; Prompt</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">memory</span>Step 3 of 5 · Model &amp; Prompt</span>
-      <h1 id="s20-heading" class="h1 mb-2">Choose the model and AI prompt</h1>
-      <p class="text-muted mb-3">Pick the underlying model and configure the AI coaching prompt.</p>
-
-      <h2 class="h5 mb-2">Preferred model</h2>
-      <div class="radio-cards mb-3">
-        <div class="radio-card selected" role="radio" aria-checked="true" tabindex="0">
-          <div class="d-flex align-items-center justify-content-between mb-1">
-            <span class="badge badge-success">Recommended</span>
-          </div>
-          <div class="radio-card-title">gpt-4o-mini</div>
-          <div class="radio-card-vendor">OpenAI</div>
-          <div class="radio-card-meta">
-            <span class="badge badge-info">Cheapest + fastest</span>
-            <span class="badge badge-info">1M input / 1M output tokens</span>
-            <span class="badge badge-gray">Cost: $</span>
-            <span class="badge badge-gray">Latency: Lowest</span>
-          </div>
-        </div>
-        <div class="radio-card" role="radio" aria-checked="false" tabindex="0">
-          <div class="d-flex align-items-center justify-content-between mb-1">
-            <span class="badge badge-gray">Alternative</span>
-          </div>
-          <div class="radio-card-title">gpt-4o</div>
-          <div class="radio-card-vendor">OpenAI</div>
-          <div class="radio-card-meta">
-            <span class="badge badge-info">Standard quality</span>
-            <span class="badge badge-gray">Cost: $$</span>
-            <span class="badge badge-gray">Latency: Low</span>
-          </div>
-        </div>
-        <div class="radio-card" role="radio" aria-checked="false" tabindex="0">
-          <div class="d-flex align-items-center justify-content-between mb-1">
-            <span class="badge badge-gray">Alternative</span>
-          </div>
-          <div class="radio-card-title">gpt-4-turbo</div>
-          <div class="radio-card-vendor">OpenAI</div>
-          <div class="radio-card-meta">
-            <span class="badge badge-info">Highest quality</span>
-            <span class="badge badge-gray">Cost: $$$</span>
-            <span class="badge badge-gray">Latency: Medium</span>
-          </div>
-        </div>
-      </div>
-
-      <details class="mb-3">
-        <summary class="btn btn-tertiary btn-sm" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px;"><span class="material-icons-outlined" style="font-size:18px;">expand_more</span>Browse all OpenRouter models</summary>
-        <div class="pgn__card mt-2">
-          <div class="pgn__card-section">
-            <p class="text-muted small mb-2">OpenRouter routes to 100+ models across providers. Default to OpenAI unless a Skill-specific need calls for an alternative.</p>
-            <table class="pgn__data-table">
-              <thead><tr><th>Model</th><th>Provider</th><th>Context</th><th>Cost</th></tr></thead>
-              <tbody>
-                <tr><td>claude-sonnet-4.5</td><td>Anthropic</td><td>200K</td><td>Higher</td></tr>
-                <tr><td>claude-haiku-4</td><td>Anthropic</td><td>200K</td><td>Lower</td></tr>
-                <tr><td>gemini-2.5-pro</td><td>Google</td><td>1M</td><td>Mid</td></tr>
-                <tr><td>gemini-2.5-flash</td><td>Google</td><td>1M</td><td>Lowest</td></tr>
-                <tr><td>llama-3.3-70b</td><td>Meta</td><td>128K</td><td>Lower</td></tr>
-                <tr><td>mistral-large-2</td><td>Mistral</td><td>128K</td><td>Mid</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </details>
-
-      <div class="alert alert-info mb-3">
-        <span class="material-icons-outlined">router</span>
-        <div><strong>Fallback chain:</strong> gpt-4o-mini &rarr; gpt-4o &rarr; gpt-4-turbo</div>
-      </div>
-
-      <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
-
-      <h2 class="h4 mb-2">AI coaching prompt</h2>
-      <p class="text-muted mb-3">Configure how the coach should behave. Leave fields blank for global defaults.</p>
-
-      <div class="d-flex gap-2 mb-3 align-items-center" style="flex-wrap:wrap;">
-        <button type="button" class="btn btn-outline-primary btn-sm" onclick="document.getElementById('md-upload').click();"><span class="material-icons-outlined">upload_file</span>Upload config (.md preferred)</button>
-        <input type="file" id="md-upload" accept=".md,.markdown" style="display:none;" onchange="handleMdUpload(this);">
-        <button type="button" class="btn btn-tertiary btn-sm" onclick="downloadPromptConfig();"><span class="material-icons-outlined">download</span>Download config (.md)</button>
-        <span class="text-muted small" id="md-status">— or fill the form below.</span>
-      </div>
-
-      <div class="row" id="prompt-fields">
-        <div class="col-6">
-          <div class="ai-prompt-card">
-            <div class="ai-label"><span class="material-icons-outlined">tune</span>Configuration</div>
-
-            <div class="form-group">
-              <label class="form-label" for="f-profile">Student profile</label>
-              <textarea class="form-control" id="f-profile" rows="3" maxlength="500" placeholder="The student is a data scientist"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="f-examples">Examples should be</label>
-              <textarea class="form-control" id="f-examples" rows="3" maxlength="500" placeholder="All examples should be data science related"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="f-other">Other</label>
-              <textarea class="form-control" id="f-other" rows="3" maxlength="500" placeholder="Anything else you want this Skill to do explicitly"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="preview-card">
-            <div class="preview-label"><span class="material-icons-outlined">preview</span>Compiled prompt preview</div>
-            <div class="preview-text">You are the SkillProof coaching engine for E135: Object-Oriented Programming with Python. Western Governors University, Program Development.
-
-STUDENT PROFILE
-[Filled from "Student profile" field]
-
-EXAMPLES
-[Filled from "Examples should be" field]
-
-OTHER
-[Filled from "Other" field]
-
-OUTPUT
-Always cite the Learning Objective being assessed by code (e.g., Objective 1.3).
-Address the learner by their first name. Never use "student" as the form of address.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex align-items-center gap-2 mt-3" style="font-size:13px; color: var(--pgn-color-gray-700);">
-        <span class="material-icons-outlined" style="font-size:16px; color: var(--pgn-color-gray-600);">history</span>
-        <span>Last edited <strong>07 May 2026</strong> &middot; <code>v3</code> &middot; Alice (School Admin).</span>
-        <a href="#" onclick="event.preventDefault();" class="text-muted small" style="text-decoration: underline;">View history</a>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(19)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(21)">Review &amp; Deploy<span class="material-icons-outlined">arrow_forward</span></button>
-  </div>
-</section>
 <!-- Screen 24 (mirrored from TA S13): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-21" aria-labelledby="s21-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-21">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Review &amp; Deploy</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Step 4 of 5 · Review &amp; Deploy</span>
-      <h1 id="s21-heading" class="h1 mb-2">Deploy OOP Skill to Live</h1>
-
-      <p class="text-muted mb-3">Final check before deployment. Review each step's configuration; use Back if anything needs to change.</p>
-
-      <div class="pgn__card pgn__card-featured mb-3">
-        <div class="pgn__card-section">
-          <h2 class="h5 mb-3">Skill summary</h2>
-
-          <div class="row">
-            <div class="col-6">
-              <h3 class="eyebrow mb-2"><span class="material-icons-outlined">edit</span>Step 1 · Skill Details</h3>
-              <table class="pgn__data-table mb-3" style="border:none; box-shadow:none;">
-                <tr><th style="width:38%;">Course Number</th><td>E135</td></tr>
-                <tr><th>Course Title</th><td>Object-Oriented Programming with Python</td></tr>
-                <tr><th>Skill code</th><td>OOP-001</td></tr>
-                <tr><th>Skill name</th><td>OOP Skill</td></tr>
-                <tr><th>Owner</th><td>Alice (creator)</td></tr>
-                <tr><th>Description</th><td>A scaffolded introduction to OOP fundamentals using Python: classes, inheritance, polymorphism, encapsulation, and pattern recognition. Designed as the OOP Skill within Course E135.</td></tr>
-              </table>
-
-              <h3 class="eyebrow mb-2"><span class="material-icons-outlined">list_alt</span>Step 2 · Topics &amp; Learning Objectives</h3>
-              <table class="pgn__data-table mb-3" style="border:none; box-shadow:none;">
-                <tr><th style="width:38%;">Topics</th><td>4 &mdash; Classes &amp; Objects, Inheritance &amp; Composition, Polymorphism &amp; Encapsulation, Common Design Patterns</td></tr>
-                <tr><th>Learning Objectives</th><td>10 total (3 + 2 + 2 + 3 per topic)</td></tr>
-                <tr><th>Overall Skill passing threshold</th><td>70%</td></tr>
-                <tr><th>Per-objective thresholds</th><td>65% &ndash; 75% (avg 69.5%)</td></tr>
-              </table>
-            </div>
-
-            <div class="col-6">
-              <h3 class="eyebrow mb-2"><span class="material-icons-outlined">memory</span>Step 3 · Model &amp; Prompt</h3>
-              <table class="pgn__data-table mb-3" style="border:none; box-shadow:none;">
-                <tr><th style="width:38%;">Preferred model</th><td>gpt-4o-mini (OpenAI) &middot; 1M / 1M tokens</td></tr>
-                <tr><th>Fallback chain</th><td>gpt-4o-mini &rarr; gpt-4o &rarr; gpt-4-turbo</td></tr>
-                <tr><th>Student profile</th><td>The student is a data scientist</td></tr>
-                <tr><th>Examples should be</th><td>All examples should be data science related</td></tr>
-                <tr><th>Other</th><td>&mdash;</td></tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <div class="pgn__card" style="height: 100%;">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">science</span>Staging</span>
-              <p class="small mb-2">Visible to Instructors, Tenant Admins, and Super Admins. Students cannot launch the Skill from staging.</p>
-              <button class="btn btn-outline-primary">Deploy to Staging</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="pgn__card pgn__card-featured" style="height: 100%;">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Live</span>
-              <p class="small mb-2">Visible to everyone, including Students. Topics cannot be removed once the Skill is Live; Learning Objective edits (rename, threshold change, add Learning Objective) are still allowed.</p>
-              <button class="btn btn-primary" onclick="goToScreen(22)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="stepper-card">
-        <h2 class="h5 mb-3">CI/CD Pipeline status</h2>
-        <div class="stepper">
-          <div class="stepper-step complete">
-            <div class="stepper-bullet"><span class="material-icons-outlined">check</span></div>
-            <div class="stepper-line"></div>
-            <div class="stepper-label">Validate</div>
-            <div class="stepper-sub">Schema OK · 0 errors</div>
-          </div>
-          <div class="stepper-step complete">
-            <div class="stepper-bullet"><span class="material-icons-outlined">check</span></div>
-            <div class="stepper-line"></div>
-            <div class="stepper-label">Build</div>
-            <div class="stepper-sub">Prompt artifact 4.2 KB</div>
-          </div>
-          <div class="stepper-step active">
-            <div class="stepper-bullet">3</div>
-            <div class="stepper-line"></div>
-            <div class="stepper-label">Test</div>
-            <div class="stepper-sub">Running 87 / 142...</div>
-          </div>
-          <div class="stepper-step">
-            <div class="stepper-bullet">4</div>
-            <div class="stepper-line"></div>
-            <div class="stepper-label">Deploy</div>
-            <div class="stepper-sub">Pending</div>
-          </div>
-          <div class="stepper-step">
-            <div class="stepper-bullet">5</div>
-            <div class="stepper-label">Verify</div>
-            <div class="stepper-sub">Pending</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(20)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(22)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
-  </div>
-</section>
 <!-- Screen 25 (mirrored from TA S14): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-22" aria-labelledby="s22-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main centered" id="main-22">
-    <div class="container-narrow">
-      <div class="feedback-panel text-center" style="padding: var(--pgn-spacing-5) var(--pgn-spacing-4);">
-        <div class="d-flex justify-content-center mb-3">
-          <span class="material-icons-outlined text-success" style="font-size:64px;">check_circle</span>
-        </div>
-        <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Deployed to Live</span>
-        <h1 id="s22-heading" class="h2 mb-2">OOP Skill build succeeded</h1>
-      </div>
-
-      <div class="pgn__card pgn__card-featured mt-3" style="text-align:left;">
-        <div class="pgn__card-section">
-          <span class="eyebrow"><span class="material-icons-outlined">link</span>Next: file an LRPS provisioning ticket</span>
-          <h2 class="h5 mt-1 mb-2">Live URL ready · LRPS deep link pending</h2>
-          <div class="api-card mb-3" style="background: var(--code-bg); color: #e6edf3; font-family: 'Lato', monospace; padding: 12px 16px; border-radius: 8px;">
-            <div class="text-muted small mb-1" style="color: var(--code-comment);">Destination URL</div>
-            <div style="word-break: break-all;">https://sdp.wgu.edu/launch/pdev/e135-oop-python?build=2026.05.06.1547</div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label class="form-label" for="lrps-justification">Ticket justification</label>
-            <textarea class="form-control" id="lrps-justification" rows="3">New SkillProof Skill E135 deployed. Requesting LRPS deep-link provisioning. Tenant: pdev. Build: e135-oop-python 2026.05.06.1547.</textarea>
-          </div>
-
-          <div class="d-flex gap-2 mb-3">
-            <a class="btn btn-primary" href="mailto:wgu-lrps-support@wgu.edu?subject=LRPS%20Ticket%20%E2%80%94%20E135%20OOP%20Python%20%28School%20of%20Technology%29&amp;body=Tenant%20Admin%3A%20Alice%20%E2%80%94%20School%20of%20Technology%0A%0ASkill%3A%20E135%20Object-Oriented%20Programming%20with%20Python%0ABuild%3A%202026.05.06.1547%0ADestination%20URL%3A%20https%3A%2F%2Fsdp.wgu.edu%2Flaunch%2Fpdev%2Fe135-oop-python%3Fbuild%3D2026.05.06.1547%0A%0AJustification%3A%20%0ANew%20SkillProof%20Skill%20E135%20deployed.%20Requesting%20LRPS%20deep-link%20provisioning.%0A"><span class="material-icons-outlined">send</span>Submit LRPS ticket</a>
-            <button class="btn btn-outline-primary"><span class="material-icons-outlined">content_copy</span>Copy URL</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">dashboard</span>Back to Dashboard</button>
-    <button class="btn btn-primary" onclick="goToScreen(18)"><span class="material-icons-outlined">add</span>Create another Skill</button>
-  </div>
-</section>
 <!-- Screen 26 (mirrored from TA S15): inherits TA drill-down for SA scope -->
-<section class="screen" id="screen-23" aria-labelledby="s23-heading">
+<section class="screen" id="screen-6" aria-labelledby="s6-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -4046,7 +2947,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-23">
+  <main class="screen-main" id="main-6">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -4054,7 +2955,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span>Analytics &amp; Reporting</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
-      <h1 id="s23-heading" class="mb-3">Analytics &amp; Reporting</h1>
+      <h1 id="s6-heading" class="mb-3">Analytics &amp; Reporting</h1>
       <!-- Section 1 — SCHOOL ROLLUP -->
       <span class="eyebrow"><span class="material-icons-outlined">domain</span>Level 1 of 4 · School</span>
       <h2 class="h4 mb-2">School of Technology — rollup</h2>
@@ -4163,7 +3064,7 @@ Address the learner by their first name. Never use "student" as the form of addr
               </tr>
             </thead>
             <tbody>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Open E010 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E010 Course detail">
                 <td><div class="text-strong">E010 &middot; Foundations of Programming (Python)</div></td>
                 <td class="num-col">2</td>
                 <td class="num-col">28</td>
@@ -4173,7 +3074,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">$207</td>
                 <td class="num-col"><span class="badge badge-warning">▲ 9%</span></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Open E075 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E075 Course detail">
                 <td><div class="text-strong">E075 &middot; Intermediate Python &amp; Libraries</div></td>
                 <td class="num-col">2</td>
                 <td class="num-col">22</td>
@@ -4183,7 +3084,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">$105</td>
                 <td class="num-col"><span class="badge badge-success">≈ 0%</span></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Open E120 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E120 Course detail">
                 <td><div class="text-strong">E120 &middot; Applied Data Structures (Python)</div></td>
                 <td class="num-col">1 (Draft)</td>
                 <td class="num-col">0</td>
@@ -4193,7 +3094,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">$0</td>
                 <td class="num-col"><span class="badge badge-gray">—</span></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Open E135 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E135 Course detail">
                 <td><div class="text-strong">E135 &middot; Object-Oriented Programming with Python</div></td>
                 <td class="num-col">2</td>
                 <td class="num-col">18</td>
@@ -4328,7 +3229,7 @@ Address the learner by their first name. Never use "student" as the form of addr
               </tr>
             </thead>
             <tbody>
-              <tr style="cursor:pointer;" onclick="goToScreen(15);" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
                 <td><div class="text-strong">Python Skill</div><div class="micro text-muted"><code>pyt-001</code></div></td>
                 <td>E010</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -4339,7 +3240,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">1,820,000</td>
                 <td class="num-col">$172</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(15);" role="button" tabindex="0" aria-label="Open Git &amp; VC Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Git &amp; VC Skill heatmap">
                 <td><div class="text-strong">Git &amp; Version Control Skill</div><div class="micro text-muted"><code>git-001</code></div></td>
                 <td>E010</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -4350,7 +3251,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">328,300</td>
                 <td class="num-col">$35</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(15);" role="button" tabindex="0" aria-label="Open Python Intermediate Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Python Intermediate Skill heatmap">
                 <td><div class="text-strong">Python Intermediate Skill</div><div class="micro text-muted"><code>pyt-002</code></div></td>
                 <td>E075</td>
                 <td><span class="badge badge-warning">Staging</span></td>
@@ -4361,7 +3262,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">560,000</td>
                 <td class="num-col">$45</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(15);" role="button" tabindex="0" aria-label="Open Libraries Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Libraries Skill heatmap">
                 <td><div class="text-strong">Libraries Skill</div><div class="micro text-muted"><code>lib-001</code></div></td>
                 <td>E075</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -4372,7 +3273,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">756,000</td>
                 <td class="num-col">$60</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(15);" role="button" tabindex="0" aria-label="Open OOP Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open OOP Skill heatmap">
                 <td><div class="text-strong">OOP Skill</div><div class="micro text-muted"><code>oop-001</code></div></td>
                 <td>E135</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -4383,7 +3284,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">560,000</td>
                 <td class="num-col">$45</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(15);" role="button" tabindex="0" aria-label="Open Design Patterns Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Design Patterns Skill heatmap">
                 <td><div class="text-strong">Design Patterns Skill</div><div class="micro text-muted"><code>dpt-001</code></div></td>
                 <td>E135</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -4394,7 +3295,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td class="num-col">376,000</td>
                 <td class="num-col">$30</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(15);" role="button" tabindex="0" aria-label="Open Data Structures Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Data Structures Skill heatmap">
                 <td><div class="text-strong">Data Structures Skill</div><div class="micro text-muted"><code>ds-001</code></div></td>
                 <td>E120</td>
                 <td><span class="badge badge-gray">Draft</span></td>
@@ -4952,7 +3853,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 </section>
 
 <!-- Screen 27: Create new School (SA-only, provisions a new tenant) ===== -->
-<section class="screen" id="screen-24" aria-labelledby="s24-heading">
+<section class="screen" id="screen-5" aria-labelledby="s5-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -4962,17 +3863,17 @@ Address the learner by their first name. Never use "student" as the form of addr
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-24">
+  <main class="screen-main" id="main-5">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(12); return false;">Schools &amp; Settings</a>
+        <a href="#" onclick="goToScreen(4); return false;">Schools &amp; Settings</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>New School</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">domain_add</span>School</span>
-      <h1 id="s24-heading" class="h1 mb-2">Create a new School</h1>
+      <h1 id="s5-heading" class="h1 mb-2">Create a new School</h1>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section-lg">
@@ -5009,8 +3910,8 @@ Address the learner by their first name. Never use "student" as the form of addr
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(12)"><span class="material-icons-outlined">arrow_back</span>Cancel</button>
-    <button class="btn btn-primary" onclick="alert('Create School (wireframe — would provision the new tenant and return to Schools &amp; Settings with the School added to the table)'); goToScreen(12);"><span class="material-icons-outlined">check</span>Create School</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Cancel</button>
+    <button class="btn btn-primary" onclick="alert('Create School (wireframe — would provision the new tenant and return to Schools &amp; Settings with the School added to the table)'); goToScreen(4);"><span class="material-icons-outlined">check</span>Create School</button>
   </div>
 </section>
 
@@ -5042,81 +3943,60 @@ Address the learner by their first name. Never use "student" as the form of addr
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow A</span>
-    <span class="flow-desc">Platform Operations</span>
-    <nav class="flow-nav" aria-label="Platform operations screens">
+    <span class="flow-desc">Dashboard &amp; Access Control</span>
+    <nav class="flow-nav" aria-label="Dashboard and access control screens">
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: Super Admin Dashboard">01 Dashboard</button>
-      <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Platform Settings">02 Platform Settings</button>
-      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Cost Spike drill-down">03 Cost Spike</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Adjust Rate Limits">04 Rate Limits</button>
+      <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Access Control">02 Access Control</button>
+      <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Access Denied">03 Access Denied</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow B</span>
-    <span class="flow-desc">Compliance &amp; Audit</span>
-    <nav class="flow-nav" aria-label="Compliance and audit screens">
-      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Compliance Report">05 Compliance</button>
-      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Geo-Redundancy">06 Geo-Redundancy</button>
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Logs">07 Logs</button>
+    <span class="flow-desc">Schools</span>
+    <nav class="flow-nav" aria-label="Schools screens">
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Schools">04 Schools</button>
+      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Create new School">05 New School</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow C</span>
-    <span class="flow-desc">Access &amp; People</span>
-    <nav class="flow-nav" aria-label="Access control and people screens">
-      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Access Control (People &middot; Skills &middot; Schools)">08 Access Control</button>
-      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Instructor Roster">11 Instructor Roster</button>
-      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Schools &amp; Settings">12 Schools &amp; Settings</button>
-      <button class="step-btn" onclick="goToScreen(24)" aria-label="Screen 24: Create new School">24 New School</button>
+    <span class="flow-desc">Analytics</span>
+    <nav class="flow-nav" aria-label="Analytics and drill-down screens">
+      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Analytics">06 Analytics</button>
+      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Course view">07 Course view</button>
+      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Skill heatmap">08 Skill heatmap</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: At-risk filter">09 At-risk filter</button>
+      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: Learner profile">10 Learner profile</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow D</span>
-    <span class="flow-desc">External Tools &amp; Data</span>
-    <nav class="flow-nav" aria-label="External tools and data screens">
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: External Tooling &amp; Integrations">09 External Tooling</button>
-      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: Data &amp; Integrations Hub">10 Data Hub</button>
+    <span class="flow-desc">Platform Settings</span>
+    <nav class="flow-nav" aria-label="Platform settings screens">
+      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Platform Settings">11 Platform Settings</button>
+      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Cost Spike drill-down">12 Cost Spike</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow E</span>
-    <span class="flow-desc">Deny Path</span>
-    <nav class="flow-nav" aria-label="Access denied screen">
-      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: Access Denied (zero-trust deny path)">13 Access Denied</button>
+    <span class="flow-desc">External Tools</span>
+    <nav class="flow-nav" aria-label="External tools screens">
+      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: External Tools and Integrations">13 External Tools</button>
+      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: Data and Integrations Hub">14 Data Hub</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow F</span>
-    <span class="flow-desc">Drill-Down (Course / Skill / Topic / Learner)</span>
-    <nav class="flow-nav" aria-label="Drill-down screens (mirrors School Admin drill chain)">
-      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: Course view">14 Course view</button>
-      <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Skill heatmap">15 Skill heatmap</button>
-      <button class="step-btn" onclick="goToScreen(16)" aria-label="Screen 16: At-risk filter">16 At-risk filter</button>
-      <button class="step-btn" onclick="goToScreen(17)" aria-label="Screen 17: Learner profile">17 Learner profile</button>
-    </nav>
-  </div>
-  <div class="meta-bar-flows">
-    <span class="flow-id">Flow G</span>
-    <span class="flow-desc">Skill Creation Wizard</span>
-    <nav class="flow-nav" aria-label="Skill creation wizard screens">
-      <button class="step-btn" onclick="goToScreen(18)" aria-label="Screen 18: New Skill form">18 New Skill</button>
-      <button class="step-btn" onclick="goToScreen(19)" aria-label="Screen 19: Topics &amp; Learning Objectives">19 Topics &amp; LO</button>
-      <button class="step-btn" onclick="goToScreen(20)" aria-label="Screen 20: Model &amp; Prompt">20 Model &amp; Prompt</button>
-      <button class="step-btn" onclick="goToScreen(21)" aria-label="Screen 21: Review &amp; Deploy">21 Review &amp; Deploy</button>
-      <button class="step-btn" onclick="goToScreen(22)" aria-label="Screen 22: Deploy success">22 Deploy success</button>
-    </nav>
-  </div>
-  <div class="meta-bar-flows">
-    <span class="flow-id">Flow H</span>
-    <span class="flow-desc">Analytics &amp; Activity Log</span>
-    <nav class="flow-nav" aria-label="Analytics screens">
-      <button class="step-btn" onclick="goToScreen(23)" aria-label="Screen 23: Analytics &amp; Activity Log (4-level zoom)">23 Analytics</button>
+    <span class="flow-desc">Logs</span>
+    <nav class="flow-nav" aria-label="Logs screen">
+      <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Logs">15 Logs</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 24; // v4.128 (26 May 2026): S18 Conv logs / S19 Transcript / S20 Audit Trail removed per contract scope (conversations not stored — single Q+A); drill chain stops at S17 Learner profile. S21-S27 renumbered to S18-S24. Total: 13 SA platform-ops (S1-S13) + 4 drill (S14-S17) + 5 wizard (S18-S22) + 1 analytics (S23) + 1 New School (S24).
+  const TOTAL_SCREENS = 15; // v4.135: 15 screens across 6 flows (A-F) matching the dashboard toolbar.
 
   /* Screen 09 (Access Control) tab toggling — People · Skills · Schools */
   function goToTab(tabId) {
