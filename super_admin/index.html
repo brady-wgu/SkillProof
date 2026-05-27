@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.132</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.133</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -856,7 +856,7 @@
         </div>
         <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card">
-            <div class="text-muted small mb-1">SESSIONS · LAST 7 DAYS</div>
+            <div class="text-muted small mb-1">SESSIONS · 7 DAYS</div>
             <div class="gauge-number">12,400</div>
             <div class="gauge-target">+8% vs prior 7 days</div>
           </div>
@@ -881,10 +881,9 @@
       <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(23)"><span class="material-icons-outlined">analytics</span>Analytics</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">school</span>Schools &amp; Settings</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(8)"><span class="material-icons-outlined">manage_accounts</span>User Management</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(8)"><span class="material-icons-outlined">manage_accounts</span>Access Control</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">paid</span>Token Usage</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4)"><span class="material-icons-outlined">speed</span>Rate Limits</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">cast_for_education</span>Instructor Roster</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">open_in_new</span>External Tooling</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(7)"><span class="material-icons-outlined">history</span>Logs</button>
       </div>
@@ -900,13 +899,12 @@
                 <th class="num-col">Courses</th>
                 <th class="num-col">Skills</th>
                 <th class="num-col">Active Learners</th>
-                <th class="num-col">Sessions · 7d</th>
+                <th class="num-col">Sessions · 7 days</th>
                 <th class="num-col">Cost · MTD</th>
-                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="background: var(--pgn-color-warning-tint); cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Technology data">
+              <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Technology data">
                 <td><strong>School of Technology</strong></td>
                 <td>Alice</td>
                 <td class="num-col">4</td>
@@ -914,7 +912,6 @@
                 <td class="num-col">90</td>
                 <td class="num-col">680</td>
                 <td class="num-col"><strong>$387</strong></td>
-                <td><a href="#" onclick="event.stopPropagation(); goToScreen(3); return false;" class="badge badge-warning" style="text-decoration:none;" title="Cost spike — drill into details"><span class="material-icons-outlined" style="font-size:12px;">trending_up</span>Spike</a></td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Business data">
                 <td><strong>School of Business</strong></td>
@@ -924,7 +921,6 @@
                 <td class="num-col">1,402</td>
                 <td class="num-col">4,360</td>
                 <td class="num-col">$1,408</td>
-                <td><span class="text-muted small">—</span></td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into School of Education data">
                 <td><strong>School of Education</strong></td>
@@ -934,7 +930,6 @@
                 <td class="num-col">1,248</td>
                 <td class="num-col">4,140</td>
                 <td class="num-col">$1,287</td>
-                <td><span class="text-muted small">—</span></td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(14);" role="button" tabindex="0" aria-label="Drill into Leavitt School of Health data">
                 <td><strong>Leavitt School of Health</strong></td>
@@ -944,7 +939,6 @@
                 <td class="num-col">1,102</td>
                 <td class="num-col">3,220</td>
                 <td class="num-col">$1,205</td>
-                <td><span class="text-muted small">—</span></td>
               </tr>
             </tbody>
             <tfoot>
@@ -956,7 +950,6 @@
                 <th class="num-col">3,842</th>
                 <th class="num-col">12,400</th>
                 <th class="num-col">$4,287</th>
-                <th></th>
               </tr>
             </tfoot>
           </table>
@@ -4085,7 +4078,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         </div>
         <div class="col-3">
           <div class="gauge-card">
-            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SESSIONS · LAST 7 DAYS</span><span class="dot green"></span></div>
+            <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SESSIONS · 7 DAYS</span><span class="dot green"></span></div>
             <div class="gauge-number">680</div>
             <div class="gauge-target">+8% vs prior 7 days</div>
           </div>
