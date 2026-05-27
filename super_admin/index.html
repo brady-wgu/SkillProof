@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.129</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.130</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1569,7 +1569,7 @@
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">history</span>Platform Logs</span>
           <h1 id="s7-heading">Logs</h1>
-          <p class="mt-1">Every privileged action across every School. 3-year FERPA-aligned retention.</p>
+          <p class="mt-1">Every privileged action across every School. FERPA-aligned retention.</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
           <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">file_download</span>Export</button>
@@ -1580,7 +1580,6 @@
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
         <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
         <span class="badge badge-brand">School: All <span class="material-icons-outlined" style="font-size:12px; cursor:pointer;">close</span></span>
-        <span class="badge badge-brand">Severity: All</span>
         <span class="badge badge-brand">Last 24h</span>
         <button class="btn btn-tertiary btn-sm">+ Add filter</button>
         <input class="form-control" placeholder="Search by actor, event, or IP" style="height:36px; font-size:14px; max-width:280px; margin-left:auto;" />
@@ -1593,8 +1592,6 @@
             <th>School</th>
             <th>Actor</th>
             <th>Event</th>
-            <th>Severity</th>
-            <th>Result</th>
             <th>Source</th>
           </tr>
         </thead>
@@ -1604,8 +1601,6 @@
             <td>School of Technology</td>
             <td>Bob (you)</td>
             <td><code>tenant.rate_limit.update</code></td>
-            <td><span class="badge badge-warning">High</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>198.51.x.x</td>
           </tr>
           <tr>
@@ -1613,8 +1608,6 @@
             <td>School of Technology</td>
             <td>System (Model Router)</td>
             <td><code>llm.fallback.disengage</code></td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>internal</td>
           </tr>
           <tr>
@@ -1622,8 +1615,6 @@
             <td>School of Technology</td>
             <td>Jordan (JFT CSM)</td>
             <td><code>incident.acknowledge</code></td>
-            <td><span class="badge badge-warning">High</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>JFT VPN</td>
           </tr>
           <tr>
@@ -1631,8 +1622,6 @@
             <td>School of Technology</td>
             <td>System (Monitoring)</td>
             <td><code>llm.fallback.engage</code></td>
-            <td><span class="badge badge-danger">Critical</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>internal</td>
           </tr>
           <tr>
@@ -1640,8 +1629,6 @@
             <td>School of Technology</td>
             <td>Bob (you)</td>
             <td><code>rbac.role.elevate</code> (Alice &rarr; School Admin)</td>
-            <td><span class="badge badge-warning">High</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>198.51.x.x</td>
           </tr>
           <tr>
@@ -1649,8 +1636,6 @@
             <td>all</td>
             <td>System (Compliance scanner)</td>
             <td><code>compliance.tls.scan.complete</code></td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">All paths pass</span></td>
             <td>internal</td>
           </tr>
           <tr>
@@ -1658,8 +1643,6 @@
             <td>School of Technology</td>
             <td>Bob (you)</td>
             <td><code>rbac.instructor.assign</code> (Charlie &rarr; E135)</td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>198.51.x.x</td>
           </tr>
           <tr>
@@ -1667,8 +1650,6 @@
             <td>all</td>
             <td>System (API Gateway)</td>
             <td><code>service.flap</code> (3m self-heal)</td>
-            <td><span class="badge badge-warning">High</span></td>
-            <td><span class="badge badge-success">Self-resolved</span></td>
             <td>internal</td>
           </tr>
           <tr>
@@ -1676,8 +1657,6 @@
             <td>all</td>
             <td>System (Geo)</td>
             <td><code>failover.probe</code> (Primary &rarr; DR)</td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">3m 14s</span></td>
             <td>internal</td>
           </tr>
           <tr>
@@ -1685,8 +1664,6 @@
             <td>Leavitt School of Health</td>
             <td>Bob (you)</td>
             <td><code>tenant.school.create</code> (school_of_health)</td>
-            <td><span class="badge badge-warning">High</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>198.51.x.x</td>
           </tr>
           <tr>
@@ -1694,8 +1671,6 @@
             <td>all</td>
             <td>System (Compliance scanner)</td>
             <td><code>compliance.ferpa.scan.complete</code></td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">All controls pass</span></td>
             <td>internal</td>
           </tr>
           <tr>
@@ -1703,8 +1678,6 @@
             <td>School of Business</td>
             <td>Charlie</td>
             <td><code>authz.denied</code> (cross-School access attempt, B210)</td>
-            <td><span class="badge badge-warning">High</span></td>
-            <td><span class="badge badge-danger">Denied</span></td>
             <td>203.0.113.x</td>
           </tr>
           <tr>
@@ -1712,8 +1685,6 @@
             <td>School of Technology</td>
             <td>Alice</td>
             <td><code>skill.config.update</code> (E010 Python, AI prompt revised)</td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>203.0.113.x</td>
           </tr>
           <tr>
@@ -1721,8 +1692,6 @@
             <td>School of Technology</td>
             <td>Charlie</td>
             <td><code>student.record.access</code> (Sally, E010 mastery view)</td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">Authorized</span></td>
             <td>203.0.113.x</td>
           </tr>
           <tr>
@@ -1730,8 +1699,6 @@
             <td>School of Technology</td>
             <td>System (LRPS)</td>
             <td><code>lti.deeplink.update</code> (E135 OOP, launch URL rotated)</td>
-            <td><span class="badge badge-info">Info</span></td>
-            <td><span class="badge badge-success">Success</span></td>
             <td>internal</td>
           </tr>
         </tbody>
@@ -2398,22 +2365,6 @@
               <h3 class="h5 mt-2 mb-1">GitHub</h3>
               <p class="small text-muted mb-2">Code repos &middot; CI/CD pipelines</p>
               <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open GitHub</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-4">
-          <div class="pgn__card">
-            <div class="pgn__card-section">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <span class="material-icons-outlined" style="font-size:32px; color:var(--pgn-color-brand-base);">key</span>
-                <span class="badge badge-success">Rotation current</span>
-              </div>
-              <h3 class="h5 mt-2 mb-1">Secrets Manager</h3>
-              <p class="small text-muted mb-2">API keys &middot; LLM provider keys &middot; service-account credentials</p>
-              <a class="btn btn-outline-primary btn-sm" href="#" onclick="event.preventDefault();"><span class="material-icons-outlined" style="font-size:14px;">open_in_new</span>Open Secrets Manager</a>
             </div>
           </div>
         </div>
@@ -4904,7 +4855,6 @@ Address the learner by their first name. Never use "student" as the form of addr
                   <th>Actor</th>
                   <th>Action</th>
                   <th>Object</th>
-                  <th>Result</th>
                 </tr>
               </thead>
               <tbody>
@@ -4913,77 +4863,66 @@ Address the learner by their first name. Never use "student" as the form of addr
                   <td>Alice</td>
                   <td>Deploy</td>
                   <td><code>oop-001</code> &middot; Live</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="role-change">
                   <td>07 May 2026 &middot; 09:00:00</td>
                   <td>Bob (Super Admin)</td>
                   <td>Elevate role</td>
                   <td>Alice &rarr; Tenant Admin (School of Technology)</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="edit">
                   <td>13 May 2026 &middot; 13:51:02</td>
                   <td>Alice</td>
                   <td>Edit prompt</td>
                   <td><code>oop-001</code> &middot; prompt v3</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="edit">
                   <td>13 May 2026 &middot; 11:24:48</td>
                   <td>Alice</td>
                   <td>Edit objective threshold</td>
                   <td><code>oop-001</code> &middot; Objective 1.3</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="create">
                   <td>12 May 2026 &middot; 16:02:11</td>
                   <td>Alice</td>
                   <td>Create Skill</td>
                   <td><code>oop-001</code></td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="edit">
                   <td>09 May 2026 &middot; 09:18:55</td>
                   <td>Alice</td>
                   <td>Update branding</td>
                   <td>Tenant settings &middot; logo</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="role-change">
                   <td>06 May 2026 &middot; 13:18:04</td>
                   <td>Bob (Super Admin)</td>
                   <td>Assign instructor</td>
                   <td>Charlie &rarr; E135</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="deploy">
                   <td>04 May 2026 &middot; 22:11:09</td>
                   <td>Alice</td>
                   <td>Deploy</td>
                   <td><code>pyt-002</code> &middot; Staging</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="deploy">
                   <td>02 May 2026 &middot; 18:34:27</td>
                   <td>Alice</td>
                   <td>Deploy</td>
                   <td><code>pyt-001</code> &middot; Live</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="role-change">
                   <td>28 Apr 2026 &middot; 11:20:55</td>
                   <td>Bob (Super Admin)</td>
                   <td>Add instructor</td>
                   <td>Noor &rarr; E010</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
                 <tr data-activity-cat="edit">
                   <td>26 Apr 2026 &middot; 14:55:21</td>
                   <td>Alice</td>
                   <td>Edit topic</td>
                   <td><code>pyt-001</code> &middot; Classes &amp; Objects</td>
-                  <td><span class="badge badge-success">Success</span></td>
                 </tr>
               </tbody>
             </table>
