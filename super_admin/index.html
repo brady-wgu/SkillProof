@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.133</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.134</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -879,12 +879,11 @@
 
       <!-- Toolbar: navigation links as blue outline buttons (mirrors TA dashboard) -->
       <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(23)"><span class="material-icons-outlined">analytics</span>Analytics</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">school</span>Schools &amp; Settings</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(8)"><span class="material-icons-outlined">manage_accounts</span>Access Control</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">paid</span>Token Usage</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4)"><span class="material-icons-outlined">speed</span>Rate Limits</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">open_in_new</span>External Tooling</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">school</span>Schools</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(23)"><span class="material-icons-outlined">analytics</span>Analytics</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">tune</span>Platform Settings</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">open_in_new</span>External Tools</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(7)"><span class="material-icons-outlined">history</span>Logs</button>
       </div>
 
@@ -976,12 +975,12 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>Token Usage</span>
+        <span>Platform Settings</span>
       </nav>
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">paid</span>Cost &amp; Usage</span>
-          <h1 id="s2-heading">Token usage by school</h1>
+          <h1 id="s2-heading">Platform Settings</h1>
           <p class="mt-1">Aggregate spend across all schools for the current billing period (May 2026).</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
@@ -1089,7 +1088,7 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(2); return false;">Token Usage</a>
+        <a href="#" onclick="goToScreen(2); return false;">Platform Settings</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>School of Technology</span>
       </nav>
@@ -5046,7 +5045,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     <span class="flow-desc">Platform Operations</span>
     <nav class="flow-nav" aria-label="Platform operations screens">
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: Super Admin Dashboard">01 Dashboard</button>
-      <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Token Usage tracking">02 Token Usage</button>
+      <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Platform Settings">02 Platform Settings</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Cost Spike drill-down">03 Cost Spike</button>
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Adjust Rate Limits">04 Rate Limits</button>
     </nav>
