@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.137</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.138</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1804,7 +1804,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">14</td>
                       <td>22 Mar 2026</td>
                     
-                <td><button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); alert('School Settings (wireframe — would open settings for School of Technology)');"><span class="material-icons-outlined">tune</span>Settings</button></td>
+                <td><button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4); document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); return false;"><span class="material-icons-outlined">tune</span>Settings</button></td>
               </tr>
                     <tr>
                       <td><div class="text-strong">School of Business</div></td>
@@ -1817,7 +1817,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">9</td>
                       <td>04 Apr 2026</td>
                     
-                <td><button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); alert('School Settings (wireframe — would open settings for School of Business)');"><span class="material-icons-outlined">tune</span>Settings</button></td>
+                <td><button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4); document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); return false;"><span class="material-icons-outlined">tune</span>Settings</button></td>
               </tr>
                     <tr>
                       <td><div class="text-strong">School of Education</div></td>
@@ -1830,7 +1830,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">6</td>
                       <td>15 Apr 2026</td>
                     
-                <td><button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); alert('School Settings (wireframe — would open settings for School of Education)');"><span class="material-icons-outlined">tune</span>Settings</button></td>
+                <td><button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4); document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); return false;"><span class="material-icons-outlined">tune</span>Settings</button></td>
               </tr>
                     <tr>
                       <td><div class="text-strong">Leavitt School of Health</div></td>
@@ -1843,7 +1843,7 @@
                       <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
                       <td>05 May 2026</td>
                     
-                <td><button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); alert('School Settings (wireframe — would open settings for Leavitt School of Health)');"><span class="material-icons-outlined">tune</span>Settings</button></td>
+                <td><button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4); document.getElementById('school-settings-panel').scrollIntoView({behavior:'smooth'}); return false;"><span class="material-icons-outlined">tune</span>Settings</button></td>
               </tr>
                   </tbody>
                 </table>
@@ -2281,7 +2281,6 @@
                 <th>School Admins</th>
                 <th style="text-align:right;">Skills</th>
                 <th>Created</th>
-                <th>Status</th>
                 <th>Settings</th>
               </tr>
             </thead>
@@ -2292,7 +2291,6 @@
                 <td>3 &middot; <span class="text-muted small">Alice, Maya, Devon</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">14</td>
                 <td>22 Mar 2026</td>
-                <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
               </tr>
               <tr>
                 <td><div class="text-strong">School of Business</div></td>
@@ -2300,7 +2298,6 @@
                 <td>2 &middot; <span class="text-muted small">Miguel, Diane</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">9</td>
                 <td>04 Apr 2026</td>
-                <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
               </tr>
               <tr>
                 <td><div class="text-strong">School of Education</div></td>
@@ -2308,7 +2305,6 @@
                 <td>2 &middot; <span class="text-muted small">Renee, Akira</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">6</td>
                 <td>15 Apr 2026</td>
-                <td><span class="badge badge-success"><span class="dot green"></span>Active</span></td>
               </tr>
               <tr>
                 <td><div class="text-strong">Leavitt School of Health</div></td>
@@ -2316,7 +2312,6 @@
                 <td>1 &middot; <span class="text-muted small">Theo</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
                 <td>05 May 2026</td>
-                <td><span class="badge badge-info"><span class="dot blue"></span>Onboarding</span></td>
               </tr>
             </tbody>
           </table>
