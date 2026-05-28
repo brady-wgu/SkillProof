@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.139</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.140</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -1443,7 +1443,6 @@
                       <th>Role</th>
                       <th>Scope</th>
                       <th>Last active</th>
-                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1457,10 +1456,9 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-brand">Super Admin</span></td>
+                      <td><button class="badge badge-brand" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Bob (you)', 'Super Admin');">Super Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (cross-school)</td>
                       <td>Now</td>
-                      <td class="text-muted small">Cannot downgrade self</td>
                     </tr>
                     <tr data-user-cat="super">
                       <td>
@@ -1472,10 +1470,9 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-brand">Super Admin</span></td>
+                      <td><button class="badge badge-brand" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Jordan', 'Super Admin');">Super Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (cross-school)</td>
                       <td>2 hours ago</td>
-                      <td><button class="btn btn-tertiary btn-sm" disabled title="Demoting to School Admin requires assignment to at least one School afterward. Currently blocked: minimum 2 Super Admins required at all times.">Downgrade (blocks min 2)</button></td>
                     </tr>
                     <tr data-user-cat="tenant">
                       <td>
@@ -1487,7 +1484,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-info">School Admin</span></td>
+                      <td><button class="badge badge-info" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Alice', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
@@ -1496,10 +1493,6 @@
                         </div>
                       </td>
                       <td>15 min ago</td>
-                      <td>
-                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                        <button class="btn btn-tertiary btn-sm" title="Demoting to Instructor removes all School assignments and reverts to baseline read-only access on assigned Skills.">Downgrade</button>
-                      </td>
                     </tr>
                     <tr data-user-cat="tenant">
                       <td>
@@ -1511,7 +1504,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-info">School Admin</span></td>
+                      <td><button class="badge badge-info" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Miguel', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
@@ -1519,10 +1512,6 @@
                         </div>
                       </td>
                       <td>Yesterday</td>
-                      <td>
-                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                        <button class="btn btn-tertiary btn-sm" title="Demoting to Instructor removes all School assignments and reverts to baseline read-only access on assigned Skills.">Downgrade</button>
-                      </td>
                     </tr>
                     <tr data-user-cat="instructor">
                       <td>
@@ -1534,7 +1523,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-warning">Instructor</span></td>
+                      <td><button class="badge badge-warning" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Charlie', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
@@ -1544,11 +1533,6 @@
                         </div>
                       </td>
                       <td>1 day ago</td>
-                      <td>
-                        <button class="btn btn-primary btn-sm">Upgrade to School Admin</button>
-                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                        <button class="btn btn-tertiary btn-sm" title="Demoting to Student removes all Skill assignments and reverts to learner-only access.">Downgrade</button>
-                      </td>
                     </tr>
                     <tr data-user-cat="instructor">
                       <td>
@@ -1560,7 +1544,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-warning">Instructor</span></td>
+                      <td><button class="badge badge-warning" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Priya', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
@@ -1569,11 +1553,6 @@
                         </div>
                       </td>
                       <td>1 week ago</td>
-                      <td>
-                        <button class="btn btn-primary btn-sm">Upgrade to School Admin</button>
-                        <button class="btn btn-outline-primary btn-sm">Upgrade to Super Admin</button>
-                        <button class="btn btn-tertiary btn-sm" title="Demoting to Student removes all Skill assignments and reverts to learner-only access.">Downgrade</button>
-                      </td>
                     </tr>
                     <tr data-user-cat="student">
                       <td>
@@ -1585,13 +1564,9 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-gray">Student</span></td>
+                      <td><button class="badge badge-gray" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Sally', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (own record only)</td>
                       <td>2 hours ago</td>
-                      <td>
-                        <button class="btn btn-primary btn-sm">Upgrade to Instructor</button>
-                        <button class="btn btn-outline-primary btn-sm">Upgrade to School Admin</button>
-                      </td>
                     </tr>
                     <tr data-user-cat="student">
                       <td>
@@ -1603,13 +1578,9 @@
                           </div>
                         </div>
                       </td>
-                      <td><span class="badge badge-gray">Student</span></td>
+                      <td><button class="badge badge-gray" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Devon', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (own record only)</td>
                       <td>3 days ago</td>
-                      <td>
-                        <button class="btn btn-primary btn-sm">Upgrade to Instructor</button>
-                        <button class="btn btn-outline-primary btn-sm">Upgrade to School Admin</button>
-                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3905,6 +3876,27 @@
   </div>
 </div>
 
+<!-- Role-change modal (Option 3) -->
+<div id="role-modal" role="dialog" aria-modal="true" aria-labelledby="role-modal-title" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:24px; border-radius:8px; max-width:480px; width:90%; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+    <h2 id="role-modal-title" class="h5 mb-2">Change role &middot; <span id="role-modal-user">User</span></h2>
+    <p class="small text-muted mb-3">Current role: <strong><span id="role-modal-current">Role</span></strong></p>
+    <div class="form-group mb-3">
+      <label class="form-label mb-2">New role</label>
+      <div class="d-flex flex-column" style="gap:6px;">
+        <label class="d-flex align-items-center gap-2"><input type="radio" name="new-role" value="Student"> Student</label>
+        <label class="d-flex align-items-center gap-2"><input type="radio" name="new-role" value="Instructor"> Instructor</label>
+        <label class="d-flex align-items-center gap-2"><input type="radio" name="new-role" value="School Admin"> School Admin</label>
+        <label class="d-flex align-items-center gap-2"><input type="radio" name="new-role" value="Super Admin"> Super Admin</label>
+      </div>
+    </div>
+    <div class="d-flex gap-2 justify-content-end">
+      <button class="btn btn-outline-primary btn-sm" onclick="closeRoleModal()">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="confirmRoleChange()">Confirm change</button>
+    </div>
+  </div>
+</div>
+
 <script>
   /* STORYBOARD NAVIGATION */
   const TOTAL_SCREENS = 15; // v4.135: 15 screens across 6 flows (A-F) matching the dashboard toolbar.
@@ -3928,6 +3920,26 @@
         panel.setAttribute('aria-hidden', 'true');
       }
     });
+  }
+
+  /* Role-change modal (Option 3) */
+  function openRoleModal(name, current) {
+    document.getElementById('role-modal-user').textContent = name;
+    document.getElementById('role-modal-current').textContent = current;
+    document.querySelectorAll('input[name="new-role"]').forEach(function(r){ r.checked = (r.value === current); });
+    document.getElementById('role-modal').style.display = 'flex';
+  }
+  function closeRoleModal() {
+    document.getElementById('role-modal').style.display = 'none';
+  }
+  function confirmRoleChange() {
+    var name = document.getElementById('role-modal-user').textContent;
+    var current = document.getElementById('role-modal-current').textContent;
+    var sel = document.querySelector('input[name="new-role"]:checked');
+    var newRole = sel ? sel.value : current;
+    if (newRole === current) { alert('No change - pick a different role first.'); return; }
+    alert('Confirm: change ' + name + ' from ' + current + ' to ' + newRole + '? (wireframe - would update role + write audit log entry)');
+    closeRoleModal();
   }
 
   function goToScreen(n) {
