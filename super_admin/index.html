@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.140</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.141</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -3933,12 +3933,8 @@
     document.getElementById('role-modal').style.display = 'none';
   }
   function confirmRoleChange() {
-    var name = document.getElementById('role-modal-user').textContent;
-    var current = document.getElementById('role-modal-current').textContent;
-    var sel = document.querySelector('input[name="new-role"]:checked');
-    var newRole = sel ? sel.value : current;
-    if (newRole === current) { alert('No change - pick a different role first.'); return; }
-    alert('Confirm: change ' + name + ' from ' + current + ' to ' + newRole + '? (wireframe - would update role + write audit log entry)');
+    // Wireframe: the radio selection + Confirm button are the confirmation; a real
+    // implementation would update the role + write an audit log entry here.
     closeRoleModal();
   }
 
