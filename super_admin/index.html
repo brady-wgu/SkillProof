@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillProof — Super Admin Portal — Storyboard v4.141</title>
+  <title>SkillProof — Super Admin Portal — Storyboard v4.150</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
 
   <!--
@@ -32,6 +32,17 @@
        Mirrors tenant_admin.html / instructor.html.
        ================================================================ */
     :root {
+      /* Heatmap color ramp (ported from School Admin) — lowest (red) → highest (green) */
+      --heat-1: #FDEAEA;
+      --heat-2: #FBD0CF;
+      --heat-3: #FEF3E2;
+      --heat-4: #FBE2A6;
+      --heat-5: #FBE4B0;
+      --heat-6: #DCEDC8;
+      --heat-7: #C5E1A5;
+      --heat-8: #AED581;
+      --heat-9: #81C784;
+      --heat-text-dark: #1A1A1A;
       --pgn-color-primary-base: #001730;
       --pgn-color-brand-base:   #0070F0;
       --pgn-color-info-base:    #46B1EF;
@@ -448,6 +459,7 @@
     }
     .pgn__data-table tr:last-child td { border-bottom: none; }
     .pgn__data-table tr:hover td { background: var(--pgn-color-bg-light); }
+    .pgn__data-table tr[role="button"]:hover td { background: rgba(0, 40, 85, 0.05); }
     .pgn__data-table .num-col { text-align: right; font-variant-numeric: tabular-nums; }
 
     /* ================================================================
@@ -810,6 +822,116 @@
       background: #fff !important;
       color: var(--color-deep-navy) !important;
     }
+    /* ===== Skill heatmap + score pill (ported from School Admin for the S8–S10 drill-chain) ===== */
+    .heatmap-card {
+      background: var(--pgn-color-white);
+      border: 1px solid var(--pgn-color-gray-100);
+      border-radius: var(--pgn-size-border-radius-lg);
+      padding: var(--pgn-spacing-3);
+      box-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.06);
+      overflow-x: auto;
+    }
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: 160px repeat(13, minmax(108px, 1fr));
+      gap: 2px;
+      min-width: 1580px;
+    }
+    .heatmap-scroll-container { position: relative; }
+    .heatmap-scroll-container::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 18px; right: 0; width: 56px;
+      background: linear-gradient(to left, var(--pgn-color-bg-base) 15%, rgba(255,255,255,0));
+      pointer-events: none; z-index: 2; transition: opacity 0.2s ease;
+    }
+    .heatmap-scroll-container.at-end::after { opacity: 0; }
+    .heatmap-card {
+      scrollbar-color: var(--pgn-color-brand-base) var(--pgn-color-gray-100);
+      scrollbar-width: auto;
+    }
+    .heatmap-card::-webkit-scrollbar { height: 12px; }
+    .heatmap-card::-webkit-scrollbar-track { background: var(--pgn-color-gray-100); border-radius: 6px; }
+    .heatmap-card::-webkit-scrollbar-thumb {
+      background: var(--pgn-color-brand-base); border-radius: 6px; border: 2px solid var(--pgn-color-gray-100);
+    }
+    .heatmap-card::-webkit-scrollbar-thumb:hover { background: var(--pgn-color-primary-base); }
+    .heatmap-scroll-hint {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 8px; padding: 6px 12px; font-size: 12px;
+      color: var(--pgn-color-brand-base); background: var(--pgn-color-brand-tint);
+      border-radius: var(--pgn-size-border-radius-sm); font-style: italic; transition: opacity 0.2s ease;
+    }
+    .heatmap-scroll-container.at-end .heatmap-scroll-hint { opacity: 0.5; }
+    .heatmap-corner {
+      background: transparent; padding: 8px;
+      font-size: 12px; font-weight: 700; color: var(--pgn-color-gray-600);
+      text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: end;
+    }
+    .heatmap-col-label {
+      background: var(--pgn-color-bg-light); padding: 8px 10px;
+      font-size: 12px; font-weight: 700; color: var(--pgn-color-gray-700); letter-spacing: 0.02em;
+      border-radius: var(--pgn-size-border-radius-sm) var(--pgn-size-border-radius-sm) 0 0;
+      text-align: center; line-height: 1.3;
+    }
+    .heatmap-row-label {
+      background: var(--pgn-color-bg-light); padding: 6px 10px;
+      font-size: 13px; color: var(--pgn-color-gray-900);
+      display: flex; align-items: center; gap: 6px; border-radius: var(--pgn-size-border-radius-sm);
+    }
+    .heatmap-row-label .dot { flex-shrink: 0; }
+    .heatmap-row-label[onclick] { cursor: pointer; }
+    .heatmap-row-label[onclick]:hover { background: var(--pgn-color-gray-100); }
+    .heatmap-cell {
+      padding: 10px; text-align: center; font-size: 13px; font-weight: 700;
+      color: var(--heat-text-dark); border-radius: var(--pgn-size-border-radius-sm);
+      font-variant-numeric: tabular-nums;
+    }
+    .heatmap-cell.h1 { background: var(--heat-1); }
+    .heatmap-cell.h2 { background: var(--heat-2); }
+    .heatmap-cell.h3 { background: var(--heat-3); }
+    .heatmap-cell.h4 { background: var(--heat-4); }
+    .heatmap-cell.h5 { background: var(--heat-5); }
+    .heatmap-cell.h6 { background: var(--heat-6); }
+    .heatmap-cell.h7 { background: var(--heat-7); }
+    .heatmap-cell.h8 { background: var(--heat-8); color: #fff; }
+    .heatmap-cell.h9 { background: var(--heat-9); color: #fff; }
+    .heatmap-cell.empty { background: transparent; color: var(--pgn-color-gray-400); font-weight: 400; }
+    .heatmap-legend {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--pgn-color-gray-600);
+      margin-top: var(--pgn-spacing-2); flex-wrap: wrap;
+    }
+    .heatmap-legend-scale { display: flex; gap: 0; }
+    .heatmap-legend-scale .swatch { width: 24px; height: 16px; }
+    .heatmap-legend-scale .swatch:first-child { border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
+    .heatmap-legend-scale .swatch:last-child { border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
+    .score-pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 48px; height: 24px; padding: 0 8px;
+      border-radius: var(--pgn-size-rounded-pill);
+      font-family: var(--pgn-font-family-body); font-size: 12px; font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .score-pill.low    { background: var(--pgn-color-danger-tint);  color: #8A1E1E; }
+    .score-pill.med    { background: var(--pgn-color-warning-tint); color: #B5710B; }
+    .score-pill.high   { background: var(--pgn-color-success-tint); color: #1B5E20; }
+    /* ===== Skill section-card + stats (ported from School Admin for the S7 Course view) ===== */
+    .section-card {
+      background: var(--pgn-color-white);
+      border: 1px solid var(--pgn-color-gray-100);
+      border-radius: var(--pgn-size-border-radius-lg);
+      padding: var(--pgn-spacing-3);
+      box-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.06);
+      cursor: pointer; transition: border-color 150ms;
+    }
+    .section-card:hover { border-color: var(--pgn-color-brand-base); }
+    .section-card.recommended { border-left: 4px solid var(--pgn-color-brand-base); }
+    .section-stat { display: flex; flex-direction: column; gap: 2px; }
+    .section-stat-num { font-family: var(--pgn-font-family-heading); font-size: 24px; font-weight: 700; color: var(--pgn-color-gray-900); line-height: 1; }
+    .section-stat-num.warning { color: var(--pgn-color-warning-base); }
+    .section-stat-num.danger { color: var(--pgn-color-danger-base); }
+    .section-stat-label { font-size: 11px; color: var(--pgn-color-gray-600); text-transform: uppercase; letter-spacing: 0.04em; }
   </style>
 </head>
 <body>
@@ -880,7 +1002,7 @@
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">manage_accounts</span>Access Control</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4)"><span class="material-icons-outlined">school</span>Schools</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(6)"><span class="material-icons-outlined">analytics</span>Analytics</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">tune</span>Platform Settings</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('s1-cost').scrollIntoView({behavior:'smooth'})"><span class="material-icons-outlined">paid</span>Cost &amp; Usage</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(13)"><span class="material-icons-outlined">open_in_new</span>External Tools</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(15)"><span class="material-icons-outlined">history</span>Logs</button>
       </div>
@@ -901,41 +1023,41 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into School of Technology data">
-                <td><strong>School of Technology</strong></td>
+              <tr style="cursor:pointer;" data-school="tech" onclick="showSchoolCost('tech')" role="button" tabindex="0" aria-label="View School of Technology cost &amp; usage detail">
+                <td><strong>School of Technology</strong> <span class="badge badge-warning"><span class="material-icons-outlined" style="font-size:12px;">priority_high</span>Cost spike</span></td>
                 <td>Alice</td>
                 <td class="num-col">4</td>
                 <td class="num-col">7</td>
                 <td class="num-col">90</td>
                 <td class="num-col">680</td>
-                <td class="num-col"><strong>$387</strong></td>
+                <td class="num-col"><strong>$2,415</strong></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into School of Business data">
+              <tr style="cursor:pointer;" data-school="business" onclick="showSchoolCost('business')" role="button" tabindex="0" aria-label="View School of Business cost &amp; usage detail">
                 <td><strong>School of Business</strong></td>
-                <td>Diane</td>
+                <td>Miguel</td>
                 <td class="num-col">5</td>
                 <td class="num-col">9</td>
                 <td class="num-col">1,402</td>
                 <td class="num-col">4,360</td>
-                <td class="num-col">$1,408</td>
+                <td class="num-col">$1,000</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into School of Education data">
+              <tr style="cursor:pointer;" data-school="education" onclick="showSchoolCost('education')" role="button" tabindex="0" aria-label="View School of Education cost &amp; usage detail">
                 <td><strong>School of Education</strong></td>
-                <td>James</td>
+                <td>Renee</td>
                 <td class="num-col">4</td>
                 <td class="num-col">7</td>
                 <td class="num-col">1,248</td>
                 <td class="num-col">4,140</td>
-                <td class="num-col">$1,287</td>
+                <td class="num-col">$330</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Drill into Leavitt School of Health data">
+              <tr style="cursor:pointer;" data-school="health" onclick="showSchoolCost('health')" role="button" tabindex="0" aria-label="View Leavitt School of Health cost &amp; usage detail">
                 <td><strong>Leavitt School of Health</strong></td>
-                <td>Priya</td>
+                <td>Theo</td>
                 <td class="num-col">3</td>
                 <td class="num-col">5</td>
                 <td class="num-col">1,102</td>
                 <td class="num-col">3,220</td>
-                <td class="num-col">$1,205</td>
+                <td class="num-col">$542</td>
               </tr>
             </tbody>
             <tfoot>
@@ -953,238 +1075,68 @@
         </div>
       </div>
 
-    </div>
-  </main>
-</section>
+      <!-- Cost & Usage — folded in from former S11 (platform cost) + S12 (per-school detail) -->
+      <div id="s1-cost">
+        <span class="eyebrow"><span class="material-icons-outlined">paid</span>Cost &amp; Usage</span>
+        <h2 class="h5 mb-2">Platform cost · current billing period (May 2026)</h2>
+        <div class="row mb-3" style="flex-wrap:nowrap;">
+          <div style="flex:1 1 0; min-width:0;"><div class="gauge-card"><span class="text-muted small">TOTAL TOKEN SPEND · MTD</span><div class="gauge-number warning mt-1">$4,287</div><div class="gauge-bar"><div class="gauge-bar-fill warning" style="width:73%;"></div></div><div class="gauge-target">73% of <strong>$5,900</strong> budget · 11 days left</div></div></div>
+          <div style="flex:1 1 0; min-width:0;"><div class="gauge-card"><span class="text-muted small">TOKENS CONSUMED</span><div class="gauge-number mt-1">128.4M</div><div class="gauge-bar"><div class="gauge-bar-fill" style="width:64%;"></div></div><div class="gauge-target">in 84.2M · out 44.2M · <span class="text-warning">+18% wk/wk</span></div></div></div>
+          <div style="flex:1 1 0; min-width:0;"><div class="gauge-card"><span class="text-muted small">PROJECTION · MONTH-END</span><div class="gauge-number danger mt-1">$5,948</div><div class="gauge-bar"><div class="gauge-bar-fill danger" style="width:100%;"></div></div><div class="gauge-target text-danger"><strong>Exceeds $5,900 by ~$48</strong></div></div></div>
+          <div style="flex:1 1 0; min-width:0;"><div class="gauge-card"><span class="text-muted small">CACHE SAVINGS · MTD</span><div class="gauge-number good mt-1">$1,847</div><div class="gauge-bar"><div class="gauge-bar-fill success" style="width:43%;"></div></div><div class="gauge-target">43% of gross spend avoided</div></div></div>
+        </div>
 
-<section class="screen" id="screen-11" aria-labelledby="s11-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-11">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Platform Settings</span>
-      </nav>
-      <div class="d-flex justify-content-between align-items-end mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">paid</span>Cost &amp; Usage</span>
-          <h1 id="s11-heading">Platform Settings</h1>
-          <p class="mt-1">Aggregate spend across all schools for the current billing period (May 2026).</p>
-        </div>
-        <div class="d-flex gap-2 align-items-center">
-          <span class="text-muted small">Period:</span>
-          <button class="btn btn-outline-primary btn-sm">Last 30 days</button>
-          <button class="btn btn-outline-primary btn-sm">This month</button>
-          <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">file_download</span>Export</button>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-3">
-          <div class="gauge-card">
-            <span class="text-muted small">TOTAL TOKEN SPEND · MTD</span>
-            <div class="gauge-number warning mt-1">$4,287</div>
-            <div class="gauge-bar"><div class="gauge-bar-fill warning" style="width:73%;"></div></div>
-            <div class="gauge-target">73% of <strong>$5,900</strong> monthly budget · 11 days left</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card">
-            <span class="text-muted small">TOKENS CONSUMED</span>
-            <div class="gauge-number mt-1">128.4M</div>
-            <div class="gauge-bar"><div class="gauge-bar-fill" style="width:64%;"></div></div>
-            <div class="gauge-target">in: 84.2M · out: 44.2M · trend: <span class="text-warning">+18% wk/wk</span></div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card">
-            <span class="text-muted small">PROJECTION TO MONTH-END</span>
-            <div class="gauge-number danger mt-1">$5,948</div>
-            <div class="gauge-bar"><div class="gauge-bar-fill danger" style="width:100%;"></div></div>
-            <div class="gauge-target text-danger"><strong>Will exceed $5,900 budget by ~$48</strong></div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card">
-            <span class="text-muted small">CACHE SAVINGS · MTD</span>
-            <div class="gauge-number good mt-1">$1,847</div>
-            <div class="gauge-bar"><div class="gauge-bar-fill success" style="width:43%;"></div></div>
-            <div class="gauge-target">43% of gross spend avoided via LLM response cache</div>
-          </div>
-        </div>
-      </div>
-
-      <h2 class="h5 mb-2">Per-school breakdown</h2>
-      <table class="pgn__data-table mb-3">
-        <thead>
-          <tr>
-            <th>School</th>
-            <th>School Admin</th>
-            <th class="num-col">Tokens (in)</th>
-            <th class="num-col">Tokens (out)</th>
-            <th class="num-col">Cost MTD</th>
-            <th class="num-col">Budget</th>
-            <th>Utilization</th>
-            <th>Trend</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="background: var(--pgn-color-warning-tint); cursor:pointer;" onclick="goToScreen(12)">
-            <td><strong>School of Technology</strong> <span class="badge badge-warning"><span class="material-icons-outlined" style="font-size:12px;">priority_high</span>Spike</span></td>
-            <td>Alice</td>
-            <td class="num-col">50.0M</td>
-            <td class="num-col">27.6M</td>
-            <td class="num-col"><strong>$2,415</strong></td>
-            <td class="num-col">$3,025</td>
-            <td>
-              <div class="util-meter">
-                <div class="util-bar"><div class="util-bar-fill warning" style="width:80%;"></div></div>
-                <div class="util-value">80%</div>
+        <p class="text-muted small mb-2">Select a School in the table above to see its cost &amp; usage detail.</p>
+        <div class="pgn__card pgn__card-featured" id="s1-school-cost-panel">
+          <div class="pgn__card-section">
+            <div class="d-flex justify-content-between align-items-start mb-2" style="flex-wrap:wrap; gap:8px;">
+              <div>
+                <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>School cost detail</span>
+                <h3 class="h5 mb-1" id="sc-name">School of Technology</h3>
+                <p class="small text-muted mb-0" id="sc-subtitle">School Admin: Alice · 90 active learners · 80% of monthly budget consumed.</p>
               </div>
-            </td>
-            <td><span class="text-warning text-strong">↑ +30%</span></td>
-            <td><span class="material-icons-outlined" style="color: var(--pgn-color-brand-base);">arrow_forward</span></td>
-          </tr>
-          <tr><td>School of Business</td><td>Diane</td><td class="num-col">18.4M</td><td class="num-col">9.7M</td><td class="num-col">$842</td><td class="num-col">$1,400</td><td><div class="util-meter"><div class="util-bar"><div class="util-bar-fill" style="width:60%;"></div></div><div class="util-value">60%</div></div></td><td><span class="text-success">→ +2%</span></td><td></td></tr>
-          <tr><td>School of Education</td><td>James</td><td class="num-col">4.6M</td><td class="num-col">1.9M</td><td class="num-col">$284</td><td class="num-col">$500</td><td><div class="util-meter"><div class="util-bar"><div class="util-bar-fill" style="width:57%;"></div></div><div class="util-value">57%</div></div></td><td><span class="text-success">→ +6%</span></td><td></td></tr>
-          <tr><td>Leavitt School of Health</td><td>Priya</td><td class="num-col">9.4M</td><td class="num-col">4.5M</td><td class="num-col">$530</td><td class="num-col">$900</td><td><div class="util-meter"><div class="util-bar"><div class="util-bar-fill" style="width:59%;"></div></div><div class="util-value">59%</div></div></td><td><span class="text-success">→ +4%</span></td><td></td></tr>
-        </tbody>
-      </table>
-
-      <div class="alert alert-warning">
-        <span class="material-icons-outlined">priority_high</span>
-        <div><strong>School of Technology flagged.</strong></div>
-      </div>
-
-      <h2 class="h5 mb-2">Rate limits</h2>
-      <p class="small text-muted mb-2">Global request and token limits. Enforced in OpenRouter and platform code &mdash; not editable here.</p>
-      <table class="pgn__data-table mb-3">
-        <thead><tr><th>Limit</th><th class="num-col">Value</th></tr></thead>
-        <tbody>
-          <tr><td>Per-School request cap</td><td class="num-col">3,000 / hour</td></tr>
-          <tr><td>Per-Skill request cap</td><td class="num-col">1,500 / hour</td></tr>
-          <tr><td>Per-learner request cap</td><td class="num-col">80 / hour</td></tr>
-          <tr><td>Burst policy</td><td class="num-col">200 req / 60s</td></tr>
-          <tr><td>LLM token cap per session</td><td class="num-col">50,000 tokens</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </main>
-</section>
-
-<section class="screen" id="screen-12" aria-labelledby="s12-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-12">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(11); return false;">Platform Settings</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>School of Technology</span>
-      </nav>
-      <div class="d-flex justify-content-between align-items-end mb-3">
-        <div>
-          <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>School Drill-Down · Cost Spike Detected</span>
-          <h1 id="s12-heading">School of Technology — Foundations of Programming (Python)</h1>
-          <p class="mt-1">School Admin: <strong>Alice</strong> · 1,284 active learners · 89% of monthly budget consumed.</p>
-        </div>
-        <span class="badge badge-warning" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_up</span>+34% week-over-week</span>
-      </div>
-
-      <div class="spike-card mb-3">
-        <div class="d-flex justify-content-between align-items-end mb-2">
-          <div>
-            <span class="eyebrow"><span class="material-icons-outlined">analytics</span>30-day cost trend</span>
-            <h2 class="h5 mb-0">Daily token cost · USD</h2>
-          </div>
-          <div class="text-muted small">Spike began 04 May · 3 days ago</div>
-        </div>
-        <div class="spike-chart" aria-hidden="true">
-          <div class="spike-bar" style="height:18%;"></div>
-          <div class="spike-bar" style="height:22%;"></div>
-          <div class="spike-bar" style="height:21%;"></div>
-          <div class="spike-bar" style="height:19%;"></div>
-          <div class="spike-bar" style="height:24%;"></div>
-          <div class="spike-bar" style="height:26%;"></div>
-          <div class="spike-bar" style="height:25%;"></div>
-          <div class="spike-bar" style="height:22%;"></div>
-          <div class="spike-bar" style="height:23%;"></div>
-          <div class="spike-bar" style="height:25%;"></div>
-          <div class="spike-bar" style="height:24%;"></div>
-          <div class="spike-bar" style="height:27%;"></div>
-          <div class="spike-bar" style="height:28%;"></div>
-          <div class="spike-bar" style="height:25%;"></div>
-          <div class="spike-bar" style="height:26%;"></div>
-          <div class="spike-bar" style="height:30%;"></div>
-          <div class="spike-bar" style="height:32%;"></div>
-          <div class="spike-bar" style="height:29%;"></div>
-          <div class="spike-bar" style="height:31%;"></div>
-          <div class="spike-bar" style="height:33%;"></div>
-          <div class="spike-bar" style="height:34%;"></div>
-          <div class="spike-bar" style="height:32%;"></div>
-          <div class="spike-bar" style="height:35%;"></div>
-          <div class="spike-bar" style="height:38%;"></div>
-          <div class="spike-bar" style="height:38%;"></div>
-          <div class="spike-bar" style="height:42%;"></div>
-          <div class="spike-bar spike" style="height:71%;"></div>
-          <div class="spike-bar spike" style="height:78%;"></div>
-          <div class="spike-bar spike danger" style="height:88%;"></div>
-          <div class="spike-bar spike danger" style="height:92%;"></div>
-        </div>
-        <div class="spike-axis">
-          <span>08 Apr</span>
-          <span>15 Apr</span>
-          <span>22 Apr</span>
-          <span>29 Apr</span>
-          <span>04 May ↑</span>
-          <span>07 May</span>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <div class="pgn__card">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">view_list</span>Top consuming Skills</span>
-              <h2 class="h5 mb-2">Where the spend is going</h2>
-              <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th>Skill</th><th class="num-col">Tokens</th><th class="num-col">Cost</th><th>Trend</th></tr>
-                <tr><td>E010 · Foundations of Programming</td><td class="num-col">42.1M</td><td class="num-col">$1,406</td><td><span class="text-warning">↑ +42%</span></td></tr>
-                <tr><td>E075 · Intermediate Python &amp; Libraries</td><td class="num-col">12.8M</td><td class="num-col">$418</td><td><span class="text-success">→ +6%</span></td></tr>
-                <tr><td>E135 · OOP with Python (just deployed)</td><td class="num-col">4.7M</td><td class="num-col">$68</td><td><span class="text-warning">↑ NEW</span></td></tr>
-              </table>
+              <span class="badge badge-warning" id="sc-wow" style="padding:6px 12px;"><span class="material-icons-outlined" style="font-size:14px;">trending_up</span>+30% week-over-week</span>
             </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="pgn__card pgn__card-featured">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">lightbulb</span>Likely cause</span>
-              <h2 class="h5 mb-2">Enrollment surge + AI prompt expansion</h2>
-              <p class="small mb-2">On 04 May, School of Technology saw a wave of 28 new learner launches in E010 under WGU&rsquo;s rolling-enrollment model. On the same day, Alice deployed updated AI prompt configuration that increased average tokens-per-session by 22%.</p>
-              <p class="small mb-2"><strong>Recommended action:</strong> review per-Skill rate limits before the surge persists into a second week. Adjusting now keeps the school within budget without affecting learner experience.</p>
-              <div class="d-flex gap-2">
-                <button class="btn btn-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">speed</span>View rate limits</button>
-                <button class="btn btn-outline-primary btn-sm">Notify Alice</button>
+
+            <div class="alert alert-success mb-3" id="sc-stable" style="display:none;">
+              <span class="material-icons-outlined">check_circle</span>
+              <div>Spend is stable and within budget — no anomalies flagged.</div>
+            </div>
+
+            <div class="spike-card mb-3" id="sc-spike">
+              <div class="d-flex justify-content-between align-items-end mb-2">
+                <div><span class="eyebrow"><span class="material-icons-outlined">analytics</span>30-day cost trend</span><h4 class="h6 mb-0">Daily token cost · USD</h4></div>
+                <div class="text-muted small">Spike began 04 May · 3 days ago</div>
+              </div>
+              <div class="spike-chart" aria-hidden="true">
+                <div class="spike-bar" style="height:18%;"></div><div class="spike-bar" style="height:22%;"></div><div class="spike-bar" style="height:21%;"></div><div class="spike-bar" style="height:19%;"></div><div class="spike-bar" style="height:24%;"></div><div class="spike-bar" style="height:26%;"></div><div class="spike-bar" style="height:25%;"></div><div class="spike-bar" style="height:22%;"></div><div class="spike-bar" style="height:23%;"></div><div class="spike-bar" style="height:25%;"></div><div class="spike-bar" style="height:24%;"></div><div class="spike-bar" style="height:27%;"></div><div class="spike-bar" style="height:28%;"></div><div class="spike-bar" style="height:25%;"></div><div class="spike-bar" style="height:26%;"></div><div class="spike-bar" style="height:30%;"></div><div class="spike-bar" style="height:32%;"></div><div class="spike-bar" style="height:29%;"></div><div class="spike-bar" style="height:31%;"></div><div class="spike-bar" style="height:33%;"></div><div class="spike-bar" style="height:34%;"></div><div class="spike-bar" style="height:32%;"></div><div class="spike-bar" style="height:35%;"></div><div class="spike-bar" style="height:38%;"></div><div class="spike-bar" style="height:38%;"></div><div class="spike-bar" style="height:42%;"></div><div class="spike-bar spike" style="height:71%;"></div><div class="spike-bar spike" style="height:78%;"></div><div class="spike-bar spike danger" style="height:88%;"></div><div class="spike-bar spike danger" style="height:92%;"></div>
+              </div>
+              <div class="spike-axis"><span>08 Apr</span><span>15 Apr</span><span>22 Apr</span><span>29 Apr</span><span>04 May ↑</span><span>07 May</span></div>
+            </div>
+
+            <div class="row" id="sc-detail-row">
+              <div class="col-6">
+                <div class="pgn__card"><div class="pgn__card-section">
+                  <span class="eyebrow"><span class="material-icons-outlined">view_list</span>Top consuming Skills</span>
+                  <h4 class="h6 mb-2">Where the spend is going</h4>
+                  <table class="pgn__data-table" style="border:none; box-shadow:none;">
+                    <thead><tr><th>Skill</th><th class="num-col">Tokens</th><th class="num-col">Cost</th><th>Trend</th></tr></thead>
+                    <tbody id="sc-skills">
+                      <tr><td>Python Skill</td><td class="num-col">42.1M</td><td class="num-col">$1,750</td><td><span class="text-warning">↑ +42%</span></td></tr>
+                      <tr><td>Git &amp; Version Control Skill</td><td class="num-col">12.8M</td><td class="num-col">$420</td><td><span class="text-success">→ +6%</span></td></tr>
+                      <tr><td>OOP Skill <span class="text-muted">(just deployed)</span></td><td class="num-col">4.7M</td><td class="num-col">$245</td><td><span class="text-warning">↑ NEW</span></td></tr>
+                    </tbody>
+                  </table>
+                </div></div>
+              </div>
+              <div class="col-6">
+                <div class="pgn__card pgn__card-featured"><div class="pgn__card-section">
+                  <span class="eyebrow"><span class="material-icons-outlined">lightbulb</span>Likely cause</span>
+                  <h4 class="h6 mb-2">Enrollment surge + AI prompt expansion</h4>
+                  <p class="small mb-2">On 04 May, School of Technology saw a wave of 28 new learner launches in E010 under WGU's rolling-enrollment model. The same day, Alice deployed updated AI prompt configuration that raised average tokens-per-session by 22%.</p>
+                  <p class="small mb-2"><strong>Recommended action:</strong> review per-Skill rate limits before the surge persists into a second week.</p>
+                  <button class="btn btn-outline-primary btn-sm">Notify <span id="sc-cause-admin">Alice</span></button>
+                </div></div>
               </div>
             </div>
           </div>
@@ -1194,9 +1146,6 @@
     </div>
   </main>
 </section>
-
-
-
 
 <section class="screen" id="screen-15" aria-labelledby="s15-heading">
   <header class="navbar navbar-dark" role="banner">
@@ -1390,14 +1339,8 @@
       <div class="row mb-3">
         <div class="col-3">
           <div class="gauge-card">
-            <div class="text-muted small">STUDENTS</div>
-            <div class="gauge-number">150</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="gauge-card">
-            <div class="text-muted small">INSTRUCTORS</div>
-            <div class="gauge-number">12</div>
+            <div class="text-muted small">SUPER ADMINS</div>
+            <div class="gauge-number">2</div>
           </div>
         </div>
         <div class="col-3">
@@ -1408,8 +1351,14 @@
         </div>
         <div class="col-3">
           <div class="gauge-card">
-            <div class="text-muted small">SUPER ADMINS</div>
-            <div class="gauge-number">2</div>
+            <div class="text-muted small">INSTRUCTORS</div>
+            <div class="gauge-number">12</div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="gauge-card">
+            <div class="text-muted small">STUDENTS</div>
+            <div class="gauge-number">150</div>
           </div>
         </div>
       </div>
@@ -1432,9 +1381,9 @@
                   <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
                   <button class="chip-filter active" data-filter-user="all" onclick="filterUsersTable('all')">All (8 of 187)</button>
                   <button class="chip-filter" data-filter-user="super" onclick="filterUsersTable('super')">Super Admin (2)</button>
-                  <button class="chip-filter" data-filter-user="tenant" onclick="filterUsersTable('tenant')">School Admin (2)</button>
-                  <button class="chip-filter" data-filter-user="instructor" onclick="filterUsersTable('instructor')">Instructor (2)</button>
-                  <button class="chip-filter" data-filter-user="student" onclick="filterUsersTable('student')">Student (2)</button>
+                  <button class="chip-filter" data-filter-user="tenant" onclick="filterUsersTable('tenant')">School Admin (23)</button>
+                  <button class="chip-filter" data-filter-user="instructor" onclick="filterUsersTable('instructor')">Instructor (12)</button>
+                  <button class="chip-filter" data-filter-user="student" onclick="filterUsersTable('student')">Student (150)</button>
                 </div>
                 <table class="pgn__data-table">
                   <thead>
@@ -1617,8 +1566,8 @@
                   <tbody>
                     <tr data-skill-cat="tech education">
                       <td>
-                        <div class="text-strong">E010 · Python Foundations</div>
-                        <div class="micro text-muted">Skill</div>
+                        <div class="text-strong">Python Fundamentals</div>
+                        <div class="micro text-muted">E010 · Foundations of Programming (Python)</div>
                       </td>
                       <td>
                         <div class="d-flex align-items-center gap-2">
@@ -1639,8 +1588,8 @@
                     </tr>
                     <tr data-skill-cat="tech">
                       <td>
-                        <div class="text-strong">E075 · Data Structures</div>
-                        <div class="micro text-muted">Skill</div>
+                        <div class="text-strong">Iteration &amp; Collections</div>
+                        <div class="micro text-muted">E075 · Intermediate Python &amp; Libraries</div>
                       </td>
                       <td>
                         <div class="d-flex align-items-center gap-2">
@@ -1660,8 +1609,8 @@
                     </tr>
                     <tr data-skill-cat="tech">
                       <td>
-                        <div class="text-strong">E135 · Algorithms</div>
-                        <div class="micro text-muted">Skill</div>
+                        <div class="text-strong">Class &amp; Object Design</div>
+                        <div class="micro text-muted">E135 · Object-Oriented Programming with Python</div>
                       </td>
                       <td>
                         <div class="d-flex align-items-center gap-2">
@@ -1681,8 +1630,8 @@
                     </tr>
                     <tr data-skill-cat="business">
                       <td>
-                        <div class="text-strong">B210 · Accounting Principles</div>
-                        <div class="micro text-muted">Skill</div>
+                        <div class="text-strong">Financial Statements</div>
+                        <div class="micro text-muted">B210 · Accounting Principles</div>
                       </td>
                       <td>
                         <div class="d-flex align-items-center gap-2">
@@ -1702,8 +1651,8 @@
                     </tr>
                     <tr data-skill-cat="education">
                       <td>
-                        <div class="text-strong">ED150 · Curriculum Design</div>
-                        <div class="micro text-muted">Skill</div>
+                        <div class="text-strong">Backward Course Design</div>
+                        <div class="micro text-muted">ED150 · Curriculum Design</div>
                       </td>
                       <td>
                         <div class="d-flex align-items-center gap-2">
@@ -1723,7 +1672,8 @@
                     </tr>
                     <tr style="background: rgba(245, 166, 35, 0.08);" data-skill-cat="health no-owner">
                       <td>
-                        <div class="text-strong">H320 · Health Informatics</div>
+                        <div class="text-strong">Clinical Data Standards</div>
+                        <div class="micro text-muted">H320 · Health Informatics</div>
                         <div class="micro" style="color: var(--pgn-color-warning-base); font-weight:600;"><span class="material-icons-outlined" style="font-size:13px; vertical-align:middle;">warning_amber</span> No owner assigned</div>
                       </td>
                       <td>
@@ -1843,7 +1793,7 @@
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">open_in_new</span>Super Admin</span>
       <h1 id="s13-heading">External Tooling &amp; Integrations</h1>
-      <p class="mt-1 mb-3">Some platform functions are managed in 3rd party dashboards. This page surfaces those integrations + global configuration values that live outside the SkillProof.</p>
+      <p class="mt-1 mb-3">Some platform functions are managed in 3rd party dashboards. This page surfaces those integrations.</p>
 
       <h2 class="h5 mb-2">External dashboards</h2>
       <div class="row mb-3">
@@ -1929,48 +1879,6 @@
         </div>
       </div>
 
-      <h2 class="h5 mb-2">Global configuration</h2>
-      <div class="pgn__card pgn__card-featured">
-        <div class="pgn__card-section">
-          <p class="small text-muted mb-3">Set globally (not per-school or per-course). Some values are enforced by 3rd party tools &mdash; open the relevant dashboard above to change them.</p>
-          <table class="pgn__data-table" style="border:none; box-shadow:none;">
-            <thead>
-              <tr>
-                <th>Setting</th>
-                <th>Value</th>
-                <th>Enforced by</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Student input character limit</strong></td>
-                <td>5,000 chars</td>
-                <td>Student UI input layer (SkillProof)</td>
-                <td>Global setting; not configurable per course</td>
-              </tr>
-              <tr>
-                <td><strong>LLM token cap per session</strong></td>
-                <td>50,000 tokens</td>
-                <td>Redis Admin (above)</td>
-                <td>Cached + enforced at Redis</td>
-              </tr>
-              <tr>
-                <td><strong>Default LLM provider chain</strong></td>
-                <td>Primary + 2 fallback</td>
-                <td>OpenRouter.ai (above)</td>
-                <td>Per-school model selection in School Admin Portal</td>
-              </tr>
-              <tr>
-                <td><strong>Storage retention</strong></td>
-                <td>3 years</td>
-                <td>AWS Console (above)</td>
-                <td>FERPA-aligned</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
 
     </div>
   </main>
@@ -2200,15 +2108,8 @@
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">school</span>Super Admin</span>
       <h1 id="s4-heading" class="mb-3">School Management</h1>
-
-      <div class="alert alert-info mb-3">
-        <span class="material-icons-outlined">info</span>
-        <div><strong>School roster.</strong> Per-School Settings (branding, thresholds, retention) are managed here. To assign School Admins to a school, open <a href="#" onclick="goToScreen(2); return false;">Access Control &middot; Schools tab</a>.</div>
-      </div>
-
-      <div class="d-flex justify-content-between align-items-start mb-3" style="flex-wrap:wrap; gap:12px;">
-        <p class="text-muted mb-0" style="max-width: 720px;">Each WGU School is an isolated environment in SkillProof. Schools are created here; School Admin assignments are made on the Access Control screen.</p>
-        <button class="btn btn-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">add</span>Create new School</button>
+      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">add</span>New School</button>
       </div>
 
       <div class="pgn__card pgn__card-featured mb-3">
@@ -2221,34 +2122,33 @@
                 <th>School Admins</th>
                 <th style="text-align:right;">Skills</th>
                 <th>Created</th>
-                <th>Settings</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-school="tech" onclick="showSchoolSettings('tech')" role="button" tabindex="0" style="cursor:pointer;" aria-label="View settings for School of Technology">
                 <td><div class="text-strong">School of Technology</div></td>
-                <td><code>tenant_school_tech</code></td>
-                <td>3 &middot; <span class="text-muted small">Alice, Maya, Devon</span></td>
+                <td><code>school_tech</code></td>
+                <td>3 &middot; <span class="text-muted small">Alice, Maya, Nadia</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">14</td>
                 <td>22 Mar 2026</td>
               </tr>
-              <tr>
+              <tr data-school="business" onclick="showSchoolSettings('business')" role="button" tabindex="0" style="cursor:pointer;" aria-label="View settings for School of Business">
                 <td><div class="text-strong">School of Business</div></td>
-                <td><code>tenant_school_business</code></td>
+                <td><code>school_business</code></td>
                 <td>2 &middot; <span class="text-muted small">Miguel, Diane</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">9</td>
                 <td>04 Apr 2026</td>
               </tr>
-              <tr>
+              <tr data-school="education" onclick="showSchoolSettings('education')" role="button" tabindex="0" style="cursor:pointer;" aria-label="View settings for School of Education">
                 <td><div class="text-strong">School of Education</div></td>
-                <td><code>tenant_school_education</code></td>
+                <td><code>school_education</code></td>
                 <td>2 &middot; <span class="text-muted small">Renee, Akira</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">6</td>
                 <td>15 Apr 2026</td>
               </tr>
-              <tr>
+              <tr data-school="health" onclick="showSchoolSettings('health')" role="button" tabindex="0" style="cursor:pointer;" aria-label="View settings for Leavitt School of Health">
                 <td><div class="text-strong">Leavitt School of Health</div></td>
-                <td><code>tenant_school_health</code></td>
+                <td><code>school_health</code></td>
                 <td>1 &middot; <span class="text-muted small">Theo</span></td>
                 <td style="text-align:right; font-variant-numeric: tabular-nums;">2</td>
                 <td>05 May 2026</td>
@@ -2258,19 +2158,13 @@
         </div>
       </div>
 
-      <div class="alert alert-info">
-        <span class="material-icons-outlined">info</span>
-        <div>Creating a new School provisions an isolated environment (multi-tenant architecture per SOW §16.3 row 8.6). School Admin assignments are made afterward on <a href="#" onclick="goToScreen(2); return false;">Access Control &middot; Schools tab</a>.</div>
-      </div>
-
       <!-- School Settings wireframe panel (moved from TA per Brady directive v4.124) -->
       <div class="pgn__card mb-3" id="school-settings-panel">
         <div class="pgn__card-section">
           <div class="d-flex justify-content-between align-items-start mb-3" style="flex-wrap:wrap; gap:12px;">
             <div>
               <span class="eyebrow"><span class="material-icons-outlined">tune</span>Per-School Settings</span>
-              <h2 class="h4 mt-1 mb-1">School Settings &middot; School of Technology</h2>
-              <p class="text-muted mb-0" style="max-width: 720px;">Branding, default thresholds, and data retention applied to this School. Other Schools have their own settings &mdash; click any "Settings" button in the table above to switch.</p>
+              <h2 class="h4 mt-1 mb-1">School Settings &middot; <span id="ss-school-name">School of Technology</span></h2>
             </div>
           </div>
 
@@ -2282,13 +2176,6 @@
                 <div class="d-flex align-items-center gap-2">
                   <div style="width:48px; height:48px; background:var(--pgn-color-gray-100); border:1px solid var(--pgn-color-gray-200); border-radius:6px; display:flex; align-items:center; justify-content:center;"><span class="material-icons-outlined" style="color:var(--pgn-color-gray-500);">image</span></div>
                   <button class="btn btn-outline-primary btn-sm" id="ss-logo"><span class="material-icons-outlined">upload</span>Upload</button>
-                </div>
-              </div>
-              <div class="form-group mb-0">
-                <label class="form-label" for="ss-color">Primary color</label>
-                <div class="d-flex align-items-center gap-2">
-                  <span style="width:32px; height:32px; background:#002855; border-radius:6px; border:1px solid var(--pgn-color-gray-200);"></span>
-                  <input type="text" class="form-control" id="ss-color" value="#002855" style="max-width: 120px; font-family: 'Lato', monospace;">
                 </div>
               </div>
             </div>
@@ -2314,15 +2201,6 @@
 
             <div class="col-4">
               <h3 class="h6 mb-2"><span class="material-icons-outlined" style="font-size:18px; vertical-align:middle; color:var(--pgn-color-brand-base);">history</span> Data Retention</h3>
-              <div class="form-group mb-2">
-                <label class="form-label" for="ss-retention">Conversation log retention</label>
-                <select class="form-control" id="ss-retention" style="max-width: 200px;">
-                  <option>90 days</option>
-                  <option selected>180 days</option>
-                  <option>365 days</option>
-                  <option>730 days (2 years)</option>
-                </select>
-              </div>
               <div class="form-group mb-0">
                 <label class="form-label" for="ss-audit-retention">Audit log retention</label>
                 <select class="form-control" id="ss-audit-retention" style="max-width: 200px;">
@@ -2337,7 +2215,6 @@
 
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
             <button class="btn btn-primary btn-sm"><span class="material-icons-outlined">save</span>Save School Settings</button>
-            <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">restart_alt</span>Reset to platform defaults</button>
           </div>
         </div>
       </div>
@@ -2366,7 +2243,7 @@
           <div class="text-center mb-3">
             <span class="material-icons-outlined" style="font-size:56px; color: var(--pgn-color-danger-base);">block</span>
           </div>
-          <h1 id="s3-heading" class="h2 text-center mb-3">You don't have access to this resource</h1>
+          <h1 id="s3-heading" class="h2 text-center mb-3">Your access link has expired or been revoked</h1>
           <table class="pgn__data-table" style="border:none; box-shadow:none; margin-bottom: var(--pgn-spacing-3);">
             <tr><th style="width:42%;">Signed in as</th><td>Bob · Super Admin · Platform Operations</td></tr>
             <tr><th>This resource requires</th><td>Active provisioning · link expired or revoked</td></tr>
@@ -2375,7 +2252,7 @@
             <button class="btn btn-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Return to your portal</button>
             <a class="btn btn-outline-primary" href="../"><span class="material-icons-outlined">link</span>Open the correct LRPS link</a>
           </div>
-          <div class="text-center text-muted small">Logged · 18 May 2026 11:08:14 UTC · evt_9c2f1a07</div>
+          <div class="text-center text-muted small">18 May 2026 · evt_9c2f1a07</div>
         </div>
       </div>
     </div>
@@ -2510,7 +2387,7 @@
         <button class="chip-filter" data-filter-status="mastery" onclick="filterHeatmap('mastery')">Mastery (7)</button>
         <button class="chip-filter" data-filter-status="on-track" onclick="filterHeatmap('on-track')">On track (17)</button>
         <button class="chip-filter" data-filter-status="watch" onclick="filterHeatmap('watch')">Watch list (1)</button>
-        <button class="chip-filter danger" data-filter-status="at-risk" onclick="filterHeatmap('at-risk')"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
+        <button class="chip-filter danger" data-filter-status="at-risk" onclick="goToScreen(9)"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
       </div>
 
       <div class="heatmap-scroll-container">
@@ -2839,38 +2716,38 @@
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
       <h1 id="s6-heading" class="mb-3">Analytics &amp; Reporting</h1>
-      <!-- Section 1 — SCHOOL ROLLUP -->
-      <span class="eyebrow"><span class="material-icons-outlined">domain</span>Level 1 of 4 · School</span>
-      <h2 class="h4 mb-2">School of Technology — rollup</h2>
-      <p class="text-muted mb-3">Top-line view across all 4 Courses and 7 Skills in this School.</p>
+      <!-- Section 1 — PLATFORM ROLLUP -->
+      <span class="eyebrow"><span class="material-icons-outlined">public</span>Level 1 of 5 · Platform</span>
+      <h2 class="h4 mb-2">Platform rollup</h2>
+      <p class="text-muted mb-3">Top-line view across all 4 Schools, 16 Courses, and 28 Skills.</p>
 
       <div class="row mb-3">
         <div class="col-3">
           <div class="gauge-card">
             <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">ACTIVE LEARNERS</span><span class="dot green"></span></div>
-            <div class="gauge-number">90</div>
-            <div class="gauge-target">across 4 Courses · 7 Skills</div>
+            <div class="gauge-number">3,820</div>
+            <div class="gauge-target">across 4 Schools</div>
           </div>
         </div>
         <div class="col-3">
           <div class="gauge-card">
             <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">AVG MASTERY</span><span class="dot green"></span></div>
-            <div class="gauge-number">0.77</div>
+            <div class="gauge-number">0.78</div>
             <div class="gauge-target">weighted across all Skills · AI-scored</div>
           </div>
         </div>
         <div class="col-3">
           <div class="gauge-card">
             <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">SESSIONS · 7 DAYS</span><span class="dot green"></span></div>
-            <div class="gauge-number">680</div>
+            <div class="gauge-number">12,400</div>
             <div class="gauge-target">+8% vs prior 7 days</div>
           </div>
         </div>
         <div class="col-3">
           <div class="gauge-card">
             <div class="d-flex align-items-center justify-content-between mb-1"><span class="text-muted small">TOKEN SPEND · MTD</span><span class="dot green"></span></div>
-            <div class="gauge-number">$387</div>
-            <div class="gauge-target">4.1M tokens · 72% of $540 budget</div>
+            <div class="gauge-number">$4,287</div>
+            <div class="gauge-target">≈49M tokens · 73% of $5,900 budget</div>
           </div>
         </div>
       </div>
@@ -2880,7 +2757,7 @@
           <div class="pgn__card">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">groups</span>Active learners &middot; last 30 days</span>
-              <h3 class="h5 mb-2">178 cumulative sessions started &middot; +14% vs prior 30 days</h3>
+              <h3 class="h5 mb-2">+14% active learners vs prior 30 days</h3>
               <svg viewBox="0 0 600 160" role="img" aria-label="Active learners trend chart, last 30 days" style="width:100%; height:160px;">
                 <line x1="0" y1="140" x2="600" y2="140" stroke="var(--pgn-color-gray-200)" stroke-width="1"></line>
                 <line x1="0" y1="100" x2="600" y2="100" stroke="var(--pgn-color-gray-100)" stroke-width="1" stroke-dasharray="2,3"></line>
@@ -2898,7 +2775,7 @@
           <div class="pgn__card">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">trending_up</span>Daily submissions &middot; last 7 days</span>
-              <h3 class="h5 mb-2">680 submissions</h3>
+              <h3 class="h5 mb-2">12,400 submissions</h3>
               <svg viewBox="0 0 360 140" role="img" aria-label="Daily submissions, last 7 days" style="width:100%; height:140px;">
                 <line x1="0" y1="120" x2="360" y2="120" stroke="var(--pgn-color-gray-200)" stroke-width="1"></line>
                 <rect x="20" y="80" width="32" height="40" fill="var(--pgn-color-brand-base)" opacity="0.85"></rect>
@@ -2916,19 +2793,108 @@
       </div>
       <div class="d-flex justify-content-end mb-4">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export School Rollup</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export School Rollup as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export School Rollup as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export School Rollup as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-            <button class="btn btn-outline-primary btn-sm" aria-label="Export School Rollup as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
+          <span class="text-muted small">Export Platform Rollup</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Platform Rollup as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Platform Rollup as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Platform Rollup as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+            <button class="btn btn-outline-primary btn-sm" aria-label="Export Platform Rollup as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
-      <!-- Section 2 — PER-COURSE BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">school</span>Level 2 of 4 · Course</span>
-      <h2 class="h4 mb-2">Per-Course breakdown</h2>
+      <!-- Section 2 — PER-SCHOOL BREAKDOWN -->
+      <span class="eyebrow"><span class="material-icons-outlined">domain</span>Level 2 of 5 · School</span>
+      <h2 class="h4 mb-2">Per-School breakdown</h2>
+      <p class="text-muted mb-3">Engagement, mastery, and cost by School. Click a row to drill into a School's Courses.</p>
+
+      <div class="pgn__card mb-3">
+        <div class="pgn__card-section">
+          <table class="pgn__data-table">
+            <thead>
+              <tr>
+                <th>School</th>
+                <th class="num-col">Courses</th>
+                <th class="num-col">Skills</th>
+                <th class="num-col">Learners</th>
+                <th class="num-col">Avg Mastery</th>
+                <th class="num-col">Sessions / wk</th>
+                <th class="num-col">Cost (30d)</th>
+                <th class="num-col">Trend</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="cursor:pointer;" onclick="document.getElementById('s6-courses').scrollIntoView({behavior:'smooth'});" role="button" tabindex="0" aria-label="Open Course breakdown">
+                <td><div class="text-strong">School of Technology</div></td>
+                <td class="num-col">4</td>
+                <td class="num-col">7</td>
+                <td class="num-col">68</td>
+                <td class="num-col"><span class="score-pill med">0.77</span></td>
+                <td class="num-col">680</td>
+                <td class="num-col">$2,415</td>
+                <td class="num-col"><span class="badge badge-warning">▲ 8%</span></td>
+              </tr>
+              <tr style="cursor:pointer;" onclick="document.getElementById('s6-courses').scrollIntoView({behavior:'smooth'});" role="button" tabindex="0" aria-label="Open Course breakdown">
+                <td><div class="text-strong">School of Business</div></td>
+                <td class="num-col">5</td>
+                <td class="num-col">9</td>
+                <td class="num-col">1,402</td>
+                <td class="num-col"><span class="score-pill med">0.74</span></td>
+                <td class="num-col">4,360</td>
+                <td class="num-col">$1,000</td>
+                <td class="num-col"><span class="badge badge-success">≈ 1%</span></td>
+              </tr>
+              <tr style="cursor:pointer;" onclick="document.getElementById('s6-courses').scrollIntoView({behavior:'smooth'});" role="button" tabindex="0" aria-label="Open Course breakdown">
+                <td><div class="text-strong">School of Education</div></td>
+                <td class="num-col">4</td>
+                <td class="num-col">7</td>
+                <td class="num-col">1,248</td>
+                <td class="num-col"><span class="score-pill high">0.79</span></td>
+                <td class="num-col">4,140</td>
+                <td class="num-col">$330</td>
+                <td class="num-col"><span class="badge badge-success">▲ 3%</span></td>
+              </tr>
+              <tr style="cursor:pointer;" onclick="document.getElementById('s6-courses').scrollIntoView({behavior:'smooth'});" role="button" tabindex="0" aria-label="Open Course breakdown">
+                <td><div class="text-strong">Leavitt School of Health</div></td>
+                <td class="num-col">3</td>
+                <td class="num-col">5</td>
+                <td class="num-col">1,102</td>
+                <td class="num-col"><span class="score-pill high">0.81</span></td>
+                <td class="num-col">3,220</td>
+                <td class="num-col">$542</td>
+                <td class="num-col"><span class="badge badge-success">▲ 2%</span></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Total · Platform</th>
+                <th class="num-col">16</th>
+                <th class="num-col">28</th>
+                <th class="num-col">3,820</th>
+                <th class="num-col">0.78</th>
+                <th class="num-col">12,400</th>
+                <th class="num-col">$4,287</th>
+                <th class="num-col">—</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end mb-4">
+        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
+          <span class="text-muted small">Export Per-School Data</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-School Data as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-School Data as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Per-School Data as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+            <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-School Data as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
+        </div>
+      </div>
+
+      <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
+
+      <!-- Section 3 — PER-COURSE BREAKDOWN -->
+      <span class="eyebrow"><span class="material-icons-outlined">school</span>Level 3 of 5 · Course</span>
+      <h2 class="h4 mb-2" id="s6-courses">Per-Course breakdown · School of Technology</h2>
       <p class="text-muted mb-3">Course-level engagement, mastery, and cost. Click a row to drill into the Course detail.</p>
 
       <div class="pgn__card mb-3">
@@ -2954,7 +2920,7 @@
                 <td class="num-col"><span class="score-pill med">0.76</span></td>
                 <td class="num-col">499</td>
                 <td class="num-col">2,148,300</td>
-                <td class="num-col">$207</td>
+                <td class="num-col">$1,292</td>
                 <td class="num-col"><span class="badge badge-warning">▲ 9%</span></td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E075 Course detail">
@@ -2964,7 +2930,7 @@
                 <td class="num-col"><span class="score-pill high">0.82</span></td>
                 <td class="num-col">137</td>
                 <td class="num-col">1,316,000</td>
-                <td class="num-col">$105</td>
+                <td class="num-col">$655</td>
                 <td class="num-col"><span class="badge badge-success">≈ 0%</span></td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E120 Course detail">
@@ -2984,7 +2950,7 @@
                 <td class="num-col"><span class="score-pill med">0.71</span></td>
                 <td class="num-col">44</td>
                 <td class="num-col">936,000</td>
-                <td class="num-col">$75</td>
+                <td class="num-col">$468</td>
                 <td class="num-col"><span class="badge badge-warning">▲ 4%</span></td>
               </tr>
             </tbody>
@@ -2996,7 +2962,7 @@
                 <th class="num-col">0.77</th>
                 <th class="num-col">680</th>
                 <th class="num-col">4,400,300</th>
-                <th class="num-col">$387</th>
+                <th class="num-col">$2,415</th>
                 <th class="num-col">—</th>
               </tr>
             </tfoot>
@@ -3045,20 +3011,20 @@
           <div class="pgn__card">
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">paid</span>Cost comparison &middot; last 30 days</span>
-              <h3 class="h6 mb-2">USD · proportional bars (max = $207)</h3>
+              <h3 class="h6 mb-2">USD · proportional bars (max = $1,292)</h3>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E010 Foundations</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
                   <div style="width:100%; height:100%; background:var(--pgn-color-brand-base);"></div>
                 </div>
-                <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">$207</span>
+                <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">$1,292</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E075 Intermediate</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
                   <div style="width:51%; height:100%; background:var(--pgn-color-brand-base);"></div>
                 </div>
-                <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">$105</span>
+                <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">$655</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E120 Data Structures</span>
@@ -3072,7 +3038,7 @@
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
                   <div style="width:36%; height:100%; background:var(--pgn-color-brand-base);"></div>
                 </div>
-                <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">$75</span>
+                <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">$468</span>
               </div>
             </div>
           </div>
@@ -3091,7 +3057,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 3 — PER-SKILL BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Level 3 of 4 · Skill</span>
+      <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Level 4 of 5 · Skill</span>
       <h2 class="h4 mb-2">Per-Skill breakdown</h2>
       <p class="text-muted mb-3">Skill-level performance and cost. Spot unused or unusually expensive Skills (may indicate prompt bugs). Click a row to open its heatmap.</p>
 
@@ -3121,7 +3087,7 @@
                 <td class="num-col"><span class="score-pill med">0.76</span></td>
                 <td class="num-col">412</td>
                 <td class="num-col">1,820,000</td>
-                <td class="num-col">$172</td>
+                <td class="num-col">$1,073</td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Git &amp; VC Skill heatmap">
                 <td><div class="text-strong">Git &amp; Version Control Skill</div><div class="micro text-muted"><code>git-001</code></div></td>
@@ -3132,7 +3098,7 @@
                 <td class="num-col"><span class="score-pill med">0.68</span></td>
                 <td class="num-col">87</td>
                 <td class="num-col">328,300</td>
-                <td class="num-col">$35</td>
+                <td class="num-col">$218</td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Python Intermediate Skill heatmap">
                 <td><div class="text-strong">Python Intermediate Skill</div><div class="micro text-muted"><code>pyt-002</code></div></td>
@@ -3143,7 +3109,7 @@
                 <td class="num-col"><span class="score-pill med">0.74</span></td>
                 <td class="num-col">65</td>
                 <td class="num-col">560,000</td>
-                <td class="num-col">$45</td>
+                <td class="num-col">$281</td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Libraries Skill heatmap">
                 <td><div class="text-strong">Libraries Skill</div><div class="micro text-muted"><code>lib-001</code></div></td>
@@ -3154,7 +3120,7 @@
                 <td class="num-col"><span class="score-pill high">0.82</span></td>
                 <td class="num-col">72</td>
                 <td class="num-col">756,000</td>
-                <td class="num-col">$60</td>
+                <td class="num-col">$374</td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open OOP Skill heatmap">
                 <td><div class="text-strong">OOP Skill</div><div class="micro text-muted"><code>oop-001</code></div></td>
@@ -3165,7 +3131,7 @@
                 <td class="num-col"><span class="score-pill med">0.71</span></td>
                 <td class="num-col">24</td>
                 <td class="num-col">560,000</td>
-                <td class="num-col">$45</td>
+                <td class="num-col">$281</td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Design Patterns Skill heatmap">
                 <td><div class="text-strong">Design Patterns Skill</div><div class="micro text-muted"><code>dpt-001</code></div></td>
@@ -3176,7 +3142,7 @@
                 <td class="num-col"><span class="score-pill med">0.70</span></td>
                 <td class="num-col">20</td>
                 <td class="num-col">376,000</td>
-                <td class="num-col">$30</td>
+                <td class="num-col">$187</td>
               </tr>
               <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Data Structures Skill heatmap">
                 <td><div class="text-strong">Data Structures Skill</div><div class="micro text-muted"><code>ds-001</code></div></td>
@@ -3262,7 +3228,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 4 — PER-TOPIC BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">topic</span>Level 4 of 4 · Topic</span>
+      <span class="eyebrow"><span class="material-icons-outlined">topic</span>Level 5 of 5 · Topic</span>
       <h2 class="h4 mb-2">Per-Topic breakdown</h2>
       <p class="text-muted mb-3">Topic-level mastery, sessions, and cost across all deployed Skills. Helps spot unused or unusually expensive Topics (often signals a Skill prompt issue worth investigating).</p>
 
@@ -3298,7 +3264,7 @@
                 <td class="num-col"><span class="score-pill med">0.78</span></td>
                 <td class="num-col">115</td>
                 <td class="num-col">510,000</td>
-                <td class="num-col">$48</td>
+                <td class="num-col">$300</td>
               </tr>
               <tr data-topic-skill="pyt-001" data-topic-course="E010">
                 <td><div class="text-strong">Control Flow &amp; Logic</div></td>
@@ -3308,7 +3274,7 @@
                 <td class="num-col"><span class="score-pill med">0.72</span></td>
                 <td class="num-col">100</td>
                 <td class="num-col">445,000</td>
-                <td class="num-col">$42</td>
+                <td class="num-col">$262</td>
               </tr>
               <tr data-topic-skill="pyt-001" data-topic-course="E010">
                 <td><div class="text-strong">Functions &amp; Modular Programming</div></td>
@@ -3318,7 +3284,7 @@
                 <td class="num-col"><span class="score-pill med">0.75</span></td>
                 <td class="num-col">105</td>
                 <td class="num-col">465,000</td>
-                <td class="num-col">$44</td>
+                <td class="num-col">$275</td>
               </tr>
               <tr data-topic-skill="pyt-001" data-topic-course="E010">
                 <td><div class="text-strong">Data Structures (Lists, Tuples, Sets, Dictionaries)</div></td>
@@ -3328,7 +3294,7 @@
                 <td class="num-col"><span class="score-pill med">0.74</span></td>
                 <td class="num-col">92</td>
                 <td class="num-col">400,000</td>
-                <td class="num-col">$38</td>
+                <td class="num-col">$237</td>
               </tr>
               <tr data-topic-skill="git-001" data-topic-course="E010">
                 <td><div class="text-strong">Local Git Workflow</div></td>
@@ -3338,7 +3304,7 @@
                 <td class="num-col"><span class="score-pill med">0.72</span></td>
                 <td class="num-col">27</td>
                 <td class="num-col">103,000</td>
-                <td class="num-col">$11</td>
+                <td class="num-col">$69</td>
               </tr>
               <tr data-topic-skill="git-001" data-topic-course="E010">
                 <td><div class="text-strong">Branching &amp; Merging</div></td>
@@ -3348,7 +3314,7 @@
                 <td class="num-col"><span class="score-pill med">0.68</span></td>
                 <td class="num-col">32</td>
                 <td class="num-col">122,000</td>
-                <td class="num-col">$13</td>
+                <td class="num-col">$81</td>
               </tr>
               <tr data-topic-skill="git-001" data-topic-course="E010">
                 <td><div class="text-strong">Remote Collaboration</div></td>
@@ -3358,7 +3324,7 @@
                 <td class="num-col"><span class="score-pill med">0.64</span></td>
                 <td class="num-col">28</td>
                 <td class="num-col">103,300</td>
-                <td class="num-col">$11</td>
+                <td class="num-col">$69</td>
               </tr>
               <tr data-topic-skill="pyt-002" data-topic-course="E075">
                 <td><div class="text-strong">Advanced Data Structures</div></td>
@@ -3368,7 +3334,7 @@
                 <td class="num-col"><span class="score-pill med">0.76</span></td>
                 <td class="num-col">24</td>
                 <td class="num-col">210,000</td>
-                <td class="num-col">$17</td>
+                <td class="num-col">$106</td>
               </tr>
               <tr data-topic-skill="pyt-002" data-topic-course="E075">
                 <td><div class="text-strong">Decorators &amp; Generators</div></td>
@@ -3378,7 +3344,7 @@
                 <td class="num-col"><span class="score-pill med">0.72</span></td>
                 <td class="num-col">21</td>
                 <td class="num-col">175,000</td>
-                <td class="num-col">$14</td>
+                <td class="num-col">$87</td>
               </tr>
               <tr data-topic-skill="pyt-002" data-topic-course="E075">
                 <td><div class="text-strong">Concurrency Basics</div></td>
@@ -3388,7 +3354,7 @@
                 <td class="num-col"><span class="score-pill med">0.74</span></td>
                 <td class="num-col">20</td>
                 <td class="num-col">175,000</td>
-                <td class="num-col">$14</td>
+                <td class="num-col">$87</td>
               </tr>
               <tr data-topic-skill="lib-001" data-topic-course="E075">
                 <td><div class="text-strong">pandas Essentials</div></td>
@@ -3398,7 +3364,7 @@
                 <td class="num-col"><span class="score-pill high">0.84</span></td>
                 <td class="num-col">30</td>
                 <td class="num-col">328,000</td>
-                <td class="num-col">$26</td>
+                <td class="num-col">$162</td>
               </tr>
               <tr data-topic-skill="lib-001" data-topic-course="E075">
                 <td><div class="text-strong">NumPy for Numerical Work</div></td>
@@ -3408,7 +3374,7 @@
                 <td class="num-col"><span class="score-pill high">0.80</span></td>
                 <td class="num-col">22</td>
                 <td class="num-col">226,000</td>
-                <td class="num-col">$18</td>
+                <td class="num-col">$112</td>
               </tr>
               <tr data-topic-skill="lib-001" data-topic-course="E075">
                 <td><div class="text-strong">matplotlib &amp; seaborn Plotting</div></td>
@@ -3418,7 +3384,7 @@
                 <td class="num-col"><span class="score-pill high">0.82</span></td>
                 <td class="num-col">20</td>
                 <td class="num-col">202,000</td>
-                <td class="num-col">$16</td>
+                <td class="num-col">$100</td>
               </tr>
               <tr data-topic-skill="oop-001" data-topic-course="E135">
                 <td><div class="text-strong">Classes &amp; Objects</div></td>
@@ -3428,7 +3394,7 @@
                 <td class="num-col"><span class="score-pill med">0.72</span></td>
                 <td class="num-col">8</td>
                 <td class="num-col">160,000</td>
-                <td class="num-col">$13</td>
+                <td class="num-col">$81</td>
               </tr>
               <tr data-topic-skill="oop-001" data-topic-course="E135">
                 <td><div class="text-strong">Inheritance &amp; Composition</div></td>
@@ -3438,7 +3404,7 @@
                 <td class="num-col"><span class="score-pill med">0.70</span></td>
                 <td class="num-col">6</td>
                 <td class="num-col">137,000</td>
-                <td class="num-col">$11</td>
+                <td class="num-col">$69</td>
               </tr>
               <tr data-topic-skill="oop-001" data-topic-course="E135">
                 <td><div class="text-strong">Polymorphism &amp; Encapsulation</div></td>
@@ -3448,7 +3414,7 @@
                 <td class="num-col"><span class="score-pill med">0.68</span></td>
                 <td class="num-col">4</td>
                 <td class="num-col">125,000</td>
-                <td class="num-col">$10</td>
+                <td class="num-col">$62</td>
               </tr>
               <tr data-topic-skill="oop-001" data-topic-course="E135">
                 <td><div class="text-strong">Common Design Patterns</div></td>
@@ -3458,7 +3424,7 @@
                 <td class="num-col"><span class="score-pill med">0.74</span></td>
                 <td class="num-col">6</td>
                 <td class="num-col">138,000</td>
-                <td class="num-col">$11</td>
+                <td class="num-col">$69</td>
               </tr>
               <tr data-topic-skill="dpt-001" data-topic-course="E135">
                 <td><div class="text-strong">Creational Patterns</div></td>
@@ -3468,7 +3434,7 @@
                 <td class="num-col"><span class="score-pill med">0.72</span></td>
                 <td class="num-col">7</td>
                 <td class="num-col">137,000</td>
-                <td class="num-col">$11</td>
+                <td class="num-col">$69</td>
               </tr>
               <tr data-topic-skill="dpt-001" data-topic-course="E135">
                 <td><div class="text-strong">Structural Patterns</div></td>
@@ -3478,7 +3444,7 @@
                 <td class="num-col"><span class="score-pill med">0.68</span></td>
                 <td class="num-col">6</td>
                 <td class="num-col">112,000</td>
-                <td class="num-col">$9</td>
+                <td class="num-col">$56</td>
               </tr>
               <tr data-topic-skill="dpt-001" data-topic-course="E135">
                 <td><div class="text-strong">Behavioral Patterns</div></td>
@@ -3488,7 +3454,7 @@
                 <td class="num-col"><span class="score-pill med">0.70</span></td>
                 <td class="num-col">7</td>
                 <td class="num-col">127,000</td>
-                <td class="num-col">$10</td>
+                <td class="num-col">$62</td>
               </tr>
             </tbody>
           </table>
@@ -3597,7 +3563,7 @@
       <!-- Section 6 — ACTIVITY LOG -->
       <span class="eyebrow"><span class="material-icons-outlined">history</span>Audit Trail</span>
       <h2 class="h4 mb-2">Activity Log</h2>
-      <p class="text-muted mb-3">Chronological audit of TA and Super Admin actions affecting this School's Courses and Skills.</p>
+      <p class="text-muted mb-3">Chronological audit of School Admin and Super Admin actions across all Schools.</p>
 
       <div class="d-flex justify-content-end mb-4">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
@@ -3614,9 +3580,9 @@
           <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
           <button class="chip-filter active" data-filter-activity="all" onclick="filterActivityLog('all')">All actions (11)</button>
           <button class="chip-filter" data-filter-activity="create" onclick="filterActivityLog('create')">Create (1)</button>
-          <button class="chip-filter" data-filter-activity="edit" onclick="filterActivityLog('edit')">Edit (3)</button>
+          <button class="chip-filter" data-filter-activity="edit" onclick="filterActivityLog('edit')">Edit (4)</button>
           <button class="chip-filter" data-filter-activity="deploy" onclick="filterActivityLog('deploy')">Deploy (3)</button>
-          <button class="chip-filter" data-filter-activity="role-change" onclick="filterActivityLog('role-change')">Role changes (2)</button>
+          <button class="chip-filter" data-filter-activity="role-change" onclick="filterActivityLog('role-change')">Role changes (3)</button>
         </div>
 
         <div class="pgn__card mb-3">
@@ -3636,12 +3602,6 @@
                   <td>Alice</td>
                   <td>Deploy</td>
                   <td><code>oop-001</code> &middot; Live</td>
-                </tr>
-                <tr data-activity-cat="role-change">
-                  <td>07 May 2026 &middot; 09:00:00</td>
-                  <td>Bob (Super Admin)</td>
-                  <td>Elevate role</td>
-                  <td>Alice &rarr; Tenant Admin (School of Technology)</td>
                 </tr>
                 <tr data-activity-cat="edit">
                   <td>13 May 2026 &middot; 13:51:02</td>
@@ -3665,7 +3625,13 @@
                   <td>09 May 2026 &middot; 09:18:55</td>
                   <td>Alice</td>
                   <td>Update branding</td>
-                  <td>Tenant settings &middot; logo</td>
+                  <td>School settings &middot; logo</td>
+                </tr>
+                <tr data-activity-cat="role-change">
+                  <td>07 May 2026 &middot; 09:00:00</td>
+                  <td>Bob (Super Admin)</td>
+                  <td>Elevate role</td>
+                  <td>Alice &rarr; School Admin (School of Technology)</td>
                 </tr>
                 <tr data-activity-cat="role-change">
                   <td>06 May 2026 &middot; 13:18:04</td>
@@ -3714,13 +3680,13 @@
       </div>
 
       <script>
-        /* v4.138: S15 Per-Topic filter — narrow Topic rows by Course or Skill */
+        /* S6 Per-Topic filter — narrow Topic rows by Course or Skill */
         window.filterTopics = function(dimension, value) {
           var attrName = (dimension === 'course') ? 'data-topic-course' : 'data-topic-skill';
-          document.querySelectorAll('#screen-15 .chip-filter[data-filter-topic-' + dimension + ']').forEach(function(c) {
+          document.querySelectorAll('#main-6 .chip-filter[data-filter-topic-' + dimension + ']').forEach(function(c) {
             c.classList.remove('active');
           });
-          var activeChip = document.querySelector('#screen-15 .chip-filter[data-filter-topic-' + dimension + '="' + value + '"]');
+          var activeChip = document.querySelector('#main-6 .chip-filter[data-filter-topic-' + dimension + '="' + value + '"]');
           if (activeChip) activeChip.classList.add('active');
           document.querySelectorAll('#topic-table tbody tr').forEach(function(row) {
             row.style.display = (value === 'all' || row.getAttribute(attrName) === value) ? '' : 'none';
@@ -3750,7 +3716,7 @@
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(4); return false;">Schools &amp; Settings</a>
+        <a href="#" onclick="goToScreen(4); return false;">School Management</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>New School</span>
       </nav>
@@ -3766,8 +3732,8 @@
             </div>
             <div class="form-group">
               <label class="form-label" for="f-new-school-slug">School short-code</label>
-              <input class="form-control" id="f-new-school-slug" type="text" placeholder="e.g., school_of_health" />
-              <p class="small text-muted mt-1" style="margin-bottom:0;">Lowercase, snake_case. Used as the tenant ID.</p>
+              <input class="form-control" id="f-new-school-slug" type="text" placeholder="e.g., school_health" />
+              <p class="small text-muted mt-1" style="margin-bottom:0;">Lowercase, snake_case. Used as the School ID.</p>
             </div>
           </div>
           <div class="form-group">
@@ -3775,9 +3741,9 @@
             <select class="form-control" id="f-new-school-admin">
               <option value="">Assign later (on Access Control screen)</option>
               <option value="alice">Alice (currently: School of Technology)</option>
-              <option value="diane">Diane (currently: School of Business)</option>
-              <option value="james">James (currently: School of Education)</option>
-              <option value="priya">Priya (currently: Leavitt School of Health)</option>
+              <option value="miguel">Miguel (currently: School of Business)</option>
+              <option value="renee">Renee (currently: School of Education)</option>
+              <option value="theo">Theo (currently: Leavitt School of Health)</option>
             </select>
             <p class="small text-muted mt-1" style="margin-bottom:0;">An existing School Admin can be assigned to multiple Schools, or you can assign a new one later on the Access Control screen.</p>
           </div>
@@ -3786,14 +3752,14 @@
 
       <div class="alert alert-info mb-3">
         <span class="material-icons-outlined">info</span>
-        <div>Creating a new School provisions an isolated tenant environment (multi-tenant architecture per SOW &sect;16.3 row 8.6). The School appears immediately in the Schools &amp; Settings table; Courses and Skills are added by the assigned School Admin.</div>
+        <div>Creating a new School provisions an isolated tenant environment. The School appears immediately in the School Management table; Courses and Skills are added by the assigned School Admin.</div>
       </div>
 
     </div>
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Cancel</button>
-    <button class="btn btn-primary" onclick="alert('Create School (wireframe — would provision the new tenant and return to Schools &amp; Settings with the School added to the table)'); goToScreen(4);"><span class="material-icons-outlined">check</span>Create School</button>
+    <button class="btn btn-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">check</span>Create School</button>
   </div>
 </section>
 
@@ -3853,14 +3819,6 @@
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow D</span>
-    <span class="flow-desc">Platform Settings</span>
-    <nav class="flow-nav" aria-label="Platform settings screens">
-      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Platform Settings">11 Platform Settings</button>
-      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Cost Spike drill-down">12 Cost Spike</button>
-    </nav>
-  </div>
-  <div class="meta-bar-flows">
-    <span class="flow-id">Flow E</span>
     <span class="flow-desc">External Tools</span>
     <nav class="flow-nav" aria-label="External tools screens">
       <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: External Tools and Integrations">13 External Tools</button>
@@ -3868,7 +3826,7 @@
     </nav>
   </div>
   <div class="meta-bar-flows">
-    <span class="flow-id">Flow F</span>
+    <span class="flow-id">Flow E</span>
     <span class="flow-desc">Logs</span>
     <nav class="flow-nav" aria-label="Logs screen">
       <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Logs">15 Logs</button>
@@ -3890,9 +3848,10 @@
         <label class="d-flex align-items-center gap-2"><input type="radio" name="new-role" value="Super Admin"> Super Admin</label>
       </div>
     </div>
+    <p id="role-modal-guard" class="small mb-3" style="display:none; color: var(--pgn-color-warning-base); background: rgba(245,166,35,0.10); border-radius:6px; padding:8px 10px;"><span class="material-icons-outlined" style="font-size:15px; vertical-align:middle;">info</span> A minimum of 2 Super Admins must exist at all times. This user can't be downgraded until another Super Admin is added.</p>
     <div class="d-flex gap-2 justify-content-end">
       <button class="btn btn-outline-primary btn-sm" onclick="closeRoleModal()">Cancel</button>
-      <button class="btn btn-primary btn-sm" onclick="confirmRoleChange()">Confirm change</button>
+      <button id="role-modal-confirm" class="btn btn-primary btn-sm" onclick="confirmRoleChange()">Confirm change</button>
     </div>
   </div>
 </div>
@@ -3923,20 +3882,99 @@
   }
 
   /* Role-change modal (Option 3) */
+  // Min-2-Super-Admin lockout guarantee. Prototype has 2 Super Admins; a real
+  // implementation would count live Super Admins before allowing a downgrade.
+  const MIN_SUPER_ADMINS = 2;
+  const TOTAL_SUPER_ADMINS = 2;
+  let roleModalTrigger = null;
   function openRoleModal(name, current) {
+    roleModalTrigger = document.activeElement;
     document.getElementById('role-modal-user').textContent = name;
     document.getElementById('role-modal-current').textContent = current;
-    document.querySelectorAll('input[name="new-role"]').forEach(function(r){ r.checked = (r.value === current); });
-    document.getElementById('role-modal').style.display = 'flex';
+    var lockSuperAdmin = (current === 'Super Admin' && TOTAL_SUPER_ADMINS <= MIN_SUPER_ADMINS);
+    document.querySelectorAll('input[name="new-role"]').forEach(function(r){
+      r.checked = (r.value === current);
+      r.disabled = lockSuperAdmin && r.value !== 'Super Admin';
+    });
+    document.getElementById('role-modal-guard').style.display = lockSuperAdmin ? 'block' : 'none';
+    document.getElementById('role-modal-confirm').disabled = lockSuperAdmin;
+    var modal = document.getElementById('role-modal');
+    modal.style.display = 'flex';
+    var focusTarget = lockSuperAdmin
+      ? modal.querySelector('button[onclick="closeRoleModal()"]')
+      : modal.querySelector('input[name="new-role"]:not([disabled])');
+    if (focusTarget) focusTarget.focus();
   }
   function closeRoleModal() {
     document.getElementById('role-modal').style.display = 'none';
+    if (roleModalTrigger && typeof roleModalTrigger.focus === 'function') roleModalTrigger.focus();
   }
   function confirmRoleChange() {
     // Wireframe: the radio selection + Confirm button are the confirmation; a real
     // implementation would update the role + write an audit log entry here.
     closeRoleModal();
   }
+
+  // Per-School Settings — picking a School in the table swaps the panel below.
+  // Each School carries slightly different demo values so the change is visible.
+  const SCHOOL_SETTINGS = {
+    tech:      { name: 'School of Technology',     passing: 70, budget: 540,  audit: '1825 days (5 years)' },
+    business:  { name: 'School of Business',       passing: 75, budget: 1600, audit: '730 days' },
+    education: { name: 'School of Education',      passing: 65, budget: 1400, audit: '365 days' },
+    health:    { name: 'Leavitt School of Health', passing: 80, budget: 1300, audit: 'Indefinite' }
+  };
+  function showSchoolSettings(key, scroll) {
+    var s = SCHOOL_SETTINGS[key];
+    if (!s) return;
+    document.getElementById('ss-school-name').textContent = s.name;
+    document.getElementById('ss-passing').value = s.passing;
+    document.getElementById('ss-budget').value = s.budget;
+    var sel = document.getElementById('ss-audit-retention');
+    Array.prototype.forEach.call(sel.options, function(o){ o.selected = (o.textContent.trim() === s.audit); });
+    document.querySelectorAll('#main-4 tbody tr[data-school]').forEach(function(tr){
+      tr.style.background = (tr.getAttribute('data-school') === key) ? 'rgba(0,40,85,0.06)' : '';
+    });
+    if (scroll !== false) document.getElementById('school-settings-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  // Highlight the default School (Technology) on load so the table matches the panel below.
+  showSchoolSettings('tech', false);
+
+  /* Skill heatmap (S8) filter chips — ported from School Admin, scoped to #screen-8.
+     Chip-highlight only; the heatmap markup has no [data-row-status] rows to hide. */
+  function filterHeatmap(status) {
+    document.querySelectorAll('#screen-8 .chip-filter').forEach(function(chip) {
+      chip.classList.remove('active');
+      if (chip.dataset.filterStatus === 'at-risk') chip.classList.add('danger');
+      else chip.classList.remove('danger');
+    });
+    var activeChip = document.querySelector('#screen-8 .chip-filter[data-filter-status="' + status + '"]');
+    if (activeChip) activeChip.classList.add('active');
+  }
+
+  /* Per-School cost detail (S1) — clicking a School row reveals its cost/usage panel below.
+     Only the flagged School (cost spike) shows the trend + top-Skills + cause; others show a stable note. */
+  var SCHOOL_COST = {
+    tech:      { name:'School of Technology',     admin:'Alice',  learners:'90',    util:'80', flagged:true },
+    business:  { name:'School of Business',       admin:'Miguel', learners:'1,402', util:'71', flagged:false },
+    education: { name:'School of Education',      admin:'Renee',  learners:'1,248', util:'66', flagged:false },
+    health:    { name:'Leavitt School of Health', admin:'Theo',   learners:'1,102', util:'60', flagged:false }
+  };
+  function showSchoolCost(key, scroll) {
+    var s = SCHOOL_COST[key]; if (!s) return;
+    document.getElementById('sc-name').textContent = s.name;
+    document.getElementById('sc-subtitle').textContent = 'School Admin: ' + s.admin + ' · ' + s.learners + ' active learners · ' + s.util + '% of monthly budget consumed.';
+    var toggle = function(id, on){ var el = document.getElementById(id); if (el) el.style.display = on ? '' : 'none'; };
+    toggle('sc-wow', s.flagged);
+    toggle('sc-spike', s.flagged);
+    toggle('sc-detail-row', s.flagged);
+    toggle('sc-stable', !s.flagged);
+    if (s.flagged) { var a = document.getElementById('sc-cause-admin'); if (a) a.textContent = s.admin; }
+    document.querySelectorAll('#main-1 tbody tr[data-school]').forEach(function(tr){
+      tr.style.background = (tr.getAttribute('data-school') === key) ? 'rgba(0,40,85,0.06)' : '';
+    });
+    if (scroll !== false) document.getElementById('s1-cost').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+  showSchoolCost('tech', false);
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
@@ -3963,9 +4001,25 @@
   }
 
   document.addEventListener('keydown', function(e) {
+    // Role-change dialog: Escape closes it (checked before the form-field guard,
+    // since focus may sit on a radio inside the modal).
+    var roleModalEl = document.getElementById('role-modal');
+    if (roleModalEl && roleModalEl.style.display === 'flex' && e.key === 'Escape') {
+      e.preventDefault();
+      closeRoleModal();
+      return;
+    }
     const active = document.querySelector('.screen.active');
     if (!active) return;
     if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+    // Enter/Space activates any role="button" element (e.g. clickable table rows),
+    // matching native button keyboard behavior for accessibility.
+    const rb = document.activeElement;
+    if (rb && rb.getAttribute && rb.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      rb.click();
+      return;
+    }
     const n = parseInt(active.id.replace('screen-', ''));
     if (e.key === 'ArrowRight' && n < TOTAL_SCREENS) goToScreen(n + 1);
     if (e.key === 'ArrowLeft' && n > 1) goToScreen(n - 1);

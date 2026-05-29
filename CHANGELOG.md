@@ -8,6 +8,33 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## SA v4.150 — 28–29 May 2026 — Super Admin walkthrough (S1–S13) + cost consolidation
+
+Full Super Admin re-walk against the Coda Contract Requirements. Screen count 15 → 13 (S11 + S12 folded into S1).
+
+### Screen-by-screen
+- **S1 Dashboard** is now the cost hub: platform cost gauges + a Per-School table where selecting a School reveals its cost/usage detail in-place (S4-style). The flagged School shows the cost-spike trend + top-Skills + likely cause; others show a "stable, within budget" note. Toolbar "Platform Settings" → "Cost & Usage".
+- **S11 (Platform Settings) + S12 (Cost spike) removed** — consolidated into S1. Rate-limits block dropped (nothing to set).
+- **S2 Access Control**: min-2-Super-Admin guard restored on the role-change modal (disables downgrade + dialog a11y: Escape-close / focus management); Skills renamed to a clear Skill/Course distinction; filter-chip counts = role totals; top-down ordering applied.
+- **S3 Access Denied**: headline now states the real reason (expired/revoked link); "Logged ·" + time-of-day dropped (date + event-id kept).
+- **S4 School Management**: rows click to reveal per-School Settings in-place; New School button left-aligned; trimmed (removed Primary color, conversation-log retention, Reset).
+- **S5 Create a School**: dropped the browser alert + SOW cite; naming standardized to "School Management"; roster + ID-prefix fixes.
+- **S6 Analytics**: rebuilt to 5 levels (Platform → School → Course → Skill → Topic); Per-Topic filter chip-highlight fixed; activity log re-sorted chronologically + chip counts corrected.
+- **S7–S10 drill-chain**: ported the missing `.heatmap-*` + `--heat` ramp, `.score-pill`, and `.section-card`/`.section-stat` CSS plus `filterHeatmap` from School Admin so the inherited screens render correctly; S8 → S9 link wired.
+- **S13 External Tools**: Global configuration section removed.
+
+### Platform-wide
+- **Keyboard a11y**: Enter/Space now activates `role="button"` rows/cards (super_admin + instructor + tenant_admin).
+- **`tenant_` ID prefix removed** site-wide (School IDs → `school_*`; TA branding map).
+- **Cost data canonical** (Tech = high-cost spike): $4,287 platform total; Tech $2,415 / Business $1,000 / Education $330 / Health $542 — reconciled across S1, S4, S6.
+- Roster aligned to Alice / Miguel / Renee / Theo on the walked screens.
+
+### Files
+- `super_admin/index.html` — major (title stamp v4.141 → v4.150)
+- `tenant_admin/index.html` + `instructor/index.html` — keyboard-a11y helper; `tenant_` prefix removal (TA)
+
+---
+
 ## TA v4.138 — 24 May 2026 — TA walkthrough complete: redesign, terminology lock, 4-level Analytics
 
 The Tenant Admin (now **School Admin**) portal was walked end-to-end and overhauled in a single session. The portal is now 15 screens (S1–S15), down from 26 in v4.119. Scope was sharpened to **Courses + Skills management only** — at-risk learner tracking, help-desk 2-way communication, and School Settings all moved to other personas (Instructor / Super Admin) per Brady's directive.
