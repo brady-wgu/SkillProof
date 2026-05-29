@@ -3903,6 +3903,14 @@ Address the learner by their first name. Never use "student" as the form of addr
     const active = document.querySelector('.screen.active');
     if (!active) return;
     if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+    // Enter/Space activates any role="button" element (e.g. clickable cards/rows),
+    // matching native button keyboard behavior for accessibility.
+    const rb = document.activeElement;
+    if (rb && rb.getAttribute && rb.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      rb.click();
+      return;
+    }
     const n = parseInt(active.id.replace('screen-', ''));
     if (e.key === 'ArrowRight') {
       let next = n + 1;
@@ -3956,10 +3964,10 @@ Address the learner by their first name. Never use "student" as the form of addr
     'Leavitt School of Health': 'school-health'
   };
   var TENANT_IDS = {
-    'School of Technology': 'tenant_school_tech',
-    'School of Business': 'tenant_school_business',
-    'School of Education': 'tenant_school_education',
-    'Leavitt School of Health': 'tenant_school_health'
+    'School of Technology': 'school_tech',
+    'School of Business': 'school_business',
+    'School of Education': 'school_education',
+    'Leavitt School of Health': 'school_health'
   };
 
   function applySchoolLogos(name) {
@@ -3974,7 +3982,7 @@ Address the learner by their first name. Never use "student" as the form of addr
     });
     /* Update the tenant identity card on Tenant Settings */
     document.querySelectorAll('[data-tenant-name]').forEach(function(el) { el.textContent = name; });
-    var tenantId = TENANT_IDS[name] || 'tenant_school_tech';
+    var tenantId = TENANT_IDS[name] || 'school_tech';
     document.querySelectorAll('[data-tenant-id]').forEach(function(el) { el.textContent = tenantId; });
     document.querySelectorAll('[data-tenant-scope]').forEach(function(el) {
       el.textContent = 'Tenant Admin · read access to all Skills in ' + name + ' · write access to Skills you created';

@@ -1738,6 +1738,14 @@
     const active = document.querySelector('.screen.active');
     if (!active) return;
     if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+    // Enter/Space activates any role="button" element (e.g. clickable table rows),
+    // matching native button keyboard behavior for accessibility.
+    const rb = document.activeElement;
+    if (rb && rb.getAttribute && rb.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      rb.click();
+      return;
+    }
     const n = parseInt(active.id.replace('screen-', ''));
     if (e.key === 'ArrowRight' && n < TOTAL_SCREENS) goToScreen(n + 1);
     if (e.key === 'ArrowLeft' && n > 1) goToScreen(n - 1);
