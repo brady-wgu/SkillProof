@@ -8,6 +8,41 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.152 — 1 Jun 2026 — Storyboard review: shared controls, modals & heat-scale unification (Instructor / Tenant Admin / Super Admin)
+
+Cross-portal Pass-A review with targeted UX fixes. A shared controls module was introduced, status colors were unified, and create/delete/remove flows moved to modals. Admin screen counts settled: **Tenant Admin 13 → 12, Super Admin 13 → 11** (Instructor 5, Student 18 unchanged).
+
+### New shared module — `assets/table-controls.{js,css}`
+- Auto-injects **filter chips + search + sort** on every data table site-wide — including tables that already carry a bespoke chip bar; `Actions`/`Controls` columns are excluded from the sort options.
+- **Sticky scroll-spy section nav** for long analytics pages (pinned beneath the page title; smooth-scroll + active-section highlight).
+- Loaded by all five surfaces; asset version `?v=7`.
+
+### Cross-cutting
+- **Status colors unified to the heat scale** (`--heat-1..9`) across heatmaps, score pills, badges, status dots, and threshold/budget bars (instructor / tenant_admin / super_admin) — one red → amber → green language.
+- **WCAG 2.2 AA contrast fixes**: warning text darkened to `#8A5A00` (was `#B5710B`, 3.94:1).
+- `no-cache` meta tags added to all five surfaces.
+
+### Tenant Admin (now 12 screens)
+- Analytics: mastery bars recolored to the heat scale; per-section headers consolidated (one icon + title each); sticky section nav placed below the page title.
+- **New Course → modal** from the dashboard (form → confirm → success); the standalone New Course screen was removed.
+- **Archived Skills**: "Permanently delete" → confirmation modal.
+
+### Super Admin (now 11 screens)
+- Analytics parity with TA (heat bars, consolidated headers, sticky nav — 5 levels).
+- **Access Control**: removing any assignment now opens a **confirm modal**; duplicate top search removed; **sort added to all three tabs** (People / Skills / Schools — fixed a Schools column mismatch that had also broken its search + filter).
+- **Create a School → modal** from S4 School Management; the standalone Create-a-School screen was removed (S6–S12 renumbered to S5–S11).
+- Dashboard quick-links: **dropped "Cost & Usage"**, **added "Data Hub"** (→ Data & Integrations Hub).
+- **De-overlap**: S9 renamed "External Tooling & Integrations" → **"External Tooling"** (operational dashboards); "Integrations" now lives solely in the Data & Integrations Hub.
+
+### Known follow-ups
+- Screenshot sets are **stale** (captured against older, larger screen counts) — pending a `capture_screens.py` regen.
+- External-tool launchers (S9 + S10) use placeholder `#` hrefs; production needs real URLs + `target="_blank" rel="noopener"`.
+
+### Files
+- `assets/table-controls.{js,css}` (new); `index.html` + `student/` + `instructor/` + `tenant_admin/` + `super_admin/` `index.html`.
+
+---
+
 ## SA v4.150 — 28–29 May 2026 — Super Admin walkthrough (S1–S13) + cost consolidation
 
 Full Super Admin re-walk against the Coda Contract Requirements. Screen count 15 → 13 (S11 + S12 folded into S1).

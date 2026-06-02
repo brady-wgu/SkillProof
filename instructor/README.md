@@ -16,9 +16,9 @@ Educator-facing analytics and student engagement tracking. The instructor's prim
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** LRPS landing → SSO → **Screen 01 dashboard home** (3 active Courses with KPIs + Skills nested in each Course card) → **Screen 02 Course view** (E010 detail with aggregate Course metrics + Skills deployed in the Course) → **Screen 03 Skill view = class heatmap** (Python Skill, 15 learners × 4 Topics, 9-step red→green color scale; Export Course Report (PDF) / CSV CTAs per §7.14) → Screen 04 at-risk filter applied (Sally identified) → Screen 05 Sally drill-down (8-row per-Learning Objective scores) → Screen 06 conversation log list (9 sessions) → Screen 07 session 09 transcript with AI feedback panels inline → Screen 08 Audit Trail confirmation (47 messages captured, 10-row event log) → Screen 09 Access Denied (zero-trust deny path, cross-portal pattern). | 9 |
+| **SC-ADD-03** | **Instructor Dashboard & At-Risk Intervention.** LRPS landing → SSO → **Instructor Dashboard** (active Courses with KPIs + Skills nested per Course card) (S1) → **Course view** (E010 detail — aggregate metrics + Skills deployed) (S2) → **Skill view = class heatmap** (Python Skill, 15 learners × 4 Topics, 9-step red→green scale; Export Course Report PDF / CSV per §7.14) (S3) → **Learner profile** (Sally's per-Topic scores) (S4) → **Access Denied** (zero-trust deny path, cross-portal pattern) (S5). Heatmap + tables carry filter + search + sort. *(Conversation-log / transcript / audit screens removed in v4.121 — conversations are single Q+A, not stored multi-turn.)* | 5 |
 
-**Total: 1 scenario · 9 screens (v4.92 renumbered 01-09 with new Course view at Screen 02).**
+**Total: 1 scenario · 5 screens (sequential 1–5).**
 
 ## Source
 
@@ -30,7 +30,7 @@ SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). A
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (8 screens)
+- [`index.html`](index.html) — interactive storyboard (5 screens)
 - `screenshots/` — 8 light-theme PNGs at 1440×900
 - `screenshots_dark/` — 8 dark-theme PNGs
 

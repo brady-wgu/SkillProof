@@ -21,7 +21,7 @@ This is the **v1.2 MVP scope** — the first JFT release. It deploys the existin
 | **SC-MVP-03** | Professional | 9 | Experienced developer fast-tracks. Diagnostic demonstrates mastery across all Topics. One verification task required for Functions & Modular Programming. |
 | **SC-MVP-04** | Returning | 6 | Student returns after multi-week break. Prior progress preserved. Re-assessment verifies retention before resuming coaching at prior difficulty level. |
 
-**Total: 4 scenarios · 34 screens.** *(See [v1 Known Limitations](#v1-known-limitations) below for honest call-outs of what's **not** depicted.)*
+**Total: 4 scenarios · 34 scenario steps across 18 screens.** *(See [v1 Known Limitations](#v1-known-limitations) below for honest call-outs of what's **not** depicted.)*
 
 ## Source
 
@@ -33,7 +33,7 @@ SkillProof MVP Scenario Catalog **v1.2** (07 Apr 2026). Authored by WGU Program 
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (34 screens)
+- [`index.html`](index.html) — interactive storyboard (18 screens · 34 scenario steps)
 - `screenshots/` — 34 light-theme PNGs at 1440×900
 - `screenshots_dark/` — 34 dark-theme PNGs at 1440×900
 
