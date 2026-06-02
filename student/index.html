@@ -95,11 +95,10 @@
       --pgn-font-family-body: 'Lato', 'Segoe UI', Arial, sans-serif;
     }
 
-    /* Dark mode tokens — present for the toggle even though screens are light-only
-       per Brady's 18 MAY 2026 decision. JFT can later switch screens to dark by
-       adding [data-theme="dark"] rules; the toggle button infrastructure is in
-       place so the rebrand to skillproof-theme key is consistent across the
-       4-portal storyboard. */
+    /* Dark mode tokens — full dark-theme parity since v4.154 (the 18 MAY 2026
+       "light-only" framing has been reversed). All admin portals + Student
+       render correctly under [data-theme="dark"]; the audit on 2 Jun 2026
+       found zero light-bg suspects across S1, S2, S5, S7, S8, S9, S15. */
     [data-theme="dark"] {
       --pgn-color-bg-base: #0D1A2E;
       --pgn-color-bg-light: #0F2240;
@@ -2172,10 +2171,10 @@ def count_passing(scores):</textarea>
   });
 
   /* ================================================================
-     DARK MODE TOGGLE — present for parity with other portals, but
-     the screens themselves are light-only per Brady's 18 MAY 2026
-     decision. Toggling will lighten/darken some chrome but the
-     screen bodies will not match live dark-mode visuals.
+     DARK MODE TOGGLE — full theme support across all 18 screens since
+     v4.154 (the 18 MAY 2026 "light-only" framing has been reversed).
+     Toggles between light and dark via [data-theme="dark"] on <html>;
+     theme persists in localStorage.skillproof-theme.
      ================================================================ */
   function toggleTheme() {
     var html = document.documentElement;
