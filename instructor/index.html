@@ -8,8 +8,8 @@
   <meta http-equiv="Expires" content="0">
   <title>SkillProof — Instructor Dashboard — Storyboard v4.121</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
-  <link rel="stylesheet" href="../assets/table-controls.css?v=11">
-  <script defer src="../assets/table-controls.js?v=11"></script>
+  <link rel="stylesheet" href="../assets/table-controls.css?v=12">
+  <script defer src="../assets/table-controls.js?v=12"></script>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -352,6 +352,7 @@
     .badge-danger { background: #EC6A52; color: #000; }
     .badge-warning { background: #F3D06E; color: #000; }
     .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
+    .badge-lg      { padding: 8px 16px; font-size: 14px; }  /* sanctioned emphasis size (8-pt grid) */
 
     /* ================================================================
        ALERTS
@@ -984,13 +985,13 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Python Skill</span> <span class="micro text-muted">· 0.76 · 4 at risk</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
                 </div>
               </button>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Git &amp; Version Control Skill</span> <span class="micro text-muted">· 0.68 · 0 at risk</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
@@ -1019,13 +1020,13 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Python Intermediate Skill</span> <span class="micro text-muted">· 0.85 · 0 at risk</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
                 </div>
               </button>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Libraries Skill</span> <span class="micro text-muted">· 0.78 · 1 watch</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
@@ -1054,13 +1055,13 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 10px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">OOP Skill</span> <span class="micro text-muted">· 0.73 · 0 at risk</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
                 </div>
               </button>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 12px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Design Patterns Skill</span> <span class="micro text-muted">· 0.69 · 0 at risk</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">grid_view</span>
@@ -1175,7 +1176,7 @@
                   <td class="small text-muted">06 May 2026</td>
                   <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
                 </tr>
-                <tr class="no-matches-row" style="display:none;"><td colspan="5" class="small text-muted" style="padding: 16px; text-align: center;">[Demo] No sample learners in this filter — open the Skill heatmap for the full roster.</td></tr>
+                <tr class="no-matches-row" style="display:none;"><td colspan="5" class="small text-muted" style="padding: 16px; text-align: center;">No learners match this filter — open the Skill heatmap for the full roster.</td></tr>
               </tbody>
             </table>
           </div>
@@ -1210,7 +1211,7 @@
           <h1 id="s2-heading">E010 · Foundations of Programming (Python)</h1>
           <p class="mt-1">School of Technology · 28 active learners (rolling enrollment) · last activity 14 min ago</p>
         </div>
-        <a href="#" onclick="goToScreen(3); return false;" class="badge badge-warning" style="padding:8px 14px; font-size:14px; text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:16px;">priority_high</span>4 learners at risk</a>
+        <a href="#" onclick="goToScreen(3); return false;" class="badge badge-warning badge-lg" style="text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:16px;">priority_high</span>4 learners at risk</a>
       </div>
 
       <div class="d-flex justify-content-end mb-3">
@@ -1299,7 +1300,10 @@
       </nav>
 
       <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Python Skill · Heatmap</span>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <span class="eyebrow" style="margin:0;"><span class="material-icons-outlined">smart_toy</span>Python Skill · Heatmap</span>
+          <span class="badge badge-success" title="Color &amp; contrast verified to WCAG 2.2 AA. Full keyboard / screen-reader audit in progress."><span class="material-icons-outlined" style="font-size:14px;">verified</span>WCAG 2.2 AA contrast</span>
+        </div>
         <h1 id="s3-heading">Python Skill — Topic mastery</h1>
         <p class="mt-1">AI-scored Topic mastery (0.00–1.00) per learner. Updates after each coaching session.</p>
       </div>
@@ -1454,7 +1458,7 @@
           <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
           <h1 id="s4-heading">Sally Whitman</h1>
         </div>
-        <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
+        <span class="badge badge-danger badge-lg"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
       <div class="d-flex justify-content-end mb-3">

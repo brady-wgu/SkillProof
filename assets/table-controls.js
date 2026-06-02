@@ -361,3 +361,69 @@
   else document.addEventListener('DOMContentLoaded', run);
   window.SkillProofTableControls = { init: init };
 })();
+
+/* ============================================================================
+   SkillProof — toast (transient confirmation). Loaded with table-controls.
+   window.showToast(message, {icon, duration}). Announced via role=status.
+   Idempotent: safe even if this file is included more than once.
+   ============================================================================ */
+(function () {
+  if (window.showToast) return;
+  var wrap = null;
+  function ensureWrap() {
+    if (wrap && document.body && document.body.contains(wrap)) return wrap;
+    wrap = document.createElement('div');
+    wrap.className = 'tc-toast-wrap';
+    wrap.setAttribute('role', 'status');
+    wrap.setAttribute('aria-live', 'polite');
+    wrap.setAttribute('aria-atomic', 'true');
+    (document.body || document.documentElement).appendChild(wrap);
+    return wrap;
+  }
+  window.showToast = function (message, opts) {
+    opts = opts || {};
+    var w = ensureWrap();
+    var t = document.createElement('div');
+    t.className = 'tc-toast';
+    var icon = document.createElement('span');
+    icon.className = 'material-icons-outlined';
+    icon.textContent = opts.icon || 'check_circle';
+    icon.setAttribute('aria-hidden', 'true');
+    var label = document.createElement('span');
+    label.textContent = message;
+    t.appendChild(icon); t.appendChild(label);
+    w.appendChild(t);
+    void t.offsetWidth;            // reflow so the enter transition runs
+    t.classList.add('show');
+    setTimeout(function () {
+      t.classList.remove('show');
+      setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 220);
+    }, opts.duration || 3000);
+  };
+})();
+
+/* ============================================================================
+   SkillProof — export confirmation. Delegated click handler that gives the
+   analytics export buttons (PDF / CSV / JSON) a real confirmation toast.
+   Recognizes a button as an export control ONLY when its visible label is
+   exactly a format, or its aria-label reads "… as <FORMAT>" — so it never
+   fires on view toggles or unrelated icon buttons. Friendly report name is
+   pulled from the "Export <name> as <FORMAT>" aria-label when present.
+   ============================================================================ */
+(function () {
+  var FORMATS = { PDF: 1, CSV: 1, JSON: 1 };
+  document.addEventListener('click', function (e) {
+    if (typeof window.showToast !== 'function') return;
+    var btn = e.target.closest && e.target.closest('button');
+    if (!btn) return;
+    var iconEl = btn.querySelector('.material-icons-outlined');
+    var icon = iconEl ? iconEl.textContent.trim() : '';
+    var text = (btn.textContent || '').replace(icon, '').trim().toUpperCase();
+    var label = btn.getAttribute('aria-label') || '';
+    var fmt = FORMATS[text] ? text : null;
+    if (!fmt) { var lm = label.match(/\bas\s+(PDF|CSV|JSON)\b/i); if (lm) fmt = lm[1].toUpperCase(); }
+    if (!fmt) return;                                   // not an export-format button
+    var nm = label.match(/^Export\s+(.+?)\s+as\s+/i);
+    window.showToast(nm ? ('Exported ' + nm[1] + ' as ' + fmt) : ('Exported report as ' + fmt));
+  });
+})();

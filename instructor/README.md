@@ -24,6 +24,8 @@ Educator-facing analytics and student engagement tracking. The instructor's prim
 
 SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). Authored by WGU Program Development.
 
+Storyboard rev: **v4.156** (2 Jun 2026 — design-system polish: 8-pt spacing + sanctioned `.badge-lg`; **export-confirmation toasts** on the heatmap report exports; **WCAG 2.2 AA contrast chip** on the Skill heatmap header).
+
 ## SOW references
 
 §7.10–7.11 (Engagement / Educator Dashboards), §7.13 (Visualizations), §7.14 (Export capabilities), §10.4 (Audit Logs).

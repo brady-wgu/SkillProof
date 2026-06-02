@@ -124,3 +124,26 @@ tr.tc-empty-row td {
   background-color: var(--pgn-color-bg-light);
   border-bottom-color: var(--pgn-color-gray-200);
 }
+
+/* ----------------------------------------------------------------------------
+   Toast — transient confirmation (e.g. export success). Shared across portals.
+   role=status/aria-live on the wrapper announces the message to screen readers.
+   Solid success-colored pill: white text is legible in BOTH light and dark.
+   ---------------------------------------------------------------------------- */
+.tc-toast-wrap {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+  z-index: 2000; display: flex; flex-direction: column; gap: 8px;
+  align-items: center; pointer-events: none;
+}
+.tc-toast {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 24px; border-radius: 8px;
+  background: var(--pgn-color-success-base); color: #fff;
+  font-family: 'Lato', 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: auto; max-width: 90vw;
+}
+.tc-toast.show { opacity: 1; transform: translateY(0); }
+.tc-toast .material-icons-outlined { font-size: 18px; }

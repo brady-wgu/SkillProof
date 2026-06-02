@@ -34,6 +34,7 @@ Bob's responsibilities span:
 - SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026)
 - WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.2** (24 May 2026)
 - Storyboard rev: **v4.152** (1 Jun 2026 — storyboard review: shared filter/search/sort, heat-scale colors, Create-a-School → modal, Access-Control removals → confirm modal, External Tooling / Data Hub de-overlap)
+- Storyboard rev: **v4.156** (2 Jun 2026 — design-system polish: `.role-pill` role selectors (color-coded + visible focus ring); live **institution-branding preview** on School Management; **export-confirmation toasts**; **WCAG 2.2 AA contrast chip** + collapsible **visualization key** on Analytics; **responsive phone-preview** card on the dashboard)
 
 ## SOW references
 
