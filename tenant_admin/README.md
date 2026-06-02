@@ -18,7 +18,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 |:---|:---|:---|
 | At-risk learner identification + intervention | **Instructor** | Per-learner remediation is Charlie's job. Alice can drill into the heatmap and learner profile for diagnostic purposes if a Skill is misbehaving, but at-risk monitoring is not her primary surface. |
 | Incident response / SLA monitoring | **JFT Support** (one-way only) | No 2-way help-desk communication; Alice clicks the help icon for a Zendesk handoff. No P1 ticketing UI, no CSM threads, no service-degradation dashboard. |
-| School Settings (branding, thresholds, retention) | **Super Admin** | Per-School configuration of branding, default Skill passing threshold, monthly token budget, and data retention policies all live in the Super Admin portal (super_admin/ → S12 Schools & Settings). |
+| School Settings (branding, thresholds, retention) | **Super Admin** | Per-School configuration of branding, default Skill passing threshold, monthly token budget, and data retention policies all live in the Super Admin portal (super_admin/ → S4 School Management). |
 | Cross-School operations | **Super Admin** | Bob owns role elevation, instructor roster across Schools, External Tooling, Data Hub, Geo-Redundancy, Compliance, and cross-tenant audit. |
 
 ## Scenarios
@@ -41,7 +41,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 
 | Scenario | SOW refs | Where covered |
 |:---------|:---------|:--------------|
-| SC-ADD-02 | §2.2 (Tenant Admin deliverable), §2.5 (Admin Portal — Skill Configuration), §6.7 (guardrails), §6.8 (A/B testing), §6.12 (LaTeX), §7.10 (engagement), §7.11 (educator analytics), §7.12 (usage stats), §7.13 (visualization), §7.14 (report exports), §8.6 (Multi-tenancy), §9.7 (CSM — referenced via Help link, not embedded), §9.14 (self-service support — Help icon in every navbar), §10.4 (Audit logging — Activity Log embedded in Analytics S15), §10.8 (RBAC), §10.14 (zero-trust) | Course/Skill scoping callout on every screen; New Skill wizard with combobox Course picker on S10; topic + LO expanders with passing thresholds on S11; Model & Prompt config (5 guardrail fields) on S12; deploy step summary on S13; LRPS provisioning ticket on S14; Analytics 4-level zoom on S15; Activity Log embedded in S15; Help icon links out to Zendesk. |
+| SC-ADD-02 | §2.2 (Tenant Admin deliverable), §2.5 (Admin Portal — Skill Configuration), §6.7 (guardrails), §6.8 (A/B testing), §6.12 (LaTeX), §7.10 (engagement), §7.11 (educator analytics), §7.12 (usage stats), §7.13 (visualization), §7.14 (report exports), §8.6 (Multi-tenancy), §9.7 (CSM — referenced via Help link, not embedded), §9.14 (self-service support — Help icon in every navbar), §10.4 (Audit logging — Activity Log embedded in Analytics S11), §10.8 (RBAC), §10.14 (zero-trust) | Course/Skill scoping callout on every screen; New Skill wizard with combobox Course picker on S6; topic + LO expanders with passing thresholds on S7; Model & Prompt config (5 guardrail fields) on S8; deploy step summary on S9; LRPS provisioning ticket on S10; Analytics 4-level zoom on S11 (with the Activity Log embedded); Help icon links out to Zendesk. |
 
 ## Files
 
@@ -51,24 +51,24 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 
 ## Components introduced in this portal
 
-- **`<input list="">` + `<datalist>` combobox typeahead with add-new** — on S10 New Skill, for Course Number + Course Title pickers. Native HTML5; supports typing to filter the existing list AND typing a new value to create a new Course.
+- **`<input list="">` + `<datalist>` combobox typeahead with add-new** — on S6 New Skill, for Course Number + Course Title pickers. Native HTML5; supports typing to filter the existing list AND typing a new value to create a new Course.
 - **5-step wizard** with consistent `Step N of 5` eyebrows + Back/Next floating-actions
 - **Topic expanders** (`<details>` / `<summary>` with caret rotation) carrying inline editable LO text + per-LO passing threshold (0–100%) + inline Add / Remove (Remove is freely enabled in the create wizard; would be disabled in a future Edit-Live-Skill flow)
 - **Skill cards** on S2 Course view with Edit (primary, blue) + Archive (tertiary) + Open Heatmap (tertiary) action row — Edit is the TA's primary maintenance affordance, heatmap is the diagnostic drill-in
 - **Filter chips + sort dropdown + text-search** on S1 above the Course grid — handles many-Course scenarios (E010 / E075 / E120 / E135 in demo; designed to scale)
-- **Analytics 4-level zoom** on S15: School Rollup (KPI gauges + trend charts) → Per-Course (table + h-bar comparisons) → Per-Skill (lifecycle-badged table) → Per-Topic (filterable 20-row table for spotting Skill prompt bugs via cost/mastery anomalies)
+- **Analytics 4-level zoom** on S11: School Rollup (KPI gauges + trend charts) → Per-Course (table + h-bar comparisons) → Per-Skill (lifecycle-badged table) → Per-Topic (filterable 20-row table for spotting Skill prompt bugs via cost/mastery anomalies)
 - **Unified "Export ▾" dropdown** on every filtered table (injected by the shared module) — **PDF / CSV** for human-read analytics; **MD / JSON** for the machine-read Activity Log
-- **CI/CD pipeline stepper** on S13 (Validate → Build → Test → Deploy → Verify) — visualizes the deployment process triggered by Deploy to Live
-- **LRPS provisioning ticket workflow** on S14 — auto-fills the production URL + ticket justification for a mailto handoff to wgu-lrps-support@wgu.edu (one-way; JFT does not write to LRPS)
+- **CI/CD pipeline stepper** on S9 (Validate → Build → Test → Deploy → Verify) — visualizes the deployment process triggered by Deploy to Live
+- **LRPS provisioning ticket workflow** on S10 — auto-fills the production URL + ticket justification for a mailto handoff to wgu-lrps-support@wgu.edu (one-way; JFT does not write to LRPS)
 
 ## Notes
 
-- The "Deploy to Live" CTA triggers the simulated CI/CD pipeline shown via the 5-step Stepper on S13. The Stepper component models the live progression through Validate → Build → Test → Deploy → Verify with status badges per step.
-- After deploy, the **LRPS provisioning ticket** workflow on S14 is a manual handoff: JFT does not write to LRPS; the WGU D&D team owns provisioning. The screen shows the production URL + auto-filled ticket justification for Alice to submit.
+- The "Deploy to Live" CTA triggers the simulated CI/CD pipeline shown via the 5-step Stepper on S9. The Stepper component models the live progression through Validate → Build → Test → Deploy → Verify with status badges per step.
+- After deploy, the **LRPS provisioning ticket** workflow on S10 is a manual handoff: JFT does not write to LRPS; the WGU D&D team owns provisioning. The screen shows the production URL + auto-filled ticket justification for Alice to submit.
 - Course scoping is enforced at the New Skill wizard: Course Number + Course Title are the first fields, both editable combobox inputs with add-new capability. Existing Course Numbers (E010, E075, E120, E135) populate the dropdown; typing a new code (e.g., `E180`) creates a new Course.
-- The **drill-chain (S3–S8)** mirrors the Instructor portal's structure but is reached via the School Admin's flow. Headers indicate School Admin viewing; data is the same heatmap / learner profile / conversation logs that Charlie would see. This is a diagnostic capability for the School Admin, not the primary surface.
-- The wizard's Step 3 (Model & Prompt, S12) is intentionally before Step 4 (Review & Deploy, S13) — model + AI prompt are chosen before the final pre-deploy review.
-- **Score scale rule (F42)**: AI-scored values use the 0.00–1.00 scale (heatmap cells, session scores, KPI mastery averages). TA-entered passing thresholds use the traditional 0–100% scale (S11 LO thresholds, S13 summary, S15 Skill passing threshold display). The two scales coexist platform-wide.
+- The **drill-chain (S2–S4)** mirrors the Instructor portal's structure but is reached via the School Admin's flow. Headers indicate School Admin viewing; data is the same heatmap / learner profile / conversation logs that Charlie would see. This is a diagnostic capability for the School Admin, not the primary surface.
+- The wizard's Step 3 (Model & Prompt, S8) is intentionally before Step 4 (Review & Deploy, S9) — model + AI prompt are chosen before the final pre-deploy review.
+- **Score scale rule (F42)**: AI-scored values use the 0.00–1.00 scale (heatmap cells, session scores, KPI mastery averages). TA-entered passing thresholds use the traditional 0–100% scale (S7 LO thresholds, S9 deploy summary, S11 Analytics display). The two scales coexist platform-wide.
 - **Lifecycle terminology**: Draft / Staging / Live (locked 24 May 2026; "Production" is not used). The Deploy review screen offers "Deploy to Staging" and "Deploy to Live" as the two deploy paths.
 
 ## Device context

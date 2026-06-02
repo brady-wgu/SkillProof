@@ -19,7 +19,7 @@ Bob's responsibilities span:
 - **Access + people** (4-tier role taxonomy: Student / Instructor / School Admin / Super Admin; min-2-Super-Admins enforcement; sole elevator role; instructor roster across Schools)
 - **Platform tools** (External Tooling hub: AWS / OpenRouter / Redis / Grafana / Jira / GitHub + Data & Integrations Hub)
 - **Schools** (per-School lifecycle + settings: branding, default Skill passing threshold, monthly token budget, conversation/audit log retention)
-- **Drill-down** (Course view → Skill heatmap → At-risk filter → Learner profile → Conv logs → Transcript → Audit Trail; New Skill wizard; consolidated 4-level Analytics)
+- **Drill-down** (Course view → Skill heatmap → Learner profile, mirrored from School Admin) plus the consolidated 5-level Analytics (Platform → School → Course → Skill → Topic)
 
 ## Scenarios
 
@@ -49,31 +49,26 @@ Bob's responsibilities span:
 
 ## Components introduced in this portal
 
-- **Clickable KPI gauges** on S1 — each of the 4 gauges (Schools / Active Learners / Token Spend MTD / Rate Limit Headroom) is a drill-in to the relevant downstream surface (S12 / S26 / S2 / S4 respectively); `role="button"` + `tabindex="0"` + `aria-label`
-- **Compact horizontal-layout Quick Links cards** (10 cards in col-3 4+4+2 grid; reordered so Drill + Analytics + Governance lead row 1)
-- **`.spike-card`** + **`.spike-chart`** — 30-bar CSS daily cost trend (no SVG; just `<div>` bars with height % styling); last days of spike highlighted via `.spike` and `.spike.danger` classes
-- **`.util-meter`** — inline mini-bar with right-aligned numeric value (used in per-tenant token-usage table)
-- **`.region-card`** — region card with side-stripe color (success / warning / danger), region name + location, stat-row table
-- **`.gauge-card`** with `.center` variant and `.gauge-number` color variants (`good`, `warning`, `danger`)
-- **Pending-audit-trail preview panel** on the Rate Limits screen — shows the audit log entry that will be written when "Apply" is clicked
-- **4-tier role taxonomy badges** (Student / Instructor / School Admin / Super Admin) on S8, with disabled `Downgrade` button + tooltip when count = 2
-- **External Tooling hub** cards on S9 linking out to AWS / OpenRouter / Redis / Grafana / Jira / GitHub
-- **Data & Integrations Hub** cards on S10 (real-time + batch export · webhooks · GraphQL endpoint · Kafka/Kinesis/Pub-Sub streaming)
-- **Cross-tenant Instructor Roster** on S11 with per-tenant filter dropdown (4 WGU Schools)
-- **Schools & Settings** on S12 with per-School Settings panel (Branding: logo + primary color; Default Thresholds: Skill passing % + monthly token budget $; Data Retention: conversation logs + audit log)
-- **Inherited drill-chain** (S14–S20, mirrored from School Admin) with navbar swapped to WGU corporate logo + Super Admin chip + Bob/B user; breadcrumbs rewritten to "Super Admin Dashboard" root
-- **Inherited Skill Creation Wizard** (S21–S25) with `<input list="">` + `<datalist>` combobox typeahead for Course Number + Course Title
+- **KPI cards** on S1 — top-line platform metrics (Courses · Skills · Sessions · Active Learners · Token Spend MTD), above a per-School summary table and quick-link buttons (Access Control · Schools · Analytics · External Tools · Data Hub · Logs)
+- **`.spike-card` + `.spike-chart`** — 30-bar CSS daily-cost trend (no SVG; `<div>` bars with height %) on the S1 per-School cost-detail panel; recent spike days highlighted via `.spike` / `.spike.danger`
+- **`.gauge-card`** (with `.center` variant + `.gauge-number` `good` / `warning` / `danger` states) and **`.util-meter`** inline mini-bars — used across the S1 cost panel and S5 Analytics
+- **4-tier role pills** (Student / Instructor / School Admin / Super Admin) on S2 Access Control — color-coded, editable via a confirm modal; Super-Admin rows show a disabled `Downgrade` + tooltip when the count is 2 (min-2-Super-Admins)
+- **Per-School Settings panel** on S4 School Management — Branding (logo + live primary-color preview), Default Thresholds (passing % + monthly token budget $), Data Retention; **+ New School** opens a multi-step modal
+- **5-level Analytics** on S5 — Platform → School → Course → Skill → Topic, with a collapsible **visualization key** and per-section export
+- **Inherited drill-chain** (S6–S8: Course → Skill heatmap → Learner) mirrored from School Admin, with the navbar carrying the WGU corporate logo + "Super Admin" chip + Bob/B user
+- **External Tooling hub** on S9 — launcher cards for AWS / OpenRouter / Redis / Grafana / Jira / GitHub
+- **Data & Integrations Hub** on S10 — real-time + batch export · webhooks · GraphQL endpoint · Kafka / Kinesis / Pub-Sub streaming
+- **Platform Logs** on S11 — FERPA-aligned cross-tenant audit with filter + search, tail-live, and machine export
+- **Responsive phone-preview** card on S1 demonstrating the dashboard reflowing to a single column
 - **Unified "Export ▾" dropdown** on every filtered table (injected by the shared module) — **PDF / CSV** for human-read analytics & rosters; **MD / JSON** for the machine-read Logs, Audit trail, and Webhooks
 
 ## Notes
 
 - The portal models a privileged session: SSO + MFA verification + "Privileged session" warning + zero-trust line ("Server-side authorization · link does not grant access").
-- **Cost spike workflow on S2–S4** is end-to-end: identify the high-consumption School (School of Technology) → drill down to see the 30-day trend with last 4 days as a visible spike → adjust rate limits → see the projected effect (MTD spend back inside budget) → "Apply" writes an audit log entry.
-- **Compliance Report on S5** covers both encryption (§10.7) and FERPA (§10.1) — TLS 1.3 verification across all data paths plus FERPA privacy controls including staff training, audit retention, data deletion thresholds, and explicit FERPA control mapping to 34 CFR sections.
-- **Cross-tenant audit log on S7** deliberately includes events from all v1.3 personas (Alice, Charlie, JFT CSM, system) so you can see how cross-tenant operations are surfaced to the Super Admin role.
-- **User Management on S8** is the only place where role elevation happens. Default LTI baseline is `Instructor` for WGU staff; elevations to School Admin or Super Admin are applied here by a Super Admin and take effect on the user's next login. Min-2-Super-Admins is enforced via a disabled `Downgrade` button + tooltip on every Super Admin row when the count drops to 2.
-- **Instructor Roster on S11** is the sole place for Skill-to-instructor mappings. SOW §2.5 lists "instructors" as a tenant-level control; WGU consolidated that under Super Admin in v4.48 because Super Admin is the sole controller of platform access.
-- **Schools & Settings on S12** lists the 4 WGU Schools as tenants and exposes a `+ Create new School` affordance + per-School Settings (moved from the School Admin portal in v4.114 — TA only manages Courses + Skills now).
-- **Drill-chain (S14–S26)** mirrors the School Admin's structure. The Super Admin can dig into any School / Course / Skill / Topic / Learner / Session to investigate, but this is a diagnostic capability — not the Super Admin's primary surface. Headers indicate Super Admin scope (WGU corporate logo, "Super Admin" chip, Bob/B user).
-- **Score scale rule (F42)**: AI-scored values use 0.00–1.00 (heatmap cells, session scores). Human-entered passing thresholds use 0–100% (S11 LO thresholds, S13 Skill summary, S26 displays).
+- **Cost detail (S1):** selecting a School in the per-School table reveals its 30-day cost trend (recent days shown as a visible spike) and its top consuming Skills — the diagnostic path for a cost anomaly.
+- **Role elevation lives only on S2 Access Control.** Default LTI baseline is `Instructor` for WGU staff; elevations to School Admin or Super Admin take effect on the user's next login. Min-2-Super-Admins is enforced via a disabled `Downgrade` + tooltip on every Super Admin row when the count drops to 2. Instructor-to-Skill assignment is consolidated here too (SOW §2.5 lists "instructors" as a tenant-level control; Super Admin is the sole controller of platform access).
+- **Per-School configuration lives on S4 School Management** (moved from the School Admin portal in v4.114 — the School Admin now manages Courses + Skills only): Branding, default Skill passing threshold, monthly token budget, and data-retention policies, plus a `+ New School` affordance.
+- **Logs (S11)** is the FERPA-aligned cross-tenant audit; it deliberately includes events from all v1.3 personas (Alice, Charlie, JFT CSM, system) so cross-tenant operations are visible to the Super Admin. Source IPs are unmasked here (they are partially masked in the Instructor view).
+- **Inherited drill-chain (S6–S8)** mirrors the School Admin's Course → Skill → Learner structure — a diagnostic capability, not the Super Admin's primary surface.
+- **Score scale rule (F42)**: AI-scored values use 0.00–1.00 (heatmap cells on S7, session scores); human-entered passing thresholds use 0–100% (shown in Analytics on S5). The two scales coexist platform-wide.
 - **Lifecycle terminology**: Draft / Staging / Live (locked 24 May 2026; "Production" is not used).
