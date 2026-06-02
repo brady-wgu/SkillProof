@@ -5,7 +5,7 @@
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Version](https://img.shields.io/badge/Version-4.158-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.159-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-46-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -333,7 +333,7 @@ When implementing:
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for the full version history. **Latest: v4.158 (2 Jun 2026)** — filter/sort placement audit (controls now appear only on tables that actually need them — removed from Topics/LOs, the model list, the LRPS Providers table, and small/feedback tables) and dropped the always-"Success" Result column from the activity log. v4.157 removed the analytics "AA contrast" chip; v4.156 was the design-system polish pass across the 3 admin portals (8-pt spacing + token consistency, grounded in the SkillProof Design System v1.3) plus leadership-facing enhancements: real export-confirmation toasts, a live institution-branding preview, a visualization key, and a responsive phone preview. Recent milestones: v4.155 screenshots regenerated with `screen-NN.png` naming; v4.152 shared controls module + heat-scale unification + modals; v4.153 `?screen=N` deep-link support; v4.154 dark mode working across all 6 surfaces; the Coda Contract Requirements tracker is fully populated (34 Met / 2 In Progress / 2 Deferred / 54 N/A out of 92 reqs).
+See [CHANGELOG.md](CHANGELOG.md) for the full version history. **Latest: v4.159 (2 Jun 2026)** — post-audit refinements: de-duplicated the Logs filter bars, wired the navbar logo to "home", and added dashboard subtitles. v4.158 was the filter/sort placement audit + Result-column removal; v4.157 removed the analytics "AA contrast" chip; v4.156 was the design-system polish pass across the 3 admin portals (8-pt spacing + token consistency, grounded in the SkillProof Design System v1.3) plus leadership-facing enhancements: real export-confirmation toasts, a live institution-branding preview, a visualization key, and a responsive phone preview. Recent milestones: v4.155 screenshots regenerated with `screen-NN.png` naming; v4.152 shared controls module + heat-scale unification + modals; v4.153 `?screen=N` deep-link support; v4.154 dark mode working across all 6 surfaces; the Coda Contract Requirements tracker is fully populated (34 Met / 2 In Progress / 2 Deferred / 54 N/A out of 92 reqs).
 
 Earlier milestones (13 May 2026):
 
