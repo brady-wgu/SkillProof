@@ -8,6 +8,15 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.157 — 2 Jun 2026 — Remove the "AA contrast" chip (assumed standard, not for end-user display)
+
+Per Brady: WCAG 2.2 AA is an assumed, contractual standard — surfacing it as a UI label adds noise without informing the viewer (same rationale as not labeling TLS/FERPA on-screen). Removed the **"WCAG 2.2 AA contrast" chip** from the three analytics / heatmap headers (Instructor, School Admin, Super Admin), reverting those headers to the plain eyebrow, and dropped the WCAG phrasing from the **Visualization-key** note (kept the functional point: each chart pairs a color with its numeric value). No other v4.156 work changed. Dev-only CSS comments referencing the focus-ring fix are untouched (not user-facing).
+
+### Files
+`instructor/index.html`, `tenant_admin/index.html`, `super_admin/index.html`; docs (`README.md`, per-portal READMEs, this file).
+
+---
+
 ## v4.156 — 2 Jun 2026 — Design-system polish pass: consistency + leadership-facing enhancements (3 admin portals)
 
 A focused UI/UX pass over the three new admin flows (Instructor, School Admin, Super Admin) ahead of the leadership review, grounded in the **SkillProof Design System v1.3 (13 May 2026)**. The brand tokens, Sora/Lato typefaces, and the 8-pt spacing scale were already correctly wired — this pass *enforced* them where inline overrides had escaped, then added a few high-visibility, contract-aligned enhancements. **No new screens; `?screen=N` deep links and screen counts (5 / 12 / 11) unchanged.**

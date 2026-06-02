@@ -34,7 +34,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 - SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026)
 - WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.2** (24 May 2026)
 - Storyboard rev: **v4.152** (1 Jun 2026 — storyboard review: shared filter/search/sort, heat-scale colors, New Course → modal, Archived delete → confirm modal)
-- Storyboard rev: **v4.156** (2 Jun 2026 — design-system polish: 8-pt spacing + sanctioned `.badge-lg`; **export-confirmation toasts**; **WCAG 2.2 AA contrast chip** + collapsible **visualization key** on Analytics & Reporting)
+- Storyboard rev: **v4.156** (2 Jun 2026 — design-system polish: 8-pt spacing + sanctioned `.badge-lg`; **export-confirmation toasts**; collapsible **visualization key** on Analytics & Reporting)
 
 ## SOW references
 
