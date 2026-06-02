@@ -31,6 +31,74 @@
     return m ? parseFloat(m[0]) : null;
   }
 
+  /* ---- Unified Export control ----
+     One "Export ▾" dropdown injected into every filtered table / heatmap bar so
+     placement is identical site-wide. Format set depends on the data's nature:
+       human  (default)        -> PDF + CSV   (a person reads it)
+       machine (data-export)   -> MD  + JSON  (a computer ingests it; e.g. logs)
+     Mark a table/region with data-export="machine"; data-no-export opts out. */
+  function exportModeFor(el) {
+    var m = el && el.closest ? el.closest('[data-export]') : null;
+    return (m && m.getAttribute('data-export') === 'machine') ? 'machine' : 'human';
+  }
+  function nearestHeadingText(el) {
+    var n = el;
+    while (n) {
+      var p = n.previousElementSibling;
+      while (p) {
+        if (/^H[1-6]$/.test(p.tagName)) return txt(p).slice(0, 48);
+        var h = p.querySelector && p.querySelector('h1,h2,h3,h4,h5,h6');
+        if (h) return txt(h).slice(0, 48);
+        p = p.previousElementSibling;
+      }
+      n = n.parentElement;
+    }
+    return '';
+  }
+  function closeAllExportMenus(except) {
+    document.querySelectorAll('.tc-export.open').forEach(function (o) {
+      if (o === except) return;
+      o.classList.remove('open');
+      var b = o.querySelector('.tc-export-btn'); if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  if (!window.__tcExportGlobalClose) {
+    window.__tcExportGlobalClose = true;
+    document.addEventListener('click', function () { closeAllExportMenus(null); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAllExportMenus(null); });
+  }
+  function buildExportControl(label, mode) {
+    var fmts = (mode === 'machine')
+      ? [{ f: 'MD', icon: 'description' }, { f: 'JSON', icon: 'data_object' }]
+      : [{ f: 'PDF', icon: 'picture_as_pdf' }, { f: 'CSV', icon: 'table_view' }];
+    var name = label || 'data';
+    var wrap = document.createElement('div'); wrap.className = 'tc-export';
+    var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'tc-export-btn';
+    btn.setAttribute('aria-haspopup', 'true'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Export ' + name);
+    btn.innerHTML = '<span class="material-icons-outlined" aria-hidden="true">file_download</span>Export<span class="material-icons-outlined tc-export-caret" aria-hidden="true">arrow_drop_down</span>';
+    var menu = document.createElement('div'); menu.className = 'tc-export-menu'; menu.setAttribute('role', 'menu');
+    fmts.forEach(function (fmt) {
+      var item = document.createElement('button'); item.type = 'button'; item.className = 'tc-export-item'; item.setAttribute('role', 'menuitem');
+      item.innerHTML = '<span class="material-icons-outlined" aria-hidden="true">' + fmt.icon + '</span>';
+      item.appendChild(document.createTextNode('Export as ' + fmt.f));
+      item.setAttribute('aria-label', 'Export ' + name + ' as ' + fmt.f);
+      item.addEventListener('click', function (e) {
+        e.stopPropagation(); closeAllExportMenus(null);
+        if (typeof window.showToast === 'function') window.showToast('Exported ' + name + ' as ' + fmt.f);
+      });
+      menu.appendChild(item);
+    });
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !wrap.classList.contains('open');
+      closeAllExportMenus(wrap);
+      wrap.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    });
+    wrap.appendChild(btn); wrap.appendChild(menu);
+    return wrap;
+  }
+
   // Skip tables that already have curated chip controls just before them.
   function hasBespokeChips(table) {
     var wrap = table.closest('.table-scroll, .heatmap-scroll-container') || table;
@@ -184,6 +252,9 @@
       });
       right.appendChild(sortLbl); right.appendChild(sel);
     }
+    if (!table.closest('[data-no-export]')) {
+      right.appendChild(buildExportControl(tableName || nearestHeadingText(table) || 'data', exportModeFor(table)));
+    }
     bar.appendChild(right);
 
     // empty-state row
@@ -297,6 +368,9 @@
       var input = document.createElement('input'); input.type = 'search'; input.placeholder = 'Search…'; input.setAttribute('aria-label', 'Search');
       wrap.appendChild(icon); wrap.appendChild(input); bar.appendChild(wrap);
       if (coll.type === 'table') addChipBarSort(bar, coll.el);
+      if ((coll.type === 'table' || coll.type === 'heatmap') && coll.el.closest && !coll.el.closest('[data-no-export]') && !bar.querySelector('.tc-export')) {
+        bar.appendChild(buildExportControl(nearestHeadingText(bar) || 'data', exportModeFor(coll.el)));
+      }
       input.addEventListener('input', function () {
         var q = input.value.trim().toLowerCase();
         if (coll.type === 'heatmap') {
@@ -356,7 +430,19 @@
     });
   }
 
-  function run() { init(document); addChipBarSearch(); initAnalyticsNav(); }
+  /* Explicit export anchor: any element with [data-export-here] gets the unified
+     Export dropdown appended — for filtered surfaces that aren't auto-tables or
+     chip bars (e.g. the Logs screen's bespoke filter row). */
+  function initExplicitExports() {
+    document.querySelectorAll('[data-export-here]').forEach(function (el) {
+      if (el.dataset.tcExportDone) return; el.dataset.tcExportDone = '1';
+      var mode = el.getAttribute('data-export') === 'machine' ? 'machine' : 'human';
+      var lbl = el.getAttribute('data-export-label') || nearestHeadingText(el) || 'data';
+      el.appendChild(buildExportControl(lbl, mode));
+    });
+  }
+
+  function run() { init(document); addChipBarSearch(); initAnalyticsNav(); initExplicitExports(); }
   if (document.readyState !== 'loading') run();
   else document.addEventListener('DOMContentLoaded', run);
   window.SkillProofTableControls = { init: init };
@@ -416,6 +502,7 @@
     if (typeof window.showToast !== 'function') return;
     var btn = e.target.closest && e.target.closest('button');
     if (!btn) return;
+    if (btn.closest('.tc-export')) return;              // unified dropdown items own their own toast
     var iconEl = btn.querySelector('.material-icons-outlined');
     var icon = iconEl ? iconEl.textContent.trim() : '';
     var text = (btn.textContent || '').replace(icon, '').trim().toUpperCase();

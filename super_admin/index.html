@@ -8,8 +8,8 @@
   <meta http-equiv="Expires" content="0">
   <title>SkillProof — Super Admin Portal — Storyboard v4.151</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
-  <link rel="stylesheet" href="../assets/table-controls.css?v=12">
-  <script defer src="../assets/table-controls.js?v=12"></script>
+  <link rel="stylesheet" href="../assets/table-controls.css?v=13">
+  <script defer src="../assets/table-controls.js?v=13"></script>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -1206,7 +1206,7 @@
           <p class="mt-1">Every privileged action across every School. FERPA-aligned retention.</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
-          <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">file_download</span>Export</button>
+          <span data-export-here data-export="machine" data-export-label="Logs"></span>
           <button class="btn btn-primary btn-sm"><span class="material-icons-outlined">play_arrow</span>Tail live</button>
         </div>
       </div>
@@ -1219,7 +1219,7 @@
         <input class="form-control" placeholder="Search by actor, event, or IP" style="height:36px; font-size:14px; max-width:280px; margin-left:auto;" />
       </div>
 
-      <table class="pgn__data-table mb-3" data-no-controls>
+      <table class="pgn__data-table mb-3" data-no-controls data-export="machine">
         <thead>
           <tr>
             <th>Timestamp (UTC)</th>
@@ -1979,7 +1979,7 @@
       <p class="small text-muted mb-2">Push-based event notifications to downstream school systems. Payloads are HMAC-signed; failed deliveries retry with exponential backoff, dead-letter queue after 5 attempts.</p>
       <div class="pgn__card pgn__card-featured mb-3">
         <div class="pgn__card-section">
-          <table class="pgn__data-table" style="border:none; box-shadow:none;">
+          <table class="pgn__data-table" style="border:none; box-shadow:none;" data-export="machine">
             <thead>
               <tr>
                 <th>Event type</th>
@@ -2347,15 +2347,6 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-end mb-3">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export E010 Course Report</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export E010 Course Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export E010 Course Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export E010 Course Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export E010 Course Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
 
       <!-- Skills deployed in this Course -->
       <div class="mb-3">
@@ -2431,15 +2422,6 @@
         <p class="mt-1">AI-scored Topic mastery (0.00–1.00) per learner. Updates after each coaching session.</p>
       </div>
 
-      <div class="d-flex justify-content-end mb-3">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Python Skill Report</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Python Skill Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Python Skill Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Python Skill Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Python Skill Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
         <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
@@ -2583,15 +2565,6 @@
         <span class="badge badge-danger badge-lg"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
-      <div class="d-flex justify-content-end mb-3">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Sally Whitman's Topic Mastery Report</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally Whitman's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
 
       <div class="row mb-3">
         <div class="col-4">
@@ -2763,15 +2736,6 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-end mb-4">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Platform Rollup</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Platform Rollup as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Platform Rollup as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Platform Rollup as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-            <button class="btn btn-outline-primary btn-sm" aria-label="Export Platform Rollup as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
 
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
@@ -2849,15 +2813,6 @@
               </tr>
             </tfoot>
           </table>
-        </div>
-      </div>
-      <div class="d-flex justify-content-end mb-4">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Per-School Data</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-School Data as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-School Data as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Per-School Data as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-            <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-School Data as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -3012,15 +2967,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-end mb-4">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Per-Course Data</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Course Data as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Course Data as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Per-Course Data as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-            <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Course Data as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -3182,15 +3128,6 @@
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">— (Draft)</span>
               </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-end mb-4">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Per-Skill Data</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Skill Data as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Skill Data as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Per-Skill Data as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-            <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Skill Data as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -3428,15 +3365,6 @@
           </table>
         </div>
       </div>
-      <div class="d-flex justify-content-end mb-4">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Per-Topic Data</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Topic Data as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Topic Data as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Per-Topic Data as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-            <button class="btn btn-outline-primary btn-sm" aria-label="Export Per-Topic Data as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
 
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
@@ -3481,7 +3409,7 @@
             </div>
           </div>
 
-          <table class="pgn__data-table">
+          <table class="pgn__data-table" data-no-export>
             <thead>
               <tr>
                 <th>Report</th>
@@ -3495,30 +3423,21 @@
                 <td>Last 30 days &middot; All Skills &middot; All topics</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">table_view</span>CSV</button>
-                  <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;"><span class="material-icons-outlined">description</span>MD</button>
-                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">data_object</span>JSON</button>
-                </td>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">table_view</span>CSV</button>                </td>
               </tr>
               <tr>
                 <td><div class="text-strong">Submissions report</div><div class="micro text-muted">Counts, pass rates, attempts per objective</div></td>
                 <td>Last 30 days &middot; All Skills &middot; All topics</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">table_view</span>CSV</button>
-                  <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;"><span class="material-icons-outlined">description</span>MD</button>
-                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">data_object</span>JSON</button>
-                </td>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">table_view</span>CSV</button>                </td>
               </tr>
               <tr>
                 <td><div class="text-strong">Topic-mastery report</div><div class="micro text-muted">Mastery distribution and threshold gaps</div></td>
                 <td>Last 30 days &middot; All Skills &middot; All topics</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">table_view</span>CSV</button>
-                  <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;"><span class="material-icons-outlined">description</span>MD</button>
-                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">data_object</span>JSON</button>
-                </td>
+                  <button class="btn btn-outline-primary btn-sm"><span class="material-icons-outlined">table_view</span>CSV</button>                </td>
               </tr>
             </tbody>
           </table>
@@ -3531,15 +3450,6 @@
       <span class="an-anchor" id="an-audit" data-an-label="Audit"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">history</span>Audit trail</h2>
       <p class="text-muted mb-3">Chronological audit of School Admin and Super Admin actions across all Schools.</p>
 
-      <div class="d-flex justify-content-end mb-4">
-        <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Activity Log</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Activity Log as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Activity Log as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Activity Log as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-            <button class="btn btn-outline-primary btn-sm" aria-label="Export Activity Log as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
-        </div>
-      </div>
 
       <div id="activity-log-section">
         <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
@@ -3553,7 +3463,7 @@
 
         <div class="pgn__card mb-3">
           <div class="pgn__card-section">
-            <table class="pgn__data-table">
+            <table class="pgn__data-table" data-export="machine">
               <thead>
                 <tr>
                   <th>Timestamp (UTC)</th>
