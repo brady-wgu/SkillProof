@@ -25,15 +25,15 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-02** | **School Admin Portal & Skill Configuration.** School Dashboard with KPI rollup + Course cards with Skills folded in as inline action buttons + filter/sort/search (S1) → Course view with Edit/Archive/Heatmap actions per Skill (S2) → drill-down chain mirroring Instructor (S3 heatmap → S4 at-risk → S5 learner profile → S6 conv logs → S7 transcript → S8 audit trail) → Access Denied for unauthorized actions (S9) → 5-step New Skill wizard (S10 Course Number + Skill details with combobox typeahead → S11 Topics & Learning Objectives with 0–100% thresholds → S12 Model & Prompt → S13 Review & Deploy → S14 Deploy success + LRPS provisioning) → consolidated Analytics with 4-level zoom (S15: School Rollup → Per-Course → Per-Skill → Per-Topic + Program Reports + Activity Log). | 15 |
+| **SC-ADD-02** | **School Admin Portal & Skill Configuration.** School Dashboard — KPI rollup + Course cards (Skills as inline actions) + filter / search / sort (S1) → Course → Skill → Learner drill mirroring Instructor (S2–S4) → Access Denied (S5) → 5-step **New Skill** wizard (S6 Skill details with Course combobox → S7 Topics & Learning Objectives with 0–100% thresholds → S8 Model & AI prompt → S9 Deploy review → S10 build success + LRPS provisioning ticket) → Analytics & Reporting with 4-level zoom + Program Reports + Audit Trail (S11) → Archived Skills with Restore / Permanently-delete (S12). **New Course** opens a **modal** from the dashboard (form → confirm → success); the Archived "permanently delete" confirms via modal. Every table carries filter + search + sort. | 12 |
 
-**Total: 1 scenario · 15 screens (sequential 1–15).**
+**Total: 1 scenario · 12 screens (sequential 1–12).** (New Course is a modal, not a screen.)
 
 ## Source
 
 - SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026)
 - WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.2** (24 May 2026)
-- Storyboard rev: **v4.138** (24 May 2026 — full walkthrough + 4-level Analytics redesign)
+- Storyboard rev: **v4.152** (1 Jun 2026 — storyboard review: shared filter/search/sort, heat-scale colors, New Course → modal, Archived delete → confirm modal)
 
 ## SOW references
 

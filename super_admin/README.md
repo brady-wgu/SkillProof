@@ -25,15 +25,15 @@ Bob's responsibilities span:
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-04** | **Super Admin Governance, Cost Audit, Access Control, Tenant Management, and Drill-Down.** Super Admin Dashboard with 4 clickable KPI gauges + maintenance alert + Model performance (LLM SLA per provider) + Active alerts + Recent platform events + 10-card Quick Links (S1) → Token Usage Tracking with per-School breakdown (S2) → Cost spike drill-down with 30-day trend (S3) → Global Rate Limits config (S4) → Compliance Report (TLS 1.3 + FERPA + SOC 2 + ISO 27001 + GDPR + AES-256 + MFA + BC/DR) (S5) → Geo-Redundancy (3 regions + RTO/RPO targets) (S6) → Cross-tenant Audit Log (S7) → Access Control (People · Skills · Schools tabs; 4-tier roles; min-2-SA enforcement) (S8) → External Tooling hub (S9) → Data & Integrations Hub (S10) → Instructor Roster across Schools (S11) → **Schools & Settings** (4 WGU Schools as tenants + per-School Settings panel: Branding, Default Thresholds, Data Retention; `+ Create new School`) (S12) → Access Denied (S13). **Plus the inherited drill-chain (S14–S26):** Course view → Skill heatmap → At-risk filter → Learner profile → Conv logs → Transcript → Audit Trail (S14–S20) → 5-step New Skill wizard (S21–S25) → 4-level consolidated Analytics with School/Course/Skill/Topic zoom (S26). | 26 |
+| **SC-ADD-04** | **Super Admin Governance, Access Control, Schools & Data.** Super Admin Dashboard — platform KPIs + cost / budget + Per-School table + quick-links (Access Control · Schools · Analytics · External Tools · Data Hub · Logs) (S1) → **Access Control** (People · Skills · Schools tabs; 4-tier roles; min-2-Super-Admins; assignment removals confirm via modal) (S2) → Access-expired (S3) → **School Management** (per-School Settings panel: Branding, Default Thresholds, Data Retention; **+ New School = modal**) (S4) → 5-level **Analytics** (Platform → School → Course → Skill → Topic) with per-level exports (S5) → inherited Course → Skill → Learner drill (S6–S8) → **External Tooling** (AWS / OpenRouter / Redis / Grafana / Jira / GitHub launchers) (S9) → **Data & Integrations Hub** (export, webhooks, GraphQL, Kafka / Kinesis / Pub-Sub streaming, REST) (S10) → **Logs** (FERPA-aligned platform audit; export + tail-live + filters) (S11). Every table carries filter + search + sort. | 11 |
 
-**Total: 1 scenario · 26 screens (sequential 1–26).**
+**Total: 1 scenario · 11 screens (sequential 1–11).** (Create a School is a modal, not a screen.)
 
 ## Source
 
 - SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026)
 - WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.2** (24 May 2026)
-- Storyboard rev: **v4.118** (24 May 2026 — Phase 1 polish + drill-chain expansion + School Settings)
+- Storyboard rev: **v4.152** (1 Jun 2026 — storyboard review: shared filter/search/sort, heat-scale colors, Create-a-School → modal, Access-Control removals → confirm modal, External Tooling / Data Hub de-overlap)
 
 ## SOW references
 

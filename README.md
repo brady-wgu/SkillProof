@@ -5,8 +5,8 @@
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Version](https://img.shields.io/badge/Version-4.138-46B1EF?style=for-the-badge)](CHANGELOG.md)
-[![Screens](https://img.shields.io/badge/Screens-70-001730?style=for-the-badge)]()
+[![Version](https://img.shields.io/badge/Version-4.152-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Screens](https://img.shields.io/badge/Screens-46-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
 ![Portal selector landing](assets/landing/light.png)
@@ -23,10 +23,12 @@
 
 - **Sally** (Student) — the v1.2 MVP coaching loop. **JFT shipped this first.** ([student/](student/))
 - **Charlie** (Instructor) — At-Risk Intervention dashboard. ([instructor/](instructor/))
-- **Alice** (School Admin; SOW §2.2 role: Tenant Admin) — Course + Skill management portal: School Dashboard with Course cards + filter/sort/search, 5-step New Skill wizard with Course Number/Title combobox typeahead, drill-chain mirroring Instructor for diagnostic, 4-level Analytics (School / Course / Skill / Topic). Scope is **Courses + Skills only** — at-risk learner tracking is Instructor's domain; School Settings + cross-tenant ops are Super Admin's. ([tenant_admin/](tenant_admin/)) — **15 screens**
-- **Bob** (Super Admin) — Cross-tenant governance, financial controls, security compliance, **access control** (role elevation + School Admin → Schools + Instructor → Skills + Skill ownership / deployment), data + integrations hub, **Schools & Settings** (per-School branding / thresholds / retention — moved from School Admin v4.114), plus the full inherited drill-chain (Course view → Skill heatmap → Learner profile → audit trail) + Skill creation wizard + 4-level Analytics. ([super_admin/](super_admin/)) — **26 screens**
+- **Alice** (School Admin; SOW §2.2 role: Tenant Admin) — Course + Skill management portal: School Dashboard with Course cards + filter/sort/search, 5-step New Skill wizard with Course Number/Title combobox typeahead, drill-chain mirroring Instructor for diagnostic, 4-level Analytics (School / Course / Skill / Topic). Scope is **Courses + Skills only** — at-risk learner tracking is Instructor's domain; School Settings + cross-tenant ops are Super Admin's. ([tenant_admin/](tenant_admin/)) — **12 screens**
+- **Bob** (Super Admin) — Cross-tenant governance, financial controls, security compliance, **access control** (role elevation + School Admin → Schools + Instructor → Skills + Skill ownership / deployment), data + integrations hub, **Schools & Settings** (per-School branding / thresholds / retention — moved from School Admin v4.114), plus the full inherited drill-chain (Course view → Skill heatmap → Learner profile → audit trail) + Skill creation wizard + 4-level Analytics. ([super_admin/](super_admin/)) — **11 screens**
 - Plus **LRPS Landing** at the storyboard root ([`/`](./)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all four personas. **(v4.59: promoted to root; the standalone `/lrps/` URL was retired.)**
 - Plus **Help & Resources** ([help/](help/)) — shared self-service support + video training surface linked from every admin portal's navbar.
+
+**Platform-wide (v4.152):** every data table carries **filter chips + search + sort** (shared [`assets/table-controls.js`](assets/table-controls.js)); long analytics pages have a **sticky scroll-spy section nav**; status colors use one **heat scale** (red → amber → green) across heatmaps, score pills, badges, dots, and threshold/budget bars; and create / delete / remove flows confirm via **modals**.
 
 Each persona has its own **secret LRPS deep link** in production and authenticates separately. They share the SkillProof Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
 
@@ -38,12 +40,12 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 |:--------|:----|:------------|
 | **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point for all four personas (4 live SkillProof rows + illustrative filler). **Start here.** **v4.59:** promoted to root; the standalone `/lrps/` URL was retired. |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
-| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — class heatmap → at-risk drill-down → conversation transcript → Audit Trail. **9 screens** (including Access Denied added v4.57). |
-| **School Admin Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S3–S8 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope refined 24 May 2026: **Courses + Skills only.** Help icon links out to Zendesk (no 2-way comm). **15 screens** (v4.138). |
-| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob — Super Admin Dashboard with clickable KPI gauges + Quick Links (Drill / Analytics / Governance / Platform Ops / People+Tools), Token Usage / Rate Limits / Compliance / Geo-Redundancy / Audit Log, **Access Control** (4-tier roles; min-2-Super-Admins; sole elevator), External Tooling, Data Hub, Instructor Roster, **Schools & Settings** (per-School Branding / Default Thresholds / Data Retention — moved from School Admin v4.114), plus the **full inherited drill-chain + Skill Creation Wizard + 4-level Analytics** (S14–S26) so the Super Admin can dig into any School / Course / Skill / Topic / Learner. **26 screens** (v4.118). |
+| **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — Course overview → class heatmap → Skill/Topic drill → Learner profile, plus Access Denied. **5 screens.** |
+| **School Admin Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S3–S8 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope: **Courses + Skills only.** **New Course is now a modal** from the dashboard; delete actions confirm via modal. **12 screens** (v4.152). |
+| **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob — Super Admin Dashboard with clickable KPI gauges + Quick Links (Drill / Analytics / Governance / Platform Ops / People+Tools), Token Usage / Rate Limits / Compliance / Geo-Redundancy / Audit Log, **Access Control** (4-tier roles; min-2-Super-Admins; sole elevator), External Tooling, Data Hub, Instructor Roster, **Schools & Settings** (per-School Branding / Default Thresholds / Data Retention — moved from School Admin v4.114), **Create a School is a modal** (from School Management) and assignment removals confirm via modal; plus the inherited Course→Skill→Learner drill and 5-level Analytics. **11 screens** (v4.152). |
 | **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/SkillProof/help/) | Shared self-service support, documentation, and video training surface. Linked from every admin portal navbar. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). |
 
-**Total: 70 screens · 4 personas · 6 surfaces (4 persona portals + LRPS root + Help).**
+**Total: 46 screens · 4 personas · 6 surfaces (4 persona portals + LRPS root + Help).**
 
 ---
 
@@ -99,7 +101,7 @@ Click any persona folder to read its dedicated README.
 
 **Scope:** This is the **v1.2 MVP scope** — the first JFT release. It deploys the existing Cicada v1 proof-of-concept codebase to production-quality, scalable infrastructure with a polished UI, accessible outside the WGU intranet via LTI 1.3 SSO. No new features, adaptive logic changes, or coaching algorithm modifications are in scope for this v1.2 release.
 
-**Scenarios (4, 34 screens):**
+**Scenarios (4 scenarios · 34 steps across 18 screens):**
 
 | ID | Flow | Screens | Description |
 |:---|:-----|:-------:|:------------|
@@ -110,7 +112,7 @@ Click any persona folder to read its dedicated README.
 
 **Source:** SkillProof MVP Scenario Catalog v1.2 (07 Apr 2026).
 
-**v1.2 catalog alignment:** 100% (34/34 screens depict every step described in the catalog). Honest call-outs of what v1 does **not** depict (no real Python execution, no mid-task pause, no error recovery, no re-assessment failure path, etc.) are enumerated in [student/README.md](student/README.md#v1-known-limitations). The v1 student screens are deliberately frozen as a baseline — see that file for the full list of v1.4+ candidate gaps.
+**v1.2 catalog alignment:** 100% (all 34 catalog steps depicted across the 18 screens). Honest call-outs of what v1 does **not** depict (no real Python execution, no mid-task pause, no error recovery, no re-assessment failure path, etc.) are enumerated in [student/README.md](student/README.md#v1-known-limitations). The v1 student screens are deliberately frozen as a baseline — see that file for the full list of v1.4+ candidate gaps.
 
 ---
 
@@ -204,7 +206,7 @@ Canonical strings used across all surfaces. Use these verbatim when adding new s
 | **Enrollment model** | `Rolling enrollment` | Per the User Profile, WGU has no fixed cohorts or sections. Every learner enters on their own day and progresses at their own rate. Avoid "Section 042" / "Spring 2026" framing in any new screen copy — talk about *active learners in a Skill* instead. |
 | **Tenant (default example)** | `School of Technology` | Tenant slug: `tenant_school_tech`. Alice operates this tenant; she is a WGU Program Development (PDev) employee. |
 | **Operating team** | `WGU Program Development` | PDev employees operate the School-tenants. Distinct from a tenant name — PDev does the work *on behalf of* each School. |
-| **All 4 WGU Schools (example tenant set)** | `School of Technology`, `School of Business`, `School of Education`, `Leavitt School of Health` | Per WGU's School-as-Tenant model. Additional Schools can be created via super_admin screen 13. |
+| **All 4 WGU Schools (example tenant set)** | `School of Technology`, `School of Business`, `School of Education`, `Leavitt School of Health` | Per WGU's School-as-Tenant model. Additional Schools can be created via the **+ New School** modal in super_admin (School Management). |
 | **LMS course identifier** | `WGUE010PythonAY2026` | The LRPS-registered LMS course slug zyBooks renders. Visible on Screen 1 of every SC-MVP scenario. |
 | **13 Topics** | Basic Syntax & Data Types · Control Flow & Logic · Data Structures: Lists, Tuples, Sets, Dictionaries · Functions & Modular Programming · Object-Oriented Programming · Error Handling & Exceptions · File I/O & Persistence · Iterators & Generators · Decorators & Closures · Concurrency Basics · Standard Library Essentials · Testing & Debugging · Packaging & Environments | The full Cicada v1 SkillProof Topic taxonomy within the Python Skill of E010. Order is significant: Progress Map renders in this order. |
 | **Cost-spike date (SC-ADD-04)** | `04 May 2026` | Bob's cost audit drill-down references this date as the spike origin. |
@@ -290,7 +292,7 @@ python -m http.server 63417
 python capture_screens.py
 ```
 
-Output: **128 PNGs total** — student 18 + tenant_admin 21 + super_admin 14 + instructor 9 + help 1, each × 2 themes (light + dark), plus 2 landing assets (the root LRPS UI). Distributed across the per-persona `screenshots/` and `screenshots_dark/` subdirs.
+⚠️ **The committed screenshots are currently stale** — they were captured against older, larger screen counts (e.g., super_admin had 26). Regenerate after the v4.152 review. Current screen counts: student 18 · instructor 5 · tenant_admin 12 · super_admin 11 · help 1, each × 2 themes (light + dark), plus 2 landing assets (the root LRPS UI). Output lands in the per-persona `screenshots/` and `screenshots_dark/` subdirs.
 
 ---
 
@@ -329,9 +331,9 @@ When implementing:
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for the full version history. **Today's release is v4.54** — full repo-level documentation refresh reflecting every change made on 13 May 2026.
+See [CHANGELOG.md](CHANGELOG.md) for the full version history. **Latest: v4.152 (1 Jun 2026)** — a cross-portal storyboard review: a shared controls module (filter + search + sort on every table; sticky analytics nav), status colors unified to the heat scale, create / delete / remove flows moved to modals, and admin screen counts settled (Tenant Admin 12, Super Admin 11). ⚠️ Screenshots are stale pending a `capture_screens.py` regen.
 
-Today's major milestones (13 May 2026):
+Earlier milestones (13 May 2026):
 
 - **v4.43-v4.44** — Product rename to **SkillProof** (was Skill Development Platform / SDP); GitHub repo + Pages URL renamed.
 - **v4.46** — WGU shield favicon added to every storyboard surface.
