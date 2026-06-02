@@ -35,6 +35,7 @@ Bob's responsibilities span:
 - WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.2** (24 May 2026)
 - Storyboard rev: **v4.152** (1 Jun 2026 — storyboard review: shared filter/search/sort, heat-scale colors, Create-a-School → modal, Access-Control removals → confirm modal, External Tooling / Data Hub de-overlap)
 - Storyboard rev: **v4.156** (2 Jun 2026 — design-system polish: `.role-pill` role selectors (color-coded + visible focus ring); live **institution-branding preview** on School Management; **export-confirmation toasts**; collapsible **visualization key** on Analytics; **responsive phone-preview** card on the dashboard)
+- Storyboard rev: **v4.160** (2 Jun 2026 — post-review polish: AA-contrast chip removed; filter/sort limited to analyzable tables; Logs "Result" column dropped + filter de-duped; navbar logo → dashboard; dashboard subtitle; **unified "Export ▾" dropdown** on every filtered table — PDF/CSV for people, MD/JSON for Logs / Audit trail / Webhooks)
 
 ## SOW references
 
@@ -62,7 +63,7 @@ Bob's responsibilities span:
 - **Schools & Settings** on S12 with per-School Settings panel (Branding: logo + primary color; Default Thresholds: Skill passing % + monthly token budget $; Data Retention: conversation logs + audit log)
 - **Inherited drill-chain** (S14–S20, mirrored from School Admin) with navbar swapped to WGU corporate logo + Super Admin chip + Bob/B user; breadcrumbs rewritten to "Super Admin Dashboard" root
 - **Inherited Skill Creation Wizard** (S21–S25) with `<input list="">` + `<datalist>` combobox typeahead for Course Number + Course Title
-- **Inherited 4-level Analytics** (S26) with School Rollup → Per-Course → Per-Skill → Per-Topic; PDF / CSV / MD / JSON download per section
+- **Unified "Export ▾" dropdown** on every filtered table (injected by the shared module) — **PDF / CSV** for human-read analytics & rosters; **MD / JSON** for the machine-read Logs, Audit trail, and Webhooks
 
 ## Notes
 

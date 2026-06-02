@@ -35,6 +35,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 - WGU working draft **"SkillProof Authentication, Access Control, and Role Hierarchy" v1.2** (24 May 2026)
 - Storyboard rev: **v4.152** (1 Jun 2026 — storyboard review: shared filter/search/sort, heat-scale colors, New Course → modal, Archived delete → confirm modal)
 - Storyboard rev: **v4.156** (2 Jun 2026 — design-system polish: 8-pt spacing + sanctioned `.badge-lg`; **export-confirmation toasts**; collapsible **visualization key** on Analytics & Reporting)
+- Storyboard rev: **v4.160** (2 Jun 2026 — post-review polish: AA-contrast chip removed; filter/sort limited to analyzable tables (off Topics/LOs + model picker); Activity-Log "Result" column dropped; navbar logo → dashboard; dashboard subtitle; **unified "Export ▾" dropdown** on every filtered table — PDF/CSV for analytics, MD/JSON for the Activity Log)
 
 ## SOW references
 
@@ -56,7 +57,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 - **Skill cards** on S2 Course view with Edit (primary, blue) + Archive (tertiary) + Open Heatmap (tertiary) action row — Edit is the TA's primary maintenance affordance, heatmap is the diagnostic drill-in
 - **Filter chips + sort dropdown + text-search** on S1 above the Course grid — handles many-Course scenarios (E010 / E075 / E120 / E135 in demo; designed to scale)
 - **Analytics 4-level zoom** on S15: School Rollup (KPI gauges + trend charts) → Per-Course (table + h-bar comparisons) → Per-Skill (lifecycle-badged table) → Per-Topic (filterable 20-row table for spotting Skill prompt bugs via cost/mastery anomalies)
-- **PDF / CSV / MD / JSON export** in every Analytics section
+- **Unified "Export ▾" dropdown** on every filtered table (injected by the shared module) — **PDF / CSV** for human-read analytics; **MD / JSON** for the machine-read Activity Log
 - **CI/CD pipeline stepper** on S13 (Validate → Build → Test → Deploy → Verify) — visualizes the deployment process triggered by Deploy to Live
 - **LRPS provisioning ticket workflow** on S14 — auto-fills the production URL + ticket justification for a mailto handoff to wgu-lrps-support@wgu.edu (one-way; JFT does not write to LRPS)
 
