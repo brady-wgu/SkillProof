@@ -8,6 +8,26 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.153 / v4.154 — 2 Jun 2026 — Deep-link support + dark mode working across the site
+
+### v4.153 — `?screen=N` deep-links
+Each portal (`student/`, `instructor/`, `tenant_admin/`, `super_admin/`) now parses `?screen=N` on load and calls `goToScreen(N)`, enabling URL-based deep-linking to specific screens. Used by the Coda Contract Requirements tracker — each tracker row links to the exact screen evidencing that requirement (e.g., `?screen=2` → Access Control, `?screen=11` → Analytics). No effect if the parameter is missing or out of range. ~5 lines of JS per portal.
+
+### v4.154 — Dark mode fixes
+Three concrete bugs that the v4.152 light-only review missed:
+- **`.tc-sort`** (shared module): the descendant selector `.table-controls .tc-sort` didn't match chip-bar sorts that `addChipBarSort` injects into hand-coded chip bars (e.g., SA S2 Access Control People/Skills/Schools). Changed to bare `.tc-sort` for universal coverage. Added `appearance: none` + a URL-encoded SVG caret so Chrome respects our `background-color` on native `<select>` (without `appearance: none` Chrome paints the OS default white).
+- **3 SA inline modals** (`#role-modal`, `#new-school-modal`, `#remove-modal`): hardcoded `background:#fff` on dialog divs left them white-with-gray-text (unreadable) in dark mode. Changed to `var(--pgn-color-white)` which dark-flips to `#0D1A2E`.
+- **`[data-theme="dark"]` defensive overrides** added for `.tc-chip`, `.tc-search input`, `.tc-sort`, `.tc-chip-search input`, `.an-tab`, `.an-tabs`.
+
+Verified in dark mode across all 6 surfaces (LRPS root · Student · Instructor · Tenant Admin · Super Admin · Help) — zero light-bg suspects on any audited screen. Light mode preserved.
+
+Asset version: `?v=11`.
+
+### Coda Contract Requirements tracker — 92 rows updated
+With the prototype evidence on `main@ce0f20f`, the SkillProof Project Tracker was updated for the first time end-to-end. Final tally: **34 Met** (UI surface depicted in storyboard with `?screen=N` deep-link), 2 In Progress (§7.2 mobile, §7.3 WCAG — Pass-B pending), 2 Deferred Post-MVP (§6.12 LaTeX, §7.7 PWA), 54 N/A (production-only infra; JFT-owned). Last Verified Date = 2 Jun 2026 on every row. Of 38 reqs with a UI surface, 34 are Met (89%); the 54 N/As are pure infra (TLS, AES, scaling, SLAs, certifications) that a storyboard can't structurally show.
+
+---
+
 ## v4.152 — 1 Jun 2026 — Storyboard review: shared controls, modals & heat-scale unification (Instructor / Tenant Admin / Super Admin)
 
 Cross-portal Pass-A review with targeted UX fixes. A shared controls module was introduced, status colors were unified, and create/delete/remove flows moved to modals. Admin screen counts settled: **Tenant Admin 13 → 12, Super Admin 13 → 11** (Instructor 5, Student 18 unchanged).
