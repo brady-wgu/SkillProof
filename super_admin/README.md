@@ -2,7 +2,7 @@
 
 [← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/SkillProof/super_admin/)
 
-![Super Admin Dashboard hero](screenshots/sc-add-04_step01_screen01.png)
+![Super Admin Dashboard hero](screenshots/screen-01.png)
 
 ## Persona
 
@@ -41,9 +41,9 @@ Bob's responsibilities span:
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (26 screens, sequential 1–26)
-- `screenshots/` — light-theme PNGs at 1440×900 (regenerate after each significant redesign)
-- `screenshots_dark/` — dark-theme PNGs
+- [`index.html`](index.html) — interactive storyboard (11 screens, sequential 1–11; Create a School is a modal, not a screen)
+- `screenshots/` — 11 light-theme PNGs at 1440×900 (filenames `screen-NN.png`, 1:1 with screen IDs)
+- `screenshots_dark/` — 11 dark-theme PNGs
 
 ## Components introduced in this portal
 

@@ -8,6 +8,39 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.155 — 2 Jun 2026 — Screenshots regenerated against the post-review storyboard
+
+The committed screenshot set had drifted badly through the v4.152 / v4.153 / v4.154 changes — student/screenshots had 34 PNGs each theme (correct count is now 18), super_admin had 26 (now 11), tenant_admin had 15 (now 12), instructor had 8 (now 5). **140 stale + 166 orphan PNGs** in total.
+
+### Naming convention change
+Switched from `{scenario}_step{NN}_screen{NN}.png` (e.g., `sc-mvp-01_step02_screen02.png`) to a simple `screen-NN.png` per portal, 1:1 with on-page screen IDs and the new `?screen=N` deep-link URLs. The User Scenario Catalog narrative-step grouping (34 steps across 18 student screens, etc.) lives in the per-portal README scenario tables — keeping it out of filenames eliminates the renumber churn.
+
+### Pipeline updates
+- `capture_screens.py` PORTALS table rewritten to the current screen counts (18 / 5 / 12 / 11 / 1 help / 1 root landing).
+- Server port standardized to `8000` (was `63417`).
+- Filenames `screen-01.png`..`screen-NN.png`; `help.png` for help; `assets/landing/{light,dark}.png` for the LRPS root.
+
+### Counts after regen
+| Portal | Screens (each theme) | Filenames |
+|:------|:--------------------:|:----------|
+| student/ | 18 | `screen-01.png` … `screen-18.png` |
+| instructor/ | 5 | `screen-01.png` … `screen-05.png` |
+| tenant_admin/ | 12 | `screen-01.png` … `screen-12.png` |
+| super_admin/ | 11 | `screen-01.png` … `screen-11.png` |
+| help/ | 1 | `help.png` |
+| (root LRPS) | 1 | `assets/landing/{light,dark}.png` |
+| **Total** | **47 × 2 themes + 2 landing = 96 PNGs** | |
+
+### Docs refresh
+- Root README screenshot regen instructions: port 8000, 96-PNG total, new filename convention; stale-warning removed.
+- Per-portal README "Files" sections + hero `<img>` refs updated to `screenshots/screen-NN.png`.
+- Repo-layout PNG counts corrected (instructor 9 → 5, TA 21 → 12, SA 14 → 11).
+
+### Files
+- `capture_screens.py` (rewritten); root `README.md`; `student/README.md`; `instructor/README.md`; `tenant_admin/README.md`; `super_admin/README.md`; all PNGs under `student/screenshots*/`, `instructor/screenshots*/`, `tenant_admin/screenshots*/`, `super_admin/screenshots*/`, `help/screenshots*/`, `assets/landing/`.
+
+---
+
 ## v4.153 / v4.154 — 2 Jun 2026 — Deep-link support + dark mode working across the site
 
 ### v4.153 — `?screen=N` deep-links

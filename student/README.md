@@ -2,7 +2,7 @@
 
 [← Back to root README](../README.md) · [Live storyboard](https://brady-wgu.github.io/SkillProof/student/)
 
-![Student storyboard hero](screenshots/sc-mvp-01_step02_screen02.png)
+![Student storyboard hero](screenshots/screen-02.png)
 
 ## Persona
 
@@ -34,8 +34,8 @@ SkillProof MVP Scenario Catalog **v1.2** (07 Apr 2026). Authored by WGU Program 
 ## Files
 
 - [`index.html`](index.html) — interactive storyboard (18 screens · 34 scenario steps)
-- `screenshots/` — 34 light-theme PNGs at 1440×900
-- `screenshots_dark/` — 34 dark-theme PNGs at 1440×900
+- `screenshots/` — 18 light-theme PNGs at 1440×900 (filenames `screen-NN.png`, 1:1 with screen IDs)
+- `screenshots_dark/` — 18 dark-theme PNGs at 1440×900
 
 ## Navigation
 
