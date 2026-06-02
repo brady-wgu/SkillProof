@@ -28,7 +28,7 @@
 - Plus **LRPS Landing** at the storyboard root ([`/`](./)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all four personas. **(v4.59: promoted to root; the standalone `/lrps/` URL was retired.)**
 - Plus **Help & Resources** ([help/](help/)) — shared self-service support + video training surface linked from every admin portal's navbar.
 
-**Platform-wide (v4.152):** every data table carries **filter chips + search + sort** (shared [`assets/table-controls.js`](assets/table-controls.js)); long analytics pages have a **sticky scroll-spy section nav**; status colors use one **heat scale** (red → amber → green) across heatmaps, score pills, badges, dots, and threshold/budget bars; and create / delete / remove flows confirm via **modals**.
+**Platform-wide:** every *analyzable* data table carries a consistent control bar — **filter chips + search + sort + a unified "Export ▾" dropdown** (shared [`assets/table-controls.js`](assets/table-controls.js)), with export formats matched to the audience (**PDF / CSV** for people, **MD / JSON** for machines such as logs). Editors and pick-lists (Topics/LOs, model picker) carry no controls. Long analytics pages have a **sticky scroll-spy section nav**; status colors use one **heat scale** (red → amber → green) across heatmaps, score pills, badges, dots, and threshold/budget bars; and create / delete / remove flows confirm via **modals**.
 
 Each persona has its own **secret LRPS deep link** in production and authenticates separately. They share the SkillProof Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
 
