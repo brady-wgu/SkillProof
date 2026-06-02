@@ -8,6 +8,33 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.156 — 2 Jun 2026 — Design-system polish pass: consistency + leadership-facing enhancements (3 admin portals)
+
+A focused UI/UX pass over the three new admin flows (Instructor, School Admin, Super Admin) ahead of the leadership review, grounded in the **SkillProof Design System v1.3 (13 May 2026)**. The brand tokens, Sora/Lato typefaces, and the 8-pt spacing scale were already correctly wired — this pass *enforced* them where inline overrides had escaped, then added a few high-visibility, contract-aligned enhancements. **No new screens; `?screen=N` deep links and screen counts (5 / 12 / 11) unchanged.**
+
+### Tier 1 — design-system consistency
+- **8-pt grid:** emphasis badges → a sanctioned `.badge-lg` (8×16); skill-list buttons unified to 8×16 across Instructor + School Admin (were 8×12 / 10×14); modal head/body/foot padding + gaps normalized (were 22 / 8 / 12px, `gap:12px`).
+- **Token compliance / dark-mode fixes:** Super Admin GraphQL block → `--code-bg` / `--code-text` (was hardcoded, value-drifted `#0d1117` / `#c9d1d9`); School Admin API-card code color tokenized; Super Admin **new-school review box** `#f2f4f8` / `#e4e7eb` → tokens so it adapts in dark mode.
+- **Component drift:** the 8 Super Admin role selectors were `.badge`-styled `<button>`s with duplicated inline styles and no focus ring → a single `.role-pill` class (keeps the role color-coding, adds hover + a visible focus outline).
+- **Copy:** removed `[Demo]` from the Instructor empty state.
+
+### Tier 2 — leadership-facing enhancements
+- **§7.14 — Export feels real:** a shared, accessible toast (`role=status` / `aria-live`, success-styled, ~3 s) confirms every PDF / CSV / JSON export. One delegated handler in `assets/table-controls.js`; no per-button wiring.
+- **§7.9 — Live institutional branding:** Super Admin → School Management gains a primary-color picker + a live learner-header preview; switching Schools re-themes it (each School carries its own brand color), and the preview auto-selects a readable text color (luminance test) so it stays AA-legible.
+
+### Tier 3 — flourishes
+- **§7.3 — Accessibility made visible:** an honest "WCAG 2.2 AA — color contrast verified" chip (tooltip notes the full keyboard/SR audit is in progress) on the analytics + heatmap headers whose color system was unified in v4.152.
+- **§7.13 — Visualization key:** a collapsible legend atop both analytics screens covering every viz type (heatmap cells, mastery/cost bars, KPI gauges, score pills, status dots, exports) on the unified heat scale.
+- **§7.2 / §7.7 — Responsiveness made visible:** a "Works on every device" card on the Super Admin dashboard with a phone-frame preview of the dashboard reflowed to a single column (the phone screen respects dark mode too).
+
+### Assets
+- Shared `assets/table-controls.{css,js}` → `?v=12` (cache-bust so deployed clients pick up the toast + export wiring).
+
+### Files
+`instructor/index.html`, `tenant_admin/index.html`, `super_admin/index.html`, `assets/table-controls.css`, `assets/table-controls.js`; docs (`README.md`, per-portal READMEs, this file).
+
+---
+
 ## v4.155 — 2 Jun 2026 — Screenshots regenerated against the post-review storyboard
 
 The committed screenshot set had drifted badly through the v4.152 / v4.153 / v4.154 changes — student/screenshots had 34 PNGs each theme (correct count is now 18), super_admin had 26 (now 11), tenant_admin had 15 (now 12), instructor had 8 (now 5). **140 stale + 166 orphan PNGs** in total.

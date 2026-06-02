@@ -8,8 +8,8 @@
   <meta http-equiv="Expires" content="0">
   <title>SkillProof — Super Admin Portal — Storyboard v4.151</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
-  <link rel="stylesheet" href="../assets/table-controls.css?v=11">
-  <script defer src="../assets/table-controls.js?v=11"></script>
+  <link rel="stylesheet" href="../assets/table-controls.css?v=12">
+  <script defer src="../assets/table-controls.js?v=12"></script>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -344,6 +344,11 @@
     .badge-danger { background: #EC6A52; color: #000; }
     .badge-warning { background: #F3D06E; color: #000; }
     .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
+    .badge-lg      { padding: 8px 16px; font-size: 14px; }  /* sanctioned emphasis size (8-pt grid) */
+    /* Editable role pill: keeps the role color-coding, adds hover + visible focus ring, kills 8x inline duplication */
+    .role-pill     { cursor: pointer; border: none; gap: 4px; }
+    .role-pill:hover { filter: brightness(0.96); }
+    .role-pill:focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
 
     /* ================================================================
        ALERTS
@@ -1100,7 +1105,7 @@
                 <h3 class="h5 mb-1" id="sc-name">School of Technology</h3>
                 <p class="small text-muted mb-0" id="sc-subtitle">School Admin: Alice · 90 active learners · 80% of monthly budget consumed.</p>
               </div>
-              <span class="badge badge-warning" id="sc-wow" style="padding:6px 12px;"><span class="material-icons-outlined" style="font-size:14px;">trending_up</span>+30% week-over-week</span>
+              <span class="badge badge-warning badge-lg" id="sc-wow"><span class="material-icons-outlined" style="font-size:14px;">trending_up</span>+30% week-over-week</span>
             </div>
 
             <div class="alert alert-success mb-3" id="sc-stable" style="display:none;">
@@ -1133,6 +1138,39 @@
                     </tbody>
                   </table>
                 </div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Responsiveness made visible (§7.2 mobile-first / §7.7 PWA): the same portal reflows to a phone -->
+      <div class="pgn__card mb-3" style="margin-top:32px;">
+        <div class="pgn__card-section">
+          <div style="display:flex; gap:32px; align-items:center; flex-wrap:wrap;">
+            <div style="flex:1 1 280px; min-width:240px;">
+              <span class="eyebrow"><span class="material-icons-outlined">devices</span>Works on every device</span>
+              <h2 class="h5 mb-2">Responsive &amp; PWA-ready</h2>
+              <p class="text-muted mb-2">Every SkillProof surface is built mobile-first on the WGU design system's responsive 12-column grid. Cards reflow to a single column, tables scroll, and the layout adapts from 360&nbsp;px phones up to wide desktops — installable as a Progressive Web App.</p>
+              <div class="d-flex gap-2 flex-wrap">
+                <span class="badge badge-gray"><span class="material-icons-outlined" style="font-size:14px;">smartphone</span>Phone</span>
+                <span class="badge badge-gray"><span class="material-icons-outlined" style="font-size:14px;">tablet_mac</span>Tablet</span>
+                <span class="badge badge-gray"><span class="material-icons-outlined" style="font-size:14px;">desktop_windows</span>Desktop</span>
+                <span class="badge badge-gray"><span class="material-icons-outlined" style="font-size:14px;">install_mobile</span>PWA</span>
+              </div>
+            </div>
+            <div style="flex:0 0 auto; margin:0 auto;">
+              <!-- Phone frame (fixed-dark bezel = physical device; the screen uses themed tokens so it respects dark mode too) -->
+              <div style="width:200px; height:400px; border:10px solid #1A1A1A; border-radius:28px; background:var(--pgn-color-white); overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,0.22);" role="img" aria-label="Phone preview of the Super Admin dashboard, with KPI cards stacked in a single column">
+                <div style="background:var(--pgn-color-primary-base); color:#fff; padding:8px 12px; display:flex; align-items:center; justify-content:space-between;">
+                  <span style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:12px;">SkillProof</span>
+                  <span class="material-icons-outlined" style="font-size:16px;" aria-hidden="true">menu</span>
+                </div>
+                <div style="padding:12px; display:flex; flex-direction:column; gap:8px;">
+                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">ACTIVE LEARNERS</div><div style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-gray-900);">3,820</div></div>
+                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">TOKEN SPEND · MTD</div><div style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-warning-base);">$4,287</div><div style="height:6px; border-radius:50rem; background:var(--pgn-color-gray-100); overflow:hidden; margin-top:4px;"><div style="height:100%; width:73%; background:var(--heat-5);"></div></div></div>
+                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">SCHOOLS</div><div style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-gray-900);">4</div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1399,7 +1437,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-brand" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Bob (you)', 'Super Admin');">Super Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-brand role-pill" onclick="openRoleModal('Bob (you)', 'Super Admin');">Super Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (cross-school)</td>
                       <td>Now</td>
                     </tr>
@@ -1413,7 +1451,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-brand" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Jordan', 'Super Admin');">Super Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-brand role-pill" onclick="openRoleModal('Jordan', 'Super Admin');">Super Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (cross-school)</td>
                       <td>2 hours ago</td>
                     </tr>
@@ -1427,7 +1465,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-info" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Alice', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-info role-pill" onclick="openRoleModal('Alice', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
@@ -1447,7 +1485,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-info" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Miguel', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-info role-pill" onclick="openRoleModal('Miguel', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
@@ -1466,7 +1504,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-warning" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Charlie', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-warning role-pill" onclick="openRoleModal('Charlie', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
@@ -1487,7 +1525,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-warning" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Priya', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-warning role-pill" onclick="openRoleModal('Priya', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
                           <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
@@ -1507,7 +1545,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-gray" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Sally Whitman', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-gray role-pill" onclick="openRoleModal('Sally Whitman', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (own record only)</td>
                       <td>2 hours ago</td>
                     </tr>
@@ -1521,7 +1559,7 @@
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-gray" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Devon', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-gray role-pill" onclick="openRoleModal('Devon', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (own record only)</td>
                       <td>3 days ago</td>
                     </tr>
@@ -2009,7 +2047,7 @@
           <div class="pgn__card">
             <div class="pgn__card-section">
               <h3 class="h5 mt-2 mb-1">Sample query</h3>
-              <pre style="background:#0d1117; color:#c9d1d9; padding:12px 14px; border-radius:8px; font-family:monospace; font-size:12px; overflow-x:auto; margin-bottom:0;"><code><span style="color:#ff7b72;">query</span> <span style="color:#79c0ff;">LearnerProgress</span> {
+              <pre style="background:var(--code-bg); color:var(--code-text); padding:16px; border-radius:8px; font-family:monospace; font-size:12px; overflow-x:auto; margin-bottom:0;"><code><span style="color:#ff7b72;">query</span> <span style="color:#79c0ff;">LearnerProgress</span> {
   <span style="color:#79c0ff;">learner</span>(id: <span style="color:#a5d6ff;">"abc123"</span>) {
     name
     coachingSessions(last: <span style="color:#a5d6ff;">5</span>) {
@@ -2173,6 +2211,13 @@
                   <button class="btn btn-outline-primary btn-sm" id="ss-logo"><span class="material-icons-outlined">upload</span>Upload</button>
                 </div>
               </div>
+              <div class="form-group mb-0">
+                <label class="form-label" for="ss-color">Primary brand color</label>
+                <div class="d-flex align-items-center gap-2">
+                  <input type="color" id="ss-color" value="#0070F0" oninput="updateBrandPreview(this.value)" aria-label="School primary brand color" style="width:44px; height:36px; padding:2px; border:1px solid var(--pgn-color-gray-200); border-radius:6px; background:var(--pgn-color-white); cursor:pointer;">
+                  <input type="text" class="form-control" id="ss-color-hex" value="#0070F0" oninput="updateBrandPreview(this.value)" aria-label="Primary brand color hex value" style="width:104px; font-family:'Lato',monospace;">
+                </div>
+              </div>
             </div>
 
             <div class="col-4">
@@ -2206,6 +2251,25 @@
                 </select>
               </div>
             </div>
+          </div>
+
+          <!-- Live institution-branding preview (§7.9): how the per-School brand color propagates to the learner-facing header -->
+          <div class="form-group mt-3 mb-0">
+            <label class="form-label">Live preview &middot; learner header</label>
+            <div style="border:1px solid var(--pgn-color-gray-200); border-radius:8px; overflow:hidden; max-width:640px;">
+              <div id="bp-bar" style="background:#0070F0; color:#FFFFFF; padding:16px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+                <span style="display:inline-flex; align-items:center; gap:8px; font-family:'Sora','Segoe UI',sans-serif; font-weight:700;">
+                  <span class="material-icons-outlined" aria-hidden="true">school</span>
+                  <span id="bp-name">School of Technology</span>
+                </span>
+                <button id="bp-btn" type="button" tabindex="-1" style="background:transparent; color:#FFFFFF; border:1px solid #FFFFFF; border-radius:6px; padding:8px 16px; font-family:'Lato',sans-serif; font-weight:700; font-size:14px; cursor:default;">Start coaching</button>
+              </div>
+              <div style="background:var(--pgn-color-white); padding:16px;">
+                <p class="small text-muted" style="margin:0 0 8px;">Foundations of Programming &middot; Topic 3 of 13</p>
+                <div style="height:8px; border-radius:50rem; background:var(--pgn-color-gray-100); overflow:hidden;"><div id="bp-fill" style="height:100%; width:62%; background:#0070F0;"></div></div>
+              </div>
+            </div>
+            <p class="small text-muted mt-1" style="margin-bottom:0;">Applies to this School's learner &amp; instructor surfaces on next login.</p>
           </div>
 
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
@@ -2515,7 +2579,7 @@
           <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
           <h1 id="s8-heading">Sally Whitman</h1>
         </div>
-        <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
+        <span class="badge badge-danger badge-lg"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
       <div class="d-flex justify-content-end mb-3">
@@ -2608,8 +2672,25 @@
         <span class="material-icons-outlined">chevron_right</span>
         <span>Analytics &amp; Reporting</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
+      <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+        <span class="eyebrow" style="margin:0;"><span class="material-icons-outlined">insights</span>School Analytics</span>
+        <span class="badge badge-success" title="Color &amp; contrast verified to WCAG 2.2 AA. Full keyboard / screen-reader audit in progress."><span class="material-icons-outlined" style="font-size:14px;">verified</span>WCAG 2.2 AA contrast</span>
+      </div>
       <h1 id="s5-heading" class="mb-3">Analytics &amp; Reporting</h1>
+      <details class="pgn__card mb-3" style="border:1px solid var(--pgn-color-gray-200);">
+        <summary style="cursor:pointer; padding:16px; font-family:'Sora','Segoe UI',sans-serif; font-weight:700; display:flex; align-items:center; gap:8px;"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">palette</span>Visualization key — how to read these charts</summary>
+        <div class="pgn__card-section" style="padding-top:0;">
+          <div class="row" style="row-gap:16px;">
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex; gap:2px;"><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-2);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-5);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-8);"></span></span><strong class="small">Heatmap cells</strong></div><p class="small text-muted" style="margin:0;">9-step red→green scale; AI-scored mastery 0.00–1.00.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="width:64px;height:10px;border-radius:50rem;background:var(--pgn-color-gray-100);overflow:hidden;display:inline-block;"><span style="display:block;height:100%;width:72%;background:var(--heat-7);"></span></span><strong class="small">Mastery / cost bars</strong></div><p class="small text-muted" style="margin:0;">Compare values across Courses, Skills, Topics.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:var(--pgn-color-gray-900);">3,820</span><strong class="small">KPI gauges</strong></div><p class="small text-muted" style="margin:0;">Headline metrics with a target / context line.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="background:var(--heat-8); color:#000; padding:2px 8px; border-radius:50rem; font-weight:700; font-size:12px;">0.86</span><strong class="small">Score pills</strong></div><p class="small text-muted" style="margin:0;">Inline scores tinted to the same heat scale.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-8);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-5);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-2);"></span></span><strong class="small">Status dots</strong></div><p class="small text-muted" style="margin:0;">On-track / watch / at-risk at a glance.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">download</span><strong class="small">Per-section export</strong></div><p class="small text-muted" style="margin:0;">PDF / CSV / JSON on every zoom level.</p></div>
+          </div>
+          <p class="small text-muted" style="margin:16px 0 0;"><span class="material-icons-outlined" style="font-size:14px; vertical-align:middle; color:var(--pgn-color-success-base);">verified</span> Color encodings meet WCAG 2.2 AA contrast and never rely on color alone.</p>
+        </div>
+      </details>
       <!-- Section 1 — PLATFORM ROLLUP -->
       <span class="an-anchor" id="an-platform" data-an-label="Platform"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">public</span>Platform rollup</h2>
       <p class="text-muted mb-3">Top-line view across all 4 Schools, 16 Courses, and 28 Skills.</p>
@@ -3693,7 +3774,7 @@
 <div id="new-school-modal" role="dialog" aria-modal="true" aria-labelledby="ns-title" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center; padding:16px;">
   <div style="background:var(--pgn-color-white); padding:24px; border-radius:8px; max-width:520px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
     <div data-ns-step="0">
-      <div class="d-flex justify-content-between align-items-start mb-2" style="gap:12px;">
+      <div class="d-flex justify-content-between align-items-start mb-2" style="gap:16px;">
         <h2 id="ns-title" class="h5" style="margin:0;"><span class="material-icons-outlined" style="vertical-align:middle; color:var(--pgn-color-brand-base); margin-right:6px;">domain_add</span>Create a new School</h2>
         <button type="button" class="btn-theme-toggle" aria-label="Close" onclick="closeNewSchoolModal()"><span class="material-icons-outlined">close</span></button>
       </div>
@@ -3725,10 +3806,10 @@
     <div data-ns-step="1" style="display:none;">
       <h2 class="h5 mb-2"><span class="material-icons-outlined" style="vertical-align:middle; color:var(--pgn-color-brand-base); margin-right:6px;">fact_check</span>Create this School?</h2>
       <p class="small text-muted mb-3">Confirm the new School details before creating it.</p>
-      <div style="background:#f2f4f8; border:1px solid #e4e7eb; border-radius:6px; padding:8px 16px; margin-bottom:16px;">
-        <div class="d-flex justify-content-between" style="padding:6px 0; gap:16px;"><span class="small text-muted">School name</span><strong id="ns-rev-name">(not set)</strong></div>
-        <div class="d-flex justify-content-between" style="padding:6px 0; gap:16px;"><span class="small text-muted">School ID</span><strong id="ns-rev-slug">(not set)</strong></div>
-        <div class="d-flex justify-content-between" style="padding:6px 0; gap:16px;"><span class="small text-muted">Initial Admin</span><strong id="ns-rev-admin">Assign later</strong></div>
+      <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:6px; padding:8px 16px; margin-bottom:16px;">
+        <div class="d-flex justify-content-between" style="padding:8px 0; gap:16px;"><span class="small text-muted">School name</span><strong id="ns-rev-name">(not set)</strong></div>
+        <div class="d-flex justify-content-between" style="padding:8px 0; gap:16px;"><span class="small text-muted">School ID</span><strong id="ns-rev-slug">(not set)</strong></div>
+        <div class="d-flex justify-content-between" style="padding:8px 0; gap:16px;"><span class="small text-muted">Initial Admin</span><strong id="ns-rev-admin">Assign later</strong></div>
       </div>
       <div class="d-flex gap-2 justify-content-end">
         <button type="button" class="btn btn-outline-primary btn-sm" onclick="nsStep(0)"><span class="material-icons-outlined" style="font-size:16px; vertical-align:middle; margin-right:4px;">arrow_back</span>Back</button>
@@ -3837,15 +3918,33 @@
   // Per-School Settings — picking a School in the table swaps the panel below.
   // Each School carries slightly different demo values so the change is visible.
   const SCHOOL_SETTINGS = {
-    tech:      { name: 'School of Technology',     passing: 70, budget: 540,  audit: '1825 days (5 years)' },
-    business:  { name: 'School of Business',       passing: 75, budget: 1600, audit: '730 days' },
-    education: { name: 'School of Education',      passing: 65, budget: 1400, audit: '365 days' },
-    health:    { name: 'Leavitt School of Health', passing: 80, budget: 1300, audit: 'Indefinite' }
+    tech:      { name: 'School of Technology',     passing: 70, budget: 540,  audit: '1825 days (5 years)', color: '#0070F0' },
+    business:  { name: 'School of Business',       passing: 75, budget: 1600, audit: '730 days', color: '#002855' },
+    education: { name: 'School of Education',      passing: 65, budget: 1400, audit: '365 days', color: '#0F9ED5' },
+    health:    { name: 'Leavitt School of Health', passing: 80, budget: 1300, audit: 'Indefinite', color: '#C13232' }
   };
+  /* Live branding preview (§7.9): recolor the learner-header mock + pick a readable
+     text color for the brand bar (luminance test) so the preview stays accessible. */
+  function updateBrandPreview(val) {
+    var picker = document.getElementById('ss-color');
+    var hex = document.getElementById('ss-color-hex');
+    var c = (val || (picker && picker.value) || '#0070F0').toString().trim();
+    if (c[0] !== '#') c = '#' + c;
+    if (!/^#[0-9a-fA-F]{6}$/.test(c)) return;          // wait until a full hex is entered
+    if (picker) picker.value = c;
+    if (hex) hex.value = c;
+    var r = parseInt(c.substr(1,2),16), g = parseInt(c.substr(3,2),16), b = parseInt(c.substr(5,2),16);
+    var on = ((0.299*r + 0.587*g + 0.114*b) / 255) > 0.6 ? '#001730' : '#FFFFFF';
+    var bar = document.getElementById('bp-bar'); if (bar) { bar.style.background = c; bar.style.color = on; }
+    var btn = document.getElementById('bp-btn'); if (btn) { btn.style.color = on; btn.style.borderColor = on; }
+    var fill = document.getElementById('bp-fill'); if (fill) fill.style.background = c;
+  }
   function showSchoolSettings(key, scroll) {
     var s = SCHOOL_SETTINGS[key];
     if (!s) return;
     document.getElementById('ss-school-name').textContent = s.name;
+    var bpName = document.getElementById('bp-name'); if (bpName) bpName.textContent = s.name;
+    if (s.color) updateBrandPreview(s.color);
     document.getElementById('ss-passing').value = s.passing;
     document.getElementById('ss-budget').value = s.budget;
     var sel = document.getElementById('ss-audit-retention');

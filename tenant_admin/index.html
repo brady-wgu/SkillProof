@@ -8,8 +8,8 @@
   <meta http-equiv="Expires" content="0">
   <title>SkillProof — School Admin Portal — Storyboard v4.149</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
-  <link rel="stylesheet" href="../assets/table-controls.css?v=11">
-  <script defer src="../assets/table-controls.js?v=11"></script>
+  <link rel="stylesheet" href="../assets/table-controls.css?v=12">
+  <script defer src="../assets/table-controls.js?v=12"></script>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -422,6 +422,7 @@
     .badge-danger { background: #EC6A52; color: #000; }
     .badge-warning { background: #F3D06E; color: #000; }
     .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
+    .badge-lg      { padding: 8px 16px; font-size: 14px; }  /* sanctioned emphasis size (8-pt grid) */
 
     /* ================================================================
        ALERTS
@@ -1362,18 +1363,18 @@
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 1200; padding: 16px; }
     .modal-overlay.open { display: flex; }
     .modal-dialog { background: var(--pgn-color-white); border-radius: 8px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; box-shadow: 0 16px 48px rgba(0,0,0,0.28); }
-    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 24px 4px; }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 24px 24px 8px; }
     .modal-head h2 { margin: 0; font-size: 20px; line-height: 1.3; }
     .modal-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--pgn-color-brand-base); display: inline-flex; align-items: center; gap: 4px; margin-bottom: 4px; }
     .modal-close { background: none; border: none; cursor: pointer; color: var(--pgn-color-gray-600); padding: 4px; border-radius: 6px; line-height: 0; }
     .modal-close:hover { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-900); }
-    .modal-body { padding: 8px 24px 4px; }
+    .modal-body { padding: 8px 24px; }
     .modal-body p { margin: 0 0 12px; color: var(--pgn-color-gray-700); }
-    .modal-foot { display: flex; gap: 8px; justify-content: flex-end; padding: 12px 24px 22px; flex-wrap: wrap; }
+    .modal-foot { display: flex; gap: 8px; justify-content: flex-end; padding: 16px 24px 24px; flex-wrap: wrap; }
     .modal-step { display: none; }
     .modal-step.active { display: block; }
     .modal-review { background: var(--pgn-color-bg-light); border: 1px solid var(--pgn-color-gray-200); border-radius: 6px; padding: 8px 16px; margin: 4px 0 8px; }
-    .modal-review div { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; }
+    .modal-review div { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; }
     .modal-review .mr-label { color: var(--pgn-color-gray-600); font-size: 13px; }
     .modal-review .mr-value { font-weight: 700; text-align: right; }
     .modal-success-icon { color: #45AE5B; font-size: 44px; display: block; }
@@ -1533,13 +1534,13 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 12px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Python Skill</span> <span class="badge badge-success" style="margin-left:6px; font-size:11px;">Live</span> <span class="badge badge-gray" style="margin-left:4px; font-size:11px;">Read-only</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
                 </div>
               </button>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Git &amp; Version Control Skill</span> <span class="badge badge-success" style="margin-left:6px; font-size:11px;">Live</span> <span class="badge badge-gray" style="margin-left:4px; font-size:11px;">Read-only</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
@@ -1567,13 +1568,13 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 12px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Python Intermediate Skill</span> <span class="badge badge-warning" style="margin-left:6px; font-size:11px;">Staging</span> <span class="badge badge-brand" style="margin-left:4px; font-size:11px;">Owner</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
                 </div>
               </button>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Libraries Skill</span> <span class="badge badge-success" style="margin-left:6px; font-size:11px;">Live</span> <span class="badge badge-gray" style="margin-left:4px; font-size:11px;">Read-only</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
@@ -1601,13 +1602,13 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 12px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary mb-2" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">OOP Skill</span> <span class="badge badge-success" style="margin-left:6px; font-size:11px;">Live</span> <span class="badge badge-brand" style="margin-left:4px; font-size:11px;">Owner</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
                 </div>
               </button>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(3);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(3);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Design Patterns Skill</span> <span class="badge badge-success" style="margin-left:6px; font-size:11px;">Live</span> <span class="badge badge-gray" style="margin-left:4px; font-size:11px;">Read-only</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
@@ -1635,7 +1636,7 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 12px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(6);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 8px 16px;" onclick="event.stopPropagation(); goToScreen(6);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Data Structures Skill</span> <span class="badge badge-gray" style="margin-left:6px; font-size:11px;">Draft</span> <span class="badge badge-brand" style="margin-left:4px; font-size:11px;">Owner</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
@@ -1928,7 +1929,7 @@
           <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
           <h1 id="s4-heading">Sally Whitman</h1>
         </div>
-        <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
+        <span class="badge badge-danger badge-lg"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
       <div class="d-flex justify-content-end mb-3">
@@ -2566,7 +2567,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <div class="pgn__card-section">
           <span class="eyebrow"><span class="material-icons-outlined">link</span>Next: file an LRPS provisioning ticket</span>
           <h2 class="h5 mt-1 mb-2">Skill and Topic launch URLs</h2>
-          <div class="api-card mb-3" style="background: var(--code-bg); color: #e6edf3; font-family: 'Lato', monospace; padding: 12px 16px; border-radius: 8px;">
+          <div class="api-card mb-3" style="background: var(--code-bg); color: var(--code-text); font-family: 'Lato', monospace; padding: 16px; border-radius: 8px;">
             <div class="text-muted small mb-1" style="color: var(--code-comment);">Skill &mdash; Object-Oriented Programming</div>
             <div class="mb-2" style="word-break: break-all;">https://sdp.wgu.edu/launch/pdev/e135-oop-python?build=2026.05.06.1547</div>
             <div class="text-muted small mb-1" style="color: var(--code-comment);">Topic &mdash; Classes &amp; Objects</div>
@@ -2617,8 +2618,25 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span class="material-icons-outlined">chevron_right</span>
         <span>Analytics &amp; Reporting</span>
       </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
+      <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+        <span class="eyebrow" style="margin:0;"><span class="material-icons-outlined">insights</span>School Analytics</span>
+        <span class="badge badge-success" title="Color &amp; contrast verified to WCAG 2.2 AA. Full keyboard / screen-reader audit in progress."><span class="material-icons-outlined" style="font-size:14px;">verified</span>WCAG 2.2 AA contrast</span>
+      </div>
       <h1 id="s11-heading" class="mb-3">Analytics &amp; Reporting</h1>
+      <details class="pgn__card mb-3" style="border:1px solid var(--pgn-color-gray-200);">
+        <summary style="cursor:pointer; padding:16px; font-family:'Sora','Segoe UI',sans-serif; font-weight:700; display:flex; align-items:center; gap:8px;"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">palette</span>Visualization key — how to read these charts</summary>
+        <div class="pgn__card-section" style="padding-top:0;">
+          <div class="row" style="row-gap:16px;">
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex; gap:2px;"><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-2);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-5);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-8);"></span></span><strong class="small">Heatmap cells</strong></div><p class="small text-muted" style="margin:0;">9-step red→green scale; AI-scored mastery 0.00–1.00.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="width:64px;height:10px;border-radius:50rem;background:var(--pgn-color-gray-100);overflow:hidden;display:inline-block;"><span style="display:block;height:100%;width:72%;background:var(--heat-7);"></span></span><strong class="small">Mastery / cost bars</strong></div><p class="small text-muted" style="margin:0;">Compare values across Courses, Skills, Topics.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:var(--pgn-color-gray-900);">0.78</span><strong class="small">KPI gauges</strong></div><p class="small text-muted" style="margin:0;">Headline metrics with a target / context line.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="background:var(--heat-8); color:#000; padding:2px 8px; border-radius:50rem; font-weight:700; font-size:12px;">0.86</span><strong class="small">Score pills</strong></div><p class="small text-muted" style="margin:0;">Inline scores tinted to the same heat scale.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-8);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-5);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-2);"></span></span><strong class="small">Status dots</strong></div><p class="small text-muted" style="margin:0;">On-track / watch / at-risk at a glance.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">download</span><strong class="small">Per-section export</strong></div><p class="small text-muted" style="margin:0;">PDF / CSV / JSON on every zoom level.</p></div>
+          </div>
+          <p class="small text-muted" style="margin:16px 0 0;"><span class="material-icons-outlined" style="font-size:14px; vertical-align:middle; color:var(--pgn-color-success-base);">verified</span> Color encodings meet WCAG 2.2 AA contrast and never rely on color alone.</p>
+        </div>
+      </details>
       <!-- Section 1 — SCHOOL ROLLUP -->
       <span class="an-anchor" id="an-school" data-an-label="School"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">domain</span>School rollup</h2>
       <p class="text-muted mb-3">Top-line view across all 4 Courses and 7 Skills in this School.</p>
