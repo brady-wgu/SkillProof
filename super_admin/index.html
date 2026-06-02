@@ -3960,6 +3960,14 @@
     }
   }
 
+  // Deep-link support: ?screen=N navigates to screen N on load (used by the
+  // Coda Contract Requirements tracker to deep-link to specific screens).
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const n = parseInt(params.get('screen'), 10);
+    if (n >= 1 && n <= TOTAL_SCREENS) goToScreen(n);
+  })();
+
   document.addEventListener('keydown', function(e) {
     // Role-change dialog: Escape closes it (checked before the form-field guard,
     // since focus may sit on a radio inside the modal).
