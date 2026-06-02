@@ -5,7 +5,7 @@
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Version](https://img.shields.io/badge/Version-4.154-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.155-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-46-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -66,26 +66,28 @@ SkillProof/
 │   ├── README.md
 │   ├── screenshots/            18 PNGs (light)
 │   └── screenshots_dark/       18 PNGs (dark)
-├── instructor/                 v1.3 — Charlie (9 screens since v4.57 Access Denied)
+├── instructor/                 v1.3 — Charlie (5 screens; SC-ADD-03 At-Risk Intervention)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            9 PNGs
-│   └── screenshots_dark/       9 PNGs
-├── tenant_admin/               v1.3 — Alice (21 screens since v4.57 Access Denied)
+│   ├── screenshots/            5 PNGs
+│   └── screenshots_dark/       5 PNGs
+├── tenant_admin/               v1.3 — Alice (12 screens; SC-ADD-02 Skill Configuration)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            21 PNGs
-│   └── screenshots_dark/       21 PNGs
-├── super_admin/                v1.3 — Bob (14 screens since v4.57 Access Denied)
+│   ├── screenshots/            12 PNGs
+│   └── screenshots_dark/       12 PNGs
+├── super_admin/                v1.3 — Bob (11 screens; SC-ADD-04 Governance + Access Control)
 │   ├── index.html
 │   ├── README.md
-│   ├── screenshots/            14 PNGs
-│   └── screenshots_dark/       14 PNGs
+│   ├── screenshots/            11 PNGs
+│   └── screenshots_dark/       11 PNGs
 └── help/                       Shared self-service support + training (added v4.38)
     ├── index.html
     ├── screenshots/            1 PNG
     └── screenshots_dark/       1 PNG
 ```
+
+Screenshot filenames follow `screen-NN.png` (since v4.155), 1:1 with on-page screen IDs and the `?screen=N` deep-link URLs.
 
 Click any persona folder to read its dedicated README.
 
@@ -286,13 +288,13 @@ Clone the repo and open `index.html` in any modern browser. No build step, no se
 
 ```bash
 # 1. From the repo root, start a local HTTP server
-python -m http.server 63417
+python -m http.server 8000
 
 # 2. In another terminal
 python capture_screens.py
 ```
 
-⚠️ **The committed screenshots are currently stale** — they were captured against older, larger screen counts (e.g., super_admin had 26). Regenerate after the v4.152 review. Current screen counts: student 18 · instructor 5 · tenant_admin 12 · super_admin 11 · help 1, each × 2 themes (light + dark), plus 2 landing assets (the root LRPS UI). Output lands in the per-persona `screenshots/` and `screenshots_dark/` subdirs.
+Output: **96 PNGs total** — 47 per theme (student 18 · instructor 5 · tenant_admin 12 · super_admin 11 · help 1) × 2 themes (light + dark) + 2 landing assets (the root LRPS UI). Filenames are `screen-NN.png` per portal, 1:1 with on-page screen IDs. Output lands in the per-persona `screenshots/` and `screenshots_dark/` subdirs.
 
 ---
 
@@ -331,7 +333,7 @@ When implementing:
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for the full version history. **Latest: v4.152 (1 Jun 2026)** — a cross-portal storyboard review: a shared controls module (filter + search + sort on every table; sticky analytics nav), status colors unified to the heat scale, create / delete / remove flows moved to modals, and admin screen counts settled (Tenant Admin 12, Super Admin 11). ⚠️ Screenshots are stale pending a `capture_screens.py` regen.
+See [CHANGELOG.md](CHANGELOG.md) for the full version history. **Latest: v4.155 (2 Jun 2026)** — screenshots regenerated against the post-review storyboard with simpler `screen-NN.png` naming. Recent milestones: v4.152 shared controls module + heat-scale unification + modals; v4.153 `?screen=N` deep-link support; v4.154 dark mode working across all 6 surfaces; the Coda Contract Requirements tracker is fully populated (34 Met / 2 In Progress / 2 Deferred / 54 N/A out of 92 reqs).
 
 Earlier milestones (13 May 2026):
 

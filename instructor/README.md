@@ -2,7 +2,7 @@
 
 [← Back to root README](../README.md) · [Live dashboard](https://brady-wgu.github.io/SkillProof/instructor/)
 
-![Instructor Dashboard hero](screenshots/sc-add-03_step03_screen03.png)
+![Instructor Dashboard hero](screenshots/screen-03.png)
 
 ## Persona
 
@@ -31,8 +31,8 @@ SkillProof User Scenario Catalog: Additional Scenarios **v1.3** (05 May 2026). A
 ## Files
 
 - [`index.html`](index.html) — interactive storyboard (5 screens)
-- `screenshots/` — 8 light-theme PNGs at 1440×900
-- `screenshots_dark/` — 8 dark-theme PNGs
+- `screenshots/` — 5 light-theme PNGs at 1440×900 (filenames `screen-NN.png`, 1:1 with screen IDs)
+- `screenshots_dark/` — 5 dark-theme PNGs
 
 ## Components introduced in this portal
 

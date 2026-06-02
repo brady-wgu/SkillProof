@@ -2,7 +2,7 @@
 
 [← Back to root README](../README.md) · [Live portal](https://brady-wgu.github.io/SkillProof/tenant_admin/)
 
-![School Admin Dashboard hero](screenshots/sc-add-02_step01_screen01.png)
+![School Admin Dashboard hero](screenshots/screen-01.png)
 
 ## Persona
 
@@ -43,9 +43,9 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 
 ## Files
 
-- [`index.html`](index.html) — interactive storyboard (15 screens, sequential 1–15)
-- `screenshots/` — light-theme PNGs at 1440×900 (regenerate after each significant redesign)
-- `screenshots_dark/` — dark-theme PNGs
+- [`index.html`](index.html) — interactive storyboard (12 screens, sequential 1–12; New Course is a modal, not a screen)
+- `screenshots/` — 12 light-theme PNGs at 1440×900 (filenames `screen-NN.png`, 1:1 with screen IDs)
+- `screenshots_dark/` — 12 dark-theme PNGs
 
 ## Components introduced in this portal
 
