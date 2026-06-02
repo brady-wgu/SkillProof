@@ -39,14 +39,24 @@
   background: var(--pgn-color-white); color: var(--pgn-color-gray-700);
   width: 200px; max-width: 48vw;
 }
-.table-controls .tc-sort {
-  font-family: inherit; font-size: 13px; padding: 6px 8px;
+.tc-sort {
+  /* Bare selector (no .table-controls prefix) so this also applies to chip-bar
+     sorts that addChipBarSort injects into hand-coded chip bars without a
+     .table-controls ancestor (e.g. SA S2 Access Control People/Skills/Schools).
+     appearance:none is required so the browser respects our background in
+     BOTH light and dark mode — Chrome otherwise paints the OS-default white
+     on native <select>, ignoring even `background-color` longhand. Custom
+     caret restored via SVG below. */
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  font-family: inherit; font-size: 13px; padding: 6px 28px 6px 8px;
   border: 1px solid var(--pgn-color-gray-200); border-radius: 6px;
-  background: var(--pgn-color-white); color: var(--pgn-color-gray-700); cursor: pointer;
+  background-color: var(--pgn-color-white); color: var(--pgn-color-gray-700); cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23666666' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 8px center;
 }
 .table-controls .tc-chip:focus-visible,
 .table-controls .tc-search input:focus-visible,
-.table-controls .tc-sort:focus-visible {
+.tc-sort:focus-visible {
   outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px;
 }
 /* "No matching rows" message row, shown when filter/search hides everything */
@@ -90,3 +100,27 @@ tr.tc-empty-row td {
 .an-tab.active { background: var(--pgn-color-brand-base); border-color: var(--pgn-color-brand-base); color: #fff; font-weight: 700; }
 .an-tab:focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
 .an-anchor { display: block; height: 0; margin: 0; padding: 0; scroll-margin-top: 64px; }
+
+/* Dark-mode defense: native <select>/<input> form elements sometimes ignore
+   the `background` shorthand even when CSS variables resolve correctly
+   (Chrome falls back to the OS default white). Use `background-color`
+   (longhand) explicitly for all themed form controls in dark mode. */
+[data-theme="dark"] .table-controls .tc-chip,
+[data-theme="dark"] .table-controls .tc-search input,
+[data-theme="dark"] .tc-sort,
+[data-theme="dark"] .tc-chip-search input,
+[data-theme="dark"] .an-tab {
+  background-color: var(--pgn-color-white);
+  color: var(--pgn-color-gray-700);
+  border-color: var(--pgn-color-gray-200);
+}
+[data-theme="dark"] .table-controls .tc-chip.active,
+[data-theme="dark"] .an-tab.active {
+  background-color: var(--pgn-color-brand-base);
+  color: #fff;
+  border-color: var(--pgn-color-brand-base);
+}
+[data-theme="dark"] .an-tabs {
+  background-color: var(--pgn-color-bg-light);
+  border-bottom-color: var(--pgn-color-gray-200);
+}
