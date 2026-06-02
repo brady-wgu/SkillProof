@@ -8,6 +8,24 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.160 — 2 Jun 2026 — Unified export: one "Export ▾" dropdown on every filtered table, format by data nature
+
+The per-section export buttons were hand-built and had drifted — inconsistent placement/alignment (a stray `margin-left:16px`, off-indent), and all four formats offered everywhere. Replaced with a single shared component.
+
+- **One control, module-injected:** `assets/table-controls.js` now injects a consistent **"Export ▾" dropdown** into every filtered table's control bar (and heatmaps), so placement + alignment are identical site-wide. Removed all **20 hand-built standalone export rows** (TA 8 / SA 9 / instructor 3) via a verified script.
+- **On every filtered table:** rosters, dashboards, School Management, analytics, logs — anywhere with filters now offers export (previously only analytics + drill screens did).
+- **Format by audience:** **PDF + CSV** for human-read data (default); **MD + JSON** for machine-ingested data (logs / audit / webhooks), via `data-export="machine"`. A heatmap exports PDF/CSV; a server log exports MD/JSON.
+- **"Reports & exports" section:** per-row report downloads trimmed to **PDF + CSV** (human reports); the table itself marked `data-no-export` (per-row download is the export there).
+- Exactly one confirmation toast per export; the SA Logs export uses a `data-export-here` hook on its bespoke filter row. Verified: SA 14 dropdowns (11 human / 3 machine), TA 7 (6/1), Instructor 3 (all human), 0 legacy rows, no console errors, light + dark.
+
+### Assets
+Shared `table-controls.{css,js}` → `?v=13`.
+
+### Files
+`instructor/index.html`, `tenant_admin/index.html`, `super_admin/index.html`, `assets/table-controls.{css,js}`; docs (`README.md`, this file). Screenshots regenerated.
+
+---
+
 ## v4.159 — 2 Jun 2026 — Post-audit refinements (logs de-dup, logo home, dashboard subtitles)
 
 A holistic site audit confirmed the prototype is otherwise clean (no broken markup / images, no placeholder text, no console errors, consistent components, dark mode solid). Three small refinements came out of it:

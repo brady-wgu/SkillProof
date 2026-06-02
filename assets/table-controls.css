@@ -147,3 +147,46 @@ tr.tc-empty-row td {
 }
 .tc-toast.show { opacity: 1; transform: translateY(0); }
 .tc-toast .material-icons-outlined { font-size: 18px; }
+
+/* ----------------------------------------------------------------------------
+   Export menu — one consistent "Export ▾" dropdown in every filtered table's
+   control bar. Formats are set per data nature (PDF+CSV human / MD+JSON machine)
+   by the shared module. Styled to match the chip/search/sort controls.
+   ---------------------------------------------------------------------------- */
+.tc-export { position: relative; display: inline-flex; }
+.tc-export-btn {
+  appearance: none; -webkit-appearance: none; font-family: inherit; font-size: 13px; line-height: 1;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 8px 6px 12px; border-radius: 6px;
+  border: 1px solid var(--pgn-color-gray-200);
+  background-color: var(--pgn-color-white); color: var(--pgn-color-gray-700);
+  transition: background-color 120ms, border-color 120ms;
+}
+.tc-export-btn:hover { background-color: var(--pgn-color-bg-light); }
+.tc-export-btn .material-icons-outlined { font-size: 16px; }
+.tc-export-btn .tc-export-caret { font-size: 18px; margin-left: -4px; }
+.tc-export-btn:focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
+.tc-export-menu {
+  position: absolute; top: calc(100% + 4px); right: 0; z-index: 60;
+  min-width: 168px; padding: 4px; flex-direction: column; gap: 2px; display: none;
+  background-color: var(--pgn-color-white);
+  border: 1px solid var(--pgn-color-gray-200); border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.tc-export.open .tc-export-menu { display: flex; }
+.tc-export-item {
+  display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+  padding: 8px 10px; border: none; border-radius: 6px; cursor: pointer;
+  background: none; font-family: inherit; font-size: 13px; color: var(--pgn-color-gray-700);
+}
+.tc-export-item:hover { background-color: var(--pgn-color-bg-light); }
+.tc-export-item .material-icons-outlined { font-size: 18px; color: var(--pgn-color-gray-600); }
+.tc-export-item:focus-visible { outline: 2px solid var(--pgn-color-brand-base); outline-offset: -2px; }
+/* Dark-mode: native form/popover surfaces need explicit background-color (see note above) */
+[data-theme="dark"] .tc-export-btn,
+[data-theme="dark"] .tc-export-menu,
+[data-theme="dark"] .tc-export-item {
+  background-color: var(--pgn-color-white);
+  color: var(--pgn-color-gray-700);
+  border-color: var(--pgn-color-gray-200);
+}
