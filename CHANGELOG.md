@@ -8,6 +8,19 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.159 — 2 Jun 2026 — Post-audit refinements (logs de-dup, logo home, dashboard subtitles)
+
+A holistic site audit confirmed the prototype is otherwise clean (no broken markup / images, no placeholder text, no console errors, consistent components, dark mode solid). Three small refinements came out of it:
+
+- **Logs de-dup:** the SA Logs (S11) and TA Activity Log (S11) each rendered **two stacked filter bars** — a purpose-built one plus the generic auto-injected one (duplicate search box). Suppressed the auto bar on both (`data-no-controls`), keeping the purpose-built School / time / search filter on Logs and the action-type chips on the Activity Log.
+- **Logo = home:** the WGU navbar logo (previously a dead `href="#"`) now returns to the dashboard (`goToScreen(1)`) across all three admin portals.
+- **Dashboard subtitles:** added a one-line descriptive subtitle under the Super Admin and School Admin dashboard titles to match the Instructor dashboard's treatment.
+
+### Files
+`instructor/index.html`, `tenant_admin/index.html`, `super_admin/index.html`; docs (`README.md`, this file). Screenshots regenerated.
+
+---
+
 ## v4.158 — 2 Jun 2026 — Filter/sort placement audit + remove the logs "Result" column (JFT standup)
 
 Two cleanups from the JFT morning standup.
