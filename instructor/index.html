@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>SkillProof — Instructor Dashboard — Storyboard v4.121</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
+  <link rel="stylesheet" href="../assets/table-controls.css?v=7">
+  <script defer src="../assets/table-controls.js?v=7"></script>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -91,16 +96,16 @@
       --pgn-font-family-body: 'Lato', 'Segoe UI', Arial, sans-serif;
 
       /* Heatmap color scale */
-      --heat-1: #FDEAEA;  /* lowest — red tint */
-      --heat-2: #FBD0CF;
-      --heat-3: #FEF3E2;  /* amber tint */
-      --heat-4: #FBE2A6;
-      --heat-5: #FBE4B0;
-      --heat-6: #DCEDC8;  /* light green */
-      --heat-7: #C5E1A5;
-      --heat-8: #AED581;  /* green */
-      --heat-9: #81C784;  /* darker green */
-      --heat-text-dark: #1A1A1A;
+      --heat-1: #E03B2F;  /* lowest — strong red */
+      --heat-2: #EC6A52;  /* red-orange */
+      --heat-3: #F28E5E;  /* orange */
+      --heat-4: #F5B26B;  /* light orange */
+      --heat-5: #F3D06E;  /* amber — midpoint */
+      --heat-6: #CFD96B;  /* yellow-green */
+      --heat-7: #A3CE6A;  /* light green */
+      --heat-8: #72C06C;  /* green */
+      --heat-9: #45AE5B;  /* highest — strong green */
+      --heat-text-dark: #000000;  /* black text (light mode); dark mode overrides to #fff below */
     }
 
     /* ================================================================
@@ -204,7 +209,7 @@
     .text-secondary { color: var(--pgn-color-gray-base) !important; }
     .text-success   { color: var(--pgn-color-success-base); }
     .text-danger    { color: var(--pgn-color-danger-base); }
-    .text-warning   { color: #B5710B; }
+    .text-warning   { color: #8A5A00; }
     .text-strong    { color: var(--pgn-color-gray-900); font-weight: 700; }
     .small  { font-size: 14px; }
     .micro  { font-size: 12px; }
@@ -343,9 +348,9 @@
     }
     .badge-brand   { background: var(--pgn-color-brand-tint); color: var(--pgn-color-brand-base); }
     .badge-info    { background: var(--pgn-color-info-tint); color: var(--color-dark-navy); }
-    .badge-success { background: var(--pgn-color-success-tint); color: #1B5E20; }
-    .badge-danger  { background: var(--pgn-color-danger-tint); color: #8A1E1E; }
-    .badge-warning { background: var(--pgn-color-warning-tint); color: #B5710B; }
+    .badge-success { background: #72C06C; color: #000; }
+    .badge-danger { background: #EC6A52; color: #000; }
+    .badge-warning { background: #F3D06E; color: #000; }
     .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
 
     /* ================================================================
@@ -360,7 +365,7 @@
     .alert .material-icons-outlined { flex-shrink: 0; }
     .alert-success { background: var(--pgn-color-success-tint); border-color: var(--pgn-color-success-base); color: #1B5E20; }
     .alert-info    { background: var(--pgn-color-info-tint); border-color: var(--pgn-color-info-base); color: var(--color-dark-navy); }
-    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #B5710B; }
+    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #8A5A00; }
     .alert-danger  { background: var(--pgn-color-danger-tint); border-color: var(--pgn-color-danger-base); color: #8A1E1E; }
 
     /* ================================================================
@@ -418,9 +423,9 @@
     }
     .status-legend-item { display: inline-flex; align-items: center; gap: 6px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    .dot.green   { background: var(--pgn-color-success-base); }
-    .dot.amber   { background: var(--pgn-color-warning-base); }
-    .dot.red     { background: var(--pgn-color-danger-base); }
+    .dot.green { background: #45AE5B; }
+    .dot.amber { background: #F3D06E; }
+    .dot.red { background: #E03B2F; }
     .dot.blue    { background: var(--pgn-color-brand-base); }
     .dot.gray    { background: var(--pgn-color-gray-300); }
 
@@ -510,7 +515,7 @@
       color: #1B5E20;
       margin-bottom: var(--pgn-spacing-1);
     }
-    .feedback-panel.warning .feedback-label { color: #B5710B; }
+    .feedback-panel.warning .feedback-label { color: #8A5A00; }
     .feedback-panel.danger .feedback-label { color: #8A1E1E; }
 
     /* ================================================================
@@ -581,7 +586,7 @@
     .section-card.recommended { border-left: 4px solid var(--pgn-color-brand-base); }
     .section-stat { display: flex; flex-direction: column; gap: 2px; }
     .section-stat-num { font-family: var(--pgn-font-family-heading); font-size: 24px; font-weight: 700; color: var(--pgn-color-gray-900); line-height: 1; }
-    .section-stat-num.warning { color: var(--pgn-color-warning-base); }
+    .section-stat-num.warning { color: #8A5A00; }
     .section-stat-num.danger { color: var(--pgn-color-danger-base); }
     .section-stat-label { font-size: 11px; color: var(--pgn-color-gray-600); text-transform: uppercase; letter-spacing: 0.04em; }
 
@@ -689,7 +694,7 @@
       display: flex; align-items: center; gap: 6px;
       border-radius: var(--pgn-size-border-radius-sm);
     }
-    /* v4.97: Sally row tinting removed - heatmap cell colors carry the at-risk cue */
+    /* v4.97: Sally Whitman row tinting removed - heatmap cell colors carry the at-risk cue */
     .heatmap-row-label .dot { flex-shrink: 0; }
     .heatmap-row-label[onclick] { cursor: pointer; }
     .heatmap-row-label[onclick]:hover { background: var(--pgn-color-gray-100); }
@@ -709,8 +714,8 @@
     .heatmap-cell.h5 { background: var(--heat-5); }
     .heatmap-cell.h6 { background: var(--heat-6); }
     .heatmap-cell.h7 { background: var(--heat-7); }
-    .heatmap-cell.h8 { background: var(--heat-8); color: #fff; }
-    .heatmap-cell.h9 { background: var(--heat-9); color: #fff; }
+    .heatmap-cell.h8 { background: var(--heat-8); }
+    .heatmap-cell.h9 { background: var(--heat-9); }
     .heatmap-cell.empty { background: transparent; color: var(--pgn-color-gray-400); font-weight: 400; }
 
     .heatmap-legend {
@@ -734,9 +739,9 @@
       font-family: var(--pgn-font-family-body); font-size: 12px; font-weight: 700;
       font-variant-numeric: tabular-nums;
     }
-    .score-pill.low    { background: var(--pgn-color-danger-tint);  color: #8A1E1E; }
-    .score-pill.med    { background: var(--pgn-color-warning-tint); color: #B5710B; }
-    .score-pill.high   { background: var(--pgn-color-success-tint); color: #1B5E20; }
+    .score-pill.low { background: var(--heat-2); color: var(--heat-text-dark); }
+    .score-pill.med { background: var(--heat-5); color: var(--heat-text-dark); }
+    .score-pill.high { background: var(--heat-8); color: var(--heat-text-dark); }
 
     /* Filter chips */
     .chip-filter {
@@ -969,7 +974,7 @@
                 <h3 class="h5 mb-1">E010 · Foundations of Programming (Python)</h3>
                 <p class="small text-muted mb-0">28 active learners · last activity 14 min ago</p>
               </div>
-              <a href="#" onclick="event.stopPropagation(); goToScreen(4); return false;" class="badge badge-warning" style="text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>4 at risk</a>
+              <a href="#" onclick="event.stopPropagation(); goToScreen(3); return false;" class="badge badge-warning" style="text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>4 at risk</a>
             </div>
             <div class="d-flex gap-3 mb-2" style="flex-wrap:wrap;">
               <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Learners</div></div>
@@ -1142,33 +1147,33 @@
                 </tr>
               </thead>
               <tbody>
-                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
-                  <td>Sally</td>
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(4)">
+                  <td>Sally Whitman</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">06 May 2026</td>
-                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
+                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
-                  <td>B.F.</td>
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(4)">
+                  <td>Brandon Fisher</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">04 May 2026</td>
-                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
+                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
-                  <td>C.S.</td>
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(4)">
+                  <td>Carla Soto</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">02 May 2026</td>
-                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
+                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
                 </tr>
-                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(5)">
-                  <td>H.D.</td>
+                <tr style="cursor:pointer;" data-row-status="at-risk" onclick="goToScreen(4)">
+                  <td>Hannah Diaz</td>
                   <td>E010</td>
                   <td><span class="badge badge-danger">At risk</span></td>
                   <td class="small text-muted">06 May 2026</td>
-                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(5);">View profile</button></td>
+                  <td><button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); goToScreen(4);">View profile</button></td>
                 </tr>
                 <tr class="no-matches-row" style="display:none;"><td colspan="5" class="small text-muted" style="padding: 16px; text-align: center;">[Demo] No sample learners in this filter — open the Skill heatmap for the full roster.</td></tr>
               </tbody>
@@ -1205,7 +1210,7 @@
           <h1 id="s2-heading">E010 · Foundations of Programming (Python)</h1>
           <p class="mt-1">School of Technology · 28 active learners (rolling enrollment) · last activity 14 min ago</p>
         </div>
-        <a href="#" onclick="goToScreen(4); return false;" class="badge badge-warning" style="padding:8px 14px; font-size:14px; text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:16px;">priority_high</span>4 learners at risk</a>
+        <a href="#" onclick="goToScreen(3); return false;" class="badge badge-warning" style="padding:8px 14px; font-size:14px; text-decoration:none;" title="View the 4 at-risk learners"><span class="material-icons-outlined" style="font-size:16px;">priority_high</span>4 learners at risk</a>
       </div>
 
       <div class="d-flex justify-content-end mb-3">
@@ -1227,9 +1232,9 @@
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
               <h3 class="h5 mb-1">Python Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
-              <p class="small text-muted">AI coaching module for Python foundations · 4 Topics · ~32 Learning Objectives</p>
+              <p class="small text-muted">AI Coach for Python foundations · 13 Topics · ~32 Learning Objectives</p>
             </div>
-            <a href="#" onclick="event.stopPropagation(); goToScreen(4); return false;" class="badge badge-warning" style="text-decoration:none;" title="View the 4 at-risk learners on this Skill">4 learners at risk</a>
+            <a href="#" onclick="event.stopPropagation(); goToScreen(3); return false;" class="badge badge-warning" style="text-decoration:none;" title="View the 4 at-risk learners on this Skill">4 learners at risk</a>
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Practicing</div></div>
@@ -1239,7 +1244,7 @@
           </div>
           <div class="d-flex gap-2 mt-3">
             <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
-            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(4);"><span class="material-icons-outlined">priority_high</span>View at-risk learners</button>
+            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">priority_high</span>View at-risk learners</button>
           </div>
         </div>
 
@@ -1247,7 +1252,7 @@
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
               <h3 class="h5 mb-1">Git &amp; Version Control Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
-              <p class="small text-muted">AI coaching module for source control with Git · 3 Topics · ~18 Learning Objectives</p>
+              <p class="small text-muted">AI Coach for source control with Git · 3 Topics · ~18 Learning Objectives</p>
             </div>
             <span class="badge badge-success">0 at risk</span>
           </div>
@@ -1338,52 +1343,52 @@
           <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
           <!-- Mastery rows (4) -->
-          <div class="heatmap-row-label">A.J.</div>
+          <div class="heatmap-row-label">Aaron Jackson</div>
           <div class="heatmap-cell h9">0.98</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label">K.L.</div>
+          <div class="heatmap-row-label">Kayla Lewis</div>
           <div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label">M.K.</div>
+          <div class="heatmap-row-label">Marcus King</div>
           <div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.87</div>
 
-          <div class="heatmap-row-label">D.W.</div>
+          <div class="heatmap-row-label">Diana Wells</div>
           <div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h7">0.84</div>
 
           <!-- On-track rows (6) -->
-          <div class="heatmap-row-label">P.A.</div>
+          <div class="heatmap-row-label">Priya Anand</div>
           <div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h6">0.73</div>
 
-          <div class="heatmap-row-label">J.T.</div>
+          <div class="heatmap-row-label">Jamal Thompson</div>
           <div class="heatmap-cell h7">0.81</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.74</div>
 
-          <div class="heatmap-row-label">R.M.</div>
+          <div class="heatmap-row-label">Rosa Martinez</div>
           <div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.69</div>
 
-          <div class="heatmap-row-label">E.G.</div>
+          <div class="heatmap-row-label">Evan Garcia</div>
           <div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.67</div>
 
-          <div class="heatmap-row-label">N.B.</div>
+          <div class="heatmap-row-label">Nadia Brooks</div>
           <div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.64</div>
 
-          <div class="heatmap-row-label">L.O.</div>
+          <div class="heatmap-row-label">Liam O'Brien</div>
           <div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.63</div>
 
           <!-- Watch row (1) -->
-          <div class="heatmap-row-label">T.V.</div>
+          <div class="heatmap-row-label">Tina Vasquez</div>
           <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.60</div><div class="heatmap-cell h4">0.59</div><div class="heatmap-cell h5">0.61</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h4">0.55</div><div class="heatmap-cell h4">0.57</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h3">0.54</div>
 
           <!-- At-risk rows (4) -->
-          <div class="heatmap-row-label">Sally</div>
+          <div class="heatmap-row-label">Sally Whitman</div>
           <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
 
-          <div class="heatmap-row-label">B.F.</div>
+          <div class="heatmap-row-label">Brandon Fisher</div>
           <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
 
-          <div class="heatmap-row-label">C.S.</div>
+          <div class="heatmap-row-label">Carla Soto</div>
           <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
 
-          <div class="heatmap-row-label">H.D.</div>
+          <div class="heatmap-row-label">Hannah Diaz</div>
           <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
         </div>
 
@@ -1421,7 +1426,7 @@
   </div>
 </section>
 
-<!-- Screen 4: At-risk filter applied → Sally identified ============= -->
+<!-- Screen 5: Sally Whitman drill-down profile ============================== -->
 <section class="screen" id="screen-4" aria-labelledby="s4-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
@@ -1441,127 +1446,24 @@
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(3); return false;">Heatmap</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>At risk</span>
-      </nav>
-
-      <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>Filtered: At risk only</span>
-        <h1 id="s4-heading">4 learners need attention</h1>
-        <p class="mt-1">Filter narrowed to the at-risk threshold set by your School Admin (AI-scored Topic mastery &lt; 0.60 across two or more Topics). Click any row to drill in.</p>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('all');">All (28)</button>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('mastery');">Mastery (7)</button>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('on-track');">On track (17)</button>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('watch');">Watch list (1)</button>
-        <button class="chip-filter active danger"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
-      </div>
-
-      <div class="row">
-        <div class="col-8">
-          <div class="heatmap-scroll-container">
-          <div class="heatmap-card">
-            <div class="heatmap-grid">
-              <!-- Header row: 1 corner + 13 Topic columns (canonical taxonomy) -->
-              <div class="heatmap-corner">Learner ↓ · Topic →</div>
-              <div class="heatmap-col-label">Basic Syntax<br>&amp; Data Types</div>
-              <div class="heatmap-col-label">Control Flow<br>&amp; Logic</div>
-              <div class="heatmap-col-label">Functions &amp;<br>Modular Programming</div>
-              <div class="heatmap-col-label">Data Structures:<br>Lists, Tuples, Sets, Dicts</div>
-              <div class="heatmap-col-label">Working with<br>Files &amp; I/O</div>
-              <div class="heatmap-col-label">Error Handling<br>&amp; Debugging</div>
-              <div class="heatmap-col-label">Object-Oriented<br>Programming (OOP)</div>
-              <div class="heatmap-col-label">Python Libraries<br>&amp; Modules</div>
-              <div class="heatmap-col-label">Advanced<br>Data Handling</div>
-              <div class="heatmap-col-label">Regular Expressions<br>&amp; String Manipulation</div>
-              <div class="heatmap-col-label">Working with<br>Databases</div>
-              <div class="heatmap-col-label">Introduction<br>to Automation</div>
-              <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for Sally" title="View profile for Sally">Sally</div>
-              <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for B.F." title="View profile for B.F.">B.F.</div>
-              <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for C.S." title="View profile for C.S.">C.S.</div>
-              <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for H.D." title="View profile for H.D.">H.D.</div>
-              <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
-            </div>
-          </div>
-          <div class="heatmap-scroll-hint" role="note">
-            <span class="material-icons-outlined" style="font-size:14px;">swap_horiz</span>
-            Scroll horizontally to see all 13 Topics — try the scrollbar below, shift + mouse wheel, or trackpad swipe
-          </div>
-          </div><!-- /.heatmap-scroll-container -->
-        </div>
-        <div class="col-4">
-          <div class="pgn__card pgn__card-featured">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">summarize</span>Python Skill summary</span>
-              <h2 class="h5 mb-2">At-risk pattern</h2>
-              <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:60%;">Lowest Topic score</th><td><strong>Data Structures: Lists, Tuples, Sets, Dictionaries</strong></td></tr>
-                <tr><th>Avg score (at-risk)</th><td>0.42</td></tr>
-                <tr><th>Common gap</th><td>List comprehensions, dict access patterns</td></tr>
-                <tr><th>Total sessions</th><td>27 in last 7 days</td></tr>
-                <tr><th>Mastery threshold</th><td>0.80 (set by School Admin)</td></tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(3)"><span class="material-icons-outlined">arrow_back</span>Back to full heatmap</button>
-    <button class="btn btn-primary" onclick="goToScreen(5)">Open Sally's profile<span class="material-icons-outlined">arrow_forward</span></button>
-  </div>
-</section>
-
-<!-- Screen 5: Sally drill-down profile ============================== -->
-<section class="screen" id="screen-5" aria-labelledby="s5-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Instructor Dashboard</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-5">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Instructor Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(2); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(4); return false;">At risk</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Sally</span>
+        <span>Sally Whitman</span>
       </nav>
 
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
-          <h1 id="s5-heading">Sally</h1>
+          <h1 id="s4-heading">Sally Whitman</h1>
         </div>
         <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
       <div class="d-flex justify-content-end mb-3">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Sally's Topic Mastery Report</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
+          <span class="text-muted small">Export Sally Whitman's Topic Mastery Report</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally Whitman's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -1625,12 +1527,11 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
   </div>
 </section>
 
 <!-- Screen 6: Access Denied (zero-trust deny path · RBAC doc §4.2 Figure 6) -->
-<section class="screen" id="screen-6" aria-labelledby="s6-heading">
+<section class="screen" id="screen-5" aria-labelledby="s5-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -1639,14 +1540,14 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">C</div><span>Charlie</span></div>
     </div>
   </header>
-  <main class="screen-main centered" id="main-6">
+  <main class="screen-main centered" id="main-5">
     <div class="container-narrow">
       <div class="pgn__card pgn__card-featured">
         <div class="pgn__card-section-lg">
           <div class="text-center mb-3">
             <span class="material-icons-outlined" style="font-size:56px; color: var(--pgn-color-danger-base);">block</span>
           </div>
-          <h1 id="s6-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
+          <h1 id="s5-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
           <table class="pgn__data-table" style="border:none; box-shadow:none; margin-bottom: var(--pgn-spacing-3);">
             <tr><th style="width:42%;">Signed in as</th><td>Charlie · Instructor · School of Technology</td></tr>
             <tr><th>This page requires</th><td>School Admin - School of Technology</td></tr>
@@ -1699,16 +1600,15 @@
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: Dashboard home">01 Dashboard home</button>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Course view (E010)">02 Course view</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Skill view (Python Skill heatmap)">03 Skill view</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: At-risk filter">04 At-risk filter</button>
-      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Sally profile">05 Sally profile</button>
-      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Access Denied (zero-trust deny path)">06 Access Denied</button>
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Sally Whitman profile">04 Sally Whitman profile</button>
+      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Access Denied (zero-trust deny path)">05 Access Denied</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 6; // v4.121 (26 May 2026): S06 Conversation logs / S07 Session transcript / S08 Audit Trail removed per contract scope confirmation — JFT confirmed conversations are not stored (single Q+A only, not multi-turn). "Capture integrity" terminology removed from Coda lock 23 May 2026. Drill chain stops at S05 Learner profile; S09 Access Denied renumbered to S06.
+  const TOTAL_SCREENS = 5; // v4.121 (26 May 2026): S06 Conversation logs / S07 Session transcript / S08 Audit Trail removed per contract scope confirmation — JFT confirmed conversations are not stored (single Q+A only, not multi-turn). "Capture integrity" terminology removed from Coda lock 23 May 2026. Drill chain stops at S05 Learner profile; S09 Access Denied renumbered to S06.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
@@ -1780,11 +1680,9 @@
   //   S4: all 4 rows at-risk
   var HEATMAP_ROW_STATUS_BY_SCREEN = {
     '#screen-3': ['mastery','mastery','mastery','mastery','on-track','on-track','on-track','on-track','on-track','on-track','watch','at-risk','at-risk','at-risk','at-risk'],
-    '#screen-4': ['at-risk','at-risk','at-risk','at-risk']
   };
   var HEATMAP_ARIA_LABEL_BY_SCREEN = {
-    '#screen-3': 'Python Skill Topic mastery heatmap — 15 learners × 4 Topics',
-    '#screen-4': 'Python Skill at-risk filter heatmap — 4 at-risk learners × 4 Topics'
+    '#screen-3': 'Python Skill Topic mastery heatmap — 15 learners × 13 Topics',
   };
 
   function hydrateOneHeatmap(screenSelector) {
@@ -1815,7 +1713,7 @@
       label.dataset.rowStatus = status;
       label.setAttribute('role', 'rowheader');
       label.setAttribute('aria-rowindex', rowIdx + 2);
-      label.setAttribute('onclick', 'goToScreen(5)');
+      label.setAttribute('onclick', 'goToScreen(4)');
       label.setAttribute('tabindex', '0');
       label.setAttribute('aria-label', 'View profile for ' + learnerName);
       label.setAttribute('title', 'View profile for ' + learnerName);
@@ -1839,7 +1737,6 @@
 
   function hydrateHeatmap() {
     hydrateOneHeatmap('#screen-3');
-    hydrateOneHeatmap('#screen-4');
   }
 
     /* v4.116: at-risk roster filter for S1 instructor dashboard.
@@ -1929,7 +1826,6 @@
     update();
   }
   setupHeatmapScrollState('#screen-3');
-  setupHeatmapScrollState('#screen-4');
 
   /* v4.108: S7 transcript filter — hide/show chat-rows by message type.
      - "all" shows everything
@@ -1957,41 +1853,41 @@
     });
   }
 
-  /* S5 Sally Per-Topic table filter */
+  /* S5 Sally Whitman Per-Topic table filter */
   function filterPerTopicTable(filter) {
-    chipFilterTable('#screen-5 .col-8', filter, 'data-topic-cat', 'data-filter-topic');
+    chipFilterTable('#screen-4 .col-8', filter, 'data-topic-cat', 'data-filter-topic');
   }
 
   /* S6 Conversation logs filter */
   function filterSessions(filter) {
-    chipFilterTable('#screen-6', filter, 'data-session-cat', 'data-filter-session');
+    chipFilterTable('#screen-5', filter, 'data-session-cat', 'data-filter-session');
   }
 
   /* v4.109: S8 audit-event filter — hide/show event-log rows by category.
      Each row has a data-event-cat attribute (ai / learner / model / guardrail).
      "all" shows everything; other filters show only matching rows. */
   function filterAuditEvents(filter) {
-    document.querySelectorAll('#screen-8 .chip-filter').forEach(function(c) {
+    document.querySelectorAll('#screen-7 .chip-filter').forEach(function(c) {
       c.classList.remove('active');
     });
-    var activeChip = document.querySelector('#screen-8 .chip-filter[data-filter-event="' + filter + '"]');
+    var activeChip = document.querySelector('#screen-7 .chip-filter[data-filter-event="' + filter + '"]');
     if (activeChip) activeChip.classList.add('active');
-    document.querySelectorAll('#screen-8 tbody tr').forEach(function(row) {
+    document.querySelectorAll('#screen-7 tbody tr').forEach(function(row) {
       var cat = row.dataset.eventCat;
       row.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
     });
   }
 
   function filterTranscript(filter) {
-    document.querySelectorAll('#screen-7 .chip-filter').forEach(function(c) {
+    document.querySelectorAll('#screen-6 .chip-filter').forEach(function(c) {
       c.classList.remove('active', 'danger');
     });
-    var activeChip = document.querySelector('#screen-7 .chip-filter[data-filter-msg="' + filter + '"]');
+    var activeChip = document.querySelector('#screen-6 .chip-filter[data-filter-msg="' + filter + '"]');
     if (activeChip) {
       activeChip.classList.add('active');
       if (filter === 'miss') activeChip.classList.add('danger');
     }
-    document.querySelectorAll('#screen-7 .chat-row').forEach(function(row) {
+    document.querySelectorAll('#screen-6 .chat-row').forEach(function(row) {
       var type = row.dataset.msgType;
       var show = false;
       if (filter === 'all') show = true;

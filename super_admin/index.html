@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>SkillProof — Super Admin Portal — Storyboard v4.151</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
+  <link rel="stylesheet" href="../assets/table-controls.css?v=7">
+  <script defer src="../assets/table-controls.js?v=7"></script>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -33,16 +38,16 @@
        ================================================================ */
     :root {
       /* Heatmap color ramp (ported from School Admin) — lowest (red) → highest (green) */
-      --heat-1: #FDEAEA;
-      --heat-2: #FBD0CF;
-      --heat-3: #FEF3E2;
-      --heat-4: #FBE2A6;
-      --heat-5: #FBE4B0;
-      --heat-6: #DCEDC8;
-      --heat-7: #C5E1A5;
-      --heat-8: #AED581;
-      --heat-9: #81C784;
-      --heat-text-dark: #1A1A1A;
+      --heat-1: #E03B2F;  /* lowest — strong red */
+      --heat-2: #EC6A52;  /* red-orange */
+      --heat-3: #F28E5E;  /* orange */
+      --heat-4: #F5B26B;  /* light orange */
+      --heat-5: #F3D06E;  /* amber — midpoint */
+      --heat-6: #CFD96B;  /* yellow-green */
+      --heat-7: #A3CE6A;  /* light green */
+      --heat-8: #72C06C;  /* green */
+      --heat-9: #45AE5B;  /* highest — strong green */
+      --heat-text-dark: #000000;  /* black text (light mode); dark mode overrides to #fff below */
       --pgn-color-primary-base: #001730;
       --pgn-color-brand-base:   #0070F0;
       --pgn-color-info-base:    #46B1EF;
@@ -192,7 +197,7 @@
     .text-secondary { color: var(--pgn-color-gray-base) !important; }
     .text-success   { color: var(--pgn-color-success-base); }
     .text-danger    { color: var(--pgn-color-danger-base); }
-    .text-warning   { color: #B5710B; }
+    .text-warning   { color: #8A5A00; }
     .text-strong    { color: var(--pgn-color-gray-900); font-weight: 700; }
     .small  { font-size: 14px; }
     .micro  { font-size: 12px; }
@@ -335,9 +340,9 @@
     }
     .badge-brand   { background: var(--pgn-color-brand-tint); color: var(--pgn-color-brand-base); }
     .badge-info    { background: var(--pgn-color-info-tint); color: var(--color-dark-navy); }
-    .badge-success { background: var(--pgn-color-success-tint); color: #1B5E20; }
-    .badge-danger  { background: var(--pgn-color-danger-tint); color: #8A1E1E; }
-    .badge-warning { background: var(--pgn-color-warning-tint); color: #B5710B; }
+    .badge-success { background: #72C06C; color: #000; }
+    .badge-danger { background: #EC6A52; color: #000; }
+    .badge-warning { background: #F3D06E; color: #000; }
     .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
 
     /* ================================================================
@@ -352,7 +357,7 @@
     .alert .material-icons-outlined { flex-shrink: 0; }
     .alert-success { background: var(--pgn-color-success-tint); border-color: var(--pgn-color-success-base); color: #1B5E20; }
     .alert-info    { background: var(--pgn-color-info-tint); border-color: var(--pgn-color-info-base); color: var(--color-dark-navy); }
-    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #B5710B; }
+    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #8A5A00; }
     .alert-danger  { background: var(--pgn-color-danger-tint); border-color: var(--pgn-color-danger-base); color: #8A1E1E; }
 
     /* ================================================================
@@ -431,9 +436,9 @@
     }
     .status-legend-item { display: inline-flex; align-items: center; gap: 6px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    .dot.green   { background: var(--pgn-color-success-base); }
-    .dot.amber   { background: var(--pgn-color-warning-base); }
-    .dot.red     { background: var(--pgn-color-danger-base); }
+    .dot.green { background: #45AE5B; }
+    .dot.amber { background: #F3D06E; }
+    .dot.red { background: #E03B2F; }
     .dot.blue    { background: var(--pgn-color-brand-base); }
     .dot.gray    { background: var(--pgn-color-gray-300); }
 
@@ -488,7 +493,7 @@
       color: #1B5E20;
       margin-bottom: var(--pgn-spacing-1);
     }
-    .feedback-panel.warning .feedback-label { color: #B5710B; }
+    .feedback-panel.warning .feedback-label { color: #8A5A00; }
     .feedback-panel.danger .feedback-label { color: #8A1E1E; }
 
 
@@ -544,9 +549,9 @@
       height: 100%; background: var(--pgn-color-brand-base);
       border-radius: var(--pgn-size-rounded-pill);
     }
-    .gauge-bar-fill.success { background: var(--pgn-color-success-base); }
-    .gauge-bar-fill.warning { background: var(--pgn-color-warning-base); }
-    .gauge-bar-fill.danger  { background: var(--pgn-color-danger-base); }
+    .gauge-bar-fill.success { background: var(--heat-8); }
+    .gauge-bar-fill.warning { background: var(--heat-5); }
+    .gauge-bar-fill.danger  { background: var(--heat-2); }
     .gauge-target { font-size: 12px; color: var(--pgn-color-gray-600); }
     .gauge-target strong { color: var(--pgn-color-gray-900); }
 
@@ -649,8 +654,8 @@
       height: 100%; background: var(--pgn-color-brand-base);
       border-radius: var(--pgn-size-rounded-pill);
     }
-    .util-bar-fill.warning { background: var(--pgn-color-warning-base); }
-    .util-bar-fill.danger  { background: var(--pgn-color-danger-base); }
+    .util-bar-fill.warning { background: var(--heat-5); }
+    .util-bar-fill.danger  { background: var(--heat-2); }
     .util-value {
       font-family: 'Lato', monospace; font-size: 13px; font-weight: 700;
       color: var(--pgn-color-gray-900); font-variant-numeric: tabular-nums;
@@ -894,8 +899,8 @@
     .heatmap-cell.h5 { background: var(--heat-5); }
     .heatmap-cell.h6 { background: var(--heat-6); }
     .heatmap-cell.h7 { background: var(--heat-7); }
-    .heatmap-cell.h8 { background: var(--heat-8); color: #fff; }
-    .heatmap-cell.h9 { background: var(--heat-9); color: #fff; }
+    .heatmap-cell.h8 { background: var(--heat-8); }
+    .heatmap-cell.h9 { background: var(--heat-9); }
     .heatmap-cell.empty { background: transparent; color: var(--pgn-color-gray-400); font-weight: 400; }
     .heatmap-legend {
       display: flex; align-items: center; gap: 8px;
@@ -913,9 +918,9 @@
       font-family: var(--pgn-font-family-body); font-size: 12px; font-weight: 700;
       font-variant-numeric: tabular-nums;
     }
-    .score-pill.low    { background: var(--pgn-color-danger-tint);  color: #8A1E1E; }
-    .score-pill.med    { background: var(--pgn-color-warning-tint); color: #B5710B; }
-    .score-pill.high   { background: var(--pgn-color-success-tint); color: #1B5E20; }
+    .score-pill.low { background: var(--heat-2); color: var(--heat-text-dark); }
+    .score-pill.med { background: var(--heat-5); color: var(--heat-text-dark); }
+    .score-pill.high { background: var(--heat-8); color: var(--heat-text-dark); }
     /* ===== Skill section-card + stats (ported from School Admin for the S7 Course view) ===== */
     .section-card {
       background: var(--pgn-color-white);
@@ -929,7 +934,7 @@
     .section-card.recommended { border-left: 4px solid var(--pgn-color-brand-base); }
     .section-stat { display: flex; flex-direction: column; gap: 2px; }
     .section-stat-num { font-family: var(--pgn-font-family-heading); font-size: 24px; font-weight: 700; color: var(--pgn-color-gray-900); line-height: 1; }
-    .section-stat-num.warning { color: var(--pgn-color-warning-base); }
+    .section-stat-num.warning { color: #8A5A00; }
     .section-stat-num.danger { color: var(--pgn-color-danger-base); }
     .section-stat-label { font-size: 11px; color: var(--pgn-color-gray-600); text-transform: uppercase; letter-spacing: 0.04em; }
   </style>
@@ -1001,10 +1006,10 @@
       <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(2)"><span class="material-icons-outlined">manage_accounts</span>Access Control</button>
         <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(4)"><span class="material-icons-outlined">school</span>Schools</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(6)"><span class="material-icons-outlined">analytics</span>Analytics</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('s1-cost').scrollIntoView({behavior:'smooth'})"><span class="material-icons-outlined">paid</span>Cost &amp; Usage</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(13)"><span class="material-icons-outlined">open_in_new</span>External Tools</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(15)"><span class="material-icons-outlined">history</span>Logs</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(5)"><span class="material-icons-outlined">analytics</span>Analytics</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(9)"><span class="material-icons-outlined">open_in_new</span>External Tools</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(10)"><span class="material-icons-outlined">hub</span>Data Hub</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">history</span>Logs</button>
       </div>
 
       <div class="pgn__card mb-3">
@@ -1138,7 +1143,7 @@
   </main>
 </section>
 
-<section class="screen" id="screen-15" aria-labelledby="s15-heading">
+<section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1148,7 +1153,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-15">
+  <main class="screen-main" id="main-11">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -1158,7 +1163,7 @@
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">history</span>Platform Logs</span>
-          <h1 id="s15-heading">Logs</h1>
+          <h1 id="s11-heading">Logs</h1>
           <p class="mt-1">Every privileged action across every School. FERPA-aligned retention.</p>
         </div>
         <div class="d-flex gap-2 align-items-center">
@@ -1281,7 +1286,7 @@
             <td>04 May 10:12:55</td>
             <td>School of Technology</td>
             <td>Charlie</td>
-            <td><code>student.record.access</code> (Sally, E010 mastery view)</td>
+            <td><code>student.record.access</code> (Sally Whitman, E010 mastery view)</td>
             <td>203.0.113.x</td>
           </tr>
           <tr>
@@ -1356,9 +1361,7 @@
 
       <div class="pgn__card pgn__card-featured mb-3">
             <div class="pgn__card-section">
-              <div class="d-flex justify-content-end mb-2">
-                <input class="form-control form-control-sm" type="text" placeholder="Search users, skills, schools…" style="width: 280px; height: 32px; font-size: 13px;">
-              </div>
+              
 
               <div class="d-flex gap-1 mb-3" role="tablist" aria-label="Access Control scope">
                 <button type="button" class="btn btn-primary btn-sm" role="tab" id="s2-tab-people" aria-selected="true" aria-controls="s2-panel-people" onclick="goToTab('people')">People · 187</button>
@@ -1427,8 +1430,8 @@
                       <td><button class="badge badge-info" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Alice', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1447,7 +1450,7 @@
                       <td><button class="badge badge-info" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Miguel', 'School Admin');">School Admin <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1466,9 +1469,9 @@
                       <td><button class="badge badge-warning" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Charlie', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E075<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E135<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E075<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E135<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add Course</button>
                         </div>
                       </td>
@@ -1487,8 +1490,8 @@
                       <td><button class="badge badge-warning" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Priya', 'Instructor');">Instructor <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E135<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E010<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">E135<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add Course</button>
                         </div>
                       </td>
@@ -1499,12 +1502,12 @@
                         <div class="d-flex align-items-center gap-2">
                           <div class="avatar" style="width:28px; height:28px; font-size:12px; background: var(--pgn-color-gray-600);">S</div>
                           <div>
-                            <div class="text-strong">Sally</div>
+                            <div class="text-strong">Sally Whitman</div>
                             <div class="micro text-muted">sally@example.edu</div>
                           </div>
                         </div>
                       </td>
-                      <td><button class="badge badge-gray" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Sally', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
+                      <td><button class="badge badge-gray" style="cursor:pointer; border:none; display:inline-flex; align-items:center; gap:4px; padding:4px 10px;" onclick="openRoleModal('Sally Whitman', 'Student');">Student <span class="material-icons-outlined" style="font-size:14px;">expand_more</span></button></td>
                       <td class="text-muted small">— (own record only)</td>
                       <td>2 hours ago</td>
                     </tr>
@@ -1569,8 +1572,8 @@
                       </td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Education<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Education<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1591,7 +1594,7 @@
                       </td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1612,7 +1615,7 @@
                       </td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Technology<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1633,7 +1636,7 @@
                       </td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Business<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1654,7 +1657,7 @@
                       </td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Education<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">School of Education<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1672,7 +1675,7 @@
                       </td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">Leavitt School of Health<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;">Leavitt School of Health<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add School</button>
                         </div>
                       </td>
@@ -1699,6 +1702,7 @@
                       <th>School Admins</th>
                       <th style="text-align:right;">Skills deployed</th>
                       <th>Created</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1706,8 +1710,8 @@
                       <td><div class="text-strong">School of Technology</div></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">A</span>Alice<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-info-base);">M</span>Maya<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">A</span>Alice<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-info-base);">M</span>Maya<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
                         </div>
                       </td>
@@ -1720,7 +1724,7 @@
                       <td><div class="text-strong">School of Business</div></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">M</span>Miguel<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">M</span>Miguel<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
                         </div>
                       </td>
@@ -1733,7 +1737,7 @@
                       <td><div class="text-strong">School of Education</div></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">R</span>Renee<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">R</span>Renee<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
                         </div>
                       </td>
@@ -1746,7 +1750,7 @@
                       <td><div class="text-strong">Leavitt School of Health</div></td>
                       <td>
                         <div class="d-flex gap-1 align-items-center" style="flex-wrap:wrap;">
-                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">T</span>Theo<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" aria-label="Remove">close</span></span>
+                          <span class="badge badge-brand" style="display:inline-flex; align-items:center; gap:4px;"><span class="avatar" style="width:18px; height:18px; font-size:10px; background: var(--pgn-color-brand-base);">T</span>Theo<span class="material-icons-outlined" style="font-size:14px; cursor:pointer;" role="button" tabindex="0" aria-label="Remove" onclick="openRemoveModal(this)">close</span></span>
                           <button class="btn btn-tertiary btn-sm" type="button">+ Add Admin</button>
                         </div>
                       </td>
@@ -1765,7 +1769,7 @@
   </main>
 </section>
 
-<section class="screen" id="screen-13" aria-labelledby="s13-heading">
+<section class="screen" id="screen-9" aria-labelledby="s9-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1775,7 +1779,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-13">
+  <main class="screen-main" id="main-9">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -1783,7 +1787,7 @@
         <span>External Tooling</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">open_in_new</span>Super Admin</span>
-      <h1 id="s13-heading">External Tooling &amp; Integrations</h1>
+      <h1 id="s9-heading">External Tooling</h1>
       <p class="mt-1 mb-3">Some platform functions are managed in 3rd party dashboards. This page surfaces those integrations.</p>
 
       <h2 class="h5 mb-2">External dashboards</h2>
@@ -1876,7 +1880,7 @@
 </section>
 
 
-<section class="screen" id="screen-14" aria-labelledby="s14-heading">
+<section class="screen" id="screen-10" aria-labelledby="s10-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -1886,7 +1890,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-14">
+  <main class="screen-main" id="main-10">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -1894,7 +1898,7 @@
         <span>Data &amp; Integrations</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">hub</span>Super Admin</span>
-      <h1 id="s14-heading">Data &amp; Integrations Hub</h1>
+      <h1 id="s10-heading">Data &amp; Integrations Hub</h1>
       <p class="mt-1 mb-3">Cross-school data export, real-time event streaming, and developer-facing API surfaces for downstream consumption. Scope moved here from the Content Creator Portal in v4.22 per the global scoping decision.</p>
 
       <!-- Real-time + batch data export (A-8.8) -->
@@ -2100,7 +2104,7 @@
       <span class="eyebrow"><span class="material-icons-outlined">school</span>Super Admin</span>
       <h1 id="s4-heading" class="mb-3">School Management</h1>
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <button class="btn btn-primary" onclick="goToScreen(5)"><span class="material-icons-outlined">add</span>New School</button>
+        <button class="btn btn-primary" onclick="openNewSchoolModal()"><span class="material-icons-outlined">add</span>New School</button>
       </div>
 
       <div class="pgn__card pgn__card-featured mb-3">
@@ -2252,7 +2256,7 @@
 
 
 
-<section class="screen" id="screen-7" aria-labelledby="s7-heading">
+<section class="screen" id="screen-6" aria-labelledby="s6-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2262,7 +2266,7 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-7">
+  <main class="screen-main" id="main-6">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
@@ -2273,7 +2277,7 @@
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">school</span>Course detail</span>
-          <h1 id="s7-heading">E010 · Foundations of Programming (Python)</h1>
+          <h1 id="s6-heading">E010 · Foundations of Programming (Python)</h1>
           <p class="mt-1">School of Technology · 28 active learners (rolling enrollment) · last activity 14 min ago</p>
         </div>
       </div>
@@ -2295,10 +2299,10 @@
           <h2 class="h4 mb-0">Skills (2 active)</h2>
         </div>
 
-        <div class="section-card recommended mb-3" onclick="goToScreen(8)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
+        <div class="section-card recommended mb-3" onclick="goToScreen(7)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
           <div class="mb-2">
             <h3 class="h5 mb-1">Python Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
-            <p class="small text-muted">AI coaching module for Python foundations · 4 Topics · ~32 Learning Objectives</p>
+            <p class="small text-muted">AI Coach for Python foundations · 13 Topics · ~32 Learning Objectives</p>
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Practicing</div></div>
@@ -2307,14 +2311,14 @@
             <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(8);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
+            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(7);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
         </div>
 
-        <div class="section-card" onclick="goToScreen(8)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Git & Version Control Skill heatmap">
+        <div class="section-card" onclick="goToScreen(7)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Git & Version Control Skill heatmap">
           <div class="mb-2">
             <h3 class="h5 mb-1">Git &amp; Version Control Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
-            <p class="small text-muted">AI coaching module for source control with Git · 3 Topics · ~18 Learning Objectives</p>
+            <p class="small text-muted">AI Coach for source control with Git · 3 Topics · ~18 Learning Objectives</p>
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">22</div><div class="section-stat-label">Practicing</div></div>
@@ -2323,7 +2327,7 @@
             <div class="section-stat"><div class="section-stat-num">87</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(8);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
+            <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(7);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
         </div>
       </div>
@@ -2334,7 +2338,7 @@
     <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Back to Dashboard</button>
   </div>
 </section>
-<section class="screen" id="screen-8" aria-labelledby="s8-heading">
+<section class="screen" id="screen-7" aria-labelledby="s7-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2344,12 +2348,12 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-8">
+  <main class="screen-main" id="main-7">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(7); return false;">E010</a>
+        <a href="#" onclick="goToScreen(6); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="return false;" title="Python Skill in E010">Python Skill</a>
         <span class="material-icons-outlined">chevron_right</span>
@@ -2358,7 +2362,7 @@
 
       <div class="mb-3">
         <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Python Skill · Heatmap</span>
-        <h1 id="s8-heading">Python Skill — Topic mastery</h1>
+        <h1 id="s7-heading">Python Skill — Topic mastery</h1>
         <p class="mt-1">AI-scored Topic mastery (0.00–1.00) per learner. Updates after each coaching session.</p>
       </div>
 
@@ -2378,7 +2382,7 @@
         <button class="chip-filter" data-filter-status="mastery" onclick="filterHeatmap('mastery')">Mastery (7)</button>
         <button class="chip-filter" data-filter-status="on-track" onclick="filterHeatmap('on-track')">On track (17)</button>
         <button class="chip-filter" data-filter-status="watch" onclick="filterHeatmap('watch')">Watch list (1)</button>
-        <button class="chip-filter danger" data-filter-status="at-risk" onclick="goToScreen(9)"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
+        <button class="chip-filter danger" data-filter-status="at-risk" onclick="goToScreen(7)"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
       </div>
 
       <div class="heatmap-scroll-container">
@@ -2401,52 +2405,52 @@
           <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
           <!-- Mastery rows (4) -->
-          <div class="heatmap-row-label">A.J.</div>
+          <div class="heatmap-row-label">Aaron Jackson</div>
           <div class="heatmap-cell h9">0.98</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label">K.L.</div>
+          <div class="heatmap-row-label">Kayla Lewis</div>
           <div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label">M.K.</div>
+          <div class="heatmap-row-label">Marcus King</div>
           <div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.87</div>
 
-          <div class="heatmap-row-label">D.W.</div>
+          <div class="heatmap-row-label">Diana Wells</div>
           <div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h7">0.84</div>
 
           <!-- On-track rows (6) -->
-          <div class="heatmap-row-label">P.A.</div>
+          <div class="heatmap-row-label">Priya Anand</div>
           <div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h6">0.73</div>
 
-          <div class="heatmap-row-label">J.T.</div>
+          <div class="heatmap-row-label">Jamal Thompson</div>
           <div class="heatmap-cell h7">0.81</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.74</div>
 
-          <div class="heatmap-row-label">R.M.</div>
+          <div class="heatmap-row-label">Rosa Martinez</div>
           <div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.69</div>
 
-          <div class="heatmap-row-label">E.G.</div>
+          <div class="heatmap-row-label">Evan Garcia</div>
           <div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.67</div>
 
-          <div class="heatmap-row-label">N.B.</div>
+          <div class="heatmap-row-label">Nadia Brooks</div>
           <div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.64</div>
 
-          <div class="heatmap-row-label">L.O.</div>
+          <div class="heatmap-row-label">Liam O'Brien</div>
           <div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.63</div>
 
           <!-- Watch row (1) -->
-          <div class="heatmap-row-label">T.V.</div>
+          <div class="heatmap-row-label">Tina Vasquez</div>
           <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.60</div><div class="heatmap-cell h4">0.59</div><div class="heatmap-cell h5">0.61</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h4">0.55</div><div class="heatmap-cell h4">0.57</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h3">0.54</div>
 
           <!-- At-risk rows (4) -->
-          <div class="heatmap-row-label">Sally</div>
+          <div class="heatmap-row-label">Sally Whitman</div>
           <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
 
-          <div class="heatmap-row-label">B.F.</div>
+          <div class="heatmap-row-label">Brandon Fisher</div>
           <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
 
-          <div class="heatmap-row-label">C.S.</div>
+          <div class="heatmap-row-label">Carla Soto</div>
           <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
 
-          <div class="heatmap-row-label">H.D.</div>
+          <div class="heatmap-row-label">Hannah Diaz</div>
           <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
         </div>
 
@@ -2480,10 +2484,11 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">arrow_back</span>Back to Course view</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">arrow_back</span>Back to Course view</button>
   </div>
 </section>
-<section class="screen" id="screen-9" aria-labelledby="s9-heading">
+
+<section class="screen" id="screen-8" aria-labelledby="s8-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2493,134 +2498,33 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-9">
+  <main class="screen-main" id="main-8">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(7); return false;">E010</a>
+        <a href="#" onclick="goToScreen(6); return false;">E010</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(8); return false;">Heatmap</a>
+        <a href="#" onclick="goToScreen(7); return false;">Heatmap</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>At risk</span>
-      </nav>
-
-      <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>Filtered: At risk only</span>
-        <h1 id="s9-heading">4 learners need attention</h1>
-        <p class="mt-1">Filter narrowed to the at-risk threshold set by your School Admin (AI-scored Topic mastery &lt; 0.60 across two or more Topics). Click any row to drill in.</p>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('all');">All (28)</button>
-        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('mastery');">Mastery (7)</button>
-        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('on-track');">On track (17)</button>
-        <button class="chip-filter" onclick="goToScreen(8); filterHeatmap('watch');">Watch list (1)</button>
-        <button class="chip-filter active danger"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
-      </div>
-
-      <div class="row">
-        <div class="col-8">
-          <div class="heatmap-scroll-container">
-          <div class="heatmap-card">
-            <div class="heatmap-grid">
-              <!-- Header row: 1 corner + 13 Topic columns (canonical taxonomy) -->
-              <div class="heatmap-corner">Learner ↓ · Topic →</div>
-              <div class="heatmap-col-label">Basic Syntax<br>&amp; Data Types</div>
-              <div class="heatmap-col-label">Control Flow<br>&amp; Logic</div>
-              <div class="heatmap-col-label">Functions &amp;<br>Modular Programming</div>
-              <div class="heatmap-col-label">Data Structures:<br>Lists, Tuples, Sets, Dicts</div>
-              <div class="heatmap-col-label">Working with<br>Files &amp; I/O</div>
-              <div class="heatmap-col-label">Error Handling<br>&amp; Debugging</div>
-              <div class="heatmap-col-label">Object-Oriented<br>Programming (OOP)</div>
-              <div class="heatmap-col-label">Python Libraries<br>&amp; Modules</div>
-              <div class="heatmap-col-label">Advanced<br>Data Handling</div>
-              <div class="heatmap-col-label">Regular Expressions<br>&amp; String Manipulation</div>
-              <div class="heatmap-col-label">Working with<br>Databases</div>
-              <div class="heatmap-col-label">Introduction<br>to Automation</div>
-              <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for Sally" title="View profile for Sally">Sally</div>
-              <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for B.F." title="View profile for B.F.">B.F.</div>
-              <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for C.S." title="View profile for C.S.">C.S.</div>
-              <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(10)" role="rowheader" tabindex="0" aria-label="View profile for H.D." title="View profile for H.D.">H.D.</div>
-              <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
-            </div>
-          </div>
-          <div class="heatmap-scroll-hint" role="note">
-            <span class="material-icons-outlined" style="font-size:14px;">swap_horiz</span>
-            Scroll horizontally to see all 13 Topics — try the scrollbar below, shift + mouse wheel, or trackpad swipe
-          </div>
-          </div><!-- /.heatmap-scroll-container -->
-        </div>
-        <div class="col-4">
-          <div class="pgn__card pgn__card-featured">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">summarize</span>Python Skill summary</span>
-              <h2 class="h5 mb-2">At-risk pattern</h2>
-              <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:60%;">Lowest Topic score</th><td><strong>Data Structures: Lists, Tuples, Sets, Dictionaries</strong></td></tr>
-                <tr><th>Avg score (at-risk)</th><td>0.42</td></tr>
-                <tr><th>Common gap</th><td>List comprehensions, dict access patterns</td></tr>
-                <tr><th>Total sessions</th><td>27 in last 7 days</td></tr>
-                <tr><th>Mastery threshold</th><td>0.80 (set by School Admin)</td></tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">arrow_back</span>Back to full heatmap</button>
-    <button class="btn btn-primary" onclick="goToScreen(10)">Open Sally's profile<span class="material-icons-outlined">arrow_forward</span></button>
-  </div>
-</section>
-<section class="screen" id="screen-10" aria-labelledby="s10-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-10">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(7); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(9); return false;">At risk</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Sally</span>
+        <span>Sally Whitman</span>
       </nav>
 
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
-          <h1 id="s10-heading">Sally</h1>
+          <h1 id="s8-heading">Sally Whitman</h1>
         </div>
         <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
       <div class="d-flex justify-content-end mb-3">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Sally's Topic Mastery Report</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
+          <span class="text-muted small">Export Sally Whitman's Topic Mastery Report</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally Whitman's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -2684,11 +2588,10 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(9)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
   </div>
 </section>
 
-<section class="screen" id="screen-6" aria-labelledby="s6-heading">
+<section class="screen" id="screen-5" aria-labelledby="s5-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
     <div class="navbar-right">
@@ -2698,18 +2601,17 @@
       <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
     </div>
   </header>
-  <main class="screen-main" id="main-6">
-    <div class="container">
+  <main class="screen-main" id="main-5">
+    <div class="container" data-analytics-nav>
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Analytics &amp; Reporting</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
-      <h1 id="s6-heading" class="mb-3">Analytics &amp; Reporting</h1>
+      <h1 id="s5-heading" class="mb-3">Analytics &amp; Reporting</h1>
       <!-- Section 1 — PLATFORM ROLLUP -->
-      <span class="eyebrow"><span class="material-icons-outlined">public</span>Level 1 of 5 · Platform</span>
-      <h2 class="h4 mb-2">Platform rollup</h2>
+      <span class="an-anchor" id="an-platform" data-an-label="Platform"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">public</span>Platform rollup</h2>
       <p class="text-muted mb-3">Top-line view across all 4 Schools, 16 Courses, and 28 Skills.</p>
 
       <div class="row mb-3">
@@ -2795,8 +2697,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 2 — PER-SCHOOL BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">domain</span>Level 2 of 5 · School</span>
-      <h2 class="h4 mb-2">Per-School breakdown</h2>
+      <span class="an-anchor" id="an-school" data-an-label="School"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">domain</span>By School</h2>
       <p class="text-muted mb-3">Engagement, mastery, and cost by School. Click a row to drill into a School's Courses.</p>
 
       <div class="pgn__card mb-3">
@@ -2884,8 +2785,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 3 — PER-COURSE BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">school</span>Level 3 of 5 · Course</span>
-      <h2 class="h4 mb-2" id="s6-courses">Per-Course breakdown · School of Technology</h2>
+      <span class="an-anchor" id="an-course" data-an-label="Course"></span><h2 class="h4 mb-2" id="s6-courses"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">school</span>By Course</h2>
       <p class="text-muted mb-3">Course-level engagement, mastery, and cost. Click a row to drill into the Course detail.</p>
 
       <div class="pgn__card mb-3">
@@ -2904,7 +2804,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E010 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(6);" role="button" tabindex="0" aria-label="Open E010 Course detail">
                 <td><div class="text-strong">E010 &middot; Foundations of Programming (Python)</div></td>
                 <td class="num-col">2</td>
                 <td class="num-col">28</td>
@@ -2914,7 +2814,7 @@
                 <td class="num-col">$1,292</td>
                 <td class="num-col"><span class="badge badge-warning">▲ 9%</span></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E075 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(6);" role="button" tabindex="0" aria-label="Open E075 Course detail">
                 <td><div class="text-strong">E075 &middot; Intermediate Python &amp; Libraries</div></td>
                 <td class="num-col">2</td>
                 <td class="num-col">22</td>
@@ -2924,7 +2824,7 @@
                 <td class="num-col">$655</td>
                 <td class="num-col"><span class="badge badge-success">≈ 0%</span></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E120 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(6);" role="button" tabindex="0" aria-label="Open E120 Course detail">
                 <td><div class="text-strong">E120 &middot; Applied Data Structures (Python)</div></td>
                 <td class="num-col">1 (Draft)</td>
                 <td class="num-col">0</td>
@@ -2934,7 +2834,7 @@
                 <td class="num-col">$0</td>
                 <td class="num-col"><span class="badge badge-gray">—</span></td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open E135 Course detail">
+              <tr style="cursor:pointer;" onclick="goToScreen(6);" role="button" tabindex="0" aria-label="Open E135 Course detail">
                 <td><div class="text-strong">E135 &middot; Object-Oriented Programming with Python</div></td>
                 <td class="num-col">2</td>
                 <td class="num-col">18</td>
@@ -2970,14 +2870,14 @@
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E010 Foundations</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:76%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:76%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.76</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E075 Intermediate</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:82%; height:100%; background:var(--pgn-color-success-base);"></div>
+                  <div style="width:82%; height:100%; background:var(--heat-8);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.82</span>
               </div>
@@ -2991,7 +2891,7 @@
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E135 OOP w/ Python</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:71%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:71%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.71</span>
               </div>
@@ -3048,8 +2948,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 3 — PER-SKILL BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Level 4 of 5 · Skill</span>
-      <h2 class="h4 mb-2">Per-Skill breakdown</h2>
+      <span class="an-anchor" id="an-skill" data-an-label="Skill"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">smart_toy</span>By Skill</h2>
       <p class="text-muted mb-3">Skill-level performance and cost. Spot unused or unusually expensive Skills (may indicate prompt bugs). Click a row to open its heatmap.</p>
 
       <div class="pgn__card mb-3">
@@ -3069,7 +2968,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
                 <td><div class="text-strong">Python Skill</div><div class="micro text-muted"><code>pyt-001</code></div></td>
                 <td>E010</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -3080,7 +2979,7 @@
                 <td class="num-col">1,820,000</td>
                 <td class="num-col">$1,073</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Git &amp; VC Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open Git &amp; VC Skill heatmap">
                 <td><div class="text-strong">Git &amp; Version Control Skill</div><div class="micro text-muted"><code>git-001</code></div></td>
                 <td>E010</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -3091,7 +2990,7 @@
                 <td class="num-col">328,300</td>
                 <td class="num-col">$218</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Python Intermediate Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open Python Intermediate Skill heatmap">
                 <td><div class="text-strong">Python Intermediate Skill</div><div class="micro text-muted"><code>pyt-002</code></div></td>
                 <td>E075</td>
                 <td><span class="badge badge-warning">Staging</span></td>
@@ -3102,7 +3001,7 @@
                 <td class="num-col">560,000</td>
                 <td class="num-col">$281</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Libraries Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open Libraries Skill heatmap">
                 <td><div class="text-strong">Libraries Skill</div><div class="micro text-muted"><code>lib-001</code></div></td>
                 <td>E075</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -3113,7 +3012,7 @@
                 <td class="num-col">756,000</td>
                 <td class="num-col">$374</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open OOP Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open OOP Skill heatmap">
                 <td><div class="text-strong">OOP Skill</div><div class="micro text-muted"><code>oop-001</code></div></td>
                 <td>E135</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -3124,7 +3023,7 @@
                 <td class="num-col">560,000</td>
                 <td class="num-col">$281</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Design Patterns Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open Design Patterns Skill heatmap">
                 <td><div class="text-strong">Design Patterns Skill</div><div class="micro text-muted"><code>dpt-001</code></div></td>
                 <td>E135</td>
                 <td><span class="badge badge-success">Live</span></td>
@@ -3135,7 +3034,7 @@
                 <td class="num-col">376,000</td>
                 <td class="num-col">$187</td>
               </tr>
-              <tr style="cursor:pointer;" onclick="goToScreen(8);" role="button" tabindex="0" aria-label="Open Data Structures Skill heatmap">
+              <tr style="cursor:pointer;" onclick="goToScreen(7);" role="button" tabindex="0" aria-label="Open Data Structures Skill heatmap">
                 <td><div class="text-strong">Data Structures Skill</div><div class="micro text-muted"><code>ds-001</code></div></td>
                 <td>E120</td>
                 <td><span class="badge badge-gray">Draft</span></td>
@@ -3158,42 +3057,42 @@
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Python Skill (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:76%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:76%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.76</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Git &amp; VC (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:68%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:68%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.68</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Python Intermediate (Staging)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:74%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:74%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.74</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Libraries (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:82%; height:100%; background:var(--pgn-color-success-base);"></div>
+                  <div style="width:82%; height:100%; background:var(--heat-8);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.82</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">OOP Skill (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:71%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:71%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.71</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Design Patterns (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:70%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:70%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.70</span>
               </div>
@@ -3219,8 +3118,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 4 — PER-TOPIC BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">topic</span>Level 5 of 5 · Topic</span>
-      <h2 class="h4 mb-2">Per-Topic breakdown</h2>
+      <span class="an-anchor" id="an-topic" data-an-label="Topic"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">topic</span>By Topic</h2>
       <p class="text-muted mb-3">Topic-level mastery, sessions, and cost across all deployed Skills. Helps spot unused or unusually expensive Topics (often signals a Skill prompt issue worth investigating).</p>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
@@ -3464,8 +3362,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 5 — PROGRAM REPORTS -->
-      <span class="eyebrow"><span class="material-icons-outlined">summarize</span>Custom Reports</span>
-      <h2 class="h4 mb-2">Program Reports</h2>
+      <span class="an-anchor" id="an-reports" data-an-label="Reports"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">summarize</span>Reports &amp; exports</h2>
       <p class="text-muted mb-3">Pre-built reports filtered by date range, Skill, or Topic. Export individually below.</p>
 
       <div class="pgn__card mb-3">
@@ -3552,8 +3449,7 @@
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 6 — ACTIVITY LOG -->
-      <span class="eyebrow"><span class="material-icons-outlined">history</span>Audit Trail</span>
-      <h2 class="h4 mb-2">Activity Log</h2>
+      <span class="an-anchor" id="an-audit" data-an-label="Audit"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">history</span>Audit trail</h2>
       <p class="text-muted mb-3">Chronological audit of School Admin and Super Admin actions across all Schools.</p>
 
       <div class="d-flex justify-content-end mb-4">
@@ -3674,10 +3570,10 @@
         /* S6 Per-Topic filter — narrow Topic rows by Course or Skill */
         window.filterTopics = function(dimension, value) {
           var attrName = (dimension === 'course') ? 'data-topic-course' : 'data-topic-skill';
-          document.querySelectorAll('#main-6 .chip-filter[data-filter-topic-' + dimension + ']').forEach(function(c) {
+          document.querySelectorAll('#main-5 .chip-filter[data-filter-topic-' + dimension + ']').forEach(function(c) {
             c.classList.remove('active');
           });
-          var activeChip = document.querySelector('#main-6 .chip-filter[data-filter-topic-' + dimension + '="' + value + '"]');
+          var activeChip = document.querySelector('#main-5 .chip-filter[data-filter-topic-' + dimension + '="' + value + '"]');
           if (activeChip) activeChip.classList.add('active');
           document.querySelectorAll('#topic-table tbody tr').forEach(function(row) {
             row.style.display = (value === 'all' || row.getAttribute(attrName) === value) ? '' : 'none';
@@ -3689,68 +3585,6 @@
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Back to Portal</button>
-  </div>
-</section>
-
-<section class="screen" id="screen-5" aria-labelledby="s5-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" src="../assets/wgu-corporation-full-color.png" alt="WGU"><img class="navbar-brand-logo logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">Super Admin</span>
-      <div class="navbar-user"><div class="avatar" aria-hidden="true">B</div><span>Bob</span></div>
-    </div>
-  </header>
-  <main class="screen-main" id="main-5">
-    <div class="container-narrow">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">Super Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(4); return false;">School Management</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>New School</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">domain_add</span>School</span>
-      <h1 id="s5-heading" class="h1 mb-2">Create a new School</h1>
-
-      <div class="pgn__card mb-3">
-        <div class="pgn__card-section-lg">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="f-new-school-name">School name</label>
-              <input class="form-control" id="f-new-school-name" type="text" placeholder="e.g., Leavitt School of Health" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="f-new-school-slug">School short-code</label>
-              <input class="form-control" id="f-new-school-slug" type="text" placeholder="e.g., school_health" />
-              <p class="small text-muted mt-1" style="margin-bottom:0;">Lowercase, snake_case. Used as the School ID.</p>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-new-school-admin">Initial School Admin</label>
-            <select class="form-control" id="f-new-school-admin">
-              <option value="">Assign later (on Access Control screen)</option>
-              <option value="alice">Alice (currently: School of Technology)</option>
-              <option value="miguel">Miguel (currently: School of Business)</option>
-              <option value="renee">Renee (currently: School of Education)</option>
-              <option value="theo">Theo (currently: Leavitt School of Health)</option>
-            </select>
-            <p class="small text-muted mt-1" style="margin-bottom:0;">An existing School Admin can be assigned to multiple Schools, or you can assign a new one later on the Access Control screen.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="alert alert-info mb-3">
-        <span class="material-icons-outlined">info</span>
-        <div>Creating a new School provisions an isolated tenant environment. The School appears immediately in the School Management table; Courses and Skills are added by the assigned School Admin.</div>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Cancel</button>
-    <button class="btn btn-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">check</span>Create School</button>
   </div>
 </section>
 
@@ -3794,33 +3628,31 @@
     <span class="flow-desc">Schools</span>
     <nav class="flow-nav" aria-label="Schools screens">
       <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Schools">04 Schools</button>
-      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Create new School">05 New School</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow C</span>
     <span class="flow-desc">Analytics</span>
     <nav class="flow-nav" aria-label="Analytics and drill-down screens">
-      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Analytics">06 Analytics</button>
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Course view">07 Course view</button>
-      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Skill heatmap">08 Skill heatmap</button>
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: At-risk filter">09 At-risk filter</button>
-      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: Learner profile">10 Learner profile</button>
+      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Analytics">05 Analytics</button>
+      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Course view">06 Course view</button>
+      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Skill heatmap">07 Skill heatmap</button>
+      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Learner profile">08 Learner profile</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow D</span>
     <span class="flow-desc">External Tools</span>
     <nav class="flow-nav" aria-label="External tools screens">
-      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: External Tools and Integrations">13 External Tools</button>
-      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: Data and Integrations Hub">14 Data Hub</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: External Tools">09 External Tools</button>
+      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: Data and Integrations Hub">10 Data Hub</button>
     </nav>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow E</span>
     <span class="flow-desc">Logs</span>
     <nav class="flow-nav" aria-label="Logs screen">
-      <button class="step-btn" onclick="goToScreen(15)" aria-label="Screen 15: Logs">15 Logs</button>
+      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Logs">11 Logs</button>
     </nav>
   </div>
 </div>
@@ -3847,11 +3679,76 @@
   </div>
 </div>
 
+<div id="remove-modal" role="dialog" aria-modal="true" aria-labelledby="remove-modal-title" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:24px; border-radius:8px; max-width:440px; width:90%; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+    <h2 id="remove-modal-title" class="h5 mb-2"><span class="material-icons-outlined" style="vertical-align:middle; color:var(--pgn-color-danger-base); margin-right:6px;">warning</span>Remove access?</h2>
+    <p class="small text-muted mb-3">Remove <strong><span id="remove-modal-scope">this assignment</span></strong><span id="remove-modal-who"></span>? This revokes the assignment and is recorded in the audit trail.</p>
+    <div class="d-flex gap-2 justify-content-end">
+      <button class="btn btn-outline-primary btn-sm" data-cancel onclick="closeRemoveModal()">Cancel</button>
+      <button class="btn btn-sm" style="background:var(--pgn-color-danger-base); border-color:var(--pgn-color-danger-base); color:#fff;" onclick="confirmRemove()"><span class="material-icons-outlined" style="font-size:16px; vertical-align:middle; margin-right:4px;">close</span>Remove</button>
+    </div>
+  </div>
+</div>
+
+<div id="new-school-modal" role="dialog" aria-modal="true" aria-labelledby="ns-title" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center; padding:16px;">
+  <div style="background:#fff; padding:24px; border-radius:8px; max-width:520px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+    <div data-ns-step="0">
+      <div class="d-flex justify-content-between align-items-start mb-2" style="gap:12px;">
+        <h2 id="ns-title" class="h5" style="margin:0;"><span class="material-icons-outlined" style="vertical-align:middle; color:var(--pgn-color-brand-base); margin-right:6px;">domain_add</span>Create a new School</h2>
+        <button type="button" class="btn-theme-toggle" aria-label="Close" onclick="closeNewSchoolModal()"><span class="material-icons-outlined">close</span></button>
+      </div>
+      <p class="small text-muted mb-3">Provisions an isolated tenant environment. The School appears in the School Management table immediately; Courses and Skills are added by the assigned School Admin.</p>
+      <div class="form-group mb-2">
+        <label class="form-label" for="ns-name">School name</label>
+        <input class="form-control" id="ns-name" type="text" placeholder="e.g., Leavitt School of Health" />
+      </div>
+      <div class="form-group mb-2">
+        <label class="form-label" for="ns-slug">School short-code</label>
+        <input class="form-control" id="ns-slug" type="text" placeholder="e.g., school_health" />
+        <p class="small text-muted mt-1" style="margin-bottom:0;">Lowercase, snake_case. Used as the School ID.</p>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="ns-admin">Initial School Admin</label>
+        <select class="form-control" id="ns-admin">
+          <option value="">Assign later (on Access Control)</option>
+          <option value="alice">Alice (currently: School of Technology)</option>
+          <option value="miguel">Miguel (currently: School of Business)</option>
+          <option value="renee">Renee (currently: School of Education)</option>
+          <option value="theo">Theo (currently: Leavitt School of Health)</option>
+        </select>
+      </div>
+      <div class="d-flex gap-2 justify-content-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" onclick="closeNewSchoolModal()">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="nsReview()">Review<span class="material-icons-outlined" style="font-size:16px; vertical-align:middle; margin-left:4px;">arrow_forward</span></button>
+      </div>
+    </div>
+    <div data-ns-step="1" style="display:none;">
+      <h2 class="h5 mb-2"><span class="material-icons-outlined" style="vertical-align:middle; color:var(--pgn-color-brand-base); margin-right:6px;">fact_check</span>Create this School?</h2>
+      <p class="small text-muted mb-3">Confirm the new School details before creating it.</p>
+      <div style="background:#f2f4f8; border:1px solid #e4e7eb; border-radius:6px; padding:8px 16px; margin-bottom:16px;">
+        <div class="d-flex justify-content-between" style="padding:6px 0; gap:16px;"><span class="small text-muted">School name</span><strong id="ns-rev-name">(not set)</strong></div>
+        <div class="d-flex justify-content-between" style="padding:6px 0; gap:16px;"><span class="small text-muted">School ID</span><strong id="ns-rev-slug">(not set)</strong></div>
+        <div class="d-flex justify-content-between" style="padding:6px 0; gap:16px;"><span class="small text-muted">Initial Admin</span><strong id="ns-rev-admin">Assign later</strong></div>
+      </div>
+      <div class="d-flex gap-2 justify-content-end">
+        <button type="button" class="btn btn-outline-primary btn-sm" onclick="nsStep(0)"><span class="material-icons-outlined" style="font-size:16px; vertical-align:middle; margin-right:4px;">arrow_back</span>Back</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="nsCreate()"><span class="material-icons-outlined" style="font-size:16px; vertical-align:middle; margin-right:4px;">check</span>Create School</button>
+      </div>
+    </div>
+    <div data-ns-step="2" style="display:none; text-align:center; padding:8px 0;">
+      <span class="material-icons-outlined" style="font-size:44px; color:#45AE5B;">check_circle</span>
+      <h2 class="h5" style="margin:8px 0;">School created</h2>
+      <p class="small text-muted mb-3"><strong id="ns-done-name">New School</strong> now appears in the School Management table. Assign Courses and Skills via its School Admin.</p>
+      <button type="button" class="btn btn-primary btn-sm" onclick="closeNewSchoolModal()">Done</button>
+    </div>
+  </div>
+</div>
+
 <script>
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 15; // v4.135: 15 screens across 6 flows (A-F) matching the dashboard toolbar.
+  const TOTAL_SCREENS = 11; // v4.135: 15 screens across 6 flows (A-F) matching the dashboard toolbar.
 
-  /* Screen 09 (Access Control) tab toggling — People · Skills · Schools */
+  /* Screen 08 (Access Control) tab toggling — People · Skills · Schools */
   function goToTab(tabId) {
     var tabs = ['people', 'skills', 'schools'];
     tabs.forEach(function(id) {
@@ -3906,6 +3803,37 @@
     closeRoleModal();
   }
 
+  /* Permission-removal confirm modal (assignment chips on Access Control) */
+  var removeTarget = null, removeModalTrigger = null;
+  function openRemoveModal(span){
+    removeModalTrigger = document.activeElement;
+    var badge = span.closest('.badge');
+    removeTarget = badge;
+    var scope = (badge && badge.firstChild) ? badge.firstChild.textContent.replace(/\s+/g,' ').trim() : 'this assignment';
+    var row = span.closest('tr');
+    var nameEl = row ? row.querySelector('.text-strong') : null;
+    var who = nameEl ? nameEl.textContent.replace(/\s+/g,' ').trim() : '';
+    document.getElementById('remove-modal-scope').textContent = scope;
+    document.getElementById('remove-modal-who').textContent = who ? (' from ' + who) : '';
+    var modal = document.getElementById('remove-modal');
+    modal.style.display = 'flex';
+    var cb = modal.querySelector('button[data-cancel]'); if(cb) cb.focus();
+  }
+  function closeRemoveModal(){
+    document.getElementById('remove-modal').style.display = 'none';
+    if(removeModalTrigger && removeModalTrigger.focus) removeModalTrigger.focus();
+    removeTarget = null;
+  }
+  function confirmRemove(){
+    if(removeTarget && removeTarget.parentNode){ removeTarget.parentNode.removeChild(removeTarget); }
+    closeRemoveModal();
+  }
+  document.addEventListener('keydown', function(e){
+    var m = document.getElementById('remove-modal');
+    if(m && m.style.display !== 'none' && e.key === 'Escape'){ closeRemoveModal(); return; }
+    if((e.key === 'Enter' || e.key === ' ') && e.target && e.target.getAttribute && e.target.getAttribute('aria-label') === 'Remove' && e.target.getAttribute('onclick')){ e.preventDefault(); openRemoveModal(e.target); }
+  });
+
   // Per-School Settings — picking a School in the table swaps the panel below.
   // Each School carries slightly different demo values so the change is visible.
   const SCHOOL_SETTINGS = {
@@ -3930,15 +3858,15 @@
   // Highlight the default School (Technology) on load so the table matches the panel below.
   showSchoolSettings('tech', false);
 
-  /* Skill heatmap (S8) filter chips — ported from School Admin, scoped to #screen-8.
+  /* Skill heatmap (S8) filter chips — ported from School Admin, scoped to #screen-7.
      Chip-highlight only; the heatmap markup has no [data-row-status] rows to hide. */
   function filterHeatmap(status) {
-    document.querySelectorAll('#screen-8 .chip-filter').forEach(function(chip) {
+    document.querySelectorAll('#screen-7 .chip-filter').forEach(function(chip) {
       chip.classList.remove('active');
       if (chip.dataset.filterStatus === 'at-risk') chip.classList.add('danger');
       else chip.classList.remove('danger');
     });
-    var activeChip = document.querySelector('#screen-8 .chip-filter[data-filter-status="' + status + '"]');
+    var activeChip = document.querySelector('#screen-7 .chip-filter[data-filter-status="' + status + '"]');
     if (activeChip) activeChip.classList.add('active');
   }
 
@@ -3966,6 +3894,47 @@
     if (scroll !== false) document.getElementById('s1-cost').scrollIntoView({ behavior:'smooth', block:'nearest' });
   }
   showSchoolCost('tech', false);
+
+    /* New School modal (multi-step: form -> confirm -> success) */
+  var nsTrigger = null;
+  function openNewSchoolModal(){
+    nsTrigger = document.activeElement;
+    document.getElementById('ns-name').value = '';
+    document.getElementById('ns-slug').value = '';
+    document.getElementById('ns-admin').selectedIndex = 0;
+    document.getElementById('new-school-modal').style.display = 'flex';
+    nsStep(0);
+  }
+  function closeNewSchoolModal(){
+    document.getElementById('new-school-modal').style.display = 'none';
+    if(nsTrigger && nsTrigger.focus) nsTrigger.focus();
+  }
+  function nsStep(i){
+    document.querySelectorAll('#new-school-modal [data-ns-step]').forEach(function(d){
+      d.style.display = (parseInt(d.getAttribute('data-ns-step'),10) === i) ? '' : 'none';
+    });
+    var box = document.querySelector('#new-school-modal [data-ns-step="' + i + '"]');
+    if(box){ var fe = box.querySelector('input, button'); if(fe) setTimeout(function(){ fe.focus(); }, 30); }
+  }
+  function nsReview(){
+    var name = (document.getElementById('ns-name').value || '').trim();
+    var slug = (document.getElementById('ns-slug').value || '').trim();
+    var admin = document.getElementById('ns-admin');
+    var adminTxt = admin.value === '' ? 'Assign later' : admin.options[admin.selectedIndex].textContent.split(' (currently')[0].trim();
+    document.getElementById('ns-rev-name').textContent = name || '(not set)';
+    document.getElementById('ns-rev-slug').textContent = slug || '(not set)';
+    document.getElementById('ns-rev-admin').textContent = adminTxt;
+    nsStep(1);
+  }
+  function nsCreate(){
+    var name = (document.getElementById('ns-name').value || '').trim() || 'New School';
+    document.getElementById('ns-done-name').textContent = name;
+    nsStep(2);
+  }
+  document.addEventListener('keydown', function(e){
+    var m = document.getElementById('new-school-modal');
+    if(m && m.style.display !== 'none' && e.key === 'Escape'){ closeNewSchoolModal(); }
+  });
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;

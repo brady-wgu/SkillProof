@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>SkillProof — LRPS Landing — Storyboard v4.91</title>
   <link rel="icon" type="image/png" href="assets/wgu-favicon.png">
+  <link rel="stylesheet" href="assets/table-controls.css?v=7">
+  <script defer src="assets/table-controls.js?v=7"></script>
 
   <!--
     DEMO ONLY · MEDIUM-FIDELITY SAMPLE
@@ -360,9 +365,9 @@
     }
     .badge-brand   { background: var(--pgn-color-brand-tint); color: var(--pgn-color-brand-base); }
     .badge-info    { background: var(--pgn-color-info-tint); color: var(--color-dark-navy); }
-    .badge-success { background: var(--pgn-color-success-tint); color: #1B5E20; }
-    .badge-danger  { background: var(--pgn-color-danger-tint); color: #8A1E1E; }
-    .badge-warning { background: var(--pgn-color-warning-tint); color: #B5710B; }
+    .badge-success { background: #72C06C; color: #000; }
+    .badge-danger { background: #EC6A52; color: #000; }
+    .badge-warning { background: #F3D06E; color: #000; }
     .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
 
     /* ================================================================
@@ -376,15 +381,15 @@
     }
     .alert .material-icons-outlined { flex-shrink: 0; }
     .alert-info    { background: var(--pgn-color-info-tint); border-color: var(--pgn-color-info-base); color: var(--color-dark-navy); }
-    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #B5710B; }
+    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #8A5A00; }
 
     /* ================================================================
        STATUS DOTS
        ================================================================ */
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-    .dot.green   { background: var(--pgn-color-success-base); }
-    .dot.amber   { background: var(--pgn-color-warning-base); }
-    .dot.red     { background: var(--pgn-color-danger-base); }
+    .dot.green { background: #45AE5B; }
+    .dot.amber { background: #F3D06E; }
+    .dot.red { background: #E03B2F; }
     .dot.blue    { background: var(--pgn-color-brand-base); }
     .dot.gray    { background: var(--pgn-color-gray-300); }
     .status-pill {
@@ -842,10 +847,6 @@
               <label class="form-toggle-inline">
                 <input type="checkbox"> Show Inactive Providers
               </label>
-              <div class="search-input">
-                <span class="material-icons-outlined">search</span>
-                <input class="form-control" type="search" placeholder="Search providers..." aria-label="Search providers">
-              </div>
             </div>
           </div>
 

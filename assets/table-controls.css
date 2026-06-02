@@ -1,0 +1,92 @@
+/* ============================================================================
+   SkillProof — shared table controls (filter chips + search + sort)
+   Site-wide standard (2026-06-01): every data table carries this control bar.
+   Auto-injected by table-controls.js. Uses each portal's --pgn-* tokens.
+   ============================================================================ */
+.table-controls {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin: 0 0 12px 0;
+  font-family: 'Lato', 'Segoe UI', Arial, sans-serif;
+}
+.table-controls .tc-label {
+  font-size: 13px; color: var(--pgn-color-gray-600); margin-right: 2px;
+  display: inline-flex; align-items: center;
+}
+.table-controls .tc-chips { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.table-controls .tc-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+
+.table-controls .tc-chip {
+  font-family: inherit; font-size: 13px; line-height: 1; cursor: pointer;
+  padding: 6px 12px; border-radius: 50rem;
+  border: 1px solid var(--pgn-color-gray-200);
+  background: var(--pgn-color-white); color: var(--pgn-color-gray-700);
+  transition: background 120ms, border-color 120ms, color 120ms;
+}
+.table-controls .tc-chip:hover { background: var(--pgn-color-bg-light); }
+.table-controls .tc-chip.active {
+  background: var(--pgn-color-brand-base); border-color: var(--pgn-color-brand-base);
+  color: #fff; font-weight: 700;
+}
+
+.table-controls .tc-search { position: relative; display: inline-flex; align-items: center; }
+.table-controls .tc-search .material-icons-outlined {
+  position: absolute; left: 8px; font-size: 16px;
+  color: var(--pgn-color-gray-600); pointer-events: none;
+}
+.table-controls .tc-search input {
+  font-family: inherit; font-size: 13px; padding: 6px 8px 6px 30px;
+  border: 1px solid var(--pgn-color-gray-200); border-radius: 6px;
+  background: var(--pgn-color-white); color: var(--pgn-color-gray-700);
+  width: 200px; max-width: 48vw;
+}
+.table-controls .tc-sort {
+  font-family: inherit; font-size: 13px; padding: 6px 8px;
+  border: 1px solid var(--pgn-color-gray-200); border-radius: 6px;
+  background: var(--pgn-color-white); color: var(--pgn-color-gray-700); cursor: pointer;
+}
+.table-controls .tc-chip:focus-visible,
+.table-controls .tc-search input:focus-visible,
+.table-controls .tc-sort:focus-visible {
+  outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px;
+}
+/* "No matching rows" message row, shown when filter/search hides everything */
+tr.tc-empty-row td {
+  text-align: center; color: var(--pgn-color-gray-600);
+  font-style: italic; padding: 16px;
+}
+
+/* Search box injected into bespoke filter-chip bars (heatmaps, card grids, curated tables) */
+.tc-chip-search { position: relative; display: inline-flex; align-items: center; }
+.tc-chip-search .material-icons-outlined {
+  position: absolute; left: 8px; font-size: 16px;
+  color: var(--pgn-color-gray-600); pointer-events: none;
+}
+.tc-chip-search input {
+  font-family: 'Lato', 'Segoe UI', Arial, sans-serif; font-size: 13px;
+  padding: 6px 8px 6px 30px; border: 1px solid var(--pgn-color-gray-200);
+  border-radius: 6px; background: var(--pgn-color-white);
+  color: var(--pgn-color-gray-700); width: 200px; max-width: 48vw;
+}
+.tc-chip-search input:focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
+/* Search-hide composes with bespoke chip filtering (AND semantics) */
+.tc-search-hide { display: none !important; }
+
+/* Sticky section nav + scroll-spy for long analytics pages */
+.an-tabs {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; gap: 6px; flex-wrap: wrap;
+  padding: 10px 0; margin: 0 0 16px 0;
+  background: var(--pgn-color-bg-light);
+  border-bottom: 1px solid var(--pgn-color-gray-200);
+}
+.an-tab {
+  font-family: 'Lato', 'Segoe UI', Arial, sans-serif; font-size: 13px; cursor: pointer;
+  padding: 6px 14px; border-radius: 50rem;
+  border: 1px solid var(--pgn-color-gray-200);
+  background: var(--pgn-color-white); color: var(--pgn-color-gray-700);
+  transition: background 120ms, color 120ms, border-color 120ms;
+}
+.an-tab:hover { background: var(--pgn-color-bg-light); }
+.an-tab.active { background: var(--pgn-color-brand-base); border-color: var(--pgn-color-brand-base); color: #fff; font-weight: 700; }
+.an-tab:focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
+.an-anchor { display: block; height: 0; margin: 0; padding: 0; scroll-margin-top: 64px; }

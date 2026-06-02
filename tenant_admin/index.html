@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>SkillProof — School Admin Portal — Storyboard v4.149</title>
   <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
+  <link rel="stylesheet" href="../assets/table-controls.css?v=7">
+  <script defer src="../assets/table-controls.js?v=7"></script>
 
   <!--
     MEDIUM-FIDELITY SAMPLE — NOT A PIXEL-PERFECT SPECIFICATION
@@ -104,16 +109,16 @@
       --pgn-font-family-body: 'Lato', 'Segoe UI', Arial, sans-serif;
 
       /* Heatmap color scale */
-      --heat-1: #FDEAEA;  /* lowest — red tint */
-      --heat-2: #FBD0CF;
-      --heat-3: #FEF3E2;  /* amber tint */
-      --heat-4: #FBE2A6;
-      --heat-5: #FBE4B0;
-      --heat-6: #DCEDC8;  /* light green */
-      --heat-7: #C5E1A5;
-      --heat-8: #AED581;  /* green */
-      --heat-9: #81C784;  /* darker green */
-      --heat-text-dark: #1A1A1A;
+      --heat-1: #E03B2F;  /* lowest — strong red */
+      --heat-2: #EC6A52;  /* red-orange */
+      --heat-3: #F28E5E;  /* orange */
+      --heat-4: #F5B26B;  /* light orange */
+      --heat-5: #F3D06E;  /* amber — midpoint */
+      --heat-6: #CFD96B;  /* yellow-green */
+      --heat-7: #A3CE6A;  /* light green */
+      --heat-8: #72C06C;  /* green */
+      --heat-9: #45AE5B;  /* highest — strong green */
+      --heat-text-dark: #000000;  /* black text (light mode); dark mode overrides to #fff below */
     }
 
     /* ================================================================
@@ -224,7 +229,7 @@
     .text-secondary { color: var(--pgn-color-gray-base) !important; }
     .text-success   { color: var(--pgn-color-success-base); }
     .text-danger    { color: var(--pgn-color-danger-base); }
-    .text-warning   { color: #B5710B; }
+    .text-warning   { color: #8A5A00; }
     .text-strong    { color: var(--pgn-color-gray-900); font-weight: 700; }
     .small  { font-size: 14px; }
     .micro  { font-size: 12px; }
@@ -413,9 +418,9 @@
     }
     .badge-brand   { background: var(--pgn-color-brand-tint); color: var(--pgn-color-brand-base); }
     .badge-info    { background: var(--pgn-color-info-tint); color: var(--color-dark-navy); }
-    .badge-success { background: var(--pgn-color-success-tint); color: #1B5E20; }
-    .badge-danger  { background: var(--pgn-color-danger-tint); color: #8A1E1E; }
-    .badge-warning { background: var(--pgn-color-warning-tint); color: #B5710B; }
+    .badge-success { background: #72C06C; color: #000; }
+    .badge-danger { background: #EC6A52; color: #000; }
+    .badge-warning { background: #F3D06E; color: #000; }
     .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
 
     /* ================================================================
@@ -430,7 +435,7 @@
     .alert .material-icons-outlined { flex-shrink: 0; }
     .alert-success { background: var(--pgn-color-success-tint); border-color: var(--pgn-color-success-base); color: #1B5E20; }
     .alert-info    { background: var(--pgn-color-info-tint); border-color: var(--pgn-color-info-base); color: var(--color-dark-navy); }
-    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #B5710B; }
+    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #8A5A00; }
     .alert-danger  { background: var(--pgn-color-danger-tint); border-color: var(--pgn-color-danger-base); color: #8A1E1E; }
 
     /* ================================================================
@@ -619,9 +624,9 @@
     }
     .status-legend-item { display: inline-flex; align-items: center; gap: 6px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    .dot.green   { background: var(--pgn-color-success-base); }
-    .dot.amber   { background: var(--pgn-color-warning-base); }
-    .dot.red     { background: var(--pgn-color-danger-base); }
+    .dot.green { background: #45AE5B; }
+    .dot.amber { background: #F3D06E; }
+    .dot.red { background: #E03B2F; }
     .dot.blue    { background: var(--pgn-color-brand-base); }
     .dot.gray    { background: var(--pgn-color-gray-300); }
 
@@ -748,7 +753,7 @@
       color: #1B5E20;
       margin-bottom: var(--pgn-spacing-1);
     }
-    .feedback-panel.warning .feedback-label { color: #B5710B; }
+    .feedback-panel.warning .feedback-label { color: #8A5A00; }
     .feedback-panel.danger .feedback-label { color: #8A1E1E; }
 
     /* ================================================================
@@ -991,7 +996,7 @@
     .section-card.recommended { border-left: 4px solid var(--pgn-color-brand-base); }
     .section-stat { display: flex; flex-direction: column; gap: 2px; }
     .section-stat-num { font-family: var(--pgn-font-family-heading); font-size: 24px; font-weight: 700; color: var(--pgn-color-gray-900); line-height: 1; }
-    .section-stat-num.warning { color: var(--pgn-color-warning-base); }
+    .section-stat-num.warning { color: #8A5A00; }
     .section-stat-num.danger { color: var(--pgn-color-danger-base); }
     .section-stat-label { font-size: 11px; color: var(--pgn-color-gray-600); text-transform: uppercase; letter-spacing: 0.04em; }
 
@@ -1102,7 +1107,7 @@
       display: flex; align-items: center; gap: 6px;
       border-radius: var(--pgn-size-border-radius-sm);
     }
-    /* v4.97: Sally row tinting removed - heatmap cell colors carry the at-risk cue */
+    /* v4.97: Sally Whitman row tinting removed - heatmap cell colors carry the at-risk cue */
     .heatmap-row-label .dot { flex-shrink: 0; }
     .heatmap-row-label[onclick] { cursor: pointer; }
     .heatmap-row-label[onclick]:hover { background: var(--pgn-color-gray-100); }
@@ -1122,8 +1127,8 @@
     .heatmap-cell.h5 { background: var(--heat-5); }
     .heatmap-cell.h6 { background: var(--heat-6); }
     .heatmap-cell.h7 { background: var(--heat-7); }
-    .heatmap-cell.h8 { background: var(--heat-8); color: #fff; }
-    .heatmap-cell.h9 { background: var(--heat-9); color: #fff; }
+    .heatmap-cell.h8 { background: var(--heat-8); }
+    .heatmap-cell.h9 { background: var(--heat-9); }
     .heatmap-cell.empty { background: transparent; color: var(--pgn-color-gray-400); font-weight: 400; }
 
     .heatmap-legend {
@@ -1147,9 +1152,9 @@
       font-family: var(--pgn-font-family-body); font-size: 12px; font-weight: 700;
       font-variant-numeric: tabular-nums;
     }
-    .score-pill.low    { background: var(--pgn-color-danger-tint);  color: #8A1E1E; }
-    .score-pill.med    { background: var(--pgn-color-warning-tint); color: #B5710B; }
-    .score-pill.high   { background: var(--pgn-color-success-tint); color: #1B5E20; }
+    .score-pill.low { background: var(--heat-2); color: var(--heat-text-dark); }
+    .score-pill.med { background: var(--heat-5); color: var(--heat-text-dark); }
+    .score-pill.high { background: var(--heat-8); color: var(--heat-text-dark); }
 
     /* ================================================================
        UPTIME GAUGE / SLA NUMERIC
@@ -1353,6 +1358,27 @@
       background: #fff !important;
       color: var(--color-deep-navy) !important;
     }
+      /* ===== Modal dialogs (New Course, confirm delete) ===== */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 1200; padding: 16px; }
+    .modal-overlay.open { display: flex; }
+    .modal-dialog { background: var(--pgn-color-white); border-radius: 8px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; box-shadow: 0 16px 48px rgba(0,0,0,0.28); }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 24px 4px; }
+    .modal-head h2 { margin: 0; font-size: 20px; line-height: 1.3; }
+    .modal-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--pgn-color-brand-base); display: inline-flex; align-items: center; gap: 4px; margin-bottom: 4px; }
+    .modal-close { background: none; border: none; cursor: pointer; color: var(--pgn-color-gray-600); padding: 4px; border-radius: 6px; line-height: 0; }
+    .modal-close:hover { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-900); }
+    .modal-body { padding: 8px 24px 4px; }
+    .modal-body p { margin: 0 0 12px; color: var(--pgn-color-gray-700); }
+    .modal-foot { display: flex; gap: 8px; justify-content: flex-end; padding: 12px 24px 22px; flex-wrap: wrap; }
+    .modal-step { display: none; }
+    .modal-step.active { display: block; }
+    .modal-review { background: var(--pgn-color-bg-light); border: 1px solid var(--pgn-color-gray-200); border-radius: 6px; padding: 8px 16px; margin: 4px 0 8px; }
+    .modal-review div { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; }
+    .modal-review .mr-label { color: var(--pgn-color-gray-600); font-size: 13px; }
+    .modal-review .mr-value { font-weight: 700; text-align: right; }
+    .modal-success-icon { color: #45AE5B; font-size: 44px; display: block; }
+    .modal-danger-icon { color: var(--pgn-color-danger-base); font-size: 40px; display: block; margin-bottom: 4px; }
+    .modal-dialog .btn:focus-visible, .modal-close:focus-visible, .modal-dialog input:focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -1436,14 +1462,14 @@
           <div class="gauge-card">
             <div class="text-muted small mb-1">SESSIONS THIS WEEK</div>
             <div class="gauge-number">680</div>
-            <div class="gauge-target"><a href="#" onclick="goToScreen(12); return false;" class="kpi-link">+47 vs last week</a></div>
+            <div class="gauge-target"><a href="#" onclick="goToScreen(11); return false;" class="kpi-link">+47 vs last week</a></div>
           </div>
         </div>
         <div style="flex: 1 1 0; min-width: 0;">
           <div class="gauge-card">
             <div class="text-muted small mb-1">LEARNERS</div>
             <div class="gauge-number">90</div>
-            <div class="gauge-target"><a href="#" onclick="goToScreen(12); return false;" class="kpi-link">across 4 Courses</a></div>
+            <div class="gauge-target"><a href="#" onclick="goToScreen(11); return false;" class="kpi-link">across 4 Courses</a></div>
           </div>
         </div>
         <div style="flex: 1 1 0; min-width: 0;">
@@ -1457,10 +1483,10 @@
 
       <!-- Toolbar -->
       <div class="d-flex gap-2 align-items-center mb-3" style="flex-wrap:wrap;">
-        <button class="btn btn-primary btn-sm" onclick="goToScreen(7)"><span class="material-icons-outlined">add</span>New Skill</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(13)"><span class="material-icons-outlined">create_new_folder</span>New Course</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(14)"><span class="material-icons-outlined">archive</span>Archived Skills</button>
-        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">insights</span>Analytics</button>
+        <button class="btn btn-primary btn-sm" onclick="goToScreen(6)"><span class="material-icons-outlined">add</span>New Skill</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="openModal('modal-new-course')"><span class="material-icons-outlined">create_new_folder</span>New Course</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(12)"><span class="material-icons-outlined">archive</span>Archived Skills</button>
+        <button class="btn btn-outline-primary btn-sm" onclick="goToScreen(11)"><span class="material-icons-outlined">insights</span>Analytics</button>
       </div>
 
       <!-- Courses section (2-col grid, all uniform col-6) -->
@@ -1609,7 +1635,7 @@
             </div>
             <div style="border-top: 1px solid var(--pgn-color-gray-200); padding-top: 12px;">
               <div class="micro text-muted mb-2"><strong>SKILLS IN THIS COURSE</strong></div>
-              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(7);">
+              <button class="btn btn-outline-primary" style="width:100%; text-align:left; padding: 10px 14px;" onclick="event.stopPropagation(); goToScreen(6);">
                 <div class="d-flex justify-content-between align-items-center" style="width:100%;">
                   <span><span class="text-strong">Data Structures Skill</span> <span class="badge badge-gray" style="margin-left:6px; font-size:11px;">Draft</span> <span class="badge badge-brand" style="margin-left:4px; font-size:11px;">Owner</span></span>
                   <span class="material-icons-outlined" style="font-size:18px;">arrow_forward</span>
@@ -1617,7 +1643,7 @@
               </button>
             </div>
             <div class="d-flex gap-2 mt-3">
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(7);"><span class="material-icons-outlined">edit</span>Resume Skill setup</button>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(6);"><span class="material-icons-outlined">edit</span>Resume Skill setup</button>
               <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(2);"><span class="material-icons-outlined">launch</span>Open Course details</button>
             </div>
           </div>
@@ -1674,13 +1700,13 @@
         <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Skills deployed in E010</span>
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h2 class="h4 mb-0">Skills (2 active)</h2>
-          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(7);"><span class="material-icons-outlined">add</span>New Skill in this Course</button>
+          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(6);"><span class="material-icons-outlined">add</span>New Skill in this Course</button>
         </div>
 
         <div class="section-card recommended mb-3" onclick="goToScreen(3)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Python Skill heatmap">
           <div class="mb-2">
             <h3 class="h5 mb-1">Python Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
-            <p class="small text-muted">AI coaching module for Python foundations · 4 Topics · ~32 Learning Objectives</p>
+            <p class="small text-muted">AI Coach for Python foundations · 13 Topics · ~32 Learning Objectives</p>
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">28</div><div class="section-stat-label">Practicing</div></div>
@@ -1689,7 +1715,7 @@
             <div class="section-stat"><div class="section-stat-num">412</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(7);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(6);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); alert('Archive Skill (wireframe — would surface a confirmation dialog and move the Skill to Archived state)');"><span class="material-icons-outlined">archive</span>Archive</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
@@ -1698,7 +1724,7 @@
         <div class="section-card" onclick="goToScreen(3)" style="cursor:pointer;" role="button" tabindex="0" aria-label="Open Git & Version Control Skill heatmap">
           <div class="mb-2">
             <h3 class="h5 mb-1">Git &amp; Version Control Skill <span class="badge badge-success" style="vertical-align: middle; margin-left: 8px; font-size: 11px;">Live</span></h3>
-            <p class="small text-muted">AI coaching module for source control with Git · 3 Topics · ~18 Learning Objectives</p>
+            <p class="small text-muted">AI Coach for source control with Git · 3 Topics · ~18 Learning Objectives</p>
           </div>
           <div class="d-flex gap-3 mt-2" style="flex-wrap:wrap;">
             <div class="section-stat"><div class="section-stat-num">22</div><div class="section-stat-label">Practicing</div></div>
@@ -1707,7 +1733,7 @@
             <div class="section-stat"><div class="section-stat-num">87</div><div class="section-stat-label">Sessions / week</div></div>
           </div>
           <div class="d-flex gap-2 mt-3" style="flex-wrap:wrap;">
-            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(7);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); goToScreen(6);"><span class="material-icons-outlined">edit</span>Edit Skill</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); alert('Archive Skill (wireframe — would surface a confirmation dialog and move the Skill to Archived state)');"><span class="material-icons-outlined">archive</span>Archive</button>
             <button class="btn btn-tertiary btn-sm" onclick="event.stopPropagation(); goToScreen(3);"><span class="material-icons-outlined">grid_view</span>Open Heatmap</button>
           </div>
@@ -1721,7 +1747,7 @@
   </div>
 </section>
 
-<!-- Screen 04: Skill heatmap (mirror of Instructor S3) -->
+<!-- Screen 03: Skill heatmap (mirror of Instructor S3) -->
 <section class="screen" id="screen-3" aria-labelledby="s3-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
@@ -1789,52 +1815,52 @@
           <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
 
           <!-- Mastery rows (4) -->
-          <div class="heatmap-row-label">A.J.</div>
+          <div class="heatmap-row-label">Aaron Jackson</div>
           <div class="heatmap-cell h9">0.98</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label">K.L.</div>
+          <div class="heatmap-row-label">Kayla Lewis</div>
           <div class="heatmap-cell h9">0.95</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h9">0.96</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.93</div><div class="heatmap-cell h8">0.92</div><div class="heatmap-cell h8">0.90</div>
 
-          <div class="heatmap-row-label">M.K.</div>
+          <div class="heatmap-row-label">Marcus King</div>
           <div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.94</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.91</div><div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.87</div>
 
-          <div class="heatmap-row-label">D.W.</div>
+          <div class="heatmap-row-label">Diana Wells</div>
           <div class="heatmap-cell h8">0.89</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.87</div><div class="heatmap-cell h8">0.90</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.85</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h8">0.88</div><div class="heatmap-cell h8">0.86</div><div class="heatmap-cell h7">0.84</div>
 
           <!-- On-track rows (6) -->
-          <div class="heatmap-row-label">P.A.</div>
+          <div class="heatmap-row-label">Priya Anand</div>
           <div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h6">0.73</div>
 
-          <div class="heatmap-row-label">J.T.</div>
+          <div class="heatmap-row-label">Jamal Thompson</div>
           <div class="heatmap-cell h7">0.81</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.79</div><div class="heatmap-cell h7">0.80</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.77</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.74</div>
 
-          <div class="heatmap-row-label">R.M.</div>
+          <div class="heatmap-row-label">Rosa Martinez</div>
           <div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h7">0.82</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.69</div>
 
-          <div class="heatmap-row-label">E.G.</div>
+          <div class="heatmap-row-label">Evan Garcia</div>
           <div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h6">0.74</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h6">0.72</div><div class="heatmap-cell h6">0.73</div><div class="heatmap-cell h7">0.78</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.67</div>
 
-          <div class="heatmap-row-label">N.B.</div>
+          <div class="heatmap-row-label">Nadia Brooks</div>
           <div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h7">0.75</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.64</div>
 
-          <div class="heatmap-row-label">L.O.</div>
+          <div class="heatmap-row-label">Liam O'Brien</div>
           <div class="heatmap-cell h6">0.70</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h6">0.71</div><div class="heatmap-cell h7">0.76</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.69</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.67</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h5">0.66</div><div class="heatmap-cell h5">0.65</div><div class="heatmap-cell h5">0.63</div>
 
           <!-- Watch row (1) -->
-          <div class="heatmap-row-label">T.V.</div>
+          <div class="heatmap-row-label">Tina Vasquez</div>
           <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h5">0.68</div><div class="heatmap-cell h5">0.60</div><div class="heatmap-cell h4">0.59</div><div class="heatmap-cell h5">0.61</div><div class="heatmap-cell h5">0.64</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h4">0.58</div><div class="heatmap-cell h4">0.55</div><div class="heatmap-cell h4">0.57</div><div class="heatmap-cell h4">0.56</div><div class="heatmap-cell h3">0.54</div>
 
           <!-- At-risk rows (4) -->
-          <div class="heatmap-row-label">Sally</div>
+          <div class="heatmap-row-label">Sally Whitman</div>
           <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
 
-          <div class="heatmap-row-label">B.F.</div>
+          <div class="heatmap-row-label">Brandon Fisher</div>
           <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
 
-          <div class="heatmap-row-label">C.S.</div>
+          <div class="heatmap-row-label">Carla Soto</div>
           <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
 
-          <div class="heatmap-row-label">H.D.</div>
+          <div class="heatmap-row-label">Hannah Diaz</div>
           <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
         </div>
 
@@ -1872,7 +1898,9 @@
   </div>
 </section>
 
-<!-- Screen 05: At-risk filter (mirror of Instructor S4) -->
+
+
+<!-- Screen 05: Learner profile (mirror of Instructor S5) -->
 <section class="screen" id="screen-4" aria-labelledby="s4-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
@@ -1892,127 +1920,24 @@
         <span class="material-icons-outlined">chevron_right</span>
         <a href="#" onclick="goToScreen(3); return false;">Heatmap</a>
         <span class="material-icons-outlined">chevron_right</span>
-        <span>At risk</span>
-      </nav>
-
-      <div class="mb-3">
-        <span class="eyebrow"><span class="material-icons-outlined">priority_high</span>Filtered: At risk only</span>
-        <h1 id="s4-heading">4 learners need attention</h1>
-        <p class="mt-1">Filter narrowed to the at-risk threshold set by your School Admin (AI-scored Topic mastery &lt; 0.60 across two or more Topics). Click any row to drill in.</p>
-      </div>
-
-      <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
-        <span class="text-muted small d-flex align-items-center" style="margin-right:4px;">Filter:</span>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('all');">All (28)</button>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('mastery');">Mastery (7)</button>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('on-track');">On track (17)</button>
-        <button class="chip-filter" onclick="goToScreen(3); filterHeatmap('watch');">Watch list (1)</button>
-        <button class="chip-filter active danger"><span class="material-icons-outlined" style="font-size:14px;">priority_high</span>At risk (4)</button>
-      </div>
-
-      <div class="row">
-        <div class="col-8">
-          <div class="heatmap-scroll-container">
-          <div class="heatmap-card">
-            <div class="heatmap-grid">
-              <!-- Header row: 1 corner + 13 Topic columns (canonical taxonomy) -->
-              <div class="heatmap-corner">Learner ↓ · Topic →</div>
-              <div class="heatmap-col-label">Basic Syntax<br>&amp; Data Types</div>
-              <div class="heatmap-col-label">Control Flow<br>&amp; Logic</div>
-              <div class="heatmap-col-label">Functions &amp;<br>Modular Programming</div>
-              <div class="heatmap-col-label">Data Structures:<br>Lists, Tuples, Sets, Dicts</div>
-              <div class="heatmap-col-label">Working with<br>Files &amp; I/O</div>
-              <div class="heatmap-col-label">Error Handling<br>&amp; Debugging</div>
-              <div class="heatmap-col-label">Object-Oriented<br>Programming (OOP)</div>
-              <div class="heatmap-col-label">Python Libraries<br>&amp; Modules</div>
-              <div class="heatmap-col-label">Advanced<br>Data Handling</div>
-              <div class="heatmap-col-label">Regular Expressions<br>&amp; String Manipulation</div>
-              <div class="heatmap-col-label">Working with<br>Databases</div>
-              <div class="heatmap-col-label">Introduction<br>to Automation</div>
-              <div class="heatmap-col-label">Introduction to<br>Machine Learning</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for Sally" title="View profile for Sally">Sally</div>
-              <div class="heatmap-cell h5">0.62</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h3">0.41</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h1">0.18</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h1">0.19</div><div class="heatmap-cell h1">0.15</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for B.F." title="View profile for B.F.">B.F.</div>
-              <div class="heatmap-cell h3">0.44</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h3">0.46</div><div class="heatmap-cell h2">0.33</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.22</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for C.S." title="View profile for C.S.">C.S.</div>
-              <div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h3">0.50</div><div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.38</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div>
-
-              <div class="heatmap-row-label" onclick="goToScreen(5)" role="rowheader" tabindex="0" aria-label="View profile for H.D." title="View profile for H.D.">H.D.</div>
-              <div class="heatmap-cell h2">0.35</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h3">0.52</div><div class="heatmap-cell h3">0.42</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.36</div><div class="heatmap-cell h3">0.40</div><div class="heatmap-cell h2">0.28</div><div class="heatmap-cell h2">0.25</div><div class="heatmap-cell h2">0.30</div><div class="heatmap-cell h2">0.32</div><div class="heatmap-cell h2">0.22</div><div class="heatmap-cell h2">0.20</div>
-            </div>
-          </div>
-          <div class="heatmap-scroll-hint" role="note">
-            <span class="material-icons-outlined" style="font-size:14px;">swap_horiz</span>
-            Scroll horizontally to see all 13 Topics — try the scrollbar below, shift + mouse wheel, or trackpad swipe
-          </div>
-          </div><!-- /.heatmap-scroll-container -->
-        </div>
-        <div class="col-4">
-          <div class="pgn__card pgn__card-featured">
-            <div class="pgn__card-section">
-              <span class="eyebrow"><span class="material-icons-outlined">summarize</span>Python Skill summary</span>
-              <h2 class="h5 mb-2">At-risk pattern</h2>
-              <table class="pgn__data-table" style="border:none; box-shadow:none;">
-                <tr><th style="width:60%;">Lowest Topic score</th><td><strong>Data Structures: Lists, Tuples, Sets, Dictionaries</strong></td></tr>
-                <tr><th>Avg score (at-risk)</th><td>0.42</td></tr>
-                <tr><th>Common gap</th><td>List comprehensions, dict access patterns</td></tr>
-                <tr><th>Total sessions</th><td>27 in last 7 days</td></tr>
-                <tr><th>Mastery threshold</th><td>0.80 (set by School Admin)</td></tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(3)"><span class="material-icons-outlined">arrow_back</span>Back to full heatmap</button>
-    <button class="btn btn-primary" onclick="goToScreen(5)">Open Sally's profile<span class="material-icons-outlined">arrow_forward</span></button>
-  </div>
-</section>
-
-<!-- Screen 06: Learner profile (mirror of Instructor S5) -->
-<section class="screen" id="screen-5" aria-labelledby="s5-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">School Admin · School of Technology</span>
-      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
-    </div>
-  </header>
-  <main class="screen-main" id="main-5">
-    <div class="container">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(2); return false;">E010</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <a href="#" onclick="goToScreen(4); return false;">At risk</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>Sally</span>
+        <span>Sally Whitman</span>
       </nav>
 
       <div class="d-flex justify-content-between align-items-start mb-3">
         <div>
           <span class="eyebrow"><span class="material-icons-outlined">person</span>Learner profile</span>
-          <h1 id="s5-heading">Sally</h1>
+          <h1 id="s4-heading">Sally Whitman</h1>
         </div>
         <span class="badge badge-danger" style="padding:8px 14px; font-size:14px;"><span class="material-icons-outlined" style="font-size:16px;">trending_down</span>AI-scored Skill mastery: Low</span>
       </div>
 
       <div class="d-flex justify-content-end mb-3">
         <div class="d-flex gap-2 align-items-center" style="flex-shrink:0; flex-wrap:nowrap; white-space:nowrap;">
-          <span class="text-muted small">Export Sally's Topic Mastery Report</span>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
-          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
-          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
+          <span class="text-muted small">Export Sally Whitman's Topic Mastery Report</span>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as PDF"><span class="material-icons-outlined">picture_as_pdf</span>PDF</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as CSV"><span class="material-icons-outlined">table_view</span>CSV</button>
+          <button class="btn btn-outline-primary btn-sm" style="margin-left: 16px;" aria-label="Export Sally Whitman's Topic Mastery Report as Markdown"><span class="material-icons-outlined">description</span>MD</button>
+          <button class="btn btn-outline-primary btn-sm" aria-label="Export Sally Whitman's Topic Mastery Report as JSON"><span class="material-icons-outlined">data_object</span>JSON</button>
         </div>
       </div>
 
@@ -2076,13 +2001,12 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(4)"><span class="material-icons-outlined">arrow_back</span>Back to At-risk filter</button>
   </div>
 </section>
 
 
-<!-- Screen 10: Access Denied (mirror of Instructor S9 + TA-specific scenarios) -->
-<section class="screen" id="screen-6" aria-labelledby="s6-heading">
+<!-- Screen 09: Access Denied (mirror of Instructor S9 + TA-specific scenarios) -->
+<section class="screen" id="screen-5" aria-labelledby="s5-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -2091,14 +2015,14 @@
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main centered" id="main-6">
+  <main class="screen-main centered" id="main-5">
     <div class="container-narrow">
       <div class="pgn__card pgn__card-featured">
         <div class="pgn__card-section-lg">
           <div class="text-center mb-3">
             <span class="material-icons-outlined" style="font-size:56px; color: var(--pgn-color-danger-base);">block</span>
           </div>
-          <h1 id="s6-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
+          <h1 id="s5-heading" class="h2 text-center mb-3">You don't have access to this page</h1>
           <table class="pgn__data-table" style="border:none; box-shadow:none; margin-bottom: var(--pgn-spacing-3);">
             <tr><th style="width:42%;">Signed in as</th><td>Alice · School Admin · School of Technology</td></tr>
             <tr><th>This action requires</th><td>Either Super Admin (platform-wide write) or Skill owner (Skills you didn't create are read-only)</td></tr>
@@ -2118,7 +2042,7 @@
 </section>
 
 <!-- Screen 03: New Skill creation form ============================= -->
-<section class="screen" id="screen-7" aria-labelledby="s7-heading">
+<section class="screen" id="screen-6" aria-labelledby="s6-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -2128,7 +2052,7 @@
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main" id="main-7">
+  <main class="screen-main" id="main-6">
     <div class="container-narrow">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
@@ -2136,7 +2060,7 @@
         <span>New Skill</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">edit</span>Step 1 of 5 · Skill Details</span>
-      <h1 id="s7-heading" class="h1 mb-2">Create a new Skill</h1>
+      <h1 id="s6-heading" class="h1 mb-2">Create a new Skill</h1>
 
       <div class="pgn__card mb-3">
         <div class="pgn__card-section-lg">
@@ -2174,12 +2098,12 @@
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(8)">Next: Topics<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-primary" onclick="goToScreen(7)">Next: Topics<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 11: Topics & Learning Objectives builder ================== -->
-<section class="screen" id="screen-8" aria-labelledby="s8-heading">
+<!-- Screen 10: Topics & Learning Objectives builder ================== -->
+<section class="screen" id="screen-7" aria-labelledby="s7-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -2189,7 +2113,7 @@
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main" id="main-8">
+  <main class="screen-main" id="main-7">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
@@ -2197,7 +2121,7 @@
         <span>Topics &amp; Learning Objectives</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">list_alt</span>Step 2 of 5 · Topics &amp; Learning Objectives</span>
-      <h1 id="s8-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
+      <h1 id="s7-heading" class="h1 mb-2">Topics &amp; Learning Objectives</h1>
 
       <p class="text-muted mb-3">Set the overall Skill passing threshold on the 0-100% scale, then expand each Topic to edit its Learning Objectives in place. A Student is considered to have passed the Skill once their overall score meets this threshold.</p>
 
@@ -2331,13 +2255,13 @@
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(9)">Next: Model &amp; Prompt<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(8)">Next: Model &amp; Prompt<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 12: Model + Coaching basics (selected BEFORE the custom AI prompt) ======== -->
-<section class="screen" id="screen-9" aria-labelledby="s9-heading">
+<!-- Screen 11: Model + Coaching basics (selected BEFORE the custom AI prompt) ======== -->
+<section class="screen" id="screen-8" aria-labelledby="s8-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -2347,7 +2271,7 @@
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main" id="main-9">
+  <main class="screen-main" id="main-8">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
@@ -2355,7 +2279,7 @@
         <span>Model &amp; Prompt</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">memory</span>Step 3 of 5 · Model &amp; Prompt</span>
-      <h1 id="s9-heading" class="h1 mb-2">Choose the model and AI prompt</h1>
+      <h1 id="s8-heading" class="h1 mb-2">Choose the model and AI prompt</h1>
       <p class="text-muted mb-3">Pick the underlying model and configure the AI coaching prompt.</p>
 
       <h2 class="h5 mb-2">Preferred model</h2>
@@ -2487,13 +2411,13 @@ Address the learner by their first name. Never use "student" as the form of addr
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(10)">Review &amp; Deploy<span class="material-icons-outlined">arrow_forward</span></button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(9)">Review &amp; Deploy<span class="material-icons-outlined">arrow_forward</span></button>
   </div>
 </section>
 
-<!-- Screen 13: Review & Deploy → CI/CD pipeline ====================== -->
-<section class="screen" id="screen-10" aria-labelledby="s10-heading">
+<!-- Screen 12: Review & Deploy → CI/CD pipeline ====================== -->
+<section class="screen" id="screen-9" aria-labelledby="s9-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -2503,7 +2427,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main" id="main-10">
+  <main class="screen-main" id="main-9">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
@@ -2511,7 +2435,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span>Review &amp; Deploy</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Step 4 of 5 · Review &amp; Deploy</span>
-      <h1 id="s10-heading" class="h1 mb-2">Deploy OOP Skill to Live</h1>
+      <h1 id="s9-heading" class="h1 mb-2">Deploy OOP Skill to Live</h1>
 
       <p class="text-muted mb-3">Final check before deployment. Review each step's configuration; use Back if anything needs to change.</p>
 
@@ -2569,7 +2493,7 @@ Address the learner by their first name. Never use "student" as the form of addr
             <div class="pgn__card-section">
               <span class="eyebrow"><span class="material-icons-outlined">rocket_launch</span>Live</span>
               <p class="small mb-2">Visible to everyone, including Students. Topics cannot be removed once the Skill is Live; Learning Objective edits (rename, threshold change, add Learning Objective) are still allowed.</p>
-              <button class="btn btn-primary" onclick="goToScreen(11)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
+              <button class="btn btn-primary" onclick="goToScreen(10)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
             </div>
           </div>
         </div>
@@ -2612,13 +2536,13 @@ Address the learner by their first name. Never use "student" as the form of addr
     </div>
   </main>
   <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(9)"><span class="material-icons-outlined">arrow_back</span>Back</button>
-    <button class="btn btn-primary" onclick="goToScreen(11)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
+    <button class="btn btn-outline-primary" onclick="goToScreen(8)"><span class="material-icons-outlined">arrow_back</span>Back</button>
+    <button class="btn btn-primary" onclick="goToScreen(10)"><span class="material-icons-outlined">rocket_launch</span>Deploy to Live</button>
   </div>
 </section>
 
-<!-- Screen 14: Deploy success → live Skill link ======================= -->
-<section class="screen" id="screen-11" aria-labelledby="s11-heading">
+<!-- Screen 13: Deploy success → live Skill link ======================= -->
+<section class="screen" id="screen-10" aria-labelledby="s10-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -2628,14 +2552,14 @@ Address the learner by their first name. Never use "student" as the form of addr
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main centered" id="main-11">
+  <main class="screen-main centered" id="main-10">
     <div class="container-narrow">
       <div class="feedback-panel text-center" style="padding: var(--pgn-spacing-5) var(--pgn-spacing-4);">
         <div class="d-flex justify-content-center mb-3">
           <span class="material-icons-outlined text-success" style="font-size:64px;">check_circle</span>
         </div>
         <span class="feedback-label" style="justify-content:center;"><span class="material-icons-outlined">verified</span>Deployed to Live</span>
-        <h1 id="s11-heading" class="h2 mb-2">OOP Skill build succeeded</h1>
+        <h1 id="s10-heading" class="h2 mb-2">OOP Skill build succeeded</h1>
       </div>
 
       <div class="pgn__card pgn__card-featured mt-3" style="text-align:left;">
@@ -2671,12 +2595,12 @@ Address the learner by their first name. Never use "student" as the form of addr
   </main>
   <div class="floating-actions">
     <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">dashboard</span>Back to Dashboard</button>
-    <button class="btn btn-primary" onclick="goToScreen(7)"><span class="material-icons-outlined">add</span>Create another Skill</button>
+    <button class="btn btn-primary" onclick="goToScreen(6)"><span class="material-icons-outlined">add</span>Create another Skill</button>
   </div>
 </section>
 
-<!-- Screen 15: Analytics & Reporting (A-7.10 engagement · A-7.11 class insights · A-7.12 program reports · A-7.13 visualization · A-7.14 exports) -->
-<section class="screen" id="screen-12" aria-labelledby="s12-heading">
+<!-- Screen 14: Analytics & Reporting (A-7.10 engagement · A-7.11 class insights · A-7.12 program reports · A-7.13 visualization · A-7.14 exports) -->
+<section class="screen" id="screen-11" aria-labelledby="s11-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -2686,18 +2610,17 @@ Address the learner by their first name. Never use "student" as the form of addr
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main" id="main-12">
-    <div class="container">
+  <main class="screen-main" id="main-11">
+    <div class="container" data-analytics-nav>
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
         <span class="material-icons-outlined">chevron_right</span>
         <span>Analytics &amp; Reporting</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
-      <h1 id="s12-heading" class="mb-3">Analytics &amp; Reporting</h1>
+      <h1 id="s11-heading" class="mb-3">Analytics &amp; Reporting</h1>
       <!-- Section 1 — SCHOOL ROLLUP -->
-      <span class="eyebrow"><span class="material-icons-outlined">domain</span>Level 1 of 4 · School</span>
-      <h2 class="h4 mb-2">School of Technology — rollup</h2>
+      <span class="an-anchor" id="an-school" data-an-label="School"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">domain</span>School rollup</h2>
       <p class="text-muted mb-3">Top-line view across all 4 Courses and 7 Skills in this School.</p>
 
       <div class="row mb-3">
@@ -2783,8 +2706,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 2 — PER-COURSE BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">school</span>Level 2 of 4 · Course</span>
-      <h2 class="h4 mb-2">Per-Course breakdown</h2>
+      <span class="an-anchor" id="an-course" data-an-label="Course"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">school</span>By Course</h2>
       <p class="text-muted mb-3">Course-level engagement, mastery, and cost. Click a row to drill into the Course detail.</p>
 
       <div class="pgn__card mb-3">
@@ -2869,14 +2791,14 @@ Address the learner by their first name. Never use "student" as the form of addr
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E010 Foundations</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:76%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:76%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.76</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E075 Intermediate</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:82%; height:100%; background:var(--pgn-color-success-base);"></div>
+                  <div style="width:82%; height:100%; background:var(--heat-8);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.82</span>
               </div>
@@ -2890,7 +2812,7 @@ Address the learner by their first name. Never use "student" as the form of addr
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">E135 OOP w/ Python</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:71%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:71%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.71</span>
               </div>
@@ -2947,8 +2869,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 3 — PER-SKILL BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">smart_toy</span>Level 3 of 4 · Skill</span>
-      <h2 class="h4 mb-2">Per-Skill breakdown</h2>
+      <span class="an-anchor" id="an-skill" data-an-label="Skill"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">smart_toy</span>By Skill</h2>
       <p class="text-muted mb-3">Skill-level performance and cost. Spot unused or unusually expensive Skills (may indicate prompt bugs). Click a row to open its heatmap.</p>
 
       <div class="pgn__card mb-3">
@@ -3057,42 +2978,42 @@ Address the learner by their first name. Never use "student" as the form of addr
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Python Skill (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:76%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:76%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.76</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Git &amp; VC (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:68%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:68%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.68</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Python Intermediate (Staging)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:74%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:74%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.74</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Libraries (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:82%; height:100%; background:var(--pgn-color-success-base);"></div>
+                  <div style="width:82%; height:100%; background:var(--heat-8);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.82</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">OOP Skill (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:71%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:71%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.71</span>
               </div>
               <div class="d-flex align-items-center mb-2 gap-2">
                 <span class="text-muted small" style="width:120px; flex-shrink:0;">Design Patterns (Live)</span>
                 <div style="flex:1; background:var(--pgn-color-gray-100); height:18px; border-radius:4px; overflow:hidden;">
-                  <div style="width:70%; height:100%; background:var(--pgn-color-warning-base);"></div>
+                  <div style="width:70%; height:100%; background:var(--heat-5);"></div>
                 </div>
                 <span class="text-strong small" style="width:60px; flex-shrink:0; text-align:right;">0.70</span>
               </div>
@@ -3118,8 +3039,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 4 — PER-TOPIC BREAKDOWN -->
-      <span class="eyebrow"><span class="material-icons-outlined">topic</span>Level 4 of 4 · Topic</span>
-      <h2 class="h4 mb-2">Per-Topic breakdown</h2>
+      <span class="an-anchor" id="an-topic" data-an-label="Topic"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">topic</span>By Topic</h2>
       <p class="text-muted mb-3">Topic-level mastery, sessions, and cost across all deployed Skills. Helps spot unused or unusually expensive Topics (often signals a Skill prompt issue worth investigating).</p>
 
       <div class="d-flex gap-2 mb-3" style="flex-wrap:wrap;">
@@ -3363,8 +3283,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 5 — PROGRAM REPORTS -->
-      <span class="eyebrow"><span class="material-icons-outlined">summarize</span>Custom Reports</span>
-      <h2 class="h4 mb-2">Program Reports</h2>
+      <span class="an-anchor" id="an-reports" data-an-label="Reports"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">summarize</span>Reports &amp; exports</h2>
       <p class="text-muted mb-3">Pre-built reports filtered by date range, Skill, or Topic. Export individually below.</p>
 
       <div class="pgn__card mb-3">
@@ -3462,8 +3381,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--pgn-color-gray-200);">
 
       <!-- Section 6 — ACTIVITY LOG -->
-      <span class="eyebrow"><span class="material-icons-outlined">history</span>Audit Trail</span>
-      <h2 class="h4 mb-2">Activity Log</h2>
+      <span class="an-anchor" id="an-audit" data-an-label="Audit"></span><h2 class="h4 mb-2"><span class="material-icons-outlined" style="font-size:22px;vertical-align:middle;margin-right:6px;color:var(--pgn-color-brand-base);">history</span>Audit trail</h2>
       <p class="text-muted mb-3">Chronological audit of TA and Super Admin actions affecting this School's Courses and Skills.</p>
 
       <div class="d-flex justify-content-end mb-4">
@@ -3596,10 +3514,10 @@ Address the learner by their first name. Never use "student" as the form of addr
         /* v4.138: S15 Per-Topic filter — narrow Topic rows by Course or Skill */
         window.filterTopics = function(dimension, value) {
           var attrName = (dimension === 'course') ? 'data-topic-course' : 'data-topic-skill';
-          document.querySelectorAll('#screen-15 .chip-filter[data-filter-topic-' + dimension + ']').forEach(function(c) {
+          document.querySelectorAll('#screen-14 .chip-filter[data-filter-topic-' + dimension + ']').forEach(function(c) {
             c.classList.remove('active');
           });
-          var activeChip = document.querySelector('#screen-15 .chip-filter[data-filter-topic-' + dimension + '="' + value + '"]');
+          var activeChip = document.querySelector('#screen-14 .chip-filter[data-filter-topic-' + dimension + '="' + value + '"]');
           if (activeChip) activeChip.classList.add('active');
           document.querySelectorAll('#topic-table tbody tr').forEach(function(row) {
             row.style.display = (value === 'all' || row.getAttribute(attrName) === value) ? '' : 'none';
@@ -3614,8 +3532,9 @@ Address the learner by their first name. Never use "student" as the form of addr
   </div>
 </section>
 
-<!-- Screen 16: Create new Course (folders for organizing Skills) ====== -->
-<section class="screen" id="screen-13" aria-labelledby="s13-heading">
+<!-- Screen 15: Create new Course (folders for organizing Skills) ====== -->
+<!-- Screen 12: Archived Skills (Restore + Permanently delete) ======== -->
+<section class="screen" id="screen-12" aria-labelledby="s12-heading">
   <header class="navbar navbar-dark" role="banner">
     <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
     <div class="navbar-right">
@@ -3625,51 +3544,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
     </div>
   </header>
-  <main class="screen-main" id="main-13">
-    <div class="container-narrow">
-      <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
-        <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
-        <span class="material-icons-outlined">chevron_right</span>
-        <span>New Course</span>
-      </nav>
-      <span class="eyebrow"><span class="material-icons-outlined">create_new_folder</span>Course</span>
-      <h1 id="s13-heading" class="h1 mb-2">Create a new Course</h1>
-
-      <div class="pgn__card mb-3">
-        <div class="pgn__card-section-lg">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="f-new-course-code">Course Code</label>
-              <input class="form-control" id="f-new-course-code" type="text" placeholder="e.g., E180" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="f-new-course-title">Course Title</label>
-              <input class="form-control" id="f-new-course-title" type="text" placeholder="e.g., Applied Machine Learning" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="floating-actions">
-    <button class="btn btn-outline-primary" onclick="goToScreen(1)"><span class="material-icons-outlined">arrow_back</span>Cancel</button>
-    <button class="btn btn-primary" onclick="alert('Create Course (wireframe — would add the Course to your School and return to the dashboard with it pre-populated)'); goToScreen(1);"><span class="material-icons-outlined">check</span>Create Course</button>
-  </div>
-</section>
-
-<!-- Screen 17: Archived Skills (Restore + Permanently delete) ======== -->
-<section class="screen" id="screen-14" aria-labelledby="s14-heading">
-  <header class="navbar navbar-dark" role="banner">
-    <a href="#" class="navbar-brand"><img class="navbar-brand-logo logo-light" data-school-logo="light" src="../assets/school-tech-light.png" alt="School of Technology"><img class="navbar-brand-logo logo-dark" data-school-logo="dark" src="../assets/school-tech-dark.png" alt="School of Technology"></a>
-    <div class="navbar-right">
-      <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span class="material-icons-outlined theme-icon-light">dark_mode</span><span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span></button>
-      <a href="../help/index.html#submit-request" class="btn-theme-toggle" aria-label="Help and Support" title="Help &amp; Support"><span class="material-icons-outlined">help_outline</span></a>
-      <span class="navbar-chip">School Admin · School of Technology</span>
-      <button type="button" class="navbar-user" aria-haspopup="menu" aria-expanded="false" onclick="toggleUserMenu(event)"><div class="avatar" aria-hidden="true">A</div><span>Alice</span><span class="material-icons-outlined caret" aria-hidden="true">expand_more</span></button>
-    </div>
-  </header>
-  <main class="screen-main" id="main-14">
+  <main class="screen-main" id="main-12">
     <div class="container">
       <nav class="pgn__breadcrumb" aria-label="Breadcrumb">
         <a href="#" onclick="goToScreen(1); return false;">School Admin Dashboard</a>
@@ -3677,7 +3552,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <span>Archived Skills</span>
       </nav>
       <span class="eyebrow"><span class="material-icons-outlined">archive</span>Archive</span>
-      <h1 id="s14-heading" class="h1 mb-2">Archived Skills</h1>
+      <h1 id="s12-heading" class="h1 mb-2">Archived Skills</h1>
       <p class="text-muted mb-3">Archived Skills are hidden from the active Course view but retained. Restore to return to active, or permanently delete to remove all data after the retention window.</p>
 
       <div class="pgn__card mb-3">
@@ -3702,7 +3577,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td>04 Mar 2026</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm" onclick="alert('Restore Skill (wireframe — would move the Skill back to active state in its parent Course)');"><span class="material-icons-outlined">unarchive</span>Restore</button>
-                  <button class="btn btn-tertiary btn-sm" onclick="alert('Permanently delete Skill (wireframe — would surface a confirmation dialog and permanently remove all data)');" style="color: var(--pgn-color-danger-base);"><span class="material-icons-outlined">delete_forever</span>Permanently delete</button>
+                  <button class="btn btn-tertiary btn-sm" onclick="openDeleteModal(this)" style="color: var(--pgn-color-danger-base);"><span class="material-icons-outlined">delete_forever</span>Permanently delete</button>
                 </td>
               </tr>
               <tr>
@@ -3713,7 +3588,7 @@ Address the learner by their first name. Never use "student" as the form of addr
                 <td>20 Feb 2026</td>
                 <td>
                   <button class="btn btn-outline-primary btn-sm" onclick="alert('Restore Skill (wireframe — would move the Skill back to active state in its parent Course)');"><span class="material-icons-outlined">unarchive</span>Restore</button>
-                  <button class="btn btn-tertiary btn-sm" onclick="alert('Permanently delete Skill (wireframe — would surface a confirmation dialog and permanently remove all data)');" style="color: var(--pgn-color-danger-base);"><span class="material-icons-outlined">delete_forever</span>Permanently delete</button>
+                  <button class="btn btn-tertiary btn-sm" onclick="openDeleteModal(this)" style="color: var(--pgn-color-danger-base);"><span class="material-icons-outlined">delete_forever</span>Permanently delete</button>
                 </td>
               </tr>
             </tbody>
@@ -3766,43 +3641,42 @@ Address the learner by their first name. Never use "student" as the form of addr
       <button class="step-btn active" onclick="goToScreen(1)" aria-label="Screen 01: School Dashboard">01 School Dashboard</button>
       <button class="step-btn" onclick="goToScreen(2)" aria-label="Screen 02: Course view">02 Course view</button>
       <button class="step-btn" onclick="goToScreen(3)" aria-label="Screen 03: Skill heatmap">03 Skill heatmap</button>
-      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: At-risk filter">04 At-risk filter</button>
-      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Learner profile">05 Learner profile</button>
-      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: Access Denied">06 Access Denied</button>
+      <button class="step-btn" onclick="goToScreen(4)" aria-label="Screen 04: Learner profile">04 Learner profile</button>
+      <button class="step-btn" onclick="goToScreen(5)" aria-label="Screen 05: Access Denied">05 Access Denied</button>
     </nav>
 
     <span class="flow-id">Flow B</span>
     <span class="flow-desc">Skill Creation Wizard</span>
     <nav class="flow-nav" aria-label="Skill creation wizard screens">
-      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: New Skill form">07 New Skill</button>
-      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Topics &amp; Learning Objectives">08 Topics &amp; Learning Objectives</button>
-      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Model &amp; Prompt">09 Model &amp; Prompt</button>
-      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: Deploy review">10 Deploy review</button>
-      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Deploy success">11 Deploy success</button>
+      <button class="step-btn" onclick="goToScreen(6)" aria-label="Screen 06: New Skill form">06 New Skill</button>
+      <button class="step-btn" onclick="goToScreen(7)" aria-label="Screen 07: Topics &amp; Learning Objectives">07 Topics &amp; Learning Objectives</button>
+      <button class="step-btn" onclick="goToScreen(8)" aria-label="Screen 08: Model &amp; Prompt">08 Model &amp; Prompt</button>
+      <button class="step-btn" onclick="goToScreen(9)" aria-label="Screen 09: Deploy review">09 Deploy review</button>
+      <button class="step-btn" onclick="goToScreen(10)" aria-label="Screen 10: Deploy success">10 Deploy success</button>
     </nav>
 
     <span class="flow-id">Flow C</span>
     <span class="flow-desc">Reporting</span>
     <nav class="flow-nav" aria-label="Tenant reporting screens">
-      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Analytics + Activity Log">12 Analytics &amp; Activity Log</button>
+      <button class="step-btn" onclick="goToScreen(11)" aria-label="Screen 11: Analytics + Activity Log">11 Analytics &amp; Activity Log</button>
     </nav>
 
     <span class="flow-id">Flow D</span>
     <span class="flow-desc">Course &amp; Archive Management</span>
     <nav class="flow-nav" aria-label="Course and archive management screens">
-      <button class="step-btn" onclick="goToScreen(13)" aria-label="Screen 13: Create new Course">13 New Course</button>
-      <button class="step-btn" onclick="goToScreen(14)" aria-label="Screen 14: Archived Skills">14 Archived Skills</button>
+      
+      <button class="step-btn" onclick="goToScreen(12)" aria-label="Screen 12: Archived Skills">12 Archived Skills</button>
     </nav>
   </div>
 </div>
 
 <script>
   /* STORYBOARD NAVIGATION — not production code */
-  const TOTAL_SCREENS = 14; // v4.147 (26 May 2026): S06 Conv logs / S07 Transcript / S08 Audit Trail removed per contract scope (conversations not stored — single Q+A only); drill chain stops at S05 Learner profile. S09-S17 renumbered to S06-S14. Total: 5 mirror drill (S1-S5) + 1 deny (S6) + 5 wizard (S7-S11) + 1 reporting (S12) + 2 management (S13-S14).
+  const TOTAL_SCREENS = 12; // S1-5 drill / S6-10 Skill wizard / S11 analytics / S12 Archived Skills. New Course = modal from the dashboard.
 
   /* v4.75: enforce minimum 1 Learning Objective per topic — disables the last LO's delete button when topic count == 1 */
   function enforceLoMinimum() {
-    document.querySelectorAll('#screen-11 details.lo-topic').forEach(function(topic) {
+    document.querySelectorAll('#screen-10 details.lo-topic').forEach(function(topic) {
       var rows = topic.querySelectorAll('tbody tr');
       var rowCount = rows.length;
       rows.forEach(function(row) {
@@ -3821,7 +3695,7 @@ Address the learner by their first name. Never use "student" as the form of addr
 
   /* v4.74: Add Topic — clones the last topic block and inserts it below */
   function addTopic() {
-    var topics = document.querySelectorAll('#screen-11 details.lo-topic');
+    var topics = document.querySelectorAll('#screen-10 details.lo-topic');
     if (!topics.length) return;
     var last = topics[topics.length - 1];
     var clone = last.cloneNode(true);
@@ -3875,6 +3749,73 @@ Address the learner by their first name. Never use "student" as the form of addr
     URL.revokeObjectURL(url);
   }
 
+    /* ===== Modal helpers (New Course, confirm delete) ===== */
+  var modalLastFocus = null;
+  function openModal(id){
+    var m = document.getElementById(id); if(!m) return;
+    modalLastFocus = document.activeElement;
+    var steps = m.querySelectorAll('.modal-step');
+    for(var i=0;i<steps.length;i++){ steps[i].classList.toggle('active', i===0); }
+    m.classList.add('open');
+    var fe = m.querySelector('.modal-step.active input, .modal-step.active button, .modal-close');
+    if(fe) setTimeout(function(){ fe.focus(); }, 40);
+    document.addEventListener('keydown', modalKeyHandler);
+  }
+  function closeModal(id){
+    var m = id ? document.getElementById(id) : document.querySelector('.modal-overlay.open');
+    if(!m) return;
+    m.classList.remove('open');
+    document.removeEventListener('keydown', modalKeyHandler);
+    if(modalLastFocus && modalLastFocus.focus) modalLastFocus.focus();
+  }
+  function modalKeyHandler(e){
+    var m = document.querySelector('.modal-overlay.open'); if(!m) return;
+    if(e.key==='Escape' || e.key==='Esc'){ closeModal(); return; }
+    if(e.key==='Tab'){
+      var all = m.querySelectorAll('button, [href], input, select, textarea, [tabindex]');
+      var fl = []; for(var i=0;i<all.length;i++){ if(all[i].offsetParent!==null && !all[i].disabled && all[i].tabIndex!==-1) fl.push(all[i]); }
+      if(!fl.length) return;
+      var first=fl[0], last=fl[fl.length-1];
+      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+  }
+  function modalGoStep(id, idx){
+    var m=document.getElementById(id); if(!m) return;
+    var steps=m.querySelectorAll('.modal-step');
+    for(var i=0;i<steps.length;i++){ steps[i].classList.toggle('active', i===idx); }
+    var fe=steps[idx].querySelector('input, button'); if(fe) setTimeout(function(){ fe.focus(); }, 40);
+  }
+  function modalBackdrop(e, id){ if(e.target===e.currentTarget) closeModal(id); }
+  function ncReview(){
+    var code=(document.getElementById('nc-code').value||'').trim();
+    var title=(document.getElementById('nc-title').value||'').trim();
+    document.getElementById('nc-rev-code').textContent = code || '(not set)';
+    document.getElementById('nc-rev-title').textContent = title || '(not set)';
+    modalGoStep('modal-new-course', 1);
+  }
+  function ncCreate(){
+    var code=(document.getElementById('nc-code').value||'').trim()||'New Course';
+    var title=(document.getElementById('nc-title').value||'').trim();
+    document.getElementById('nc-done-name').textContent = code + (title ? ' / ' + title : '');
+    modalGoStep('modal-new-course', 2);
+  }
+  function ncReset(){
+    document.getElementById('nc-code').value='';
+    document.getElementById('nc-title').value='';
+    closeModal('modal-new-course');
+  }
+  var delTargetRow = null;
+  function openDeleteModal(btn){
+    delTargetRow = btn.closest('tr');
+    var nameEl = delTargetRow ? delTargetRow.querySelector('.text-strong') : null;
+    document.getElementById('del-skill-name').textContent = nameEl ? nameEl.textContent.trim() : 'this Skill';
+    openModal('modal-confirm-delete');
+  }
+  function confirmDelete(){
+    if(delTargetRow && delTargetRow.parentNode){ delTargetRow.parentNode.removeChild(delTargetRow); delTargetRow=null; }
+    closeModal('modal-confirm-delete');
+  }
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -4046,7 +3987,7 @@ Address the learner by their first name. Never use "student" as the form of addr
   /* S16 SLA history Recent Incidents — filter by resolution path */
   /* S18 Skill Lifecycle Active Skills — filter by lifecycle stage */
   function filterSkillLifecycle(filter) {
-    chipFilterTable('#screen-16', filter, 'data-lifecycle-cat', 'data-filter-lifecycle', '#active-skills-table tbody tr');
+    chipFilterTable('#screen-15', filter, 'data-lifecycle-cat', 'data-filter-lifecycle', '#active-skills-table tbody tr');
   }
 
   /* S2 Portal home Your Skills — filter by Skill status + ownership.
@@ -4071,11 +4012,9 @@ Address the learner by their first name. Never use "student" as the form of addr
   //   S4: all 4 rows at-risk
   var HEATMAP_ROW_STATUS_BY_SCREEN = {
     '#screen-3': ['mastery','mastery','mastery','mastery','on-track','on-track','on-track','on-track','on-track','on-track','watch','at-risk','at-risk','at-risk','at-risk'],
-    '#screen-4': ['at-risk','at-risk','at-risk','at-risk']
   };
   var HEATMAP_ARIA_LABEL_BY_SCREEN = {
-    '#screen-3': 'Python Skill Topic mastery heatmap — 15 learners × 4 Topics',
-    '#screen-4': 'Python Skill at-risk filter heatmap — 4 at-risk learners × 4 Topics'
+    '#screen-3': 'Python Skill Topic mastery heatmap — 15 learners × 13 Topics',
   };
 
   function hydrateOneHeatmap(screenSelector) {
@@ -4106,7 +4045,7 @@ Address the learner by their first name. Never use "student" as the form of addr
       label.dataset.rowStatus = status;
       label.setAttribute('role', 'rowheader');
       label.setAttribute('aria-rowindex', rowIdx + 2);
-      label.setAttribute('onclick', 'goToScreen(5)');
+      label.setAttribute('onclick', 'goToScreen(4)');
       label.setAttribute('tabindex', '0');
       label.setAttribute('aria-label', 'View profile for ' + learnerName);
       label.setAttribute('title', 'View profile for ' + learnerName);
@@ -4130,7 +4069,6 @@ Address the learner by their first name. Never use "student" as the form of addr
 
   function hydrateHeatmap() {
     hydrateOneHeatmap('#screen-3');
-    hydrateOneHeatmap('#screen-4');
   }
 
     /* v4.116: at-risk roster filter for S1 instructor dashboard.
@@ -4267,7 +4205,6 @@ Address the learner by their first name. Never use "student" as the form of addr
     update();
   }
   setupHeatmapScrollState('#screen-3');
-  setupHeatmapScrollState('#screen-4');
 
   /* v4.108: S7 transcript filter — hide/show chat-rows by message type.
      - "all" shows everything
@@ -4275,9 +4212,9 @@ Address the learner by their first name. Never use "student" as the form of addr
      - "miss" shows only feedback bubbles tagged as objective miss
      Note: AI-only filter strips conversational context — JFT may want a different
      pattern in production (e.g., scroll-to-next-miss); this is a prototype demo. */
-  /* S5 Sally Per-Topic table filter */
+  /* S5 Sally Whitman Per-Topic table filter */
   function filterPerTopicTable(filter) {
-    chipFilterTable('#screen-5 .col-8', filter, 'data-topic-cat', 'data-filter-topic');
+    chipFilterTable('#screen-4 .col-8', filter, 'data-topic-cat', 'data-filter-topic');
   }
 
   // Restore theme on load
@@ -4324,5 +4261,73 @@ Address the learner by their first name. Never use "student" as the form of addr
   });
 </script>
 
+<!-- ===== Modals ===== -->
+<div class="modal-overlay" id="modal-new-course" role="dialog" aria-modal="true" aria-labelledby="nc-h" onclick="modalBackdrop(event,'modal-new-course')">
+  <div class="modal-dialog">
+    <div class="modal-step active">
+      <div class="modal-head">
+        <div><span class="modal-eyebrow"><span class="material-icons-outlined" style="font-size:15px;">create_new_folder</span>Course</span><h2 id="nc-h">Create a new Course</h2></div>
+        <button type="button" class="modal-close" aria-label="Close" onclick="ncReset()"><span class="material-icons-outlined">close</span></button>
+      </div>
+      <div class="modal-body">
+        <p>Add a new Course to your School. You can add Skills to it afterward from the dashboard.</p>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label class="form-label" for="nc-code">Course Code</label>
+          <input class="form-control" id="nc-code" type="text" placeholder="e.g., E180" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="nc-title">Course Title</label>
+          <input class="form-control" id="nc-title" type="text" placeholder="e.g., Applied Machine Learning" />
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-tertiary" onclick="ncReset()">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="ncReview()">Review<span class="material-icons-outlined" style="margin-left:4px; font-size:18px;">arrow_forward</span></button>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-head">
+        <div><span class="modal-eyebrow"><span class="material-icons-outlined" style="font-size:15px;">fact_check</span>Confirm</span><h2>Create this Course?</h2></div>
+        <button type="button" class="modal-close" aria-label="Close" onclick="ncReset()"><span class="material-icons-outlined">close</span></button>
+      </div>
+      <div class="modal-body">
+        <p>Please confirm the new Course details before creating it.</p>
+        <div class="modal-review">
+          <div><span class="mr-label">Course Code</span><span class="mr-value" id="nc-rev-code">(not set)</span></div>
+          <div><span class="mr-label">Course Title</span><span class="mr-value" id="nc-rev-title">(not set)</span></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-tertiary" onclick="modalGoStep('modal-new-course',0)"><span class="material-icons-outlined" style="margin-right:4px; font-size:18px;">arrow_back</span>Back</button>
+        <button type="button" class="btn btn-primary" onclick="ncCreate()"><span class="material-icons-outlined" style="margin-right:4px; font-size:18px;">check</span>Create Course</button>
+      </div>
+    </div>
+    <div class="modal-step">
+      <div class="modal-body" style="text-align:center; padding-top:28px;">
+        <span class="material-icons-outlined modal-success-icon">check_circle</span>
+        <h2 style="margin:8px 0;">Course created</h2>
+        <p style="text-align:center;"><strong id="nc-done-name">New Course</strong> is ready. Add Skills to it from the dashboard.</p>
+      </div>
+      <div class="modal-foot" style="justify-content:center;">
+        <button type="button" class="btn btn-primary" onclick="ncReset()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-confirm-delete" role="dialog" aria-modal="true" aria-labelledby="del-h" onclick="modalBackdrop(event,'modal-confirm-delete')">
+  <div class="modal-dialog" style="max-width:440px;">
+    <div class="modal-step active">
+      <div class="modal-body" style="padding-top:24px;">
+        <span class="material-icons-outlined modal-danger-icon">warning</span>
+        <h2 id="del-h" style="margin:0 0 8px;">Permanently delete this Skill?</h2>
+        <p><strong id="del-skill-name">This Skill</strong> and all of its data will be permanently removed. <strong>This cannot be undone.</strong></p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-tertiary" onclick="closeModal('modal-confirm-delete')">Cancel</button>
+        <button type="button" class="btn" style="background:var(--pgn-color-danger-base); border-color:var(--pgn-color-danger-base); color:#fff;" onclick="confirmDelete()"><span class="material-icons-outlined" style="margin-right:4px; font-size:18px;">delete_forever</span>Delete permanently</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
