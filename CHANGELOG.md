@@ -8,6 +8,26 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.158 — 2 Jun 2026 — Filter/sort placement audit + remove the logs "Result" column (JFT standup)
+
+Two cleanups from the JFT morning standup.
+
+**1. Controls only where there's something to sort/filter.** The site-wide auto-injector had added filter chips / search / sort to tables that don't warrant them. Suppressed each via a reversible `data-no-controls` flag — **no JS change**:
+- **TA S7** Topics & Learning Objectives editors (×4) — editable objective lists, not data to sort.
+- **TA S8** the LLM / model list.
+- **Root / LRPS** "Providers" table — LRPS isn't a JFT deliverable, and it already shows its own native sort icons.
+- **SA S1** "Where the spend is going" (3-row top-consumers).
+- **Student** S5 / S6 / S10 coaching-feedback tables + S11 "Welcome back" (per direction to clear all Student screens).
+
+Kept (they genuinely need it): SA & TA analytics (incl. Reports & exports + Audit trail), SA Logs, Access Control People / Skills, SA Webhooks, TA Archived Skills, Instructor at-risk list + heatmap search.
+
+**2. A log has no pass/fail.** Removed the always-"Success" **Result** column from the TA Activity Log — a log records events that happened, not success/failure states.
+
+### Files
+`index.html`, `super_admin/index.html`, `tenant_admin/index.html`, `student/index.html`; docs (`README.md`, this file). Screenshots regenerated.
+
+---
+
 ## v4.157 — 2 Jun 2026 — Remove the "AA contrast" chip (assumed standard, not for end-user display)
 
 Per Brady: WCAG 2.2 AA is an assumed, contractual standard — surfacing it as a UI label adds noise without informing the viewer (same rationale as not labeling TLS/FERPA on-screen). Removed the **"WCAG 2.2 AA contrast" chip** from the three analytics / heatmap headers (Instructor, School Admin, Super Admin), reverting those headers to the plain eyebrow, and dropped the WCAG phrasing from the **Visualization-key** note (kept the functional point: each chart pairs a color with its numeric value). No other v4.156 work changed. Dev-only CSS comments referencing the focus-ring fix are untouched (not user-facing).
