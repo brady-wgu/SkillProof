@@ -5,7 +5,7 @@
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Version](https://img.shields.io/badge/Version-4.160-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.161-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-46-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -38,7 +38,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 | Surface | URL | Description |
 |:--------|:----|:------------|
-| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point for all four personas (4 live SkillProof rows + illustrative filler). **Start here.** **v4.59:** promoted to root; the standalone `/lrps/` URL was retired. |
+| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point for all four personas (4 live persona rows + **6 live Skill launch rows** + illustrative filler). **Start here.** **v4.161:** six deployed LRPS skills wired in as launch rows. **v4.59:** promoted to root; the standalone `/lrps/` URL was retired. |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — Course overview → class heatmap → Skill/Topic drill → Learner profile, plus Access Denied. **5 screens.** |
 | **School Admin Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S2–S4 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope: **Courses + Skills only.** **New Course is now a modal** from the dashboard; delete actions confirm via modal. **12 screens** (v4.152). |
@@ -46,6 +46,21 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/SkillProof/help/) | Shared self-service support, documentation, and video training surface. Linked from every admin portal navbar. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). |
 
 **Total: 46 screens · 4 personas · 6 surfaces (4 persona portals + LRPS root + Help).**
+
+---
+
+## Live Skills (LRPS)
+
+These six SkillProof skills are deployed in WGU's Learning Resource Provisioning System (LRPS). They launch (open in a new tab) from the live rows at the top of the landing page's Providers table, so the shared landing link doubles as a launch hub.
+
+| Skill | LRPS launch URL |
+|:------|:----------------|
+| Python | https://lrps.wgu.edu/provision/568442570 |
+| Professionalism | https://lrps.wgu.edu/provision/572550562 |
+| Applied UX | https://lrps.wgu.edu/provision/572550817 |
+| E010 | https://lrps.wgu.edu/provision/572551037 |
+| Calc | https://lrps.wgu.edu/provision/572551265 |
+| Teaching Engineering | https://lrps.wgu.edu/provision/572551549 |
 
 ---
 

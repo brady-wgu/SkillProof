@@ -8,6 +8,19 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.161 — 15 Jun 2026 — Live Skills launcher: 6 deployed LRPS skills wired into the landing table
+
+Brady deployed six real skills in LRPS. Added them as live rows at the top of the landing Providers table so the shared GitHub Pages URL doubles as a launch hub.
+
+- **Six `tr.live` skill rows** (Python, Professionalism, Applied UX, E010, Calc, Teaching Engineering) at the top of the Providers `<tbody>`, each linking to its real `lrps.wgu.edu/provision/<id>` URL. Name + Launch only, `[Skill]` name-tag, `Created By` Brady, provision id in the Id column.
+- **Launch in a new tab:** the row-click/keyboard handler now opens absolute `http(s)` `data-launch` targets via `window.open(..., '_blank', 'noopener')`; the four relative persona-portal rows keep their same-tab behavior.
+- Cosmetic: count-info `13,549` → `13,555`; stale `<title>` `v4.91` → `v4.161`.
+
+### Files
+`index.html`; docs (`README.md`, this file). Landing screenshot regenerated if Playwright is available.
+
+---
+
 ## v4.160 — 2 Jun 2026 — Unified export: one "Export ▾" dropdown on every filtered table, format by data nature
 
 The per-section export buttons were hand-built and had drifted — inconsistent placement/alignment (a stray `margin-left:16px`, off-indent), and all four formats offered everywhere. Replaced with a single shared component.
