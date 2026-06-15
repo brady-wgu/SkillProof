@@ -84,14 +84,10 @@ async def capture_portal(page, portal, theme):
         # land in the hero shot (the alphabetically-sorted OEX rows above add
         # no value to the hero).
         if portal["singlePage"] == "landing":
+            # Hero (v4.161): capture from the top so the Providers table header
+            # and the six live Skill launch rows lead the shot.
             await page.evaluate(
-                "(() => {"
-                " const row = document.querySelector('tr.live[data-launch=\"student/\"]');"
-                " if (row) {"
-                "   const rect = row.getBoundingClientRect();"
-                "   window.scrollTo({top: window.scrollY + rect.top - 200, behavior: 'instant'});"
-                " }"
-                "})()"
+                "window.scrollTo({top: 0, behavior: 'instant'})"
             )
         await page.wait_for_timeout(300)
         if portal["singlePage"] == "landing":
