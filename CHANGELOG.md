@@ -8,6 +8,20 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.162 — 18 Jun 2026 — Segmented table: Student Skills / Staff Links / Prototypes
+
+Added 3 real Staff LRPS links (Instructor Portal, Tenant Admin, Super Admin) and organized all live rows into three labelled sections with subtle divider rows.
+
+- **New CSS: `tr.section-divider`** — full-width label row with icon, light/dark themed, non-interactive (`pointer-events: none`). Uses `--pgn-color-primary-tint` in light mode and `#0D1E35` in dark.
+- **Three `tr.live` Staff rows** (`[Staff]` name-tag) linking to real `lrps.wgu.edu` provision URLs; open in a new tab via the existing absolute-URL handler.
+- **tbody order:** Student Skills (6) → Staff Links (3) → Prototypes (4) → filler rows.
+- Icons: `school` (Student Skills), `badge` (Staff Links), `science` (Prototypes).
+
+### Files
+`index.html`; docs (`README.md`, this file). Landing screenshot regenerated.
+
+---
+
 ## v4.161 — 15 Jun 2026 — Live Skills launcher: 6 deployed LRPS skills wired into the landing table
 
 Brady deployed six real skills in LRPS. Added them as live rows at the top of the landing Providers table so the shared GitHub Pages URL doubles as a launch hub.
