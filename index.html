@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>SkillProof — LRPS Landing — Storyboard v4.161</title>
+  <title>SkillProof — LRPS Landing — Storyboard v4.162</title>
   <link rel="icon" type="image/png" href="assets/wgu-favicon.png">
   <link rel="stylesheet" href="assets/table-controls.css?v=11">
   <script defer src="assets/table-controls.js?v=11"></script>
@@ -533,6 +533,24 @@
     }
     .launch-link .material-icons-outlined { font-size: 16px; }
 
+    /* Section separator rows within the Providers table */
+    .pgn__data-table tr.section-divider td {
+      background: var(--pgn-color-primary-tint);
+      padding: 5px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pgn-color-gray-600);
+      border-top: 2px solid var(--pgn-color-gray-200);
+      pointer-events: none;
+    }
+    [data-theme="dark"] .pgn__data-table tr.section-divider td {
+      background: #0D1E35;
+      color: rgba(255,255,255,0.45);
+      border-top-color: rgba(255,255,255,0.08);
+    }
+
     /* ================================================================
        TABLE FOOTER (pagination / actions)
        ================================================================ */
@@ -867,11 +885,11 @@
               <tbody>
 
                 <!-- =========================================================
-                     LIVE SKILLS — Brady's six deployed LRPS skills.
-                     Real, working lrps.wgu.edu provision URLs; open in a new
-                     tab (absolute http(s) data-launch). Placed at the top so
-                     the shared landing link is a launch hub.
+                     SECTION 1 — STUDENT SKILLS (live LRPS provision URLs)
                      ========================================================= -->
+                <tr class="section-divider">
+                  <td colspan="8"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">school</span>Student Skills — Live</td>
+                </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568442570" aria-label="Launch Python skill in LRPS (opens in new tab)">
                   <td class="id-cell">568442570</td>
                   <td class="name-cell lrps-name"><span class="name-tag">[Skill]</span>Python</td>
@@ -945,6 +963,55 @@
                   </td>
                 </tr>
 
+                <!-- =========================================================
+                     SECTION 2 — STAFF LINKS (live LRPS provision URLs)
+                     ========================================================= -->
+                <tr class="section-divider">
+                  <td colspan="8"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">badge</span>Staff Links — Live</td>
+                </tr>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/570441081" aria-label="Launch Instructor Portal in LRPS (opens in new tab)">
+                  <td class="id-cell">570441081</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[Staff]</span>Instructor Portal</td>
+                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/570441081</td>
+                  <td class="driver-cell">SDPLTIProviderDriver</td>
+                  <td>Brady</td>
+                  <td class="date-cell">18 Jun 2026</td>
+                  <td class="actions-cell">
+                    <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
+                  </td>
+                </tr>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568442441" aria-label="Launch Tenant Admin in LRPS (opens in new tab)">
+                  <td class="id-cell">568442441</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[Staff]</span>Tenant Admin</td>
+                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/568442441</td>
+                  <td class="driver-cell">SDPLTIProviderDriver</td>
+                  <td>Brady</td>
+                  <td class="date-cell">18 Jun 2026</td>
+                  <td class="actions-cell">
+                    <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
+                  </td>
+                </tr>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/573162919" aria-label="Launch Super Admin in LRPS (opens in new tab)">
+                  <td class="id-cell">573162919</td>
+                  <td class="name-cell lrps-name"><span class="name-tag">[Staff]</span>Super Admin</td>
+                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/573162919</td>
+                  <td class="driver-cell">SDPLTIProviderDriver</td>
+                  <td>Brady</td>
+                  <td class="date-cell">18 Jun 2026</td>
+                  <td class="actions-cell">
+                    <span class="launch-link">Launch <span class="material-icons-outlined">open_in_new</span></span>
+                  </td>
+                </tr>
+
+                <!-- =========================================================
+                     SECTION 3 — PROTOTYPES (storyboard-only, local links)
+                     ========================================================= -->
+                <tr class="section-divider">
+                  <td colspan="8"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">science</span>Prototypes — Storyboard Only</td>
+                </tr>
                 <tr class="live" tabindex="0" data-launch="student/" aria-label="Launch SkillProof Coding Coach (Student)">
                   <td class="id-cell">269781248</td>
                   <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-ST]</span>SkillProof Coding Coach — Student (LTI 1.3)</td>
@@ -958,11 +1025,6 @@
                   </td>
                 </tr>
 
-                <!-- =========================================================
-                     LIVE SkillProof ADMIN ROWS — clickable (ordered per
-                     User Profile Catalog v1.3: Student/Instructor/Tenant
-                     Admin/Super Admin, with Student already placed above)
-                     ========================================================= -->
                 <tr class="live" tabindex="0" data-launch="instructor/" aria-label="Launch SkillProof Instructor Dashboard">
                   <td class="id-cell">269781302</td>
                   <td class="name-cell lrps-name"><span class="name-tag">[SkillProof-IN]</span>SkillProof Instructor Dashboard — At-Risk Intervention</td>
@@ -1125,7 +1187,7 @@
                 <option selected>200</option>
               </select>
             </div>
-            <div class="count-info">View 1–200 of 13,555</div>
+            <div class="count-info">View 1–200 of 13,558</div>
           </div>
         </div>
       </section>
