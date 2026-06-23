@@ -28,7 +28,7 @@
       @use "@openedx/paragon/dist/core.min.css";
       @use "@wgu/skillproof-brand/light.min.css";
   -->
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/aptos.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
   <style>
@@ -105,8 +105,8 @@
       --pgn-size-rounded-pill:       50rem;
       --pgn-size-container-max-width-lg: 1192px;
 
-      --pgn-font-family-heading: 'Sora', 'Segoe UI', Arial, sans-serif;
-      --pgn-font-family-body: 'Lato', 'Segoe UI', Arial, sans-serif;
+      --pgn-font-family-heading: 'Aptos Display', Arial, sans-serif;
+      --pgn-font-family-body: 'Aptos', Arial, sans-serif;
     }
 
     /* ================================================================
@@ -662,7 +662,7 @@
     .util-bar-fill.warning { background: var(--heat-5); }
     .util-bar-fill.danger  { background: var(--heat-2); }
     .util-value {
-      font-family: 'Lato', monospace; font-size: 13px; font-weight: 700;
+      font-family: 'Aptos Mono', monospace; font-size: 13px; font-weight: 700;
       color: var(--pgn-color-gray-900); font-variant-numeric: tabular-nums;
       min-width: 40px; text-align: right;
     }
@@ -1164,13 +1164,13 @@
               <!-- Phone frame (fixed-dark bezel = physical device; the screen uses themed tokens so it respects dark mode too) -->
               <div style="width:200px; height:400px; border:10px solid #1A1A1A; border-radius:28px; background:var(--pgn-color-white); overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,0.22);" role="img" aria-label="Phone preview of the Super Admin dashboard, with KPI cards stacked in a single column">
                 <div style="background:var(--pgn-color-primary-base); color:#fff; padding:8px 12px; display:flex; align-items:center; justify-content:space-between;">
-                  <span style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:12px;">SkillProof</span>
+                  <span style="font-family:'Aptos Display', sans-serif; font-weight:700; font-size:12px;">SkillProof</span>
                   <span class="material-icons-outlined" style="font-size:16px;" aria-hidden="true">menu</span>
                 </div>
                 <div style="padding:12px; display:flex; flex-direction:column; gap:8px;">
-                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">ACTIVE LEARNERS</div><div style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-gray-900);">3,820</div></div>
-                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">TOKEN SPEND · MTD</div><div style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-warning-base);">$4,287</div><div style="height:6px; border-radius:50rem; background:var(--pgn-color-gray-100); overflow:hidden; margin-top:4px;"><div style="height:100%; width:73%; background:var(--heat-5);"></div></div></div>
-                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">SCHOOLS</div><div style="font-family:'Sora','Segoe UI',sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-gray-900);">4</div></div>
+                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">ACTIVE LEARNERS</div><div style="font-family:'Aptos Display', sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-gray-900);">3,820</div></div>
+                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">TOKEN SPEND · MTD</div><div style="font-family:'Aptos Display', sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-warning-base);">$4,287</div><div style="height:6px; border-radius:50rem; background:var(--pgn-color-gray-100); overflow:hidden; margin-top:4px;"><div style="height:100%; width:73%; background:var(--heat-5);"></div></div></div>
+                  <div style="background:var(--pgn-color-bg-light); border:1px solid var(--pgn-color-gray-200); border-radius:8px; padding:8px;"><div style="font-size:9px; color:var(--pgn-color-gray-600); letter-spacing:0.04em;">SCHOOLS</div><div style="font-family:'Aptos Display', sans-serif; font-weight:700; font-size:18px; color:var(--pgn-color-gray-900);">4</div></div>
                 </div>
               </div>
             </div>
@@ -2216,7 +2216,7 @@
                 <label class="form-label" for="ss-color">Primary brand color</label>
                 <div class="d-flex align-items-center gap-2">
                   <input type="color" id="ss-color" value="#0070F0" oninput="updateBrandPreview(this.value)" aria-label="School primary brand color" style="width:44px; height:36px; padding:2px; border:1px solid var(--pgn-color-gray-200); border-radius:6px; background:var(--pgn-color-white); cursor:pointer;">
-                  <input type="text" class="form-control" id="ss-color-hex" value="#0070F0" oninput="updateBrandPreview(this.value)" aria-label="Primary brand color hex value" style="width:104px; font-family:'Lato',monospace;">
+                  <input type="text" class="form-control" id="ss-color-hex" value="#0070F0" oninput="updateBrandPreview(this.value)" aria-label="Primary brand color hex value" style="width:104px; font-family:'Aptos Mono', monospace;">
                 </div>
               </div>
             </div>
@@ -2259,11 +2259,11 @@
             <label class="form-label">Live preview &middot; learner header</label>
             <div style="border:1px solid var(--pgn-color-gray-200); border-radius:8px; overflow:hidden; max-width:640px;">
               <div id="bp-bar" style="background:#0070F0; color:#FFFFFF; padding:16px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-                <span style="display:inline-flex; align-items:center; gap:8px; font-family:'Sora','Segoe UI',sans-serif; font-weight:700;">
+                <span style="display:inline-flex; align-items:center; gap:8px; font-family:'Aptos Display', sans-serif; font-weight:700;">
                   <span class="material-icons-outlined" aria-hidden="true">school</span>
                   <span id="bp-name">School of Technology</span>
                 </span>
-                <button id="bp-btn" type="button" tabindex="-1" style="background:transparent; color:#FFFFFF; border:1px solid #FFFFFF; border-radius:6px; padding:8px 16px; font-family:'Lato',sans-serif; font-weight:700; font-size:14px; cursor:default;">Start coaching</button>
+                <button id="bp-btn" type="button" tabindex="-1" style="background:transparent; color:#FFFFFF; border:1px solid #FFFFFF; border-radius:6px; padding:8px 16px; font-family:'Aptos', sans-serif; font-weight:700; font-size:14px; cursor:default;">Start coaching</button>
               </div>
               <div style="background:var(--pgn-color-white); padding:16px;">
                 <p class="small text-muted" style="margin:0 0 8px;">Foundations of Programming &middot; Topic 3 of 13</p>
@@ -2649,12 +2649,12 @@
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
       <h1 id="s5-heading" class="mb-3">Analytics &amp; Reporting</h1>
       <details class="pgn__card mb-3" style="border:1px solid var(--pgn-color-gray-200);">
-        <summary style="cursor:pointer; padding:16px; font-family:'Sora','Segoe UI',sans-serif; font-weight:700; display:flex; align-items:center; gap:8px;"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">palette</span>Visualization key — how to read these charts</summary>
+        <summary style="cursor:pointer; padding:16px; font-family:'Aptos Display', sans-serif; font-weight:700; display:flex; align-items:center; gap:8px;"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">palette</span>Visualization key — how to read these charts</summary>
         <div class="pgn__card-section" style="padding-top:0;">
           <div class="row" style="row-gap:16px;">
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex; gap:2px;"><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-2);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-5);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-8);"></span></span><strong class="small">Heatmap cells</strong></div><p class="small text-muted" style="margin:0;">9-step red→green scale; AI-scored mastery 0.00–1.00.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="width:64px;height:10px;border-radius:50rem;background:var(--pgn-color-gray-100);overflow:hidden;display:inline-block;"><span style="display:block;height:100%;width:72%;background:var(--heat-7);"></span></span><strong class="small">Mastery / cost bars</strong></div><p class="small text-muted" style="margin:0;">Compare values across Courses, Skills, Topics.</p></div>
-            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:var(--pgn-color-gray-900);">3,820</span><strong class="small">KPI gauges</strong></div><p class="small text-muted" style="margin:0;">Headline metrics with a target / context line.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="font-family:'Aptos Display', sans-serif;font-weight:700;font-size:18px;color:var(--pgn-color-gray-900);">3,820</span><strong class="small">KPI gauges</strong></div><p class="small text-muted" style="margin:0;">Headline metrics with a target / context line.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="background:var(--heat-8); color:#000; padding:2px 8px; border-radius:50rem; font-weight:700; font-size:12px;">0.86</span><strong class="small">Score pills</strong></div><p class="small text-muted" style="margin:0;">Inline scores tinted to the same heat scale.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-8);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-5);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-2);"></span></span><strong class="small">Status dots</strong></div><p class="small text-muted" style="margin:0;">On-track / watch / at-risk at a glance.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">download</span><strong class="small">Per-section export</strong></div><p class="small text-muted" style="margin:0;">PDF / CSV / JSON on every zoom level.</p></div>
