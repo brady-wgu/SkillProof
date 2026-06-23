@@ -31,7 +31,7 @@
       @use "@openedx/paragon/dist/core.min.css";
       @use "@wgu/skillproof-brand/light.min.css";
   -->
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/aptos.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
   <style>
@@ -105,8 +105,8 @@
       --pgn-size-container-max-width-lg: 1192px;
 
       /* Font tokens */
-      --pgn-font-family-heading: 'Sora', 'Segoe UI', Arial, sans-serif;
-      --pgn-font-family-body: 'Lato', 'Segoe UI', Arial, sans-serif;
+      --pgn-font-family-heading: 'Aptos Display', Arial, sans-serif;
+      --pgn-font-family-body: 'Aptos', Arial, sans-serif;
 
       /* Heatmap color scale */
       --heat-1: #E03B2F;  /* lowest — strong red */
@@ -664,7 +664,7 @@
     }
     .version-row:last-of-type { border-bottom: none; }
     .version-row .v-tag {
-      font-family: 'Lato', monospace; font-weight: 700;
+      font-family: 'Aptos Mono', monospace; font-weight: 700;
       color: var(--pgn-color-brand-base);
     }
     .version-row .v-tag.v-current {
@@ -684,7 +684,7 @@
     .ai-label .material-icons-outlined,
     .preview-label .material-icons-outlined { font-size: 16px; }
     .preview-text {
-      font-family: 'Lato', monospace; font-size: 13px; line-height: 1.6;
+      font-family: 'Aptos Mono', monospace; font-size: 13px; line-height: 1.6;
       color: var(--pgn-color-gray-700);
       background: var(--pgn-color-bg-light);
       padding: var(--pgn-spacing-2);
@@ -863,7 +863,7 @@
       background: var(--pgn-color-bg-light);
       border: 1px solid var(--pgn-color-gray-200);
       border-radius: var(--pgn-size-border-radius-base);
-      font-family: 'Lato', monospace; font-size: 13px;
+      font-family: 'Aptos Mono', monospace; font-size: 13px;
       color: var(--pgn-color-gray-900);
       display: flex; align-items: center;
       overflow-x: auto; white-space: nowrap;
@@ -871,7 +871,7 @@
     .api-params { width: 100%; border-collapse: collapse; }
     .api-params td {
       padding: 8px 12px; border-bottom: 1px solid var(--pgn-color-gray-100);
-      font-family: 'Lato', monospace; font-size: 13px; vertical-align: middle;
+      font-family: 'Aptos Mono', monospace; font-size: 13px; vertical-align: middle;
     }
     .api-params td:first-child { color: var(--pgn-color-brand-base); width: 28%; }
     .api-params td:nth-child(2) { color: var(--pgn-color-gray-600); width: 8%; text-align: center; }
@@ -883,7 +883,7 @@
     }
     .code-block {
       background: var(--code-bg); color: var(--code-text);
-      font-family: 'Lato', monospace; font-size: 13px; line-height: 1.6;
+      font-family: 'Aptos Mono', monospace; font-size: 13px; line-height: 1.6;
       border: 1px solid var(--code-border); border-radius: var(--pgn-size-border-radius-base);
       padding: var(--pgn-spacing-2) var(--pgn-spacing-3);
       overflow-x: auto; white-space: pre;
@@ -932,7 +932,7 @@
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .file-meta-icon .material-icons-outlined { font-size: 28px; }
-    .file-meta-name { font-size: 16px; font-weight: 700; color: var(--pgn-color-gray-900); font-family: 'Lato', monospace; word-break: break-all; }
+    .file-meta-name { font-size: 16px; font-weight: 700; color: var(--pgn-color-gray-900); font-family: 'Aptos Mono', monospace; word-break: break-all; }
     .file-meta-info { font-size: 13px; color: var(--pgn-color-gray-600); margin-top: 2px; }
 
     /* Filter chips (unified pattern — copied from instructor v4.117) */
@@ -2541,7 +2541,7 @@ Address the learner by their first name. Never use "student" as the form of addr
         <div class="pgn__card-section">
           <span class="eyebrow"><span class="material-icons-outlined">link</span>Next: file an LRPS provisioning ticket</span>
           <h2 class="h5 mt-1 mb-2">Skill and Topic launch URLs</h2>
-          <div class="api-card mb-3" style="background: var(--code-bg); color: var(--code-text); font-family: 'Lato', monospace; padding: 16px; border-radius: 8px;">
+          <div class="api-card mb-3" style="background: var(--code-bg); color: var(--code-text); font-family: 'Aptos Mono', monospace; padding: 16px; border-radius: 8px;">
             <div class="text-muted small mb-1" style="color: var(--code-comment);">Skill &mdash; Object-Oriented Programming</div>
             <div class="mb-2" style="word-break: break-all;">https://sdp.wgu.edu/launch/pdev/e135-oop-python?build=2026.05.06.1547</div>
             <div class="text-muted small mb-1" style="color: var(--code-comment);">Topic &mdash; Classes &amp; Objects</div>
@@ -2595,12 +2595,12 @@ Address the learner by their first name. Never use "student" as the form of addr
       <span class="eyebrow"><span class="material-icons-outlined">insights</span>School Analytics</span>
       <h1 id="s11-heading" class="mb-3">Analytics &amp; Reporting</h1>
       <details class="pgn__card mb-3" style="border:1px solid var(--pgn-color-gray-200);">
-        <summary style="cursor:pointer; padding:16px; font-family:'Sora','Segoe UI',sans-serif; font-weight:700; display:flex; align-items:center; gap:8px;"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">palette</span>Visualization key — how to read these charts</summary>
+        <summary style="cursor:pointer; padding:16px; font-family:'Aptos Display', sans-serif; font-weight:700; display:flex; align-items:center; gap:8px;"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">palette</span>Visualization key — how to read these charts</summary>
         <div class="pgn__card-section" style="padding-top:0;">
           <div class="row" style="row-gap:16px;">
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex; gap:2px;"><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-2);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-5);"></span><span style="width:16px;height:16px;border-radius:3px;background:var(--heat-8);"></span></span><strong class="small">Heatmap cells</strong></div><p class="small text-muted" style="margin:0;">9-step red→green scale; AI-scored mastery 0.00–1.00.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="width:64px;height:10px;border-radius:50rem;background:var(--pgn-color-gray-100);overflow:hidden;display:inline-block;"><span style="display:block;height:100%;width:72%;background:var(--heat-7);"></span></span><strong class="small">Mastery / cost bars</strong></div><p class="small text-muted" style="margin:0;">Compare values across Courses, Skills, Topics.</p></div>
-            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:var(--pgn-color-gray-900);">0.78</span><strong class="small">KPI gauges</strong></div><p class="small text-muted" style="margin:0;">Headline metrics with a target / context line.</p></div>
+            <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="font-family:'Aptos Display', sans-serif;font-weight:700;font-size:18px;color:var(--pgn-color-gray-900);">0.78</span><strong class="small">KPI gauges</strong></div><p class="small text-muted" style="margin:0;">Headline metrics with a target / context line.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="background:var(--heat-8); color:#000; padding:2px 8px; border-radius:50rem; font-weight:700; font-size:12px;">0.86</span><strong class="small">Score pills</strong></div><p class="small text-muted" style="margin:0;">Inline scores tinted to the same heat scale.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span style="display:inline-flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-8);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-5);"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--heat-2);"></span></span><strong class="small">Status dots</strong></div><p class="small text-muted" style="margin:0;">On-track / watch / at-risk at a glance.</p></div>
             <div class="col-4"><div class="d-flex align-items-center gap-2 mb-1"><span class="material-icons-outlined" style="color:var(--pgn-color-brand-base);">download</span><strong class="small">Per-section export</strong></div><p class="small text-muted" style="margin:0;">PDF / CSV / JSON on every zoom level.</p></div>
