@@ -849,6 +849,72 @@
     .logo-dark  { display: none; }
     [data-theme="dark"] .logo-light { display: none !important; }
     [data-theme="dark"] .logo-dark  { display: inline-block !important; }
+
+    /* ================================================================
+       INTRO OVERLAY — first-run walkthrough (v4.163)
+       ================================================================ */
+    #intro-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,23,48,0.72);
+      z-index: 9000;
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--pgn-spacing-3);
+    }
+    .intro-card {
+      background: var(--pgn-color-bg-base);
+      border-radius: 12px;
+      max-width: 600px; width: 100%;
+      padding: var(--pgn-spacing-5);
+      box-shadow: 0 24px 64px rgba(0,23,48,0.32);
+    }
+    .intro-step { display: none; }
+    .intro-step.active { display: block; }
+    .intro-step-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--pgn-color-brand-tint);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--pgn-spacing-3);
+    }
+    .intro-step-icon .material-icons-outlined { font-size: 28px; color: var(--pgn-color-brand-base); }
+    .intro-step-icon.icon-success { background: var(--pgn-color-success-tint); }
+    .intro-step-icon.icon-success .material-icons-outlined { color: var(--pgn-color-success-base); }
+    .intro-step h3 { margin-bottom: var(--pgn-spacing-2); }
+    .intro-step > p {
+      font-size: 15px; line-height: 1.65; color: var(--pgn-color-gray-700);
+      margin-bottom: var(--pgn-spacing-2);
+    }
+    /* How it works: 3-column mini-step row (Step 2) */
+    .hiw-row {
+      display: flex; gap: var(--pgn-spacing-2); margin-top: var(--pgn-spacing-3);
+    }
+    .hiw-item {
+      flex: 1; padding: var(--pgn-spacing-2);
+      background: var(--pgn-color-bg-light);
+      border-radius: var(--pgn-size-border-radius-base);
+    }
+    .hiw-icon { font-size: 20px; color: var(--pgn-color-brand-base); display: block; margin-bottom: 4px; }
+    .hiw-label { font-size: 13px; font-weight: 700; color: var(--pgn-color-gray-900); display: block; margin-bottom: 4px; }
+    .hiw-desc { font-size: 12px; line-height: 1.5; color: var(--pgn-color-gray-600); }
+    /* Tips list (Step 3) */
+    .intro-tips {
+      list-style: none; display: flex; flex-direction: column; gap: 14px;
+      margin-top: var(--pgn-spacing-2);
+    }
+    .intro-tips li { display: flex; gap: 10px; font-size: 14px; line-height: 1.6; color: var(--pgn-color-gray-700); }
+    .intro-tips li .material-icons-outlined { font-size: 18px; color: var(--pgn-color-brand-base); flex-shrink: 0; margin-top: 2px; }
+    /* Footer: dots + nav */
+    .intro-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: var(--pgn-spacing-4); padding-top: var(--pgn-spacing-3);
+      border-top: 1px solid var(--pgn-color-gray-100);
+    }
+    .intro-dots { display: flex; gap: 8px; }
+    .intro-dots .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--pgn-color-gray-200); transition: background 200ms;
+    }
+    .intro-dots .dot.active { background: var(--pgn-color-brand-base); }
+    .intro-nav { display: flex; gap: var(--pgn-spacing-2); align-items: center; }
   </style>
 </head>
 
@@ -875,6 +941,101 @@
     </div>
   </div>
 </header>
+
+<!-- ================================================================
+     INTRO OVERLAY — first-run walkthrough (v4.163)
+     ================================================================ -->
+<div id="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="intro-heading">
+  <div class="intro-card">
+
+    <!-- Step 1: What is Coding Coach? -->
+    <div class="intro-step active" data-step="1">
+      <div class="intro-step-icon">
+        <span class="material-icons-outlined">school</span>
+      </div>
+      <h3 id="intro-heading">Your personal Python coach</h3>
+      <p>Coding Coach is an AI-powered practice tool built into your course. It figures out what you already know about Python, then builds a targeted study plan around your actual gaps. You practice what you need, not what you already know.</p>
+      <p class="small text-muted">This tool is separate from your graded coursework. Use it to sharpen your Python skills at your own pace and on your own schedule.</p>
+    </div>
+
+    <!-- Step 2: How it works -->
+    <div class="intro-step" data-step="2">
+      <div class="intro-step-icon">
+        <span class="material-icons-outlined">route</span>
+      </div>
+      <h3>Three stages, one smooth flow</h3>
+      <p>Here is what to expect after you begin:</p>
+      <div class="hiw-row">
+        <div class="hiw-item">
+          <span class="material-icons-outlined hiw-icon">search</span>
+          <span class="hiw-label">1. Diagnostic</span>
+          <span class="hiw-desc">Answer questions across all 13 Python topics. The AI adapts and stops once it has enough signal, usually 10 to 15 questions.</span>
+        </div>
+        <div class="hiw-item">
+          <span class="material-icons-outlined hiw-icon">model_training</span>
+          <span class="hiw-label">2. Coaching</span>
+          <span class="hiw-desc">Work through tasks matched to your exact level. Difficulty adjusts in real time based on what you show you know.</span>
+        </div>
+        <div class="hiw-item">
+          <span class="material-icons-outlined hiw-icon">insights</span>
+          <span class="hiw-label">3. Progress Map</span>
+          <span class="hiw-desc">See which topics you have mastered and what is next. Return anytime and pick up exactly where you left off.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Tips for best results -->
+    <div class="intro-step" data-step="3">
+      <div class="intro-step-icon">
+        <span class="material-icons-outlined">lightbulb</span>
+      </div>
+      <h3>A few things to know</h3>
+      <ul class="intro-tips">
+        <li>
+          <span class="material-icons-outlined">check_circle_outline</span>
+          <span>Answer the diagnostic honestly. Saying "I'm not sure" is more useful than guessing. The AI needs an accurate baseline to coach you well.</span>
+        </li>
+        <li>
+          <span class="material-icons-outlined">check_circle_outline</span>
+          <span>Getting something wrong is not a penalty. It is how the AI finds where to start with you.</span>
+        </li>
+        <li>
+          <span class="material-icons-outlined">check_circle_outline</span>
+          <span>Your progress saves automatically to your WGU account. No separate login and no lost work. Come back anytime.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Step 4: Ready to go -->
+    <div class="intro-step" data-step="4">
+      <div class="intro-step-icon icon-success">
+        <span class="material-icons-outlined">check_circle</span>
+      </div>
+      <h3>You're all set</h3>
+      <p>The diagnostic takes about 10 minutes. After that you will see a personalized progress map and can jump straight into coaching.</p>
+      <p class="small text-muted">Your score here does not affect your course grade. This is a practice environment designed to help you build confidence before assessments.</p>
+    </div>
+
+    <!-- Footer: progress dots + nav buttons -->
+    <div class="intro-footer">
+      <div class="intro-dots" aria-hidden="true">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="intro-nav">
+        <button id="intro-back" class="btn btn-outline-primary btn-sm" onclick="introNav(-1)" style="visibility:hidden;">
+          <span class="material-icons-outlined">arrow_back</span> Back
+        </button>
+        <button id="intro-next" class="btn btn-primary btn-sm" onclick="introNav(1)">
+          Next <span class="material-icons-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ================================================================
      SCREEN 1 — LANDING (Coding Coach intro)
@@ -2193,6 +2354,35 @@ def count_passing(scores):</textarea>
       document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = ''; });
     }
   })();
+
+  /* ================================================================
+     INTRO OVERLAY — first-run walkthrough (v4.163)
+     ================================================================ */
+  var introCurrentStep = 1;
+  var INTRO_TOTAL = 4;
+
+  function introNav(dir) {
+    document.querySelector('.intro-step[data-step="' + introCurrentStep + '"]').classList.remove('active');
+    document.querySelectorAll('#intro-overlay .dot')[introCurrentStep - 1].classList.remove('active');
+    introCurrentStep += dir;
+    document.querySelector('.intro-step[data-step="' + introCurrentStep + '"]').classList.add('active');
+    document.querySelectorAll('#intro-overlay .dot')[introCurrentStep - 1].classList.add('active');
+
+    var backBtn = document.getElementById('intro-back');
+    var nextBtn = document.getElementById('intro-next');
+    backBtn.style.visibility = introCurrentStep === 1 ? 'hidden' : 'visible';
+
+    if (introCurrentStep === INTRO_TOTAL) {
+      nextBtn.innerHTML = '<span class="material-icons-outlined">play_arrow</span> Begin Diagnostic';
+      nextBtn.onclick = function() {
+        document.getElementById('intro-overlay').style.display = 'none';
+        goToScreen(2);
+      };
+    } else {
+      nextBtn.innerHTML = 'Next <span class="material-icons-outlined">arrow_forward</span>';
+      nextBtn.onclick = function() { introNav(1); };
+    }
+  }
 
   /* Spinner keyframes for the Evaluating… state */
   (function injectSpin() {
