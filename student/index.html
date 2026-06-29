@@ -866,7 +866,18 @@
       max-width: 600px; width: 100%;
       padding: var(--pgn-spacing-5);
       box-shadow: 0 24px 64px rgba(0,23,48,0.32);
+      position: relative;
     }
+    .intro-skip {
+      position: absolute; top: 16px; left: 20px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; gap: 4px;
+      color: var(--pgn-color-gray-600); font-size: 13px;
+      font-family: 'Aptos', sans-serif; padding: 4px 8px;
+      border-radius: var(--pgn-size-border-radius-sm);
+    }
+    .intro-skip .material-icons-outlined { font-size: 16px; }
+    .intro-skip:hover { color: var(--pgn-color-gray-900); background: var(--pgn-color-bg-light); }
     .intro-step { display: none; }
     .intro-step.active { display: block; }
     .intro-step-icon {
@@ -948,14 +959,18 @@
 <div id="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="intro-heading">
   <div class="intro-card">
 
-    <!-- Step 1: What is Coding Coach? -->
+    <button class="intro-skip" onclick="document.getElementById('intro-overlay').style.display='none'" aria-label="Skip intro">
+      <span class="material-icons-outlined">close</span> Skip
+    </button>
+
+    <!-- Step 1: What is SkillProof? -->
     <div class="intro-step active" data-step="1">
       <div class="intro-step-icon">
         <span class="material-icons-outlined">school</span>
       </div>
-      <h3 id="intro-heading">Your personal Python coach</h3>
-      <p>Coding Coach is an AI-powered practice tool built into your course. It figures out what you already know about Python, then builds a targeted study plan around your actual gaps. You practice what you need, not what you already know.</p>
-      <p class="small text-muted">This tool is separate from your graded coursework. Use it to sharpen your Python skills at your own pace and on your own schedule.</p>
+      <h3 id="intro-heading">Welcome to SkillProof</h3>
+      <p>SkillProof is an AI-powered practice tool built into your course. It figures out what you already know about a subject, then builds a targeted study plan around your actual gaps. You practice what you need, not what you already know.</p>
+      <p class="small text-muted">This tool is separate from your graded coursework. Use it to sharpen your skills at your own pace and on your own schedule.</p>
     </div>
 
     <!-- Step 2: How it works -->
@@ -969,7 +984,7 @@
         <div class="hiw-item">
           <span class="material-icons-outlined hiw-icon">search</span>
           <span class="hiw-label">1. Diagnostic</span>
-          <span class="hiw-desc">Answer questions across all 13 Python topics. The AI adapts and stops once it has enough signal, usually 10 to 15 questions.</span>
+          <span class="hiw-desc">Answer questions across the topics in this Skill. The AI adapts and stops once it has enough signal, usually 10 to 15 questions.</span>
         </div>
         <div class="hiw-item">
           <span class="material-icons-outlined hiw-icon">model_training</span>
