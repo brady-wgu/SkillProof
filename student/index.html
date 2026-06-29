@@ -1025,20 +1025,10 @@
       </ul>
     </div>
 
-    <!-- Step 4: Ready to go -->
-    <div class="intro-step" data-step="4">
-      <div class="intro-step-icon icon-success">
-        <span class="material-icons-outlined">check_circle</span>
-      </div>
-      <h3>You're all set</h3>
-      <p>The diagnostic takes about 10 minutes. After that you will see a personalized progress map and can jump straight into coaching.</p>
-    </div>
-
     <!-- Footer: progress dots + nav buttons -->
     <div class="intro-footer">
       <div class="intro-dots" aria-hidden="true">
         <span class="dot active"></span>
-        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
       </div>
@@ -2377,7 +2367,7 @@ def count_passing(scores):</textarea>
      INTRO OVERLAY — first-run walkthrough (v4.163)
      ================================================================ */
   var introCurrentStep = 1;
-  var INTRO_TOTAL = 4;
+  var INTRO_TOTAL = 3;
 
   function introNav(dir) {
     document.querySelector('.intro-step[data-step="' + introCurrentStep + '"]').classList.remove('active');
