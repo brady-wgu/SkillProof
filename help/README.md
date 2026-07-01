@@ -7,7 +7,7 @@
 A shared support surface for SkillProof. Single page, two sections:
 
 1. **Submit a support request** — Zendesk-styled form (name, email, request type, subject, description, attachments). Anchor `id="submit-request"` is the link target used by every portal's Help button.
-2. **Help docs** — flat list of 15 documentation entries grouped by persona role tag (Student / Instructor / Tenant Admin / Super Admin / All admin roles).
+2. **Help docs** — flat list of 15 documentation entries grouped by persona role tag (Student / Instructor / School Admin / Super Admin / All admin roles).
 
 Closes Appendix A §16.4 #9.14 (Self-service support portal).
 

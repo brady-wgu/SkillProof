@@ -43,14 +43,14 @@ Storyboard rev: **v4.160** (2 Jun 2026 — design-system polish (8-pt spacing, `
 - **`.score-pill`** — small inline pill with low/med/high tint thresholds
 - **`.section-card`** + **`.section-stat`** — instructor section-overview cards with stat counters
 - **`.chip-filter`** — view + filter pill bar with active states (including red `at-risk` variant)
-- Reuses the **chat-thread** pattern from Tenant Admin's CSM thread, but with `ai` avatar variant for the SkillProof Coach
+- Reuses the **chat-thread** pattern from School Admin's CSM thread, but with `ai` avatar variant for the SkillProof Coach
 
 ## Notes
 
 - Heatmap on screen 3 shows 15 of 28 learners (the rest scroll vertically). The full filter chip bar at the top lets you switch between All / Mastery / On track / Watch / At risk subsets.
 - Sally's row is tinted danger-pink to emphasize her at-risk status before any filter is applied.
 - The **Learner profile (screen 4)** is Charlie's intervention point — per-Topic scores plus the AI Coach's "Objective miss" feedback let him decide whether to trust the AI's read and reach out. Charlie does **not** override AI scores; SkillProof is a practice tool, not a gradebook. (Conversations are single Q+A, so there is no stored multi-turn transcript screen — that surface was removed in v4.121.)
-- The instructor has no audit-trail screen (removed in v4.121); the FERPA-aligned cross-tenant audit log lives in the Super Admin portal (→ Logs), where full source IPs are visible (they are partially masked elsewhere).
+- The instructor has no audit-trail screen (removed in v4.121); the FERPA-aligned cross-School audit log lives in the Super Admin portal (→ Logs), where full source IPs are visible (they are partially masked elsewhere).
 - v4.4 reframed all "Section 042" / "Spring 2026" copy to course-level. WGU's rolling-enrollment model means there are no fixed cohorts or sections — Charlie advises every learner currently active in his three courses (rolling).
 
 ## Device context
