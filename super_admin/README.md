@@ -6,16 +6,16 @@
 
 ## Persona
 
-**Bob** — WGU platform operations and infrastructure. Authenticates via his own secret LRPS deep link **plus MFA**. Cross-tenant scope: he sees every School-tenant on the platform and is the sole controller of platform access, role elevation, and tenant lifecycle. WGU's RBAC model requires **a minimum of 2 Super Admins at all times** as a lockout-prevention guarantee. Initial WGU Super Admins are kept out of the public repo per data-hygiene policy; the generic "Bob" persona stands in for them in the storyboard.
+**Bob** — WGU platform operations and infrastructure. Authenticates via his own secret LRPS deep link **plus MFA**. Cross-School scope: he sees every School on the platform and is the sole controller of platform access, role elevation, and School lifecycle. WGU's RBAC model requires **a minimum of 2 Super Admins at all times** as a lockout-prevention guarantee. Initial WGU Super Admins are kept out of the public repo per data-hygiene policy; the generic "Bob" persona stands in for them in the storyboard.
 
 ## Scope
 
-Cross-tenant governance, financial controls, security compliance, global resource management, role elevation, instructor-to-Skill assignment, tenant (School) lifecycle, **per-School Settings** (branding, default thresholds, retention — moved from the School Admin in v4.114), and the **full drill-chain inherited from School Admin / Instructor** (the Super Admin can dig down into any School / Course / Skill / Topic / Learner to investigate, just like a School Admin can — they just have to drill down to reach it; it's not their primary surface).
+Cross-School governance, financial controls, security compliance, global resource management, role elevation, instructor-to-Skill assignment, School lifecycle, **per-School Settings** (branding, default thresholds, retention — moved from the School Admin in v4.114), and the **full drill-chain inherited from School Admin / Instructor** (the Super Admin can dig down into any School / Course / Skill / Topic / Learner to investigate, just like a School Admin can — they just have to drill down to reach it; it's not their primary surface).
 
 Bob's responsibilities span:
 
 - **Cost + rate** (token usage, rate limits, cost spike drill-down)
-- **Compliance + audit** (TLS 1.3, FERPA, SOC 2 / ISO 27001 / GDPR, geo-redundancy, cross-tenant audit log)
+- **Compliance + audit** (TLS 1.3, FERPA, SOC 2 / ISO 27001 / GDPR, geo-redundancy, cross-School audit log)
 - **Access + people** (4-tier role taxonomy: Student / Instructor / School Admin / Super Admin; min-2-Super-Admins enforcement; sole elevator role; instructor roster across Schools)
 - **Platform tools** (External Tooling hub: AWS / OpenRouter / Redis / Grafana / Jira / GitHub + Data & Integrations Hub)
 - **Schools** (per-School lifecycle + settings: branding, default Skill passing threshold, monthly token budget, conversation/audit log retention)
@@ -58,7 +58,7 @@ Bob's responsibilities span:
 - **Inherited drill-chain** (S6–S8: Course → Skill heatmap → Learner) mirrored from School Admin, with the navbar carrying the WGU corporate logo + "Super Admin" chip + Bob/B user
 - **External Tooling hub** on S9 — launcher cards for AWS / OpenRouter / Redis / Grafana / Jira / GitHub
 - **Data & Integrations Hub** on S10 — real-time + batch export · webhooks · GraphQL endpoint · Kafka / Kinesis / Pub-Sub streaming
-- **Platform Logs** on S11 — FERPA-aligned cross-tenant audit with filter + search, tail-live, and machine export
+- **Platform Logs** on S11 — FERPA-aligned cross-School audit with filter + search, tail-live, and machine export
 - **Responsive phone-preview** card on S1 demonstrating the dashboard reflowing to a single column
 - **Unified "Export ▾" dropdown** on every filtered table (injected by the shared module) — **PDF / CSV** for human-read analytics & rosters; **MD / JSON** for the machine-read Logs, Audit trail, and Webhooks
 
@@ -66,9 +66,9 @@ Bob's responsibilities span:
 
 - The portal models a privileged session: SSO + MFA verification + "Privileged session" warning + zero-trust line ("Server-side authorization · link does not grant access").
 - **Cost detail (S1):** selecting a School in the per-School table reveals its 30-day cost trend (recent days shown as a visible spike) and its top consuming Skills — the diagnostic path for a cost anomaly.
-- **Role elevation lives only on S2 Access Control.** Default LTI baseline is `Instructor` for WGU staff; elevations to School Admin or Super Admin take effect on the user's next login. Min-2-Super-Admins is enforced via a disabled `Downgrade` + tooltip on every Super Admin row when the count drops to 2. Instructor-to-Skill assignment is consolidated here too (SOW §2.5 lists "instructors" as a tenant-level control; Super Admin is the sole controller of platform access).
+- **Role elevation lives only on S2 Access Control.** Default LTI baseline is `Instructor` for WGU staff; elevations to School Admin or Super Admin take effect on the user's next login. Min-2-Super-Admins is enforced via a disabled `Downgrade` + tooltip on every Super Admin row when the count drops to 2. Instructor-to-Skill assignment is consolidated here too (SOW §2.5 lists "instructors" as a School-level control; Super Admin is the sole controller of platform access).
 - **Per-School configuration lives on S4 School Management** (moved from the School Admin portal in v4.114 — the School Admin now manages Courses + Skills only): Branding, default Skill passing threshold, monthly token budget, and data-retention policies, plus a `+ New School` affordance.
-- **Logs (S11)** is the FERPA-aligned cross-tenant audit; it deliberately includes events from all v1.3 personas (Alice, Charlie, JFT CSM, system) so cross-tenant operations are visible to the Super Admin. Source IPs are unmasked here (they are partially masked in the Instructor view).
+- **Logs (S11)** is the FERPA-aligned cross-School audit; it deliberately includes events from all v1.3 personas (Alice, Charlie, JFT CSM, system) so cross-School operations are visible to the Super Admin. Source IPs are unmasked here (they are partially masked in the Instructor view).
 - **Inherited drill-chain (S6–S8)** mirrors the School Admin's Course → Skill → Learner structure — a diagnostic capability, not the Super Admin's primary surface.
 - **Score scale rule (F42)**: AI-scored values use 0.00–1.00 (heatmap cells on S7, session scores); human-entered passing thresholds use 0–100% (shown in Analytics on S5). The two scales coexist platform-wide.
 - **Lifecycle terminology**: Draft / Staging / Live (locked 24 May 2026; "Production" is not used).

@@ -6,7 +6,7 @@
 
 ## Persona
 
-**Alice** — WGU **Program Development (PDev)** employee, operating the **School of Technology** tenant. The SOW (§2.2 deliverable list, §2.5 admin portal sub-area) refers to this role as **"Tenant Admin"**; throughout the storyboard chrome the role is now called **"School Admin"** (per Brady's terminology lock, 24 May 2026) to align with the WGU multi-tenancy model where each tenant maps to a WGU School. The SOW term and the storyboard term refer to the same role. Alice authenticates via her own secret LRPS deep link and is scoped to her School(s) — currently School of Technology, where she manages Skills like Foundations of Programming (Python) and OOP with Python.
+**Alice** — WGU **Program Development (PDev)** employee, operating within the **School of Technology**. The SOW (§2.2 deliverable list, §2.5 admin portal sub-area) is the contract source for this role; throughout the storyboard chrome and all documentation the role is called **"School Admin"** (per Brady's terminology lock, 24 May 2026), since the SOW's own language is contract-specific and confuses readers outside the small dev team. Alice authenticates via her own secret LRPS deep link and is scoped to her School(s) — currently School of Technology, where she manages Skills like Foundations of Programming (Python) and OOP with Python.
 
 ## Scope (refined 24 May 2026)
 
@@ -19,7 +19,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 | At-risk learner identification + intervention | **Instructor** | Per-learner remediation is Charlie's job. Alice can drill into the heatmap and learner profile for diagnostic purposes if a Skill is misbehaving, but at-risk monitoring is not her primary surface. |
 | Incident response / SLA monitoring | **JFT Support** (one-way only) | No 2-way help-desk communication; Alice clicks the help icon for a Zendesk handoff. No P1 ticketing UI, no CSM threads, no service-degradation dashboard. |
 | School Settings (branding, thresholds, retention) | **Super Admin** | Per-School configuration of branding, default Skill passing threshold, monthly token budget, and data retention policies all live in the Super Admin portal (super_admin/ → S4 School Management). |
-| Cross-School operations | **Super Admin** | Bob owns role elevation, instructor roster across Schools, External Tooling, Data Hub, Geo-Redundancy, Compliance, and cross-tenant audit. |
+| Cross-School operations | **Super Admin** | Bob owns role elevation, instructor roster across Schools, External Tooling, Data Hub, Geo-Redundancy, Compliance, and cross-School audit. |
 
 ## Scenarios
 
@@ -41,7 +41,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 
 | Scenario | SOW refs | Where covered |
 |:---------|:---------|:--------------|
-| SC-ADD-02 | §2.2 (Tenant Admin deliverable), §2.5 (Admin Portal — Skill Configuration), §6.7 (guardrails), §6.8 (A/B testing), §6.12 (LaTeX), §7.10 (engagement), §7.11 (educator analytics), §7.12 (usage stats), §7.13 (visualization), §7.14 (report exports), §8.6 (Multi-tenancy), §9.7 (CSM — referenced via Help link, not embedded), §9.14 (self-service support — Help icon in every navbar), §10.4 (Audit logging — Activity Log embedded in Analytics S11), §10.8 (RBAC), §10.14 (zero-trust) | Course/Skill scoping callout on every screen; New Skill wizard with combobox Course picker on S6; topic + LO expanders with passing thresholds on S7; Model & Prompt config (5 guardrail fields) on S8; deploy step summary on S9; LRPS provisioning ticket on S10; Analytics 4-level zoom on S11 (with the Activity Log embedded); Help icon links out to Zendesk. |
+| SC-ADD-02 | §2.2 (School Admin deliverable), §2.5 (Admin Portal — Skill Configuration), §6.7 (guardrails), §6.8 (A/B testing), §6.12 (LaTeX), §7.10 (engagement), §7.11 (educator analytics), §7.12 (usage stats), §7.13 (visualization), §7.14 (report exports), §8.6 (Multi-tenancy), §9.7 (CSM — referenced via Help link, not embedded), §9.14 (self-service support — Help icon in every navbar), §10.4 (Audit logging — Activity Log embedded in Analytics S11), §10.8 (RBAC), §10.14 (zero-trust) | Course/Skill scoping callout on every screen; New Skill wizard with combobox Course picker on S6; topic + LO expanders with passing thresholds on S7; Model & Prompt config (5 guardrail fields) on S8; deploy step summary on S9; LRPS provisioning ticket on S10; Analytics 4-level zoom on S11 (with the Activity Log embedded); Help icon links out to Zendesk. |
 
 ## Files
 

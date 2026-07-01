@@ -23,8 +23,8 @@
 
 - **Sally** (Student) — the v1.2 MVP coaching loop. **JFT shipped this first.** ([student/](student/))
 - **Charlie** (Instructor) — At-Risk Intervention dashboard. ([instructor/](instructor/))
-- **Alice** (School Admin; SOW §2.2 role: Tenant Admin) — Course + Skill management portal: School Dashboard with Course cards + filter/sort/search, 5-step New Skill wizard with Course Number/Title combobox typeahead, drill-chain mirroring Instructor for diagnostic, 4-level Analytics (School / Course / Skill / Topic). Scope is **Courses + Skills only** — at-risk learner tracking is Instructor's domain; School Settings + cross-tenant ops are Super Admin's. ([tenant_admin/](tenant_admin/)) — **12 screens**
-- **Bob** (Super Admin) — Cross-tenant governance, financial controls, security compliance, **access control** (role elevation + School Admin → Schools + Instructor → Skills + Skill ownership / deployment), data + integrations hub, **School Management** (per-School branding / thresholds / retention — moved from School Admin v4.114), FERPA-aligned Logs, plus the inherited Course → Skill → Learner drill and 5-level Analytics. ([super_admin/](super_admin/)) — **11 screens**
+- **Alice** (School Admin) — Course + Skill management portal: School Dashboard with Course cards + filter/sort/search, 5-step New Skill wizard with Course Number/Title combobox typeahead, drill-chain mirroring Instructor for diagnostic, 4-level Analytics (School / Course / Skill / Topic). Scope is **Courses + Skills only** — at-risk learner tracking is Instructor's domain; School Settings + cross-School ops are Super Admin's. ([tenant_admin/](tenant_admin/)) — **12 screens**
+- **Bob** (Super Admin) — Cross-School governance, financial controls, security compliance, **access control** (role elevation + School Admin → Schools + Instructor → Skills + Skill ownership / deployment), data + integrations hub, **School Management** (per-School branding / thresholds / retention — moved from School Admin v4.114), FERPA-aligned Logs, plus the inherited Course → Skill → Learner drill and 5-level Analytics. ([super_admin/](super_admin/)) — **11 screens**
 - Plus **LRPS Landing** at the storyboard root ([`/`](./)) — recreated WGU internal Learning Resource Provisioning System; the realistic entry point for all four personas. **(v4.59: promoted to root; the standalone `/lrps/` URL was retired.)**
 - Plus **Help & Resources** ([help/](help/)) — shared self-service support + video training surface linked from every admin portal's navbar.
 
@@ -32,7 +32,7 @@
 
 Each persona has its own **secret LRPS deep link** in production and authenticates separately. They share the SkillProof Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
 
-> **Implementation notes (for JFT).** The Tenant Admin, Instructor, and Super Admin scenarios are the design spec for surfaces JFT has not yet started building. Use this storyboard as the visual North Star for the **full SOW scope**. WGU expects JFT to deliver every binding requirement in the MSA, the SOW body, and Appendix A within the contracted engagement window. The first JFT release was an MVP slice (E010 Coding Coach in `student/`); subsequent releases close the rest of Appendix A across the Tenant Admin, Instructor, and Super Admin portals. The SC-MVP scenarios deploy the existing Cicada coaching loop as-is; the surrounding platform (multi-LLM orchestration, admin portals, observability, exports, integrations, compliance surfaces) is net-new build work per Appendix A. WGU also runs independent accessibility testing against WCAG 2.2 AA in addition to JFT's own self-checks per §16.2 #7.3 (student-facing surfaces; admin surfaces follow standard usability per SOW §3 Assumptions), so plan for remediation cycles inside the engagement window.
+> **Implementation notes (for JFT).** The School Admin, Instructor, and Super Admin scenarios are the design spec for surfaces JFT has not yet started building. Use this storyboard as the visual North Star for the **full SOW scope**. WGU expects JFT to deliver every binding requirement in the MSA, the SOW body, and Appendix A within the contracted engagement window. The first JFT release was an MVP slice (E010 Coding Coach in `student/`); subsequent releases close the rest of Appendix A across the School Admin, Instructor, and Super Admin portals. The SC-MVP scenarios deploy the existing Cicada coaching loop as-is; the surrounding platform (multi-LLM orchestration, admin portals, observability, exports, integrations, compliance surfaces) is net-new build work per Appendix A. WGU also runs independent accessibility testing against WCAG 2.2 AA in addition to JFT's own self-checks per §16.2 #7.3 (student-facing surfaces; admin surfaces follow standard usability per SOW §3 Assumptions), so plan for remediation cycles inside the engagement window.
 
 ### Surfaces
 
@@ -41,7 +41,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point — table segmented into **Student Skills** (6 live), **Staff Links** (3 live), and **Prototypes** (4 storyboard) + illustrative filler. **Start here.** **v4.162:** segmented into 3 sections. **v4.161:** live skill rows added. **v4.59:** promoted to root. |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — Course overview → class heatmap → Skill/Topic drill → Learner profile, plus Access Denied. **5 screens.** |
-| **School Admin Portal** (SOW §2.2: Tenant Admin) | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S2–S4 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope: **Courses + Skills only.** **New Course is now a modal** from the dashboard; delete actions confirm via modal. **12 screens** (v4.152). |
+| **School Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S2–S4 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope: **Courses + Skills only.** **New Course is now a modal** from the dashboard; delete actions confirm via modal. **12 screens** (v4.152). |
 | **Super Admin Portal** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | Bob — Super Admin Dashboard (platform KPIs + per-School cost table + quick-links), **Access Control** (People · Skills · Schools tabs; 4-tier roles; min-2-Super-Admins; sole elevator), **School Management** (per-School Branding / Default Thresholds / Data Retention — moved from School Admin v4.114), 5-level Analytics, the inherited Course → Skill → Learner drill, External Tooling, Data Hub, and FERPA-aligned Logs. **Create a School is a modal** and assignment removals confirm via modal. **11 screens.** |
 | **Help & Resources** (shared) | [`/help/`](https://brady-wgu.github.io/SkillProof/help/) | Shared self-service support, documentation, and video training surface. Linked from every admin portal navbar. Closes Appendix A §16.4 #9.14 (self-service portal) and #9.15 (video training). |
 
@@ -69,7 +69,7 @@ All live rows open in a new tab from the landing page's Providers table, so the 
 | Role | LRPS launch URL |
 |:-----|:----------------|
 | Instructor Portal | https://lrps.wgu.edu/provision/570441081 |
-| Tenant Admin | https://lrps.wgu.edu/provision/568442441 |
+| School Admin | https://lrps.wgu.edu/provision/568442441 |
 | Super Admin | https://lrps.wgu.edu/provision/573162919 |
 
 ### Prototypes (storyboard only)
@@ -165,11 +165,11 @@ Click any persona folder to read its dedicated README.
 
 ---
 
-### 🏢 Content Creator (Tenant Admin per SOW §2.2) (v1.3) — Alice
+### 🏫 School Admin (v1.3) — Alice
 
 **Surface:** [`tenant_admin/`](tenant_admin/) · [Live](https://brady-wgu.github.io/SkillProof/tenant_admin/) · [README](tenant_admin/README.md)
 
-**Persona:** Alice — WGU Program Development (PDev) employee operating the **School of Technology** tenant. The SOW calls this role **"Tenant Admin"** (§2.2 deliverable, §2.5 admin portal). Alice's user-facing portal chrome calls it **"Content Creator"** per JFT meeting 10 May 2026 — same role, two names for ease of explanation to non-technical stakeholders. Authenticates via her own secret LRPS deep link.
+**Persona:** Alice — WGU Program Development (PDev) employee operating the **School of Technology**. The SOW's contract term for this role is §2.2's admin-portal deliverable; the storyboard and all user-facing chrome call it **"School Admin"** per Brady's terminology lock (24 May 2026), so the role reads clearly to WGU staff outside the small dev team. Authenticates via her own secret LRPS deep link.
 
 **Scope:** Course-as-a-Service authoring (Skills, Topics, Learning Objectives with per-objective passing thresholds via inline expanders), AI coaching prompt configuration, model + coaching style selection, CI/CD-driven deploys, post-deploy manual LRPS provisioning ticket workflow, Skill lifecycle / archival, and analytics & reporting (engagement charts · class insights · program reports + Activity Log). Per-School branding / thresholds / retention moved to the Super Admin portal (v4.114); the School Admin now manages Courses + Skills only.
 
@@ -187,15 +187,15 @@ Click any persona folder to read its dedicated README.
 
 **Surface:** [`super_admin/`](super_admin/) · [Live](https://brady-wgu.github.io/SkillProof/super_admin/) · [README](super_admin/README.md)
 
-**Persona:** Bob — WGU platform operations and infrastructure. Authenticates with MFA in addition to SSO. Cross-tenant scope and sole controller of platform access; minimum 2 Super Admins required at all times.
+**Persona:** Bob — WGU platform operations and infrastructure. Authenticates with MFA in addition to SSO. Cross-School scope and sole controller of platform access; minimum 2 Super Admins required at all times.
 
-**Scope:** Cross-tenant governance, financial controls, security compliance, global resource management, user role elevation, instructor-to-Skill assignment, and tenant (School) lifecycle management.
+**Scope:** Cross-School governance, financial controls, security compliance, global resource management, user role elevation, instructor-to-Skill assignment, and School lifecycle management.
 
 **Scenarios (1, 11 screens; sequential 1-11):**
 
 | ID | Description | Screens |
 |:---|:------------|:-------:|
-| **SC-ADD-04** | **Super Admin Governance, Access Control, Schools & Data.** SSO + MFA → Dashboard (platform KPIs + cost / budget + per-School table + quick-links) → **Access Control** (People · Skills · Schools tabs; 4-tier role taxonomy; min-2-Super-Admins; assignment removals confirm via modal) (S2) → Access-expired (S3) → **School Management** (per-School Branding / Default Thresholds / Data Retention; + New School = modal) (S4) → 5-level **Analytics** (Platform → School → Course → Skill → Topic) (S5) → inherited Course → Skill → Learner drill (S6–S8) → **External Tooling** (AWS / OpenRouter / Redis / Grafana / Jira / GitHub) (S9) → **Data & Integrations Hub** (export · webhooks · GraphQL · Kafka / Kinesis / Pub-Sub streaming) (S10) → **Logs** (FERPA-aligned cross-tenant audit; export + tail-live + filters) (S11). | 11 |
+| **SC-ADD-04** | **Super Admin Governance, Access Control, Schools & Data.** SSO + MFA → Dashboard (platform KPIs + cost / budget + per-School table + quick-links) → **Access Control** (People · Skills · Schools tabs; 4-tier role taxonomy; min-2-Super-Admins; assignment removals confirm via modal) (S2) → Access-expired (S3) → **School Management** (per-School Branding / Default Thresholds / Data Retention; + New School = modal) (S4) → 5-level **Analytics** (Platform → School → Course → Skill → Topic) (S5) → inherited Course → Skill → Learner drill (S6–S8) → **External Tooling** (AWS / OpenRouter / Redis / Grafana / Jira / GitHub) (S9) → **Data & Integrations Hub** (export · webhooks · GraphQL · Kafka / Kinesis / Pub-Sub streaming) (S10) → **Logs** (FERPA-aligned cross-School audit; export + tail-live + filters) (S11). | 11 |
 
 **Source:** SkillProof User Scenario Catalog: Additional Scenarios v1.3 (05 May 2026) + WGU working draft *"SkillProof Authentication, Access Control, and Role Hierarchy" v1.0* (13 May 2026).
 
@@ -210,7 +210,7 @@ Click any persona folder to read its dedicated README.
 **Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SkillProof Design System v1.2. Each of the four persona portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. JFT does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
 
 The LRPS surface includes:
-- 4 live SkillProof rows (Student, Instructor, Tenant Admin, Super Admin) — clickable, deep-linked
+- 4 live SkillProof rows (Student, Instructor, School Admin, Super Admin) — clickable, deep-linked
 - Illustrative filler rows (OEX modules, zyBooks, Pearson, ProctorU, Coursera, Cicada legacy, Panopto, etc.) for realistic LRPS density
 - A meta-bar quick-launch with chips to all surfaces + the catalog
 
@@ -226,7 +226,7 @@ The LRPS surface includes:
 
 ## Shared persona & course reference
 
-Canonical strings used across all surfaces. Use these verbatim when adding new screens, narrative, or test fixtures so the storyboard remains internally consistent. (Drift here is the most common source of bugs — e.g., a Tenant Admin screen that calls Sally's course "E010" while the Instructor heatmap calls it "Foundations of Programming".)
+Canonical strings used across all surfaces. Use these verbatim when adding new screens, narrative, or test fixtures so the storyboard remains internally consistent. (Drift here is the most common source of bugs — e.g., a School Admin screen that calls Sally's course "E010" while the Instructor heatmap calls it "Foundations of Programming".)
 
 | String | Canonical value | Notes |
 |:-------|:----------------|:------|
@@ -240,7 +240,7 @@ Canonical strings used across all surfaces. Use these verbatim when adding new s
 | **LMS course identifier** | `WGUE010PythonAY2026` | The LRPS-registered LMS course slug zyBooks renders. Visible on Screen 1 of every SC-MVP scenario. |
 | **13 Topics** | Basic Syntax & Data Types · Control Flow & Logic · Data Structures: Lists, Tuples, Sets, Dictionaries · Functions & Modular Programming · Object-Oriented Programming · Error Handling & Exceptions · File I/O & Persistence · Iterators & Generators · Decorators & Closures · Concurrency Basics · Standard Library Essentials · Testing & Debugging · Packaging & Environments | The full Cicada v1 SkillProof Topic taxonomy within the Python Skill of E010. Order is significant: Progress Map renders in this order. |
 | **Cost-spike date (SC-ADD-04)** | `04 May 2026` | Bob's cost audit drill-down references this date as the spike origin. |
-| **Role taxonomy** | `Student → Instructor → Tenant Admin → Super Admin` | 4-tier RBAC. Only Super Admin can change roles; minimum 2 Super Admins always. |
+| **Role taxonomy** | `Student → Instructor → School Admin → Super Admin` | 4-tier RBAC. Only Super Admin can change roles; minimum 2 Super Admins always. |
 | **Storyboard version** | `v4.x` | Tracks the visual prototype, not the underlying SkillProof product. SkillProof product versions follow the catalog: v1.2 MVP, v1.3 Additional, etc. |
 
 If you need to change any of these, update them everywhere in the same commit — `Glob` for the literal string across all portals and all per-persona READMEs before opening the PR.
@@ -351,9 +351,9 @@ When implementing:
 1. **Install Paragon** — `npm install @openedx/paragon`
 2. **Apply WGU brand tokens** via the brand package override mechanism (`@wgu/skillproof-brand`)
 3. **Use Paragon React components** — do not rebuild them. The storyboard's CSS class names (`.pgn__card`, `.btn-primary`, `.pgn__breadcrumb`, etc.) map directly to Paragon's component schema.
-4. **Per-persona portals are separately authenticated surfaces** — each has its own LRPS deep link. Tenant Admin, Instructor, and Super Admin should not be combined into a single SPA shell; the auth flow and RBAC scoping are role-bound.
+4. **Per-persona portals are separately authenticated surfaces** — each has its own LRPS deep link. School Admin, Instructor, and Super Admin should not be combined into a single SPA shell; the auth flow and RBAC scoping are role-bound.
 5. **Zero-trust authorization** — the LRPS link does not grant authority. Effective role and scope are determined server-side after authentication.
-6. **Tenant model = WGU Schools** — A tenant in SkillProof maps to a WGU School. The example storyboard uses School of Technology as Alice's default tenant; additional schools can be created via the Super Admin School / Tenant Management surface.
+6. **Multi-tenancy maps to WGU Schools** — each WGU School is provisioned as a separate tenant internally. The example storyboard uses School of Technology as Alice's default School; additional Schools can be created via the Super Admin's School Management surface.
 7. The CSS custom properties in the portal HTML files (`--pgn-*`) map directly to the Paragon token schema.
 8. Each persona's [`README.md`](#repo-layout) lists the specific patterns and components introduced for that surface.
 
