@@ -5,7 +5,7 @@
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Version](https://img.shields.io/badge/Version-4.163-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.164-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-46-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -38,7 +38,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 | Surface | URL | Description |
 |:--------|:----|:------------|
-| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point — table segmented into **Student Skills** (8 live), **Staff Links** (3 live), and **Prototypes** (4 storyboard) + illustrative filler. **Start here.** **v4.163:** STU101 added. **v4.162:** segmented into 3 sections. **v4.161:** live skill rows added. **v4.59:** promoted to root. |
+| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point — table segmented into **Student Skills** (9, incl. 1 broken DEV), **Staff Links** (6, incl. 3 broken DEV), and **Prototypes** (4 storyboard). **Start here.** **v4.164:** all decorative filler rows removed; every real link from the SkillProof link tracker now represented, including broken DEV entries. **v4.163:** STU101 added. **v4.162:** segmented into 3 sections. **v4.161:** live skill rows added. **v4.59:** promoted to root. |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — Course overview → class heatmap → Skill/Topic drill → Learner profile, plus Access Denied. **5 screens.** |
 | **School Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S2–S4 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope: **Courses + Skills only.** **New Course is now a modal** from the dashboard; delete actions confirm via modal. **12 screens** (v4.152). |
@@ -51,28 +51,32 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 ## Live Skills (LRPS)
 
-All live rows open in a new tab from the landing page's Providers table, so the shared landing link doubles as a launch hub. The table is segmented into three sections.
+All live rows open in a new tab from the landing page's Providers table, so the shared landing link doubles as a launch hub. The table is segmented into three sections and mirrors `.../SkillProof/g_Beta Test/skillproof-link-list_<DATE>.md` — Brady's own environment link tracker — exactly (no decorative filler rows). PROD isn't listed anywhere below because it doesn't exist as infrastructure yet (JFT todo, ~1-2 weeks after the D522 iteration as of 08 Jul 2026); every entry here is STAGE unless marked DEV.
 
 ### Student Skills
 
-| Skill | LRPS launch URL |
-|:------|:----------------|
-| Python | https://lrps.wgu.edu/provision/568442570 |
-| Professionalism | https://lrps.wgu.edu/provision/572550562 |
-| Applied UX | https://lrps.wgu.edu/provision/572550817 |
-| E010 | https://lrps.wgu.edu/provision/572551037 |
-| Calc | https://lrps.wgu.edu/provision/572551265 |
-| Teaching Engineering | https://lrps.wgu.edu/provision/572551549 |
-| D522 — Python for IT Automation | https://lrps.wgu.edu/provision/575242504 |
-| STU101 — Time Management & Study Skills | https://lrps.wgu.edu/provision/576572714 |
+| Skill | Environment | LRPS launch URL |
+|:------|:------------|:----------------|
+| Python | STAGE | https://lrps.wgu.edu/provision/568442570 |
+| Professionalism | STAGE | https://lrps.wgu.edu/provision/572550562 |
+| Applied UX | STAGE | https://lrps.wgu.edu/provision/572550817 |
+| E010 | STAGE | https://lrps.wgu.edu/provision/572551037 |
+| Calc | STAGE | https://lrps.wgu.edu/provision/572551265 |
+| Teaching Engineering | STAGE | https://lrps.wgu.edu/provision/572551549 |
+| D522 — Python for IT Automation | STAGE | https://lrps.wgu.edu/provision/575242504 |
+| STU101 — Time Management & Study Skills | STAGE | https://lrps.wgu.edu/provision/576572714 |
+| Python (DEV) | **DEV — broken, JFT fix pending** | https://lrps.wgu.edu/provision/560264094 |
 
 ### Staff Links
 
-| Role | LRPS launch URL |
-|:-----|:----------------|
-| Instructor Portal | https://lrps.wgu.edu/provision/570441081 |
-| School Admin | https://lrps.wgu.edu/provision/568442441 |
-| Super Admin | https://lrps.wgu.edu/provision/573162919 |
+| Role | Environment | LRPS launch URL |
+|:-----|:------------|:----------------|
+| Instructor Portal | STAGE | https://lrps.wgu.edu/provision/570441081 |
+| School Admin | STAGE | https://lrps.wgu.edu/provision/568442441 |
+| Super Admin | STAGE | https://lrps.wgu.edu/provision/573162919 |
+| Instructor Portal (DEV) | **DEV — broken, JFT fix pending** | https://lrps.wgu.edu/provision/568111823 |
+| School Admin (DEV) | **DEV — broken, JFT fix pending** | https://lrps.wgu.edu/provision/568112003 |
+| Super Admin (DEV) | **DEV — broken, JFT fix pending** | https://lrps.wgu.edu/provision/575058314 |
 
 ### Prototypes (storyboard only)
 
