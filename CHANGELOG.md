@@ -8,6 +8,20 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.165 — 08 Jul 2026 — Removed pagination: one real, complete page now
+
+Per Brady: "We only need this one page of real links from now on." With v4.164 having stripped every decorative filler row, the "huge simulated institution-wide table, viewing a page of it" framing (First/Prev/Next/Last, page-number input, rows-per-page select, "View 1–200 of N") no longer matched what the page actually is — a short, complete, real list.
+
+- **Removed the entire `.pager` control** (First/Previous/Next/Last page buttons, page-number input, rows-per-page `<select>`) and its now-dead CSS (`.pager`, `.pager-input`, `.pager-select`).
+- **`count-info` replaced** with an honest, accurate `Showing all 19 providers` (was the fictional `View 1–200 of 13,553`).
+- `table-actions` (Refresh / Add new provider / Save icon buttons) left as-is — not pagination, out of scope for this change.
+- `<title>` → `v4.165`.
+
+### Files
+`index.html`, `README.md`, this file.
+
+---
+
 ## v4.164 — 08 Jul 2026 — Removed all decorative filler rows; added real DEV links
 
 Per Brady, the Providers table should exactly mirror his own `skillproof-link-list_<DATE>.md` environment tracker — every real link present, nothing fake taking up space.
