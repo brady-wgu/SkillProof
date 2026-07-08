@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>SkillProof — LRPS Landing — Storyboard v4.164</title>
+  <title>SkillProof — LRPS Landing — Storyboard v4.165</title>
   <link rel="icon" type="image/png" href="assets/wgu-favicon.png">
   <link rel="stylesheet" href="assets/table-controls.css?v=11">
   <script defer src="assets/table-controls.js?v=11"></script>
@@ -563,33 +563,6 @@
       flex-wrap: wrap;
     }
     .table-actions { display: inline-flex; gap: var(--pgn-spacing-1); align-items: center; }
-    .pager {
-      display: inline-flex; align-items: center; gap: var(--pgn-spacing-1);
-      font-size: 13px; color: var(--pgn-color-gray-600);
-    }
-    .pager-input {
-      width: 44px; height: 32px; text-align: center;
-      border: 1px solid var(--pgn-color-gray-200);
-      border-radius: var(--pgn-size-border-radius-base);
-      background: var(--pgn-color-bg-base);
-      color: var(--pgn-color-gray-900);
-      font-family: var(--pgn-font-family-body); font-size: 13px;
-      font-variant-numeric: tabular-nums;
-    }
-    .pager-input:focus { outline: none; border-color: var(--pgn-color-brand-base); box-shadow: 0 0 0 3px rgba(0,112,240,0.15); }
-    .pager-select {
-      height: 32px; padding: 0 28px 0 var(--pgn-spacing-2);
-      border: 1px solid var(--pgn-color-gray-200);
-      border-radius: var(--pgn-size-border-radius-base);
-      background: var(--pgn-color-bg-base);
-      color: var(--pgn-color-gray-900);
-      font-family: var(--pgn-font-family-body); font-size: 13px;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%234D4D4D' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      cursor: pointer;
-    }
     .count-info { font-size: 13px; color: var(--pgn-color-gray-600); }
 
     /* ================================================================
@@ -1144,21 +1117,7 @@
               <button class="btn btn-tertiary btn-icon btn-sm" type="button" aria-label="Add new provider"><span class="material-icons-outlined">add</span></button>
               <button class="btn btn-tertiary btn-icon btn-sm" type="button" aria-label="Save"><span class="material-icons-outlined">save</span></button>
             </div>
-            <div class="pager">
-              <button class="btn btn-tertiary btn-icon btn-sm" type="button" aria-label="First page" disabled><span class="material-icons-outlined">first_page</span></button>
-              <button class="btn btn-tertiary btn-icon btn-sm" type="button" aria-label="Previous page" disabled><span class="material-icons-outlined">chevron_left</span></button>
-              <span>Page</span>
-              <input class="pager-input" type="text" value="1" aria-label="Page number">
-              <span>of 68</span>
-              <button class="btn btn-tertiary btn-icon btn-sm" type="button" aria-label="Next page"><span class="material-icons-outlined">chevron_right</span></button>
-              <button class="btn btn-tertiary btn-icon btn-sm" type="button" aria-label="Last page"><span class="material-icons-outlined">last_page</span></button>
-              <select class="pager-select" aria-label="Rows per page">
-                <option>50</option>
-                <option>100</option>
-                <option selected>200</option>
-              </select>
-            </div>
-            <div class="count-info">View 1–200 of 13,553</div>
+            <div class="count-info">Showing all 19 providers</div>
           </div>
         </div>
       </section>
