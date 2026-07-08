@@ -5,7 +5,7 @@
 **Medium-fidelity storyboard for WGU's AI-powered Python coding coach + the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Version](https://img.shields.io/badge/Version-4.162-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-4.163-46B1EF?style=for-the-badge)](CHANGELOG.md)
 [![Screens](https://img.shields.io/badge/Screens-46-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
@@ -38,7 +38,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 | Surface | URL | Description |
 |:--------|:----|:------------|
-| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point — table segmented into **Student Skills** (6 live), **Staff Links** (3 live), and **Prototypes** (4 storyboard) + illustrative filler. **Start here.** **v4.162:** segmented into 3 sections. **v4.161:** live skill rows added. **v4.59:** promoted to root. |
+| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point — table segmented into **Student Skills** (8 live), **Staff Links** (3 live), and **Prototypes** (4 storyboard) + illustrative filler. **Start here.** **v4.163:** STU101 added. **v4.162:** segmented into 3 sections. **v4.161:** live skill rows added. **v4.59:** promoted to root. |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — Course overview → class heatmap → Skill/Topic drill → Learner profile, plus Access Denied. **5 screens.** |
 | **School Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S2–S4 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope: **Courses + Skills only.** **New Course is now a modal** from the dashboard; delete actions confirm via modal. **12 screens** (v4.152). |
@@ -63,6 +63,8 @@ All live rows open in a new tab from the landing page's Providers table, so the 
 | E010 | https://lrps.wgu.edu/provision/572551037 |
 | Calc | https://lrps.wgu.edu/provision/572551265 |
 | Teaching Engineering | https://lrps.wgu.edu/provision/572551549 |
+| D522 — Python for IT Automation | https://lrps.wgu.edu/provision/575242504 |
+| STU101 — Time Management & Study Skills | https://lrps.wgu.edu/provision/576572714 |
 
 ### Staff Links
 
