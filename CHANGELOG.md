@@ -8,6 +8,20 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.164 — 08 Jul 2026 — Removed all decorative filler rows; added real DEV links
+
+Per Brady, the Providers table should exactly mirror his own `skillproof-link-list_<DATE>.md` environment tracker — every real link present, nothing fake taking up space.
+
+- **Removed 10 decorative filler rows** that never went anywhere: SkillProof REST API Provider, Cicada PoC v1.1 and v1.0, OEX Studio, Panopto, MyMathLab, ProctorU, Welcome & Roster Sync, Coursera Programs Bridge, Instructional Designer Review.
+- **Added the 4 real DEV links** from the tracker (Python, Instructor Portal, School Admin, Super Admin), folded into the existing Student Skills / Staff Links sections rather than a new section — each marked with a new **amber "Broken" status pill** (`.dot.amber`, already defined in CSS) since DEV's LRPS provisioning is confirmed non-functional as of 08 Jul 2026, pending a JFT fix. Still clickable (opens in new tab) so the real URL is inspectable, just honestly labeled.
+- **tbody now contains only real content**: Student Skills (9, 1 broken DEV) → Staff Links (6, 3 broken DEV) → Prototypes (4, local storyboard links) — zero decorative rows.
+- `count-info` adjusted to `13,553` (net −6: −10 filler, +4 DEV); `<title>` → `v4.164`.
+
+### Files
+`index.html`, `README.md`, this file.
+
+---
+
 ## v4.163 — 08 Jul 2026 — STU101 added; reconciled README with D522's earlier untracked landing-page addition
 
 Brady built and deployed a new, deliberately non-technical Skill — **STU101, Time Management & Study Skills for College Success** (Course B002 · Brady's SoT Course) — to demonstrate SkillProof's range beyond coding subjects for an executive audience. 4 atomic Topics (Time Management / Avoiding Procrastination / Effective Study Habits / Exam Preparation), 1 Learning Objective each, each answerable in 1-2 sentences by design.
