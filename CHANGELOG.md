@@ -8,6 +8,19 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.163 — 08 Jul 2026 — STU101 added; reconciled README with D522's earlier untracked landing-page addition
+
+Brady built and deployed a new, deliberately non-technical Skill — **STU101, Time Management & Study Skills for College Success** (Course B002 · Brady's SoT Course) — to demonstrate SkillProof's range beyond coding subjects for an executive audience. 4 atomic Topics (Time Management / Avoiding Procrastination / Effective Study Habits / Exam Preparation), 1 Learning Objective each, each answerable in 1-2 sentences by design.
+
+- **New Student Skills row:** `[Skill]STU101 — Time Management & Study Skills` → `lrps.wgu.edu/provision/576572714`.
+- **Reconciliation:** D522 (`lrps.wgu.edu/provision/575242504`) was added to `index.html`'s landing table in an earlier untracked edit (commits `54a4d80`/`a9e9375`) but never made it into `README.md`'s Live Skills table or a CHANGELOG entry. Backfilled here alongside STU101.
+- `count-info` bumped to `13,559`; `<title>` → `v4.163`.
+
+### Files
+`index.html`, `README.md`, this file.
+
+---
+
 ## v4.162 — 18 Jun 2026 — Segmented table: Student Skills / Staff Links / Prototypes
 
 Added 3 real Staff LRPS links (Instructor Portal, Tenant Admin, Super Admin) and organized all live rows into three labelled sections with subtle divider rows.
