@@ -38,7 +38,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 | Surface | URL | Description |
 |:--------|:----|:------------|
-| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point — table segmented into **Student Skills** (9, incl. 1 broken DEV), **Staff Links** (6, incl. 3 broken DEV), and **Prototypes** (4 storyboard). **Start here.** **v4.165:** pagination removed — this is a single real, complete page now, not a sample of a huge simulated dataset. **v4.164:** all decorative filler rows removed; every real link from the SkillProof link tracker now represented, including broken DEV entries. **v4.163:** STU101 added. **v4.162:** segmented into 3 sections. **v4.161:** live skill rows added. **v4.59:** promoted to root. |
+| **LRPS Landing** (storyboard root) | [`/`](https://brady-wgu.github.io/SkillProof/) | Entry point — table segmented into **Student Skills** (33, incl. 1 broken DEV and 24 E010/D522 skill-level links), **Staff Links** (6, incl. 3 broken DEV), and **Prototypes** (4 storyboard). **Start here.** **v4.166:** added 24 skill-level LRPS links (10 for E010, 14 for D522) from the 16 Jul 2026 link-list update. **v4.165:** pagination removed — this is a single real, complete page now, not a sample of a huge simulated dataset. **v4.164:** all decorative filler rows removed; every real link from the SkillProof link tracker now represented, including broken DEV entries. **v4.163:** STU101 added. **v4.162:** segmented into 3 sections. **v4.161:** live skill rows added. **v4.59:** promoted to root. |
 | **Student Storyboard** | [`/student/`](https://brady-wgu.github.io/SkillProof/student/) | Sally's coaching loop — the v1.2 MVP, rebuilt v4.58 from the live JFT deployment at `wgu.teamjft.com`. **18 screens.** |
 | **Instructor Dashboard** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | Charlie — Course overview → class heatmap → Skill/Topic drill → Learner profile, plus Access Denied. **5 screens.** |
 | **School Admin Portal** | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | Alice — School Dashboard with KPI rollup + Course cards (Skills folded in) + filter/sort/search, Course view, drill-chain to learner detail (S2–S4 mirror of Instructor), New Skill wizard (5 steps) with Course Number/Title combobox, 4-level Analytics + Activity Log. Scope: **Courses + Skills only.** **New Course is now a modal** from the dashboard; delete actions confirm via modal. **12 screens** (v4.152). |
@@ -66,6 +66,44 @@ All live rows open in a new tab from the landing page's Providers table, so the 
 | D522 — Python for IT Automation | STAGE | https://lrps.wgu.edu/provision/575242504 |
 | STU101 — Time Management & Study Skills | STAGE | https://lrps.wgu.edu/provision/576572714 |
 | Python (DEV) | **DEV — broken, JFT fix pending** | https://lrps.wgu.edu/provision/560264094 |
+
+### E010 — Foundations of Programming (skill-level, STAGE)
+
+Added 16 Jul 2026. Breaks the single E010 course-level skill above into its 10 constituent Topics for granular LRPS testing.
+
+| Skill | Environment | LRPS launch URL |
+|:------|:------------|:----------------|
+| E010-01 Python Basics (E010) — master | STAGE | https://lrps.wgu.edu/provision/577937240 |
+| E010-02 Terminal Basics | STAGE | https://lrps.wgu.edu/provision/577937133 |
+| E010-03 Variables, Data Types & Type Conversion | STAGE | https://lrps.wgu.edu/provision/577937026 |
+| E010-04 Reading User Input & String Formatting | STAGE | https://lrps.wgu.edu/provision/577936948 |
+| E010-05 Operators | STAGE | https://lrps.wgu.edu/provision/577936808 |
+| E010-06 Conditionals & Loops | STAGE | https://lrps.wgu.edu/provision/577936681 |
+| E010-07 Strings & Lists | STAGE | https://lrps.wgu.edu/provision/577936540 |
+| E010-08 Dictionaries, Tuples & Sets | STAGE | https://lrps.wgu.edu/provision/577936443 |
+| E010-09 Functions | STAGE | https://lrps.wgu.edu/provision/577936322 |
+| E010-10 datetime, Debugging & Building Small Programs | STAGE | https://lrps.wgu.edu/provision/577936192 |
+
+### D522 — Python for IT Automation (skill-level, STAGE)
+
+Added 16 Jul 2026. Breaks the single D522 course-level skill above into its 14 constituent Topics. D522-13's course slug still reads `building-small-pro` from an earlier renaming test — link works, label is correct, slug is cosmetic-only.
+
+| Skill | Environment | LRPS launch URL |
+|:------|:------------|:----------------|
+| D522-01B Python Basics for IT Automation — master | STAGE | https://lrps.wgu.edu/provision/577934102 |
+| D522-02 Variables, Data Types & File Paths | STAGE | https://lrps.wgu.edu/provision/577933941 |
+| D522-03 String Formatting, Lists & Dictionaries | STAGE | https://lrps.wgu.edu/provision/577933773 |
+| D522-04 Type Conversion, Variable Naming & Comments | STAGE | https://lrps.wgu.edu/provision/577933647 |
+| D522-05 Functions, Docstrings & Script Structure | STAGE | https://lrps.wgu.edu/provision/577933512 |
+| D522-06 Conditionals, Loops & Writing a README | STAGE | https://lrps.wgu.edu/provision/577933385 |
+| D522-07 Listing Directory Contents, Reading Files & Writing Files | STAGE | https://lrps.wgu.edu/provision/577933189 |
+| D522-08 File Metadata & Copying Files | STAGE | https://lrps.wgu.edu/provision/577933021 |
+| D522-09 Reading CSV Files, Writing CSV Files & Sorting Data | STAGE | https://lrps.wgu.edu/provision/577932832 |
+| D522-10 The datetime Module & Working with JSON | STAGE | https://lrps.wgu.edu/provision/577932611 |
+| D522-11 os & socket Modules, Parsing Command Output, subprocess | STAGE | https://lrps.wgu.edu/provision/577932376 |
+| D522-12 logging & requests Modules, Exception Handling | STAGE | https://lrps.wgu.edu/provision/577932197 |
+| D522-13 paramiko & netmiko Modules ⚠️ (renaming test — slug unchanged) | STAGE | https://lrps.wgu.edu/provision/577932056 |
+| D522-14 Building Small Programs | STAGE | https://lrps.wgu.edu/provision/577935204 |
 
 ### Staff Links
 
