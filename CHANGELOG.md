@@ -8,6 +8,20 @@ This is a prototype repo — entries below cover the active JFT meeting follow-u
 
 ---
 
+## v4.166 — 16 Jul 2026 — Added 24 E010/D522 skill-level LRPS links
+
+Per the 16 Jul 2026 link-list update: E010 and D522 were broken out from a single course-level LRPS link each into their constituent Topics, for granular skill-level testing.
+
+- **Added 10 E010 rows** (`E010-01` through `E010-10`) under a new "E010 · Foundations of Programming — Skill-Level (Live)" divider, and **14 D522 rows** (`D522-01B` through `D522-14`) under a new "D522 · Python for IT Automation — Skill-Level (Live)" divider — both placed after the existing Student Skills section, before Staff Links.
+- Noted `D522-13`'s course slug (`building-small-pro`) still reflects an earlier renaming test; the link and label are both correct, only the slug is cosmetic.
+- `count-info` updated `19` → `43` providers; `<title>` → `v4.166`.
+- `README.md` Live Skills section gained matching E010 and D522 skill-level tables.
+
+### Files
+`index.html`, `README.md`, this file.
+
+---
+
 ## v4.165 — 08 Jul 2026 — Removed pagination: one real, complete page now
 
 Per Brady: "We only need this one page of real links from now on." With v4.164 having stripped every decorative filler row, the "huge simulated institution-wide table, viewing a page of it" framing (First/Prev/Next/Last, page-number input, rows-per-page select, "View 1–200 of N") no longer matched what the page actually is — a short, complete, real list.
