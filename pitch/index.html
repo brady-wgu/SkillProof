@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillProof — One-Slide Pitch</title>
+  <link rel="icon" type="image/png" href="../assets/wgu-favicon.png">
+  <link rel="stylesheet" href="https://brady-wgu.github.io/brady-design-system/fonts/aptos.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+  <!--
+    One-page mirror of skillproof-pitch-slide-v4-from-key.pptx (exported from
+    Skillproof_slide_video_keynote_v4.key). Rebuilt as real HTML/CSS rather than
+    a screenshot so it stays crisp at any size; the product-mockup panel is the
+    slide's actual click-to-play video (skillproof-demo-account3.mp4) with the
+    slide's own screenshot as its poster frame.
+  -->
+
+  <style>
+    :root {
+      --color-deep-navy: #001730;
+      --color-panel-navy: #0A2540;
+      --color-card-navy: #0F2B4A;
+      --color-bright-blue: #0070F0;
+      --color-sky-blue: #46B1EF;
+      --font-heading: 'Aptos Display', Arial, sans-serif;
+      --font-body: 'Aptos', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-deep-navy);
+      color: #fff;
+      min-height: 100vh;
+    }
+    a { color: var(--color-sky-blue); }
+    :focus-visible { outline: 3px solid var(--color-sky-blue); outline-offset: 2px; }
+
+    .skip-nav {
+      position: absolute; left: -9999px; top: auto;
+      width: 1px; height: 1px; overflow: hidden;
+      z-index: 9999; padding: 8px 16px;
+      background: var(--color-bright-blue); color: #fff;
+      font-weight: 700; text-decoration: none;
+    }
+    .skip-nav:focus { position: fixed; left: 0; top: 0; width: auto; height: auto; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .topbar-brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: #fff; font-weight: 700; font-size: 14px;
+    }
+    .topbar-brand img { height: 28px; }
+    .topbar-back {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px;
+    }
+    .topbar-back:hover { color: #fff; }
+    .topbar-back .material-icons-outlined { font-size: 18px; }
+
+    main { padding: 56px 40px 80px; }
+    .pitch-shell {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 56px; align-items: center;
+    }
+    @media (max-width: 980px) {
+      .pitch-shell { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .eyebrow {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-sky-blue);
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.15; font-weight: 700; color: #fff;
+      margin-bottom: 24px;
+    }
+    .pitch-desc {
+      font-size: 17px; line-height: 1.6;
+      color: rgba(255,255,255,0.8);
+      max-width: 46ch;
+      margin-bottom: 36px;
+    }
+
+    .stat-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-bottom: 40px; }
+    @media (max-width: 620px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat-card {
+      background: var(--color-card-navy);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 18px 18px;
+    }
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 26px; font-weight: 700; color: var(--color-sky-blue);
+      line-height: 1.1; margin-bottom: 8px;
+    }
+    .stat-value s { color: rgba(255,255,255,0.4); font-weight: 400; margin-right: 6px; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+
+    .pitch-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: 8px;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      border: 2px solid transparent; transition: background 150ms, border-color 150ms;
+    }
+    .btn-primary { background: var(--color-bright-blue); color: #fff; }
+    .btn-primary:hover { background: #005CC8; }
+    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
+    .btn-outline:hover { border-color: #fff; }
+    .btn .material-icons-outlined { font-size: 18px; }
+
+    .video-panel { position: relative; }
+    .video-frame {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #000;
+    }
+    .video-frame video {
+      display: block; width: 100%; height: auto;
+    }
+    .video-caption {
+      margin-top: 14px;
+      font-size: 13px; color: rgba(255,255,255,0.55);
+      text-align: center;
+    }
+
+    footer {
+      padding: 28px 40px 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: rgba(255,255,255,0.5);
+    }
+    footer a { color: rgba(255,255,255,0.7); }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<header class="topbar" role="banner">
+  <a class="topbar-brand" href="../index.html">
+    <img src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU">
+    SkillProof
+  </a>
+  <a class="topbar-back" href="../index.html">
+    <span class="material-icons-outlined">arrow_back</span> Back to storyboard
+  </a>
+</header>
+
+<main id="main-content">
+  <div class="pitch-shell">
+
+    <div>
+      <div class="eyebrow">WGU &nbsp;·&nbsp; Program Development</div>
+      <h1>Every student deserves their own path to mastery.</h1>
+      <p class="pitch-desc">
+        SkillProof is WGU's in-house AI coach — adaptive, LLM-driven practice
+        with real-time feedback that closes skill gaps before high-stakes
+        assessments.
+      </p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-value"><s>$500k</s>$50k</div>
+          <div class="stat-label">10x cheaper for hosting 5,000 students than the tutoring vendor already in use</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">$150K</div>
+          <div class="stat-label">total to build. No vendor licensing, no added headcount.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">Live</div>
+          <div class="stat-label">One engine, running today, ready for every course at WGU.</div>
+        </div>
+      </div>
+
+      <div class="pitch-actions">
+        <a class="btn btn-primary" href="assets/skillproof-pitch-slide.pptx">
+          <span class="material-icons-outlined">download</span> Download the slide (.pptx)
+        </a>
+        <a class="btn btn-outline" href="../index.html">
+          <span class="material-icons-outlined">dashboard</span> Explore the live storyboard
+        </a>
+      </div>
+    </div>
+
+    <div class="video-panel">
+      <div class="video-frame">
+        <video
+          controls
+          preload="metadata"
+          poster="assets/pitch-poster.png"
+          aria-label="SkillProof product demo — Coding Coach diagnostic walkthrough">
+          <source src="assets/skillproof-pitch-demo.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+          <a href="assets/skillproof-pitch-demo.mp4">Download the demo video</a> instead.
+        </video>
+      </div>
+      <div class="video-caption">Click to play — 30-second walkthrough of the live Coding Coach flow</div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span>SkillProof &middot; AI Coaching + Extensibility</span>
+  <span><a href="../index.html">LRPS storyboard</a> &middot; <a href="../student/index.html">Student</a> &middot; <a href="../instructor/index.html">Instructor</a> &middot; <a href="../tenant_admin/index.html">School Admin</a> &middot; <a href="../super_admin/index.html">Super Admin</a></span>
+</footer>
+
+</body>
+</html>
