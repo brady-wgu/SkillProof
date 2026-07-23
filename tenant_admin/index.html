@@ -1241,6 +1241,21 @@
       display: grid; grid-template-columns: auto auto auto;
       gap: 8px 16px; align-items: center; justify-content: start;
     }
+    .meta-bar-toggle {
+      margin-left: auto; flex-shrink: 0;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; width: 26px; height: 26px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; padding: 0;
+      transition: background 150ms;
+    }
+    .meta-bar-toggle:hover { background: rgba(255,255,255,0.22); }
+    .meta-bar-toggle .material-icons-outlined { font-size: 18px; display: block; transition: transform 150ms; }
+    .meta-bar.metabar-collapsed .meta-bar-flows,
+    .meta-bar.metabar-collapsed .flow-nav { display: none; }
+    .meta-bar.metabar-collapsed .meta-bar-header { padding-bottom: 0; border-bottom: none; }
+    .meta-bar.metabar-collapsed .meta-bar-toggle .material-icons-outlined { transform: rotate(180deg); }
+    body.metabar-collapsed { padding-bottom: 40px; }
     .flow-id { font-size: 12px; font-weight: 700; color: var(--pgn-color-info-base); white-space: nowrap; }
     .flow-desc { font-size: 12px; color: rgba(255,255,255,0.78); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .flow-nav { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -3543,8 +3558,11 @@ Address the learner by their first name. Never use "student" as the form of addr
 
 <div class="meta-bar" role="navigation" aria-label="Storyboard screen navigation">
   <div class="meta-bar-header">
-    <span><span class="meta-id">DEMO ONLY</span> &middot; SkillProof School Admin Portal &middot; Persona: Alice</span>
+    <span><span class="meta-id">SkillProof Project Link Page</span> &middot; School Admin Portal</span>
     <span style="margin-left:auto;"><a href="../" class="meta-link">&larr; Storyboard Index</a></span>
+    <button class="meta-bar-toggle" type="button" onclick="toggleMetaBar()" aria-label="Hide demo bar" aria-expanded="true" title="Hide/show this demo bar">
+      <span class="material-icons-outlined">expand_more</span>
+    </button>
   </div>
   <div class="meta-bar-flows">
     <span class="flow-id">Flow A</span>
@@ -3583,6 +3601,25 @@ Address the learner by their first name. Never use "student" as the form of addr
 </div>
 
 <script>
+  /* Collapsible demo meta-bar (persisted via localStorage) */
+  (function() {
+    var KEY = 'skillproof-metabar-collapsed';
+    var bar = document.querySelector('.meta-bar');
+    if (!bar) return;
+    var btn = bar.querySelector('.meta-bar-toggle');
+    function apply(collapsed) {
+      bar.classList.toggle('metabar-collapsed', collapsed);
+      document.body.classList.toggle('metabar-collapsed', collapsed);
+      if (btn) btn.setAttribute('aria-expanded', String(!collapsed));
+    }
+    apply(localStorage.getItem(KEY) === '1');
+    window.toggleMetaBar = function() {
+      var collapsed = !bar.classList.contains('metabar-collapsed');
+      apply(collapsed);
+      localStorage.setItem(KEY, collapsed ? '1' : '0');
+    };
+  })();
+
   /* STORYBOARD NAVIGATION — not production code */
   const TOTAL_SCREENS = 12; // S1-5 drill / S6-10 Skill wizard / S11 analytics / S12 Archived Skills. New Course = modal from the dashboard.
 

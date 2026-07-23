@@ -84,7 +84,7 @@ async def capture_portal(page, portal, theme):
         # land in the hero shot (the alphabetically-sorted OEX rows above add
         # no value to the hero).
         if portal["singlePage"] == "landing":
-            # Hero (v4.161): capture from the top so the Providers table header
+            # Hero (v4.161): capture from the top so the Links table header
             # and the six live Skill launch rows lead the shot.
             await page.evaluate(
                 "window.scrollTo({top: 0, behavior: 'instant'})"
