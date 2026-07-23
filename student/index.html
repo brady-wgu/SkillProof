@@ -734,6 +734,21 @@
       padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .meta-bar .meta-id { color: var(--pgn-color-info-base); font-weight: 700; }
+    .meta-bar-toggle {
+      margin-left: auto; flex-shrink: 0;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; width: 26px; height: 26px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; padding: 0;
+      transition: background 150ms;
+    }
+    .meta-bar-toggle:hover { background: rgba(255,255,255,0.22); }
+    .meta-bar-toggle .material-icons-outlined { font-size: 18px; display: block; transition: transform 150ms; }
+    .meta-bar.metabar-collapsed .meta-bar-flows,
+    .meta-bar.metabar-collapsed .flow-nav { display: none; }
+    .meta-bar.metabar-collapsed .meta-bar-header { padding-bottom: 0; border-bottom: none; }
+    .meta-bar.metabar-collapsed .meta-bar-toggle .material-icons-outlined { transform: rotate(180deg); }
+    body.metabar-collapsed.has-meta-bar { padding-bottom: 40px; }
     .flow-nav { display: flex; gap: 6px; flex-wrap: wrap; padding-top: 2px; }
     .step-btn {
       background: transparent; border: 1px solid rgba(255,255,255,0.25);
@@ -2270,9 +2285,12 @@ def count_passing(scores):</textarea>
      ================================================================ -->
 <nav class="meta-bar" aria-label="Storyboard navigation">
   <div class="meta-bar-header">
-    <span class="meta-id">SkillProof Coding Coach</span>
-    <span>· Student Portal · Live-MVP rebuild · v4.58</span>
+    <span class="meta-id">SkillProof Project Link Page</span>
+    <span>· Student Portal</span>
     <span style="margin-left:auto;"><a href="../" class="meta-link">← Storyboard Index</a></span>
+    <button class="meta-bar-toggle" type="button" onclick="toggleMetaBar()" aria-label="Hide demo bar" aria-expanded="true" title="Hide/show this demo bar">
+      <span class="material-icons-outlined">expand_more</span>
+    </button>
   </div>
   <div class="flow-nav" role="tablist" aria-label="Screen jump buttons">
     <button class="step-btn active" onclick="goToScreen(1)" aria-current="step">01 Landing</button>
@@ -2297,6 +2315,25 @@ def count_passing(scores):</textarea>
 </nav>
 
 <script>
+  /* Collapsible demo meta-bar (persisted via localStorage) */
+  (function() {
+    var KEY = 'skillproof-metabar-collapsed';
+    var bar = document.querySelector('.meta-bar');
+    if (!bar) return;
+    var btn = bar.querySelector('.meta-bar-toggle');
+    function apply(collapsed) {
+      bar.classList.toggle('metabar-collapsed', collapsed);
+      document.body.classList.toggle('metabar-collapsed', collapsed);
+      if (btn) btn.setAttribute('aria-expanded', String(!collapsed));
+    }
+    apply(localStorage.getItem(KEY) === '1');
+    window.toggleMetaBar = function() {
+      var collapsed = !bar.classList.contains('metabar-collapsed');
+      apply(collapsed);
+      localStorage.setItem(KEY, collapsed ? '1' : '0');
+    };
+  })();
+
   /* ================================================================
      STORYBOARD NAVIGATION
      ================================================================ */

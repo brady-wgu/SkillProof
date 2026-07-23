@@ -38,7 +38,7 @@ Per Brady: "We only need this one page of real links from now on." With v4.164 h
 
 ## v4.164 — 08 Jul 2026 — Removed all decorative filler rows; added real DEV links
 
-Per Brady, the Providers table should exactly mirror his own `skillproof-link-list_<DATE>.md` environment tracker — every real link present, nothing fake taking up space.
+Per Brady, the Links table should exactly mirror his own `skillproof-link-list_<DATE>.md` environment tracker — every real link present, nothing fake taking up space.
 
 - **Removed 10 decorative filler rows** that never went anywhere: SkillProof REST API Provider, Cicada PoC v1.1 and v1.0, OEX Studio, Panopto, MyMathLab, ProctorU, Welcome & Roster Sync, Coursera Programs Bridge, Instructional Designer Review.
 - **Added the 4 real DEV links** from the tracker (Python, Instructor Portal, School Admin, Super Admin), folded into the existing Student Skills / Staff Links sections rather than a new section — each marked with a new **amber "Broken" status pill** (`.dot.amber`, already defined in CSS) since DEV's LRPS provisioning is confirmed non-functional as of 08 Jul 2026, pending a JFT fix. Still clickable (opens in new tab) so the real URL is inspectable, just honestly labeled.
@@ -79,9 +79,9 @@ Added 3 real Staff LRPS links (Instructor Portal, Tenant Admin, Super Admin) and
 
 ## v4.161 — 15 Jun 2026 — Live Skills launcher: 6 deployed LRPS skills wired into the landing table
 
-Brady deployed six real skills in LRPS. Added them as live rows at the top of the landing Providers table so the shared GitHub Pages URL doubles as a launch hub.
+Brady deployed six real skills in LRPS. Added them as live rows at the top of the landing Links table so the shared GitHub Pages URL doubles as a launch hub.
 
-- **Six `tr.live` skill rows** (Python, Professionalism, Applied UX, E010, Calc, Teaching Engineering) at the top of the Providers `<tbody>`, each linking to its real `lrps.wgu.edu/provision/<id>` URL. Name + Launch only, `[Skill]` name-tag, `Created By` Brady, provision id in the Id column.
+- **Six `tr.live` skill rows** (Python, Professionalism, Applied UX, E010, Calc, Teaching Engineering) at the top of the Links `<tbody>`, each linking to its real `lrps.wgu.edu/provision/<id>` URL. Name + Launch only, `[Skill]` name-tag, `Created By` Brady, provision id in the Id column.
 - **Launch in a new tab:** the row-click/keyboard handler now opens absolute `http(s)` `data-launch` targets via `window.open(..., '_blank', 'noopener')`; the four relative persona-portal rows keep their same-tab behavior.
 - Cosmetic: count-info `13,549` → `13,555`; stale `<title>` `v4.91` → `v4.161`.
 
@@ -128,7 +128,7 @@ Two cleanups from the JFT morning standup.
 **1. Controls only where there's something to sort/filter.** The site-wide auto-injector had added filter chips / search / sort to tables that don't warrant them. Suppressed each via a reversible `data-no-controls` flag — **no JS change**:
 - **TA S7** Topics & Learning Objectives editors (×4) — editable objective lists, not data to sort.
 - **TA S8** the LLM / model list.
-- **Root / LRPS** "Providers" table — LRPS isn't a JFT deliverable, and it already shows its own native sort icons.
+- **Root / LRPS** "Links" table — LRPS isn't a JFT deliverable, and it already shows its own native sort icons.
 - **SA S1** "Where the spend is going" (3-row top-consumers).
 - **Student** S5 / S6 / S10 coaching-feedback tables + S11 "Welcome back" (per direction to clear all Student screens).
 

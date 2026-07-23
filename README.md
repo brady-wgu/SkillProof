@@ -51,7 +51,7 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 
 ## Live Skills (LRPS)
 
-All live rows open in a new tab from the landing page's Providers table, so the shared landing link doubles as a launch hub. The table is segmented into three sections and mirrors `.../SkillProof/g_Beta Test/skillproof-link-list_<DATE>.md` — Brady's own environment link tracker — exactly (no decorative filler rows). PROD isn't listed anywhere below because it doesn't exist as infrastructure yet (JFT todo, ~1-2 weeks after the D522 iteration as of 08 Jul 2026); every entry here is STAGE unless marked DEV.
+All live rows open in a new tab from the landing page's Links table, so the shared landing link doubles as a launch hub. The table is segmented into three sections and mirrors `.../SkillProof/g_Beta Test/skillproof-link-list_<DATE>.md` — Brady's own environment link tracker — exactly (no decorative filler rows). PROD isn't listed anywhere below because it doesn't exist as infrastructure yet (JFT todo, ~1-2 weeks after the D522 iteration as of 08 Jul 2026); every entry here is STAGE unless marked DEV.
 
 ### Student Skills
 
