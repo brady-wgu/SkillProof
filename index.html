@@ -393,9 +393,18 @@
        STATUS DOTS
        ================================================================ */
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-    .dot.green { background: #45AE5B; }
-    .dot.amber { background: #F3D06E; }
-    .dot.red { background: #E03B2F; }
+    /* Status dot colours are the SELECT OPTION colours from the Superhuman
+       developer page, so one link reads the same on both surfaces:
+         Up #187B34 . Unknown #8B6C1D . Down #A91E1E                      */
+    .dot.green { background: #187B34; }
+    .dot.amber { background: #8B6C1D; }
+    .dot.red { background: #A91E1E; }
+    /* Those three are chosen for light backgrounds. On an 8px dot against
+       the dark theme they go muddy, so the same hues are lifted rather than
+       leaving a status marker nobody can read. */
+    [data-theme="dark"] .dot.green { background: #3FA85C; }
+    [data-theme="dark"] .dot.amber { background: #C9A227; }
+    [data-theme="dark"] .dot.red   { background: #E0524B; }
     .dot.blue    { background: var(--pgn-color-brand-base); }
     .dot.gray    { background: var(--pgn-color-gray-300); }
     .status-pill {
@@ -838,41 +847,47 @@
               </thead>
               <tbody>
                 <!-- =========================================================
-                     DEV -- development server. Staff portals first, then the Skills hosted
-                     there. All four links have read "Tool not found" from the LTI
-                     service since 01 Jul 2026: the registrations are gone, which is
-                     a provisioning fact rather than an outage.
+                     PROD -- production. Separate domain AND separate infrastructure, not a
+                     rename of staging, and it does not share the DEV/STAGE Client ID.
+                     Student-only pilot since 04 SEP 2026.
                      ========================================================= -->
                 <tr class="section-divider">
-                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">construction</span>Dev &middot; Development server</td>
+                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">public</span>Prod &middot; Production, live pilot</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568111823" aria-label="Launch Instructor Portal in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">568111823</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731462" aria-label="Launch the SkillProof Instructor portal in LRPS (opens in new tab)">
+                  <td class="id-cell">584731462</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
-                  <td><span class="status-pill"><span class="dot amber"></span>Broken</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/568111823</td>
-                  <td class="date-cell">01 Jul 2026</td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/584731462</td>
+                  <td class="date-cell">04 Sep 2026</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568112003" aria-label="Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">568112003</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731527" aria-label="Launch the SkillProof School Admin portal in LRPS (opens in new tab)">
+                  <td class="id-cell">584731527</td>
                   <td class="name-cell lrps-name">School Admin</td>
-                  <td><span class="status-pill"><span class="dot amber"></span>Broken</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/568112003</td>
-                  <td class="date-cell">01 Jul 2026</td>
+                  <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/584731527</td>
+                  <td class="date-cell">04 Sep 2026</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575058314" aria-label="Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">575058314</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731569" aria-label="Launch the SkillProof Super Admin portal in LRPS (opens in new tab)">
+                  <td class="id-cell">584731569</td>
                   <td class="name-cell lrps-name">Super Admin</td>
-                  <td><span class="status-pill"><span class="dot amber"></span>Broken</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/575058314</td>
-                  <td class="date-cell">01 Jul 2026</td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/584731569</td>
+                  <td class="date-cell">04 Sep 2026</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/560264094" aria-label="Launch Python skill in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">560264094</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731391" aria-label="Launch Python skill in LRPS (opens in new tab)">
+                  <td class="id-cell">584731391</td>
                   <td class="name-cell lrps-name">Python</td>
-                  <td><span class="status-pill"><span class="dot amber"></span>Broken</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/560264094</td>
-                  <td class="date-cell">01 Jul 2026</td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/584731391</td>
+                  <td class="date-cell">04 Sep 2026</td>
+                </tr>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584729320" aria-label="Launch the Training Course in LRPS (opens in new tab)">
+                  <td class="id-cell">584729320</td>
+                  <td class="name-cell lrps-name">Training Course</td>
+                  <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/584729320</td>
+                  <td class="date-cell">04 Sep 2026</td>
                 </tr>
 
                 <!-- =========================================================
@@ -886,291 +901,287 @@
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/570441081" aria-label="Launch Instructor Portal in LRPS (opens in new tab)">
                   <td class="id-cell">570441081</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/570441081</td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568442441" aria-label="Launch School Admin in LRPS (opens in new tab)">
                   <td class="id-cell">568442441</td>
                   <td class="name-cell lrps-name">School Admin</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/568442441</td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/573162919" aria-label="Launch Super Admin in LRPS (opens in new tab)">
                   <td class="id-cell">573162919</td>
                   <td class="name-cell lrps-name">Super Admin</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/573162919</td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568442570" aria-label="Launch Python skill in LRPS (opens in new tab)">
                   <td class="id-cell">568442570</td>
                   <td class="name-cell lrps-name">Python</td>
-                  <td><span class="status-pill"><span class="dot gray"></span>Unverified</span></td>
+                  <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/568442570</td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572550562" aria-label="Launch Professionalism skill in LRPS (opens in new tab)">
                   <td class="id-cell">572550562</td>
                   <td class="name-cell lrps-name">Professionalism</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/572550562</td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572550817" aria-label="Launch Applied UX skill in LRPS (opens in new tab)">
                   <td class="id-cell">572550817</td>
                   <td class="name-cell lrps-name">Applied UX</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/572550817</td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551037" aria-label="Launch E010 skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551037</td>
                   <td class="name-cell lrps-name">E010</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/572551037</td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551265" aria-label="Launch Calc skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551265</td>
                   <td class="name-cell lrps-name">Calc</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/572551265</td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551549" aria-label="Launch Teaching Engineering skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551549</td>
                   <td class="name-cell lrps-name">Teaching Engineering</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/572551549</td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575242504" aria-label="Launch D522 Python for IT Automation skill in LRPS (opens in new tab)">
                   <td class="id-cell">575242504</td>
                   <td class="name-cell lrps-name">D522 — Python for IT Automation</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/575242504</td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/576572714" aria-label="Launch STU101 Time Management &amp; Study Skills in LRPS (opens in new tab)">
                   <td class="id-cell">576572714</td>
                   <td class="name-cell lrps-name">STU101 — Time Management &amp; Study Skills</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/576572714</td>
                   <td class="date-cell">08 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937240" aria-label="Launch E010-01 Python Basics (E010) — master in LRPS (opens in new tab)">
                   <td class="id-cell">577937240</td>
                   <td class="name-cell lrps-name">E010-01 Python Basics (E010) — master</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577937240</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937133" aria-label="Launch E010-02 Terminal Basics in LRPS (opens in new tab)">
                   <td class="id-cell">577937133</td>
                   <td class="name-cell lrps-name">E010-02 Terminal Basics</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577937133</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937026" aria-label="Launch E010-03 Variables, Data Types &amp; Type Conversion in LRPS (opens in new tab)">
                   <td class="id-cell">577937026</td>
                   <td class="name-cell lrps-name">E010-03 Variables, Data Types &amp; Type Conversion</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577937026</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936948" aria-label="Launch E010-04 Reading User Input &amp; String Formatting in LRPS (opens in new tab)">
                   <td class="id-cell">577936948</td>
                   <td class="name-cell lrps-name">E010-04 Reading User Input &amp; String Formatting</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577936948</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936808" aria-label="Launch E010-05 Operators in LRPS (opens in new tab)">
                   <td class="id-cell">577936808</td>
                   <td class="name-cell lrps-name">E010-05 Operators</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577936808</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936681" aria-label="Launch E010-06 Conditionals &amp; Loops in LRPS (opens in new tab)">
                   <td class="id-cell">577936681</td>
                   <td class="name-cell lrps-name">E010-06 Conditionals &amp; Loops</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577936681</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936540" aria-label="Launch E010-07 Strings &amp; Lists in LRPS (opens in new tab)">
                   <td class="id-cell">577936540</td>
                   <td class="name-cell lrps-name">E010-07 Strings &amp; Lists</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577936540</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936443" aria-label="Launch E010-08 Dictionaries, Tuples &amp; Sets in LRPS (opens in new tab)">
                   <td class="id-cell">577936443</td>
                   <td class="name-cell lrps-name">E010-08 Dictionaries, Tuples &amp; Sets</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577936443</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936322" aria-label="Launch E010-09 Functions in LRPS (opens in new tab)">
                   <td class="id-cell">577936322</td>
                   <td class="name-cell lrps-name">E010-09 Functions</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577936322</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936192" aria-label="Launch E010-10 datetime, Debugging &amp; Building Small Programs in LRPS (opens in new tab)">
                   <td class="id-cell">577936192</td>
                   <td class="name-cell lrps-name">E010-10 datetime, Debugging &amp; Building Small Programs</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577936192</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577934102" aria-label="Launch D522-01B Python Basics for IT Automation — master in LRPS (opens in new tab)">
                   <td class="id-cell">577934102</td>
                   <td class="name-cell lrps-name">D522-01B Python Basics for IT Automation — master</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577934102</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933941" aria-label="Launch D522-02 Variables, Data Types &amp; File Paths in LRPS (opens in new tab)">
                   <td class="id-cell">577933941</td>
                   <td class="name-cell lrps-name">D522-02 Variables, Data Types &amp; File Paths</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577933941</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933773" aria-label="Launch D522-03 String Formatting, Lists &amp; Dictionaries in LRPS (opens in new tab)">
                   <td class="id-cell">577933773</td>
                   <td class="name-cell lrps-name">D522-03 String Formatting, Lists &amp; Dictionaries</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577933773</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933647" aria-label="Launch D522-04 Type Conversion, Variable Naming &amp; Comments in LRPS (opens in new tab)">
                   <td class="id-cell">577933647</td>
                   <td class="name-cell lrps-name">D522-04 Type Conversion, Variable Naming &amp; Comments</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577933647</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933512" aria-label="Launch D522-05 Functions, Docstrings &amp; Script Structure in LRPS (opens in new tab)">
                   <td class="id-cell">577933512</td>
                   <td class="name-cell lrps-name">D522-05 Functions, Docstrings &amp; Script Structure</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577933512</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933385" aria-label="Launch D522-06 Conditionals, Loops &amp; Writing a README in LRPS (opens in new tab)">
                   <td class="id-cell">577933385</td>
                   <td class="name-cell lrps-name">D522-06 Conditionals, Loops &amp; Writing a README</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577933385</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933189" aria-label="Launch D522-07 Listing Directory Contents, Reading Files &amp; Writing Files in LRPS (opens in new tab)">
                   <td class="id-cell">577933189</td>
                   <td class="name-cell lrps-name">D522-07 Listing Directory Contents, Reading Files &amp; Writing Files</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577933189</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933021" aria-label="Launch D522-08 File Metadata &amp; Copying Files in LRPS (opens in new tab)">
                   <td class="id-cell">577933021</td>
                   <td class="name-cell lrps-name">D522-08 File Metadata &amp; Copying Files</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577933021</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932832" aria-label="Launch D522-09 Reading CSV Files, Writing CSV Files &amp; Sorting Data in LRPS (opens in new tab)">
                   <td class="id-cell">577932832</td>
                   <td class="name-cell lrps-name">D522-09 Reading CSV Files, Writing CSV Files &amp; Sorting Data</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577932832</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932611" aria-label="Launch D522-10 The datetime Module &amp; Working with JSON in LRPS (opens in new tab)">
                   <td class="id-cell">577932611</td>
                   <td class="name-cell lrps-name">D522-10 The datetime Module &amp; Working with JSON</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577932611</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932376" aria-label="Launch D522-11 os &amp; socket Modules, Parsing Command Output, subprocess in LRPS (opens in new tab)">
                   <td class="id-cell">577932376</td>
                   <td class="name-cell lrps-name">D522-11 os &amp; socket Modules, Parsing Command Output, subprocess</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577932376</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932197" aria-label="Launch D522-12 logging &amp; requests Modules, Exception Handling in LRPS (opens in new tab)">
                   <td class="id-cell">577932197</td>
                   <td class="name-cell lrps-name">D522-12 logging &amp; requests Modules, Exception Handling</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577932197</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932056" aria-label="Launch D522-13 paramiko &amp; netmiko Modules in LRPS (opens in new tab) — currently broken, dead link from a post-deploy rename (LOG-033/034)">
                   <td class="id-cell">577932056</td>
                   <td class="name-cell lrps-name">D522-13 paramiko &amp; netmiko Modules</td>
-                  <td><span class="status-pill"><span class="dot amber"></span>Broken</span></td>
+                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577932056</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577935204" aria-label="Launch D522-14 Building Small Programs in LRPS (opens in new tab)">
                   <td class="id-cell">577935204</td>
                   <td class="name-cell lrps-name">D522-14 Building Small Programs</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">lrps.wgu.edu/provision/577935204</td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
 
                 <!-- =========================================================
-                     PROD -- production. Separate domain AND separate infrastructure, not a
-                     rename of staging, and it does not share the DEV/STAGE Client ID.
-                     Student-only pilot since 04 SEP 2026.
+                     DEV -- development server, currently unusable. All four links
+                     reach WGU SSO correctly, then the LTI service answers "Tool
+                     not found". Measured 10 SEP 2026, the DEV hosts are also down:
+                     wgu-dev-api accepts a TCP connection and never responds on 443
+                     or 80, and wgu-dev serves a certificate for another name. Two
+                     separate faults, escalated.
                      ========================================================= -->
                 <tr class="section-divider">
-                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">public</span>Prod &middot; Production, live pilot</td>
+                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">construction</span>Dev &middot; Development server</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731462" aria-label="Launch the SkillProof Instructor portal in LRPS (opens in new tab)">
-                  <td class="id-cell">584731462</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568111823" aria-label="Launch Instructor Portal in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
+                  <td class="id-cell">568111823</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731462</td>
-                  <td class="date-cell">04 Sep 2026</td>
+                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/568111823</td>
+                  <td class="date-cell">01 Jul 2026</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731527" aria-label="Launch the SkillProof School Admin portal in LRPS (opens in new tab)">
-                  <td class="id-cell">584731527</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568112003" aria-label="Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
+                  <td class="id-cell">568112003</td>
                   <td class="name-cell lrps-name">School Admin</td>
-                  <td><span class="status-pill"><span class="dot gray"></span>Unverified</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731527</td>
-                  <td class="date-cell">04 Sep 2026</td>
+                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/568112003</td>
+                  <td class="date-cell">01 Jul 2026</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731569" aria-label="Launch the SkillProof Super Admin portal in LRPS (opens in new tab)">
-                  <td class="id-cell">584731569</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575058314" aria-label="Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
+                  <td class="id-cell">575058314</td>
                   <td class="name-cell lrps-name">Super Admin</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731569</td>
-                  <td class="date-cell">04 Sep 2026</td>
+                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/575058314</td>
+                  <td class="date-cell">01 Jul 2026</td>
                 </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731391" aria-label="Launch Python skill in LRPS (opens in new tab)">
-                  <td class="id-cell">584731391</td>
+                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/560264094" aria-label="Launch Python skill in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
+                  <td class="id-cell">560264094</td>
                   <td class="name-cell lrps-name">Python</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731391</td>
-                  <td class="date-cell">04 Sep 2026</td>
-                </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584729320" aria-label="Launch the Training Course in LRPS (opens in new tab)">
-                  <td class="id-cell">584729320</td>
-                  <td class="name-cell lrps-name">Training Course</td>
-                  <td><span class="status-pill"><span class="dot gray"></span>Unverified</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584729320</td>
-                  <td class="date-cell">04 Sep 2026</td>
+                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
+                  <td class="desc-cell">lrps.wgu.edu/provision/560264094</td>
+                  <td class="date-cell">01 Jul 2026</td>
                 </tr>
 
                 <!-- =========================================================
@@ -1186,28 +1197,28 @@
                 <tr class="live" tabindex="0" data-launch="student/" aria-label="Open the SkillProof Student walkthrough (screenshots, no login)">
                   <td class="id-cell">269781248</td>
                   <td class="name-cell lrps-name">Student</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">brady-wgu.github.io/SkillProof/student/</td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="instructor/" aria-label="Open the SkillProof Instructor walkthrough (screenshots, no login)">
                   <td class="id-cell">269781302</td>
                   <td class="name-cell lrps-name">Instructor</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">brady-wgu.github.io/SkillProof/instructor/</td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="tenant_admin/" aria-label="Open the SkillProof School Admin walkthrough (screenshots, no login)">
                   <td class="id-cell">269781301</td>
                   <td class="name-cell lrps-name">School Admin</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">brady-wgu.github.io/SkillProof/tenant_admin/</td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="super_admin/" aria-label="Open the SkillProof Super Admin walkthrough (screenshots, no login)">
                   <td class="id-cell">269781303</td>
                   <td class="name-cell lrps-name">Super Admin</td>
-                  <td><span class="status-pill"><span class="dot green"></span>Active</span></td>
+                  <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell">brady-wgu.github.io/SkillProof/super_admin/</td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
