@@ -70,10 +70,19 @@ SENTRY_STORE = os.environ.get(
 # wrong: on 10 SEP 2026 auth::stage::student returned FAIL_LTI while that link
 # was perfectly healthy -- the account we launched it with was the wrong type.
 # Publishing that as "Broken" tells a reader the product is down when it is not.
+#
+# Wording and colour match the Superhuman developer page exactly, on
+# instruction (10 SEP 2026). One link described in two vocabularies across two
+# pages is worse than one page, because a reader has to work out whether
+# "Broken" and "Down" mean the same thing.
+#
+# Down is RED here, where it used to be amber. Amber now carries Unknown,
+# where caution is the right reading; a dead link showing caution-yellow
+# understated it.
 STATUS_UI = {
-    'active':     ('green', 'Active'),
-    'broken':     ('amber', 'Broken'),
-    'unverified': ('gray',  'Unverified'),
+    'active':     ('green', 'Up'),
+    'unverified': ('amber', 'Unknown'),
+    'broken':     ('red',   'Down'),
 }
 
 
