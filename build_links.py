@@ -283,24 +283,42 @@ def merge_status(data, private):
     """
     state = load(SENTRY_STORE, 'the sentry store')
     measured = {}
+    broad = {}
     for scope in state.get('scopes', {}).values():
         at = scope.get('at')
         for check_id, verdict in scope.get('verdicts', {}).items():
             parts = check_id.split('::')
-            if len(parts) != 3 or parts[0] != 'auth':
+            if not parts or parts[0] != 'auth':
                 continue
-            env, persona = parts[1], parts[2]
-            for sid, rec in private['byId'].items():
-                # An explicit persona wins over sniffing the label. "Python
-                # (PROD)" is the student entry link but reads nothing like one,
-                # so label-sniffing alone silently skips it and PROD Student
-                # keeps a hand-typed status forever.
-                rec_persona = rec.get('persona') or _persona_of(rec['label'])
-                if rec['env'] != env or rec_persona != persona:
-                    continue
-                mapped = VERDICT_MAP.get(verdict)
-                if mapped:
+            mapped = VERDICT_MAP.get(verdict)
+            if not mapped:
+                continue
+            if len(parts) == 4:
+                # Per-link key, auth::<env>::<persona>::<lrpsId>, written by the
+                # full-coverage sweep. The id IS the join, so no label sniffing
+                # is involved and no sibling link is affected.
+                sid = parts[3]
+                if sid in private['byId']:
                     measured[sid] = (mapped, at, verdict)
+            elif len(parts) == 3:
+                # Legacy per-persona key: one verdict standing in for a whole
+                # persona. Held aside rather than applied directly, because a
+                # single 'auth::stage::student' would otherwise stamp its verdict
+                # onto all 32 stage student rows and bury the per-link results.
+                env, persona = parts[1], parts[2]
+                for sid, rec in private['byId'].items():
+                    # An explicit persona wins over sniffing the label. "Python
+                    # (PROD)" is the student entry link but reads nothing like one,
+                    # so label-sniffing alone silently skips it and PROD Student
+                    # keeps a hand-typed status forever.
+                    rec_persona = rec.get('persona') or _persona_of(rec['label'])
+                    if rec['env'] != env or rec_persona != persona:
+                        continue
+                    broad[sid] = (mapped, at, verdict)
+
+    # Per-link measurements always win over a persona-wide one.
+    for sid, val in broad.items():
+        measured.setdefault(sid, val)
 
     changed = 0
     for s in data['skills']:
