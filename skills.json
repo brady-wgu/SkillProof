@@ -37,7 +37,8 @@
       "status": "active",
       "statusCheckedAt": "2026-09-10T08:32:44.418Z",
       "statusSource": "measured",
-      "lastVerdict": "RENDERED_OK"
+      "lastVerdict": "RENDERED_OK",
+      "audience": "staff"
     },
     {
       "id": "584731527",
@@ -50,7 +51,8 @@
       "status": "unverified",
       "statusCheckedAt": "2026-09-10T08:32:44.418Z",
       "statusSource": "measured",
-      "lastVerdict": "NOT_CONFIGURED"
+      "lastVerdict": "NOT_CONFIGURED",
+      "audience": "staff"
     },
     {
       "id": "584731569",
@@ -63,7 +65,8 @@
       "status": "active",
       "statusCheckedAt": "2026-09-10T08:32:44.418Z",
       "statusSource": "measured",
-      "lastVerdict": "RENDERED_OK"
+      "lastVerdict": "RENDERED_OK",
+      "audience": "staff"
     },
     {
       "id": "584731391",
@@ -76,7 +79,8 @@
       "status": "active",
       "statusCheckedAt": "2026-09-10T08:32:44.418Z",
       "statusSource": "measured",
-      "lastVerdict": "RENDERED_OK"
+      "lastVerdict": "RENDERED_OK",
+      "audience": "student"
     },
     {
       "id": "584729320",
@@ -88,7 +92,8 @@
       "added": "04 Sep 2026",
       "status": "unverified",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "570441081",
@@ -101,7 +106,8 @@
       "status": "active",
       "statusCheckedAt": "2026-09-10T08:31:59.963Z",
       "statusSource": "measured",
-      "lastVerdict": "RENDERED_OK"
+      "lastVerdict": "RENDERED_OK",
+      "audience": "staff"
     },
     {
       "id": "568442441",
@@ -114,7 +120,8 @@
       "status": "active",
       "statusCheckedAt": "2026-09-10T08:31:59.963Z",
       "statusSource": "measured",
-      "lastVerdict": "RENDERED_OK"
+      "lastVerdict": "RENDERED_OK",
+      "audience": "staff"
     },
     {
       "id": "573162919",
@@ -127,7 +134,8 @@
       "status": "active",
       "statusCheckedAt": "2026-09-10T08:31:59.963Z",
       "statusSource": "measured",
-      "lastVerdict": "RENDERED_OK"
+      "lastVerdict": "RENDERED_OK",
+      "audience": "staff"
     },
     {
       "id": "568442570",
@@ -140,7 +148,8 @@
       "status": "unverified",
       "statusCheckedAt": "2026-09-10T08:31:59.963Z",
       "statusSource": "measured",
-      "lastVerdict": "FAIL_LTI"
+      "lastVerdict": "FAIL_LTI",
+      "audience": "student"
     },
     {
       "id": "572550562",
@@ -152,7 +161,8 @@
       "added": "15 Jun 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "572550817",
@@ -164,7 +174,8 @@
       "added": "15 Jun 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "572551037",
@@ -176,7 +187,8 @@
       "added": "15 Jun 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "572551265",
@@ -188,7 +200,8 @@
       "added": "15 Jun 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "572551549",
@@ -200,7 +213,8 @@
       "added": "15 Jun 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "575242504",
@@ -212,7 +226,8 @@
       "added": "01 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "576572714",
@@ -224,7 +239,8 @@
       "added": "08 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577937240",
@@ -236,7 +252,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577937133",
@@ -248,7 +265,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577937026",
@@ -260,7 +278,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577936948",
@@ -272,7 +291,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577936808",
@@ -284,7 +304,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577936681",
@@ -296,7 +317,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577936540",
@@ -308,7 +330,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577936443",
@@ -320,7 +343,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577936322",
@@ -332,7 +356,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577936192",
@@ -344,7 +369,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577934102",
@@ -356,7 +382,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577933941",
@@ -368,7 +395,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577933773",
@@ -380,7 +408,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577933647",
@@ -392,7 +421,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577933512",
@@ -404,7 +434,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577933385",
@@ -416,7 +447,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577933189",
@@ -428,7 +460,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577933021",
@@ -440,7 +473,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577932832",
@@ -452,7 +486,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577932611",
@@ -464,7 +499,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577932376",
@@ -476,7 +512,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577932197",
@@ -488,7 +525,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577932056",
@@ -500,7 +538,8 @@
       "added": "16 Jul 2026",
       "status": "broken",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "577935204",
@@ -512,7 +551,8 @@
       "added": "16 Jul 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "student"
     },
     {
       "id": "568111823",
@@ -525,7 +565,8 @@
       "status": "broken",
       "statusCheckedAt": "2026-09-10T08:31:08.720Z",
       "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE"
+      "lastVerdict": "FAIL_LINK_STALE",
+      "audience": "staff"
     },
     {
       "id": "568112003",
@@ -538,7 +579,8 @@
       "status": "broken",
       "statusCheckedAt": "2026-09-10T08:31:08.720Z",
       "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE"
+      "lastVerdict": "FAIL_LINK_STALE",
+      "audience": "staff"
     },
     {
       "id": "575058314",
@@ -551,7 +593,8 @@
       "status": "broken",
       "statusCheckedAt": "2026-09-10T08:31:08.720Z",
       "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE"
+      "lastVerdict": "FAIL_LINK_STALE",
+      "audience": "staff"
     },
     {
       "id": "560264094",
@@ -564,7 +607,8 @@
       "status": "broken",
       "statusCheckedAt": "2026-09-10T08:31:08.720Z",
       "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE"
+      "lastVerdict": "FAIL_LINK_STALE",
+      "audience": "student"
     },
     {
       "id": "269781248",
@@ -576,7 +620,8 @@
       "added": "13 Aug 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "demo"
     },
     {
       "id": "269781302",
@@ -588,7 +633,8 @@
       "added": "13 Aug 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "demo"
     },
     {
       "id": "269781301",
@@ -600,7 +646,8 @@
       "added": "13 Aug 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "demo"
     },
     {
       "id": "269781303",
@@ -612,7 +659,8 @@
       "added": "13 Aug 2026",
       "status": "active",
       "statusCheckedAt": null,
-      "statusSource": "manual"
+      "statusSource": "manual",
+      "audience": "demo"
     }
   ],
   "tbodyTail": "\n              ",
