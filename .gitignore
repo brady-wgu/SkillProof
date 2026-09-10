@@ -13,3 +13,9 @@ __pycache__/
 
 # Node / JS toolchain (in case future tooling lands here)
 node_modules/
+
+# Rendered Superhuman developer body: contains Client IDs and internal
+# hostnames. Written to temp by build_links.py; named here in case --out is
+# ever pointed at the repo by hand.
+.sh-body.html
+skillproof-sh-body.html
