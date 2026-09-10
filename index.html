@@ -481,6 +481,43 @@
     [data-theme="dark"] .pgn__data-table tr.group-divider td {
       background: transparent; color: rgba(255,255,255,0.35);
     }
+    /* LINK column: a real anchor plus a copy button.
+       The row itself launches on click, which made the URL text almost
+       impossible to select -- every attempt opened a tab. An anchor restores
+       native behaviour (right-click "Copy link address", ctrl-click, middle
+       click) and the button copies in one click, for pasting into a private
+       window to sign in as a different test account. */
+    .link-wrap { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; }
+    .link-url {
+      color: var(--pgn-color-gray-700); text-decoration: none;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      /* An anchor drags as a link by default, which would replace one
+         selection problem with another. Dragging across it selects
+         text, as it did when this was a plain cell. */
+      -webkit-user-drag: none; user-select: text;
+    }
+    .link-url:hover { text-decoration: underline; color: var(--pgn-color-brand-base); }
+    .copy-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; flex-shrink: 0;
+      padding: 0; border: 1px solid transparent; border-radius: 4px;
+      background: transparent; cursor: pointer;
+      color: var(--pgn-color-gray-400);
+      opacity: 0; transition: opacity .12s ease, color .12s ease;
+    }
+    .copy-btn .material-icons-outlined { font-size: 15px; }
+    /* Revealed on row hover, but ALWAYS visible once focused, so it is
+       reachable by keyboard and not a mouse-only affordance. */
+    tr:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
+    .copy-btn:hover {
+      color: var(--pgn-color-brand-base);
+      border-color: var(--pgn-color-gray-200);
+      background: var(--pgn-color-white);
+    }
+    .copy-btn:focus-visible { outline: 2px solid var(--pgn-color-brand-base); outline-offset: 1px; }
+    .copy-btn.copied { opacity: 1; color: #187B34; border-color: #187B34; }
+    [data-theme="dark"] .copy-btn:hover { background: rgba(255,255,255,0.08); }
+    [data-theme="dark"] .copy-btn.copied { color: #3FA85C; border-color: #3FA85C; }
     .table-scroll { overflow-x: auto; }
 
     .pgn__data-table {
@@ -881,21 +918,21 @@
                   <td class="id-cell">584731462</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731462</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731462" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731462</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731462" aria-label="Copy lrps.wgu.edu/provision/584731462 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731527" aria-label="Launch the SkillProof School Admin portal in LRPS (opens in new tab)">
                   <td class="id-cell">584731527</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731527</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731527" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731527</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731527" aria-label="Copy lrps.wgu.edu/provision/584731527 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731569" aria-label="Launch the SkillProof Super Admin portal in LRPS (opens in new tab)">
                   <td class="id-cell">584731569</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731569</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731569" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731569</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731569" aria-label="Copy lrps.wgu.edu/provision/584731569 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="group-divider">
@@ -905,14 +942,14 @@
                   <td class="id-cell">584731391</td>
                   <td class="name-cell lrps-name">Python</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584731391</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731391" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731391</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731391" aria-label="Copy lrps.wgu.edu/provision/584731391 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584729320" aria-label="Launch the Training Course in LRPS (opens in new tab)">
                   <td class="id-cell">584729320</td>
                   <td class="name-cell lrps-name">Training Course</td>
                   <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/584729320</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584729320" target="_blank" rel="noopener">lrps.wgu.edu/provision/584729320</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584729320" aria-label="Copy lrps.wgu.edu/provision/584729320 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
 
@@ -931,21 +968,21 @@
                   <td class="id-cell">570441081</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/570441081</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/570441081" target="_blank" rel="noopener">lrps.wgu.edu/provision/570441081</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/570441081" aria-label="Copy lrps.wgu.edu/provision/570441081 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568442441" aria-label="Launch School Admin in LRPS (opens in new tab)">
                   <td class="id-cell">568442441</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/568442441</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568442441" target="_blank" rel="noopener">lrps.wgu.edu/provision/568442441</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568442441" aria-label="Copy lrps.wgu.edu/provision/568442441 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/573162919" aria-label="Launch Super Admin in LRPS (opens in new tab)">
                   <td class="id-cell">573162919</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/573162919</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/573162919" target="_blank" rel="noopener">lrps.wgu.edu/provision/573162919</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/573162919" aria-label="Copy lrps.wgu.edu/provision/573162919 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="group-divider">
@@ -955,224 +992,224 @@
                   <td class="id-cell">568442570</td>
                   <td class="name-cell lrps-name">Python</td>
                   <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/568442570</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568442570" target="_blank" rel="noopener">lrps.wgu.edu/provision/568442570</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568442570" aria-label="Copy lrps.wgu.edu/provision/568442570 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572550562" aria-label="Launch Professionalism skill in LRPS (opens in new tab)">
                   <td class="id-cell">572550562</td>
                   <td class="name-cell lrps-name">Professionalism</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/572550562</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572550562" target="_blank" rel="noopener">lrps.wgu.edu/provision/572550562</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572550562" aria-label="Copy lrps.wgu.edu/provision/572550562 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572550817" aria-label="Launch Applied UX skill in LRPS (opens in new tab)">
                   <td class="id-cell">572550817</td>
                   <td class="name-cell lrps-name">Applied UX</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/572550817</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572550817" target="_blank" rel="noopener">lrps.wgu.edu/provision/572550817</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572550817" aria-label="Copy lrps.wgu.edu/provision/572550817 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551037" aria-label="Launch E010 skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551037</td>
                   <td class="name-cell lrps-name">E010</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/572551037</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551037" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551037</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551037" aria-label="Copy lrps.wgu.edu/provision/572551037 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551265" aria-label="Launch Calc skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551265</td>
                   <td class="name-cell lrps-name">Calc</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/572551265</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551265" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551265</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551265" aria-label="Copy lrps.wgu.edu/provision/572551265 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551549" aria-label="Launch Teaching Engineering skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551549</td>
                   <td class="name-cell lrps-name">Teaching Engineering</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/572551549</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551549" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551549</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551549" aria-label="Copy lrps.wgu.edu/provision/572551549 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575242504" aria-label="Launch D522 Python for IT Automation skill in LRPS (opens in new tab)">
                   <td class="id-cell">575242504</td>
                   <td class="name-cell lrps-name">D522 — Python for IT Automation</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/575242504</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/575242504" target="_blank" rel="noopener">lrps.wgu.edu/provision/575242504</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/575242504" aria-label="Copy lrps.wgu.edu/provision/575242504 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/576572714" aria-label="Launch STU101 Time Management &amp; Study Skills in LRPS (opens in new tab)">
                   <td class="id-cell">576572714</td>
                   <td class="name-cell lrps-name">STU101 — Time Management &amp; Study Skills</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/576572714</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/576572714" target="_blank" rel="noopener">lrps.wgu.edu/provision/576572714</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/576572714" aria-label="Copy lrps.wgu.edu/provision/576572714 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">08 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937240" aria-label="Launch E010-01 Python Basics (E010) — master in LRPS (opens in new tab)">
                   <td class="id-cell">577937240</td>
                   <td class="name-cell lrps-name">E010-01 Python Basics (E010) — master</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577937240</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937240" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937240</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937240" aria-label="Copy lrps.wgu.edu/provision/577937240 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937133" aria-label="Launch E010-02 Terminal Basics in LRPS (opens in new tab)">
                   <td class="id-cell">577937133</td>
                   <td class="name-cell lrps-name">E010-02 Terminal Basics</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577937133</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937133" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937133</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937133" aria-label="Copy lrps.wgu.edu/provision/577937133 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937026" aria-label="Launch E010-03 Variables, Data Types &amp; Type Conversion in LRPS (opens in new tab)">
                   <td class="id-cell">577937026</td>
                   <td class="name-cell lrps-name">E010-03 Variables, Data Types &amp; Type Conversion</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577937026</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937026" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937026</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937026" aria-label="Copy lrps.wgu.edu/provision/577937026 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936948" aria-label="Launch E010-04 Reading User Input &amp; String Formatting in LRPS (opens in new tab)">
                   <td class="id-cell">577936948</td>
                   <td class="name-cell lrps-name">E010-04 Reading User Input &amp; String Formatting</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577936948</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936948" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936948</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936948" aria-label="Copy lrps.wgu.edu/provision/577936948 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936808" aria-label="Launch E010-05 Operators in LRPS (opens in new tab)">
                   <td class="id-cell">577936808</td>
                   <td class="name-cell lrps-name">E010-05 Operators</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577936808</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936808" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936808</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936808" aria-label="Copy lrps.wgu.edu/provision/577936808 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936681" aria-label="Launch E010-06 Conditionals &amp; Loops in LRPS (opens in new tab)">
                   <td class="id-cell">577936681</td>
                   <td class="name-cell lrps-name">E010-06 Conditionals &amp; Loops</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577936681</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936681" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936681</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936681" aria-label="Copy lrps.wgu.edu/provision/577936681 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936540" aria-label="Launch E010-07 Strings &amp; Lists in LRPS (opens in new tab)">
                   <td class="id-cell">577936540</td>
                   <td class="name-cell lrps-name">E010-07 Strings &amp; Lists</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577936540</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936540" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936540</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936540" aria-label="Copy lrps.wgu.edu/provision/577936540 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936443" aria-label="Launch E010-08 Dictionaries, Tuples &amp; Sets in LRPS (opens in new tab)">
                   <td class="id-cell">577936443</td>
                   <td class="name-cell lrps-name">E010-08 Dictionaries, Tuples &amp; Sets</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577936443</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936443" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936443</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936443" aria-label="Copy lrps.wgu.edu/provision/577936443 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936322" aria-label="Launch E010-09 Functions in LRPS (opens in new tab)">
                   <td class="id-cell">577936322</td>
                   <td class="name-cell lrps-name">E010-09 Functions</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577936322</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936322" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936322</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936322" aria-label="Copy lrps.wgu.edu/provision/577936322 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936192" aria-label="Launch E010-10 datetime, Debugging &amp; Building Small Programs in LRPS (opens in new tab)">
                   <td class="id-cell">577936192</td>
                   <td class="name-cell lrps-name">E010-10 datetime, Debugging &amp; Building Small Programs</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577936192</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936192" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936192</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936192" aria-label="Copy lrps.wgu.edu/provision/577936192 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577934102" aria-label="Launch D522-01B Python Basics for IT Automation — master in LRPS (opens in new tab)">
                   <td class="id-cell">577934102</td>
                   <td class="name-cell lrps-name">D522-01B Python Basics for IT Automation — master</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577934102</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577934102" target="_blank" rel="noopener">lrps.wgu.edu/provision/577934102</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577934102" aria-label="Copy lrps.wgu.edu/provision/577934102 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933941" aria-label="Launch D522-02 Variables, Data Types &amp; File Paths in LRPS (opens in new tab)">
                   <td class="id-cell">577933941</td>
                   <td class="name-cell lrps-name">D522-02 Variables, Data Types &amp; File Paths</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577933941</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933941" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933941</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933941" aria-label="Copy lrps.wgu.edu/provision/577933941 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933773" aria-label="Launch D522-03 String Formatting, Lists &amp; Dictionaries in LRPS (opens in new tab)">
                   <td class="id-cell">577933773</td>
                   <td class="name-cell lrps-name">D522-03 String Formatting, Lists &amp; Dictionaries</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577933773</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933773" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933773</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933773" aria-label="Copy lrps.wgu.edu/provision/577933773 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933647" aria-label="Launch D522-04 Type Conversion, Variable Naming &amp; Comments in LRPS (opens in new tab)">
                   <td class="id-cell">577933647</td>
                   <td class="name-cell lrps-name">D522-04 Type Conversion, Variable Naming &amp; Comments</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577933647</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933647" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933647</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933647" aria-label="Copy lrps.wgu.edu/provision/577933647 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933512" aria-label="Launch D522-05 Functions, Docstrings &amp; Script Structure in LRPS (opens in new tab)">
                   <td class="id-cell">577933512</td>
                   <td class="name-cell lrps-name">D522-05 Functions, Docstrings &amp; Script Structure</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577933512</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933512" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933512</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933512" aria-label="Copy lrps.wgu.edu/provision/577933512 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933385" aria-label="Launch D522-06 Conditionals, Loops &amp; Writing a README in LRPS (opens in new tab)">
                   <td class="id-cell">577933385</td>
                   <td class="name-cell lrps-name">D522-06 Conditionals, Loops &amp; Writing a README</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577933385</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933385" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933385</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933385" aria-label="Copy lrps.wgu.edu/provision/577933385 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933189" aria-label="Launch D522-07 Listing Directory Contents, Reading Files &amp; Writing Files in LRPS (opens in new tab)">
                   <td class="id-cell">577933189</td>
                   <td class="name-cell lrps-name">D522-07 Listing Directory Contents, Reading Files &amp; Writing Files</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577933189</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933189" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933189</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933189" aria-label="Copy lrps.wgu.edu/provision/577933189 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933021" aria-label="Launch D522-08 File Metadata &amp; Copying Files in LRPS (opens in new tab)">
                   <td class="id-cell">577933021</td>
                   <td class="name-cell lrps-name">D522-08 File Metadata &amp; Copying Files</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577933021</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933021" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933021</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933021" aria-label="Copy lrps.wgu.edu/provision/577933021 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932832" aria-label="Launch D522-09 Reading CSV Files, Writing CSV Files &amp; Sorting Data in LRPS (opens in new tab)">
                   <td class="id-cell">577932832</td>
                   <td class="name-cell lrps-name">D522-09 Reading CSV Files, Writing CSV Files &amp; Sorting Data</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577932832</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932832" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932832</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932832" aria-label="Copy lrps.wgu.edu/provision/577932832 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932611" aria-label="Launch D522-10 The datetime Module &amp; Working with JSON in LRPS (opens in new tab)">
                   <td class="id-cell">577932611</td>
                   <td class="name-cell lrps-name">D522-10 The datetime Module &amp; Working with JSON</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577932611</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932611" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932611</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932611" aria-label="Copy lrps.wgu.edu/provision/577932611 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932376" aria-label="Launch D522-11 os &amp; socket Modules, Parsing Command Output, subprocess in LRPS (opens in new tab)">
                   <td class="id-cell">577932376</td>
                   <td class="name-cell lrps-name">D522-11 os &amp; socket Modules, Parsing Command Output, subprocess</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577932376</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932376" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932376</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932376" aria-label="Copy lrps.wgu.edu/provision/577932376 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932197" aria-label="Launch D522-12 logging &amp; requests Modules, Exception Handling in LRPS (opens in new tab)">
                   <td class="id-cell">577932197</td>
                   <td class="name-cell lrps-name">D522-12 logging &amp; requests Modules, Exception Handling</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577932197</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932197" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932197</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932197" aria-label="Copy lrps.wgu.edu/provision/577932197 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932056" aria-label="Launch D522-13 paramiko &amp; netmiko Modules in LRPS (opens in new tab) — currently broken, dead link from a post-deploy rename (LOG-033/034)">
                   <td class="id-cell">577932056</td>
                   <td class="name-cell lrps-name">D522-13 paramiko &amp; netmiko Modules</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577932056</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932056" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932056</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932056" aria-label="Copy lrps.wgu.edu/provision/577932056 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577935204" aria-label="Launch D522-14 Building Small Programs in LRPS (opens in new tab)">
                   <td class="id-cell">577935204</td>
                   <td class="name-cell lrps-name">D522-14 Building Small Programs</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/577935204</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577935204" target="_blank" rel="noopener">lrps.wgu.edu/provision/577935204</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577935204" aria-label="Copy lrps.wgu.edu/provision/577935204 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
 
@@ -1194,21 +1231,21 @@
                   <td class="id-cell">568111823</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/568111823</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568111823" target="_blank" rel="noopener">lrps.wgu.edu/provision/568111823</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568111823" aria-label="Copy lrps.wgu.edu/provision/568111823 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568112003" aria-label="Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
                   <td class="id-cell">568112003</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/568112003</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568112003" target="_blank" rel="noopener">lrps.wgu.edu/provision/568112003</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568112003" aria-label="Copy lrps.wgu.edu/provision/568112003 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575058314" aria-label="Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
                   <td class="id-cell">575058314</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/575058314</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/575058314" target="_blank" rel="noopener">lrps.wgu.edu/provision/575058314</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/575058314" aria-label="Copy lrps.wgu.edu/provision/575058314 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="group-divider">
@@ -1218,7 +1255,7 @@
                   <td class="id-cell">560264094</td>
                   <td class="name-cell lrps-name">Python</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell">lrps.wgu.edu/provision/560264094</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/560264094" target="_blank" rel="noopener">lrps.wgu.edu/provision/560264094</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/560264094" aria-label="Copy lrps.wgu.edu/provision/560264094 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
 
@@ -1236,28 +1273,28 @@
                   <td class="id-cell">269781248</td>
                   <td class="name-cell lrps-name">Student</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">brady-wgu.github.io/SkillProof/student/</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/student/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/student/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/student/" aria-label="Copy brady-wgu.github.io/SkillProof/student/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="instructor/" aria-label="Open the SkillProof Instructor walkthrough (screenshots, no login)">
                   <td class="id-cell">269781302</td>
                   <td class="name-cell lrps-name">Instructor</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">brady-wgu.github.io/SkillProof/instructor/</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/instructor/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/instructor/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/instructor/" aria-label="Copy brady-wgu.github.io/SkillProof/instructor/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="tenant_admin/" aria-label="Open the SkillProof School Admin walkthrough (screenshots, no login)">
                   <td class="id-cell">269781301</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">brady-wgu.github.io/SkillProof/tenant_admin/</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/tenant_admin/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/tenant_admin/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/tenant_admin/" aria-label="Copy brady-wgu.github.io/SkillProof/tenant_admin/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="super_admin/" aria-label="Open the SkillProof Super Admin walkthrough (screenshots, no login)">
                   <td class="id-cell">269781303</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell">brady-wgu.github.io/SkillProof/super_admin/</td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/super_admin/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/super_admin/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/super_admin/" aria-label="Copy brady-wgu.github.io/SkillProof/super_admin/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
 
@@ -1328,18 +1365,73 @@
     };
   })();
 
-  /* Make the four live SkillProof rows launch their portals */
+  /* Row click launches the LRPS link -- except inside the LINK column.
+     That column holds a real anchor and a copy button, because the row
+     handler used to swallow every click there: selecting the URL to paste
+     into a private window meant ctrl-dragging through the text and still
+     getting a new tab. The LINK cell now behaves like a link. */
   document.querySelectorAll('tr.live[data-launch]').forEach(function(row) {
     var url = row.getAttribute('data-launch');
     var go = function() {
       if (/^https?:\/\//i.test(url)) { window.open(url, '_blank', 'noopener'); }
       else { window.location.href = url; }
     };
-    row.addEventListener('click', go);
+    row.addEventListener('click', function(e) {
+      /* The LINK cell handles itself: the anchor navigates, the button copies. */
+      if (e.target.closest && e.target.closest('.desc-cell')) { return; }
+      /* Finishing a text selection anywhere else must not open a tab either. */
+      var sel = window.getSelection && window.getSelection();
+      if (sel && String(sel).length > 0) { return; }
+      go();
+    });
     row.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
     });
   });
+
+  /* Copy a row's LRPS link in one click. */
+  (function() {
+    function flash(btn, ok) {
+      var icon = btn.querySelector('.material-icons-outlined');
+      var was = icon.textContent, title = btn.getAttribute('title');
+      icon.textContent = ok ? 'check' : 'error_outline';
+      btn.setAttribute('title', ok ? 'Copied' : 'Press Ctrl+C to copy');
+      btn.classList.toggle('copied', ok);
+      setTimeout(function() {
+        icon.textContent = was;
+        btn.setAttribute('title', title);
+        btn.classList.remove('copied');
+      }, 1400);
+    }
+    document.querySelectorAll('.copy-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        /* Without this the row handler above fires too and opens a tab --
+           the exact behaviour the button exists to avoid. */
+        e.preventDefault();
+        e.stopPropagation();
+        var text = btn.getAttribute('data-copy');
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(function() { flash(btn, true); },
+                                                   function() { fallback(text, btn); });
+        } else {
+          /* file:// and any non-secure context have no async clipboard. */
+          fallback(text, btn);
+        }
+      });
+    });
+    function fallback(text, btn) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+      document.body.removeChild(ta);
+      flash(btn, ok);
+    }
+  })();
 
   /* Theme toggle (matches the four SkillProof portals) */
   function toggleTheme() {
