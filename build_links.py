@@ -109,7 +109,7 @@ ROW = (
     '<a class="link-url" href="%(href)s" target="_blank" rel="noopener">%(display)s</a>'
     '<button type="button" class="copy-btn" data-copy="%(href)s" '
     'aria-label="Copy %(display)s to the clipboard" title="Copy link">'
-    '<span class="material-icons-outlined" aria-hidden="true">content_copy</span>'
+    '<svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg>'
     '</button></span></td>\n'
     '                  <td class="date-cell">%(added)s</td>\n'
     '                </tr>\n'
@@ -117,8 +117,9 @@ ROW = (
 
 DIVIDER = (
     '                <tr class="section-divider">\n'
-    '                  <td colspan="5"><span class="material-icons-outlined" '
-    'style="font-size:13px; vertical-align:-2px; margin-right:6px;">%(icon)s</span>%(label)s</td>\n'
+    '                  <td colspan="5"><svg class="icon" aria-hidden="true" '
+    'style="font-size:13px; vertical-align:-2px; margin-right:6px;">'
+    '<use href="#i-%(icon)s"></use></svg>%(label)s</td>\n'
     '                </tr>\n'
 )
 
@@ -127,10 +128,15 @@ DIVIDER = (
 # to the environment header, not compete with it.
 GROUP_DIVIDER = (
     '                <tr class="group-divider">\n'
-    '                  <td colspan="5"><span class="material-icons-outlined">'
-    '%(icon)s</span>%(label)s</td>\n'
+    '                  <td colspan="5"><svg class="icon" aria-hidden="true">'
+    '<use href="#i-%(icon)s"></use></svg>%(label)s</td>\n'
     '                </tr>\n'
 )
+
+# Where a relative demo link resolves to. The copy button has to hand over an
+# absolute URL -- a relative one pasted into another browser's address bar goes
+# nowhere, and pasting elsewhere is the entire point of the button.
+PAGES_BASE = 'https://brady-wgu.github.io/SkillProof/'
 
 # Staff first, on instruction (10 SEP 2026): the page's designated reader is
 # WGU staff, so the screens they manage the platform with lead, and the Skills
@@ -139,11 +145,6 @@ GROUP_DIVIDER = (
 # Rows are SORTED into this order rather than trusted to arrive in it, so a
 # Skill appended anywhere in skills.json still lands in the right group. Adding
 # one is a single entry that declares its audience; nothing else moves.
-# Where a relative demo link resolves to. The copy button has to hand over an
-# absolute URL -- a relative one pasted into another browser's address bar goes
-# nowhere, and pasting elsewhere is the entire point of the button.
-PAGES_BASE = 'https://brady-wgu.github.io/SkillProof/'
-
 AUDIENCE_ORDER = ['staff', 'student']
 AUDIENCE = {
     'staff':   ('badge', 'Staff management portals'),
