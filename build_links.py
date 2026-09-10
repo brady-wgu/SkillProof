@@ -76,6 +76,8 @@ STATUS_UI = {
     'unverified': ('gray',  'Unverified'),
 }
 
+
+
 VERDICT_MAP = {
     'RENDERED_OK':         'active',
     'EMPTY_BUT_CORRECT':   'active',      # PROD is a student-only pilot; empty
@@ -181,6 +183,7 @@ def splice(current, tbody):
     a = current.index('<tbody>') + len('<tbody>')
     b = current.index('</tbody>')
     out = current[:a] + tbody + current[b:]
+
     # The sidebar advertises a row count. It is the single most likely thing to
     # rot, because nothing forces a human to update it when they add a row.
     n = out.count('<tr class="live"')
