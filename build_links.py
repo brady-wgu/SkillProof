@@ -291,7 +291,7 @@ def render_superhuman(data, private, measured=None):
                 '<td><a href="https://lrps.wgu.edu/provision/%s">%s</a></td>'
                 '<td>%s</td></tr>'
                 % (esc(sid), esc(name), note,
-                   STATUS_UI[status.get(sid, 'unverified')][1],
+                   esc(SH_STATUS[status.get(sid, 'unverified')]),
                    esc(sid), esc(sid), launch))
         table = ('<table><thead><tr><th>LRPS ID</th><th>Skill</th><th>Status</th>'
                  '<th>LRPS Link</th><th>Direct LTI Launch</th></tr></thead>'
@@ -324,10 +324,34 @@ def render_superhuman(data, private, measured=None):
     return out
 
 
-SH_DOC = 'lYb3KcpRR9'
-# The REST page id, which is NOT the section-... id MCP reports and NOT the
-# ry6S7Q in the browser URL. Both of those return HTTP 404.
-SH_PAGE = 'canvas-TSIMry6S7Q'
+# The Superhuman doc and page ids live in the PRIVATE overlay, not here. They
+# are internal document identifiers and this repo is public; an id alone grants
+# nobody access, but it does not belong in a world-readable file either.
+def sh_target(private):
+    cfg = private.get('superhuman') or {}
+    if not cfg.get('doc') or not cfg.get('page'):
+        sys.exit('skills.private.json has no superhuman.doc / superhuman.page')
+    # Let the overlay override the status wording without touching this file.
+    for k, v in (cfg.get('statusLabels') or {}).items():
+        if k in SH_STATUS:
+            SH_STATUS[k] = v
+    return cfg
+
+# Superhuman uses Brady's operational vocabulary, which is not the public page's.
+# A reader of the developer page wants "is it up right now"; a reader of the
+# public page wants "is this link usable". Same three states, different words,
+# so the two are mapped rather than sharing one label.
+#
+# These strings are not cosmetic. The Status column is a SELECT list whose
+# options carry the green/amber/red conditional formatting, and colour is
+# applied by exact string match -- a value that is not an option renders
+# unstyled. The API cannot create or edit a column (the spec exposes /columns
+# as GET only), so the options are set by hand in the UI and this side must
+# follow them exactly. Overridable from the private overlay so renaming an
+# option is a data edit, not a code change.
+SH_STATUS = {'active': 'Up', 'unverified': 'Unknown', 'broken': 'Down'}
+SH_DOT = {'active': '🟢', 'unverified': '🟡', 'broken': '🔴'}
+
 
 ENV_TITLE = {
     'dev':    'DEV',
@@ -342,7 +366,23 @@ WRITER = r'C:\dev\repos\superhuman-docs-writer'
 WRITER_PY = os.path.join(WRITER, '.venv', 'Scripts', 'python.exe')
 
 
-def publish_superhuman(body_path):
+def publish_superhuman(body_path, doc, page):
+    # REFUSED, permanently. This existed to do the one-time conversion of 93
+    # bullets into 4 tables, on 10 SEP 2026. It has now done that.
+    #
+    # The page has since been shaped by hand: H1 headings per environment,
+    # horizontal rules between them, CONFIDENTIAL sub-headings, three renamed
+    # tables and a description block at the top. replace-all deletes every
+    # element and every table and rebuilds from this renderer, which knows about
+    # none of it -- so running it again destroys that work and hands back new
+    # table ids, taking any conditional formatting with them.
+    #
+    # sync_superhuman.py is the steady-state path: it changes cell VALUES in the
+    # tables that already exist and leaves structure alone.
+    sys.exit(
+        'REFUSED: replace-all would destroy the hand-built page structure and\n'
+        'every table (and its formatting) along with it. The one-time conversion\n'
+        'is done. Use:  python sync_superhuman.py --commit')
     """Write the rendered body to the live page, in-process.
 
     This used to print a command for someone to paste into a terminal. That is
@@ -355,9 +395,9 @@ def publish_superhuman(body_path):
     views` reports none on this canvas. The writer emits a rollback file either
     way.
     """
-    cmd = [WRITER_PY, 'sh_page.py', 'replace-all', SH_DOC, SH_PAGE,
+    cmd = [WRITER_PY, 'sh_page.py', 'replace-all', doc, page,
            os.path.abspath(body_path), '--html', '--maintenance', '--commit']
-    print('publishing to Superhuman page %s ...' % SH_PAGE)
+    print('publishing to Superhuman page %s ...' % page)
     # PYTHONIOENCODING is not optional: listing or writing this page crashes on
     # cp1252 against the warning glyph in the D522-13 entry.
     proc = subprocess.run(cmd, cwd=WRITER, capture_output=True, text=True,
@@ -368,6 +408,78 @@ def publish_superhuman(body_path):
     if proc.returncode != 0:
         print('PUBLISH FAILED (exit %d) -- the page is unchanged' % proc.returncode)
     return proc.returncode
+
+
+def rollup_counts(data):
+    """Counts behind the roll-up. LRPS links only.
+
+    The four click-through walkthroughs are pages, not launches; folding them
+    in would inflate the green number with things the runner never tests.
+    """
+    lrps = [s for s in data['skills'] if s['section'] != 'demo']
+    n = dict((k, 0) for k in SH_STATUS)
+    for s in lrps:
+        n[s['status']] = n.get(s['status'], 0) + 1
+    measured = sum(1 for s in lrps if s.get('statusSource') == 'measured')
+    when = max([s.get('statusCheckedAt') or '' for s in lrps] or [''])
+    return lrps, n, measured, when
+
+
+ENV_SHORT = {'dev': 'DEV', 'stage': 'STAGE', 'prod': 'PROD'}
+
+
+def rollup_html(data):
+    """The one line that answers "is anything down", above the three pie charts.
+
+    Brady, 10 SEP 2026: "I expect all links to be up 100% of the time, so if any
+    link is DOWN, then we have a problem. The issue isn't the proportion of
+    broken links, it's whether the site is down or not."
+
+    So this leads with a VERDICT and names the offenders. It deliberately does
+    not lead with a proportion: "36 of 44 up" reads as reassuring when the true
+    statement is "five links are down". The counts still appear, after the
+    verdict, because the pie charts below break them down per environment.
+
+    Nothing is excluded or acknowledged away, on instruction. Four of the five
+    down are the DEV links that have been stale since 01 Jul 2026, so this stays
+    red until DEV is reprovisioned -- which is the point of it.
+
+    Colour is emoji, not conditional formatting: the API cannot write a
+    conditional format, and those live on tables, which this line is not.
+
+    Counts cover LRPS links only. The four click-through walkthroughs are pages,
+    not launches; folding them in would inflate the green number with things the
+    runner never tests.
+    """
+    lrps = [s for s in data['skills'] if s['section'] != 'demo']
+    n = dict((k, 0) for k in SH_STATUS)
+    for s in lrps:
+        n[s['status']] = n.get(s['status'], 0) + 1
+    measured = sum(1 for s in lrps if s.get('statusSource') == 'measured')
+    when = max([s.get('statusCheckedAt') or '' for s in lrps] or [''])
+    down = [s for s in lrps if s['status'] == 'broken']
+
+    if down:
+        verdict = ('%s <b>%d LINK%s DOWN</b>'
+                   % (SH_DOT['broken'], len(down), '' if len(down) == 1 else 'S'))
+        who = '; '.join('%s %s %s' % (ENV_SHORT.get(s['section'], s['section']),
+                                      s['id'], esc(s['name']))
+                        for s in down)
+        detail = ' &nbsp; %s' % who
+    else:
+        verdict = '%s <b>ALL %d LINKS UP</b>' % (SH_DOT['active'], len(lrps))
+        detail = ''
+
+    tail = ('%d %s &nbsp;&middot;&nbsp; %d %s &nbsp;&middot;&nbsp; %d measured by the '
+            'nightly runner%s, %d hand-entered'
+            % (n['active'], SH_STATUS['active'], n['unverified'], SH_STATUS['unverified'],
+               measured, (' as of ' + esc(when[:16].replace('T', ' '))) if when else '',
+               len(lrps) - measured))
+
+    # ONE paragraph. Each <p> becomes its own page element, and a two-element
+    # roll-up cannot be updated in place: `set` replaces the first with both and
+    # strands the old second below it as a duplicate.
+    return '<p>%s%s &nbsp;&mdash;&nbsp; <i>%s</i></p>' % (verdict, detail, tail)
 
 
 def superhuman_body(blocks):
@@ -450,7 +562,8 @@ def main():
             if env in blocks:
                 print('  %-12s %2d rows' % (ENV_TITLE[env], blocks[env]['count']))
         if args.publish:
-            return publish_superhuman(out)
+            cfg = sh_target(private)
+            return publish_superhuman(out, cfg['doc'], cfg['page'])
         print('not published (pass --publish)')
         return 0
 
