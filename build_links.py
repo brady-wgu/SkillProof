@@ -105,7 +105,12 @@ ROW = (
     '                  <td class="id-cell">%(id)s</td>\n'
     '                  <td class="name-cell lrps-name">%(name)s</td>\n'
     '                  <td><span class="status-pill"><span class="dot %(dot)s"></span>%(label)s</span></td>\n'
-    '                  <td class="desc-cell">%(display)s</td>\n'
+    '                  <td class="desc-cell"><span class="link-wrap">'
+    '<a class="link-url" href="%(href)s" target="_blank" rel="noopener">%(display)s</a>'
+    '<button type="button" class="copy-btn" data-copy="%(href)s" '
+    'aria-label="Copy %(display)s to the clipboard" title="Copy link">'
+    '<span class="material-icons-outlined" aria-hidden="true">content_copy</span>'
+    '</button></span></td>\n'
     '                  <td class="date-cell">%(added)s</td>\n'
     '                </tr>\n'
 )
@@ -134,6 +139,11 @@ GROUP_DIVIDER = (
 # Rows are SORTED into this order rather than trusted to arrive in it, so a
 # Skill appended anywhere in skills.json still lands in the right group. Adding
 # one is a single entry that declares its audience; nothing else moves.
+# Where a relative demo link resolves to. The copy button has to hand over an
+# absolute URL -- a relative one pasted into another browser's address bar goes
+# nowhere, and pasting elsewhere is the entire point of the button.
+PAGES_BASE = 'https://brady-wgu.github.io/SkillProof/'
+
 AUDIENCE_ORDER = ['staff', 'student']
 AUDIENCE = {
     'staff':   ('badge', 'Staff management portals'),
@@ -196,10 +206,17 @@ def render_tbody(data):
                 icon, glabel = AUDIENCE[current_group]
                 out.append(GROUP_DIVIDER % {'icon': icon, 'label': esc(glabel)})
             dot, label = STATUS_UI[s['status']]
+            # The copy button and the anchor both need an ABSOLUTE url. The
+            # demo rows store a relative launch target ("student/"), which is
+            # correct for navigation but useless pasted into another browser's
+            # address bar -- which is the whole point of the copy button.
+            href = s['url']
+            if not href.startswith('http'):
+                href = PAGES_BASE + href
             out.append(ROW % {
                 'url': esc(s['url']), 'aria': esc(s['ariaLabel']),
                 'id': esc(s['id']), 'name': esc(s['name']),
-                'dot': dot, 'label': label,
+                'dot': dot, 'label': label, 'href': esc(href),
                 'display': esc(s['display']), 'added': esc(s['added']),
             })
     out.append(data['tbodyTail'])
