@@ -559,20 +559,6 @@
       "lastVerdict": "RENDERED_OK"
     },
     {
-      "id": "577932056",
-      "section": "stage",
-      "name": "D522-13 paramiko & netmiko Modules",
-      "url": "https://lrps.wgu.edu/provision/577932056",
-      "display": "lrps.wgu.edu/provision/577932056",
-      "ariaLabel": "Launch D522-13 paramiko & netmiko Modules in LRPS (opens in new tab) — currently broken, dead link from a post-deploy rename (LOG-033/034)",
-      "added": "16 Jul 2026",
-      "status": "broken",
-      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
-      "statusSource": "measured",
-      "audience": "student",
-      "lastVerdict": "FAIL_AUTH"
-    },
-    {
       "id": "577935204",
       "section": "stage",
       "name": "D522-14 Building Small Programs",
