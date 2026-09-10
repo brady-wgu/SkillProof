@@ -35,7 +35,7 @@
       "ariaLabel": "Launch the SkillProof Instructor portal in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T08:32:44.418Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -48,10 +48,10 @@
       "display": "lrps.wgu.edu/provision/584731527",
       "ariaLabel": "Launch the SkillProof School Admin portal in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
-      "status": "unverified",
-      "statusCheckedAt": "2026-09-10T08:32:44.418Z",
+      "status": "active",
+      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
       "statusSource": "measured",
-      "lastVerdict": "NOT_CONFIGURED",
+      "lastVerdict": "RENDERED_OK",
       "audience": "staff"
     },
     {
@@ -63,7 +63,7 @@
       "ariaLabel": "Launch the SkillProof Super Admin portal in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T08:32:44.418Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -77,7 +77,7 @@
       "ariaLabel": "Launch Python skill in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T08:32:44.418Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "student"
@@ -90,10 +90,11 @@
       "display": "lrps.wgu.edu/provision/584729320",
       "ariaLabel": "Launch the Training Course in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
-      "status": "unverified",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "status": "active",
+      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "570441081",
@@ -104,7 +105,7 @@
       "ariaLabel": "Launch Instructor Portal in LRPS (opens in new tab)",
       "added": "18 Jun 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T08:31:59.963Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -118,7 +119,7 @@
       "ariaLabel": "Launch School Admin in LRPS (opens in new tab)",
       "added": "18 Jun 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T08:31:59.963Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -132,7 +133,7 @@
       "ariaLabel": "Launch Super Admin in LRPS (opens in new tab)",
       "added": "18 Jun 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T08:31:59.963Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -145,10 +146,10 @@
       "display": "lrps.wgu.edu/provision/568442570",
       "ariaLabel": "Launch Python skill in LRPS (opens in new tab)",
       "added": "15 Jun 2026",
-      "status": "unverified",
-      "statusCheckedAt": "2026-09-10T08:31:59.963Z",
+      "status": "active",
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
       "statusSource": "measured",
-      "lastVerdict": "FAIL_LTI",
+      "lastVerdict": "RENDERED_OK",
       "audience": "student"
     },
     {
@@ -160,9 +161,10 @@
       "ariaLabel": "Launch Professionalism skill in LRPS (opens in new tab)",
       "added": "15 Jun 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "572550817",
@@ -173,9 +175,10 @@
       "ariaLabel": "Launch Applied UX skill in LRPS (opens in new tab)",
       "added": "15 Jun 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "572551037",
@@ -186,9 +189,10 @@
       "ariaLabel": "Launch E010 skill in LRPS (opens in new tab)",
       "added": "15 Jun 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "572551265",
@@ -199,9 +203,10 @@
       "ariaLabel": "Launch Calc skill in LRPS (opens in new tab)",
       "added": "15 Jun 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "572551549",
@@ -212,9 +217,10 @@
       "ariaLabel": "Launch Teaching Engineering skill in LRPS (opens in new tab)",
       "added": "15 Jun 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "575242504",
@@ -225,9 +231,10 @@
       "ariaLabel": "Launch D522 Python for IT Automation skill in LRPS (opens in new tab)",
       "added": "01 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "576572714",
@@ -238,9 +245,10 @@
       "ariaLabel": "Launch STU101 Time Management & Study Skills in LRPS (opens in new tab)",
       "added": "08 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577937240",
@@ -251,9 +259,10 @@
       "ariaLabel": "Launch E010-01 Python Basics (E010) — master in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577937133",
@@ -264,9 +273,10 @@
       "ariaLabel": "Launch E010-02 Terminal Basics in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577937026",
@@ -277,9 +287,10 @@
       "ariaLabel": "Launch E010-03 Variables, Data Types & Type Conversion in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577936948",
@@ -290,9 +301,10 @@
       "ariaLabel": "Launch E010-04 Reading User Input & String Formatting in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577936808",
@@ -303,9 +315,10 @@
       "ariaLabel": "Launch E010-05 Operators in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577936681",
@@ -316,9 +329,10 @@
       "ariaLabel": "Launch E010-06 Conditionals & Loops in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577936540",
@@ -329,9 +343,10 @@
       "ariaLabel": "Launch E010-07 Strings & Lists in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577936443",
@@ -342,9 +357,10 @@
       "ariaLabel": "Launch E010-08 Dictionaries, Tuples & Sets in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577936322",
@@ -355,9 +371,10 @@
       "ariaLabel": "Launch E010-09 Functions in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577936192",
@@ -368,9 +385,10 @@
       "ariaLabel": "Launch E010-10 datetime, Debugging & Building Small Programs in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577934102",
@@ -381,9 +399,10 @@
       "ariaLabel": "Launch D522-01B Python Basics for IT Automation — master in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577933941",
@@ -394,9 +413,10 @@
       "ariaLabel": "Launch D522-02 Variables, Data Types & File Paths in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577933773",
@@ -407,9 +427,10 @@
       "ariaLabel": "Launch D522-03 String Formatting, Lists & Dictionaries in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577933647",
@@ -420,9 +441,10 @@
       "ariaLabel": "Launch D522-04 Type Conversion, Variable Naming & Comments in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577933512",
@@ -433,9 +455,10 @@
       "ariaLabel": "Launch D522-05 Functions, Docstrings & Script Structure in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577933385",
@@ -446,9 +469,10 @@
       "ariaLabel": "Launch D522-06 Conditionals, Loops & Writing a README in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577933189",
@@ -459,9 +483,10 @@
       "ariaLabel": "Launch D522-07 Listing Directory Contents, Reading Files & Writing Files in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577933021",
@@ -472,9 +497,10 @@
       "ariaLabel": "Launch D522-08 File Metadata & Copying Files in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577932832",
@@ -485,9 +511,10 @@
       "ariaLabel": "Launch D522-09 Reading CSV Files, Writing CSV Files & Sorting Data in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577932611",
@@ -498,9 +525,10 @@
       "ariaLabel": "Launch D522-10 The datetime Module & Working with JSON in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577932376",
@@ -511,9 +539,10 @@
       "ariaLabel": "Launch D522-11 os & socket Modules, Parsing Command Output, subprocess in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577932197",
@@ -524,9 +553,10 @@
       "ariaLabel": "Launch D522-12 logging & requests Modules, Exception Handling in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "577932056",
@@ -537,9 +567,10 @@
       "ariaLabel": "Launch D522-13 paramiko & netmiko Modules in LRPS (opens in new tab) — currently broken, dead link from a post-deploy rename (LOG-033/034)",
       "added": "16 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "FAIL_AUTH"
     },
     {
       "id": "577935204",
@@ -550,9 +581,10 @@
       "ariaLabel": "Launch D522-14 Building Small Programs in LRPS (opens in new tab)",
       "added": "16 Jul 2026",
       "status": "active",
-      "statusCheckedAt": null,
-      "statusSource": "manual",
-      "audience": "student"
+      "statusCheckedAt": "2026-09-10T19:42:05.687Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
     },
     {
       "id": "568111823",
@@ -563,7 +595,7 @@
       "ariaLabel": "Launch Instructor Portal in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T08:31:08.720Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "staff"
@@ -577,7 +609,7 @@
       "ariaLabel": "Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T08:31:08.720Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "staff"
@@ -591,7 +623,7 @@
       "ariaLabel": "Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T08:31:08.720Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "staff"
@@ -605,7 +637,7 @@
       "ariaLabel": "Launch Python skill in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T08:31:08.720Z",
+      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "student"
