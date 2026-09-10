@@ -117,6 +117,29 @@ DIVIDER = (
     '                </tr>\n'
 )
 
+# Audience sub-divider, inside an environment section. Same idiom as the
+# section divider above, deliberately lighter -- it has to read as subordinate
+# to the environment header, not compete with it.
+GROUP_DIVIDER = (
+    '                <tr class="group-divider">\n'
+    '                  <td colspan="5"><span class="material-icons-outlined">'
+    '%(icon)s</span>%(label)s</td>\n'
+    '                </tr>\n'
+)
+
+# Staff first, on instruction (10 SEP 2026): the page's designated reader is
+# WGU staff, so the screens they manage the platform with lead, and the Skills
+# a student launches follow.
+#
+# Rows are SORTED into this order rather than trusted to arrive in it, so a
+# Skill appended anywhere in skills.json still lands in the right group. Adding
+# one is a single entry that declares its audience; nothing else moves.
+AUDIENCE_ORDER = ['staff', 'student']
+AUDIENCE = {
+    'staff':   ('badge', 'Staff management portals'),
+    'student': ('school', 'Student Skills'),
+}
+
 
 def esc(s):
     """Escape for HTML text and double-quoted attributes alike.
@@ -156,7 +179,22 @@ def render_tbody(data):
         # and no escaper can know which form a given spot wants. Store what
         # the file has, write it back unchanged.
         out.append(DIVIDER % {'icon': sec['icon'], 'label': sec['label']})
-        for s in by_section.get(sec['slug'], []):
+
+        rows = by_section.get(sec['slug'], [])
+        # The demo section is one click-through seen through four roles, not a
+        # student/staff split. Grouping it would invent a distinction that is
+        # not there, so it renders flat.
+        grouped = sec['slug'] != 'demo'
+        if grouped:
+            rows = sorted(rows, key=lambda r: AUDIENCE_ORDER.index(
+                r.get('audience', 'student')))
+
+        current_group = None
+        for s in rows:
+            if grouped and s.get('audience') != current_group:
+                current_group = s.get('audience')
+                icon, glabel = AUDIENCE[current_group]
+                out.append(GROUP_DIVIDER % {'icon': icon, 'label': esc(glabel)})
             dot, label = STATUS_UI[s['status']]
             out.append(ROW % {
                 'url': esc(s['url']), 'aria': esc(s['ariaLabel']),
