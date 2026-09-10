@@ -38,92 +38,41 @@
       @use "@wgu/skillproof-brand/light.min.css";
   -->
   <link rel="stylesheet" href="https://brady-wgu.github.io/brady-design-system/fonts/aptos.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="assets/brady.css">
+  <script>
+    /* Theme restore runs HERE, before any stylesheet, because at the
+       bottom of <body> it cannot prevent the flash: the page has already
+       painted in light before the script runs. */
+    (function () {
+      try {
+        if (localStorage.getItem("skillproof-theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) { /* private mode: fall through to light */ }
+    })();
+  </script>
 
   <style>
     /* ================================================================
        DESIGN TOKENS — design tokens (Sections 3-5)
        Mirrors tenant_admin.html / instructor.html / super_admin.html.
        ================================================================ */
+    /* Page-specific only. Every colour, type and spacing token now comes
+       from assets/brady.css, the Brady Design System layer shared by every
+       page on this site. */
     :root {
-      --pgn-color-primary-base: #001730;
-      --pgn-color-brand-base:   #0070F0;
-      --pgn-color-info-base:    #46B1EF;
-      --pgn-color-danger-base:  #C13232;
-      --pgn-color-success-base: #2E7D32;
-      --pgn-color-warning-base: #FBAE40;
-
-      --pgn-color-brand-tint:   #EBF2FF;
-      --pgn-color-info-tint:    #EAF6FD;
-      --pgn-color-primary-tint: #E8EBF0;
-      --pgn-color-success-tint: #E8F5E9;
-      --pgn-color-danger-tint:  #FDEAEA;
-      --pgn-color-warning-tint: #FEF3E2;
-
-      --color-deep-navy:     #001730;
-      --color-ice-blue:      #EEF6F9;
-      --color-bright-blue:   #0070F0;
-      --color-dark-navy:     #002855;
-      --color-sky-blue:      #46B1EF;
-      --color-amber:         #FBAE40;
-
-      --pgn-color-white:    #FFFFFF;
-      --pgn-color-black:    #000000;
-      --pgn-color-gray-100: #E6E6E6;
-      --pgn-color-gray-200: #CCCCCC;
-      --pgn-color-gray-300: #B3B3B3;
-      --pgn-color-gray-400: #999999;
-      --pgn-color-gray-base:#808080;
-      --pgn-color-gray-600: #666666;
-      --pgn-color-gray-700: #4D4D4D;
-      --pgn-color-gray-800: #333333;
-      --pgn-color-gray-900: #1A1A1A;
-      --pgn-color-bg-base:  #FFFFFF;
-      --pgn-color-bg-light: #F2F2F2;
-
-      --pgn-spacing-1: 8px;
-      --pgn-spacing-2: 16px;
-      --pgn-spacing-3: 24px;
-      --pgn-spacing-4: 32px;
-      --pgn-spacing-5: 40px;
-      --pgn-spacing-6: 48px;
-
-      --pgn-size-border-radius-base: 0.375rem;
-      --pgn-size-border-radius-lg:   0.5rem;
-      --pgn-size-border-radius-sm:   0.25rem;
-      --pgn-size-rounded-pill:       50rem;
-      --pgn-size-container-max-width-lg: 1920px;
-
-      --pgn-font-family-heading: 'Aptos Display', Arial, sans-serif;
-      --pgn-font-family-body: 'Aptos', Arial, sans-serif;
+      --page-max: 1920px;
+      /* The featured tint behind a live row. Kept here rather than in
+         brady.css because it is specific to this table. */
+      --row-live: var(--bs-ice);
+      --id-ink:   var(--bs-navy);
     }
-
-    /* ================================================================
-       DARK MODE OVERRIDES
-       ================================================================ */
     [data-theme="dark"] {
-      --pgn-color-bg-base: #0D1A2E;
-      --pgn-color-bg-light: #0F2240;
-      --pgn-color-white: #0D1A2E;
-      --pgn-color-gray-900: #E6E6E6;
-      --pgn-color-gray-800: #CCCCCC;
-      --pgn-color-gray-700: #B3B3B3;
-      --pgn-color-gray-600: #999999;
-      --pgn-color-gray-base: #808080;
-      --pgn-color-gray-400: #666666;
-      --pgn-color-gray-300: #4D4D4D;
-      --pgn-color-gray-200: #333333;
-      --pgn-color-gray-100: #1A2A45;
-      --pgn-color-primary-tint: #0D2240;
-      --pgn-color-brand-tint: #001E3E;
-      --pgn-color-info-tint: #002E4A;
-      --pgn-color-success-tint: #0A2E1A;
-      --pgn-color-danger-tint: #3A1A1A;
-      --pgn-color-warning-tint: #3A2A0A;
-      --color-deep-navy: #000D1A;
-      --color-ice-blue: #0D2240;
+      --row-live: #0B2140;   /* derived: ICE has no dark counterpart */
+      --id-ink:   var(--bs-sky);   /* derived: reads on the dark row */
     }
-    [data-theme="dark"] body { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-700); }
+
+    [data-theme="dark"] body { background: var(--bs-surface); color: var(--bs-text-3); }
     [data-theme="dark"] .pgn__card,
     [data-theme="dark"] .pgn__card-featured,
     [data-theme="dark"] .sidebar-card,
@@ -135,10 +84,10 @@
     [data-theme="dark"] .pgn__data-table tbody tr.live td { background: #001E3E; }
     [data-theme="dark"] .pgn__data-table tbody tr:not(.live):nth-child(even) td { background: #102648; }
     [data-theme="dark"] .pgn__data-table tbody tr:hover td { background: #173052; }
-    [data-theme="dark"] .pgn__data-table code { color: var(--pgn-color-info-base); background: rgba(70,177,239,0.08); }
-    [data-theme="dark"] .alert-info    { background: #002E4A; border-color: #003355; color: var(--pgn-color-info-base); }
-    [data-theme="dark"] .alert-warning { background: #3A2A0A; border-color: #4F3814; color: var(--color-amber); }
-    [data-theme="dark"] .sidebar-link.active { background: var(--pgn-color-brand-base); color: #fff; }
+    [data-theme="dark"] .pgn__data-table code { color: var(--bs-sky); background: rgba(70,177,239,0.08); }
+    [data-theme="dark"] .alert-info    { background: #002E4A; border-color: #003355; color: var(--bs-sky); }
+    [data-theme="dark"] .alert-warning { background: #3A2A0A; border-color: #4F3814; color: var(--bs-yellow); }
+    [data-theme="dark"] .sidebar-link.active { background: var(--bs-blue); color: #fff; }
 
     /* Logo swap */
     [data-theme="dark"] .logo-light { display: none !important; }
@@ -152,71 +101,80 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--pgn-font-family-body);
+      font-family: var(--bs-font-body);
       font-size: 16px; line-height: 1.5;
-      color: var(--pgn-color-gray-700);
-      background: var(--pgn-color-bg-light);
+      color: var(--bs-text-3);
+      background: var(--bs-surface);
       min-height: 100vh;
       padding-bottom: 140px;
     }
-    :focus-visible { outline: 3px solid var(--pgn-color-brand-base); outline-offset: 2px; }
+    :focus-visible { outline: 3px solid var(--bs-blue); outline-offset: 2px; }
     /* Headings inherit the standard :focus-visible outline above (WCAG 2.2 AA §2.4.7).
        The capture pipeline injects its own outline-suppression for screenshots. */
-    a { color: var(--pgn-color-brand-base); text-decoration: none; }
+    a { color: var(--bs-blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
     img { max-width: 100%; }
     code {
       font-family: 'Aptos Mono', 'Consolas', monospace;
       font-size: 13px;
-      color: var(--pgn-color-brand-base);
-      background: var(--pgn-color-brand-tint);
+      color: var(--bs-blue);
+      background: var(--bs-tint-blue);
       padding: 2px 6px;
-      border-radius: var(--pgn-size-border-radius-sm);
+      border-radius: var(--bs-radius-sm);
       word-break: break-all;
     }
 
     /* ================================================================
        TYPOGRAPHY
        ================================================================ */
-    .h1, h1 { font-family: var(--pgn-font-family-heading); font-size: 40px; line-height: 1.2; font-weight: 700; color: var(--pgn-color-gray-900); }
-    .h2, h2 { font-family: var(--pgn-font-family-heading); font-size: 32px; line-height: 1.25; font-weight: 700; color: var(--pgn-color-gray-900); }
-    .h3, h3 { font-family: var(--pgn-font-family-heading); font-size: 28px; line-height: 1.3; font-weight: 700; color: var(--pgn-color-gray-900); }
-    .h4, h4 { font-family: var(--pgn-font-family-heading); font-size: 24px; line-height: 1.35; font-weight: 700; color: var(--pgn-color-gray-900); }
-    .h5, h5 { font-family: var(--pgn-font-family-heading); font-size: 20px; line-height: 1.4; font-weight: 700; color: var(--pgn-color-gray-900); }
-    p { color: var(--pgn-color-gray-700); }
-    .text-muted     { color: var(--pgn-color-gray-600) !important; }
-    .text-secondary { color: var(--pgn-color-gray-base) !important; }
-    .text-success   { color: var(--pgn-color-success-base); }
-    .text-strong    { color: var(--pgn-color-gray-900); font-weight: 700; }
+    /* Fluid display size. The page is full-width and a 40px H1 read as
+       timid on it; the skill names Vercel, Linear and Figma as
+       reference points, which is large, tight display type. */
+    .h1, h1 { font-family: var(--bs-font-display); font-size: clamp(2.75rem, 2rem + 3vw, 4.5rem); line-height: 1.02; letter-spacing: -0.02em; font-weight: 700; color: var(--bs-text); margin-bottom: var(--bs-sp-2); }
+    .h2, h2 { font-family: var(--bs-font-display); font-size: 32px; line-height: 1.25; font-weight: 700; color: var(--bs-text); }
+    .h3, h3 { font-family: var(--bs-font-display); font-size: 28px; line-height: 1.3; font-weight: 700; color: var(--bs-text); }
+    .h4, h4 { font-family: var(--bs-font-display); font-size: 24px; line-height: 1.35; font-weight: 700; color: var(--bs-text); }
+    .h5, h5 { font-family: var(--bs-font-display); font-size: 20px; line-height: 1.4; font-weight: 700; color: var(--bs-text); }
+    p { color: var(--bs-text-3); }
+    .text-muted     { color: var(--bs-text-4) !important; }
+    .text-secondary { color: var(--bs-text-4) !important; }
+    .text-success   { color: var(--bs-green); }
+    .text-strong    { color: var(--bs-text); font-weight: 700; }
     .small  { font-size: 14px; }
     .micro  { font-size: 12px; }
 
     .eyebrow {
       display: inline-flex; align-items: center; gap: 6px;
-      font-family: var(--pgn-font-family-body);
+      font-family: var(--bs-font-body);
       font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--pgn-color-brand-base);
-      margin-bottom: var(--pgn-spacing-1);
+      color: var(--bs-blue);
+      margin-bottom: var(--bs-sp-2);
     }
-    .eyebrow .material-icons-outlined { font-size: 16px; }
+    .eyebrow .icon { font-size: 16px; }
 
     /* ================================================================
        LAYOUT
        ================================================================ */
     .container {
-      max-width: var(--pgn-size-container-max-width-lg);
+      max-width: var(--page-max);
       width: 100%; margin: 0 auto;
-      padding-left: var(--pgn-spacing-3); padding-right: var(--pgn-spacing-3);
+      padding-left: var(--bs-sp-4); padding-right: var(--bs-sp-4);
     }
     .lrps-shell {
       display: grid;
       grid-template-columns: 240px minmax(0, 1fr);
-      gap: var(--pgn-spacing-3);
+      gap: var(--bs-sp-4);
       align-items: start;
     }
     @media (max-width: 900px) {
-      .lrps-shell { grid-template-columns: 1fr; }
+      /* minmax(0, 1fr), not 1fr: a grid track's automatic minimum is its
+         content's intrinsic width, so the wide links table forces the
+         column past the viewport and the whole page scrolls sideways.
+         The two-column rule above already guards this; the single-column
+         rule did not, which is why the table stopped scrolling inside
+         .table-scroll and started scrolling the document instead. */
+      .lrps-shell { grid-template-columns: minmax(0, 1fr); }
     }
 
     /* ================================================================
@@ -224,28 +182,28 @@
        ================================================================ */
     .navbar {
       height: 64px; display: flex; align-items: center; justify-content: space-between;
-      padding: 0 var(--pgn-spacing-4);
+      padding: 0 var(--bs-sp-5);
     }
-    .navbar-dark { background: var(--color-deep-navy); }
+    .navbar-dark { background: var(--bs-midnight); }
     .navbar-brand {
-      display: flex; align-items: center; gap: var(--pgn-spacing-1);
+      display: flex; align-items: center; gap: var(--bs-sp-2);
       text-decoration: none; color: #fff;
     }
     .navbar-brand-logo { height: 40px; width: auto; }
     /* v4.84: school logos have a stacked WGU + School name layout; bump to 64px so 'School of X' text reads */
     .navbar-brand-logo[data-school-logo] { height: 64px; }
-    .navbar-right { display: flex; align-items: center; gap: var(--pgn-spacing-2); }
+    .navbar-right { display: flex; align-items: center; gap: var(--bs-sp-3); }
     .navbar-chip {
       background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.92);
-      font-size: 14px; padding: 8px 16px; border-radius: var(--pgn-size-rounded-pill);
+      font-size: 14px; padding: 8px 16px; border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.2);
     }
-    .navbar-user { display: flex; align-items: center; gap: var(--pgn-spacing-1); color: rgba(255,255,255,0.92); font-size: 14px; }
+    .navbar-user { display: flex; align-items: center; gap: var(--bs-sp-2); color: rgba(255,255,255,0.92); font-size: 14px; }
     .avatar {
       width: 32px; height: 32px; border-radius: 50%;
-      background: var(--pgn-color-info-base);
+      background: var(--bs-sky);
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--pgn-font-family-heading);
+      font-family: var(--bs-font-display);
       font-size: 14px; font-weight: 700; color: #fff;
     }
     .btn-theme-toggle {
@@ -257,7 +215,7 @@
       cursor: pointer; transition: background 150ms; padding: 0;
     }
     .btn-theme-toggle:hover { background: rgba(255,255,255,0.2); }
-    .btn-theme-toggle .material-icons-outlined { font-size: 20px; }
+    .btn-theme-toggle .icon { font-size: 20px; }
     [data-theme="dark"] .theme-icon-light { display: none !important; }
     [data-theme="dark"] .theme-icon-dark { display: inline !important; }
 
@@ -265,100 +223,102 @@
        BREADCRUMB
        ================================================================ */
     .pgn__breadcrumb {
-      display: flex; align-items: center; gap: var(--pgn-spacing-1);
-      font-size: 14px; color: var(--pgn-color-gray-600);
-      list-style: none; padding: 0; margin-bottom: var(--pgn-spacing-3);
+      display: flex; align-items: center; gap: var(--bs-sp-2);
+      font-size: 14px; color: var(--bs-text-4);
+      list-style: none; padding: 0; margin-bottom: var(--bs-sp-4);
       flex-wrap: wrap;
     }
-    .pgn__breadcrumb a { color: var(--pgn-color-brand-base); text-decoration: none; }
+    .pgn__breadcrumb a { color: var(--bs-blue); text-decoration: none; }
     .pgn__breadcrumb a:hover { text-decoration: underline; }
-    .pgn__breadcrumb .material-icons-outlined { font-size: 16px; color: var(--pgn-color-gray-400); }
+    .pgn__breadcrumb .icon { font-size: 16px; color: var(--bs-text-4); }
 
     /* ================================================================
        BUTTONS
        ================================================================ */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      gap: var(--pgn-spacing-1); border-radius: var(--pgn-size-border-radius-base);
-      font-family: var(--pgn-font-family-body); font-size: 16px; font-weight: 700; line-height: 1;
+      gap: var(--bs-sp-2); border-radius: var(--bs-radius);
+      font-family: var(--bs-font-body); font-size: 16px; font-weight: 700; line-height: 1;
       cursor: pointer; border: 2px solid transparent;
       transition: background 150ms, color 150ms, border-color 150ms;
       text-decoration: none; white-space: nowrap;
     }
-    .btn-lg { height: 48px; padding: 0 var(--pgn-spacing-3); font-size: 16px; }
-    .btn-md, .btn:not(.btn-lg):not(.btn-sm) { height: 44px; padding: 0 var(--pgn-spacing-3); }
-    .btn-sm { height: 36px; padding: 0 var(--pgn-spacing-2); font-size: 14px; }
-    .btn-primary { background: var(--pgn-color-brand-base); color: #fff; border-color: var(--pgn-color-brand-base); }
+    .btn-lg { height: 48px; padding: 0 var(--bs-sp-4); font-size: 16px; }
+    .btn-md, .btn:not(.btn-lg):not(.btn-sm) { height: 44px; padding: 0 var(--bs-sp-4); }
+    .btn-sm { height: 36px; padding: 0 var(--bs-sp-3); font-size: 14px; }
+    .btn-primary { background: var(--bs-blue); color: #fff; border-color: var(--bs-blue); }
     .btn-primary:hover:not(:disabled) { background: #005CC8; border-color: #005CC8; }
     .btn-primary:disabled { background: #80B8F8; border-color: #80B8F8; cursor: not-allowed; }
-    .btn-outline-primary { background: transparent; color: var(--pgn-color-brand-base); border-color: var(--pgn-color-brand-base); }
-    .btn-outline-primary:hover { background: var(--pgn-color-brand-tint); }
-    .btn-tertiary { background: transparent; color: var(--pgn-color-brand-base); border-color: transparent; }
-    .btn-tertiary:hover { background: var(--pgn-color-brand-tint); }
+    .btn-outline-primary { background: transparent; color: var(--bs-blue); border-color: var(--bs-blue); }
+    .btn-outline-primary:hover { background: var(--bs-tint-blue); }
+    .btn-tertiary { background: transparent; color: var(--bs-blue); border-color: transparent; }
+    .btn-tertiary:hover { background: var(--bs-tint-blue); }
     .btn-icon { width: 36px; height: 36px; padding: 0; }
     .btn-icon.btn-sm { width: 32px; height: 32px; }
-    .btn .material-icons-outlined { font-size: 20px; }
+    .btn .icon { font-size: 20px; }
     .btn-icon:disabled { opacity: 0.4; cursor: not-allowed; }
 
     /* ================================================================
        CARDS
        ================================================================ */
     .pgn__card {
-      background: var(--pgn-color-white); border-radius: var(--pgn-size-border-radius-lg);
-      border: 1px solid var(--pgn-color-gray-100);
+      background: var(--bs-page); border-radius: var(--bs-radius);
+      border: 1px solid var(--bs-rule);
       box-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.06), 0 0.0625rem 0.25rem rgba(0,0,0,0.06);
     }
-    .pgn__card-section { padding: var(--pgn-spacing-3); }
-    .pgn__card-section-lg { padding: var(--pgn-spacing-4); }
-    .pgn__card-featured { border-left: 4px solid var(--pgn-color-brand-base); }
+    .pgn__card-section { padding: var(--bs-sp-4); }
+    .pgn__card-section-lg { padding: var(--bs-sp-5); }
+    .pgn__card-featured { border-left: 4px solid var(--bs-blue); }
 
     /* ================================================================
        SIDEBAR (SkillProof-styled nav card)
        ================================================================ */
     .sidebar-card {
-      background: var(--pgn-color-white);
-      border: 1px solid var(--pgn-color-gray-100);
-      border-radius: var(--pgn-size-border-radius-lg);
-      padding: var(--pgn-spacing-2);
+      background: var(--bs-page);
+      border: 1px solid var(--bs-rule);
+      border-radius: var(--bs-radius);
+      padding: var(--bs-sp-3);
       box-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.06);
       position: sticky;
-      top: var(--pgn-spacing-3);
+      top: var(--bs-sp-4);
     }
-    .sidebar-section + .sidebar-section { margin-top: var(--pgn-spacing-3); }
+    .sidebar-section + .sidebar-section { margin-top: var(--bs-sp-4); }
     .sidebar-heading {
-      font-family: var(--pgn-font-family-body);
+      font-family: var(--bs-font-body);
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--pgn-color-gray-600);
-      padding: 0 var(--pgn-spacing-1) var(--pgn-spacing-1);
+      color: var(--bs-text-4);
+      padding: 0 var(--bs-sp-2) var(--bs-sp-2);
     }
     .sidebar-link {
-      display: flex; align-items: center; gap: var(--pgn-spacing-1);
+      display: flex; align-items: center; gap: var(--bs-sp-2);
       padding: 10px 12px;
-      border-radius: var(--pgn-size-border-radius-base);
-      color: var(--pgn-color-gray-800);
+      border-radius: var(--bs-radius);
+      color: var(--bs-text-2);
       text-decoration: none;
       font-size: 14px; font-weight: 700;
       transition: background 150ms, color 150ms;
     }
-    .sidebar-link:hover { background: var(--pgn-color-bg-light); text-decoration: none; }
+    .sidebar-link:hover { background: var(--bs-surface); text-decoration: none; }
     .sidebar-link.active {
-      background: var(--pgn-color-brand-base);
+      background: var(--bs-blue);
       color: #fff;
     }
-    .sidebar-link .material-icons-outlined { font-size: 18px; flex-shrink: 0; }
+    .sidebar-link .icon { font-size: 18px; flex-shrink: 0; }
     .sidebar-link .badge-count {
       margin-left: auto;
-      font-family: var(--pgn-font-family-body);
+      font-family: var(--bs-font-body);
       font-size: 11px;
-      background: rgba(255,255,255,0.18);
+      /* Darkened, not lightened: a white wash over brand blue lifts the
+         backdrop toward the white text and measured 3.48:1. */
+      background: rgba(0,0,0,0.28);
       color: inherit;
       padding: 2px 8px;
-      border-radius: var(--pgn-size-rounded-pill);
+      border-radius: 999px;
     }
     .sidebar-link:not(.active) .badge-count {
-      background: var(--pgn-color-bg-light);
-      color: var(--pgn-color-gray-600);
+      background: var(--bs-surface);
+      color: var(--bs-text-4);
     }
 
     /* ================================================================
@@ -366,28 +326,28 @@
        ================================================================ */
     .badge {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 4px 10px; border-radius: var(--pgn-size-border-radius-sm);
+      padding: 4px 10px; border-radius: var(--bs-radius-sm);
       font-size: 12px; font-weight: 700; line-height: 1.4;
     }
-    .badge-brand   { background: var(--pgn-color-brand-tint); color: var(--pgn-color-brand-base); }
-    .badge-info    { background: var(--pgn-color-info-tint); color: var(--color-dark-navy); }
+    .badge-brand   { background: var(--bs-tint-blue); color: var(--bs-blue); }
+    .badge-info    { background: var(--bs-tint-blue); color: var(--bs-navy); }
     .badge-success { background: #72C06C; color: #000; }
     .badge-danger { background: #EC6A52; color: #000; }
     .badge-warning { background: #F3D06E; color: #000; }
-    .badge-gray    { background: var(--pgn-color-bg-light); color: var(--pgn-color-gray-600); }
+    .badge-gray    { background: var(--bs-surface); color: var(--bs-text-4); }
 
     /* ================================================================
        ALERTS
        ================================================================ */
     .alert {
-      padding: var(--pgn-spacing-2) var(--pgn-spacing-3);
-      border-radius: var(--pgn-size-border-radius-base);
+      padding: var(--bs-sp-3) var(--bs-sp-4);
+      border-radius: var(--bs-radius);
       border: 1px solid transparent;
-      display: flex; gap: var(--pgn-spacing-2); align-items: flex-start;
+      display: flex; gap: var(--bs-sp-3); align-items: flex-start;
     }
-    .alert .material-icons-outlined { flex-shrink: 0; }
-    .alert-info    { background: var(--pgn-color-info-tint); border-color: var(--pgn-color-info-base); color: var(--color-dark-navy); }
-    .alert-warning { background: var(--pgn-color-warning-tint); border-color: var(--pgn-color-warning-base); color: #8A5A00; }
+    .alert .icon { flex-shrink: 0; }
+    .alert-info    { background: var(--bs-tint-blue); border-color: var(--bs-sky); color: var(--bs-navy); }
+    .alert-warning { background: var(--bs-tint-yellow); border-color: var(--bs-yellow); color: #8A5A00; }
 
     /* ================================================================
        STATUS DOTS
@@ -405,31 +365,31 @@
     [data-theme="dark"] .dot.green { background: #3FA85C; }
     [data-theme="dark"] .dot.amber { background: #C9A227; }
     [data-theme="dark"] .dot.red   { background: #E0524B; }
-    .dot.blue    { background: var(--pgn-color-brand-base); }
-    .dot.gray    { background: var(--pgn-color-gray-300); }
+    .dot.blue    { background: var(--bs-blue); }
+    .dot.gray    { background: var(--bs-rule-strong); }
     .status-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 13px; color: var(--pgn-color-gray-700);
+      font-size: 13px; color: var(--bs-text-3);
     }
 
     /* ================================================================
        FORM CONTROLS (search input)
        ================================================================ */
     .form-control {
-      height: 40px; padding: 0 var(--pgn-spacing-2);
-      background: var(--pgn-color-bg-base); color: var(--pgn-color-gray-900);
-      border: 1px solid var(--pgn-color-gray-200);
-      border-radius: var(--pgn-size-border-radius-base);
-      font-family: var(--pgn-font-family-body); font-size: 14px; line-height: 1.5;
+      height: 40px; padding: 0 var(--bs-sp-3);
+      background: var(--bs-page); color: var(--bs-text);
+      border: 1px solid var(--bs-rule);
+      border-radius: var(--bs-radius);
+      font-family: var(--bs-font-body); font-size: 14px; line-height: 1.5;
     }
-    .form-control:focus { outline: none; border-color: var(--pgn-color-brand-base); box-shadow: 0 0 0 3px rgba(0,112,240,0.15); }
+    .form-control:focus { outline: none; border-color: var(--bs-blue); box-shadow: 0 0 0 3px rgba(0,112,240,0.15); }
 
     .search-input {
       position: relative;
     }
-    .search-input .material-icons-outlined {
+    .search-input .icon {
       position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-      color: var(--pgn-color-gray-400); font-size: 18px;
+      color: var(--bs-text-4); font-size: 18px;
       pointer-events: none;
     }
     .search-input input {
@@ -437,49 +397,49 @@
     }
 
     .form-toggle-inline {
-      display: inline-flex; align-items: center; gap: var(--pgn-spacing-1);
-      font-size: 13px; color: var(--pgn-color-gray-700);
+      display: inline-flex; align-items: center; gap: var(--bs-sp-2);
+      font-size: 13px; color: var(--bs-text-3);
       cursor: pointer;
     }
-    .form-toggle-inline input { width: 16px; height: 16px; accent-color: var(--pgn-color-brand-base); cursor: pointer; }
+    .form-toggle-inline input { width: 16px; height: 16px; accent-color: var(--bs-blue); cursor: pointer; }
 
     /* ================================================================
        DATA TABLE (Paragon DataTable, modernized for LRPS)
        ================================================================ */
     .table-card {
-      background: var(--pgn-color-white);
-      border: 1px solid var(--pgn-color-gray-100);
-      border-radius: var(--pgn-size-border-radius-lg);
+      background: var(--bs-page);
+      border: 1px solid var(--bs-rule);
+      border-radius: var(--bs-radius);
       box-shadow: 0 0.0625rem 0.125rem rgba(0,0,0,0.06);
       overflow: hidden;
     }
     .table-card-header {
-      padding: var(--pgn-spacing-2) var(--pgn-spacing-3);
-      border-bottom: 1px solid var(--pgn-color-gray-100);
+      padding: var(--bs-sp-3) var(--bs-sp-4);
+      border-bottom: 1px solid var(--bs-rule);
       display: flex; justify-content: space-between; align-items: center;
-      gap: var(--pgn-spacing-2);
+      gap: var(--bs-sp-3);
       flex-wrap: wrap;
-      background: var(--pgn-color-bg-light);
+      background: var(--bs-surface);
     }
     /* Audience sub-divider inside an environment section. The
        section-divider idiom at a lighter weight: no tint and no top rule,
        so it reads as subordinate to the environment header rather than
        competing with it. Generated by build_links.py -- edit it there. */
     .pgn__data-table tr.group-divider td {
-      background: var(--pgn-color-white);
+      background: var(--bs-page);
       padding: 7px 16px 5px 20px;
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.11em; text-transform: uppercase;
-      color: var(--pgn-color-gray-400);
-      border-bottom: 1px solid var(--pgn-color-gray-100);
+      color: var(--bs-text-3);
+      border-bottom: 1px solid var(--bs-rule);
       pointer-events: none;
     }
-    .pgn__data-table tr.group-divider .material-icons-outlined {
+    .pgn__data-table tr.group-divider .icon {
       font-size: 12px; vertical-align: -2px; margin-right: 6px;
-      color: var(--pgn-color-gray-400);
+      color: var(--bs-text-4);
     }
     [data-theme="dark"] .pgn__data-table tr.group-divider td {
-      background: transparent; color: rgba(255,255,255,0.35);
+      background: transparent; color: var(--bs-text-3);
     }
     /* LINK column: a real anchor plus a copy button.
        The row itself launches on click, which made the URL text almost
@@ -489,63 +449,75 @@
        window to sign in as a different test account. */
     .link-wrap { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; }
     .link-url {
-      color: var(--pgn-color-gray-700); text-decoration: none;
+      color: var(--bs-text-3); text-decoration: none;
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
       /* An anchor drags as a link by default, which would replace one
          selection problem with another. Dragging across it selects
          text, as it did when this was a plain cell. */
       -webkit-user-drag: none; user-select: text;
     }
-    .link-url:hover { text-decoration: underline; color: var(--pgn-color-brand-base); }
+    .link-url:hover { text-decoration: underline; color: var(--bs-blue); }
     .copy-btn {
       display: inline-flex; align-items: center; justify-content: center;
       width: 24px; height: 24px; flex-shrink: 0;
       padding: 0; border: 1px solid transparent; border-radius: 4px;
       background: transparent; cursor: pointer;
-      color: var(--pgn-color-gray-400);
+      /* SLATE: as a UI graphic this only owes 3:1 (WCAG 1.4.11) and ASH
+         met that at 4.42:1, but it is a 15px affordance and the darker
+         neutral costs nothing. */
+      color: var(--bs-text-3);
       opacity: 0; transition: opacity .12s ease, color .12s ease;
     }
-    .copy-btn .material-icons-outlined { font-size: 15px; }
+    .copy-btn .icon { font-size: 15px; }
     /* Revealed on row hover, but ALWAYS visible once focused, so it is
        reachable by keyboard and not a mouse-only affordance. */
     tr:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
     .copy-btn:hover {
-      color: var(--pgn-color-brand-base);
-      border-color: var(--pgn-color-gray-200);
-      background: var(--pgn-color-white);
+      color: var(--bs-blue);
+      border-color: var(--bs-rule);
+      background: var(--bs-page);
     }
-    .copy-btn:focus-visible { outline: 2px solid var(--pgn-color-brand-base); outline-offset: 1px; }
+    .copy-btn:focus-visible { outline: 2px solid var(--bs-blue); outline-offset: 1px; }
     .copy-btn.copied { opacity: 1; color: #187B34; border-color: #187B34; }
     [data-theme="dark"] .copy-btn:hover { background: rgba(255,255,255,0.08); }
     [data-theme="dark"] .copy-btn.copied { color: #3FA85C; border-color: #3FA85C; }
+    /* Icons are inline SVG from the sprite at the top of <body>. Sized in em
+       on purpose: the seventeen rules that already size icons with font-size
+       keep working unchanged. */
+    .icon {
+      width: 1em; height: 1em;
+      fill: none; stroke: currentColor; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+      vertical-align: -0.14em; flex-shrink: 0;
+    }
     .table-scroll { overflow-x: auto; }
 
     .pgn__data-table {
       width: 100%; border-collapse: collapse;
       font-size: 13px;
-      background: var(--pgn-color-white);
+      background: var(--bs-page);
     }
     .pgn__data-table th {
-      background: var(--pgn-color-bg-light);
-      font-family: var(--pgn-font-family-heading);
+      background: var(--bs-surface);
+      font-family: var(--bs-font-display);
       font-size: 11px; font-weight: 700;
       letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--pgn-color-gray-600);
+      color: var(--bs-text-4);
       text-align: left;
-      padding: 10px var(--pgn-spacing-2);
+      padding: 10px var(--bs-sp-3);
       white-space: nowrap;
       position: sticky; top: 0; z-index: 1;
-      border-bottom: 1px solid var(--pgn-color-gray-100);
+      border-bottom: 1px solid var(--bs-rule);
       cursor: pointer; user-select: none;
     }
-    .pgn__data-table th .material-icons-outlined {
-      font-size: 14px; color: var(--pgn-color-gray-400);
+    .pgn__data-table th .icon {
+      font-size: 14px; color: var(--bs-text-4);
       vertical-align: middle; margin-left: 2px;
     }
-    .pgn__data-table th.sorted .material-icons-outlined { color: var(--pgn-color-brand-base); }
+    .pgn__data-table th.sorted .icon { color: var(--bs-blue); }
     .pgn__data-table td {
-      padding: 12px var(--pgn-spacing-2);
-      border-bottom: 1px solid var(--pgn-color-gray-100);
+      padding: 12px var(--bs-sp-3);
+      border-bottom: 1px solid var(--bs-rule);
       vertical-align: middle;
       white-space: nowrap;
       max-width: 460px;
@@ -554,52 +526,58 @@
     }
     .pgn__data-table tr:last-child td { border-bottom: none; }
     .pgn__data-table tbody tr:not(.live):nth-child(even) td { background: rgba(0,0,0,0.015); }
-    .pgn__data-table tbody tr:hover td { background: var(--pgn-color-bg-light); }
+    .pgn__data-table tbody tr:hover td { background: var(--bs-surface); }
 
     /* Live SkillProof rows — Ice Blue tint + featured stripe */
     .pgn__data-table tr.live td {
-      background: var(--color-ice-blue);
+      background: var(--row-live);
       cursor: pointer;
     }
     .pgn__data-table tr.live:hover td {
-      background: var(--pgn-color-brand-tint);
+      background: var(--bs-tint-blue);
     }
     .pgn__data-table tr.live td:first-child {
-      box-shadow: inset 4px 0 0 0 var(--pgn-color-brand-base);
+      box-shadow: inset 4px 0 0 0 var(--bs-blue);
     }
     .pgn__data-table tr.live .lrps-name {
-      font-weight: 700; color: var(--pgn-color-gray-900);
+      font-weight: 700; color: var(--bs-text);
     }
     .pgn__data-table .id-cell {
-      font-family: 'Aptos Mono', 'Consolas', monospace;
-      color: var(--pgn-color-brand-base);
+      font-family: var(--bs-font-mono);
+      /* Theme-aware. design-system.md 1.5 rates BLUE on a blue tint as AA
+         for LARGE text only, and this is 12px mono on the live-row tint:
+         BLUE measured 4.19:1. NAVY fixes light (13.4:1) and is invisible
+         on dark (1.1:1), so the two themes need different values. */
+      color: var(--id-ink);
       font-weight: 700;
     }
 .pgn__data-table .desc-cell {
       font-family: 'Aptos Mono', 'Consolas', monospace;
       font-size: 12px;
-      color: var(--pgn-color-gray-700);
+      color: var(--bs-text-3);
       max-width: 380px;
     }
     .pgn__data-table .date-cell {
       font-variant-numeric: tabular-nums;
-      color: var(--pgn-color-gray-700);
+      color: var(--bs-text-3);
     }
     /* Section separator rows within the Links table */
     .pgn__data-table tr.section-divider td {
-      background: var(--pgn-color-primary-tint);
+      background: var(--bs-tint-navy);
       padding: 5px 16px;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--pgn-color-gray-600);
-      border-top: 2px solid var(--pgn-color-gray-200);
+      /* SLATE not ASH: ASH is 4.83:1 on white but only 4.03:1 on this
+         tint, under AA for 11px text. */
+      color: var(--bs-text-3);
+      border-top: 2px solid var(--bs-rule);
       pointer-events: none;
     }
     [data-theme="dark"] .pgn__data-table tr.section-divider td {
       background: #0D1E35;
-      color: rgba(255,255,255,0.45);
+      color: var(--bs-text-3);
       border-top-color: rgba(255,255,255,0.08);
     }
 
@@ -608,34 +586,49 @@
        ================================================================ */
     .table-footer {
       display: flex; align-items: center; justify-content: space-between;
-      padding: var(--pgn-spacing-2) var(--pgn-spacing-3);
-      border-top: 1px solid var(--pgn-color-gray-100);
-      background: var(--pgn-color-bg-light);
-      gap: var(--pgn-spacing-2);
+      padding: var(--bs-sp-3) var(--bs-sp-4);
+      border-top: 1px solid var(--bs-rule);
+      background: var(--bs-surface);
+      gap: var(--bs-sp-3);
       flex-wrap: wrap;
     }
-    .table-actions { display: inline-flex; gap: var(--pgn-spacing-1); align-items: center; }
-    .count-info { font-size: 13px; color: var(--pgn-color-gray-600); }
+    .table-actions { display: inline-flex; gap: var(--bs-sp-2); align-items: center; }
+    .count-info { font-size: 13px; color: var(--bs-text-4); }
 
     /* ================================================================
        HEADER ROW (page title section)
        ================================================================ */
     .page-header {
       display: flex; justify-content: space-between; align-items: end;
-      gap: var(--pgn-spacing-3);
-      margin-bottom: var(--pgn-spacing-3);
+      gap: var(--bs-sp-4);
+      /* A header this much larger needs air beneath it before the table,
+         or the size reads as an accident rather than a masthead. */
+      margin-bottom: var(--bs-sp-6);
+      padding-bottom: var(--bs-sp-4);
+      border-bottom: 1px solid var(--bs-rule);
       flex-wrap: wrap;
     }
-    .page-stats { display: flex; gap: var(--pgn-spacing-3); flex-wrap: wrap; }
+    /* Eyebrow + kicker rule. Uses brady.css's own .bs-eyebrow (the
+       tracked-out ALL CAPS spec in design-system.md 2.2) rather than a
+       new label style, and gives two otherwise-unused BS_ accents an
+       honest non-status role: BS_TAWNY as the rule, BS_MID as the text.
+       Neither is a status colour, so neither collides with green/amber/red. */
+    .page-eyebrow { display: flex; align-items: center; gap: var(--bs-sp-2); margin-bottom: var(--bs-sp-2); }
+    .page-kicker { width: 28px; height: 3px; background: var(--bs-tawny); border-radius: 2px; flex-shrink: 0; }
+    .page-eyebrow .bs-eyebrow { color: var(--bs-mid); }
+    /* BS_MID is near-black-navy and near-illegible on the dark ground;
+       SKY is brady.css's own dark-mode accent substitute. */
+    [data-theme="dark"] .page-eyebrow .bs-eyebrow { color: var(--bs-sky); }
+    .page-stats { display: flex; gap: var(--bs-sp-4); flex-wrap: wrap; }
     .page-stat { text-align: right; }
     .page-stat-num {
-      font-family: var(--pgn-font-family-heading);
+      font-family: var(--bs-font-display);
       font-size: 24px; font-weight: 700; line-height: 1;
-      color: var(--pgn-color-gray-900);
+      color: var(--bs-text);
       font-variant-numeric: tabular-nums;
     }
     .page-stat-label {
-      font-size: 12px; color: var(--pgn-color-gray-600);
+      font-size: 12px; color: var(--bs-text-4);
       text-transform: uppercase; letter-spacing: 0.04em;
       margin-top: 2px;
     }
@@ -646,16 +639,16 @@
     .d-flex { display: flex; }
     .align-items-center { align-items: center; }
     .justify-content-between { justify-content: space-between; }
-    .gap-1 { gap: var(--pgn-spacing-1); }
-    .gap-2 { gap: var(--pgn-spacing-2); }
-    .gap-3 { gap: var(--pgn-spacing-3); }
-    .mt-1 { margin-top: var(--pgn-spacing-1); }
-    .mt-2 { margin-top: var(--pgn-spacing-2); }
-    .mt-3 { margin-top: var(--pgn-spacing-3); }
-    .mb-1 { margin-bottom: var(--pgn-spacing-1); }
-    .mb-2 { margin-bottom: var(--pgn-spacing-2); }
-    .mb-3 { margin-bottom: var(--pgn-spacing-3); }
-    .mb-4 { margin-bottom: var(--pgn-spacing-4); }
+    .gap-1 { gap: var(--bs-sp-2); }
+    .gap-2 { gap: var(--bs-sp-3); }
+    .gap-3 { gap: var(--bs-sp-4); }
+    .mt-1 { margin-top: var(--bs-sp-2); }
+    .mt-2 { margin-top: var(--bs-sp-3); }
+    .mt-3 { margin-top: var(--bs-sp-4); }
+    .mb-1 { margin-bottom: var(--bs-sp-2); }
+    .mb-2 { margin-bottom: var(--bs-sp-3); }
+    .mb-3 { margin-bottom: var(--bs-sp-4); }
+    .mb-4 { margin-bottom: var(--bs-sp-5); }
     .text-center { text-align: center; }
     .w-100 { width: 100%; }
 
@@ -664,17 +657,17 @@
        ================================================================ */
     .meta-bar {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-      background: var(--color-deep-navy); color: #fff;
-      font-size: 12px; padding: 8px var(--pgn-spacing-4) 16px;
+      background: var(--bs-midnight); color: #fff;
+      font-size: 12px; padding: 8px var(--bs-sp-5) 16px;
       display: flex; flex-direction: column; gap: 8px;
     }
     .meta-bar-header {
-      display: flex; align-items: center; gap: var(--pgn-spacing-2);
+      display: flex; align-items: center; gap: var(--bs-sp-3);
       padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .meta-bar .meta-id { color: var(--pgn-color-info-base); font-weight: 700; }
+    .meta-bar .meta-id { color: var(--bs-sky); font-weight: 700; }
     .meta-bar-flows {
-      display: flex; align-items: center; gap: var(--pgn-spacing-2);
+      display: flex; align-items: center; gap: var(--bs-sp-3);
       flex-wrap: wrap;
     }
     .meta-bar-toggle {
@@ -686,11 +679,11 @@
       transition: background 150ms;
     }
     .meta-bar-toggle:hover { background: rgba(255,255,255,0.22); }
-    .meta-bar-toggle .material-icons-outlined { font-size: 18px; display: block; transition: transform 150ms; }
+    .meta-bar-toggle .icon { font-size: 18px; display: block; transition: transform 150ms; }
     .meta-bar.metabar-collapsed .meta-bar-flows,
     .meta-bar.metabar-collapsed .flow-nav { display: none; }
     .meta-bar.metabar-collapsed .meta-bar-header { padding-bottom: 0; border-bottom: none; }
-    .meta-bar.metabar-collapsed .meta-bar-toggle .material-icons-outlined { transform: rotate(180deg); }
+    .meta-bar.metabar-collapsed .meta-bar-toggle .icon { transform: rotate(180deg); }
     body.metabar-collapsed { padding-bottom: 40px; }
     .meta-flow-link {
       display: inline-flex; align-items: center; gap: 6px;
@@ -698,7 +691,7 @@
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.18);
       color: rgba(255,255,255,0.92);
-      border-radius: var(--pgn-size-rounded-pill);
+      border-radius: 999px;
       font-size: 12px; font-weight: 700;
       text-decoration: none;
       transition: background 150ms;
@@ -707,13 +700,13 @@
       background: rgba(255,255,255,0.18);
       color: #fff; text-decoration: none;
     }
-    .meta-flow-link .material-icons-outlined { font-size: 14px; }
+    .meta-flow-link .icon { font-size: 14px; }
 
     .skip-nav {
       position: absolute; left: -9999px; top: auto;
       width: 1px; height: 1px; overflow: hidden;
       z-index: 9999; padding: 8px 16px;
-      background: var(--pgn-color-brand-base); color: #fff;
+      background: var(--bs-blue); color: #fff;
       font-size: 16px; font-weight: 700; text-decoration: none;
     }
     .skip-nav:focus { position: fixed; left: 0; top: 0; width: auto; height: auto; }
@@ -729,41 +722,41 @@
        ================================================================ */
     .navbar,
     .navbar-dark {
-      background: var(--pgn-color-white);
-      color: var(--color-deep-navy);
-      border-bottom: 1px solid var(--color-deep-navy);
+      background: var(--bs-page);
+      color: var(--bs-midnight);
+      border-bottom: 1px solid var(--bs-midnight);
     }
     .navbar-brand,
     .navbar-brand-text,
     .navbar-user {
-      color: var(--color-deep-navy);
+      color: var(--bs-midnight);
     }
     .navbar-chip {
       background: transparent;
-      color: var(--color-deep-navy);
-      border: 1px solid var(--color-deep-navy);
+      color: var(--bs-midnight);
+      border: 1px solid var(--bs-midnight);
     }
     .avatar {
-      background: var(--color-deep-navy);
+      background: var(--bs-midnight);
       color: #fff;
     }
     .btn-theme-toggle {
-      background: var(--pgn-color-bg-light);
-      border: 1px solid var(--pgn-color-gray-200);
-      color: var(--color-deep-navy);
+      background: var(--bs-surface);
+      border: 1px solid var(--bs-rule);
+      color: var(--bs-midnight);
     }
-    .btn-theme-toggle:hover { background: var(--pgn-color-gray-100); }
+    .btn-theme-toggle:hover { background: var(--bs-rule); }
     /* v4.70: ensure light-mode navbar icons (help, theme toggle) render crisply against the white navbar */
-    .btn-theme-toggle .material-icons-outlined {
-      color: var(--color-deep-navy);
+    .btn-theme-toggle .icon {
+      color: var(--bs-midnight);
       font-weight: 500;
     }
-    [data-theme="dark"] .btn-theme-toggle .material-icons-outlined {
+    [data-theme="dark"] .btn-theme-toggle .icon {
       color: #fff;
     }
     /* v4.83: dark-mode footer theming — overrides hardcoded inline footer styles */
     [data-theme="dark"] footer[role="contentinfo"] {
-      background: var(--color-deep-navy) !important;
+      background: var(--bs-midnight) !important;
       border-top-color: rgba(255,255,255,0.1) !important;
     }
     [data-theme="dark"] footer[role="contentinfo"] > div {
@@ -778,13 +771,13 @@
     /* student/ uses a <span class="navbar-brand-logo">WGU</span> text mark;
        :not(img) targets only the span so img logos are unaffected. */
     .navbar-brand-logo:not(img) {
-      background: var(--color-deep-navy) !important;
+      background: var(--bs-midnight) !important;
       color: #fff !important;
     }
 
     [data-theme="dark"] .navbar,
     [data-theme="dark"] .navbar-dark {
-      background: var(--color-deep-navy);
+      background: var(--bs-midnight);
       color: #fff;
       border-bottom: none;
     }
@@ -799,7 +792,7 @@
       border-color: rgba(255,255,255,0.2);
     }
     [data-theme="dark"] .avatar {
-      background: var(--pgn-color-info-base);
+      background: var(--bs-sky);
       color: #fff;
     }
     [data-theme="dark"] .btn-theme-toggle {
@@ -810,11 +803,36 @@
     [data-theme="dark"] .btn-theme-toggle:hover { background: rgba(255,255,255,0.2); }
     [data-theme="dark"] .navbar-brand-logo:not(img) {
       background: #fff !important;
-      color: var(--color-deep-navy) !important;
+      color: var(--bs-midnight) !important;
     }
   </style>
 </head>
 <body>
+<!-- Inline icon sprite. Replaces the Google Material Icons webfont: one
+     fewer remote request, and the shapes are drawn for this site rather
+     than borrowed from someone else's icon language. Referenced with
+     a use element targeting the symbol id; sized by font-size, as .icon is 1em.
+     check and error_outline are referenced only from the copy-button JS. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-content_copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="4,12.5 9.5,18 20,6.5"/></symbol>
+  <symbol id="i-error_outline" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5"/><path d="M12 16.4v.2"/></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><path d="M12 4l10 5-10 5L2 9z"/><path d="M6 11v5c0 1.6 3 3 6 3s6-1.4 6-3v-5"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M14 10h4M14 14h4"/></symbol>
+  <symbol id="i-slideshow" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><polygon points="10,8 15,10.5 10,13"/><path d="M8 20h8"/></symbol>
+  <symbol id="i-verified_user" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><polyline points="9,12 11,14 15,9.5"/></symbol>
+  <symbol id="i-storage" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="3.2" rx="1.2"/><rect x="3" y="10.4" width="18" height="3.2" rx="1.2"/><rect x="3" y="15.8" width="18" height="3.2" rx="1.2"/></symbol>
+  <symbol id="i-science" viewBox="0 0 24 24"><path d="M9 3v6l-5 9a1.6 1.6 0 0 0 1.4 2.4h13.2A1.6 1.6 0 0 0 20 18l-5-9V3"/><path d="M8 3h8"/></symbol>
+  <symbol id="i-public" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></symbol>
+  <symbol id="i-play_circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polygon points="10,8 16,12 10,16"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3.5-6 7-6s7 2 7 6"/></symbol>
+  <symbol id="i-expand_more" viewBox="0 0 24 24"><polyline points="6,9.5 12,15.5 18,9.5"/></symbol>
+  <symbol id="i-construction" viewBox="0 0 24 24"><path d="M10 4h4l4 16H6z"/><path d="M7.6 13h8.8"/></symbol>
+  <symbol id="i-co_present" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="8.5" cy="9" r="1.9"/><path d="M5.6 14c0-1.7 1.3-2.6 2.9-2.6s2.9.9 2.9 2.6"/><path d="M15 8.5h3M15 11.5h3"/><path d="M8 20h8"/></symbol>
+  <symbol id="i-dark_mode" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></symbol>
+  <symbol id="i-light_mode" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol>
+  <symbol id="i-admin_panel_settings" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><circle cx="12" cy="10" r="1.9"/><path d="M9.1 15.4c0-1.6 1.3-2.4 2.9-2.4s2.9.8 2.9 2.4"/></symbol>
+</svg>
 
 <a href="#main-content" class="skip-nav">Skip to main content</a>
 
@@ -828,8 +846,8 @@
   </a>
   <div class="navbar-right">
     <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
-      <span class="material-icons-outlined theme-icon-light">dark_mode</span>
-      <span class="material-icons-outlined theme-icon-dark" style="display:none;">light_mode</span>
+      <svg class="icon theme-icon-light" aria-hidden="true"><use href="#i-dark_mode"></use></svg>
+      <svg class="icon theme-icon-dark" style="display:none;" aria-hidden="true"><use href="#i-light_mode"></use></svg>
     </button>
 <!-- v4.173: the topbar Help button was removed. It pointed at help/index.html, a
          hand-built mockup that was never a real SkillProof surface and that should have
@@ -841,11 +859,15 @@
   </div>
 </header>
 
-<main id="main-content" style="padding: var(--pgn-spacing-5) 0;">
+<main id="main-content" style="padding: calc(var(--bs-sp-5) + var(--bs-sp-2)) 0;">
   <div class="container">
 
     <div class="page-header">
       <div>
+        <div class="page-eyebrow">
+          <span class="page-kicker" aria-hidden="true"></span>
+          <span class="bs-eyebrow">LRPS Provisioning</span>
+        </div>
         <h1>SkillProof Project</h1>
       </div>
     </div>
@@ -858,22 +880,21 @@
       <aside class="sidebar-card" aria-label="LRPS navigation">
         <div class="sidebar-section">
           <a class="sidebar-link active" href="#" aria-current="page">
-            <span class="material-icons-outlined">storage</span>Links
+            <svg class="icon" aria-hidden="true"><use href="#i-storage"></use></svg>Links
             <span class="badge-count">48</span>
           </a>
         </div>
         <div class="sidebar-section">
           <div class="sidebar-heading">About SkillProof</div>
           <a class="sidebar-link" href="pitch/index.html" style="font-size:13px;">
-            <span class="material-icons-outlined">slideshow</span>One-Slide Pitch
+            <svg class="icon" aria-hidden="true"><use href="#i-slideshow"></use></svg>One-Slide Pitch
           </a>
           <!-- 2K walkthrough, added 13 Aug 2026. Opens the file directly in a new tab so
                the native player gets the full window and this page is not lost. The pitch
                page keeps its own shorter embedded clip. -->
-          <a class="sidebar-link" href="assets/video/skillproof-walkthrough-2k.mp4"
-             style="font-size:13px;" target="_blank" rel="noopener"
-             title="Full SkillProof walkthrough — 2560x2000, 4 min 19 sec (40 MB)">
-            <span class="material-icons-outlined">play_circle</span>Full Walkthrough (2K)
+          <a class="sidebar-link" href="walkthrough/index.html" style="font-size:13px;"
+             title="Full SkillProof walkthrough, 4 min 19 sec">
+            <svg class="icon" aria-hidden="true"><use href="#i-play_circle"></use></svg>Full Walkthrough (2K)
           </a>
           <!-- Brady's live demo deck (v1.1, 30 JUL 2026), added 13 Aug 2026. Points at the
                in-browser viewer, not the raw .pptx: no browser renders PowerPoint natively,
@@ -881,7 +902,7 @@
                viewer keeps the original one click away on its own toolbar. -->
           <a class="sidebar-link" href="deck/index.html" style="font-size:13px;"
              title="Status demo deck v1.1, 30 JUL 2026 — 7 slides, opens in the browser">
-            <span class="material-icons-outlined">co_present</span>Status Demo Deck
+            <svg class="icon" aria-hidden="true"><use href="#i-co_present"></use></svg>Status Demo Deck
           </a>
         </div>
       </aside>
@@ -909,47 +930,47 @@
                      Student-only pilot since 04 SEP 2026.
                      ========================================================= -->
                 <tr class="section-divider">
-                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">public</span>Prod &middot; Production, live pilot</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true" style="font-size:13px; vertical-align:-2px; margin-right:6px;"><use href="#i-public"></use></svg>Prod &middot; Production, live pilot</td>
                 </tr>
                 <tr class="group-divider">
-                  <td colspan="5"><span class="material-icons-outlined">badge</span>Staff management portals</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg>Staff management portals</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731462" aria-label="Launch the SkillProof Instructor portal in LRPS (opens in new tab)">
                   <td class="id-cell">584731462</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731462" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731462</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731462" aria-label="Copy lrps.wgu.edu/provision/584731462 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731462" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731462</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731462" aria-label="Copy lrps.wgu.edu/provision/584731462 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731527" aria-label="Launch the SkillProof School Admin portal in LRPS (opens in new tab)">
                   <td class="id-cell">584731527</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731527" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731527</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731527" aria-label="Copy lrps.wgu.edu/provision/584731527 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731527" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731527</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731527" aria-label="Copy lrps.wgu.edu/provision/584731527 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731569" aria-label="Launch the SkillProof Super Admin portal in LRPS (opens in new tab)">
                   <td class="id-cell">584731569</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731569" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731569</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731569" aria-label="Copy lrps.wgu.edu/provision/584731569 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731569" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731569</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731569" aria-label="Copy lrps.wgu.edu/provision/584731569 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="group-divider">
-                  <td colspan="5"><span class="material-icons-outlined">school</span>Student Skills</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-school"></use></svg>Student Skills</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584731391" aria-label="Launch Python skill in LRPS (opens in new tab)">
                   <td class="id-cell">584731391</td>
                   <td class="name-cell lrps-name">Python</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731391" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731391</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731391" aria-label="Copy lrps.wgu.edu/provision/584731391 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584731391" target="_blank" rel="noopener">lrps.wgu.edu/provision/584731391</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584731391" aria-label="Copy lrps.wgu.edu/provision/584731391 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/584729320" aria-label="Launch the Training Course in LRPS (opens in new tab)">
                   <td class="id-cell">584729320</td>
                   <td class="name-cell lrps-name">Training Course</td>
                   <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584729320" target="_blank" rel="noopener">lrps.wgu.edu/provision/584729320</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584729320" aria-label="Copy lrps.wgu.edu/provision/584729320 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/584729320" target="_blank" rel="noopener">lrps.wgu.edu/provision/584729320</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/584729320" aria-label="Copy lrps.wgu.edu/provision/584729320 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">04 Sep 2026</td>
                 </tr>
 
@@ -959,257 +980,257 @@
                      links in course order.
                      ========================================================= -->
                 <tr class="section-divider">
-                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">science</span>Stage &middot; Staging server</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true" style="font-size:13px; vertical-align:-2px; margin-right:6px;"><use href="#i-science"></use></svg>Stage &middot; Staging server</td>
                 </tr>
                 <tr class="group-divider">
-                  <td colspan="5"><span class="material-icons-outlined">badge</span>Staff management portals</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg>Staff management portals</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/570441081" aria-label="Launch Instructor Portal in LRPS (opens in new tab)">
                   <td class="id-cell">570441081</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/570441081" target="_blank" rel="noopener">lrps.wgu.edu/provision/570441081</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/570441081" aria-label="Copy lrps.wgu.edu/provision/570441081 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/570441081" target="_blank" rel="noopener">lrps.wgu.edu/provision/570441081</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/570441081" aria-label="Copy lrps.wgu.edu/provision/570441081 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568442441" aria-label="Launch School Admin in LRPS (opens in new tab)">
                   <td class="id-cell">568442441</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568442441" target="_blank" rel="noopener">lrps.wgu.edu/provision/568442441</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568442441" aria-label="Copy lrps.wgu.edu/provision/568442441 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568442441" target="_blank" rel="noopener">lrps.wgu.edu/provision/568442441</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568442441" aria-label="Copy lrps.wgu.edu/provision/568442441 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/573162919" aria-label="Launch Super Admin in LRPS (opens in new tab)">
                   <td class="id-cell">573162919</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/573162919" target="_blank" rel="noopener">lrps.wgu.edu/provision/573162919</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/573162919" aria-label="Copy lrps.wgu.edu/provision/573162919 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/573162919" target="_blank" rel="noopener">lrps.wgu.edu/provision/573162919</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/573162919" aria-label="Copy lrps.wgu.edu/provision/573162919 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">18 Jun 2026</td>
                 </tr>
                 <tr class="group-divider">
-                  <td colspan="5"><span class="material-icons-outlined">school</span>Student Skills</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-school"></use></svg>Student Skills</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568442570" aria-label="Launch Python skill in LRPS (opens in new tab)">
                   <td class="id-cell">568442570</td>
                   <td class="name-cell lrps-name">Python</td>
                   <td><span class="status-pill"><span class="dot amber"></span>Unknown</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568442570" target="_blank" rel="noopener">lrps.wgu.edu/provision/568442570</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568442570" aria-label="Copy lrps.wgu.edu/provision/568442570 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568442570" target="_blank" rel="noopener">lrps.wgu.edu/provision/568442570</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568442570" aria-label="Copy lrps.wgu.edu/provision/568442570 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572550562" aria-label="Launch Professionalism skill in LRPS (opens in new tab)">
                   <td class="id-cell">572550562</td>
                   <td class="name-cell lrps-name">Professionalism</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572550562" target="_blank" rel="noopener">lrps.wgu.edu/provision/572550562</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572550562" aria-label="Copy lrps.wgu.edu/provision/572550562 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572550562" target="_blank" rel="noopener">lrps.wgu.edu/provision/572550562</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572550562" aria-label="Copy lrps.wgu.edu/provision/572550562 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572550817" aria-label="Launch Applied UX skill in LRPS (opens in new tab)">
                   <td class="id-cell">572550817</td>
                   <td class="name-cell lrps-name">Applied UX</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572550817" target="_blank" rel="noopener">lrps.wgu.edu/provision/572550817</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572550817" aria-label="Copy lrps.wgu.edu/provision/572550817 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572550817" target="_blank" rel="noopener">lrps.wgu.edu/provision/572550817</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572550817" aria-label="Copy lrps.wgu.edu/provision/572550817 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551037" aria-label="Launch E010 skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551037</td>
                   <td class="name-cell lrps-name">E010</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551037" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551037</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551037" aria-label="Copy lrps.wgu.edu/provision/572551037 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551037" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551037</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551037" aria-label="Copy lrps.wgu.edu/provision/572551037 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551265" aria-label="Launch Calc skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551265</td>
                   <td class="name-cell lrps-name">Calc</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551265" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551265</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551265" aria-label="Copy lrps.wgu.edu/provision/572551265 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551265" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551265</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551265" aria-label="Copy lrps.wgu.edu/provision/572551265 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/572551549" aria-label="Launch Teaching Engineering skill in LRPS (opens in new tab)">
                   <td class="id-cell">572551549</td>
                   <td class="name-cell lrps-name">Teaching Engineering</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551549" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551549</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551549" aria-label="Copy lrps.wgu.edu/provision/572551549 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/572551549" target="_blank" rel="noopener">lrps.wgu.edu/provision/572551549</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/572551549" aria-label="Copy lrps.wgu.edu/provision/572551549 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">15 Jun 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575242504" aria-label="Launch D522 Python for IT Automation skill in LRPS (opens in new tab)">
                   <td class="id-cell">575242504</td>
                   <td class="name-cell lrps-name">D522 — Python for IT Automation</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/575242504" target="_blank" rel="noopener">lrps.wgu.edu/provision/575242504</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/575242504" aria-label="Copy lrps.wgu.edu/provision/575242504 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/575242504" target="_blank" rel="noopener">lrps.wgu.edu/provision/575242504</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/575242504" aria-label="Copy lrps.wgu.edu/provision/575242504 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/576572714" aria-label="Launch STU101 Time Management &amp; Study Skills in LRPS (opens in new tab)">
                   <td class="id-cell">576572714</td>
                   <td class="name-cell lrps-name">STU101 — Time Management &amp; Study Skills</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/576572714" target="_blank" rel="noopener">lrps.wgu.edu/provision/576572714</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/576572714" aria-label="Copy lrps.wgu.edu/provision/576572714 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/576572714" target="_blank" rel="noopener">lrps.wgu.edu/provision/576572714</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/576572714" aria-label="Copy lrps.wgu.edu/provision/576572714 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">08 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937240" aria-label="Launch E010-01 Python Basics (E010) — master in LRPS (opens in new tab)">
                   <td class="id-cell">577937240</td>
                   <td class="name-cell lrps-name">E010-01 Python Basics (E010) — master</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937240" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937240</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937240" aria-label="Copy lrps.wgu.edu/provision/577937240 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937240" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937240</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937240" aria-label="Copy lrps.wgu.edu/provision/577937240 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937133" aria-label="Launch E010-02 Terminal Basics in LRPS (opens in new tab)">
                   <td class="id-cell">577937133</td>
                   <td class="name-cell lrps-name">E010-02 Terminal Basics</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937133" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937133</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937133" aria-label="Copy lrps.wgu.edu/provision/577937133 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937133" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937133</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937133" aria-label="Copy lrps.wgu.edu/provision/577937133 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577937026" aria-label="Launch E010-03 Variables, Data Types &amp; Type Conversion in LRPS (opens in new tab)">
                   <td class="id-cell">577937026</td>
                   <td class="name-cell lrps-name">E010-03 Variables, Data Types &amp; Type Conversion</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937026" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937026</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937026" aria-label="Copy lrps.wgu.edu/provision/577937026 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577937026" target="_blank" rel="noopener">lrps.wgu.edu/provision/577937026</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577937026" aria-label="Copy lrps.wgu.edu/provision/577937026 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936948" aria-label="Launch E010-04 Reading User Input &amp; String Formatting in LRPS (opens in new tab)">
                   <td class="id-cell">577936948</td>
                   <td class="name-cell lrps-name">E010-04 Reading User Input &amp; String Formatting</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936948" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936948</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936948" aria-label="Copy lrps.wgu.edu/provision/577936948 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936948" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936948</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936948" aria-label="Copy lrps.wgu.edu/provision/577936948 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936808" aria-label="Launch E010-05 Operators in LRPS (opens in new tab)">
                   <td class="id-cell">577936808</td>
                   <td class="name-cell lrps-name">E010-05 Operators</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936808" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936808</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936808" aria-label="Copy lrps.wgu.edu/provision/577936808 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936808" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936808</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936808" aria-label="Copy lrps.wgu.edu/provision/577936808 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936681" aria-label="Launch E010-06 Conditionals &amp; Loops in LRPS (opens in new tab)">
                   <td class="id-cell">577936681</td>
                   <td class="name-cell lrps-name">E010-06 Conditionals &amp; Loops</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936681" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936681</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936681" aria-label="Copy lrps.wgu.edu/provision/577936681 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936681" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936681</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936681" aria-label="Copy lrps.wgu.edu/provision/577936681 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936540" aria-label="Launch E010-07 Strings &amp; Lists in LRPS (opens in new tab)">
                   <td class="id-cell">577936540</td>
                   <td class="name-cell lrps-name">E010-07 Strings &amp; Lists</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936540" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936540</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936540" aria-label="Copy lrps.wgu.edu/provision/577936540 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936540" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936540</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936540" aria-label="Copy lrps.wgu.edu/provision/577936540 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936443" aria-label="Launch E010-08 Dictionaries, Tuples &amp; Sets in LRPS (opens in new tab)">
                   <td class="id-cell">577936443</td>
                   <td class="name-cell lrps-name">E010-08 Dictionaries, Tuples &amp; Sets</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936443" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936443</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936443" aria-label="Copy lrps.wgu.edu/provision/577936443 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936443" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936443</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936443" aria-label="Copy lrps.wgu.edu/provision/577936443 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936322" aria-label="Launch E010-09 Functions in LRPS (opens in new tab)">
                   <td class="id-cell">577936322</td>
                   <td class="name-cell lrps-name">E010-09 Functions</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936322" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936322</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936322" aria-label="Copy lrps.wgu.edu/provision/577936322 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936322" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936322</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936322" aria-label="Copy lrps.wgu.edu/provision/577936322 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577936192" aria-label="Launch E010-10 datetime, Debugging &amp; Building Small Programs in LRPS (opens in new tab)">
                   <td class="id-cell">577936192</td>
                   <td class="name-cell lrps-name">E010-10 datetime, Debugging &amp; Building Small Programs</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936192" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936192</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936192" aria-label="Copy lrps.wgu.edu/provision/577936192 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577936192" target="_blank" rel="noopener">lrps.wgu.edu/provision/577936192</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577936192" aria-label="Copy lrps.wgu.edu/provision/577936192 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577934102" aria-label="Launch D522-01B Python Basics for IT Automation — master in LRPS (opens in new tab)">
                   <td class="id-cell">577934102</td>
                   <td class="name-cell lrps-name">D522-01B Python Basics for IT Automation — master</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577934102" target="_blank" rel="noopener">lrps.wgu.edu/provision/577934102</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577934102" aria-label="Copy lrps.wgu.edu/provision/577934102 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577934102" target="_blank" rel="noopener">lrps.wgu.edu/provision/577934102</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577934102" aria-label="Copy lrps.wgu.edu/provision/577934102 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933941" aria-label="Launch D522-02 Variables, Data Types &amp; File Paths in LRPS (opens in new tab)">
                   <td class="id-cell">577933941</td>
                   <td class="name-cell lrps-name">D522-02 Variables, Data Types &amp; File Paths</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933941" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933941</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933941" aria-label="Copy lrps.wgu.edu/provision/577933941 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933941" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933941</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933941" aria-label="Copy lrps.wgu.edu/provision/577933941 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933773" aria-label="Launch D522-03 String Formatting, Lists &amp; Dictionaries in LRPS (opens in new tab)">
                   <td class="id-cell">577933773</td>
                   <td class="name-cell lrps-name">D522-03 String Formatting, Lists &amp; Dictionaries</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933773" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933773</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933773" aria-label="Copy lrps.wgu.edu/provision/577933773 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933773" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933773</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933773" aria-label="Copy lrps.wgu.edu/provision/577933773 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933647" aria-label="Launch D522-04 Type Conversion, Variable Naming &amp; Comments in LRPS (opens in new tab)">
                   <td class="id-cell">577933647</td>
                   <td class="name-cell lrps-name">D522-04 Type Conversion, Variable Naming &amp; Comments</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933647" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933647</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933647" aria-label="Copy lrps.wgu.edu/provision/577933647 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933647" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933647</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933647" aria-label="Copy lrps.wgu.edu/provision/577933647 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933512" aria-label="Launch D522-05 Functions, Docstrings &amp; Script Structure in LRPS (opens in new tab)">
                   <td class="id-cell">577933512</td>
                   <td class="name-cell lrps-name">D522-05 Functions, Docstrings &amp; Script Structure</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933512" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933512</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933512" aria-label="Copy lrps.wgu.edu/provision/577933512 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933512" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933512</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933512" aria-label="Copy lrps.wgu.edu/provision/577933512 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933385" aria-label="Launch D522-06 Conditionals, Loops &amp; Writing a README in LRPS (opens in new tab)">
                   <td class="id-cell">577933385</td>
                   <td class="name-cell lrps-name">D522-06 Conditionals, Loops &amp; Writing a README</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933385" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933385</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933385" aria-label="Copy lrps.wgu.edu/provision/577933385 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933385" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933385</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933385" aria-label="Copy lrps.wgu.edu/provision/577933385 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933189" aria-label="Launch D522-07 Listing Directory Contents, Reading Files &amp; Writing Files in LRPS (opens in new tab)">
                   <td class="id-cell">577933189</td>
                   <td class="name-cell lrps-name">D522-07 Listing Directory Contents, Reading Files &amp; Writing Files</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933189" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933189</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933189" aria-label="Copy lrps.wgu.edu/provision/577933189 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933189" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933189</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933189" aria-label="Copy lrps.wgu.edu/provision/577933189 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577933021" aria-label="Launch D522-08 File Metadata &amp; Copying Files in LRPS (opens in new tab)">
                   <td class="id-cell">577933021</td>
                   <td class="name-cell lrps-name">D522-08 File Metadata &amp; Copying Files</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933021" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933021</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933021" aria-label="Copy lrps.wgu.edu/provision/577933021 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577933021" target="_blank" rel="noopener">lrps.wgu.edu/provision/577933021</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577933021" aria-label="Copy lrps.wgu.edu/provision/577933021 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932832" aria-label="Launch D522-09 Reading CSV Files, Writing CSV Files &amp; Sorting Data in LRPS (opens in new tab)">
                   <td class="id-cell">577932832</td>
                   <td class="name-cell lrps-name">D522-09 Reading CSV Files, Writing CSV Files &amp; Sorting Data</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932832" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932832</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932832" aria-label="Copy lrps.wgu.edu/provision/577932832 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932832" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932832</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932832" aria-label="Copy lrps.wgu.edu/provision/577932832 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932611" aria-label="Launch D522-10 The datetime Module &amp; Working with JSON in LRPS (opens in new tab)">
                   <td class="id-cell">577932611</td>
                   <td class="name-cell lrps-name">D522-10 The datetime Module &amp; Working with JSON</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932611" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932611</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932611" aria-label="Copy lrps.wgu.edu/provision/577932611 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932611" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932611</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932611" aria-label="Copy lrps.wgu.edu/provision/577932611 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932376" aria-label="Launch D522-11 os &amp; socket Modules, Parsing Command Output, subprocess in LRPS (opens in new tab)">
                   <td class="id-cell">577932376</td>
                   <td class="name-cell lrps-name">D522-11 os &amp; socket Modules, Parsing Command Output, subprocess</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932376" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932376</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932376" aria-label="Copy lrps.wgu.edu/provision/577932376 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932376" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932376</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932376" aria-label="Copy lrps.wgu.edu/provision/577932376 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932197" aria-label="Launch D522-12 logging &amp; requests Modules, Exception Handling in LRPS (opens in new tab)">
                   <td class="id-cell">577932197</td>
                   <td class="name-cell lrps-name">D522-12 logging &amp; requests Modules, Exception Handling</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932197" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932197</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932197" aria-label="Copy lrps.wgu.edu/provision/577932197 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932197" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932197</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932197" aria-label="Copy lrps.wgu.edu/provision/577932197 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577932056" aria-label="Launch D522-13 paramiko &amp; netmiko Modules in LRPS (opens in new tab) — currently broken, dead link from a post-deploy rename (LOG-033/034)">
                   <td class="id-cell">577932056</td>
                   <td class="name-cell lrps-name">D522-13 paramiko &amp; netmiko Modules</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932056" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932056</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932056" aria-label="Copy lrps.wgu.edu/provision/577932056 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577932056" target="_blank" rel="noopener">lrps.wgu.edu/provision/577932056</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577932056" aria-label="Copy lrps.wgu.edu/provision/577932056 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/577935204" aria-label="Launch D522-14 Building Small Programs in LRPS (opens in new tab)">
                   <td class="id-cell">577935204</td>
                   <td class="name-cell lrps-name">D522-14 Building Small Programs</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577935204" target="_blank" rel="noopener">lrps.wgu.edu/provision/577935204</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577935204" aria-label="Copy lrps.wgu.edu/provision/577935204 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/577935204" target="_blank" rel="noopener">lrps.wgu.edu/provision/577935204</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/577935204" aria-label="Copy lrps.wgu.edu/provision/577935204 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">16 Jul 2026</td>
                 </tr>
 
@@ -1222,40 +1243,40 @@
                      separate faults, escalated.
                      ========================================================= -->
                 <tr class="section-divider">
-                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">construction</span>Dev &middot; Development server</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true" style="font-size:13px; vertical-align:-2px; margin-right:6px;"><use href="#i-construction"></use></svg>Dev &middot; Development server</td>
                 </tr>
                 <tr class="group-divider">
-                  <td colspan="5"><span class="material-icons-outlined">badge</span>Staff management portals</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg>Staff management portals</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568111823" aria-label="Launch Instructor Portal in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
                   <td class="id-cell">568111823</td>
                   <td class="name-cell lrps-name">Instructor Portal</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568111823" target="_blank" rel="noopener">lrps.wgu.edu/provision/568111823</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568111823" aria-label="Copy lrps.wgu.edu/provision/568111823 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568111823" target="_blank" rel="noopener">lrps.wgu.edu/provision/568111823</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568111823" aria-label="Copy lrps.wgu.edu/provision/568111823 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568112003" aria-label="Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
                   <td class="id-cell">568112003</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568112003" target="_blank" rel="noopener">lrps.wgu.edu/provision/568112003</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568112003" aria-label="Copy lrps.wgu.edu/provision/568112003 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568112003" target="_blank" rel="noopener">lrps.wgu.edu/provision/568112003</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568112003" aria-label="Copy lrps.wgu.edu/provision/568112003 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575058314" aria-label="Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
                   <td class="id-cell">575058314</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/575058314" target="_blank" rel="noopener">lrps.wgu.edu/provision/575058314</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/575058314" aria-label="Copy lrps.wgu.edu/provision/575058314 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/575058314" target="_blank" rel="noopener">lrps.wgu.edu/provision/575058314</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/575058314" aria-label="Copy lrps.wgu.edu/provision/575058314 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
                 <tr class="group-divider">
-                  <td colspan="5"><span class="material-icons-outlined">school</span>Student Skills</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-school"></use></svg>Student Skills</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/560264094" aria-label="Launch Python skill in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
                   <td class="id-cell">560264094</td>
                   <td class="name-cell lrps-name">Python</td>
                   <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/560264094" target="_blank" rel="noopener">lrps.wgu.edu/provision/560264094</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/560264094" aria-label="Copy lrps.wgu.edu/provision/560264094 to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/560264094" target="_blank" rel="noopener">lrps.wgu.edu/provision/560264094</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/560264094" aria-label="Copy lrps.wgu.edu/provision/560264094 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">01 Jul 2026</td>
                 </tr>
 
@@ -1267,34 +1288,34 @@
                      in _archive/ (unlinked but reachable by direct URL).
                      ========================================================= -->
                 <tr class="section-divider">
-                  <td colspan="5"><span class="material-icons-outlined" style="font-size:13px; vertical-align:-2px; margin-right:6px;">slideshow</span>Live-App Click-Through Demo &middot; no login, switch roles freely</td>
+                  <td colspan="5"><svg class="icon" aria-hidden="true" style="font-size:13px; vertical-align:-2px; margin-right:6px;"><use href="#i-slideshow"></use></svg>Live-App Click-Through Demo &middot; no login, switch roles freely</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="student/" aria-label="Open the SkillProof Student walkthrough (screenshots, no login)">
                   <td class="id-cell">269781248</td>
                   <td class="name-cell lrps-name">Student</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/student/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/student/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/student/" aria-label="Copy brady-wgu.github.io/SkillProof/student/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/student/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/student/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/student/" aria-label="Copy brady-wgu.github.io/SkillProof/student/ to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="instructor/" aria-label="Open the SkillProof Instructor walkthrough (screenshots, no login)">
                   <td class="id-cell">269781302</td>
                   <td class="name-cell lrps-name">Instructor</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/instructor/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/instructor/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/instructor/" aria-label="Copy brady-wgu.github.io/SkillProof/instructor/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/instructor/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/instructor/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/instructor/" aria-label="Copy brady-wgu.github.io/SkillProof/instructor/ to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="tenant_admin/" aria-label="Open the SkillProof School Admin walkthrough (screenshots, no login)">
                   <td class="id-cell">269781301</td>
                   <td class="name-cell lrps-name">School Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/tenant_admin/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/tenant_admin/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/tenant_admin/" aria-label="Copy brady-wgu.github.io/SkillProof/tenant_admin/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/tenant_admin/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/tenant_admin/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/tenant_admin/" aria-label="Copy brady-wgu.github.io/SkillProof/tenant_admin/ to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
                 <tr class="live" tabindex="0" data-launch="super_admin/" aria-label="Open the SkillProof Super Admin walkthrough (screenshots, no login)">
                   <td class="id-cell">269781303</td>
                   <td class="name-cell lrps-name">Super Admin</td>
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/super_admin/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/super_admin/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/super_admin/" aria-label="Copy brady-wgu.github.io/SkillProof/super_admin/ to the clipboard" title="Copy link"><span class="material-icons-outlined" aria-hidden="true">content_copy</span></button></span></td>
+                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://brady-wgu.github.io/SkillProof/super_admin/" target="_blank" rel="noopener">brady-wgu.github.io/SkillProof/super_admin/</a><button type="button" class="copy-btn" data-copy="https://brady-wgu.github.io/SkillProof/super_admin/" aria-label="Copy brady-wgu.github.io/SkillProof/super_admin/ to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">13 Aug 2026</td>
                 </tr>
 
@@ -1333,15 +1354,15 @@
   <div class="meta-bar-header">
     <span class="meta-id">SkillProof Project Link Page</span>
     <button class="meta-bar-toggle" type="button" onclick="toggleMetaBar()" aria-label="Hide demo bar" aria-expanded="true" title="Hide/show this demo bar">
-      <span class="material-icons-outlined">expand_more</span>
+      <svg class="icon" aria-hidden="true"><use href="#i-expand_more"></use></svg>
     </button>
   </div>
   <div class="meta-bar-flows">
     <span style="color: rgba(255,255,255,0.78); font-size:12px;">Quick launch:</span>
-    <a class="meta-flow-link" href="student/"><span class="material-icons-outlined">person</span>Student</a>
-    <a class="meta-flow-link" href="instructor/"><span class="material-icons-outlined">school</span>Instructor</a>
-    <a class="meta-flow-link" href="tenant_admin/"><span class="material-icons-outlined">admin_panel_settings</span>School Admin</a>
-    <a class="meta-flow-link" href="super_admin/"><span class="material-icons-outlined">verified_user</span>Super Admin</a>
+    <a class="meta-flow-link" href="student/"><svg class="icon" aria-hidden="true"><use href="#i-person"></use></svg>Student</a>
+    <a class="meta-flow-link" href="instructor/"><svg class="icon" aria-hidden="true"><use href="#i-school"></use></svg>Instructor</a>
+    <a class="meta-flow-link" href="tenant_admin/"><svg class="icon" aria-hidden="true"><use href="#i-admin_panel_settings"></use></svg>School Admin</a>
+    <a class="meta-flow-link" href="super_admin/"><svg class="icon" aria-hidden="true"><use href="#i-verified_user"></use></svg>Super Admin</a>
   </div>
 </div>
 
@@ -1392,13 +1413,14 @@
   /* Copy a row's LRPS link in one click. */
   (function() {
     function flash(btn, ok) {
-      var icon = btn.querySelector('.material-icons-outlined');
-      var was = icon.textContent, title = btn.getAttribute('title');
-      icon.textContent = ok ? 'check' : 'error_outline';
+      /* An <svg> has no textContent to set -- repoint <use> instead. */
+      var use = btn.querySelector('.icon use');
+      var was = use.getAttribute('href'), title = btn.getAttribute('title');
+      use.setAttribute('href', ok ? '#i-check' : '#i-error_outline');
       btn.setAttribute('title', ok ? 'Copied' : 'Press Ctrl+C to copy');
       btn.classList.toggle('copied', ok);
       setTimeout(function() {
-        icon.textContent = was;
+        use.setAttribute('href', was);
         btn.setAttribute('title', title);
         btn.classList.remove('copied');
       }, 1400);
@@ -1442,10 +1464,10 @@
     document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
     localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
   }
+  /* The data-theme attribute is already restored in <head>; this only
+     syncs the toggle's sun/moon icons to it. */
   (function() {
-    var saved = localStorage.getItem('skillproof-theme');
-    if (saved === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
       document.querySelectorAll('.theme-icon-light').forEach(function(el) { el.style.display = 'none'; });
       document.querySelectorAll('.theme-icon-dark').forEach(function(el) { el.style.display = ''; });
     }

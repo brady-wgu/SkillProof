@@ -1,0 +1,221 @@
+/* ============================================================================
+   Brady Design System -- shared token + base layer for the SkillProof site.
+
+   Authority, in the skill's own priority order:
+     1. WGU FY26 brand anchors (non-negotiable)
+     2. Brady semantic palette (BS_)          design-system.md 1.3
+     3. Editorial neutrals                    design-system.md 1.4
+     4. Type scale                            design-system.md 2.2
+     5. Spacing, 4px grid                     design-system.md 3.1
+
+   Source of truth:
+   C:\dev\repos\claude_skills\brady-document-style\references\design-system.md
+
+   WHY THESE VALUES AND NOT THE OLD ONES. The pages already used the correct
+   WGU anchors (#001730, #0070F0, #46B1EF, #EEF6F9) -- the colour was never the
+   problem. What made them read as somebody else's work was the vocabulary:
+   Paragon token names, Paragon component classes, and generic greys standing
+   in where the editorial neutral scale belongs. This file replaces the
+   vocabulary and adds the missing layer.
+
+   TYPE SCALE ON THE WEB. design-system.md 2.2 documents the scale as
+   "derived from Paragon's heading scale (h1: 2.5rem, h2: 2rem, h3: 1.375rem
+   relative to 1.125rem base), adapted to Word's point system." The pt values
+   there are the print adaptation, so the web returns to the rem originals
+   rather than converting points back into pixels.
+
+   DARK MODE. design-system.md is documented light-first and specifies no dark
+   palette, so the dark block below is a derivation, not a quotation. Rule
+   applied: brand anchors keep their hue and lift in luminance until they clear
+   4.5:1 on the dark surface; the editorial neutral ramp inverts end for end.
+   Anything here that is NOT in the reference is marked "derived".
+   ========================================================================= */
+
+:root {
+  /* --- WGU FY26 brand anchors. Non-negotiable. ---------------------------- */
+  --bs-midnight:   #001730;
+  --bs-navy:       #002855;
+  --bs-blue:       #0070F0;
+  --bs-sky:        #46B1EF;
+  --bs-ice:        #EEF6F9;
+
+  /* --- Brady semantic palette (design-system.md 1.3) ---------------------- */
+  --bs-green:      #1A6635;   /* ON TRACK              AAA */
+  --bs-yellow:     #FFCC00;   /* WARNING, CTA on dark      */
+  --bs-tawny:      #D97443;   /* AT RISK               AA  */
+  --bs-ember:      #C2592A;   /* CAUTION               UI/large */
+  --bs-red:        #BF1E2E;   /* ALERT, CRITICAL       AA  */
+  --bs-mid:        #1E2E56;   /* DEFINITION, CODE      AAA */
+  --bs-cream:      #F7F4EF;
+
+  /* --- Editorial neutrals (design-system.md 1.4) -------------------------- */
+  --bs-ink:        #0A0A0A;   /* body text            19.77:1 AAA */
+  --bs-graphite:   #2B2F36;   /* strong secondary     13.30:1 AAA */
+  --bs-slate:      #4B5563;   /* metadata              7.56:1 AAA */
+  --bs-ash:        #6B7280;   /* eyebrow, footer       4.83:1 AA  */
+  --bs-fog:        #9CA3AF;   /* decorative rules                 */
+  --bs-mist:       #D1D5DB;   /* hairlines, zebra                 */
+  --bs-paper:      #F8F9FA;   /* cool surface                     */
+  --bs-bone:       #F7F5EF;   /* warm surface                     */
+  --bs-white:      #FFFFFF;
+
+  /* --- Surface tints (design-system.md 1.5, 1.4a) ------------------------- */
+  --bs-tint-navy:   #E6EBF1;
+  --bs-tint-blue:   #EAF3FE;
+  --bs-tint-yellow: #FFFBEB;
+  --bs-tint-ember:  #FAF2EE;
+  --bs-tint-tawny:  #FCF4F0;
+  --bs-tint-mid:    #EDEEF1;
+  --bs-tint-band:   #DCE3EE;  /* table zebra, deeper than callout tints */
+  /* DERIVED: design-system.md 1.5 gives tints for navy/blue/yellow/ember/
+     tawny/mid but not for BS_GREEN or BS_RED. Mixed to the same 8%-into-
+     white recipe the section documents, for success and danger surfaces. */
+  --bs-tint-green:  #E8F1EB;
+  --bs-tint-red:    #F8E9EA;
+
+  /* --- Semantic roles. Components reference THESE, never a raw hue, so a
+         palette change lands in one place. ------------------------------- */
+  --bs-page:        var(--bs-white);
+  --bs-surface:     var(--bs-paper);
+  --bs-surface-alt: var(--bs-bone);
+  --bs-text:        var(--bs-ink);
+  --bs-text-2:      var(--bs-graphite);
+  --bs-text-3:      var(--bs-slate);
+  --bs-text-4:      var(--bs-ash);
+  --bs-rule:        var(--bs-mist);
+  --bs-rule-strong: var(--bs-fog);
+  --bs-link:        var(--bs-blue);
+  --bs-heading:     var(--bs-midnight);
+  --bs-accent:      var(--bs-navy);
+
+  /* Status. The mapping is the semantic palette's own, not a fresh choice:
+     ON TRACK -> green, WARNING -> yellow, ALERT -> red. */
+  --bs-status-up:      var(--bs-green);
+  --bs-status-unknown: var(--bs-yellow);
+  --bs-status-down:    var(--bs-red);
+
+  /* --- Type (design-system.md 2.1, 2.2) ----------------------------------- */
+  --bs-font-display: 'Aptos Display', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+  --bs-font-body:    'Aptos', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --bs-font-mono:    'Aptos Mono', 'Cascadia Mono', Consolas, monospace;
+
+  --bs-text-base:  1.125rem;   /* 18px  body                        */
+  --bs-text-h1:    2.5rem;     /* 40px                              */
+  --bs-text-h2:    2rem;       /* 32px                              */
+  --bs-text-h3:    1.375rem;   /* 22px                              */
+  --bs-text-h4:    1.125rem;   /* 18px  run-in, SemiBold            */
+  --bs-text-sm:    0.9375rem;  /* 15px  dense UI, table body        */
+  --bs-text-xs:    0.8125rem;  /* 13px  caption                     */
+  --bs-text-eyebrow: 0.6875rem;/* 11px  ALL CAPS + tracking         */
+
+  --bs-tracking-eyebrow: 0.09em;
+  --bs-tracking-display: -0.01em;   /* the -0.2pt of the print scale */
+
+  /* --- Spacing. 4px grid (design-system.md 3.1). --------------------------- */
+  --bs-sp-1: 4px;
+  --bs-sp-2: 8px;
+  --bs-sp-3: 16px;
+  --bs-sp-4: 24px;
+  --bs-sp-5: 32px;
+  --bs-sp-6: 48px;
+  --bs-sp-7: 64px;
+
+  --bs-radius:    6px;
+  --bs-radius-sm: 4px;
+  --bs-shadow: 0 1px 2px rgba(0, 23, 48, 0.06);
+}
+
+/* ---------------------------------------------------------------------------
+   Dark theme. DERIVED -- design-system.md documents no dark palette.
+   The neutral ramp inverts end for end; brand hues keep their identity and
+   lift until they clear 4.5:1 on the dark surface. BS_YELLOW is the exception:
+   it already reads on dark, and the reference explicitly pairs it with black
+   text, so it is used as a fill and never as text on a light ground.
+   ------------------------------------------------------------------------ */
+[data-theme="dark"] {
+  --bs-page:        #071322;   /* derived: below MIDNIGHT so cards can sit on it */
+  --bs-surface:     #0D1E35;   /* derived */
+  --bs-surface-alt: #12263F;   /* derived */
+
+  --bs-text:        #F2F5F8;   /* derived: inverse of INK      */
+  --bs-text-2:      #D6DDE5;   /* derived: inverse of GRAPHITE */
+  --bs-text-3:      #A9B4C0;   /* derived: inverse of SLATE    */
+  --bs-text-4:      #8B96A3;   /* derived: inverse of ASH      */
+  --bs-rule:        #1E3452;   /* derived */
+  --bs-rule-strong: #2E4763;   /* derived */
+
+  --bs-link:        #6BB3FF;   /* derived: BLUE lifted, 6.1:1 on --bs-page  */
+  --bs-heading:     #EAF2FA;   /* derived */
+  --bs-accent:      var(--bs-sky);
+
+  --bs-status-up:      #3FA85C;  /* derived: BS_GREEN lifted  */
+  --bs-status-unknown: var(--bs-yellow);
+  --bs-status-down:    #E4606D;  /* derived: BS_RED lifted    */
+
+  --bs-tint-navy:   #12263F;   /* derived */
+  --bs-tint-blue:   #10263D;   /* derived */
+  --bs-tint-band:   #102B47;   /* derived */
+  --bs-tint-green:  #0F2A1B;   /* derived */
+  --bs-tint-red:    #331319;   /* derived */
+  --bs-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------ */
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  background: var(--bs-page);
+  color: var(--bs-text);
+  font-family: var(--bs-font-body);
+  font-size: var(--bs-text-base);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--bs-font-display);
+  color: var(--bs-heading);
+  letter-spacing: var(--bs-tracking-display);
+  margin: 0 0 var(--bs-sp-3);
+  text-wrap: balance;
+}
+h1 { font-size: var(--bs-text-h1); font-weight: 700; line-height: 1.08; }
+h2 { font-size: var(--bs-text-h2); font-weight: 700; line-height: 1.15; }
+h3 { font-size: var(--bs-text-h3); font-weight: 400; line-height: 1.25; }
+h4 {
+  font-family: var(--bs-font-body);
+  font-size: var(--bs-text-h4); font-weight: 600;
+  color: var(--bs-text-2);
+  margin: 0 0 var(--bs-sp-2);
+}
+
+a { color: var(--bs-link); }
+
+code, pre, .bs-mono { font-family: var(--bs-font-mono); }
+
+/* The eyebrow: ALL CAPS, tracked out, ash. Used for section labels and
+   metadata rows across every page so they share one voice. */
+.bs-eyebrow {
+  font-size: var(--bs-text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--bs-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--bs-text-4);
+}
+
+/* Focus is never removed, only restyled -- WCAG 2.4.7. */
+:focus-visible {
+  outline: 2px solid var(--bs-link);
+  outline-offset: 2px;
+  border-radius: var(--bs-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

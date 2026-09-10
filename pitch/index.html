@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>
+    /* No-flash theme restore. Runs before first paint, independent of
+       stylesheet load order, so a returning dark-mode visitor never sees a
+       light flash. Matches ../index.html's key: localStorage['skillproof-theme']. */
+    (function () {
+      try {
+        var saved = localStorage.getItem('skillproof-theme');
+        if (saved === 'dark' || saved === 'light') {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillProof — One-Slide Pitch</title>
   <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/wgu-owl-favicon.png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="https://brady-wgu.github.io/brady-design-system/fonts/aptos.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/brady.css">
 
   <!--
     One-page mirror of skillproof-pitch-slide-v4-from-key.pptx (exported from
@@ -16,138 +29,142 @@
     a screenshot so it stays crisp at any size; the product-mockup panel is the
     slide's actual click-to-play video (skillproof-demo-account3.mp4) with the
     slide's own screenshot as its poster frame.
+
+    Restyled onto Brady's own token system (assets/brady.css) -- see that file's
+    header comment for the authority chain. This page carries only layout and
+    the handful of one-off treatments the shared base doesn't define (stat
+    cards, video frame, hero eyebrow tint); every color is a --bs-* token, so
+    light/dark both come from the shared sheet.
   -->
 
   <style>
-    :root {
-      --color-deep-navy: #001730;
-      --color-panel-navy: #0A2540;
-      --color-card-navy: #0F2B4A;
-      --color-bright-blue: #0070F0;
-      --color-sky-blue: #46B1EF;
-      --font-heading: 'Aptos Display', Arial, sans-serif;
-      --font-body: 'Aptos', Arial, sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font-body);
-      background: var(--color-deep-navy);
-      color: #fff;
       min-height: 100vh;
     }
-    a { color: var(--color-sky-blue); }
-    :focus-visible { outline: 3px solid var(--color-sky-blue); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--bs-link); outline-offset: 2px; }
 
     .skip-nav {
       position: absolute; left: -9999px; top: auto;
       width: 1px; height: 1px; overflow: hidden;
       z-index: 9999; padding: 8px 16px;
-      background: var(--color-bright-blue); color: #fff;
+      background: var(--bs-blue); color: var(--bs-white);
       font-weight: 700; text-decoration: none;
     }
     .skip-nav:focus { position: fixed; left: 0; top: 0; width: auto; height: auto; }
 
     .topbar {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: var(--bs-sp-4) var(--bs-sp-6);
+      border-bottom: 1px solid var(--bs-rule);
     }
     .topbar-brand {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none; color: #fff; font-weight: 700; font-size: 14px;
+      display: flex; align-items: center; gap: var(--bs-sp-2);
+      text-decoration: none; color: var(--bs-text); font-weight: 700; font-size: var(--bs-text-sm);
     }
     .topbar-brand img { height: 28px; }
+    .topbar-right { display: flex; align-items: center; gap: var(--bs-sp-4); }
     .topbar-back {
       display: inline-flex; align-items: center; gap: 4px;
-      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px;
+      color: var(--bs-text-3); text-decoration: none; font-size: var(--bs-text-sm);
     }
-    .topbar-back:hover { color: #fff; }
-    .topbar-back .material-icons-outlined { font-size: 18px; }
+    .topbar-back:hover { color: var(--bs-text); }
+    .topbar-back svg { width: 18px; height: 18px; }
 
-    main { padding: 56px 40px 80px; }
+    .theme-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bs-surface);
+      border: 1px solid var(--bs-rule);
+      color: var(--bs-text);
+      cursor: pointer; padding: 0; transition: background 150ms;
+    }
+    .theme-toggle:hover { background: var(--bs-surface-alt); }
+    .theme-toggle svg { width: 20px; height: 20px; }
+
+    main { padding: var(--bs-sp-7) var(--bs-sp-6) var(--bs-sp-6); }
     .pitch-shell {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-      gap: 56px; align-items: center;
+      gap: var(--bs-sp-6); align-items: center;
     }
     @media (max-width: 980px) {
-      .pitch-shell { grid-template-columns: 1fr; gap: 40px; }
+      .pitch-shell { grid-template-columns: 1fr; gap: var(--bs-sp-5); }
     }
 
-    .eyebrow {
-      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--color-sky-blue);
-      margin-bottom: 20px;
+    /* Hero eyebrow: brand-blue rather than the shared .bs-eyebrow's ash, since
+       this is a marketing hero label (like a cover eyebrow) not body metadata. */
+    .pitch-eyebrow {
+      font-size: var(--bs-text-eyebrow); font-weight: 700; letter-spacing: var(--bs-tracking-eyebrow);
+      text-transform: uppercase; color: var(--bs-link);
+      margin-bottom: var(--bs-sp-3);
     }
     h1 {
-      font-family: var(--font-heading);
-      font-size: clamp(32px, 4vw, 46px);
-      line-height: 1.15; font-weight: 700; color: #fff;
-      margin-bottom: 24px;
+      font-size: clamp(2rem, 4vw, 2.875rem);
+      margin-bottom: var(--bs-sp-4);
     }
     .pitch-desc {
-      font-size: 17px; line-height: 1.6;
-      color: rgba(255,255,255,0.8);
+      font-size: 1.0625rem; line-height: 1.6;
+      color: var(--bs-text-2);
       max-width: 46ch;
-      margin-bottom: 36px;
+      margin-bottom: var(--bs-sp-5);
     }
 
-    .stat-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-bottom: 40px; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--bs-sp-3); margin-bottom: var(--bs-sp-5); }
     @media (max-width: 620px) { .stat-row { grid-template-columns: 1fr; } }
     .stat-card {
-      background: var(--color-card-navy);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 18px 18px;
+      background: var(--bs-surface);
+      border: 1px solid var(--bs-rule);
+      border-radius: var(--bs-radius);
+      padding: var(--bs-sp-3);
     }
     .stat-value {
-      font-family: var(--font-heading);
-      font-size: 26px; font-weight: 700; color: var(--color-sky-blue);
-      line-height: 1.1; margin-bottom: 8px;
+      font-family: var(--bs-font-display);
+      font-size: 1.625rem; font-weight: 700; color: var(--bs-link);
+      line-height: 1.1; margin-bottom: var(--bs-sp-2);
     }
-    .stat-value s { color: rgba(255,255,255,0.4); font-weight: 400; margin-right: 6px; }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+    .stat-value s { color: var(--bs-text-4); font-weight: 400; margin-right: 6px; }
+    .stat-label { font-size: var(--bs-text-xs); color: var(--bs-text-3); line-height: 1.4; }
 
-    .pitch-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .pitch-actions { display: flex; flex-wrap: wrap; gap: var(--bs-sp-3); }
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 20px; border-radius: 8px;
-      font-size: 15px; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: var(--bs-sp-2);
+      padding: 12px 20px; border-radius: var(--bs-radius);
+      font-size: var(--bs-text-sm); font-weight: 700; text-decoration: none;
       border: 2px solid transparent; transition: background 150ms, border-color 150ms;
     }
-    .btn-primary { background: var(--color-bright-blue); color: #fff; }
-    .btn-primary:hover { background: #005CC8; }
-    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
-    .btn-outline:hover { border-color: #fff; }
-    .btn .material-icons-outlined { font-size: 18px; }
+    .btn svg { width: 18px; height: 18px; }
+    .btn-primary { background: var(--bs-blue); color: var(--bs-white); }
+    .btn-primary:hover { background: var(--bs-navy); }
+    .btn-outline { background: transparent; color: var(--bs-text); border-color: var(--bs-rule-strong); }
+    .btn-outline:hover { border-color: var(--bs-text); }
 
     .video-panel { position: relative; }
     .video-frame {
       position: relative;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.1);
-      background: #000;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+      border: 1px solid var(--bs-rule);
+      background: var(--bs-midnight);
     }
     .video-frame video {
       display: block; width: 100%; height: auto;
     }
     .video-caption {
-      margin-top: 14px;
-      font-size: 13px; color: rgba(255,255,255,0.55);
+      margin-top: var(--bs-sp-3);
+      font-size: var(--bs-text-xs); color: var(--bs-text-3);
       text-align: center;
     }
 
     footer {
-      padding: 28px 40px 40px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: var(--bs-sp-5) var(--bs-sp-6) var(--bs-sp-5);
+      border-top: 1px solid var(--bs-rule);
       display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 12px;
-      font-size: 13px; color: rgba(255,255,255,0.5);
+      flex-wrap: wrap; gap: var(--bs-sp-2);
+      font-size: var(--bs-text-xs); color: var(--bs-text-3);
     }
-    footer a { color: rgba(255,255,255,0.7); }
+    footer a { color: var(--bs-text-3); }
+    footer a:hover { color: var(--bs-link); }
   </style>
 </head>
 <body>
@@ -159,16 +176,23 @@
     <img src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU">
     SkillProof
   </a>
-  <a class="topbar-back" href="../index.html">
-    <span class="material-icons-outlined">arrow_back</span> Back to storyboard
-  </a>
+  <div class="topbar-right">
+    <a class="topbar-back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Back to storyboard
+    </a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      <svg class="theme-icon-dark" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
 </header>
 
 <main id="main-content">
   <div class="pitch-shell">
 
     <div>
-      <div class="eyebrow">WGU &nbsp;·&nbsp; Program Development</div>
+      <div class="pitch-eyebrow">WGU &nbsp;·&nbsp; Program Development</div>
       <h1>Every student deserves their own path to mastery.</h1>
       <p class="pitch-desc">
         SkillProof is WGU's in-house AI coach — adaptive, LLM-driven practice
@@ -193,10 +217,12 @@
 
       <div class="pitch-actions">
         <a class="btn btn-primary" href="assets/skillproof-pitch-slide.pptx">
-          <span class="material-icons-outlined">download</span> Download the slide (.pptx)
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          Download the slide (.pptx)
         </a>
         <a class="btn btn-outline" href="../index.html">
-          <span class="material-icons-outlined">dashboard</span> Explore the live storyboard
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Explore the live storyboard
         </a>
       </div>
     </div>
@@ -223,6 +249,24 @@
   <span>SkillProof &middot; AI Coaching + Extensibility</span>
   <span><a href="../index.html">Storyboard Index</a> &middot; <a href="../student/index.html">Student</a> &middot; <a href="../instructor/index.html">Instructor</a> &middot; <a href="../tenant_admin/index.html">School Admin</a> &middot; <a href="../super_admin/index.html">Super Admin</a></span>
 </footer>
+
+<script>
+  /* Theme toggle. Same mechanism and key as ../index.html. */
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.querySelectorAll('.theme-icon-light').forEach(function (el) { el.style.display = isDark ? '' : 'none'; });
+    document.querySelectorAll('.theme-icon-dark').forEach(function (el) { el.style.display = isDark ? 'none' : ''; });
+    localStorage.setItem('skillproof-theme', isDark ? 'light' : 'dark');
+  }
+  (function () {
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      document.querySelectorAll('.theme-icon-light').forEach(function (el) { el.style.display = 'none'; });
+      document.querySelectorAll('.theme-icon-dark').forEach(function (el) { el.style.display = ''; });
+    }
+  })();
+</script>
 
 </body>
 </html>
