@@ -35,7 +35,7 @@
       "ariaLabel": "Launch the SkillProof Instructor portal in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
+      "statusCheckedAt": "2026-09-23T08:33:18.251Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -49,7 +49,7 @@
       "ariaLabel": "Launch the SkillProof School Admin portal in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
+      "statusCheckedAt": "2026-09-23T08:33:18.251Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -63,7 +63,7 @@
       "ariaLabel": "Launch the SkillProof Super Admin portal in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
+      "statusCheckedAt": "2026-09-23T08:33:18.251Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
@@ -77,7 +77,7 @@
       "ariaLabel": "Launch Python skill in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
+      "statusCheckedAt": "2026-09-23T08:33:18.251Z",
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "student"
@@ -91,7 +91,7 @@
       "ariaLabel": "Launch the Training Course in LRPS (opens in new tab)",
       "added": "04 Sep 2026",
       "status": "active",
-      "statusCheckedAt": "2026-09-10T19:42:05.686Z",
+      "statusCheckedAt": "2026-09-23T08:33:18.251Z",
       "statusSource": "measured",
       "audience": "student",
       "lastVerdict": "RENDERED_OK"
@@ -573,6 +573,34 @@
       "lastVerdict": "RENDERED_OK"
     },
     {
+      "id": "589890481",
+      "section": "stage",
+      "name": "R002 - Syntactic Awareness and Grammar",
+      "url": "https://lrps.wgu.edu/provision/589890481",
+      "display": "lrps.wgu.edu/provision/589890481",
+      "ariaLabel": "Launch R002 Syntactic Awareness and Grammar in LRPS (opens in new tab)",
+      "added": "23 Sep 2026",
+      "status": "active",
+      "statusSource": "measured",
+      "audience": "student",
+      "statusCheckedAt": "2026-09-23T15:20:24.837Z",
+      "lastVerdict": "RENDERED_OK"
+    },
+    {
+      "id": "589890634",
+      "section": "stage",
+      "name": "R002 - Writing Measurable Learning Objectives",
+      "url": "https://lrps.wgu.edu/provision/589890634",
+      "display": "lrps.wgu.edu/provision/589890634",
+      "ariaLabel": "Launch R002 Writing Measurable Learning Objectives in LRPS (opens in new tab)",
+      "added": "23 Sep 2026",
+      "status": "active",
+      "statusSource": "measured",
+      "audience": "student",
+      "statusCheckedAt": "2026-09-23T15:20:24.837Z",
+      "lastVerdict": "RENDERED_OK"
+    },
+    {
       "id": "568111823",
       "section": "dev",
       "name": "Instructor Portal",
@@ -581,7 +609,7 @@
       "ariaLabel": "Launch Instructor Portal in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
+      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "staff"
@@ -595,7 +623,7 @@
       "ariaLabel": "Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
+      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "staff"
@@ -609,7 +637,7 @@
       "ariaLabel": "Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
+      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "staff"
@@ -623,7 +651,7 @@
       "ariaLabel": "Launch Python skill in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
       "added": "01 Jul 2026",
       "status": "broken",
-      "statusCheckedAt": "2026-09-10T19:42:05.685Z",
+      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
       "statusSource": "measured",
       "lastVerdict": "FAIL_LINK_STALE",
       "audience": "student"

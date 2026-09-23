@@ -285,8 +285,17 @@ def merge_status(data, private):
     measured = {}
     broad = {}
     for scope in state.get('scopes', {}).values():
-        at = scope.get('at')
+        # Per-verdict measurement times, added to the store 23 SEP 2026 when
+        # partial runs started MERGING into a scope instead of replacing it. The
+        # scope's own `at` is the last WRITE time, so reading it for every
+        # verdict would stamp a week-old measurement with today's timestamp and
+        # publish it as "measured by the nightly runner as of <today>". Fall
+        # back to `at` only for verdicts written before the store carried the
+        # per-verdict map.
+        at_map = scope.get('verdictsAt') or {}
+        scope_at = scope.get('at')
         for check_id, verdict in scope.get('verdicts', {}).items():
+            at = at_map.get(check_id) or scope_at
             parts = check_id.split('::')
             if not parts or parts[0] != 'auth':
                 continue
