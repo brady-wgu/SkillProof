@@ -8,6 +8,12 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.176 — 30 Sep 2026 — PROD leads; testing environments collapse
+
+PROD is live for students, so the link list now opens with a **Production** panel (accent border, "Live for students" badge in text, link count), and STAGE and DEV sit under a **Testing environments** heading, collapsed by default behind real toggle buttons (`aria-expanded`/`aria-controls`) with an **Expand all** control so find-in-page still reaches every link. "Pilot" is gone from the PROD label. Headings, badge and counts share one centre line (measured 0.0 px spread in both themes); every new text element passes WCAG AA in light and dark (lowest 6.3:1).
+
+`build_links.py` now renders one `<tbody>` per environment between `links:begin`/`links:end` markers and replaces that region whole, so a second build is byte-exact. Sections declare their layout in `skills.json` (`live`, `testing`, or flat).
+
 ## v4.175 — 30 Sep 2026 — Four PROD Time Management Fundamentals links
 
 Added the four PROD student links for "EX?01 – Time Management Fundamentals", one per School's Student Success Examples course: EXB01 `590963381`, EXE01 `590963619`, EXH01 `590963768`, EXT01 `590963999`. Each was verified by a student launch that landed on its own Skill, so all four publish as Up. Link count 48 → 52.
