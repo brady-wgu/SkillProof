@@ -69,20 +69,6 @@
       "audience": "staff"
     },
     {
-      "id": "584731391",
-      "section": "prod",
-      "name": "Introduction to Python",
-      "url": "https://lrps.wgu.edu/provision/584731391",
-      "display": "lrps.wgu.edu/provision/584731391",
-      "ariaLabel": "Launch Introduction to Python in LRPS (opens in new tab)",
-      "added": "04 Sep 2026",
-      "status": "active",
-      "statusCheckedAt": "2026-09-23T08:33:18.251Z",
-      "statusSource": "measured",
-      "lastVerdict": "RENDERED_OK",
-      "audience": "student"
-    },
-    {
       "id": "590963381",
       "section": "prod",
       "name": "EXB01 – Time Management Fundamentals",
