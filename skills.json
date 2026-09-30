@@ -2,21 +2,28 @@
   "sections": [
     {
       "slug": "prod",
-      "label": "Prod &middot; Production, live pilot",
+      "label": "Prod &middot; Production, live for students",
       "icon": "public",
-      "preamble": "\n                <!-- =========================================================\n                     PROD -- production. Separate domain AND separate infrastructure, not a\n                     rename of staging, and it does not share the DEV/STAGE Client ID.\n                     Student-only pilot since 04 SEP 2026.\n                     ========================================================= -->\n"
+      "preamble": "\n                <!-- =========================================================\n                     PROD -- production. Separate domain AND separate infrastructure, not a\n                     rename of staging, and it does not share the DEV/STAGE Client ID.\n                     Live for students since 30 SEP 2026 (student-only pilot from 04 SEP 2026).\n                     ========================================================= -->\n",
+      "layout": "live",
+      "title": "Production",
+      "badge": "Live for students"
     },
     {
       "slug": "stage",
       "label": "Stage &middot; Staging server",
       "icon": "science",
-      "preamble": "\n                <!-- =========================================================\n                     STAGE -- staging server, and the bulk of the catalogue. Staff portals,\n                     then the course-level Skills, then the E010 and D522 skill-level\n                     links in course order.\n                     ========================================================= -->\n"
+      "preamble": "\n                <!-- =========================================================\n                     STAGE -- staging server, and the bulk of the catalogue. Staff portals,\n                     then the course-level Skills, then the E010 and D522 skill-level\n                     links in course order.\n                     ========================================================= -->\n",
+      "layout": "testing",
+      "title": "Staging server"
     },
     {
       "slug": "dev",
       "label": "Dev &middot; Development server",
       "icon": "construction",
-      "preamble": "\n                <!-- =========================================================\n                     DEV -- development server, currently unusable. All four links\n                     reach WGU SSO correctly, then the LTI service answers \"Tool\n                     not found\". Measured 10 SEP 2026, the DEV hosts are also down:\n                     wgu-dev-api accepts a TCP connection and never responds on 443\n                     or 80, and wgu-dev serves a certificate for another name. Two\n                     separate faults, escalated.\n                     ========================================================= -->\n"
+      "preamble": "\n                <!-- =========================================================\n                     DEV -- development server, currently unusable. All four links\n                     reach WGU SSO correctly, then the LTI service answers \"Tool\n                     not found\". Measured 10 SEP 2026, the DEV hosts are also down:\n                     wgu-dev-api accepts a TCP connection and never responds on 443\n                     or 80, and wgu-dev serves a certificate for another name. Two\n                     separate faults, escalated.\n                     ========================================================= -->\n",
+      "layout": "testing",
+      "title": "Development server"
     },
     {
       "slug": "demo",
@@ -737,7 +744,6 @@
       "audience": "demo"
     }
   ],
-  "tbodyTail": "\n              ",
   "publicPages": [
     {
       "name": "SkillProof Link List (this page, published)",

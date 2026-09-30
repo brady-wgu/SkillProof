@@ -172,26 +172,85 @@ def load(path, what):
 # ---------------------------------------------------------------------------
 # Public render
 # ---------------------------------------------------------------------------
-def render_tbody(data):
+# Environment layout (30 SEP 2026, Brady): PROD is live, so it leads in its own
+# panel with a text "Live" badge (never colour alone), and STAGE/DEV sit under a
+# "Testing environments" heading, collapsed by default behind real toggle
+# buttons (aria-expanded + aria-controls). A <details> element cannot wrap table
+# rows without breaking column alignment, so each environment is its own
+# <tbody>. Sections declare their layout in skills.json: "live", "testing" or
+# (absent) the original flat divider. Styles and the toggle script live in
+# index.html outside the generated region.
+ENV_HEAD_LIVE = (
+    '                <tr class="env-head env-head-live">\n'
+    '                  <td colspan="5"><div class="env-head-inner">'
+    '<span class="env-title" id="env-%(slug)s-h"><svg class="icon" aria-hidden="true">'
+    '<use href="#i-%(icon)s"></use></svg>%(title)s</span>'
+    '<span class="env-badge"><span class="dot green" aria-hidden="true"></span>%(badge)s</span>'
+    '<span class="env-count">%(n)d links</span></div></td>\n'
+    '                </tr>\n'
+)
+TESTING_HEAD = (
+    '              <tbody class="env-group">\n'
+    '                <tr class="group-head">\n'
+    '                  <td colspan="5"><div class="env-head-inner">'
+    '<span class="group-title">Testing environments</span>'
+    '<span class="group-note">Not for students. Collapsed by default.</span>'
+    '<button type="button" class="expand-all" aria-pressed="false">Expand all</button>'
+    '</div></td>\n'
+    '                </tr>\n'
+    '              </tbody>\n'
+)
+ENV_HEAD_TEST = (
+    '                <tr class="env-head env-head-test">\n'
+    '                  <td colspan="5"><button type="button" class="env-toggle" '
+    'aria-expanded="false" aria-controls="rows-%(slug)s">'
+    '<svg class="icon chev" aria-hidden="true"><use href="#i-expand_more"></use></svg>'
+    '<svg class="icon" aria-hidden="true"><use href="#i-%(icon)s"></use></svg>'
+    '<span class="env-title-test">%(title)s</span>'
+    '<span class="env-count">%(n)d links</span></button></td>\n'
+    '                </tr>\n'
+)
+
+
+def render_tbodies(data):
+    """Every <tbody> of the links table, in section order (see ENV_HEAD_LIVE)."""
     by_section = {}
     for s in data['skills']:
         by_section.setdefault(s['section'], []).append(s)
-
-    out = []
+    out, testing_open = [], False
     for sec in data['sections']:
-        # Whatever sat between the previous row and this divider, verbatim:
-        # blank lines and the hand-written <!-- SECTION n --> banners. Four
-        # banners cover five dividers and one runs to five lines of prose, so
-        # they are preserved rather than regenerated. A generator that reformats
-        # a human's comments is a generator people stop running.
-        out.append(sec['preamble'])
-        # label is stored as raw HTML, not text: the dividers use &middot;
-        # while the same character appears literally elsewhere in the file,
-        # and no escaper can know which form a given spot wants. Store what
-        # the file has, write it back unchanged.
-        out.append(DIVIDER % {'icon': sec['icon'], 'label': sec['label']})
-
+        layout = sec.get('layout')
         rows = by_section.get(sec['slug'], [])
+        # Preambles are the hand-written banner comments; kept verbatim.
+        out.append(sec['preamble'])
+        if layout == 'testing' and not testing_open:
+            out.append(TESTING_HEAD)
+            testing_open = True
+        if layout == 'live':
+            out.append('              <tbody class="env env-live" aria-labelledby="env-%s-h">\n' % sec['slug'])
+            out.append(ENV_HEAD_LIVE % {'slug': sec['slug'], 'icon': sec['icon'], 'title': sec['title'],
+                                        'badge': sec['badge'], 'n': len(rows)})
+            out.append(render_rows(sec, rows))
+            out.append('              </tbody>\n')
+        elif layout == 'testing':
+            out.append('              <tbody class="env env-test">\n')
+            out.append(ENV_HEAD_TEST % {'slug': sec['slug'], 'icon': sec['icon'], 'title': sec['title'], 'n': len(rows)})
+            out.append('              </tbody>\n')
+            out.append('              <tbody class="env-rows" id="rows-%s" hidden>\n' % sec['slug'])
+            out.append(render_rows(sec, rows))
+            out.append('              </tbody>\n')
+        else:
+            out.append('              <tbody class="env-flat">\n')
+            out.append(DIVIDER % {'icon': sec['icon'], 'label': sec['label']})
+            out.append(render_rows(sec, rows))
+            out.append('              </tbody>\n')
+    return ''.join(out)
+
+
+def render_rows(sec, rows):
+    """The <tr> rows of one section, grouped staff-then-student (demo stays flat)."""
+    out = []
+    if True:  # kept at this indent so the block reads as it did inside the old section loop
         # The demo section is one click-through seen through four roles, not a
         # student/staff split. Grouping it would invent a distinction that is
         # not there, so it renders flat.
@@ -220,7 +279,6 @@ def render_tbody(data):
                 'dot': dot, 'label': label, 'href': esc(href),
                 'display': esc(s['display']), 'added': esc(s['added']),
             })
-    out.append(data['tbodyTail'])
     return ''.join(out)
 
 
@@ -244,10 +302,24 @@ def assert_clean(html_text):
                      % (why, m.group(0)))
 
 
+BEGIN = '<!-- links:begin (generated by build_links.py; edit skills.json, not this region) -->'
+END = '<!-- links:end -->'
+
+
 def splice(current, tbody):
-    a = current.index('<tbody>') + len('<tbody>')
-    b = current.index('</tbody>')
-    out = current[:a] + tbody + current[b:]
+    # 30 SEP 2026: the table holds one <tbody> per environment, and section
+    # banner comments sit BETWEEN tbodies, so the generated region is delimited
+    # by explicit markers and replaced whole. Without markers (the old
+    # single-<tbody> file) the region is that one <tbody>...</tbody>.
+    nl = '\r\n' if '\r\n' in current else '\n'
+    block = BEGIN + nl + tbody.strip('\r\n') + nl + '              ' + END
+    if BEGIN in current:
+        a = current.index(BEGIN)
+        b = current.index(END, a) + len(END)
+    else:
+        a = current.index('<tbody')
+        b = current.rindex('</tbody>') + len('</tbody>')
+    out = current[:a] + block + current[b:]
 
     # The sidebar advertises a row count. It is the single most likely thing to
     # rot, because nothing forces a human to update it when they add a row.
@@ -663,7 +735,7 @@ def main():
         return 0
 
     current = io.open(INDEX, encoding='utf-8', newline='').read()
-    tbody = render_tbody(data)
+    tbody = render_tbodies(data)
     assert_clean(tbody)
     # index.html is CRLF throughout (1278/1278 lines). The templates above are
     # written with plain \n for legibility, so the newline style is applied here,
