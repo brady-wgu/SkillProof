@@ -12,6 +12,8 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 Added the four PROD student links for "EX?01 – Time Management Fundamentals", one per School's Student Success Examples course: EXB01 `590963381`, EXE01 `590963619`, EXH01 `590963768`, EXT01 `590963999`. Each was verified by a student launch that landed on its own Skill, so all four publish as Up. Link count 48 → 52.
 
+Removed the PROD Introduction to Python link (`584731391`) from the listing at Brady's direction: it grades poorly. The Skill itself is unchanged on PROD. Link count 52 → 51.
+
 ## v4.174 — 13 Aug 2026 — Correct the archive-reachability claim
 
 Folded into the v4.173 entry below rather than split across two versions, since it was found while verifying that change: the `_archive/` tree is **not** publicly reachable and never was. See the second bullet of v4.173.
