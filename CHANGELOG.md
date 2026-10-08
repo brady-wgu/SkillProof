@@ -8,20 +8,35 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
-## v4.177: 08 Oct 2026: Morning publish and per-link status merge
+## v4.179: 08 Oct 2026: The live-app demo and walkthrough video now come from PROD
+
+The Live-App Click-Through Demo was captured on STAGE on 13 Aug 2026. Every screen is now re-captured on PROD (`skillproof.training`), and pages the demo never showed are added: 42 screens, up from 32.
+
+- **Student (10):** first-launch welcome, course landing, AI diagnostic question and evaluation, results, Progress Map, AI coaching question and feedback, progress saved, Help. Skill: EXT01 – Time Management Fundamentals.
+- **Instructor (10):** dashboard, its Export menu, course EXT01, heatmap, learner profile, Staging Skills, and a full Skill Preview through "Preview Complete, no data saved".
+- **School Admin (13):** dashboard, School switcher, New Course dialog, course EXT01, View Skill, heatmap, learner profile, Analytics, New Skill wizard steps 1 to 3, Tenant Settings, Help. The Tenant Settings dead end now links back.
+- **Super Admin (9):** dashboard, its Export menu, Analytics, Access Control, the Add Courses and Assign School Admin dialogs, School Management, course EXT01, Help.
+- **Shown as PROD actually is.** Test courses and Skills named ZZ stay visible; nothing is cropped or filtered.
+- **Sharper, at about live size.** Screens are captured at a 1440-pixel-wide window at 2x pixel density (2880-pixel PNGs), so text shows at roughly its live size in a laptop browser and stays sharp on high-density displays. The 13 Aug captures were 1920 pixels at 1x, which displayed at about three quarters of live size.
+- **Redaction.** Every surname and every email address is masked with a solid block, as are the name initials on Access Control avatars.
+- **Not included.** The New Skill wizard's Review & Deploy step: on PROD, the click that opens it creates the Skill. Activity Logs (empty on PROD) and Archived Skills (almost entirely test Skills) are also left out.
+- **Walkthrough video re-recorded on PROD:** the same student diagnostic and coaching loop in EXT01, 4 min 5 sec at 2560 by 2000, 35 MB. The walkthrough page text now says what the video shows (the student experience), not "all four roles".
+- Image cache key `?v=9`. Demo rows on the landing page dated 08 Oct 2026.
+
+## v4.178: 08 Oct 2026: Morning publish and per-link status merge
 
 - `publish_morning.py`: one command from last night's measurements to both link surfaces, with a stop. With no flags it merges the verdicts, rebuilds `index.html` locally, dry-runs the Superhuman sync, lists any Live PROD Skill without a published link, and stops. `--commit` publishes exactly what was reviewed and refuses if either file changed since.
 - `build_links.py --status` now merges the nightly deep run's per-link results (`links::<env>::student::<id>`) as well as the quick checks (`auth::`), so every published student link carries its own nightly measurement (53 measured on 08 Oct 2026, up from a handful).
+
+## v4.177: 08 Oct 2026: Ten PROD E010 Python links
+
+Added the ten PROD student links for the E010 Python series, E010-01 - Running Python through E010-10 - Using Dictionaries (`592555506`, `592556529` to `592557034`). Each was verified by a student launch that landed on its own Skill and graded a correct answer 1.00, so all ten publish as Up. Link count 51 to 61.
 
 ## v4.176 — 30 Sep 2026 — PROD leads; testing environments collapse
 
 PROD is live for students, so the link list now opens with a **Production** panel (accent border, "Live for students" badge in text, link count), and STAGE and DEV sit under a **Testing environments** heading, collapsed by default behind real toggle buttons (`aria-expanded`/`aria-controls`) with an **Expand all** control so find-in-page still reaches every link. "Pilot" is gone from the PROD label. Headings, badge and counts share one centre line (measured 0.0 px spread in both themes); every new text element passes WCAG AA in light and dark (lowest 6.3:1).
 
 `build_links.py` now renders one `<tbody>` per environment between `links:begin`/`links:end` markers and replaces that region whole, so a second build is byte-exact. Sections declare their layout in `skills.json` (`live`, `testing`, or flat).
-
-## v4.176: 08 Oct 2026: Ten PROD E010 Python links
-
-Added the ten PROD student links for the E010 Python series, E010-01 - Running Python through E010-10 - Using Dictionaries (`592555506`, `592556529` to `592557034`). Each was verified by a student launch that landed on its own Skill and graded a correct answer 1.00, so all ten publish as Up. Link count 51 to 61.
 
 ## v4.175 — 30 Sep 2026 — Four PROD Time Management Fundamentals links
 

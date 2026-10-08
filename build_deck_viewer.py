@@ -10,7 +10,7 @@ WHAT IT PRESERVES THAT A FLAT IMAGE EXPORT WOULD LOSE
    and is byte-identical to assets/video/skillproof-walkthrough-2k.mp4, so a
    real <video> is overlaid on the slide's own video region, pointed at the
    existing asset. No second copy, and it plays inline.
-2. The deck's hyperlinks. Slide 6 has a "Launch the live STU101 coach" button
+2. The deck's hyperlinks. Slide 6 has a "Launch the live EXT01 coach" button
    and slide 7 has two links to this site. Real <a> elements are overlaid on
    the exact regions the shapes occupy.
 
@@ -49,7 +49,7 @@ VIDEO_REL = '../assets/video/skillproof-walkthrough-2k.mp4'
 # Bumped whenever the slide PNGs are re-rendered. Slide images are served with a
 # ?v= cache-buster for the same reason the persona screenshots are: without it,
 # browsers keep showing the previous render.
-VERSION = 1
+VERSION = 2
 
 # Hand-checked against the rendered PNGs. Auto-extracting "the first text on the
 # slide" picks up the footer on slide 6 rather than its heading, so the labels
@@ -61,7 +61,7 @@ TITLES = {
     3: 'Why SkillProof',
     4: 'The coaching loop — diagnostic, feedback, practice',
     5: 'One engine, any subject',
-    6: 'STU101 — live walkthrough (video)',
+    6: 'EXT01: live walkthrough (video)',
     7: 'Questions — explore on your own',
 }
 
@@ -566,7 +566,7 @@ def main():
                 f' poster="../assets/decks/slides/slide-{n}-video-poster.png?v={VERSION}"'
                 f' style="left:{video["left"]:.3f}%; top:{video["top"]:.3f}%;'
                 f' width:{video["width"]:.3f}%; height:{video["height"]:.3f}%;"'
-                f' aria-label="SkillProof STU101 walkthrough, 4 minutes 19 seconds">\n'
+                f' aria-label="SkillProof EXT01 walkthrough on PROD, 4 minutes 5 seconds">\n'
                 f'        <source src="{VIDEO_REL}" type="video/mp4">\n'
                 f'        Your browser cannot play embedded video.'
                 f' <a href="{VIDEO_REL}">Download the walkthrough</a> instead.\n'
