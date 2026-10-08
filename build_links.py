@@ -369,7 +369,10 @@ def merge_status(data, private):
         for check_id, verdict in scope.get('verdicts', {}).items():
             at = at_map.get(check_id) or scope_at
             parts = check_id.split('::')
-            if not parts or parts[0] != 'auth':
+            # 08 OCT 2026: 'links' too. The nightly deep run checks EVERY published student
+            # link as links::<env>::student::<lrpsId> (sentry lib/deep-links.js); before this
+            # only the quick checks' auth:: keys were merged, so most rows kept old statuses.
+            if not parts or parts[0] not in ('auth', 'links'):
                 continue
             mapped = VERDICT_MAP.get(verdict)
             if not mapped:
