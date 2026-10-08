@@ -1,48 +1,58 @@
 {
   "persona": "super_admin",
-  "title": "SkillProof — Super Admin",
+  "title": "SkillProof — Super Admin (platform governance)",
   "metabarLabel": "SkillProof Demo · Super Admin",
-  "v": 7,
+  "v": 9,
   "hasDark": false,
   "frame": {
-    "width": 1920,
-    "height": 1080
+    "width": 2880,
+    "height": 1800
   },
   "screens": [
     {
       "n": 1,
       "file": "screen-01.png",
       "label": "Dashboard — platform governance",
-      "docW": 1920,
+      "docW": 2880,
       "wire": [
         {
           "label": "Open Access Control",
-          "goto": 3,
+          "goto": 4,
           "pct": {
-            "left": 18.96,
-            "top": 16.68,
-            "width": 7.5,
-            "height": 1.41
+            "left": 8.61,
+            "top": 18.29,
+            "width": 10,
+            "height": 1.55
           }
         },
         {
           "label": "Open School Management",
-          "goto": 4,
+          "goto": 7,
           "pct": {
-            "left": 26.87,
-            "top": 16.68,
-            "width": 5.28,
-            "height": 1.41
+            "left": 19.16,
+            "top": 18.29,
+            "width": 7.04,
+            "height": 1.55
           }
         },
         {
           "label": "Open Analytics & Reporting",
+          "goto": 3,
+          "pct": {
+            "left": 26.76,
+            "top": 18.29,
+            "width": 7.71,
+            "height": 1.55
+          }
+        },
+        {
+          "label": "Open the Export menu",
           "goto": 2,
           "pct": {
-            "left": 32.57,
-            "top": 16.68,
-            "width": 5.79,
-            "height": 1.41
+            "left": 81.42,
+            "top": 25.33,
+            "width": 7.68,
+            "height": 1.85
           }
         }
       ]
@@ -50,17 +60,17 @@
     {
       "n": 2,
       "file": "screen-02.png",
-      "label": "Analytics & Reporting",
-      "docW": 1920,
+      "label": "Dashboard — Export menu (CSV or PDF)",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Back to Dashboard",
+          "label": "Close the Export menu",
           "goto": 1,
           "pct": {
-            "left": 18.96,
-            "top": 1.81,
-            "width": 7.93,
-            "height": 0.35
+            "left": 81.42,
+            "top": 25.33,
+            "width": 7.68,
+            "height": 1.85
           }
         }
       ]
@@ -68,17 +78,27 @@
     {
       "n": 3,
       "file": "screen-03.png",
-      "label": "Access Control — permission scopes",
-      "docW": 1920,
+      "label": "Analytics & Reporting",
+      "docW": 2880,
       "wire": [
+        {
+          "label": "Open course EXT01",
+          "goto": 8,
+          "pct": {
+            "left": 8.89,
+            "top": 26.27,
+            "width": 29.19,
+            "height": 0.89
+          }
+        },
         {
           "label": "Back to Dashboard",
           "goto": 1,
           "pct": {
-            "left": 18.96,
-            "top": 3.66,
-            "width": 7.93,
-            "height": 0.72
+            "left": 8.61,
+            "top": 2.02,
+            "width": 10.58,
+            "height": 0.4
           }
         }
       ]
@@ -86,17 +106,37 @@
     {
       "n": 4,
       "file": "screen-04.png",
-      "label": "School Management & Branding",
-      "docW": 1920,
+      "label": "Access Control — permission scopes",
+      "docW": 2880,
       "wire": [
+        {
+          "label": "Assign Courses to an Instructor",
+          "goto": 5,
+          "pct": {
+            "left": 60.7,
+            "top": 57.96,
+            "width": 5.47,
+            "height": 0.68
+          }
+        },
+        {
+          "label": "Assign a School Admin",
+          "goto": 6,
+          "pct": {
+            "left": 38.82,
+            "top": 81.77,
+            "width": 4.89,
+            "height": 0.71
+          }
+        },
         {
           "label": "Back to Dashboard",
           "goto": 1,
           "pct": {
-            "left": 18.96,
-            "top": 6.29,
-            "width": 7.93,
-            "height": 1.23
+            "left": 8.61,
+            "top": 4.03,
+            "width": 10.58,
+            "height": 0.79
           }
         }
       ]
@@ -104,17 +144,17 @@
     {
       "n": 5,
       "file": "screen-05.png",
-      "label": "Course detail — B002 (contains STU101)",
-      "docW": 1920,
+      "label": "Access Control — Add Courses to an Instructor",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Back to Analytics",
-          "goto": 2,
+          "label": "Cancel",
+          "goto": 4,
           "pct": {
-            "left": 19.58,
-            "top": 92.29,
-            "width": 8.78,
-            "height": 1.42
+            "left": 49.69,
+            "top": 24.14,
+            "width": 6.11,
+            "height": 1.6
           }
         }
       ]
@@ -122,17 +162,71 @@
     {
       "n": 6,
       "file": "screen-06.png",
-      "label": "Help & Support",
-      "docW": 1920,
+      "label": "Access Control — Assign School Admin",
+      "docW": 2880,
+      "wire": [
+        {
+          "label": "Cancel",
+          "goto": 4,
+          "pct": {
+            "left": 47.93,
+            "top": 23.81,
+            "width": 6.11,
+            "height": 1.6
+          }
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "file": "screen-07.png",
+      "label": "School Management & branding",
+      "docW": 2880,
       "wire": [
         {
           "label": "Back to Dashboard",
           "goto": 1,
           "pct": {
-            "left": 28.24,
-            "top": 83.62,
-            "width": 4.58,
-            "height": 3.19
+            "left": 8.61,
+            "top": 7.12,
+            "width": 10.58,
+            "height": 1.4
+          }
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "file": "screen-08.png",
+      "label": "Course detail — EXT01",
+      "docW": 2880,
+      "wire": [
+        {
+          "label": "Back to Analytics & Reporting",
+          "goto": 3,
+          "pct": {
+            "left": 9.44,
+            "top": 7.61,
+            "width": 9.48,
+            "height": 1.61
+          }
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "file": "screen-09.png",
+      "label": "Help & Support",
+      "docW": 2880,
+      "wire": [
+        {
+          "label": "Back to Dashboard",
+          "goto": 1,
+          "pct": {
+            "left": 9.44,
+            "top": 8.14,
+            "width": 9.89,
+            "height": 1.58
           }
         }
       ]
