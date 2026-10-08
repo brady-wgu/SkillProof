@@ -14,6 +14,10 @@ PROD is live for students, so the link list now opens with a **Production** pane
 
 `build_links.py` now renders one `<tbody>` per environment between `links:begin`/`links:end` markers and replaces that region whole, so a second build is byte-exact. Sections declare their layout in `skills.json` (`live`, `testing`, or flat).
 
+## v4.176 — 08 Oct 2026 — Ten PROD E010 Python links
+
+Added the ten PROD student links for the E010 Python series, E010-01 - Running Python through E010-10 - Using Dictionaries (`592555506`, `592556529` to `592557034`). Each was verified by a student launch that landed on its own Skill and graded a correct answer 1.00, so all ten publish as Up. Link count 51 → 61.
+
 ## v4.175 — 30 Sep 2026 — Four PROD Time Management Fundamentals links
 
 Added the four PROD student links for "EX?01 – Time Management Fundamentals", one per School's Student Success Examples course: EXB01 `590963381`, EXE01 `590963619`, EXH01 `590963768`, EXT01 `590963999`. Each was verified by a student launch that landed on its own Skill, so all four publish as Up. Link count 48 → 52.
