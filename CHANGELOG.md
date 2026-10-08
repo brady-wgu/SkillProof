@@ -8,6 +8,11 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.177: 08 Oct 2026: Morning publish and per-link status merge
+
+- `publish_morning.py`: one command from last night's measurements to both link surfaces, with a stop. With no flags it merges the verdicts, rebuilds `index.html` locally, dry-runs the Superhuman sync, lists any Live PROD Skill without a published link, and stops. `--commit` publishes exactly what was reviewed and refuses if either file changed since.
+- `build_links.py --status` now merges the nightly deep run's per-link results (`links::<env>::student::<id>`) as well as the quick checks (`auth::`), so every published student link carries its own nightly measurement (53 measured on 08 Oct 2026, up from a handful).
+
 ## v4.176 — 30 Sep 2026 — PROD leads; testing environments collapse
 
 PROD is live for students, so the link list now opens with a **Production** panel (accent border, "Live for students" badge in text, link count), and STAGE and DEV sit under a **Testing environments** heading, collapsed by default behind real toggle buttons (`aria-expanded`/`aria-controls`) with an **Expand all** control so find-in-page still reaches every link. "Pilot" is gone from the PROD label. Headings, badge and counts share one centre line (measured 0.0 px spread in both themes); every new text element passes WCAG AA in light and dark (lowest 6.3:1).
