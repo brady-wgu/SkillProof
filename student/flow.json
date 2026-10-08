@@ -1,28 +1,28 @@
 {
   "persona": "student",
-  "title": "SkillProof — Student (STU101 · Time Management & Study Skills)",
-  "metabarLabel": "SkillProof Demo · Student · STU101",
-  "v": 7,
+  "title": "SkillProof — Student (EXT01 – Time Management Fundamentals)",
+  "metabarLabel": "SkillProof Demo · Student · EXT01",
+  "v": 9,
   "hasDark": false,
   "frame": {
-    "width": 1920,
-    "height": 1080
+    "width": 2880,
+    "height": 1800
   },
   "screens": [
     {
       "n": 1,
       "file": "screen-01.png",
-      "label": "Course landing — STU101",
-      "docW": 1920,
+      "label": "Welcome to SkillProof (first launch)",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Begin the AI diagnostic",
+          "label": "Skip the introduction",
           "goto": 2,
           "pct": {
-            "left": 20.42,
-            "top": 55.84,
-            "width": 10.21,
-            "height": 3.89
+            "left": 64.1,
+            "top": 26.36,
+            "width": 4.23,
+            "height": 2.89
           }
         }
       ]
@@ -30,17 +30,17 @@
     {
       "n": 2,
       "file": "screen-02.png",
-      "label": "AI diagnostic — generated question",
-      "docW": 1920,
+      "label": "Course landing — EXT01 Time Management Fundamentals",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Submit the answer for AI evaluation",
+          "label": "Begin the AI diagnostic",
           "goto": 3,
           "pct": {
-            "left": 25,
-            "top": 72.41,
-            "width": 10.35,
-            "height": 3.73
+            "left": 10.56,
+            "top": 47.82,
+            "width": 13.62,
+            "height": 4.67
           }
         }
       ]
@@ -48,17 +48,17 @@
     {
       "n": 3,
       "file": "screen-03.png",
-      "label": "AI evaluation of the answer",
-      "docW": 1920,
+      "label": "AI diagnostic — generated question",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Continue the diagnostic",
+          "label": "Submit the answer for AI evaluation",
           "goto": 4,
           "pct": {
-            "left": 89.62,
-            "top": 87.07,
-            "width": 8.71,
-            "height": 2.52
+            "left": 25.83,
+            "top": 77.33,
+            "width": 13.8,
+            "height": 3.06
           }
         }
       ]
@@ -66,17 +66,17 @@
     {
       "n": 4,
       "file": "screen-04.png",
-      "label": "Diagnostic results — baseline mastery",
-      "docW": 1920,
+      "label": "AI evaluation of the answer",
+      "docW": 2880,
       "wire": [
         {
-          "label": "View your Progress Map",
+          "label": "Continue the diagnostic",
           "goto": 5,
           "pct": {
-            "left": 41.67,
-            "top": 66.34,
-            "width": 16.67,
-            "height": 3.95
+            "left": 86.17,
+            "top": 89,
+            "width": 11.61,
+            "height": 2.15
           }
         }
       ]
@@ -84,17 +84,17 @@
     {
       "n": 5,
       "file": "screen-05.png",
-      "label": "Progress Map — 4 topics",
-      "docW": 1920,
+      "label": "Diagnostic results — starting point",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Start the recommended topic",
+          "label": "View your Progress Map",
           "goto": 6,
           "pct": {
-            "left": 43.07,
-            "top": 21.9,
-            "width": 5.52,
-            "height": 2.96
+            "left": 38.89,
+            "top": 68.71,
+            "width": 22.22,
+            "height": 3.67
           }
         }
       ]
@@ -102,17 +102,17 @@
     {
       "n": 6,
       "file": "screen-06.png",
-      "label": "AI coaching — generated prompt",
-      "docW": 1920,
+      "label": "Progress Map — 4 topics",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Submit the answer for AI coaching feedback",
+          "label": "Start the recommended topic",
           "goto": 7,
           "pct": {
-            "left": 51.88,
-            "top": 52.55,
-            "width": 10.35,
-            "height": 3.89
+            "left": 42.09,
+            "top": 26.17,
+            "width": 6.1,
+            "height": 3.56
           }
         }
       ]
@@ -120,17 +120,17 @@
     {
       "n": 7,
       "file": "screen-07.png",
-      "label": "AI coaching feedback — per-objective scoring",
-      "docW": 1920,
+      "label": "AI coaching — generated prompt",
+      "docW": 2880,
       "wire": [
         {
-          "label": "Back to the Progress Map",
-          "goto": 5,
+          "label": "Submit the answer for AI coaching feedback",
+          "goto": 8,
           "pct": {
-            "left": 25.75,
-            "top": 7.16,
-            "width": 4.48,
-            "height": 1.64
+            "left": 52.5,
+            "top": 52.12,
+            "width": 13.8,
+            "height": 3.86
           }
         }
       ]
@@ -138,16 +138,52 @@
     {
       "n": 8,
       "file": "screen-08.png",
+      "label": "AI coaching feedback — per-objective scoring",
+      "docW": 2880,
+      "wire": [
+        {
+          "label": "Save and see results",
+          "goto": 9,
+          "pct": {
+            "left": 86.73,
+            "top": 87.37,
+            "width": 11.05,
+            "height": 2.46
+          }
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "file": "screen-09.png",
+      "label": "Progress saved",
+      "docW": 2880,
+      "wire": [
+        {
+          "label": "Back to the Progress Map",
+          "goto": 6,
+          "pct": {
+            "left": 32.78,
+            "top": 66.68,
+            "width": 34.44,
+            "height": 4.85
+          }
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "file": "screen-10.png",
       "label": "Help & Support",
-      "docW": 1920,
+      "docW": 2880,
       "wire": [
         {
           "label": "Back to the course",
-          "goto": 1,
+          "goto": 2,
           "pct": {
-            "left": 28.24,
+            "left": 20.99,
             "top": 83.08,
-            "width": 4.58,
+            "width": 6.11,
             "height": 3.17
           }
         }
