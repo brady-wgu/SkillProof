@@ -8,6 +8,15 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.181: 09 Oct 2026: Test accounts are no longer masked
+
+The black bars over test-account names and emails, the header email chip especially, made screens look broken. Every capture signs in with a test account, so masking them protected no one.
+
+- **Shown in full:** every account in the test-account list (names, emails and avatar initials), including the header email chip on every screen.
+- **Still masked:** people who are not test accounts, with their surname, email and Access Control avatar initials covered. Where a test and a non-test account share a display name, that name stays masked, because a screen that shows only the name cannot tell them apart.
+- All 42 click-through screens are re-captured under the new rule (image cache key `?v=10`).
+- The walkthrough video is re-recorded with the student's header email visible: 4 min 16 sec, 18 MB, same story (a Schedule Changes gap, then coaching on it ending Complete). Deck slide 6 and the viewer carry it.
+
 ## v4.180: 09 Oct 2026: Walkthrough video re-recorded
 
 Brady's review of the v4.179 video found three problems, all fixed:
