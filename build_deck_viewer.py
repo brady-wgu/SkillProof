@@ -49,7 +49,7 @@ VIDEO_REL = '../assets/video/skillproof-walkthrough-2k.mp4'
 # Bumped whenever the slide PNGs are re-rendered. Slide images are served with a
 # ?v= cache-buster for the same reason the persona screenshots are: without it,
 # browsers keep showing the previous render.
-VERSION = 3
+VERSION = 4
 
 # Hand-checked against the rendered PNGs. Auto-extracting "the first text on the
 # slide" picks up the footer on slide 6 rather than its heading, so the labels
@@ -566,7 +566,7 @@ def main():
                 f' poster="../assets/decks/slides/slide-{n}-video-poster.png?v={VERSION}"'
                 f' style="left:{video["left"]:.3f}%; top:{video["top"]:.3f}%;'
                 f' width:{video["width"]:.3f}%; height:{video["height"]:.3f}%;"'
-                f' aria-label="SkillProof EXT01 walkthrough on PROD, 4 minutes 3 seconds">\n'
+                f' aria-label="SkillProof EXT01 walkthrough on PROD, 4 minutes 16 seconds">\n'
                 f'        <source src="{VIDEO_REL}" type="video/mp4">\n'
                 f'        Your browser cannot play embedded video.'
                 f' <a href="{VIDEO_REL}">Download the walkthrough</a> instead.\n'
