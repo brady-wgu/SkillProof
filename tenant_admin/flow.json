@@ -2,7 +2,7 @@
   "persona": "tenant_admin",
   "title": "SkillProof — School Admin (School of Technology · EXT01)",
   "metabarLabel": "SkillProof Demo · School Admin",
-  "v": 9,
+  "v": 10,
   "hasDark": false,
   "frame": {
     "width": 2880,
@@ -244,9 +244,9 @@
           "goto": 10,
           "pct": {
             "left": 79.94,
-            "top": 80.01,
+            "top": 80.61,
             "width": 10.62,
-            "height": 4.04
+            "height": 4.07
           }
         }
       ]
@@ -262,9 +262,9 @@
           "goto": 11,
           "pct": {
             "left": 75.5,
-            "top": 82.07,
+            "top": 82.62,
             "width": 15.05,
-            "height": 3.63
+            "height": 3.65
           }
         },
         {
@@ -272,9 +272,9 @@
           "goto": 9,
           "pct": {
             "left": 9.44,
-            "top": 82.07,
+            "top": 82.62,
             "width": 7.46,
-            "height": 3.63
+            "height": 3.65
           }
         }
       ]
@@ -290,9 +290,9 @@
           "goto": 10,
           "pct": {
             "left": 9.44,
-            "top": 90.06,
+            "top": 90.4,
             "width": 7.46,
-            "height": 2.01
+            "height": 2.02
           }
         }
       ]
