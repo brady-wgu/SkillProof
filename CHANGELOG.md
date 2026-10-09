@@ -8,6 +8,16 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.180: 09 Oct 2026: Walkthrough video re-recorded
+
+Brady's review of the v4.179 video found three problems, all fixed:
+
+- **It opened on the previous attempt's results.** The test student's earlier diagnostic showed on camera before the Retake. The Retake now happens before recording starts, so the video opens on the course landing page and goes straight into question 1.
+- **The first question was cut off.** Each screen inherited the previous screen's scroll position. Every screen now starts at its top once it has finished loading.
+- **The last screen had a band of white space** that pushed the progress summary out of view. The 2x zoom used for sharpness doubled any section sized to the screen height. The video is now assembled from true 2x screenshots of the real layout (2560 by 2000), so every page looks exactly as a student sees it.
+- The video now shows the full loop: the diagnostic finds a gap (Schedule Changes, overall 75%), the Progress Map recommends it, and coaching on that topic ends Complete at 100%. 4 min 3 sec, 18 MB.
+- The Status Demo Deck (slide 6) and its viewer carry the new video and poster.
+
 ## v4.179: 08 Oct 2026: The live-app demo and walkthrough video now come from PROD
 
 The Live-App Click-Through Demo was captured on STAGE on 13 Aug 2026. Every screen is now re-captured on PROD (`skillproof.training`), and pages the demo never showed are added: 42 screens, up from 32.
