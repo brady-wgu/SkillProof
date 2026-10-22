@@ -8,6 +8,10 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.182: 22 Oct 2026: PROD E071-01 - Set Basics link
+
+Added the PROD student link for E071-01 - Set Basics (`594906452`), the first discrete mathematics Skill. A student launch on PROD landed on its own Skill (`?course=e071-01-set-basics`) and showed the welcome screen, so it publishes as Up. Link count 61 to 62, PROD 17 to 18.
+
 ## v4.181: 09 Oct 2026: Test accounts are no longer masked
 
 The black bars over test-account names and emails, the header email chip especially, made screens look broken. Every capture signs in with a test account, so masking them protected no one.
