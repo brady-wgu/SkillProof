@@ -8,6 +8,10 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.183: 28 Oct 2026: PROD E071-02 - Functions and Relations link
+
+Added the PROD student link for E071-02 - Functions and Relations (`594913126`), the second discrete mathematics Skill. A student launch on PROD landed on its own Skill (`?course=e071-02-functions-and-relations`) and showed the welcome screen, so it publishes as Up. Link count 62 to 63, PROD 18 to 19.
+
 ## v4.182: 22 Oct 2026: PROD E071-01 - Set Basics link
 
 Added the PROD student link for E071-01 - Set Basics (`594906452`), the first discrete mathematics Skill. A student launch on PROD landed on its own Skill (`?course=e071-01-set-basics`) and showed the welcome screen, so it publishes as Up. Link count 61 to 62, PROD 17 to 18.
