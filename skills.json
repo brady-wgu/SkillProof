@@ -286,6 +286,20 @@
       "lastVerdict": "RENDERED_OK"
     },
     {
+      "id": "594913126",
+      "section": "prod",
+      "name": "E071-02 - Functions and Relations",
+      "url": "https://lrps.wgu.edu/provision/594913126",
+      "display": "lrps.wgu.edu/provision/594913126",
+      "ariaLabel": "Launch E071-02 - Functions and Relations in LRPS (opens in new tab)",
+      "added": "28 Oct 2026",
+      "status": "active",
+      "statusCheckedAt": "2026-10-28T17:01:34.000Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
+    },
+    {
       "id": "570441081",
       "section": "stage",
       "name": "Instructor Portal",
