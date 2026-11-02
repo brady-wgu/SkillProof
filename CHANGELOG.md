@@ -8,6 +8,10 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.184: 02 Nov 2026: STAGE student links retired
+
+Students have used PROD since 21 OCT 2026 and STAGE now holds QA testing only, so the 33 STAGE student links are off the landing page and the README: the course-level Skills, E010-01 to E010-10, D522-01B to D522-14 and both R002 Skills. The three STAGE staff portals stay for testing. Link count 63 to 30, STAGE 36 to 3.
+
 ## v4.183: 28 Oct 2026: PROD E071-02 - Functions and Relations link
 
 Added the PROD student link for E071-02 - Functions and Relations (`594913126`), the second discrete mathematics Skill. A student launch on PROD landed on its own Skill (`?course=e071-02-functions-and-relations`) and showed the welcome screen, so it publishes as Up. Link count 62 to 63, PROD 18 to 19.
