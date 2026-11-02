@@ -68,8 +68,12 @@ def tables_on_page(doc, page, token):
     # column names, but writing a row through a view writes through to its base
     # table -- so including them means updating every cell twice, inflating the
     # batch count against the 25-row cap for no effect.
+    # The page id comes back as canvas-<id> while the overlay holds section-<id>
+    # (seen 02 NOV 2026: the strict match found no tables and the sync reported
+    # "nothing to update"). Compare the id after the prefix.
+    same = lambda pid: pid == page or (pid or '').split('-', 1)[-1] == page.split('-', 1)[-1]
     return [t for t in items
-            if (t.get('parent') or {}).get('id') == page
+            if same((t.get('parent') or {}).get('id'))
             and t.get('tableType') != 'view']
 
 
@@ -158,6 +162,9 @@ def main():
             want[s['id']] = bl.SH_STATUS[s['status']]
     for sid, (mapped, _at, _v) in measured.items():
         want.setdefault(sid, bl.SH_STATUS[mapped])
+    for sid, rec in private['byId'].items():
+        if rec.get('retired'):
+            want[sid] = bl.SH_STATUS['retired']
 
     token = get_token(doc)
     ops, report, blocked = [], [], []

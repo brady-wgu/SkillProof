@@ -436,6 +436,9 @@ def render_superhuman(data, private, measured=None):
     # the runner authenticated end-to-end hours earlier.
     for sid, (mapped, _at, _verdict) in (measured or {}).items():
         status.setdefault(sid, mapped)
+    for sid, rec in private['byId'].items():
+        if rec.get('retired'):
+            status[sid] = 'retired'
 
     out = {}
     for env, meta in private['environments'].items():
@@ -519,8 +522,11 @@ def sh_target(private):
 # as GET only), so the options are set by hand in the UI and this side must
 # follow them exactly. Overridable from the private overlay so renaming an
 # option is a data edit, not a code change.
-SH_STATUS = {'active': 'Up', 'unverified': 'Unknown', 'broken': 'Down'}
-SH_DOT = {'active': '🟢', 'unverified': '🟡', 'broken': '🔴'}
+# 'retired' (02 NOV 2026): a link taken off the public page but kept in the overlay with a
+# `retired` date, e.g. the 33 STAGE student links once students moved to PROD. It is a
+# record, not a measurement, so it wins over whatever the nightly runner last saw.
+SH_STATUS = {'active': 'Up', 'unverified': 'Unknown', 'broken': 'Down', 'retired': 'Retired'}
+SH_DOT = {'active': '🟢', 'unverified': '🟡', 'broken': '🔴', 'retired': '⚪'}
 
 
 ENV_TITLE = {
