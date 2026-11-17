@@ -8,6 +8,10 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.185: 16 Nov 2026: PROD E071-03 - Graphs and Trees link
+
+Added the PROD student link for E071-03 - Graphs and Trees (`598928616`), the third discrete mathematics Skill. A student launch on PROD landed on its own Skill (`?course=e071-03-graphs-and-trees`) and showed the welcome screen, so it publishes as Up. Link count 30 to 31, PROD 19 to 20.
+
 ## v4.184: 02 Nov 2026: STAGE student links retired
 
 Students have used PROD since 21 OCT 2026 and STAGE now holds QA testing only, so the 33 STAGE student links are off the landing page and the README: the course-level Skills, E010-01 to E010-10, D522-01B to D522-14 and both R002 Skills. The three STAGE staff portals stay for testing. Link count 63 to 30, STAGE 36 to 3.

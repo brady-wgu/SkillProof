@@ -300,6 +300,20 @@
       "lastVerdict": "RENDERED_OK"
     },
     {
+      "id": "598928616",
+      "section": "prod",
+      "name": "E071-03 - Graphs and Trees",
+      "url": "https://lrps.wgu.edu/provision/598928616",
+      "display": "lrps.wgu.edu/provision/598928616",
+      "ariaLabel": "Launch E071-03 - Graphs and Trees in LRPS (opens in new tab)",
+      "added": "16 Nov 2026",
+      "status": "active",
+      "statusCheckedAt": "2026-11-17T02:57:24.000Z",
+      "statusSource": "measured",
+      "audience": "student",
+      "lastVerdict": "RENDERED_OK"
+    },
+    {
       "id": "570441081",
       "section": "stage",
       "name": "Instructor Portal",
