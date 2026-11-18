@@ -616,9 +616,9 @@ def rollup_html(data):
     statement is "five links are down". The counts still appear, after the
     verdict, because the pie charts below break them down per environment.
 
-    Nothing is excluded or acknowledged away, on instruction. Four of the five
-    down are the DEV links that have been stale since 01 Jul 2026, so this stays
-    red until DEV is reprovisioned -- which is the point of it.
+    Nothing is excluded or acknowledged away, on instruction. (The four DEV
+    links that were down from 01 Jul 2026 were retired on 18 Nov 2026 and are no
+    longer in skills.json, so they no longer count here.)
 
     Colour is emoji, not conditional formatting: the API cannot write a
     conditional format, and those live on tables, which this line is not.

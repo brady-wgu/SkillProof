@@ -18,14 +18,6 @@
       "title": "Staging server"
     },
     {
-      "slug": "dev",
-      "label": "Dev &middot; Development server",
-      "icon": "construction",
-      "preamble": "\n                <!-- =========================================================\n                     DEV -- development server, currently unusable. All four links\n                     reach WGU SSO correctly, then the LTI service answers \"Tool\n                     not found\". Measured 10 SEP 2026, the DEV hosts are also down:\n                     wgu-dev-api accepts a TCP connection and never responds on 443\n                     or 80, and wgu-dev serves a certificate for another name. Two\n                     separate faults, escalated.\n                     ========================================================= -->\n",
-      "layout": "testing",
-      "title": "Development server"
-    },
-    {
       "slug": "demo",
       "label": "Live-App Click-Through Demo &middot; no login, switch roles freely",
       "icon": "slideshow",
@@ -354,62 +346,6 @@
       "statusSource": "measured",
       "lastVerdict": "RENDERED_OK",
       "audience": "staff"
-    },
-    {
-      "id": "568111823",
-      "section": "dev",
-      "name": "Instructor Portal",
-      "url": "https://lrps.wgu.edu/provision/568111823",
-      "display": "lrps.wgu.edu/provision/568111823",
-      "ariaLabel": "Launch Instructor Portal in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
-      "added": "01 Jul 2026",
-      "status": "broken",
-      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
-      "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE",
-      "audience": "staff"
-    },
-    {
-      "id": "568112003",
-      "section": "dev",
-      "name": "School Admin",
-      "url": "https://lrps.wgu.edu/provision/568112003",
-      "display": "lrps.wgu.edu/provision/568112003",
-      "ariaLabel": "Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
-      "added": "01 Jul 2026",
-      "status": "broken",
-      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
-      "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE",
-      "audience": "staff"
-    },
-    {
-      "id": "575058314",
-      "section": "dev",
-      "name": "Super Admin",
-      "url": "https://lrps.wgu.edu/provision/575058314",
-      "display": "lrps.wgu.edu/provision/575058314",
-      "ariaLabel": "Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
-      "added": "01 Jul 2026",
-      "status": "broken",
-      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
-      "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE",
-      "audience": "staff"
-    },
-    {
-      "id": "560264094",
-      "section": "dev",
-      "name": "Python",
-      "url": "https://lrps.wgu.edu/provision/560264094",
-      "display": "lrps.wgu.edu/provision/560264094",
-      "ariaLabel": "Launch Python skill in LRPS DEV (opens in new tab) — currently broken, JFT fix pending",
-      "added": "01 Jul 2026",
-      "status": "broken",
-      "statusCheckedAt": "2026-09-23T08:31:18.653Z",
-      "statusSource": "measured",
-      "lastVerdict": "FAIL_LINK_STALE",
-      "audience": "student"
     },
     {
       "id": "269781248",

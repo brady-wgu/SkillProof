@@ -8,6 +8,10 @@ This is a prototype repo — entries below run from the active JFT meeting follo
 
 ---
 
+## v4.186: 18 Nov 2026: DEV links retired
+
+JFT's DEV host no longer serves SkillProof, so DEV is retired. The four DEV links are off the landing page and the README: the Python student Skill (`560264094`) and the Instructor Portal, School Admin and Super Admin staff portals. The empty Development server section is gone from the page. Link count 31 to 27, DEV 4 to 0.
+
 ## v4.185: 16 Nov 2026: PROD E071-03 - Graphs and Trees link
 
 Added the PROD student link for E071-03 - Graphs and Trees (`598928616`), the third discrete mathematics Skill. A student launch on PROD landed on its own Skill (`?course=e071-03-graphs-and-trees`) and showed the welcome screen, so it publishes as Up. Link count 30 to 31, PROD 19 to 20.

@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>SkillProof Project — Storyboard v4.185</title>
+  <title>SkillProof Project — Storyboard v4.186</title>
   <!-- Favicon set rebuilt 13 Aug 2026 (see make_favicon.py). The old wgu-favicon.png was
        the 2000x910 WGU *wordmark* in navy on transparency: unreadable squashed into 16px,
        and invisible against a dark tab strip. These are the owl mark on an opaque navy
@@ -907,7 +907,7 @@
         <div class="sidebar-section">
           <a class="sidebar-link active" href="#" aria-current="page">
             <svg class="icon" aria-hidden="true"><use href="#i-storage"></use></svg>Links
-            <span class="badge-count">31</span>
+            <span class="badge-count">27</span>
           </a>
         </div>
         <div class="sidebar-section">
@@ -1146,56 +1146,6 @@
                   <td><span class="status-pill"><span class="dot green"></span>Up</span></td>
                   <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/573162919" target="_blank" rel="noopener">lrps.wgu.edu/provision/573162919</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/573162919" aria-label="Copy lrps.wgu.edu/provision/573162919 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
                   <td class="date-cell">18 Jun 2026</td>
-                </tr>
-              </tbody>
-
-                <!-- =========================================================
-                     DEV -- development server, currently unusable. All four links
-                     reach WGU SSO correctly, then the LTI service answers "Tool
-                     not found". Measured 10 SEP 2026, the DEV hosts are also down:
-                     wgu-dev-api accepts a TCP connection and never responds on 443
-                     or 80, and wgu-dev serves a certificate for another name. Two
-                     separate faults, escalated.
-                     ========================================================= -->
-              <tbody class="env env-test">
-                <tr class="env-head env-head-test">
-                  <td colspan="5"><button type="button" class="env-toggle" aria-expanded="false" aria-controls="rows-dev"><svg class="icon chev" aria-hidden="true"><use href="#i-expand_more"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-construction"></use></svg><span class="env-title-test">Development server</span><span class="env-count">4 links</span></button></td>
-                </tr>
-              </tbody>
-              <tbody class="env-rows" id="rows-dev" hidden>
-                <tr class="group-divider">
-                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg>Staff management portals</td>
-                </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568111823" aria-label="Launch Instructor Portal in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">568111823</td>
-                  <td class="name-cell lrps-name">Instructor Portal</td>
-                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568111823" target="_blank" rel="noopener">lrps.wgu.edu/provision/568111823</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568111823" aria-label="Copy lrps.wgu.edu/provision/568111823 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
-                  <td class="date-cell">01 Jul 2026</td>
-                </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/568112003" aria-label="Launch School Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">568112003</td>
-                  <td class="name-cell lrps-name">School Admin</td>
-                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/568112003" target="_blank" rel="noopener">lrps.wgu.edu/provision/568112003</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/568112003" aria-label="Copy lrps.wgu.edu/provision/568112003 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
-                  <td class="date-cell">01 Jul 2026</td>
-                </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/575058314" aria-label="Launch Super Admin in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">575058314</td>
-                  <td class="name-cell lrps-name">Super Admin</td>
-                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/575058314" target="_blank" rel="noopener">lrps.wgu.edu/provision/575058314</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/575058314" aria-label="Copy lrps.wgu.edu/provision/575058314 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
-                  <td class="date-cell">01 Jul 2026</td>
-                </tr>
-                <tr class="group-divider">
-                  <td colspan="5"><svg class="icon" aria-hidden="true"><use href="#i-school"></use></svg>Student Skills</td>
-                </tr>
-                <tr class="live" tabindex="0" data-launch="https://lrps.wgu.edu/provision/560264094" aria-label="Launch Python skill in LRPS DEV (opens in new tab) — currently broken, JFT fix pending">
-                  <td class="id-cell">560264094</td>
-                  <td class="name-cell lrps-name">Python</td>
-                  <td><span class="status-pill"><span class="dot red"></span>Down</span></td>
-                  <td class="desc-cell"><span class="link-wrap"><a class="link-url" href="https://lrps.wgu.edu/provision/560264094" target="_blank" rel="noopener">lrps.wgu.edu/provision/560264094</a><button type="button" class="copy-btn" data-copy="https://lrps.wgu.edu/provision/560264094" aria-label="Copy lrps.wgu.edu/provision/560264094 to the clipboard" title="Copy link"><svg class="icon" aria-hidden="true"><use href="#i-content_copy"></use></svg></button></span></td>
-                  <td class="date-cell">01 Jul 2026</td>
                 </tr>
               </tbody>
 
