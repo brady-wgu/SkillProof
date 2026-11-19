@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>SkillProof Project — Storyboard v4.187</title>
+  <title>SkillProof Project — Storyboard v4.188</title>
   <!-- Favicon set rebuilt 13 Aug 2026 (see make_favicon.py). The old wgu-favicon.png was
        the 2000x910 WGU *wordmark* in navy on transparency: unreadable squashed into 16px,
        and invisible against a dark tab strip. These are the owl mark on an opaque navy
@@ -406,6 +406,11 @@
     /* ================================================================
        DATA TABLE (Paragon DataTable, modernized for LRPS)
        ================================================================ */
+    .status-note {
+      margin: 0 0 var(--bs-sp-3);
+      font-size: 13px; line-height: 1.4;
+      color: var(--bs-text-3);
+    }
     .table-card {
       background: var(--bs-page);
       border: 1px solid var(--bs-rule);
@@ -919,7 +924,7 @@
                the native player gets the full window and this page is not lost. The pitch
                page keeps its own shorter embedded clip. -->
           <a class="sidebar-link" href="walkthrough/index.html" style="font-size:13px;"
-             title="Full SkillProof walkthrough, 4 min 46 sec">
+             title="Full SkillProof walkthrough, 4 min 42 sec">
             <svg class="icon" aria-hidden="true"><use href="#i-play_circle"></use></svg>Full Walkthrough (2K)
           </a>
           <!-- The live demo deck (v1.3, 19 NOV 2026), added 13 Aug 2026. Points at the
@@ -937,6 +942,7 @@
            MAIN — provider table card
            ================================================================ -->
       <section>
+        <p class="status-note">Status shows each link's last measured result (checks ran between 10 Sep and 17 Nov 2026). Automatic checks are switched off, so re-check a link before relying on its status. The Date column is when the link was added.</p>
         <div class="table-card">
           <div class="table-scroll">
             <table class="pgn__data-table" aria-label="Links" data-no-controls>

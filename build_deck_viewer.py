@@ -550,9 +550,9 @@ def main():
         title = TITLES.get(n, f'Slide {n}')
 
         parts = [f'    <div class="slide" data-n="{n}">']
-        # Only the first slide loads eagerly; the rest are pulled in as the
-        # viewer approaches them (see preload() in the page script).
-        lazy = '' if n == 1 else ' loading="lazy"'
+        # All slides load eagerly: the seven PNGs total about 1.6 MB, and lazy
+        # loading showed a black block when paging quickly to slides 6 and 7.
+        lazy = ''
         parts.append(f'      <img src="../assets/decks/slides/slide-{n}.png?v={VERSION}"'
                      f'{lazy} alt="Slide {n} of {count}: {esc(title)}">')
 
@@ -566,7 +566,7 @@ def main():
                 f' poster="../assets/decks/slides/slide-{n}-video-poster.png?v={VERSION}"'
                 f' style="left:{video["left"]:.3f}%; top:{video["top"]:.3f}%;'
                 f' width:{video["width"]:.3f}%; height:{video["height"]:.3f}%;"'
-                f' aria-label="SkillProof EXT01 walkthrough on PROD, 4 minutes 46 seconds">\n'
+                f' aria-label="SkillProof EXT01 walkthrough on PROD, 4 minutes 42 seconds">\n'
                 f'        <source src="{VIDEO_REL}" type="video/mp4">\n'
                 f'        Your browser cannot play embedded video.'
                 f' <a href="{VIDEO_REL}">Download the walkthrough</a> instead.\n'

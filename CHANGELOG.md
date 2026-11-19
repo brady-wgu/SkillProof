@@ -8,6 +8,15 @@ This is a prototype repo — entries below run from the active vendor meeting fo
 
 ---
 
+## v4.188: 19 Nov 2026: Video loading screens trimmed, landing status note, deck loads up front
+
+Follow-up to v4.187 after an independent review of the live site.
+
+- **Walkthrough video:** two loading-skeleton stretches cut (about 2.8 s before the first coaching question and 1.5 s before the saved-progress screen), found by frame comparison. Now 4 min 42 s, 11 MB. The same file plays at `/walkthrough/` and in the deck, and the deck's embedded copy was swapped to match (hash check passes). The pitch clip is unchanged; it used other parts of the recording.
+- **Landing page:** a note above the link table says the status shows each link's last measured result (checks ran between 10 Sep and 17 Nov 2026), that automatic checks are off, and that the Date column is when the link was added.
+- **Deck viewer:** all seven slides load up front (about 1.6 MB in total). Lazy loading showed a black block when paging quickly to slides 6 and 7.
+- **Repository housekeeping:** four stale branches deleted, two older release notes anonymized, and the repository description updated.
+
 ## v4.187: 19 Nov 2026: Walkthrough media refreshed from PROD, public-repo anonymization
 
 The two videos, the status deck and every walkthrough screenshot are re-captured from PROD, and the repo text is anonymized for public viewing.
