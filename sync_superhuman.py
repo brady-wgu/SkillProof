@@ -50,7 +50,7 @@ def tables_on_page(doc, page, token):
     the first page found none of ours and the sync reported "nothing to update"
     -- a silent no-op, which is the worst way for a sync to fail.
 
-    Tables are matched by PARENT and by COLUMNS, never by name. Brady renames
+    Tables are matched by PARENT and by COLUMNS, never by name. The owner renames
     them in the UI ("Dev Server Public Links"), and a sync that keyed off the
     name would quietly stop working the moment he did.
     """
@@ -244,7 +244,7 @@ def main():
         return 0
 
     eid = shcfg.get('rollupElement')
-    # A roll-up we created and Brady has since DELETED must stay deleted. He
+    # A roll-up we created and the owner has since deleted must stay deleted. The owner
     # replaced the text line with a pie chart view of the master table on
     # 10 SEP 2026; silently re-adding it every run would be the tool arguing
     # with the person using it. Record the decision so it is not re-litigated.

@@ -6,7 +6,7 @@
 
 ## Persona
 
-**Alice** — WGU **Program Development (PDev)** employee, operating within the **School of Technology**. The requirements (§2.2 deliverable list, §2.5 admin portal sub-area) is the contract source for this role; throughout the storyboard chrome and all documentation the role is called **"School Admin"** (per Brady's terminology lock, 24 May 2026), since the requirements's own language is contract-specific and confuses readers outside the small dev team. Alice authenticates via her own secret LRPS deep link and is scoped to her School(s) — currently School of Technology, where she manages Skills like Foundations of Programming (Python) and OOP with Python.
+**Alice** — WGU **Program Development (PDev)** employee, operating within the **School of Technology**. The requirements (§2.2 deliverable list, §2.5 admin portal sub-area) is the contract source for this role; throughout the storyboard chrome and all documentation the role is called **"School Admin"** (per the owner's terminology lock, 24 May 2026), since the requirements's own language is contract-specific and confuses readers outside the small dev team. Alice authenticates via her own secret LRPS deep link and is scoped to her School(s) — currently School of Technology, where she manages Skills like Foundations of Programming (Python) and OOP with Python.
 
 ## Scope (refined 24 May 2026)
 
@@ -17,7 +17,7 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 | Out-of-scope concern | Owner | Reason |
 |:---|:---|:---|
 | At-risk learner identification + intervention | **Instructor** | Per-learner remediation is Charlie's job. Alice can drill into the heatmap and learner profile for diagnostic purposes if a Skill is misbehaving, but at-risk monitoring is not her primary surface. |
-| Incident response / SLA monitoring | **JFT Support** (one-way only) | No 2-way help-desk communication; Alice clicks the help icon for a Zendesk handoff. No P1 ticketing UI, no CSM threads, no service-degradation dashboard. |
+| Incident response / SLA monitoring | **The vendor Support** (one-way only) | No 2-way help-desk communication; Alice clicks the help icon for a Zendesk handoff. No P1 ticketing UI, no CSM threads, no service-degradation dashboard. |
 | School Settings (branding, thresholds, retention) | **Super Admin** | Per-School configuration of branding, default Skill passing threshold, monthly token budget, and data retention policies all live in the Super Admin portal (super_admin/ → S4 School Management). |
 | Cross-School operations | **Super Admin** | Bob owns role elevation, instructor roster across Schools, External Tooling, Data Hub, Geo-Redundancy, Compliance, and cross-School audit. |
 
@@ -59,12 +59,12 @@ The following are **out of scope** for the School Admin (delegated elsewhere):
 - **Analytics 4-level zoom** on S11: School Rollup (KPI gauges + trend charts) → Per-Course (table + h-bar comparisons) → Per-Skill (lifecycle-badged table) → Per-Topic (filterable 20-row table for spotting Skill prompt bugs via cost/mastery anomalies)
 - **Unified "Export ▾" dropdown** on every filtered table (injected by the shared module) — **PDF / CSV** for human-read analytics; **MD / JSON** for the machine-read Activity Log
 - **CI/CD pipeline stepper** on S9 (Validate → Build → Test → Deploy → Verify) — visualizes the deployment process triggered by Deploy to Live
-- **LRPS provisioning ticket workflow** on S10 — auto-fills the production URL + ticket justification for a mailto handoff to wgu-lrps-support@wgu.edu (one-way; JFT does not write to LRPS)
+- **LRPS provisioning ticket workflow** on S10 — auto-fills the production URL + ticket justification for a mailto handoff to wgu-lrps-support@wgu.edu (one-way; the vendor does not write to LRPS)
 
 ## Notes
 
 - The "Deploy to Live" CTA triggers the simulated CI/CD pipeline shown via the 5-step Stepper on S9. The Stepper component models the live progression through Validate → Build → Test → Deploy → Verify with status badges per step.
-- After deploy, the **LRPS provisioning ticket** workflow on S10 is a manual handoff: JFT does not write to LRPS; the WGU D&D team owns provisioning. The screen shows the production URL + auto-filled ticket justification for Alice to submit.
+- After deploy, the **LRPS provisioning ticket** workflow on S10 is a manual handoff: The vendor does not write to LRPS; the WGU D&D team owns provisioning. The screen shows the production URL + auto-filled ticket justification for Alice to submit.
 - Course scoping is enforced at the New Skill wizard: Course Number + Course Title are the first fields, both editable combobox inputs with add-new capability. Existing Course Numbers (E010, E075, E120, E135) populate the dropdown; typing a new code (e.g., `E180`) creates a new Course.
 - The **drill-chain (S2–S4)** mirrors the Instructor portal's structure but is reached via the School Admin's flow. Headers indicate School Admin viewing; data is the same heatmap / learner profile / conversation logs that Charlie would see. This is a diagnostic capability for the School Admin, not the primary surface.
 - The wizard's Step 3 (Model & Prompt, S8) is intentionally before Step 4 (Review & Deploy, S9) — model + AI prompt are chosen before the final pre-deploy review.
@@ -77,4 +77,4 @@ Desktop-primary. Course authoring, AI prompt configuration, and deploy workflows
 
 ## School Admin portal as the configuration path for the full requirements
 
-The School Admin portal **is** the production configuration mechanism for SkillProof across all WGU Schools. The v1.2 student-only MVP was bootstrapped by JFT engineers via Git-versioned config for E010; once SC-ADD-02 ships, all subsequent Skill onboarding (E075 Intermediate Python & Libraries, E135 OOP with Python, E120 Applied Data Structures, and any future Courses across the other 3 WGU Schools) flows through this portal. The portal is not optional MVP-extension scope — it is part of the binding Appendix A §16.3 #8.6 multi-tenancy commitment and the §2.5 Admin Portal deliverable.
+The School Admin portal **is** the production configuration mechanism for SkillProof across all WGU Schools. The v1.2 student-only MVP was bootstrapped by the vendor engineers via Git-versioned config for E010; once SC-ADD-02 ships, all subsequent Skill onboarding (E075 Intermediate Python & Libraries, E135 OOP with Python, E120 Applied Data Structures, and any future Courses across the other 3 WGU Schools) flows through this portal. The portal is not optional MVP-extension scope — it is part of the binding Appendix A §16.3 #8.6 multi-tenancy commitment and the §2.5 Admin Portal deliverable.

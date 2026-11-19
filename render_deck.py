@@ -2,23 +2,23 @@
 
 WHY THIS EXISTS
 No browser renders .pptx natively. The landing page previously linked the raw
-41 MB file, which meant "view the deck" was really "download the deck, wait,
+13 MB file, which meant "view the deck" was really "download the deck, wait,
 then open PowerPoint". This renders each slide to an image so deck/index.html
 can present it inline instead.
 
 WHY NOT THE MICROSOFT OFFICE ONLINE VIEWER
 The obvious alternative (view.officeapps.live.com/op/embed.aspx?src=...) is a
-dead end here on three counts: it caps at 10 MB and this deck is 41 MB, it
+dead end here on three counts: it caps at 10 MB and this deck is 13 MB, it
 would not play the embedded video anyway, and it would hand a WGU URL to a
 third-party service to fetch on every page load. Self-hosted PNGs have none of
 those problems and keep working if that service changes.
 
 THE VIDEO
-Slide 6 is 39.56 of the deck's 41 MB: one embedded MP4, which is byte-identical
+Slide 6 is most of the deck's 13 MB: one embedded MP4, which is byte-identical
 (sha256) to assets/video/skillproof-walkthrough-2k.mp4 already in the repo. So
 the slide is rendered like any other -- PowerPoint paints the video's poster
 frame -- and deck/index.html overlays a real <video> element on top of that
-region, pointed at the existing asset. No second copy of a 40 MB file.
+region, pointed at the existing asset. No second copy of an 11 MB file.
 
 Geometry for that overlay is read out of the slide XML rather than eyeballed;
 this script prints it so deck/index.html can be checked against it. As of v1.1

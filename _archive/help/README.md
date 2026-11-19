@@ -45,7 +45,7 @@ Shared. Reachable from every portal's navbar Help link, and from the root portal
 
 - Container max-width 1080px (slightly narrower than the 1192px admin portals — by design for readability on a help/docs page).
 - Theme toggle persists via `localStorage` (`skillproof-theme` key).
-- All copy is illustrative; production article titles and ticket form copy come from the WGU/JFT content library.
+- All copy is illustrative; production article titles and ticket form copy come from the WGU/the vendor content library.
 
 ## Future enhancements (post-v4.115)
 

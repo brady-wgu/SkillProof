@@ -2,15 +2,30 @@
 
 All notable changes to the SkillProof storyboard. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
-The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, not the underlying SkillProof product version that JFT is building. The SkillProof product follows the user scenario catalog versions (v1.2 MVP, v1.3 Additional, etc.).
+The repo's storyboard version (`Storyboard vN.M`) tracks the visual prototype, not the underlying SkillProof product version that the vendor is building. The SkillProof product follows the user scenario catalog versions (v1.2 MVP, v1.3 Additional, etc.).
 
-This is a prototype repo — entries below run from the active JFT meeting follow-up phases (v4.69) through the current release. Earlier history exists in git but isn't tracked here.
+This is a prototype repo — entries below run from the active vendor meeting follow-up phases (v4.69) through the current release. Earlier history exists in git but isn't tracked here.
 
 ---
 
+## v4.187: 19 Nov 2026: Walkthrough media refreshed from PROD, public-repo anonymization
+
+The two videos, the status deck and every walkthrough screenshot are re-captured from PROD, and the repo text is anonymized for public viewing.
+
+- **Walkthrough video:** re-recorded on EXT01 with the current app (page title now "SkillProof Coach", was "Coding Coach"). 4 min 46 s, 11 MB. A positive example start to finish: all four diagnostic answers graded correct (Overall 100%, all topics mastered), the coaching task scored 1.00 and the session ends Complete, 4 of 4.
+- **Pitch clip:** re-cut from the new walkthrough, 38 s, replacing the older clip that showed a retired Skill. Page caption and poster updated.
+- **42 walkthrough screens re-captured** (cache keys `?v=12`, `?v=13` and `?v=14`). Dashboard counts moved a lot since 09 Oct (for example the School Admin dashboard went from 31 to 107 learners), so numbers on these screens are a snapshot, not a claim.
+- **Eight screens restored.** Instructor 1, 2 and 4, School Admin 6 and 12, Super Admin 4, 5 and 6 had been replaced by "Screenshot removed" cards in the 18 NOV 2026 privacy cleanup. They are back, with every non-test person masked by full name, a personal name in a course title masked, and the vendor contact row on Tenant Settings hidden.
+- **Capture tool:** `maskFullNames`, `maskText`, `hide` and a `forbidText` guard that refuses any shot still showing the vendor name, a personal name or an internal hostname.
+- **Status deck:** slides 6 and 7 re-captured, slide 3 vendor anonymized, slide 5 now lists the live PROD topic areas (Time Management, Programming, Discrete Mathematics), names, email and the confidentiality line removed from slides 1 and 7, date and version set to 19 Nov 2026 v1.3. File name unchanged. Viewer cache key `?v=5`.
+- **Probe and debris rows hidden.** Security-probe rows in the audit trail and analytics tables (a scanner callback URL and template-injection test strings) are hidden at capture time, and the School Admin View Skill backdrop now dims the full page. Test items named ZZ (delete me) stay visible by decision.
+- **Staging Skills screen (Instructor 6)** was a broken 24,988 px capture (past Chrome's capture limit, so it repeated its header and cut off). It now shows the first 45 of the staging list in one clean page.
+- **Landing hero** images re-shot from the current link page (27 links).
+- **Anonymization:** personal names and the vendor name removed from the README, this changelog and code comments; README "Start here" rewritten as "Maintenance status". The GitHub account handle in URLs and the design-system font host cannot change until the repo transfers.
+
 ## v4.186: 18 Nov 2026: DEV links retired
 
-JFT's DEV host no longer serves SkillProof, so DEV is retired. The four DEV links are off the landing page and the README: the Python student Skill (`560264094`) and the Instructor Portal, School Admin and Super Admin staff portals. The empty Development server section is gone from the page. Link count 31 to 27, DEV 4 to 0.
+The vendor's DEV host no longer serves SkillProof, so DEV is retired. The four DEV links are off the landing page and the README: the Python student Skill (`560264094`) and the Instructor Portal, School Admin and Super Admin staff portals. The empty Development server section is gone from the page. Link count 31 to 27, DEV 4 to 0.
 
 ## v4.185: 16 Nov 2026: PROD E071-03 - Graphs and Trees link
 
@@ -39,7 +54,7 @@ The black bars over test-account names and emails, the header email chip especia
 
 ## v4.180: 09 Oct 2026: Walkthrough video re-recorded
 
-Brady's review of the v4.179 video found three problems, all fixed:
+The owner's review of the v4.179 video found three problems, all fixed:
 
 - **It opened on the previous attempt's results.** The test student's earlier diagnostic showed on camera before the Retake. The Retake now happens before recording starts, so the video opens on the course landing page and goes straight into question 1.
 - **The first question was cut off.** Each screen inherited the previous screen's scroll position. Every screen now starts at its top once it has finished loading.
@@ -81,7 +96,7 @@ PROD is live for students, so the link list now opens with a **Production** pane
 
 Added the four PROD student links for "EX?01 – Time Management Fundamentals", one per School's Student Success Examples course: EXB01 `590963381`, EXE01 `590963619`, EXH01 `590963768`, EXT01 `590963999`. Each was verified by a student launch that landed on its own Skill, so all four publish as Up. Link count 48 → 52.
 
-Removed the PROD Introduction to Python link (`584731391`) from the listing at Brady's direction: it grades poorly. The Skill itself is unchanged on PROD. Link count 52 → 51.
+Removed the PROD Introduction to Python link (`584731391`) from the listing at the owner's direction: it grades poorly. The Skill itself is unchanged on PROD. Link count 52 → 51.
 
 ## v4.174 — 13 Aug 2026 — Correct the archive-reachability claim
 
@@ -113,7 +128,7 @@ Found by a pre-flight run against the **live** site rather than a local server: 
 
 Fixed by adding the icon stylesheet link. Verified live afterwards: 23/23 glyphs resolve on Help, and all 8 surfaces are clean.
 
-Also added `preflight-live.js` to the QA tools (mirrored to `brady-browser-kit`). It checks the deployed site the way an audience gets it — real CDN, real third-party font requests from this network — asserting per page: HTTP 200, no JS errors, no failed requests, **icon ligatures resolved as glyphs rather than literal text**, the Aptos webfont loaded, no horizontal overflow at 1920 / 1366 / 1280, no broken images, and no page still declaring the superseded wordmark favicon. This class of bug is invisible to a local check that only asserts HTTP status.
+Also added `preflight-live.js` to the QA tools (mirrored to the private capture toolkit). It checks the deployed site the way an audience gets it — real CDN, real third-party font requests from this network — asserting per page: HTTP 200, no JS errors, no failed requests, **icon ligatures resolved as glyphs rather than literal text**, the Aptos webfont loaded, no horizontal overflow at 1920 / 1366 / 1280, no broken images, and no page still declaring the superseded wordmark favicon. This class of bug is invisible to a local check that only asserts HTTP status.
 
 *(This lands after the `v4.171` release tag, so the tagged snapshot does not include it.)*
 
@@ -147,7 +162,7 @@ Replaced with the **owl mark**, cropped from the official FY26 Full Color Revers
 - Wired into all 8 live pages: `index.html`, `pitch/`, `help/`, and the 4 persona pages via the `PAGE` template in `build_prototypes.py` (regenerated — favicon links are the only change to those files; no screenshots re-captured).
 - **New filenames on purpose.** Favicons cache hard; overwriting `wgu-favicon.png` would have left the old blob in place for anyone who had already loaded the site. That file stays on disk because the 4 `_archive/` mockups still reference it, and those are intentionally frozen.
 
-**Status demo deck linked.** Brady's live demo deck (`skillproof-status-demo_v1-1_30JUL2026.pptx`, 7 slides, 41 MB, mostly embedded video) is now the third **About SkillProof** sidebar link, below Full Walkthrough (2K). Marked `download` since a 41 MB `.pptx` cannot preview in-browser.
+**Status demo deck linked.** The live demo deck (`skillproof-status-demo_v1-1_30JUL2026.pptx`, 7 slides, 41 MB, mostly embedded video) is now the third **About SkillProof** sidebar link, below Full Walkthrough (2K). Marked `download` since a 41 MB `.pptx` cannot preview in-browser.
 
 ---
 
@@ -179,7 +194,7 @@ The persona walkthroughs were unusable as a stand-in for a live demo: the frames
 - Instructor **Skill Preview**: the staff-side view of the same loop, marked "Preview only — no data is saved". The 11 Aug site map had recorded this grading step as unverified because the Claude-browser permission classifier blocked the submit.
 - School Admin **New Skill wizard step 3** now shows the model choice, the fallback chain, the prompt configuration fields *filled in*, and the resulting compiled system prompt. The Preview grades against exactly the Learning Objectives entered in step 2, which demonstrates the authoring config reaching the model.
 
-**One course across all four roles.** Everything course-scoped points at `STU101 · Time Management & Study Skills` inside course folder `B002 · Brady's SoT Course` — 17 enrolled learners, so the heatmaps and learner profiles are populated with real data. A student session is pinned to one course by its LTI launch (the JWT carries `activeCourseId`; the app ignores `?course=`), so the launch link *is* the course selection: `provision/576572714`, not `568442570`.
+**One course across all four roles.** Everything course-scoped points at `STU101 · Time Management & Study Skills` inside course folder `B002 · SoT Course` — 17 enrolled learners, so the heatmaps and learner profiles are populated with real data. A student session is pinned to one course by its LTI launch (the JWT carries `activeCourseId`; the app ignores `?course=`), so the launch link *is* the course selection: `provision/576572714`, not `568442570`.
 
 **Access + data created to make the capture possible.**
 - Granted the instructor account course folder B002 via Super Admin → Access Control → Add Course. Before that the app answered "You do not have access to this course folder". The grant is checked server-side and applied to the already-open session with no LTI re-launch.
@@ -187,7 +202,7 @@ The persona walkthroughs were unusable as a stand-in for a live demo: the frames
 
 **Screen counts:** Student 4 → 8, Instructor 7 → 8, School Admin 8 → 10, Super Admin 6. **32 screens · 39 hotspots**, every capture 1920px wide (was a mix of 745/1329/1440), all four personas light-mode only.
 
-**Capture harness (`skillproof-qa-tools`, versioned in `brady-browser-kit`).**
+**Capture harness (`skillproof-qa-tools`, versioned in the private capture toolkit).**
 - Captures at 1920 wide so screens are 1:1 on a 1080p share instead of upscaled by the full-bleed frame.
 - `order` lets capture order differ from display order. Diagnostic Results needs a COMPLETED diagnostic while the diagnostic question screen needs one IN PROGRESS, so results is captured first and the retake that destroys it runs last.
 - **Content-readiness gate.** Three student screens shipped as grey loading skeletons with every wait reporting success, because the app's skeleton reuses the real class names — `waitSelector` proved presence, never readiness. Capture now blocks until no skeleton/spinner is present and re-asserts it at the shutter. Two traps: loading markers must be counted *raw*, since a skeleton wrapper measures 0×0 while its bars still paint (a visibility filter made the gate pass instantly); and `[role=progressbar]` must NOT count as a spinner, because the Super Admin cost bar legitimately carries that role and is always present.
@@ -203,13 +218,13 @@ The persona walkthroughs were unusable as a stand-in for a live demo: the frames
 **Documentation.** Full README refresh against the current state: repointed five broken links to per-persona READMEs that moved to `_archive/` in v4.167; retargeted the "Python coding coach" framing to the course-agnostic platform the demo now shows; corrected the repo-layout PNG counts (4/5/4/4 → 8/8/10/6) and noted the personas are light-mode only; replaced the "Regenerate screenshots" instructions, which only covered the archived mockups, with the real five-step live pipeline plus what the tooling does and does not guarantee; scoped the Design System palette extensions and the shared persona/course reference to `_archive/`; added a **Live demo canon** table of the real STAGE ids; and fixed the changelog pointer, which claimed v4.160 while the badge read v4.167.
 
 ### Files
-`README.md`, `CHANGELOG.md`, `index.html`, `build_prototypes.py`, `{student,instructor,tenant_admin,super_admin}/{index.html,flow.json,screenshots/}`, and in `skillproof-qa-tools` / `brady-browser-kit`: `demo-capture.js`, `verify-demo.js`, `verify-frame-width.js`, `demo-reauth.js`, `demo-seed-diagnostic.js`, `demo-complete-diagnostic.js`, `flow-{student,instructor,schooladmin,superadmin}.json`.
+`README.md`, `CHANGELOG.md`, `index.html`, `build_prototypes.py`, `{student,instructor,tenant_admin,super_admin}/{index.html,flow.json,screenshots/}`, and in `skillproof-qa-tools` / the private capture toolkit: `demo-capture.js`, `verify-demo.js`, `verify-frame-width.js`, `demo-reauth.js`, `demo-seed-diagnostic.js`, `demo-complete-diagnostic.js`, `flow-{student,instructor,schooladmin,superadmin}.json`.
 
 ---
 
 ## v4.167 — 23 Jul 2026 — Persona portals rebuilt as live-app screenshot walkthroughs
 
-SkillProof is now in **beta** on the live app (`wgu.teamjft.com`), so the four hand-built persona storyboards were replaced with **click-through walkthroughs built from real screenshots of the working app** — a login-free backup for when the live app is unavailable. The original mockups are **preserved, not deleted**.
+SkillProof is now in **beta** on the live app (a vendor-hosted STAGE host), so the four hand-built persona storyboards were replaced with **click-through walkthroughs built from real screenshots of the working app** — a login-free backup for when the live app is unavailable. The original mockups are **preserved, not deleted**.
 
 - **Archived the 4 hand-built mockups** to `_archive/{student,instructor,tenant_admin,super_admin}/` via `git mv` (history preserved); unlinked from the landing page. *(Corrected in v4.173: this entry originally said they remained "reachable by direct URL". They do not — Jekyll excludes underscore-prefixed paths, so every `_archive/` URL 404s on the deployed site. They are preserved in the repo only.)* Their relative paths were re-based one level deeper (`../assets/` → `../../assets/`, `../help/` → `../../help/`, `href="../"` → `href="../../"`) so they still render.
 - **New `build_prototypes.py`** generator: emits each persona `index.html` from a per-persona `flow.json` (screens + hotspot wiring). Screenshots are full-page live-app captures; transparent percentage-positioned hotspots overlay the advancing buttons and call the reused `goToScreen()` switcher — flow-nav, `?screen=N` deep-link, arrow-key nav, and the collapsible meta-bar are all retained. Light theme only for v1 (toggle gated on a complete `screenshots_dark/` set).
@@ -239,7 +254,7 @@ Per the 16 Jul 2026 link-list update: E010 and D522 were broken out from a singl
 
 ## v4.165 — 08 Jul 2026 — Removed pagination: one real, complete page now
 
-Per Brady: "We only need this one page of real links from now on." With v4.164 having stripped every decorative filler row, the "huge simulated institution-wide table, viewing a page of it" framing (First/Prev/Next/Last, page-number input, rows-per-page select, "View 1–200 of N") no longer matched what the page actually is — a short, complete, real list.
+Per the owner: "We only need this one page of real links from now on." With v4.164 having stripped every decorative filler row, the "huge simulated institution-wide table, viewing a page of it" framing (First/Prev/Next/Last, page-number input, rows-per-page select, "View 1–200 of N") no longer matched what the page actually is — a short, complete, real list.
 
 - **Removed the entire `.pager` control** (First/Previous/Next/Last page buttons, page-number input, rows-per-page `<select>`) and its now-dead CSS (`.pager`, `.pager-input`, `.pager-select`).
 - **`count-info` replaced** with an honest, accurate `Showing all 19 providers` (was the fictional `View 1–200 of 13,553`).
@@ -253,10 +268,10 @@ Per Brady: "We only need this one page of real links from now on." With v4.164 h
 
 ## v4.164 — 08 Jul 2026 — Removed all decorative filler rows; added real DEV links
 
-Per Brady, the Links table should exactly mirror his own `skillproof-link-list_<DATE>.md` environment tracker — every real link present, nothing fake taking up space.
+Per the owner, the Links table should exactly mirror the `skillproof-link-list_<DATE>.md` environment tracker — every real link present, nothing fake taking up space.
 
 - **Removed 10 decorative filler rows** that never went anywhere: SkillProof REST API Provider, prototype PoC v1.1 and v1.0, OEX Studio, Panopto, MyMathLab, ProctorU, Welcome & Roster Sync, Coursera Programs Bridge, Instructional Designer Review.
-- **Added the 4 real DEV links** from the tracker (Python, Instructor Portal, School Admin, Super Admin), folded into the existing Student Skills / Staff Links sections rather than a new section — each marked with a new **amber "Broken" status pill** (`.dot.amber`, already defined in CSS) since DEV's LRPS provisioning is confirmed non-functional as of 08 Jul 2026, pending a JFT fix. Still clickable (opens in new tab) so the real URL is inspectable, just honestly labeled.
+- **Added the 4 real DEV links** from the tracker (Python, Instructor Portal, School Admin, Super Admin), folded into the existing Student Skills / Staff Links sections rather than a new section — each marked with a new **amber "Broken" status pill** (`.dot.amber`, already defined in CSS) since DEV's LRPS provisioning is confirmed non-functional as of 08 Jul 2026, pending a vendor fix. Still clickable (opens in new tab) so the real URL is inspectable, just honestly labeled.
 - **tbody now contains only real content**: Student Skills (9, 1 broken DEV) → Staff Links (6, 3 broken DEV) → Prototypes (4, local storyboard links) — zero decorative rows.
 - `count-info` adjusted to `13,553` (net −6: −10 filler, +4 DEV); `<title>` → `v4.164`.
 
@@ -267,7 +282,7 @@ Per Brady, the Links table should exactly mirror his own `skillproof-link-list_<
 
 ## v4.163 — 08 Jul 2026 — STU101 added; reconciled README with D522's earlier untracked landing-page addition
 
-Brady built and deployed a new, deliberately non-technical Skill — **STU101, Time Management & Study Skills for College Success** (Course B002 · Brady's SoT Course) — to demonstrate SkillProof's range beyond coding subjects for an executive audience. 4 atomic Topics (Time Management / Avoiding Procrastination / Effective Study Habits / Exam Preparation), 1 Learning Objective each, each answerable in 1-2 sentences by design.
+The owner built and deployed a new, deliberately non-technical Skill — **STU101, Time Management & Study Skills for College Success** (Course B002 · SoT Course) — to demonstrate SkillProof's range beyond coding subjects for an executive audience. 4 atomic Topics (Time Management / Avoiding Procrastination / Effective Study Habits / Exam Preparation), 1 Learning Objective each, each answerable in 1-2 sentences by design.
 
 - **New Student Skills row:** `[Skill]STU101 — Time Management & Study Skills` → `lrps.wgu.edu/provision/576572714`.
 - **Reconciliation:** D522 (`lrps.wgu.edu/provision/575242504`) was added to `index.html`'s landing table in an earlier untracked edit (commits `54a4d80`/`a9e9375`) but never made it into `README.md`'s Live Skills table or a CHANGELOG entry. Backfilled here alongside STU101.
@@ -294,9 +309,9 @@ Added 3 real Staff LRPS links (Instructor Portal, Tenant Admin, Super Admin) and
 
 ## v4.161 — 15 Jun 2026 — Live Skills launcher: 6 deployed LRPS skills wired into the landing table
 
-Brady deployed six real skills in LRPS. Added them as live rows at the top of the landing Links table so the shared GitHub Pages URL doubles as a launch hub.
+The owner deployed six real skills in LRPS. Added them as live rows at the top of the landing Links table so the shared GitHub Pages URL doubles as a launch hub.
 
-- **Six `tr.live` skill rows** (Python, Professionalism, Applied UX, E010, Calc, Teaching Engineering) at the top of the Links `<tbody>`, each linking to its real `lrps.wgu.edu/provision/<id>` URL. Name + Launch only, `[Skill]` name-tag, `Created By` Brady, provision id in the Id column.
+- **Six `tr.live` skill rows** (Python, Professionalism, Applied UX, E010, Calc, Teaching Engineering) at the top of the Links `<tbody>`, each linking to its real `lrps.wgu.edu/provision/<id>` URL. Name + Launch only, `[Skill]` name-tag, `Created By` the owner, provision id in the Id column.
 - **Launch in a new tab:** the row-click/keyboard handler now opens absolute `http(s)` `data-launch` targets via `window.open(..., '_blank', 'noopener')`; the four relative persona-portal rows keep their same-tab behavior.
 - Cosmetic: count-info `13,549` → `13,555`; stale `<title>` `v4.91` → `v4.161`.
 
@@ -336,14 +351,14 @@ A holistic site audit confirmed the prototype is otherwise clean (no broken mark
 
 ---
 
-## v4.158 — 2 Jun 2026 — Filter/sort placement audit + remove the logs "Result" column (JFT standup)
+## v4.158 — 2 Jun 2026 — Filter/sort placement audit + remove the logs "Result" column (the vendor standup)
 
-Two cleanups from the JFT morning standup.
+Two cleanups from the vendor morning standup.
 
 **1. Controls only where there's something to sort/filter.** The site-wide auto-injector had added filter chips / search / sort to tables that don't warrant them. Suppressed each via a reversible `data-no-controls` flag — **no JS change**:
 - **TA S7** Topics & Learning Objectives editors (×4) — editable objective lists, not data to sort.
 - **TA S8** the LLM / model list.
-- **Root / LRPS** "Links" table — LRPS isn't a JFT deliverable, and it already shows its own native sort icons.
+- **Root / LRPS** "Links" table — LRPS isn't a vendor deliverable, and it already shows its own native sort icons.
 - **SA S1** "Where the spend is going" (3-row top-consumers).
 - **Student** S5 / S6 / S10 coaching-feedback tables + S11 "Welcome back" (per direction to clear all Student screens).
 
@@ -358,7 +373,7 @@ Kept (they genuinely need it): SA & TA analytics (incl. Reports & exports + Audi
 
 ## v4.157 — 2 Jun 2026 — Remove the "AA contrast" chip (assumed standard, not for end-user display)
 
-Per Brady: WCAG 2.2 AA is an assumed, contractual standard — surfacing it as a UI label adds noise without informing the viewer (same rationale as not labeling TLS/FERPA on-screen). Removed the **"WCAG 2.2 AA contrast" chip** from the three analytics / heatmap headers (Instructor, School Admin, Super Admin), reverting those headers to the plain eyebrow, and dropped the WCAG phrasing from the **Visualization-key** note (kept the functional point: each chart pairs a color with its numeric value). No other v4.156 work changed. Dev-only CSS comments referencing the focus-ring fix are untouched (not user-facing).
+Per the owner: WCAG 2.2 AA is an assumed, contractual standard — surfacing it as a UI label adds noise without informing the viewer (same rationale as not labeling TLS/FERPA on-screen). Removed the **"WCAG 2.2 AA contrast" chip** from the three analytics / heatmap headers (Instructor, School Admin, Super Admin), reverting those headers to the plain eyebrow, and dropped the WCAG phrasing from the **Visualization-key** note (kept the functional point: each chart pairs a color with its numeric value). No other v4.156 work changed. Dev-only CSS comments referencing the focus-ring fix are untouched (not user-facing).
 
 ### Files
 `instructor/index.html`, `tenant_admin/index.html`, `super_admin/index.html`; docs (`README.md`, per-portal READMEs, this file).
@@ -441,7 +456,7 @@ Verified in dark mode across all 6 surfaces (LRPS root · Student · Instructor 
 Asset version: `?v=11`.
 
 ### Coda Contract Requirements tracker — 92 rows updated
-With the prototype evidence on `main@ce0f20f`, the SkillProof Project Tracker was updated for the first time end-to-end. Final tally: **34 Met** (UI surface depicted in storyboard with `?screen=N` deep-link), 2 In Progress (§7.2 mobile, §7.3 WCAG — Pass-B pending), 2 Deferred Post-MVP (§6.12 LaTeX, §7.7 PWA), 54 N/A (production-only infra; JFT-owned). Last Verified Date = 2 Jun 2026 on every row. Of 38 reqs with a UI surface, 34 are Met (89%); the 54 N/As are pure infra (TLS, AES, scaling, SLAs, certifications) that a storyboard can't structurally show.
+With the prototype evidence on `main@ce0f20f`, the SkillProof Project Tracker was updated for the first time end-to-end. Final tally: **34 Met** (UI surface depicted in storyboard with `?screen=N` deep-link), 2 In Progress (§7.2 mobile, §7.3 WCAG — Pass-B pending), 2 Deferred Post-MVP (§6.12 LaTeX, §7.7 PWA), 54 N/A (production-only infra; vendor-owned). Last Verified Date = 2 Jun 2026 on every row. Of 38 reqs with a UI surface, 34 are Met (89%); the 54 N/As are pure infra (TLS, AES, scaling, SLAs, certifications) that a storyboard can't structurally show.
 
 ---
 
@@ -509,12 +524,12 @@ Full Super Admin re-walk against the Coda Contract Requirements. Screen count 15
 
 ## TA v4.138 — 24 May 2026 — TA walkthrough complete: redesign, terminology lock, 4-level Analytics
 
-The Tenant Admin (now **School Admin**) portal was walked end-to-end and overhauled in a single session. The portal is now 15 screens (S1–S15), down from 26 in v4.119. Scope was sharpened to **Courses + Skills management only** — at-risk learner tracking, help-desk 2-way communication, and School Settings all moved to other personas (Instructor / Super Admin) per Brady's directive.
+The Tenant Admin (now **School Admin**) portal was walked end-to-end and overhauled in a single session. The portal is now 15 screens (S1–S15), down from 26 in v4.119. Scope was sharpened to **Courses + Skills management only** — at-risk learner tracking, help-desk 2-way communication, and School Settings all moved to other personas (Instructor / Super Admin) per the owner's directive.
 
 ### Scope cuts (TA only manages Courses + Skills)
 
 - **At-risk learner tracking removed** from S1 dashboard. The at-risk roster, "X learners at risk" badges, and "View at-risk learners" buttons were stripped. Drill-down through the heatmap (S3 → S4 At-risk filter → S5 Learner profile) remains accessible for diagnostic, but is not the TA's primary surface.
-- **Incident response flow removed**. Per Brady's directive ("there won't be any 2-way communication between the help desk and SkillProof"), the 8-screen incident response chain (former S16–S23: degradation alert → notification → P1 ticket → CSM thread → restore → SLA) was deleted entirely. Help is now a one-way link out to Zendesk via the help icon in the navbar. The "Incidents Open" KPI gauge was also removed.
+- **Incident response flow removed**. Per the owner's directive ("there won't be any 2-way communication between the help desk and SkillProof"), the 8-screen incident response chain (former S16–S23: degradation alert → notification → P1 ticket → CSM thread → restore → SLA) was deleted entirely. Help is now a one-way link out to Zendesk via the help icon in the navbar. The "Incidents Open" KPI gauge was also removed.
 - **School Settings moved to Super Admin**. The former S24 (School Settings — branding, thresholds, retention) was deleted from TA and rebuilt inside the Super Admin's S12 (Schools & Settings) screen as expandable per-School panels. SA owns platform-wide tenant configuration.
 - **Skill Lifecycle moved into Course detail page**. The former standalone S25 (Active / Archived Skills) is now accessed via the Course view (S2) where each Skill card has Edit / Archive affordances inline.
 - **Activity Log folded into Analytics**. The former standalone S27 is now Section 6 of the consolidated Analytics screen (S15).
@@ -548,11 +563,11 @@ The Tenant Admin (now **School Admin**) portal was walked end-to-end and overhau
     - AI-scored values (heatmap, session scores, KPI mastery averages): `0.00–1.00`
     - TA-entered passing thresholds (Skill setup, Deploy review): `0–100%`
 - **"audit-logged" copy removed** platform-wide — it's expected and assumed, not something to surface to the user.
-- **No real names, real emails, real $-amounts (contract values only)**. Operational $-amounts (token costs, billing data) are fine per Brady's refined hygiene rule.
+- **No real names, real emails, real $-amounts (contract values only)**. Operational $-amounts (token costs, billing data) are fine per the owner's refined hygiene rule.
 - **Never abbreviate "Learning Objective" to "LO"** anywhere in copy.
 - **"Course Number" + "Course Title"** terminology for Course identifiers on the New Skill wizard (replaces "Parent Course"). Both are typeable combobox inputs (HTML5 `<datalist>`) that support add-new.
 
-### New S1 dashboard layout (Brady's progressive refinement across the session)
+### New S1 dashboard layout (the owner's progressive refinement across the session)
 
 - 4 KPI gauges: Courses (4) · Skills (7) · Sessions This Week (680) · Learners (90)
 - Toolbar (replaces former Quick Actions cards): `+ New Skill` (primary) · `Analytics` (outline-primary)
@@ -640,7 +655,7 @@ TA S9 (Access Denied) skipped — SA's S13 covers the deny path with broader sco
 
 ## v4.119 — 24 May 2026 — TA renumber S1..S26 + JS leak fix
 
-Per Brady's directive: TA portal should start at Screen 01 (consistent with Instructor portal numbering). Plus a stray `</body></html>` block was interrupting the script tag mid-file, causing the trailing theme-restore / toggle / radio-card JS to render as plain text on every page instead of executing.
+Per the owner's directive: TA portal should start at Screen 01 (consistent with Instructor portal numbering). Plus a stray `</body></html>` block was interrupting the script tag mid-file, causing the trailing theme-restore / toggle / radio-card JS to render as plain text on every page instead of executing.
 
 ### Changes
 
@@ -657,13 +672,13 @@ Per Brady's directive: TA portal should start at Screen 01 (consistent with Inst
 
 ## v4.118 — 24 May 2026 — Tenant Admin redesign + cross-portal visual unification
 
-Major redesign of the Tenant Admin portal architecture, plus Phase 1 visual unification across all three portals (instructor / tenant_admin / super_admin). Per Brady's directive 23 May 2026 mid-walkthrough: "Update both admin prototypes to match the style of the Instructor we've just finalized... base your screens on the Instructor displays from the bottom up, then add in the higher level details and abilities of the Tenant Admin."
+Major redesign of the Tenant Admin portal architecture, plus Phase 1 visual unification across all three portals (instructor / tenant_admin / super_admin). Per the owner's directive 23 May 2026 mid-walkthrough: "Update both admin prototypes to match the style of the Instructor we've just finalized... base your screens on the Instructor displays from the bottom up, then add in the higher level details and abilities of the Tenant Admin."
 
 ### Why
 
-After landing F21–F25 on TA S2 + S3 during the walkthrough, the original TA architecture ("Quick Actions" cards + flat Skills list) was visibly mismatched with the Instructor portal's drill-down model. Brady redirected the engagement scope: rather than continue per-screen walkthrough fixes, the TA portal should be rebuilt to mirror Instructor's screens and add Tenant-Admin-specific layers (create + modify Courses + Skills, manage School Settings, monitor SLA + handle incidents, view Tenant-scope Analytics + Activity Log). Same audit also surfaced cross-portal CSS drift: super_admin was missing the `.chip-filter` definition entirely (chips rendered as unstyled buttons); tenant_admin used icon+text Help link while instructor + super_admin used icon-only.
+After landing F21–F25 on TA S2 + S3 during the walkthrough, the original TA architecture ("Quick Actions" cards + flat Skills list) was visibly mismatched with the Instructor portal's drill-down model. The owner redirected the engagement scope: rather than continue per-screen walkthrough fixes, the TA portal should be rebuilt to mirror Instructor's screens and add Tenant-Admin-specific layers (create + modify Courses + Skills, manage School Settings, monitor SLA + handle incidents, view Tenant-scope Analytics + Activity Log). Same audit also surfaced cross-portal CSS drift: super_admin was missing the `.chip-filter` definition entirely (chips rendered as unstyled buttons); tenant_admin used icon+text Help link while instructor + super_admin used icon-only.
 
-### Decisions locked (Brady verdicts 23 May 2026)
+### Decisions locked (the owner verdicts 23 May 2026)
 
 | Decision | Verdict |
 |---|---|
@@ -738,7 +753,7 @@ Old: 2 flows (A: Skill Configuration, B: Critical Incident Response & SLA). New:
 - **F23** (P2): Activity Log Quick Action card got a second CTA ("Export Activity Log") — then superseded by S2 wholesale replacement
 - **F24** (P2): TA "Your Skills" rows renamed to actual Skill names (Python Skill / OOP Skill / Python Intermediate Skill / Data Structures Skill) with Course code in row-sub line — then superseded by new S2 structure
 - **F25** (P3): S11 (was S3) breadcrumb "Skills" hop wired to `goToScreen(2)`
-- **F26** (P1, carry-over): 10 per-LO Threshold inputs on new S12 (was S4 Topics & LOs) normalized from 0-100% scale to 0.00-1.00 with `step="0.01"`. Strict source-of-truth alignment with Brady's score scale rule.
+- **F26** (P1, carry-over): 10 per-LO Threshold inputs on new S12 (was S4 Topics & LOs) normalized from 0-100% scale to 0.00-1.00 with `step="0.01"`. Strict source-of-truth alignment with the owner's score scale rule.
 - **F27, F28** (carry-over): deferred to walkthrough resumption
 - **F29-F34** (S2 deep re-review findings): superseded by S2 wholesale replacement
 
@@ -761,20 +776,20 @@ The TA walkthrough (Task 3) now resumes against the new S2–S27 architecture. F
 
 ## v4.117 — 23 May 2026 — Instructor S2–S9 re-review — export pattern platform-wide, source-level affordance, terminology + content-clarity fixes
 
-Continues the instructor S1–S9 re-review against the freshly-finalized Coda canonical sources (Scenarios v1.4, User-Profiles v1.3, Access-Control v1.2 — all dated 23 May 2026). Eight screens, fifteen findings landed across F5–F19 per Brady's per-finding verdicts. F8 (Topic taxonomy reconciliation) and F20 (em-dash terminology) intentionally deferred. S9 (Access Denied) had no findings requiring action — it was the strongest contract-anchored screen in the portal (Access-Control v1.2 §3.2 all 4 requirements satisfied at v4.113).
+Continues the instructor S1–S9 re-review against the freshly-finalized Coda canonical sources (Scenarios v1.4, User-Profiles v1.3, Access-Control v1.2 — all dated 23 May 2026). Eight screens, fifteen findings landed across F5–F19 per the owner's per-finding verdicts. F8 (Topic taxonomy reconciliation) and F20 (em-dash terminology) intentionally deferred. S9 (Access Denied) had no findings requiring action — it was the strongest contract-anchored screen in the portal (Access-Control v1.2 §3.2 all 4 requirements satisfied at v4.113).
 
 ### Why
 
-The S1 walkthrough (v4.116) surfaced a class of patterns that recurred across S2–S9: missing or partial `Export [Context Name]` patterns relative to Brady's PDF / CSV / MD / JSON platform rule; source HTML that depended on runtime patches (`hydrateOneHeatmap` adding click affordance) where JFT would build verbatim from source; visual layout regressions when expanding inline header rows; terminology drift between "AI evaluation misses" (S7 subtitle, S8 stat label) and the canonical "Objective miss" event term from Access-Control v1.2; one persona-name leak ("set by Alice"); and a real content-clarity bug on S7 where Sally's code samples rendered as single-line proportional font due to a wrong `font-family` declaration.
+The S1 walkthrough (v4.116) surfaced a class of patterns that recurred across S2–S9: missing or partial `Export [Context Name]` patterns relative to the owner's PDF / CSV / MD / JSON platform rule; source HTML that depended on runtime patches (`hydrateOneHeatmap` adding click affordance) where the vendor would build verbatim from source; visual layout regressions when expanding inline header rows; terminology drift between "AI evaluation misses" (S7 subtitle, S8 stat label) and the canonical "Objective miss" event term from Access-Control v1.2; one persona-name leak ("set by Alice"); and a real content-clarity bug on S7 where Sally's code samples rendered as single-line proportional font due to a wrong `font-family` declaration.
 
 ### Changes
 
-- **F5 (S2) — Git Skill card → S3 Python heatmap routing** [verdict D, deferred]: Storyboard limitation acknowledged. S3 will continue to show Python content regardless of which Skill card navigated to it; JFT understands this is illustrative wireframing.
+- **F5 (S2) — Git Skill card → S3 Python heatmap routing** [verdict D, deferred]: Storyboard limitation acknowledged. S3 will continue to show Python content regardless of which Skill card navigated to it; the vendor understands this is illustrative wireframing.
 - **F6 (S2) — Export `E010 Course Report` added** [A]: Full PDF / CSV / MD / JSON pattern in a dedicated row below the H1 row. Header restructured to avoid H1 wrap (consistent dedicated-row pattern adopted across S2/S3/S5/S6/S7).
 - **F7 (S3) — Export `Python Skill Report` expanded** [A]: MD + JSON buttons added (had PDF + CSV only); header restructured to dedicated-row pattern.
 - **F8 (S3) — Topic taxonomy reconciliation** [skip]: Scenarios v1.4 §1.3 documents 4 MVP "coached competency areas"; storyboard shows 13 post-MVP Python Topics. Reconciliation deferred — not in scope for this re-review.
-- **F9 (S3 + S4) — Heatmap row-label status dots removed** [Brady directive — remove entirely, not re-color]: 19 `<span class="dot ...">` instances removed from `.heatmap-row-label` elements. Status discrimination remains via chip filter and cell-color bands. S1 status legend retained (it explains badge colors in the at-risk roster table, not row-label dots).
-- **F10 (S4) — Source-level click affordance on 4 at-risk row labels** [A]: Added `onclick="goToScreen(5)"`, `role="rowheader"`, `tabindex="0"`, `aria-label`, and `title` attributes directly to source HTML for Sally / B.F. / C.S. / H.D. row labels. Runtime `hydrateOneHeatmap` continues to add these defensively; source-level alignment matches the F2:B precedent (JFT builds verbatim from prototype).
+- **F9 (S3 + S4) — Heatmap row-label status dots removed** [the owner directive — remove entirely, not re-color]: 19 `<span class="dot ...">` instances removed from `.heatmap-row-label` elements. Status discrimination remains via chip filter and cell-color bands. S1 status legend retained (it explains badge colors in the at-risk roster table, not row-label dots).
+- **F10 (S4) — Source-level click affordance on 4 at-risk row labels** [A]: Added `onclick="goToScreen(5)"`, `role="rowheader"`, `tabindex="0"`, `aria-label`, and `title` attributes directly to source HTML for Sally / B.F. / C.S. / H.D. row labels. Runtime `hydrateOneHeatmap` continues to add these defensively; source-level alignment matches the F2:B precedent (the vendor builds verbatim from prototype).
 - **F11 (S4) — At-risk threshold disclosed as School-Admin-configurable** [A]: Subtitle updated from `"Filter narrowed to AI-scored Topic mastery < 0.60 across two or more Topics."` → `"Filter narrowed to the at-risk threshold set by your School Admin (AI-scored Topic mastery < 0.60 across two or more Topics)."` — mirrors the "Mastery threshold: 0.80 (set by ...)" pattern already on this screen.
 - **F12 (S4) — Persona-name leak fix** [A]: `"0.80 (set by Alice)"` → `"0.80 (set by School Admin)"`. Role-only label per Access-Control v1.2 §1 NOTE (UI label is "School Admin"; "Tenant Admin" is the contract role name).
 - **F13 (S5) — Export `Sally's Topic Mastery Report` added** [A]: Full PDF / CSV / MD / JSON pattern in a dedicated row.
@@ -783,7 +798,7 @@ The S1 walkthrough (v4.116) surfaced a class of patterns that recurred across S2
 - **F16 (S7) — Export `Session 09 Transcript` expanded** [A]: CSV + JSON buttons added (had PDF + MD only); header restructured to dedicated-row pattern.
 - **F17 (S7) — Code block content-clarity bug fixed** [A]: Two `<div class="chat-text">` elements in Sally's bubbles used `style="font-family: 'Lato', monospace; font-size: 13px;"` — Lato is sans-serif, so the browser used Lato as primary font; combined with default whitespace collapsing, multi-line code rendered as a single proportional-font line and was unreadable. Fix: `font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; font-size: 13px; white-space: pre-wrap;` — code now renders as proper indented multi-line monospace.
 - **F18 (S7 + S8) — Terminology normalized to canonical "Objective miss"** [A]: S7 subtitle `"3 AI evaluation misses"` → `"3 Objective misses"`; S8 stat label `"AI evaluation misses"` → `"Objective misses"`. Aligns with Access-Control v1.2 callout naming the canonical event term.
-- **F19 (S8) — Export `Session 09 Audit Log` expanded** [A]: PDF + CSV + MD buttons added (had JSON only). Inline layout retained per Brady's explicit option choice; cosmetic side-effect is H1 "All 47 messages logged" wrapping to 2 lines as the feedback panel compresses — accepted.
+- **F19 (S8) — Export `Session 09 Audit Log` expanded** [A]: PDF + CSV + MD buttons added (had JSON only). Inline layout retained per the owner's explicit option choice; cosmetic side-effect is H1 "All 47 messages logged" wrapping to 2 lines as the feedback panel compresses — accepted.
 - **F20 (S9) — "School Admin - School of Technology" hyphen vs em-dash** [C, deferred]: Access-Control v1.2 §1 NOTE specifies em-dash format `"School Admin — [School Name]"`; storyboard currently uses hyphen-minus. Queued for platform-wide audit in the cross-portal hygiene task (where tenant_admin + super_admin may have the same pattern).
 - **`instructor/index.html` title stamp** — `Storyboard v4.116` → `Storyboard v4.117`.
 
@@ -801,22 +816,22 @@ The S1 walkthrough (v4.116) surfaced a class of patterns that recurred across S2
 
 ## v4.116 — 23 May 2026 — Instructor S1 walkthrough — chip filters wired, source scores normalized, Course-card affordance unified
 
-First screen of the instructor S1–S9 re-review against the freshly-finalized Coda canonical sources (Scenarios v1.4, User-Profiles v1.3, Access-Control v1.2 — all dated 23 May 2026). Three findings landed per Brady's per-finding verdicts: F1:A, F2:B, F3:A. F4 confirmed no-op (S1 intentionally export-free; §7.14 covered by S2/S3 exports).
+First screen of the instructor S1–S9 re-review against the freshly-finalized Coda canonical sources (Scenarios v1.4, User-Profiles v1.3, Access-Control v1.2 — all dated 23 May 2026). Three findings landed per the owner's per-finding verdicts: F1:A, F2:B, F3:A. F4 confirmed no-op (S1 intentionally export-free; §7.14 covered by S2/S3 exports).
 
 ### Why
 
-The v4.114 chip-filter rollout coverage table marked `Instructor S1 Cross-Course Roster | Status | ✅`, but DOM inspection during the re-review showed the 5 chips had neither `onclick` nor `data-filter-status` — they were decorative. The same walkthrough surfaced legacy `XX%` percent literals in `.section-stat-num` and bare-integer score literals in `.score-pill` + `.heatmap-cell` that were being patched at runtime by `standardizeScoresTo0to1()` (added in v4.107). JFT builds verbatim from prototype, so the runtime patch was a contract risk: JFT would either replicate the patch (preserving legacy source values) or build from source and render `76%` — violating the 0.00–1.00 platform rule. Finally, the E010 "Recommended next" Course card was clickable as a whole while E075 + E135 cards were visually identical but non-interactive.
+The v4.114 chip-filter rollout coverage table marked `Instructor S1 Cross-Course Roster | Status | ✅`, but DOM inspection during the re-review showed the 5 chips had neither `onclick` nor `data-filter-status` — they were decorative. The same walkthrough surfaced legacy `XX%` percent literals in `.section-stat-num` and bare-integer score literals in `.score-pill` + `.heatmap-cell` that were being patched at runtime by `standardizeScoresTo0to1()` (added in v4.107). The vendor builds verbatim from prototype, so the runtime patch was a contract risk: The vendor would either replicate the patch (preserving legacy source values) or build from source and render `76%` — violating the 0.00–1.00 platform rule. Finally, the E010 "Recommended next" Course card was clickable as a whole while E075 + E135 cards were visually identical but non-interactive.
 
 ### Changes
 
 - **F1 — `instructor/index.html` S1 at-risk-roster chip filters wired**: added `data-filter-status` + `onclick="filterAtRiskRoster(...)"` to all 5 chips (All / Mastery / On track / Watch list / At risk). Tagged the 4 visible at-risk rows with `data-row-status="at-risk"`. Added a `.no-matches-row` placeholder that displays "[Demo] No sample learners in this filter — open the Skill heatmap for the full roster." when the active filter has 0 matches. New `filterAtRiskRoster(status)` function mirrors S3's `filterHeatmap` pattern (chip active-state toggle + row hide/show + placeholder visibility).
-- **F2 — `instructor/index.html` strict source score normalization**: replaced all legacy `XX%` and bare-integer score literals with 0.00–1.00 equivalents directly in source. Removed `standardizeScoresTo0to1()` function and its invocation. JFT now builds verbatim from already-correct source. Totals: 5 `.section-stat-num` percent → 0.XX, 22 `.score-pill` bare-integer → 0.XX, 247 `.heatmap-cell` bare-integer → 0.XX (274 total). Side benefit: heatmap tooltip `Score N (of 1.00)` now reads coherently (was previously contradictory with values like `Score 62 (of 1.00)`).
+- **F2 — `instructor/index.html` strict source score normalization**: replaced all legacy `XX%` and bare-integer score literals with 0.00–1.00 equivalents directly in source. Removed `standardizeScoresTo0to1()` function and its invocation. The vendor now builds verbatim from already-correct source. Totals: 5 `.section-stat-num` percent → 0.XX, 22 `.score-pill` bare-integer → 0.XX, 247 `.heatmap-cell` bare-integer → 0.XX (274 total). Side benefit: heatmap tooltip `Score N (of 1.00)` now reads coherently (was previously contradictory with values like `Score 62 (of 1.00)`).
 - **F3 — `instructor/index.html` S1 Course-card affordance unified**: E075 + E135 outer `.section-card` divs now have `onclick="goToScreen(2)"`, `cursor:pointer`, `role="button"`, `tabindex="0"`, and `aria-label="Open <code> Course details"` — uniform with E010's interactive pattern.
 - **`instructor/index.html` title stamp** — `Storyboard v4.113` → `Storyboard v4.116`.
 
 ### F4 — no-op (confirmed intentional)
 
-S1 has no `Export [Context Name]` affordance, and Brady confirmed this is intentional. §7.14 (Export capabilities for all reports) is satisfied at S2 (Course detail) and S3 (Skill heatmap), where the standard export pattern (`Export Python Skill Report` + PDF/CSV buttons) already exists. S1 is a roll-up dashboard, not a report surface.
+S1 has no `Export [Context Name]` affordance, and the owner confirmed this is intentional. §7.14 (Export capabilities for all reports) is satisfied at S2 (Course detail) and S3 (Skill heatmap), where the standard export pattern (`Export Python Skill Report` + PDF/CSV buttons) already exists. S1 is a roll-up dashboard, not a report surface.
 
 ### Contract tracker follow-up
 
@@ -889,7 +904,7 @@ Each card has `data-yourskill-cat` with space-separated tags (e.g., E135 = `"liv
 | Super Admin | S9 People tab | Role | ✅ |
 | Super Admin | S9 Skills tab | School + owner status | ✅ |
 | Tenant Admin | S2 Your Skills | Production/staging/draft + owner | ✅ |
-| Tenant Admin | S16 Recent Incidents | Auto-resolved / JFT engaged | ✅ |
+| Tenant Admin | S16 Recent Incidents | Auto-resolved / the vendor engaged | ✅ |
 | Tenant Admin | S18 Skill Lifecycle (Active) | Live / Ramping | ✅ |
 | Tenant Admin | S20 Activity Log | Action type | ✅ |
 | **Total** | **13 tables/lists across 3 portals** | | |
@@ -925,7 +940,7 @@ Continues the chip-filter rollout from v4.112. Two more tenant_admin tables wire
 Added chip filter above the 4-row incidents table:
 - All (4)
 - Auto-resolved (3) — Auto-fallback, Self-healed, Auto-scale events
-- JFT engaged (1) — danger-tinted chip; matches the warning-badge visual signal
+- The vendor engaged (1) — danger-tinted chip; matches the warning-badge visual signal
 
 `data-incident-cat` on each row; new `filterIncidents()` JS function. Targets `#incidents-table tbody tr` so the helper doesn't touch any other table on S16.
 
@@ -942,7 +957,7 @@ Added chip filter above the 3-row Active Skills table:
 
 ### Live verification
 
-- **S16** filter "JFT engaged" → 1 visible (Auth provider rate-limit anomaly) ✓
+- **S16** filter "the vendor engaged" → 1 visible (Auth provider rate-limit anomaly) ✓
 - **S18** filter "Live" → 2 visible (E010, E075) ✓
 - **S18** filter "Ramping" → 1 visible (E135) ✓
 - **S18** Archived Skills table unaffected by filters (2 rows always visible) ✓
@@ -967,7 +982,7 @@ v4.113 across instructor + super_admin + tenant_admin portals.
 
 ## v4.112 — 21 May 2026 — Chip-filter rollout (continued): Super Admin Skills tab + Tenant Admin Activity Log
 
-Continues the global chip-filter rollout started in v4.109. Brady (21 May 2026): *"Add filter chips to all tables globally."*
+Continues the global chip-filter rollout started in v4.109. The owner (21 May 2026): *"Add filter chips to all tables globally."*
 
 ### What changed
 
@@ -1023,18 +1038,18 @@ v4.112 instructor + super_admin + tenant_admin portals.
 
 ## v4.111 — 21 May 2026 — S9 Access Denied walkthrough complete — instructor portal walkthrough done
 
-Resolves S9-01 through S9-05 per Brady's verdicts. Closes the instructor portal walkthrough (S1-S9 all complete).
+Resolves S9-01 through S9-05 per the owner's verdicts. Closes the instructor portal walkthrough (S1-S9 all complete).
 
 ### What changed
 
 - **S9-01** Added scope to the required-role row: "This page requires: School Admin" → **"This page requires: School Admin - School of Technology"**. Satisfies RBAC §4.2 Figure 6 requirement to name the role AND scope.
 - **S9-02** Used the full UI-label form **"School Admin - School of Technology"** per the canonical RBAC doc convention ("School Admin - <School Name>" with hyphen).
 - **S9-03** Reframed the audit disclosure from muted footer text to a small explicit notice with `info` icon: *"ⓘ This access attempt has been recorded in the audit log (evt_b1d5e342 · 18 May 2026)."* — still subtle but communicates the policy intent more directly.
-- **S9-04** Moved the "Open the correct LRPS link" explanation into a hover **tooltip** on the button: *"Returns you to the WGU LRPS portal where your role-correct deep links are listed."* Brady's directive: minimize all on-screen text outside of tooltips at all times.
+- **S9-04** Moved the "Open the correct LRPS link" explanation into a hover **tooltip** on the button: *"Returns you to the WGU LRPS portal where your role-correct deep links are listed."* the owner's directive: minimize all on-screen text outside of tooltips at all times.
 - **S9-05** **Removed the navbar chip** ("Instructor Dashboard") on S9 only — the chip was misleading on a deny screen where the user has just been told they can't access where they tried to go.
 - **S9-06** Skipped — security best practice is to NOT reveal what specific resource was attempted past the deny boundary. Current behavior is correct.
 
-### New UI principle (from Brady, 21 May 2026)
+### New UI principle (from 21 May 2026)
 
 > *"I want to minimize all text displayed to the user on the screen outside of a hover tooltip at all times."*
 
@@ -1064,7 +1079,7 @@ v4.111 instructor portal.
 
 ## v4.110 — 21 May 2026 — S8 audit log: drop Payload + Hash columns
 
-Per Brady: "Let's remove the Payload column from this page as well. I don't think it's helpful, along with the Hash column."
+Per the owner: "Let's remove the Payload column from this page as well. I don't think it's helpful, along with the Hash column."
 
 ### What changed
 
@@ -1075,7 +1090,7 @@ Removed:
 - `Payload` — byte counts (128 B, 412 B, 2.1 KB, etc.) — forensic noise; doesn't help an instructor decide anything
 - `Hash (sha256, first 8)` — first 8 chars of sha256 hash per event — useful for cryptographic chain-of-custody verification, but not actionable for an instructor's read
 
-### Production note for JFT
+### Production note for the vendor
 
 The underlying §10.4 audit data model in production must still capture payload size + cryptographic hash per event (immutable chain-of-custody is a hard contract requirement). The instructor-facing display drops these for clarity. They remain available via the JSON export (the "Export Session 09 Audit Log" → JSON button at top-right) and visible only to Super Admin in the cross-tenant audit log.
 
@@ -1094,13 +1109,13 @@ Three threads landed:
 - **S8-01** Removed "Sample design only" banner.
 - **S8-02** Expanded breadcrumb to **`Dashboard › E010 › Python Skill › Sally › Session 09 › Audit Trail`** (6 levels, full Course + Skill context — matches the S7 expansion).
 - **S8-03** Renamed column header **"Timestamp (UTC)" → "Date"** (values were already date-only since v4.99 — header was lying to the user).
-- **S8-04** Stat tile label **"Learning Objective misses" → "AI evaluation misses"** (Brady's "no LO-aggregate-data" principle).
+- **S8-04** Stat tile label **"Learning Objective misses" → "AI evaluation misses"** (the owner's "no LO-aggregate-data" principle).
 - **S8-05** Moved bottom buttons into the in-flow `.floating-actions` block (consistent with S2/S3/S5/S6/S7).
 - **S8-06** Standardized **Source column** to `[Actor type]: [Identifier]` — e.g., `AI: SkillProof Coach`, `Learner: Sally (198.51.x.x)`, `Model: Anthropic Claude Sonnet 4.5`, `Guardrail: SkillProof Coach`.
 
 ### Thread 2: "No Learning Objective-level data in aggregate" — new global rule
 
-Brady (21 May 2026): *"No learning-objective-level data. Stop suggesting we keep that level of detail because most students will never have data across all learning objectives, only across topics consistently."*
+The owner (21 May 2026): *"No learning-objective-level data. Stop suggesting we keep that level of detail because most students will never have data across all learning objectives, only across topics consistently."*
 
 - **S8 stat tile** renamed "Learning Objective misses" → "AI evaluation misses".
 - **S7 description** updated: "3 Learning Objective misses" → **"3 AI evaluation misses"**.
@@ -1108,14 +1123,14 @@ Brady (21 May 2026): *"No learning-objective-level data. Stop suggesting we keep
 
 ### Thread 3: "Capture integrity" removal (platform-wide)
 
-Brady (21 May 2026): *"I have no idea what that means at all or what that tells the instructor. Remove 'Capture Integrity' entirely from all UIs across the platform."*
+The owner (21 May 2026): *"I have no idea what that means at all or what that tells the instructor. Remove 'Capture Integrity' entirely from all UIs across the platform."*
 
 - **S8** stat tile "1.00 Capture integrity" — removed.
 - Cross-platform grep confirmed no other instances of "Capture integrity" across student, instructor, tenant_admin, super_admin, help portals.
 
 ### Thread 4: Chip-filter rollout — multi-portal pass (partial)
 
-Brady (21 May 2026): *"Add filter chips to all tables globally. This works well on the screens we have already reviewed, so apply them to the entire platform for all tables."*
+The owner (21 May 2026): *"Add filter chips to all tables globally. This works well on the screens we have already reviewed, so apply them to the entire platform for all tables."*
 
 New filters added in this pass:
 
@@ -1132,7 +1147,7 @@ Existing chip-filtered tables (unchanged):
 - Instructor S4 At-risk mini-heatmap (v4.98)
 - Instructor S7 Transcript message filter (v4.108)
 
-New reusable helper added: `chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr)` in both instructor and super_admin portals — factors out the duplicated logic across screen-specific wrapper functions. JFT can reuse this for production tables.
+New reusable helper added: `chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr)` in both instructor and super_admin portals — factors out the duplicated logic across screen-specific wrapper functions. The vendor can reuse this for production tables.
 
 **Deferred to follow-up commit** — partial pass only:
 
@@ -1164,7 +1179,7 @@ v4.109 instructor + super_admin portals. Tenant admin + student portals stay at 
 
 ## v4.108 — 21 May 2026 — S7 Conversation Transcript walkthrough complete
 
-Resolves S7-01 through S7-07 per Brady's verdicts.
+Resolves S7-01 through S7-07 per the owner's verdicts.
 
 ### What changed
 
@@ -1173,7 +1188,7 @@ Resolves S7-01 through S7-07 per Brady's verdicts.
 - **S7-03** Expanded breadcrumb from `Dashboard › Sally › Logs › Session 09` to **`Dashboard › E010 › Python Skill › Sally › Session 09`** (5 levels, full Course + Skill context). Removed the "Logs" intermediate — the Back button covers immediate-parent navigation.
 - **S7-04** Trimmed description: dropped redundant "AI feedback panels shown inline" (already in description) → **"All 47 messages captured by the Audit Trail. AI score 0.15 · 5 feedback panels · 3 Learning Objective misses."**
 - **S7-05** Reorganized eyebrow: removed counts (5 feedback panels, 3 Learning Objective misses) → moved into description. Eyebrow now reads **"Session 09 · 06 May 2026 · Data Structures: Lists, Tuples, Sets, Dictionaries"** (Topic-level context only).
-- **S7-06** Replaced LO reference "Lists & comprehensions" with the canonical Topic name **"Data Structures: Lists, Tuples, Sets, Dictionaries"** in the eyebrow. Brady's directive: *"Topics are what we show the Instructor in detail, not the learning objectives."*
+- **S7-06** Replaced LO reference "Lists & comprehensions" with the canonical Topic name **"Data Structures: Lists, Tuples, Sets, Dictionaries"** in the eyebrow. The owner's directive: *"Topics are what we show the Instructor in detail, not the learning objectives."*
 - **S7-07** Added a chip-filter bar above the chat thread:
   - **All messages (47)** — default active
   - **AI feedback only (5)** — hides learner-side bubbles; shows AI prompts/feedback/reframes
@@ -1188,7 +1203,7 @@ Resolves S7-01 through S7-07 per Brady's verdicts.
 - Filter "All" → 7 visible (all rows restored)
 - Back button label: "Back to Conversation logs" ✓
 
-### Note for JFT
+### Note for the vendor
 
 The chat-row filter currently hides learner-side messages when "AI feedback only" is selected — this strips conversational context. Production may want a different pattern (e.g., scroll-to-next-miss with highlight, or a "show in context" toggle that keeps the surrounding turn visible). This is a prototype demo of the filter UX.
 
@@ -1204,7 +1219,7 @@ Two threads landed together: the S6 walkthrough verdicts (most of S6-01 through 
 
 ### Phase 1: S6 Coaching Sessions List rewrite
 
-Resolves S6-01 through S6-09 per Brady's verdicts:
+Resolves S6-01 through S6-09 per the owner's verdicts:
 
 - **S6-01** Removed "Sample design only" banner.
 - **S6-02** **All 9 rows clickable → S7** (was only session 09). `cursor: pointer` + onclick.
@@ -1212,17 +1227,17 @@ Resolves S6-01 through S6-09 per Brady's verdicts:
 - **S6-04** Eyebrow "AI Coaching · Conversation logs" → **"Python Skill · Conversation logs"**.
 - **S6-05** Removed the Audit column (every row was an identical "Captured" badge). Replaced with a footer note: *"All 9 sessions captured to the Audit Trail. View full event log on the Audit Trail screen."* (clickable → S8).
 - **S6-06** Added upper-right Export group: **"Export Sally's Conversation Log"** + [PDF] + [CSV] following the v4.105 pattern.
-- **S6-07** (modified per Brady) Removed the Outcome column entirely. AI score column carries the signal alone.
+- **S6-07** (modified per the owner) Removed the Outcome column entirely. AI score column carries the signal alone.
 - **S6-08** Description trimmed: *"Most recent first. Click any row to read the full transcript."*
-- **S6-09** (modified per Brady) Removed the Learning Objective column entirely. *"Too much information. The transcript is what tells the story to the instructor because not all Learning Objectives will be answered by the student unless they spend a lot of time using the Skill."*
+- **S6-09** (modified per the owner) Removed the Learning Objective column entirely. *"Too much information. The transcript is what tells the story to the instructor because not all Learning Objectives will be answered by the student unless they spend a lot of time using the Skill."*
 
 Final table is 4 columns: Session · Date · Topic · AI score.
 
 ### Phase 2: Platform-wide 0-1 scoring standardization
 
-Per Brady (21 May 2026): "The actual scoring by the LLM is zero-to-one scale, I believe. JFT knows how the code works, so they are already doing this point-to-percent translation somewhere, but my prototype UI needs to display this consistently at all levels and to all users."
+Per the owner (21 May 2026): "The actual scoring by the LLM is zero-to-one scale, I believe. The vendor knows how the code works, so they are already doing this point-to-percent translation somewhere, but my prototype UI needs to display this consistently at all levels and to all users."
 
-**The new convention:** All scores display as 0.00–1.00 decimals (2 decimal places). Eliminates the 0-100 percent translation step JFT's UI was doing on top of the 0-1 data model.
+**The new convention:** All scores display as 0.00–1.00 decimals (2 decimal places). Eliminates the 0-100 percent translation step the vendor's UI was doing on top of the 0-1 data model.
 
 **Implementation — instructor portal:**
 
@@ -1257,7 +1272,7 @@ Per Brady (21 May 2026): "The actual scoring by the LLM is zero-to-one scale, I 
 - S5 Sally first row (Basic Syntax & Data Types): `0.62` ✓
 - S6 session 09 row: `0.15` ✓
 
-### Note for JFT
+### Note for the vendor
 
 The prototype source HTML now uses 0-1 displayed values directly (matching the underlying LLM data model). Where the JS hydrates from integer 0-100 stored in the markup, it's documented as a temporary prototype-time transformation; production should serialize 0-1 floats end-to-end and skip the conversion entirely.
 
@@ -1275,7 +1290,7 @@ Folded into v4.107.
 
 ## v4.105 — 21 May 2026 — Platform-wide data-export button pattern: "Export [Context]" + format-only buttons in upper-right
 
-Per Brady: "The label should say 'Export Python Skill Report' and then the 2 buttons are 'PDF' and 'CSV'. You should be able to derive this pattern and execute it across the platform in a similar manner so all these 'data export' features are displayed in a similar fashion across the platform, in the upper, right corner of the screen."
+Per the owner: "The label should say 'Export Python Skill Report' and then the 2 buttons are 'PDF' and 'CSV'. You should be able to derive this pattern and execute it across the platform in a similar manner so all these 'data export' features are displayed in a similar fashion across the platform, in the upper, right corner of the screen."
 
 ### The standardized pattern
 
@@ -1319,7 +1334,7 @@ Rules:
 ### Not changed in this pass
 
 - **`super_admin` inline "Export" buttons** in tables (lines ~1019, 1594) — these are per-row inline actions, not screen-level exports. Different UX context.
-- **`tenant_admin` "Export Reports" + "Export incident report (CSV)" buttons** — these are CTAs inside content cards, also inline rather than screen-level. Pattern doesn't fit directly. Flagged for a future pass if Brady wants in-card export buttons standardized.
+- **`tenant_admin` "Export Reports" + "Export incident report (CSV)" buttons** — these are CTAs inside content cards, also inline rather than screen-level. Pattern doesn't fit directly. Flagged for a future pass if the owner wants in-card export buttons standardized.
 
 ### Storyboard stamp
 
@@ -1329,7 +1344,7 @@ v4.105 instructor portal.
 
 ## v4.104 — 21 May 2026 — S3 header: shorten description, keep PDF + CSV co-located
 
-Per Brady: "This line is awkward on S3: '[the description text]' with the CSV button next to it. Reduce this descriptive text by 50% and update the placement of the CSV download button to be co-located with the Python Skill report button."
+Per the owner: "This line is awkward on S3: '[the description text]' with the CSV button next to it. Reduce this descriptive text by 50% and update the placement of the CSV download button to be co-located with the Python Skill report button."
 
 ### What changed (S3 only)
 
@@ -1344,7 +1359,7 @@ v4.104 instructor portal.
 
 ## v4.103 — 21 May 2026 — Horizontal scroll discoverability: fade + scrollbar + hint label
 
-Per Brady: "I like the scroll, but let's make it a little more obvious and clear that there is more to see. I don't want the user thinking there is nothing else to look at to the right of this viewport."
+Per the owner: "I like the scroll, but let's make it a little more obvious and clear that there is more to see. I don't want the user thinking there is nothing else to look at to the right of this viewport."
 
 ### Three complementary cues added to S3 + S4 heatmaps
 
@@ -1373,7 +1388,7 @@ v4.103 instructor portal.
 
 ## v4.102 — 21 May 2026 — S3/S4 heatmaps + S6 sessions expanded to 13 canonical Topics
 
-Per Brady (21 May 2026): "Let's see what happens when you have many more topics. I would expect this to naturally maximize at ~20 topics, so 13 is a great average to visualize. Update those related heatmaps and session information now."
+Per the owner (21 May 2026): "Let's see what happens when you have many more topics. I would expect this to naturally maximize at ~20 topics, so 13 is a great average to visualize. Update those related heatmaps and session information now."
 
 ### CSS
 
@@ -1382,7 +1397,7 @@ Per Brady (21 May 2026): "Let's see what happens when you have many more topics.
 grid-template-columns: 160px repeat(13, minmax(108px, 1fr));
 min-width: 1580px;
 ```
-Container's `overflow-x: auto` kicks in on smaller viewports for horizontal scroll. Designed to scale up to ~20 Topics per Brady's expected ceiling.
+Container's `overflow-x: auto` kicks in on smaller viewports for horizontal scroll. Designed to scale up to ~20 Topics per the owner's expected ceiling.
 
 ### S3 (Skill heatmap)
 
@@ -1438,7 +1453,7 @@ v4.102 instructor portal.
 
 ## v4.101 — 21 May 2026 — S5 Topic naming aligned to student-portal canonical taxonomy; all 13 Topics scored
 
-Per Brady (21 May 2026): "It says the diagnostic assessment was completed, so all 13 topics should have scores and last attempts. Do not leave those rows blank. Also, use the actual topic names, you have those in the student storyboard view, those are not mysteries or in need of random generation."
+Per the owner (21 May 2026): "It says the diagnostic assessment was completed, so all 13 topics should have scores and last attempts. Do not leave those rows blank. Also, use the actual topic names, you have those in the student storyboard view, those are not mysteries or in need of random generation."
 
 ### What changed (S5 only)
 
@@ -1486,7 +1501,7 @@ v4.101 instructor portal.
 
 ## v4.100 — 21 May 2026 — S5 Per-Topic table populated to all 13 Python Skill Topics
 
-Per Brady: "Populate the rest of the per-topic scores table with the other Python topic areas so JFT doesn't think I only listed 4 on purpose."
+Per the owner: "Populate the rest of the per-topic scores table with the other Python topic areas so the vendor doesn't think I only listed 4 on purpose."
 
 ### What changed
 
@@ -1509,7 +1524,7 @@ Extended S5's Per-Topic scores table from 4 rows to **all 13 Topics** of the Pyt
 | 13 | Introduction to Machine Learning | — | Not yet attempted |
 
 - Sally's profile reflects an at-risk learner: scores on 6 of 13 Topics (all low/med), 7 Topics not yet attempted.
-- All 13 rows clickable → S6 conversation logs (consistent affordance). Unstarted Topics will show empty-state in production per JFT implementation.
+- All 13 rows clickable → S6 conversation logs (consistent affordance). Unstarted Topics will show empty-state in production per the vendor implementation.
 - "0 of 13 Topics mastered" in the Profile card now reads correctly against the table.
 
 ### Known follow-up (reiterated)
@@ -1524,7 +1539,7 @@ v4.100 instructor portal.
 
 ## v4.99 — 21 May 2026 — S5 Sally Profile rewrite + global no-"LO"-abbreviation + global date-only display
 
-Three threads landed in this commit per Brady's S5 walkthrough verdicts + two cross-portal global directives.
+Three threads landed in this commit per the owner's S5 walkthrough verdicts + two cross-portal global directives.
 
 ### S5 Sally Profile — rewrite to Topic-level only
 
@@ -1546,18 +1561,18 @@ Three threads landed in this commit per Brady's S5 walkthrough verdicts + two cr
 
 ### Global directive 1 — no "LO" abbreviation anywhere
 
-Per Brady (21 May 2026): never shorten "Learning Objective" to "LO" in any user-facing surface.
+Per the owner (21 May 2026): never shorten "Learning Objective" to "LO" in any user-facing surface.
 
 - **tenant_admin/index.html**: 3 instances replaced
   - Production section copy: "(rename, threshold change, add LO)" → "(rename, threshold change, add Learning Objective)"
   - Meta-bar button label: "04 Topics & LOs" → "04 Topics & Learning Objectives"
   - JS tooltip in `enforceLoMinimum()`: "Add another LO before removing..." → "Add another Learning Objective..."
-- **Coda RBAC canonical hierarchy callout**: removed the previous sanction of "LO" as acceptable shorthand. Now reads: *"'Learning Objective' is the correct term for each individual LLM coaching target. Never abbreviate to 'LO' anywhere in UI copy, code, docs, or communication (Brady's directive, 2026-05-21)."*
-- "objective miss" event-term shorthand in badges is **still allowed** (Brady didn't ban that specific shorthand).
+- **Coda RBAC canonical hierarchy callout**: removed the previous sanction of "LO" as acceptable shorthand. Now reads: *"'Learning Objective' is the correct term for each individual LLM coaching target. Never abbreviate to 'LO' anywhere in UI copy, code, docs, or communication (the owner's directive, 2026-05-21)."*
+- "objective miss" event-term shorthand in badges is **still allowed** (the owner didn't ban that specific shorthand).
 
 ### Global directive 2 — date-only display in student + instructor views
 
-Per Brady: no time-of-day timestamps in student or instructor views. Apply globally.
+Per the owner: no time-of-day timestamps in student or instructor views. Apply globally.
 
 - **instructor/index.html** — stripped times from:
   - S1 cross-Course at-risk roster (4 rows: e.g., "06 May 17:54" → "06 May 2026")
@@ -1566,11 +1581,11 @@ Per Brady: no time-of-day timestamps in student or instructor views. Apply globa
   - S8 Audit Trail event log (10 rows: e.g., "2026-05-06 18:21:00" → "06 May 2026")
   - S9 Access Denied footer: "Logged · 18 May 2026 14:22:07 UTC · evt_b1d5e342" → "Logged · 18 May 2026 · evt_b1d5e342"
 - **student/index.html** — no changes needed (already date-only).
-- **Note for §10.4 forensic audit logging**: S8 displays date-only per Brady's directive; the underlying audit-log data model in production must still retain full timestamps for forensic value. Display ≠ storage.
+- **Note for §10.4 forensic audit logging**: S8 displays date-only per the owner's directive; the underlying audit-log data model in production must still retain full timestamps for forensic value. Display ≠ storage.
 
 ### Known follow-up
 
-**S5-09 (new):** the Python Skill heatmap on S3 currently shows 4 Topic columns, but the canonical truth (per Brady) is 13 Topics in the Python Skill (matching the student-portal Topic taxonomy). S5 now displays "0 of 13 Topics mastered" while S3 displays 4 columns. Hierarchical content reconciliation is a separate pass — flagged earlier as S3-06 and now reinforced.
+**S5-09 (new):** the Python Skill heatmap on S3 currently shows 4 Topic columns, but the canonical truth (per the owner) is 13 Topics in the Python Skill (matching the student-portal Topic taxonomy). S5 now displays "0 of 13 Topics mastered" while S3 displays 4 columns. Hierarchical content reconciliation is a separate pass — flagged earlier as S3-06 and now reinforced.
 
 ### Storyboard stamp
 
@@ -1629,11 +1644,11 @@ Added a v4.97 hydration block to the JS that runs on initial S3 setup:
 - **S3-07** — Removed `.heatmap-row-label.sally` CSS rule (red tinting + bold) — Sally's row now renders in default plaintext; heatmap-cell colors carry the at-risk cue
 - **S3-08** — Removed the bottom alert "4 learners at risk. Sally lowest on Manipulates Data Structures" — heatmap colors and the red-dot status make the same point
 - **S3-09** — Renamed eyebrow "Python Skill · Class heatmap" → **"Python Skill · Heatmap"** (no "class"; rolling enrollment, no fixed cohort)
-- Removed the "Sample design only" banner from S3 (per Brady's directive)
+- Removed the "Sample design only" banner from S3 (per the owner's directive)
 
 ### Known follow-up (S3-06)
 
-The 4 heatmap column names ("Identifies Python Constructs", "Executes Python Code", "Manipulates Data Structures", "Creates Functional Programs") roll up Sally's 8 Learning Objectives — that satisfies the "Topic rolling up LOs" rule per Brady's exception. But the **13 Topics on the student portal don't match the 4 Topics in the instructor heatmap.** Hierarchical content reconciliation is a separate pass.
+The 4 heatmap column names ("Identifies Python Constructs", "Executes Python Code", "Manipulates Data Structures", "Creates Functional Programs") roll up Sally's 8 Learning Objectives — that satisfies the "Topic rolling up LOs" rule per the owner's exception. But the **13 Topics on the student portal don't match the 4 Topics in the instructor heatmap.** Hierarchical content reconciliation is a separate pass.
 
 ### S3-11 deferred
 
@@ -1647,7 +1662,7 @@ v4.97 instructor portal. Other 5 portals unchanged.
 
 ## v4.96 — 20 May 2026 — Relocate Course Roster from S2 to S1 (cross-Course at-risk view)
 
-Per Brady's second-pass feedback: the "Course Roster" on S2 (Course Detail) was conceptually misplaced — S2 should hold only Skill-specific data per the metric ladder. The roster data belonged on S1 (cross-Course view) or S3 (per-Skill view; the heatmap already serves that role).
+Per the owner's second-pass feedback: the "Course Roster" on S2 (Course Detail) was conceptually misplaced — S2 should hold only Skill-specific data per the metric ladder. The roster data belonged on S1 (cross-Course view) or S3 (per-Skill view; the heatmap already serves that role).
 
 ### What changed (instructor portal only)
 
@@ -1697,7 +1712,7 @@ Resolves S2-13 through S2-19 from the S2 (Course view) second-pass walkthrough, 
 - **S2-18 — Removed `<strong>` bold from Sally's name in Roster table.** All learner names now render in default plaintext (matches default font styling site-wide).
 - **S2-19 — Added chip-filter bar to Course Roster:** All (28) · Mastery (7) · On track (17) · Watch list (1) · At risk (4) [active]. Same pattern as the S3 heatmap filter.
 - **Bonus:** Renamed roster heading from "Learners needing attention (4 of 28)" to **"Learners in E010"** — the filter chip below now communicates which subset is shown, no need to bake "4 of 28" into the heading.
-- **Bonus:** All 4 at-risk row "View profile" buttons now route to **S5 Sally profile** (was S4 for non-Sally rows). Matches Brady's "clicking this row goes to Screen 05" verdict — JFT will parameterize per-learner profile in production.
+- **Bonus:** All 4 at-risk row "View profile" buttons now route to **S5 Sally profile** (was S4 for non-Sally rows). Matches the owner's "clicking this row goes to Screen 05" verdict — the vendor will parameterize per-learner profile in production.
 
 ### S2-17 — Cross-portal floating-actions accessibility fix (3 admin portals)
 
@@ -1726,7 +1741,7 @@ v4.95 across instructor, super_admin, tenant_admin. Student and help portals sta
 
 ## v4.94 — 20 May 2026 — Instructor S1 Dashboard: full E010 card clickable, regional click routing
 
-Follow-up to v4.93 per Brady's directive: the big E010 Course card on the Dashboard needs more clickable regions, not just the title link and "Open Course details" button.
+Follow-up to v4.93 per the owner's directive: the big E010 Course card on the Dashboard needs more clickable regions, not just the title link and "Open Course details" button.
 
 ### What changed (instructor portal only)
 
@@ -1755,7 +1770,7 @@ v4.94 across the instructor portal. Other 5 portals stay at v4.91.
 
 ## v4.93 — 20 May 2026 — Instructor S2 Course view refined: Skill-level metrics only, second Skill added, learner roster surfaced
 
-Resolves the S2 (Course view) walkthrough findings S2-07 through S2-12 per Brady's verdicts.
+Resolves the S2 (Course view) walkthrough findings S2-07 through S2-12 per the owner's verdicts.
 
 ### What changed (instructor portal only)
 
@@ -1766,9 +1781,9 @@ Resolves the S2 (Course view) walkthrough findings S2-07 through S2-12 per Brady
 - **Dropped redundant "Skill" from card eyebrows** — eyebrow now reads `Active` instead of `Skill · Active` (the card title `Python Skill` already names the entity).
 - **Added a second Skill — Git & Version Control Skill** — appears on S2 (full card with KPIs + Open Heatmap CTA) and on S1 Dashboard's E010 card (compact row). Course E010 now shows `SKILLS IN THIS COURSE (2 active)` instead of `(1 active)`. Sample data: 22 learners practicing, 68% avg Topic mastery, 3 Topics, 0 at risk.
 - **Added a Course Roster section to S2** — `Learners needing attention (4 of 28)` compact table showing the 4 at-risk learners (Sally, B.F., C.S., H.D.) with per-Skill scores across both Python Skill and Git Skill. "—" indicates learner has not started practicing that Skill yet. Each row links to the at-risk filter or Sally's profile.
-- **NO time-related metrics anywhere** — per Brady's directive: no "time-on-platform", no "average session length", no "time-since-last-active" beyond the human-readable "last active" timestamp.
+- **NO time-related metrics anywhere** — per the owner's directive: no "time-on-platform", no "average session length", no "time-since-last-active" beyond the human-readable "last active" timestamp.
 
-### Followed Brady's framing of the metric ladder
+### Followed the owner's framing of the metric ladder
 
 | Screen | Granularity | Example KPIs |
 |---|---|---|
@@ -1784,7 +1799,7 @@ v4.93 across the instructor portal. Other 5 portals stay at v4.91.
 
 ## v4.92 — 20 May 2026 — Instructor portal: Course view inserted as Screen 02, screens renumbered 01-09, S2 findings cleared
 
-Resumes the S2 critical walkthrough by acting on Brady's verdict on S2-01 through S2-06 (per session findings). Major architectural change to the instructor flow.
+Resumes the S2 critical walkthrough by acting on the owner's verdict on S2-01 through S2-06 (per session findings). Major architectural change to the instructor flow.
 
 ### What changed
 
@@ -1826,7 +1841,7 @@ v4.92 across the instructor portal. Other 5 portals stay at v4.91 (no changes).
 
 ## v4.91 — 20 May 2026 — Correct hierarchy terminology: Topic / Learning Objective (replaces v4.90 mislabeling)
 
-Mid-session correction after Brady clarified the full 6-level platform hierarchy. v4.90 had renamed Topics as Skills in the student portal — wrong granularity. v4.91 corrects to the canonical hierarchy: **Platform > School > Course > Skill > Topic > Learning Objective**.
+Mid-session correction after the owner clarified the full 6-level platform hierarchy. v4.90 had renamed Topics as Skills in the student portal — wrong granularity. v4.91 corrects to the canonical hierarchy: **Platform > School > Course > Skill > Topic > Learning Objective**.
 
 ### What changed (corrections to v4.90)
 
@@ -1863,7 +1878,7 @@ v4.91 across the 6 portals.
 
 ## v4.90 — 20 May 2026 — Standardize Skill/Course/School/Platform hierarchy terminology site-wide (initial pass, superseded by v4.91)
 
-Initial hierarchy standardization based on Brady's 4-level model (Platform / School / Course / Skill). Subsequently corrected by v4.91 after Brady clarified the full 6-level model adds Topic and Learning Objective beneath Skill. See v4.91 for the canonical hierarchy.
+Initial hierarchy standardization based on the owner's 4-level model (Platform / School / Course / Skill). Subsequently corrected by v4.91 after the owner clarified the full 6-level model adds Topic and Learning Objective beneath Skill. See v4.91 for the canonical hierarchy.
 
 ### What changed
 
@@ -1882,7 +1897,7 @@ v4.90 (superseded by v4.91 same day).
 
 ## v4.89 — 19 May 2026 — Strip superfluous labels (LRPS demo shortcut + Not for student use + build stamp) and passive governance banners
 
-Two cleanup passes per Brady's directive.
+Two cleanup passes per the owner's directive.
 
 ### What changed
 
@@ -1905,7 +1920,7 @@ v4.89 across the 6 portals.
 
 ## v4.88 — 19 May 2026 — Strip 'SkillProof Design System v1.2' from HTML comments
 
-Follow-up to v4.87 — Brady's directive was "anywhere," so the phrase was also stripped from the developer comments at the top of each portal file. Each occurrence of `SkillProof Design System v1.2` replaced with `design tokens` so the surrounding comment text still reads.
+Follow-up to v4.87 — the owner's directive was "anywhere," so the phrase was also stripped from the developer comments at the top of each portal file. Each occurrence of `SkillProof Design System v1.2` replaced with `design tokens` so the surrounding comment text still reads.
 
 ### Storyboard stamp
 
@@ -1915,7 +1930,7 @@ v4.88 across the 6 portals.
 
 ## v4.87 — 19 May 2026 — Strip 'SkillProof Design System v1.2' meta-bar text + remove unrequested 'Technical contact' footer link
 
-Two clean-up passes per Brady's directive.
+Two clean-up passes per the owner's directive.
 
 ### What changed
 
@@ -1931,7 +1946,7 @@ v4.87 across the 6 portals.
 
 ## v4.86 — 19 May 2026 — Apply student-style storyboard shortcut bar to all 3 admin portals
 
-Brady: *"I like the update you did to the student flow shortcut bar at the bottom of the page with the 'back' button in the upper right corner of the shortcut bar that goes back to the LRPS page. I also like that you added a short description along with the screen numbering in that bar. Apply all of those updates to all the other prototype screens in the other 3 user scenarios."*
+The owner: *"I like the update you did to the student flow shortcut bar at the bottom of the page with the 'back' button in the upper right corner of the shortcut bar that goes back to the LRPS page. I also like that you added a short description along with the screen numbering in that bar. Apply all of those updates to all the other prototype screens in the other 3 user scenarios."*
 
 ### What changed
 
@@ -1952,9 +1967,9 @@ v4.86 across the 6 portals.
 
 ## v4.85 — 19 May 2026 — Remove Screen 01 (SSO landing) from admin portals
 
-Brady: *"Let's remove Screen 01 from the instructor, tenant admin, and super admin. Those are informational only and should have been removed a long time ago when I directed that we only include the screens and features for JFT to implement. No extra features or text or buttons or anything else that is outside of the requirements of the contract language."*
+The owner: *"Let's remove Screen 01 from the instructor, tenant admin, and super admin. Those are informational only and should have been removed a long time ago when I directed that we only include the screens and features for the vendor to implement. No extra features or text or buttons or anything else that is outside of the requirements of the contract language."*
 
-The SSO landing screens were illustrative — they showed the authentication handshake (LRPS deep link verified · WGU SSO complete · LTI role + elevation) but nothing for JFT to build. Auth is contractually LTI 1.3 + WGU SSO; the prototype shouldn't depict the auth ceremony at all.
+The SSO landing screens were illustrative — they showed the authentication handshake (LRPS deep link verified · WGU SSO complete · LTI role + elevation) but nothing for the vendor to build. Auth is contractually LTI 1.3 + WGU SSO; the prototype shouldn't depict the auth ceremony at all.
 
 ### What was removed
 
@@ -1979,7 +1994,7 @@ v4.85 across the 6 portals.
 
 ## v4.84 — 19 May 2026 — Larger school logos in navbar (so 'School of X' text reads)
 
-Brady: *"Now increase the school-level logo in the upper-left corner to the larger size you did with the standard WGU logo. Right now, it's so small I can't read the lettering for 'School of XXX'."*
+The owner: *"Now increase the school-level logo in the upper-left corner to the larger size you did with the standard WGU logo. Right now, it's so small I can't read the lettering for 'School of XXX'."*
 
 The school logos have a stacked WGU + horizontal line + school-name layout, so at the 40px shared height set in v4.80 the school-name text portion was only ~13px tall — illegible. Bumped to **64px** specifically for school logos via the `[data-school-logo]` attribute selector, leaving the WGU corporate logos at 40px:
 
@@ -1998,7 +2013,7 @@ v4.84 across the 6 portals.
 
 ## v4.83 — 19 May 2026 — Dark-mode footer theming (deep navy + white text, all 6 portals)
 
-Brady's directive: *"The dark mode footer needs to have the dark navy background and white text like the header does so it's legible and accessible in dark mode. All you did in the footer was update the logo file. Apply the other dark mode theming and make sure that's also deployed across every page of the prototype."*
+The owner's directive: *"The dark mode footer needs to have the dark navy background and white text like the header does so it's legible and accessible in dark mode. All you did in the footer was update the logo file. Apply the other dark mode theming and make sure that's also deployed across every page of the prototype."*
 
 The footer markup uses hardcoded inline styles (`background: #F5F7FA`, `color: #002855`, etc.) that don't respond to `[data-theme="dark"]`. Added a CSS override block to each of the 6 portals that targets `footer[role="contentinfo"]` with `!important` to win over the inline styles:
 
@@ -2032,7 +2047,7 @@ v4.83 across the 6 portals.
 
 ## v4.82 — 19 May 2026 — Help button in every navbar
 
-Brady's directive: *"The help button should be in the header across ALL pages on the site, no matter what."*
+The owner's directive: *"The help button should be in the header across ALL pages on the site, no matter what."*
 
 The LRPS landing root (`index.html`) had no Help button. Added one next to the theme toggle (matches the `.btn-theme-toggle` icon pattern used by other admin portals, links to `help/index.html#submit-request`).
 
@@ -2065,20 +2080,20 @@ Four-item batch from the second audit follow-up.
 - **Page content trimmed to two sections only**:
   1. The Zendesk-style support form (`id="submit-request"` anchor preserved, so existing portal Help-button anchor links still work)
   2. A flat help-docs list — 15 role-tagged article links (Student / Instructor / Tenant Admin / Super Admin / All admin roles). No cards, no videos, no external links.
-- **Removed** from the help page: the floating "Contact JFT Support" pill, the 4-card Self-service support grid, the Recent updates feed, the entire Video training resources section (role-chip filter, featured callout, video tiles), and the custom-styled brand-logo gradient block.
-- **CHANGELOG pruned** — pre-v4.69 entries (v4.0–v4.68, ~3,300 lines) replaced with a one-line "history exists in git" note. Per Brady's directive: this is a prototype; incremental change documentation isn't important. Pre-v4.69 references to deleted files (`presentation.html`, `presentation_dark.html`, `_contract_tracking/`) cleared in the same pass.
+- **Removed** from the help page: the floating "Contact the vendor Support" pill, the 4-card Self-service support grid, the Recent updates feed, the entire Video training resources section (role-chip filter, featured callout, video tiles), and the custom-styled brand-logo gradient block.
+- **CHANGELOG pruned** — pre-v4.69 entries (v4.0–v4.68, ~3,300 lines) replaced with a one-line "history exists in git" note. Per the owner's directive: this is a prototype; incremental change documentation isn't important. Pre-v4.69 references to deleted files (`presentation.html`, `presentation_dark.html`, `_contract_tracking/`) cleared in the same pass.
 - **Storyboard stamp** v4.80 → v4.81 across all 6 portals.
 
 ### Why
 
-Brady's audit response:
+The owner's audit response:
 - *"Remove the support pill. We don't need it."*
 - *"That help page is terrible. It needs a complete rewrite to come into compliance with the header/footer/styling we've implemented across the site. I also only want the help form and help docs. No videos and external links. This page is much too complicated right now."*
 - *"I don't care much about the changelog. This is a prototype, so incremental change documentation is not very important."*
 
 ### Verification
 
-- `https://brady-wgu.github.io/SkillProof/help/` → standard WGU navbar at top (matches admin portals); standard WGU footer at bottom with the technical contact link; Zendesk-styled support form; below the form, the flat docs list; no floating Contact JFT pill; no video tiles; no Recent updates feed; no external links other than the WGU policy URLs in the footer.
+- `https://brady-wgu.github.io/SkillProof/help/` → standard WGU navbar at top (matches admin portals); standard WGU footer at bottom with the technical contact link; Zendesk-styled support form; below the form, the flat docs list; no floating Contact the vendor pill; no video tiles; no Recent updates feed; no external links other than the WGU policy URLs in the footer.
 - Help button on every portal still anchors to `help/index.html#submit-request` and lands on the form.
 
 ---
@@ -2089,15 +2104,15 @@ Follow-up batch after the v4.79 review. Five-item delivery:
 
 ### 1. Screen 17 School identity card simplified
 
-The 6-row info table (Tenant ID, Parent Org, Operated by, LRPS launch URL, Assigned JFT CSM, Your role scope) was redundant — none of those fields are user-modifiable, so the School Admin couldn't act on any of it. Replaced the whole table with a single sentence:
+The 6-row info table (Tenant ID, Parent Org, Operated by, LRPS launch URL, Assigned the vendor CSM, Your role scope) was redundant — none of those fields are user-modifiable, so the School Admin couldn't act on any of it. Replaced the whole table with a single sentence:
 
 > Tenant ID `tenant_school_tech` · managed centrally by WGU. Contact the technical contact for changes.
 
-The school name (h2) stays for context; the Tenant ID stays in a `<code>` for support-ticket reference. Brady's directive: *"Remove almost everything in that box because they are not things the School Admin can change or modify in any way."*
+The school name (h2) stays for context; the Tenant ID stays in a `<code>` for support-ticket reference. The owner's directive: *"Remove almost everything in that box because they are not things the School Admin can change or modify in any way."*
 
 ### 2. Header + footer logos enlarged
 
-Bumped logo height from `28px` → `40px` across all 6 portals — both the navbar (`.navbar-brand-logo { height: 40px; }`) and footer image inline styles. Brady's directive: *"The sizes of these in our prototype are WAY too small, so they need to be made much larger to be the same height as the other buttons and labels on the header and footer rows."*
+Bumped logo height from `28px` → `40px` across all 6 portals — both the navbar (`.navbar-brand-logo { height: 40px; }`) and footer image inline styles. The owner's directive: *"The sizes of these in our prototype are WAY too small, so they need to be made much larger to be the same height as the other buttons and labels on the header and footer rows."*
 
 Student portal's old `.navbar-brand-logo { width: 36px; height: 36px; }` rule (which was sized for a square text-mark) was simplified to `height: 40px; width: auto;` to fit the v4.72 school-logo image swap.
 
@@ -2119,11 +2134,11 @@ Every Help button now uses `#submit-request` anchor so clicking lands the user d
 
 ### 5. Version increment
 
-v4.79 → v4.80 across the 6 portals. Future: every commit/push that ships UI changes should bump this version so Brady can spot when GitHub gets out of sync with local pushes.
+v4.79 → v4.80 across the 6 portals. Future: every commit/push that ships UI changes should bump this version so the owner can spot when GitHub gets out of sync with local pushes.
 
 ### Companion external document
 
-Started `OneDrive\_SkillProof\c_Deliverables\_From Brady to JFT\g_User Documentation\SkillProof_User_Documentation_Outline_v0_1_19MAY2026.md` — a bulleted outline organizing what to include in the eventual user-instruction docs for Tenant Admins, Instructors, Students, and Super Admins. Lives in OneDrive (not the public repo), per Brady's separation of prototype vs. supporting docs.
+Started `OneDrive\_SkillProof\c_Deliverables\_From the owner to the vendor\g_User Documentation\SkillProof_User_Documentation_Outline_v0_1_19MAY2026.md` — a bulleted outline organizing what to include in the eventual user-instruction docs for Tenant Admins, Instructors, Students, and Super Admins. Lives in OneDrive (not the public repo), per the owner's separation of prototype vs. supporting docs.
 
 ### Verification
 
@@ -2137,7 +2152,7 @@ Started `OneDrive\_SkillProof\c_Deliverables\_From Brady to JFT\g_User Documenta
 
 ## v4.79 — 19 May 2026 — Analytics page iteration (no more timing things)
 
-Phase K — the final phase of the original JFT meeting follow-ups. Per Brady's note *"Iterate on the analytics page. No more timing things,"* the arbitrary time-on-task metric is gone, replaced with a more meaningful active-learners trend.
+Phase K — the final phase of the original the vendor meeting follow-ups. Per the owner's note *"Iterate on the analytics page. No more timing things,"* the arbitrary time-on-task metric is gone, replaced with a more meaningful active-learners trend.
 
 ### What changed (tenant_admin/index.html · Screen 19 Analytics & Reporting)
 
@@ -2162,7 +2177,7 @@ v4.79 across the 6 portals.
 
 ## v4.78 — 19 May 2026 — Help / Support flows + the technical contact footer link
 
-Phase J. Wires up the Submit LRPS Ticket button to a real `mailto:` action, refreshes the help page with an LRPS deep-link distribution note, and adds the the technical contact technical-contact footer link across all 6 portals.
+Phase J. Wires up the Submit LRPS Ticket button to a real `mailto:` action, refreshes the help page with an LRPS deep-link distribution note, and adds the technical contact technical-contact footer link across all 6 portals.
 
 ### What changed
 
@@ -2178,7 +2193,7 @@ v4.78 across the 6 portals.
 
 ## v4.77 — 19 May 2026 — Super Admin demotion tooltips + Instructor Downgrade affordance
 
-Phase H. Brady's JFT note: *"Demotion to lower levels is also important to remember."* The v4.68 Access Control screen already had Downgrade buttons for Tenant Admins and Super Admin. This release adds context-specific tooltips explaining what each demotion does to scope assignments, and surfaces the missing Instructor → Student demotion affordance.
+Phase H. The owner's the vendor note: *"Demotion to lower levels is also important to remember."* The v4.68 Access Control screen already had Downgrade buttons for Tenant Admins and Super Admin. This release adds context-specific tooltips explaining what each demotion does to scope assignments, and surfaces the missing Instructor → Student demotion affordance.
 
 ### What changed (super_admin/index.html · Screen 9 Access Control · People tab)
 
@@ -2195,7 +2210,7 @@ v4.77 across the 6 portals.
 
 ## v4.76 — 19 May 2026 — School Settings rebuild (Screen 17)
 
-Phase G. Tenant Settings renamed and simplified per Brady's JFT direction.
+Phase G. Tenant Settings renamed and simplified per the owner's the vendor direction.
 
 ### What changed (tenant_admin/index.html · Screen 17)
 
@@ -2216,7 +2231,7 @@ v4.76 across the 6 portals.
 
 ## v4.75 — 19 May 2026 — Skill Production Governance (topic remove + LO≥1 + deploy stages)
 
-Phase F. Surface the production-Skill rules in the UI so JFT builds the right affordances. When a Skill is in Production, topics cannot be removed and the UI shows that constraint explicitly. Learning Objectives have a `≥ 1 per topic` floor enforced via UI state.
+Phase F. Surface the production-Skill rules in the UI so the vendor builds the right affordances. When a Skill is in Production, topics cannot be removed and the UI shows that constraint explicitly. Learning Objectives have a `≥ 1 per topic` floor enforced via UI state.
 
 ### What changed (tenant_admin/index.html)
 
@@ -2241,7 +2256,7 @@ v4.75 across the 6 portals.
 
 ## v4.74 — 19 May 2026 — Skill Creation Wizard rebuild (combined Screens 5+6)
 
-Phase E. The wizard's "Model & Coaching" (Screen 5) and "AI Coaching Prompt" (Screen 6) merge into a single Screen 5; preset prompt fields replaced with free-text inputs; jailbreak + sandbox boxes removed (enforced globally per JFT); default model changed to gpt-4o-mini with OpenAI top-3 + OpenRouter browse-all; "Add topic" button wired to insert a new row; MD upload + download flow added.
+Phase E. The wizard's "Model & Coaching" (Screen 5) and "AI Coaching Prompt" (Screen 6) merge into a single Screen 5; preset prompt fields replaced with free-text inputs; jailbreak + sandbox boxes removed (enforced globally per the vendor); default model changed to gpt-4o-mini with OpenAI top-3 + OpenRouter browse-all; "Add topic" button wired to insert a new row; MD upload + download flow added.
 
 ### What changed (tenant_admin/index.html)
 
@@ -2267,7 +2282,7 @@ v4.74 across the 6 portals.
 
 ## v4.73 — 19 May 2026 — Subject → Skill terminology sweep
 
-Brady's JFT direction: *"Make sure everything is 'topics' and 'learning objectives' for a 'skill'."* The prototype previously used "Subject" as the top-level concept; aligned to "Skill" across the user-visible UI and the persona READMEs. Topics + Learning Objectives stay as the canonical sub-units.
+The owner's the vendor direction: *"Make sure everything is 'topics' and 'learning objectives' for a 'skill'."* The prototype previously used "Subject" as the top-level concept; aligned to "Skill" across the user-visible UI and the persona READMEs. Topics + Learning Objectives stay as the canonical sub-units.
 
 ### What changed (user-visible)
 
@@ -2305,7 +2320,7 @@ v4.73 across the 6 portals.
 
 ## v4.72 — 19 May 2026 — Per-school branding (4 WGU School logos + Switch School)
 
-Brady's JFT note: *"Add the custom branding for each of the 4 schools."* Each WGU School (Technology / Business / Education / Leavitt Health) now has its own logo swapped into the navbar based on the active tenant context. The Switch School menu in the Tenant Admin user profile expands from 2 to all 4 schools.
+The owner's the vendor note: *"Add the custom branding for each of the 4 schools."* Each WGU School (Technology / Business / Education / Leavitt Health) now has its own logo swapped into the navbar based on the active tenant context. The Switch School menu in the Tenant Admin user profile expands from 2 to all 4 schools.
 
 ### What changed
 
@@ -2329,7 +2344,7 @@ v4.72 across the 6 portals.
 
 ## v4.71 — 19 May 2026 — Delete scenario-catalog pages and contract-tracking docs
 
-Brady's direction: this repo is for the SkillProof UI prototypes only. Supporting docs (scenario catalogs, contract trackers) are no longer maintained in the public repo. They live in Coda.io now.
+The owner's direction: this repo is for the SkillProof UI prototypes only. Supporting docs (scenario catalogs, contract trackers) are no longer maintained in the public repo. They live in Coda.io now.
 
 ### What was deleted
 
@@ -2354,12 +2369,12 @@ v4.71 across all 6 portals.
 
 ## v4.70 — 19 May 2026 — Site-wide UI polish (help icon, footer logo, sign-out, timing copy)
 
-Phase B of the JFT meeting follow-up sweep. Fixes UI bugs that have accumulated since v4.62 plus a copy cleanup.
+Phase B of the vendor meeting follow-up sweep. Fixes UI bugs that have accumulated since v4.62 plus a copy cleanup.
 
 ### What changed
 
 - **Light-mode help icon visibility** — the navbar help icon (and theme-toggle icon) was visually faint in light mode because the icon glyph color was inheriting from a dark-navbar context. Added explicit `color: var(--color-deep-navy)` + `font-weight: 500` for `.btn-theme-toggle .material-icons-outlined` in light mode, with `#fff` override for dark mode. Applied across all portal navbars.
-- **Removed the Sign out button** from the Tenant Admin user-profile menu — Brady's JFT note: *"I don't think we need the sign out button."* Authentication is LRPS / SSO-managed.
+- **Removed the Sign out button** from the Tenant Admin user-profile menu — the owner's the vendor note: *"I don't think we need the sign out button."* Authentication is LRPS / SSO-managed.
 - **"No more timing things"** — removed arbitrary duration copy that wasn't tied to a contractual SLA:
   - Student onboarding "Takes about 5–8 minutes" hint on the diagnostic CTA
   - Student session-snapshot "Session duration · 14 min" row
@@ -2374,7 +2389,7 @@ v4.70 across all 6 portals.
 
 ## v4.69 — 19 May 2026 — URGENT: LRPS landing reframed to Sally (Student) for leadership preview
 
-Brady is sharing the storyboard URL with leadership for EOD review. The LRPS landing root was framed as Alice's (Tenant Admin's) view since v4.65, since Alice's role per User Profile Catalog v1.3 explicitly includes managing LRPS deep links. For the leadership preview, the framing reverts to Sally (Student) so the entry point matches what an end-learner actually sees when launching the Coding Coach from their LMS course module.
+The owner is sharing the storyboard URL with leadership for EOD review. The LRPS landing root was framed as Alice's (Tenant Admin's) view since v4.65, since Alice's role per User Profile Catalog v1.3 explicitly includes managing LRPS deep links. For the leadership preview, the framing reverts to Sally (Student) so the entry point matches what an end-learner actually sees when launching the Coding Coach from their LMS course module.
 
 ### What changed
 
@@ -2384,7 +2399,7 @@ Brady is sharing the storyboard URL with leadership for EOD review. The LRPS lan
 
 ### Why
 
-Direct quote from Brady's JFT meeting notes: *"LRPS link directing to /tenant-admin — Put this back to the /student view so I can send to leadership tomorrow at EOD."*
+Direct quote from the owner's the vendor meeting notes: *"LRPS link directing to /tenant-admin — Put this back to the /student view so I can send to leadership tomorrow at EOD."*
 
 ---
 

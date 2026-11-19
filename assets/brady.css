@@ -1,15 +1,14 @@
 /* ============================================================================
-   Brady Design System -- shared token + base layer for the SkillProof site.
+   SkillProof site design system -- shared token + base layer for the SkillProof site.
 
    Authority, in the skill's own priority order:
      1. WGU FY26 brand anchors (non-negotiable)
-     2. Brady semantic palette (BS_)          design-system.md 1.3
+     2. Semantic palette (BS_)          design-system.md 1.3
      3. Editorial neutrals                    design-system.md 1.4
      4. Type scale                            design-system.md 2.2
      5. Spacing, 4px grid                     design-system.md 3.1
 
-   Source of truth:
-   C:\dev\repos\claude_skills\brady-document-style\references\design-system.md
+   Source of truth: the site design-system reference (kept outside this repo).
 
    WHY THESE VALUES AND NOT THE OLD ONES. The pages already used the correct
    WGU anchors (#001730, #0070F0, #46B1EF, #EEF6F9) -- the colour was never the
@@ -39,7 +38,7 @@
   --bs-sky:        #46B1EF;
   --bs-ice:        #EEF6F9;
 
-  /* --- Brady semantic palette (design-system.md 1.3) ---------------------- */
+  /* --- Semantic palette (design-system.md 1.3) ---------------------- */
   --bs-green:      #1A6635;   /* ON TRACK              AAA */
   --bs-yellow:     #FFCC00;   /* WARNING, CTA on dark      */
   --bs-tawny:      #D97443;   /* AT RISK               AA  */

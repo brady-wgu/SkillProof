@@ -605,7 +605,7 @@
     .heatmap-grid {
       display: grid;
       /* v4.102: expanded to 13 columns to match the canonical Python Skill Topic taxonomy.
-         Designed to scale up to ~20 columns per Brady's expected Topic-count ceiling. */
+         Designed to scale up to ~20 columns per the owner's expected Topic-count ceiling. */
       grid-template-columns: 160px repeat(13, minmax(108px, 1fr));
       gap: 2px;
       min-width: 1580px;
@@ -928,7 +928,7 @@
      SC-ADD-03 — INSTRUCTOR DASHBOARD AND AT-RISK INTERVENTION
      ================================================================ -->
 
-<!-- Screen 1 (SSO landing) REMOVED in v4.85 — informational only, not in JFT scope -->
+<!-- Screen 1 (SSO landing) REMOVED in v4.85 — informational only, not in the vendor scope -->
 
 <!-- Screen 1: Instructor Dashboard home (Course list with Skills inline) ============== -->
 <section class="screen active" id="screen-1" aria-labelledby="s1-heading">
@@ -1619,7 +1619,7 @@
   })();
 
   /* STORYBOARD NAVIGATION */
-  const TOTAL_SCREENS = 5; // v4.121 (26 May 2026): S06 Conversation logs / S07 Session transcript / S08 Audit Trail removed per contract scope confirmation — JFT confirmed conversations are not stored (single Q+A only, not multi-turn). "Capture integrity" terminology removed from Coda lock 23 May 2026. Drill chain stops at S05 Learner profile; S09 Access Denied renumbered to S06.
+  const TOTAL_SCREENS = 5; // v4.121 (26 May 2026): S06 Conversation logs / S07 Session transcript / S08 Audit Trail removed per contract scope confirmation — the vendor confirmed conversations are not stored (single Q+A only, not multi-turn). "Capture integrity" terminology removed from Coda lock 23 May 2026. Drill chain stops at S05 Learner profile; S09 Access Denied renumbered to S06.
 
   function goToScreen(n) {
     if (n < 1 || n > TOTAL_SCREENS) return;
@@ -1807,8 +1807,8 @@
   }
 
   /* v4.116: score normalization is now source-of-truth (0.00-1.00 literals).
-     Removed standardizeScoresTo0to1() per Brady verdict F2:B on 2026-05-23 —
-     strict source alignment. JFT builds verbatim from prototype, so legacy
+     Removed standardizeScoresTo0to1() per the owner verdict F2:B on 2026-05-23 —
+     strict source alignment. The vendor builds verbatim from prototype, so legacy
      percent + bare-integer score literals were converted in-place. */
 
   // Run hydration once on initial load (after score standardization so tooltips reflect 0-1)
@@ -1850,13 +1850,13 @@
      - "all" shows everything
      - "ai-feedback" hides learner messages, leaving only AI prompts / feedback / reframes
      - "miss" shows only feedback bubbles tagged as objective miss
-     Note: AI-only filter strips conversational context — JFT may want a different
+     Note: AI-only filter strips conversational context — the vendor may want a different
      pattern in production (e.g., scroll-to-next-miss); this is a prototype demo. */
   /* v4.109: generic chip-filter helper.
      Each row has a data-{key}-cat attribute; the chip carries data-filter-{key}.
      This factors out the duplicated logic across filterHeatmap/filterTranscript/
      filterAuditEvents/etc., though each screen still has its own thin wrapper
-     so the onclick markup stays simple and JFT-readable.
+     so the onclick markup stays simple and vendor-readable.
      v4.112: supports multi-category rows via space-separated values in data-attr.
      v4.113: optional 5th param rowSelector for screens with multiple tables. */
   function chipFilterTable(scopeSelector, filterValue, dataAttr, chipAttr, rowSelector) {

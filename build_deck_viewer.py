@@ -2,11 +2,11 @@
 
 WHY THIS EXISTS
 No browser renders .pptx natively, so "view the deck" used to mean "download
-41 MB, wait, open PowerPoint". This builds a self-hosted slide viewer from the
+13 MB, wait, open PowerPoint". This builds a self-hosted slide viewer from the
 PNGs that render_deck.py exports, so the deck opens like any other page.
 
 WHAT IT PRESERVES THAT A FLAT IMAGE EXPORT WOULD LOSE
-1. The embedded video on slide 6. That single MP4 is 39.56 of the deck's 41 MB
+1. The embedded video on slide 6. That single MP4 is most of the deck's 13 MB
    and is byte-identical to assets/video/skillproof-walkthrough-2k.mp4, so a
    real <video> is overlaid on the slide's own video region, pointed at the
    existing asset. No second copy, and it plays inline.
@@ -49,7 +49,7 @@ VIDEO_REL = '../assets/video/skillproof-walkthrough-2k.mp4'
 # Bumped whenever the slide PNGs are re-rendered. Slide images are served with a
 # ?v= cache-buster for the same reason the persona screenshots are: without it,
 # browsers keep showing the previous render.
-VERSION = 4
+VERSION = 5
 
 # Hand-checked against the rendered PNGs. Auto-extracting "the first text on the
 # slide" picks up the footer on slide 6 rather than its heading, so the labels
@@ -59,7 +59,7 @@ TITLES = {
     1: 'SkillProof — AI Coaching + Extensibility',
     2: 'Program Experience Strategy',
     3: 'Why SkillProof',
-    4: 'The coaching loop — diagnostic, feedback, practice',
+    4: 'LLM Q&A, feedback every turn',
     5: 'One engine, any subject',
     6: 'EXT01: live walkthrough (video)',
     7: 'Questions — explore on your own',
@@ -398,7 +398,7 @@ PAGE = r"""<!DOCTYPE html>
     <img class="bar-logo-dark" src="../assets/wgu-corporation-full-color-reverse.png" alt="WGU">
     <span class="bar-brand-text">SkillProof</span>
   </a>
-  <span class="bar-title">Status Demo Deck &middot; v1.1 &middot; 30 JUL 2026</span>
+  <span class="bar-title">Status Demo Deck &middot; v1.3 &middot; 19 NOV 2026</span>
 
   <span class="bar-spacer"></span>
 
@@ -558,7 +558,7 @@ def main():
 
         if video:
             n_video += 1
-            # preload="none" matters: this is a 40 MB file and most viewers never
+            # preload="none" matters: this is an 11 MB file and most viewers never
             # reach slide 6. The poster is cropped from the slide's own render so
             # the region looks identical until someone presses play.
             parts.append(
@@ -566,7 +566,7 @@ def main():
                 f' poster="../assets/decks/slides/slide-{n}-video-poster.png?v={VERSION}"'
                 f' style="left:{video["left"]:.3f}%; top:{video["top"]:.3f}%;'
                 f' width:{video["width"]:.3f}%; height:{video["height"]:.3f}%;"'
-                f' aria-label="SkillProof EXT01 walkthrough on PROD, 4 minutes 16 seconds">\n'
+                f' aria-label="SkillProof EXT01 walkthrough on PROD, 4 minutes 46 seconds">\n'
                 f'        <source src="{VIDEO_REL}" type="video/mp4">\n'
                 f'        Your browser cannot play embedded video.'
                 f' <a href="{VIDEO_REL}">Download the walkthrough</a> instead.\n'

@@ -2,7 +2,7 @@
   "persona": "student",
   "title": "SkillProof — Student (EXT01 – Time Management Fundamentals)",
   "metabarLabel": "SkillProof Demo · Student · EXT01",
-  "v": 10,
+  "v": 12,
   "hasDark": false,
   "frame": {
     "width": 2880,
@@ -56,9 +56,9 @@
           "goto": 4,
           "pct": {
             "left": 25.83,
-            "top": 76.58,
+            "top": 74.01,
             "width": 13.8,
-            "height": 3.17
+            "height": 3.06
           }
         }
       ]
@@ -92,9 +92,9 @@
           "goto": 6,
           "pct": {
             "left": 38.89,
-            "top": 69.28,
+            "top": 69.69,
             "width": 22.22,
-            "height": 3.6
+            "height": 3.55
           }
         }
       ]
@@ -128,9 +128,9 @@
           "goto": 8,
           "pct": {
             "left": 52.5,
-            "top": 48.26,
+            "top": 51.09,
             "width": 13.8,
-            "height": 3.57
+            "height": 3.78
           }
         }
       ]
@@ -146,9 +146,9 @@
           "goto": 9,
           "pct": {
             "left": 86.73,
-            "top": 87.3,
+            "top": 86.3,
             "width": 11.05,
-            "height": 2.48
+            "height": 2.67
           }
         }
       ]

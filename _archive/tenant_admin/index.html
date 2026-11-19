@@ -1018,7 +1018,7 @@
     .heatmap-grid {
       display: grid;
       /* v4.102: expanded to 13 columns to match the canonical Python Skill Topic taxonomy.
-         Designed to scale up to ~20 columns per Brady's expected Topic-count ceiling. */
+         Designed to scale up to ~20 columns per the owner's expected Topic-count ceiling. */
       grid-template-columns: 160px repeat(13, minmax(108px, 1fr));
       gap: 2px;
       min-width: 1580px;
@@ -1430,7 +1430,7 @@
      SC-ADD-02 — TENANT ADMIN PORTAL & COURSE CONFIGURATION
      ================================================================ -->
 
-<!-- Screen 1 (SSO landing) REMOVED in v4.85 — informational only, not in JFT scope -->
+<!-- Screen 1 (SSO landing) REMOVED in v4.85 — informational only, not in the vendor scope -->
 
 <!-- Screen 02: Tenant Admin Portal home ============================== -->
 <section class="screen active" id="screen-1" aria-labelledby="s1-heading">
@@ -4124,8 +4124,8 @@ Address the learner by their first name. Never use "student" as the form of addr
   }
 
   /* v4.116: score normalization is now source-of-truth (0.00-1.00 literals).
-     Removed standardizeScoresTo0to1() per Brady verdict F2:B on 2026-05-23 —
-     strict source alignment. JFT builds verbatim from prototype, so legacy
+     Removed standardizeScoresTo0to1() per the owner verdict F2:B on 2026-05-23 —
+     strict source alignment. The vendor builds verbatim from prototype, so legacy
      percent + bare-integer score literals were converted in-place. */
 
   // Run hydration once on initial load (after score standardization so tooltips reflect 0-1)
@@ -4167,7 +4167,7 @@ Address the learner by their first name. Never use "student" as the form of addr
      - "all" shows everything
      - "ai-feedback" hides learner messages, leaving only AI prompts / feedback / reframes
      - "miss" shows only feedback bubbles tagged as objective miss
-     Note: AI-only filter strips conversational context — JFT may want a different
+     Note: AI-only filter strips conversational context — the vendor may want a different
      pattern in production (e.g., scroll-to-next-miss); this is a prototype demo. */
   /* S5 Sally Whitman Per-Topic table filter */
   function filterPerTopicTable(filter) {

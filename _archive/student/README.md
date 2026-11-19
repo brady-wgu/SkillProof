@@ -10,7 +10,7 @@
 
 ## Scope
 
-This is the **v1.2 MVP scope** — the first JFT release. It deploys the existing prototype v1 proof-of-concept codebase to production-quality, scalable infrastructure with a polished UI, accessible outside the WGU intranet via LTI 1.3 SSO. **No new features, adaptive logic changes, or coaching algorithm modifications are in scope for the v1.2 release.**
+This is the **v1.2 MVP scope** — the first the vendor release. It deploys the existing prototype v1 proof-of-concept codebase to production-quality, scalable infrastructure with a polished UI, accessible outside the WGU intranet via LTI 1.3 SSO. **No new features, adaptive logic changes, or coaching algorithm modifications are in scope for the v1.2 release.**
 
 ## Scenarios
 
@@ -45,14 +45,14 @@ SkillProof MVP Scenario Catalog **v1.2** (07 Apr 2026). Authored by WGU Program 
 
 ## Notes
 
-- **Screen 1 (zyBooks landing) is reference design only.** It illustrates the LTI 1.3 launch context as described in the v1.2 catalog — it is *not* part of the Coding Coach application or a JFT deliverable. The actual zyBooks page is owned by zyBooks/Wiley; the storyboard renders a faithful design reference so reviewers can see Sally's starting point in the textbook before she clicks the Coding Coach link.
+- **Screen 1 (zyBooks landing) is reference design only.** It illustrates the LTI 1.3 launch context as described in the v1.2 catalog — it is *not* part of the Coding Coach application or a the vendor deliverable. The actual zyBooks page is owned by zyBooks/Wiley; the storyboard renders a faithful design reference so reviewers can see Sally's starting point in the textbook before she clicks the Coding Coach link.
 - The student storyboard logo loads via inline base64 (legacy from v3.0). The v1.3 admin portals load logos from `../assets/` instead. This is intentional — base64 keeps the student page fully self-contained for offline LTI launch demos, even without the broader repo.
 
 ## v1 Known Limitations
 
-Honest call-outs of what the v1 student storyboard does **not** depict. These aren't bugs — they're scope boundaries the v1.2 MVP catalog deliberately set, surfaced here so JFT and the production team know what still needs design work for v1.4+.
+Honest call-outs of what the v1 student storyboard does **not** depict. These aren't bugs — they're scope boundaries the v1.2 MVP catalog deliberately set, surfaced here so the vendor and the production team know what still needs design work for v1.4+.
 
-1. **No real Python execution.** All submitted code is evaluated by the LLM as text. There is no in-browser REPL, no sandboxed runner, no test harness. JFT must flag any of the 13 Topics where text-based evaluation produces unacceptable false-positive or false-negative rates — particularly anything that exercises runtime behavior, mutable state, or library imports.
+1. **No real Python execution.** All submitted code is evaluated by the LLM as text. There is no in-browser REPL, no sandboxed runner, no test harness. The vendor must flag any of the 13 Topics where text-based evaluation produces unacceptable false-positive or false-negative rates — particularly anything that exercises runtime behavior, mutable state, or library imports.
 2. **No mid-task pause/resume.** "Save & Exit" is only available at task boundaries (after diagnostic results, after a verification advance, after a completed task). If Sally closes the tab mid-attempt, she resumes at the **last completed task boundary**, not where she stopped — see SC-MVP-01 step 8 narrative.
 3. **No error recovery flows.** The storyboard models the happy path only. There are no screens for: LTI launch failure, SSO timeout, diagnostic submission timeout, lost connectivity mid-session, LLM provider unavailable. SC-ADD-06 (School Admin) covers School-level fallback, but the *student's* experience of an outage is undefined in v1.
 4. **Re-assessment failure path not modeled.** SC-MVP-04 shows the happy path where Sally passes the 2-question retention check. What happens if she fails (e.g., she's regressed in the Intermediate band) — re-route to Foundational? Lock the session for a fresh diagnostic? Issue a tip and continue? — is undefined in v1.

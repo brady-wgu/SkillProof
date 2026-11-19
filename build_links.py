@@ -13,7 +13,7 @@ in two formats without drifting. This compiles both from skills.json instead.
 
     skills.json          PUBLIC, in this repo. Exactly the fields index.html
                          already shows, so publishing it exposes nothing new.
-    skills.private.json  PRIVATE, in brady-browser-kit. Client IDs, API
+    skills.private.json  PRIVATE, in the private capture toolkit. Client IDs, API
                          hostnames and direct launch URLs, joined on LRPS id.
                          It NEVER reaches the public render -- see assert_clean().
 
@@ -172,7 +172,7 @@ def load(path, what):
 # ---------------------------------------------------------------------------
 # Public render
 # ---------------------------------------------------------------------------
-# Environment layout (30 SEP 2026, Brady): PROD is live, so it leads in its own
+# Environment layout (30 SEP 2026): PROD is live, so it leads in its own
 # panel with a text "Live" badge (never colour alone), and STAGE/DEV sit under a
 # "Testing environments" heading, collapsed by default behind real toggle
 # buttons (aria-expanded + aria-controls). A <details> element cannot wrap table
@@ -472,7 +472,7 @@ def render_superhuman(data, private, measured=None):
         out[env] = {'table': table, 'meta': meta, 'count': len(rows)}
 
     # The public pages the developer view has never carried: the published
-    # landing page and the four click-through walkthroughs. Brady, 10 SEP 2026 --
+    # landing page and the four click-through walkthroughs. 10 SEP 2026 --
     # every link belongs in both places; only Client IDs, OIDC/LTI endpoints and
     # internal hosts stay confidential. These have none of those, so the only
     # reason they were missing here is that nobody copied them across.
@@ -510,7 +510,7 @@ def sh_target(private):
             SH_STATUS[k] = v
     return cfg
 
-# Superhuman uses Brady's operational vocabulary, which is not the public page's.
+# Superhuman uses the owner's operational vocabulary, which is not the public page's.
 # A reader of the developer page wants "is it up right now"; a reader of the
 # public page wants "is this link usable". Same three states, different words,
 # so the two are mapped rather than sharing one label.
@@ -607,7 +607,7 @@ ENV_SHORT = {'dev': 'DEV', 'stage': 'STAGE', 'prod': 'PROD'}
 def rollup_html(data):
     """The one line that answers "is anything down", above the three pie charts.
 
-    Brady, 10 SEP 2026: "I expect all links to be up 100% of the time, so if any
+    10 SEP 2026, the owner: "I expect all links to be up 100% of the time, so if any
     link is DOWN, then we have a problem. The issue isn't the proportion of
     broken links, it's whether the site is down or not."
 

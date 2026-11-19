@@ -1,26 +1,28 @@
 ## Start here (for the new owner)
 
 ### What it is
-- A public repo that serves the SkillProof storyboard, the click-through demo of WGU's AI coaching app, and the public page of Skill (LRPS) links.
-- The site runs on GitHub Pages at brady-wgu.github.io/SkillProof. There is no build server. The pages are plain files committed to the repo.
+- A public repo that serves the SkillProof storyboard, the click-through demo of WGU's AI coaching app, the status deck, the one-slide pitch and the public page of Skill (LRPS) links.
+- The site runs on GitHub Pages. There is no build server. The pages are plain files committed to the repo.
 
 ### Who needs it, and does anyone need to act now
-- Mike is the new owner. Yes, one action is due after the transfer (step 2 below): the web address changes.
-- After transfer the address becomes mikeh1239.github.io/SkillProof. GitHub does not redirect Pages sites, so the old address stops working.
-- Any link to the old address in team docs, emails or decks must be updated.
-- The repo is public. History was cleaned on 18 NOV 2026 to remove learner screenshots and contract details. Old commits may stay reachable by direct link through old pull requests.
+- The new owner. Yes, one action is due after the transfer (steps 2 and 4 below): the web address changes to the new owner's GitHub Pages address.
+- GitHub does not redirect Pages sites, so the old address stops working.
+- Any link to the old address in team docs, emails or decks must be updated. Inside this repo the old address appears in the README tables, in two link regions of `deck/index.html` (built by `build_deck_viewer.py`) and on slide 7 of the status deck.
+- The repo is public. History was cleaned on 18 Nov 2026 to remove learner screenshots and contract details. Old commits may stay reachable by direct link through old pull requests.
+- Eight walkthrough screens were restored on 19 Nov 2026 with every non-test person masked by full name (see Notes under Surfaces).
 
 ### What it needs to run
 - To view the site: nothing, only a web browser.
 - To change the link page: Python, the `skills.json` file in this repo, and `build_links.py`.
-- To update the Superhuman Docs link table: `sync_superhuman.py` plus the writer repo's tokens. These were Brady's and are not in this repo.
-- The demo screenshots were captured with the private brady-browser-kit repo. Re-capturing needs that toolkit and signed-in sessions.
+- To update the Superhuman Docs link table: `sync_superhuman.py` plus the writer repo's tokens. These belonged to the previous owner and are not in this repo.
+- The demo screenshots and videos are captured with a private capture toolkit that is not in this repo. Re-capturing needs that toolkit and signed-in PROD test sessions. See "Regenerate the live demo".
+- To rebuild the status deck viewer after editing the deck: Windows with desktop PowerPoint, Python with `pywin32` and `Pillow`, then `render_deck.py` followed by `build_deck_viewer.py`.
 
 ### How to start
 1. Open the repo on GitHub and read the README.md on the front page. Expected: a landing image, an Overview and a table of surfaces.
-2. In the repo, open Settings, then Pages. Expected: the site shows as published, and the address shows mikeh1239.github.io/SkillProof. If it says Pages is off, turn it on from the main branch.
+2. In the repo, open Settings, then Pages. Expected: the site shows as published, and the address shows the new owner's GitHub Pages address. If it says Pages is off, turn it on from the main branch.
 3. Open the new address in a browser. Expected: the link page loads. Click one persona walkthrough and confirm it opens.
-4. Search team docs and decks for brady-wgu.github.io and replace each match with the new address. Expected: no old-address links remain.
+4. Search team docs and decks for the old address and replace each match with the new address. Expected: no old-address links remain.
 5. To change the list of links, ask a technical colleague to edit `skills.json` and run `build_links.py`. Expected: `index.html` updates to match.
 
 ### Key files
@@ -29,16 +31,22 @@
 | `skills.json` | The list of 27 Skill links shown on the public page |
 | `build_links.py` | Rebuilds the link page (`index.html`) from `skills.json` |
 | `sync_superhuman.py` | Updates the Superhuman Docs link table, needs the writer repo's tokens |
-| `student/`, `instructor/`, `tenant_admin/`, `super_admin/` | The four click-through walkthroughs |
+| `student/`, `instructor/`, `tenant_admin/`, `super_admin/` | The four click-through walkthroughs (42 PROD screens) |
+| `build_prototypes.py` | Rebuilds the four walkthrough pages from each `flow.json` and its screenshots |
+| `assets/video/skillproof-walkthrough-2k.mp4` | Full student walkthrough, 4 min 46 s, shown at `/walkthrough/` and inside the deck |
+| `assets/decks/skillproof-status-demo_v1-1_30JUL2026.pptx` | Status deck, 7 slides, v1.3 of 19 NOV 2026 (file name kept stable) |
+| `render_deck.py`, `build_deck_viewer.py` | Export the deck to PNG, then build the `/deck/` viewer |
+| `pitch/` | One-slide pitch page, its 38-second clip and its `.pptx` |
 
-### What stopped when Brady left
-- Brady no longer maintains the link page, so statuses on it will go stale.
-- The Superhuman Docs link table no longer updates, because the writer tokens were Brady's.
-- Test runs that fed link status came from brady-browser-kit and are switched off.
-- DEV links were removed on 18 NOV 2026. STAGE student links were retired on 02 NOV 2026.
+### Maintenance status
+- The link page statuses are no longer checked automatically, so they will go stale until a new owner re-checks them.
+- The Superhuman Docs link table no longer updates, because its writer tokens belonged to the previous owner.
+- The automated test runs that fed link status are switched off.
+- DEV links were removed on 18 Nov 2026. STAGE student links were retired on 02 Nov 2026.
+- Screenshots, both videos and the deck were refreshed from PROD on 19 Nov 2026 (v4.187). The live app changes without notice, so re-check them before any demo.
 
 ### Where to find more
-- `README.md`: Overview; Surfaces; Live Skills (LRPS); Repo layout; Persona sections; Shared persona and course reference; Design System; How to use (including Regenerate the live demo); Source documents; For developers (JFT); Changelog.
+- `README.md`: Overview; Surfaces; Live Skills (LRPS); Repo layout; Persona sections; Shared persona and course reference; Design System; How to use (including Regenerate the live demo); For developers; Changelog.
 - `CHANGELOG.md`: version history.
 
 ---
@@ -50,8 +58,8 @@
 **Live-app click-through demo of WGU's AI coaching platform, plus the medium-fidelity storyboard for the administrative surfaces around it**
 
 [![Live Demo](https://img.shields.io/badge/Live-GitHub_Pages-0070F0?style=for-the-badge&logo=github)](https://brady-wgu.github.io/SkillProof/)
-[![Version](https://img.shields.io/badge/Version-4.174-46B1EF?style=for-the-badge)](CHANGELOG.md)
-[![Live Screens](https://img.shields.io/badge/Live_Demo_Screens-32-001730?style=for-the-badge)]()
+[![Version](https://img.shields.io/badge/Version-4.187-46B1EF?style=for-the-badge)](CHANGELOG.md)
+[![Live Screens](https://img.shields.io/badge/Live_Demo_Screens-42-001730?style=for-the-badge)]()
 [![Personas](https://img.shields.io/badge/Personas-4-FBAE40?style=for-the-badge)]()
 
 ![Portal selector landing](assets/landing/light.png)
@@ -64,6 +72,8 @@
 
 ## Overview
 
+> **Update · 19 Nov 2026 (v4.187): everything below is re-captured from PROD.** The walkthrough video (4 min 46 s), the one-slide pitch clip, the status deck, the landing images and all 42 screens show the current app (its page title is now "SkillProof Coach"). Eight screens withheld on 18 Nov are restored with every non-test person masked by full name. Every AI-graded step in the walkthrough, the student demo and the instructor preview is a correct answer with positive feedback. Counts on dashboards are a snapshot of that day.
+>
 > **Update · 08 Oct 2026: the demo is now captured from PROD.**
 > `student/`, `instructor/`, `tenant_admin/` and `super_admin/` are **click-through pages built from real screenshots of the production app** (`skillproof.training`), generated by [`build_prototypes.py`](build_prototypes.py) from a per-persona `flow.json`. Transparent, percentage-positioned hotspots sit over the real controls and call `goToScreen()` to advance.
 >
@@ -73,13 +83,13 @@
 > - **Screens feel like live pages.** Captures are taken at a 1440-pixel-wide window at 2x pixel density (2880-pixel PNGs), so text shows at about live size in a laptop browser and stays sharp on high-density displays.
 > - **Each screen fills the browser width and scrolls inside its own frame**, so a short dashboard and a long analytics rollup present as the same shape instead of resizing the page on every click.
 >
-> The earlier hand-built HTML mockups are **preserved, not deleted**, in [`_archive/`](_archive/) — and **not served on the live site at all**: GitHub Pages runs Jekyll, which excludes any path beginning with an underscore, so every `_archive/` URL returns 404. They are preserved in the repository and viewable by cloning or serving locally. (Corrected in v4.173: earlier revisions of this file claimed they were "reachable by direct URL", which was never true on the deployed site.) The persona / scenario / design-system sections further down describe those **archived mockups**, which remain the design spec for surfaces JFT has not built yet.
+> The earlier hand-built HTML mockups are **preserved, not deleted**, in [`_archive/`](_archive/) — and **not served on the live site at all**: GitHub Pages runs Jekyll, which excludes any path beginning with an underscore, so every `_archive/` URL returns 404. They are preserved in the repository and viewable by cloning or serving locally. (Corrected in v4.173: earlier revisions of this file claimed they were "reachable by direct URL", which was never true on the deployed site.) The persona / scenario / design-system sections further down describe those **archived mockups**, which remain the design spec for surfaces the vendor has not built yet.
 
-**SkillProof** is WGU's AI coaching and assessment platform: an AI generates an assessment question, grades a free-text answer against per-objective Learning Objectives, and coaches the learner on the gap. It is **course-agnostic** — the first JFT release was a Python coding coach (E010), and the demo in this repo runs on **EXT01 – Time Management Fundamentals** on PROD to show that the same engine works on non-coding content.
+**SkillProof** is WGU's AI coaching and assessment platform: an AI generates an assessment question, grades a free-text answer against per-objective Learning Objectives, and coaches the learner on the gap. It is **course-agnostic** — the first vendor release was a Python coding coach (E010), and the demo in this repo runs on **EXT01 – Time Management Fundamentals** on PROD to show that the same engine works on non-coding content.
 
-This repo holds two things: the **live-app click-through demo** (the four persona folders) and the **medium-fidelity storyboard** that JFT (the vendor) builds against, now archived in [`_archive/`](_archive/). The persona / scenario / design-system sections further down describe the archived storyboard:
+This repo holds two things: the **live-app click-through demo** (the four persona folders) and the **medium-fidelity storyboard** that the vendor builds against, now archived in [`_archive/`](_archive/). The persona / scenario / design-system sections further down describe the archived storyboard:
 
-- **Sally** (Student) — the v1.2 MVP coaching loop. **JFT shipped this first.** ([`_archive/student/`](_archive/student/)) — **18 screens**
+- **Sally** (Student) — the v1.2 MVP coaching loop. **The vendor shipped this first.** ([`_archive/student/`](_archive/student/)) — **18 screens**
 - **Charlie** (Instructor) — At-Risk Intervention dashboard. ([`_archive/instructor/`](_archive/instructor/)) — **5 screens**
 - **Alice** (School Admin) — Course + Skill management portal: School Dashboard with Course cards + filter/sort/search, 5-step New Skill wizard with Course Number/Title combobox typeahead, drill-chain mirroring Instructor for diagnostic, 4-level Analytics (School / Course / Skill / Topic). Scope is **Courses + Skills only** — at-risk learner tracking is Instructor's domain; School Settings + cross-School ops are Super Admin's. ([`_archive/tenant_admin/`](_archive/tenant_admin/)) — **12 screens**
 - **Bob** (Super Admin) — Cross-School governance, financial controls, security compliance, **access control** (role elevation + School Admin → Schools + Instructor → Skills + Skill ownership / deployment), data + integrations hub, **School Management** (per-School branding / thresholds / retention — moved from School Admin v4.114), FERPA-aligned Logs, plus the inherited Course → Skill → Learner drill and 5-level Analytics. ([`_archive/super_admin/`](_archive/super_admin/)) — **11 screens**
@@ -90,7 +100,6 @@ This repo holds two things: the **live-app click-through demo** (the four person
 
 Each persona has its own **secret LRPS deep link** in production and authenticates separately. They share the SkillProof Design System v1.2 chrome and the WGU FY26 brand so the suite reads as one cohesive product family.
 
-> **Implementation notes (for JFT).** The School Admin, Instructor, and Super Admin scenarios are the design spec for surfaces JFT has not yet started building. Use this storyboard as the visual North Star for the **full requirements scope**. WGU expects JFT to deliver every binding requirement in the contract, the requirements body, and Appendix A within the contracted engagement window. The first JFT release was an MVP slice (E010 Coding Coach in `student/`); subsequent releases close the rest of Appendix A across the School Admin, Instructor, and Super Admin portals. The SC-MVP scenarios deploy the existing prototype coaching loop as-is; the surrounding platform (multi-LLM orchestration, admin portals, observability, exports, integrations, compliance surfaces) is net-new build work per Appendix A. WGU also runs independent accessibility testing against WCAG 2.2 AA in addition to JFT's own self-checks per §16.2 #7.3 (student-facing surfaces; admin surfaces follow standard usability per the requirements Assumptions), so plan for remediation cycles inside the engagement window.
 
 ### Surfaces
 
@@ -101,29 +110,30 @@ Each persona has its own **secret LRPS deep link** in production and authenticat
 | **Instructor walkthrough** | [`/instructor/`](https://brady-wgu.github.io/SkillProof/instructor/) | PROD screenshots (EXT01): Dashboard → its Export menu → Course Detail → Skill heatmap → Learner profile → Staging Skills → **Skill Preview AI question → AI evaluation → Preview Complete (no data saved)** → Help. **10 screens.** Archived mockup: [`_archive/instructor/`](_archive/instructor/) (5 screens). |
 | **School Admin walkthrough** | [`/tenant_admin/`](https://brady-wgu.github.io/SkillProof/tenant_admin/) | PROD screenshots (School of Technology, EXT01): Dashboard → School switcher → New Course dialog → Course Detail → View Skill → Skill heatmap → Learner profile → Analytics → **New Skill wizard steps 1-3, incl. Model & AI prompt** → Tenant Settings → Help. **13 screens.** Archived mockup: [`_archive/tenant_admin/`](_archive/tenant_admin/) (12 screens). |
 | **Super Admin walkthrough** | [`/super_admin/`](https://brady-wgu.github.io/SkillProof/super_admin/) | PROD screenshots: Dashboard → its Export menu → Analytics → Access Control → Add Courses dialog → Assign School Admin dialog → School Management → Course Detail (EXT01) → Help. **9 screens.** Archived mockup: [`_archive/super_admin/`](_archive/super_admin/) (11 screens). |
-| **Status Demo Deck** (viewer) | [`/deck/`](https://brady-wgu.github.io/SkillProof/deck/) | Brady’s live demo deck, **v1.1 / 30 JUL 2026, 7 slides**, viewable in the browser instead of downloaded. Generated by [`build_deck_viewer.py`](build_deck_viewer.py) from the PNGs [`render_deck.py`](render_deck.py) exports. Slide 6’s embedded walkthrough is a real `<video>` overlay on the slide’s own video region; the deck’s two hyperlinks are preserved as click regions. Deep-linkable per slide (`/deck/#4`), arrow-key paging, and the original `.pptx` is one click away on the toolbar. |
+| **Status Demo Deck** (viewer) | [`/deck/`](https://brady-wgu.github.io/SkillProof/deck/) | The live demo deck, **v1.3 / 19 NOV 2026, 7 slides**, viewable in the browser instead of downloaded. Generated by [`build_deck_viewer.py`](build_deck_viewer.py) from the PNGs [`render_deck.py`](render_deck.py) exports. Slide 6’s embedded walkthrough is a real `<video>` overlay on the slide’s own video region; the deck’s two hyperlinks are preserved as click regions. Deep-linkable per slide (`/deck/#4`), arrow-key paging, and the original `.pptx` is one click away on the toolbar. |
 
 **Live-app click-through demo: 42 screens · 62 hotspots · 4 personas** (Student 10 · Instructor 10 · School Admin 13 · Super Admin 9), all four on **EXT01 on PROD**. Every screen fills the full browser width and scrolls **inside** its own frame, so a 1,080px dashboard and a 6,100px analytics rollup present as the same shape. Hotspots are real clickable regions measured off the live DOM, so a whole role can be walked without logging in. The meta-bar switches roles, which is the point: one link replaces signing into four accounts to show the product. *(The archived mockups in `_archive/` hold the prior 46-screen hand-built set.)*
 
 **The AI interaction loop is included on both sides**, which is the reason the platform exists: the student diagnostic shows an AI-generated assessment prompt and the model's per-objective scoring, and the coaching task shows an AI coaching prompt and its evaluation table. The Instructor **Skill Preview** shows the same loop from the staff side — an AI-generated question against a staging Skill, and the model's evaluation of a submitted answer, marked "Preview only — no data is saved". School Admin step 3 of the New Skill wizard shows the model choice, fallback chain, and compiled system prompt, and the preview grades against exactly the Learning Objectives entered in step 2.
 
-Captures and hotspots are generated by `demo-capture.js` in the private `brady-browser-kit` toolkit (a 1440-pixel window at 2x, so 2880-pixel PNGs; every PNG's width is asserted at build time) and verified by `verify-demo.js`, which clicks every hotspot and confirms it lands on the screen it claims. `flow.json` is script output, so re-run the capture rather than hand-editing it.
+Captures and hotspots are generated by `demo-capture.js` in the private capture toolkit (a 1440-pixel window at 2x, so 2880-pixel PNGs; every PNG's width is asserted at build time) and verified by `verify-demo.js`, which clicks every hotspot and confirms it lands on the screen it claims. `flow.json` is script output, so re-run the capture rather than hand-editing it.
 
 **Notes**
 
-- **Super Admin deliberately has no heatmap or per-learner score screens.** Those exist for that role, but the same views are already covered under School Admin and Instructor, so they are not duplicated here (Brady, 13 AUG 2026).
+- **Super Admin deliberately has no heatmap or per-learner score screens.** Those exist for that role, but the same views are already covered under School Admin and Instructor, so they are not duplicated here (13 AUG 2026 decision).
 - **Bump `v` in each persona's flow.json whenever screenshots are re-captured.** It drives the `?v=` cache-buster on every `<img>`; re-capturing without bumping it leaves browsers serving the previous images, so a shipped fix can look like it never deployed.
-- **Test accounts are shown in full; only people who are not test accounts are masked** (surname, email and Access Control avatar initials), per the 09 OCT 2026 decision. Every capture signs in with a test account, so header email chips are never masked.
+- **Test accounts are shown in full; only people who are not test accounts are masked, by full name since 19 NOV 2026** (surname, email and Access Control avatar initials), per the 09 OCT 2026 decision. Every capture signs in with a test account, so header email chips are never masked.
 - **PROD is shown as it is.** Test courses and Skills named ZZ ("delete me") appear on several screens and are left visible: nothing is cropped or filtered (08 OCT 2026 decision).
+- **Instructor screen 6 (Staging Skills) shows the first 45 skills of a longer list.** The full page is taller than Chrome can capture in one shot, so the list is capped at capture time.
 - **The New Skill wizard stops at step 3.** On PROD, the click that opens Review & Deploy is the one that creates the Skill, so that screen cannot be captured without creating one.
-- **Observed app drift worth reporting to JFT:** the live New Skill wizard’s step counter is inconsistent — steps 1-3 read "STEP _n_ OF 3", then the review screen reads "STEP 4 OF 5". The archived storyboard specified a 5-step wizard, so the counter appears to be a partial migration.
+- **Observed app drift worth reporting to the vendor:** the live New Skill wizard’s step counter is inconsistent — steps 1-3 read "STEP _n_ OF 3", then the review screen reads "STEP 4 OF 5". The archived storyboard specified a 5-step wizard, so the counter appears to be a partial migration.
 - The Instructor Skill Preview runs against **`EXT01 · Monthly Budgeting`**, an existing staging Skill in EXT01. Staging means students cannot launch it, only staging Skills appear in the instructor Preview list, and a preview saves no data.
 
 ---
 
 ## Live Skills (LRPS)
 
-The landing page's Links table is the list: PROD student links, staff portals and the click-through demo. **The STAGE student links were retired on 02 NOV 2026.** Students have used PROD since 21 OCT 2026, and STAGE now holds QA testing only, so its 33 student links (the course-level Skills, E010-01 to E010-10, D522-01B to D522-14 and the two R002 Skills) are off the page. The three STAGE staff portals stay for testing. **The DEV links were retired on 18 NOV 2026.** JFT's DEV host no longer serves SkillProof, so DEV is retired and its four links (one student Skill and the three staff portals) are off the page.
+The landing page's Links table is the list: PROD student links, staff portals and the click-through demo. **The STAGE student links were retired on 02 NOV 2026.** Students have used PROD since 21 OCT 2026, and STAGE now holds QA testing only, so its 33 student links (the course-level Skills, E010-01 to E010-10, D522-01B to D522-14 and the two R002 Skills) are off the page. The three STAGE staff portals stay for testing. **The DEV links were retired on 18 NOV 2026.** The vendor's DEV host no longer serves SkillProof, so DEV is retired and its four links (one student Skill and the three staff portals) are off the page.
 
 
 ---
@@ -135,7 +145,7 @@ SkillProof/
 ├── index.html                  LRPS Landing (storyboard root, since v4.59)
 ├── build_prototypes.py         Generates the 4 persona demo pages from flow.json
 ├── capture_screens.py          ARCHIVE ONLY — regenerates the _archive/ mockup screenshots.
-│                               The live demo is captured by demo-capture.js (brady-browser-kit)
+│                               The live demo is captured by demo-capture.js (private capture toolkit)
 ├── README.md                   This file
 ├── CHANGELOG.md                Version history
 ├── make_favicon.py             Builds favicon.ico + the two PNG icons from the official
@@ -151,8 +161,8 @@ SkillProof/
 │   ├── apple-touch-icon.png    180px, iOS home-screen
 │   ├── wgu-favicon.png         SUPERSEDED wordmark blob — kept only for _archive/ pages
 │   ├── table-controls.{css,js} Shared filter/sort/export control bar
-│   ├── video/                  skillproof-walkthrough-2k.mp4 (PROD, 2560x2000, 4m16s, 18 MB)
-│   ├── decks/                  skillproof-status-demo_v1-1_30JUL2026.pptx (7 slides, 41 MB)
+│   ├── video/                  skillproof-walkthrough-2k.mp4 (PROD, 2560x2000, 4m46s, 11 MB)
+│   ├── decks/                  skillproof-status-demo_v1-1_30JUL2026.pptx (7 slides, 13 MB)
 │   │   └── slides/             7 slide PNGs at 2560x1440 + the slide-6 video poster
 │   └── landing/                Root (LRPS) hero screenshots (light + dark)
 ├── student/                    PROD walkthrough — EXT01, incl. AI loop (10 screens)
@@ -171,10 +181,13 @@ SkillProof/
 │   ├── index.html
 │   ├── flow.json
 │   └── screenshots/            9 PNGs, 2880px wide
-├── pitch/                      One-slide pitch page + its own short embedded demo clip
+├── walkthrough/                Full-walkthrough video page (poster.jpg + index.html)
+├── pitch/                      One-slide pitch page
 │   ├── index.html
-│   ├── screenshots/            1 PNG
-│   └── screenshots_dark/       1 PNG
+│   └── assets/                 pitch clip (.mp4), poster, and the one-slide .pptx
+├── skills.json                 The list of Skill links shown on the landing page
+├── sync_superhuman.py          Updates the Superhuman Docs link table (needs the writer repo tokens)
+├── publish_morning.py          Morning link-status publish helper (inputs are not in this repo)
 └── _archive/                   Prior hand-built HTML mockups — preserved, unlinked
     ├── student/                18-screen mockup (+ light/dark screenshots, README)
     ├── instructor/             5-screen mockup
@@ -199,7 +212,7 @@ The per-persona READMEs describe the **archived mockups** and live in [`_archive
 
 **Persona:** Sally — Beginner / Intermediate / Advanced Python knowledge. Launches via LTI 1.3 from her zyBooks course page.
 
-**Scope:** This is the **v1.2 MVP scope** — the first JFT release. It deploys the existing prototype v1 proof-of-concept codebase to production-quality, scalable infrastructure with a polished UI, accessible outside the WGU intranet via LTI 1.3 SSO. No new features, adaptive logic changes, or coaching algorithm modifications are in scope for this v1.2 release.
+**Scope:** This is the **v1.2 MVP scope** — the first vendor release. It deploys the existing prototype v1 proof-of-concept codebase to production-quality, scalable infrastructure with a polished UI, accessible outside the WGU intranet via LTI 1.3 SSO. No new features, adaptive logic changes, or coaching algorithm modifications are in scope for this v1.2 release.
 
 **Scenarios (4 scenarios · 34 steps across 18 screens):**
 
@@ -238,7 +251,7 @@ The per-persona READMEs describe the **archived mockups** and live in [`_archive
 
 **Surface (archived mockup):** [`_archive/tenant_admin/`](_archive/tenant_admin/) · [Live demo page for this role](https://brady-wgu.github.io/SkillProof/tenant_admin/) — note that live page is the screenshot walkthrough, not this mockup · [Archived README](_archive/tenant_admin/README.md)
 
-**Persona:** Alice — WGU Program Development (PDev) employee operating the **School of Technology**. The requirements's contract term for this role is §2.2's admin-portal deliverable; the storyboard and all user-facing chrome call it **"School Admin"** per Brady's terminology lock (24 May 2026), so the role reads clearly to WGU staff outside the small dev team. Authenticates via her own secret LRPS deep link.
+**Persona:** Alice — WGU Program Development (PDev) employee operating the **School of Technology**. The requirements's contract term for this role is §2.2's admin-portal deliverable; the storyboard and all user-facing chrome call it **"School Admin"** per the terminology lock of 24 May 2026, so the role reads clearly to WGU staff outside the small dev team. Authenticates via her own secret LRPS deep link.
 
 **Scope:** Course-as-a-Service authoring (Skills, Topics, Learning Objectives with per-objective passing thresholds via inline expanders), AI coaching prompt configuration, model + coaching style selection, CI/CD-driven deploys, post-deploy manual LRPS provisioning ticket workflow, Skill lifecycle / archival, and analytics & reporting (engagement charts · class insights · program reports + Activity Log). Per-School branding / thresholds / retention moved to the Super Admin portal (v4.114); the School Admin now manages Courses + Skills only.
 
@@ -274,18 +287,18 @@ The per-persona READMEs describe the **archived mockups** and live in [`_archive
 
 **Surface:** [`/` (storyboard root)](./) · [Live](https://brady-wgu.github.io/SkillProof/) — v4.59 promoted to root; the standalone `lrps/` folder was deleted.
 
-**Persona:** in practice a **staff-facing launch hub** — Brady's own environment link tracker, rendered as LRPS. It mirrors the LRPS view a learner would see when launching from an LMS course module, but it lists every environment link across all four roles, so it is used to launch and to demo rather than as a learner surface.
+**Persona:** in practice a **staff-facing launch hub** — the project's environment link tracker, rendered as LRPS. It mirrors the LRPS view a learner would see when launching from an LMS course module, but it lists every environment link across all four roles, so it is used to launch and to demo rather than as a learner surface.
 
 > **Known cosmetic drift:** the page's user chip still reads **Alice** (the School Admin persona) even though the page is role-agnostic. Harmless, and deliberately left alone rather than edited on a demo day.
 
-**Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SkillProof Design System v1.2. Each of the four persona portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. JFT does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
+**Scope:** A recreation of WGU's internal Learning Resource Provisioning System, styled in the SkillProof Design System v1.2. Each of the four persona portals has its own provider row in this table; clicking the row deep-links into the corresponding portal. The vendor does not build LRPS — it is modeled here only to make the deep-link source feel authentic.
 
 The LRPS surface includes:
-- **43 real rows** mirroring Brady’s environment link tracker, in five labelled sections — no decorative filler and no pagination (both removed in v4.164 / v4.165, so this is a complete real page rather than a sample of a simulated dataset)
+- **27 live rows** mirroring the project's environment link tracker, in labelled sections — no decorative filler and no pagination (both removed in v4.164 / v4.165, so this is a complete real page rather than a sample of a simulated dataset)
 - The 4 live-demo rows at the bottom, clickable and deep-linked into each persona walkthrough
 - Broken links left visible and flagged (`Broken` status) rather than hidden, because tracking them is the point
 - A meta-bar quick-launch with role chips for Student / Instructor / School Admin / Super Admin
-- An **About SkillProof** sidebar with three links: the one-slide pitch page, the **Full Walkthrough (2K)** video (opens in a new tab), and the **Status Demo Deck**, which opens the in-browser viewer at [`/deck/`](deck/) rather than downloading 41 MB of PowerPoint
+- An **About SkillProof** sidebar with three links: the one-slide pitch page, the **Full Walkthrough (2K)** video (opens in a new tab), and the **Status Demo Deck**, which opens the in-browser viewer at [`/deck/`](deck/) rather than downloading 13 MB of PowerPoint
 
 ---
 
@@ -293,7 +306,7 @@ The LRPS surface includes:
 
 **Surface:** [`_archive/help/`](_archive/help/) — **archived in v4.173, no longer live.** A hand-built mockup, never a real SkillProof surface; the live app's help screen is captured in all four persona walkthroughs. Like every other `_archive/` path it is **not served on the live site** — Jekyll excludes underscore-prefixed directories, so `/_archive/help/` returns 404. Preserved in the repo; view it by serving the repo locally.
 
-**Scope:** Single-page self-service support + documentation surface. Linked from the Help button in every admin portal's navbar (tenant_admin, super_admin — instructor still pending). Closes Appendix A §16.4 #9.14 (self-service support portal). #9.15 (video training resources) is **deferred per WGU direction (21 May 2026)** — the video gallery was removed in the v4.81 rewrite. The Contact JFT Support FAB at the bottom-right opens the support-ticket flow (Zendesk handoff).
+**Scope:** Single-page self-service support + documentation surface. Linked from the Help button in every admin portal's navbar (tenant_admin, super_admin — instructor still pending). Closes Appendix A §16.4 #9.14 (self-service support portal). #9.15 (video training resources) is **deferred per WGU direction (21 May 2026)** — the video gallery was removed in the v4.81 rewrite. The Contact Support FAB at the bottom-right opens the support-ticket flow (Zendesk handoff).
 
 ---
 
@@ -404,10 +417,10 @@ Clone the repo and open `index.html` in any modern browser. No build step, no se
 
 ### Regenerate the live demo
 
-The demo is captured from PROD, so it needs four signed-in PROD sessions, one test account per role. The scripts live in the private `brady-browser-kit` toolkit; they are run from its run directory, `C:\dev\scratch\skillproof-qa-tools`, which holds `node_modules` and the credential store. Edit and run there, then copy changed files to the repo, never the reverse.
+The demo is captured from PROD, so it needs four signed-in PROD sessions, one test account per role. The scripts live in a private capture toolkit that is not in this repo; they run from its run directory (`<toolkit run directory>` below), which holds `node_modules` and the credential store. Edit and run there, then copy changed files into this repo (`<this repo>` below), never the reverse.
 
 ```bash
-cd "C:/dev/scratch/skillproof-qa-tools"
+cd "<toolkit run directory>"
 
 # 1. Sign in, one window per role, 15-30 s apart. PROD CDP ports: student 9401,
 #    instructor 9402, schooladmin 9403, superadmin 9404. Credentials come from the
@@ -430,7 +443,7 @@ node demo-capture.js 9401 flow-student-prod.json
 
 # 3. BUMP `v` in each flow file you re-captured (see Notes above), copy each
 #    <persona>/screenshots and flow.json into this repo, then build:
-cd "C:/dev/repos/SkillProof" && python build_prototypes.py
+cd "<this repo>" && python build_prototypes.py
 
 # 4. Verify against a local server before pushing.
 python -m http.server 8000
@@ -438,7 +451,9 @@ python -m http.server 8000
 node verify-demo.js 0 http://127.0.0.1:8000 student      # repeat per persona
 ```
 
-The walkthrough video is recorded by `rec-prod-walkthrough.js` against the signed-in student window, in one process, and the pauses while answers are written are cut out afterwards with ffmpeg.
+The walkthrough video is recorded by `rec-prod-walkthrough.js` against the signed-in student window, in one process, and the pauses while answers are written are cut out afterwards with ffmpeg. Because the AI grades each answer live and its questions are sometimes ambiguous, a take can show a wrong answer or a gap. The published take is a positive example from start to finish: every answer graded correct, Overall 100%, all four topics mastered, coaching task Complete. Re-record until a take does that.
+
+**Anonymized capture (19 NOV 2026).** Because this repo is public, the capture tool now masks every non-test person by full name (`maskFullNames`), can mask a text pattern or hide an element per screen (`maskText`, `hide`), and refuses any shot that still shows the vendor name, a personal name or an internal hostname (`forbidText`). Eight screens that were withheld in the 18 NOV 2026 privacy cleanup were restored under these rules: Instructor 1, 2 and 4, School Admin 6 and 12, and Super Admin 4, 5 and 6.
 
 **What the tooling guarantees.** `demo-capture.js` forces the window size on every screen, asserts each output PNG is exactly 2880 pixels wide, measures every hotspot off the live DOM in the same page state it captures, refuses to capture a screen still showing a loading skeleton, fails loudly if a redaction selector matches nothing, and refuses the shot if any email on screen is not masked. It also blocks every write request from the New Skill wizard screens in the browser, so walking the wizard cannot create a Skill. `verify-demo.js` then clicks every hotspot and confirms each lands on the screen it claims. `build_prototypes.py` aborts if any referenced PNG is missing or the wrong width.
 
@@ -459,23 +474,8 @@ Output: **96 PNGs** — 47 per theme (student 18 · instructor 5 · tenant_admin
 
 ---
 
-## Source documents
 
-| Document | Version | Date |
-|:---------|:--------|:-----|
-| Signed JFT contract | (executed) | 03 Mar 2026 |
-| SkillProof User Scenario Catalog: Additional Scenarios | v1.3 | 05 May 2026 |
-| SkillProof MVP Scenario Catalog | v1.2 | 07 Apr 2026 |
-| SkillProof User Profiles | v1.2 (v1.3 in progress) | 30 Mar 2026 |
-| SkillProof Authentication, Access Control, and Role Hierarchy (working draft) | v1.0 | 13 May 2026 |
-| SkillProof Design System Specification | v1.2 | 30 Mar 2026 |
-| WGU FY26 Design System Specification | v1.0 | 25 Mar 2025 |
-
-Upstream design system: [@openedx/paragon](https://github.com/openedx/paragon) (release-23.x, v23.19.1).
-
----
-
-## For developers (JFT)
+## For developers
 
 This storyboard is a **medium-fidelity sample**, not production code or a pixel-perfect specification. It illustrates the general look and feel of SkillProof and its administrative surfaces on a desktop browser. Use it as a rough guide for the intended user experience — adapt as needed for the production implementation.
 
@@ -496,7 +496,7 @@ When implementing:
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
-**Latest: v4.186 (18 Nov 2026)**: the four DEV links are retired (27 links). **v4.185 (16 Nov 2026)**: the PROD link list adds E071-03 - Graphs and Trees (31 links). **v4.183 (28 Oct 2026)**: the PROD link list adds E071-02 - Functions and Relations (63 links). **v4.182 (22 Oct 2026)**: the PROD link list adds E071-01 - Set Basics (62 links). **v4.181 (09 Oct 2026)**: test accounts are no longer masked; only people who are not test accounts are. **v4.180 (09 Oct 2026)**: the walkthrough video is re-recorded with a clean opening, every screen from its top, and true 2x frames. **v4.179 (08 Oct 2026)**: the live-app demo and the walkthrough video are re-captured on PROD (42 screens, 2880-pixel captures; see CHANGELOG). **v4.174 (13 Aug 2026)** — corrected a long-standing docs error: the `_archive/` tree is not publicly reachable and never was, because Jekyll excludes underscore-prefixed paths. **v4.173 (13 Aug 2026)** — the hand-built `help/` mockup was archived to `_archive/help/` and unlinked; it was never a real SkillProof surface and should have moved with the other mockups in v4.167. **v4.172 (13 Aug 2026)** — pre-demo fix: the Help page never loaded the icon font, so all 23 of its icons rendered as literal words. **v4.171 (13 Aug 2026)** — the status demo deck now opens **in the browser** at [`/deck/`](deck/): slides rendered to PNG, with the embedded walkthrough replayed as a real video overlay pointed at the copy already in the repo, and the deck’s own hyperlinks preserved as click regions. **v4.170 (13 Aug 2026)** — favicon rebuilt as the WGU owl on an opaque Deep Navy square (the old one was the wordmark on transparency, invisible on a dark tab strip), and the status demo deck added as a third landing-page link. **v4.169 (13 Aug 2026)** — added the 2K full walkthrough (2560×2000, 4m19s) as a second landing-page link under One-Slide Pitch. **v4.168 (13 Aug 2026)** — demo rebuilt on STU101 with the AI interaction loop on all three sides (student assessment, student coaching, instructor Skill Preview); frames made full-browser-width with internal scroll; captures moved to 1920px; Instructor granted B002 so every role shows the same course; capture harness gated on content readiness after three screens shipped as loading skeletons. **v4.167 (23 Jul 2026)** — the four persona portals were replaced by live-app screenshot walkthroughs and the hand-built mockups archived.
+**Latest: v4.187 (19 Nov 2026)**: walkthrough video, pitch clip, status deck, landing images and all 42 walkthrough screens re-captured from PROD; eight withheld screens restored with full-name masking; repo text anonymized. **v4.186 (18 Nov 2026)**: the four DEV links are retired (27 links). **v4.185 (16 Nov 2026)**: the PROD link list adds E071-03 - Graphs and Trees (31 links). **v4.183 (28 Oct 2026)**: the PROD link list adds E071-02 - Functions and Relations (63 links). **v4.182 (22 Oct 2026)**: the PROD link list adds E071-01 - Set Basics (62 links). **v4.181 (09 Oct 2026)**: test accounts are no longer masked; only people who are not test accounts are. **v4.180 (09 Oct 2026)**: the walkthrough video is re-recorded with a clean opening, every screen from its top, and true 2x frames. **v4.179 (08 Oct 2026)**: the live-app demo and the walkthrough video are re-captured on PROD (42 screens, 2880-pixel captures; see CHANGELOG). **v4.174 (13 Aug 2026)** — corrected a long-standing docs error: the `_archive/` tree is not publicly reachable and never was, because Jekyll excludes underscore-prefixed paths. **v4.173 (13 Aug 2026)** — the hand-built `help/` mockup was archived to `_archive/help/` and unlinked; it was never a real SkillProof surface and should have moved with the other mockups in v4.167. **v4.172 (13 Aug 2026)** — pre-demo fix: the Help page never loaded the icon font, so all 23 of its icons rendered as literal words. **v4.171 (13 Aug 2026)** — the status demo deck now opens **in the browser** at [`/deck/`](deck/): slides rendered to PNG, with the embedded walkthrough replayed as a real video overlay pointed at the copy already in the repo, and the deck’s own hyperlinks preserved as click regions. **v4.170 (13 Aug 2026)** — favicon rebuilt as the WGU owl on an opaque Deep Navy square (the old one was the wordmark on transparency, invisible on a dark tab strip), and the status demo deck added as a third landing-page link. **v4.169 (13 Aug 2026)** — added the 2K full walkthrough (2560×2000, 4m19s) as a second landing-page link under One-Slide Pitch. **v4.168 (13 Aug 2026)** — demo rebuilt on STU101 with the AI interaction loop on all three sides (student assessment, student coaching, instructor Skill Preview); frames made full-browser-width with internal scroll; captures moved to 1920px; Instructor granted B002 so every role shows the same course; capture harness gated on content readiness after three screens shipped as loading skeletons. **v4.167 (23 Jul 2026)** — the four persona portals were replaced by live-app screenshot walkthroughs and the hand-built mockups archived.
 
 Earlier: **v4.160 (2 Jun 2026)** — unified export: one consistently-placed "Export ▾" dropdown on every filtered table, formats by data nature (PDF/CSV for people, MD/JSON for machines). v4.159 de-duplicated the Logs filter bars, wired the navbar logo to "home", and added dashboard subtitles. v4.158 was the filter/sort placement audit + Result-column removal; v4.157 removed the analytics "AA contrast" chip; v4.156 was the design-system polish pass across the 3 admin portals (8-pt spacing + token consistency, grounded in the SkillProof Design System v1.3) plus leadership-facing enhancements: real export-confirmation toasts, a live institution-branding preview, a visualization key, and a responsive phone preview. Recent milestones: v4.155 screenshots regenerated with `screen-NN.png` naming; v4.152 shared controls module + heat-scale unification + modals; v4.153 `?screen=N` deep-link support; v4.154 dark mode working across all 6 surfaces; the Coda Contract Requirements tracker is fully populated (34 Met / 2 In Progress / 2 Deferred / 54 N/A out of 92 reqs).
 
@@ -506,9 +506,9 @@ Earlier milestones (13 May 2026):
 - **v4.46** — WGU shield favicon added to every storyboard surface.
 - **v4.47-v4.49** — Tenant Admin walkthrough: weight column removed (zero contract hits), `LO` abbreviation swept to `Objective`, screens 5/6/7/10/22 retired, Tenant Settings rebuilt, Screen 11 Deploy summary expanded.
 - **v4.51** — Re-audited tenant_admin against the correct signed contract MD. Added 2 new screens (Analytics & Reporting, Tenant Activity Log) closing 8 Yes-committed Tenant-Admin requirements (A-7.10..7.14, A-9.14, A-9.15, A-10.4).
-- **v4.52** — RBAC narrative solidification per Brady's working draft. `Global Admin` → `Super Admin` swept across all visible UI. `PDev` → `School of Technology` (tenant=School model). New Super Admin screen 13 (School / Tenant Management) closes the multi-school management gap.
+- **v4.52** — RBAC narrative solidification per the working draft. `Global Admin` → `Super Admin` swept across all visible UI. `PDev` → `School of Technology` (tenant=School model). New Super Admin screen 13 (School / Tenant Management) closes the multi-school management gap.
 - **v4.53** — End-of-day sequential renumber. Tenant Admin IDs collapsed `{1,2,3,4,9,8,11,12,13..20,21,23,24,25}` → `1..20`. Full screenshot regeneration (156 PNGs).
-- **v4.54** — Documentation refresh across this README + per-persona READMEs to reflect all of the above as the JFT-delivery state.
+- **v4.54** — Documentation refresh across this README + per-persona READMEs to reflect all of the above as the vendor-delivery state.
 
 ---
 
@@ -516,6 +516,6 @@ Earlier milestones (13 May 2026):
 
 **Western Governors University** | Program Development | SkillProof
 
-*WGU confidential / proprietary. Do not redistribute without authorization.*
+*Medium-fidelity sample. Not production code.*
 
 </div>

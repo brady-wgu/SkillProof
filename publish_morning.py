@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Morning publish: one command from last night's measurements to both link surfaces.
 
-08 OCT 2026 (Brady). The nightly runner (sentry) never writes to this repo or to
+08 OCT 2026. The nightly runner (sentry) never writes to this repo or to
 Superhuman, on purpose: nothing should change a public page at 02:30 with nobody
 watching. This script is the human step, collapsed into two commands with a stop
 between them.
