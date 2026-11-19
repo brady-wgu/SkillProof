@@ -1,3 +1,48 @@
+## Start here (for the new owner)
+
+### What it is
+- A public repo that serves the SkillProof storyboard, the click-through demo of WGU's AI coaching app, and the public page of Skill (LRPS) links.
+- The site runs on GitHub Pages at brady-wgu.github.io/SkillProof. There is no build server. The pages are plain files committed to the repo.
+
+### Who needs it, and does anyone need to act now
+- Mike is the new owner. Yes, one action is due after the transfer (step 2 below): the web address changes.
+- After transfer the address becomes mikeh1239.github.io/SkillProof. GitHub does not redirect Pages sites, so the old address stops working.
+- Any link to the old address in team docs, emails or decks must be updated.
+- The repo is public. History was cleaned on 18 NOV 2026 to remove learner screenshots and contract details. Old commits may stay reachable by direct link through old pull requests.
+
+### What it needs to run
+- To view the site: nothing, only a web browser.
+- To change the link page: Python, the `skills.json` file in this repo, and `build_links.py`.
+- To update the Superhuman Docs link table: `sync_superhuman.py` plus the writer repo's tokens. These were Brady's and are not in this repo.
+- The demo screenshots were captured with the private brady-browser-kit repo. Re-capturing needs that toolkit and signed-in sessions.
+
+### How to start
+1. Open the repo on GitHub and read the README.md on the front page. Expected: a landing image, an Overview and a table of surfaces.
+2. In the repo, open Settings, then Pages. Expected: the site shows as published, and the address shows mikeh1239.github.io/SkillProof. If it says Pages is off, turn it on from the main branch.
+3. Open the new address in a browser. Expected: the link page loads. Click one persona walkthrough and confirm it opens.
+4. Search team docs and decks for brady-wgu.github.io and replace each match with the new address. Expected: no old-address links remain.
+5. To change the list of links, ask a technical colleague to edit `skills.json` and run `build_links.py`. Expected: `index.html` updates to match.
+
+### Key files
+| File | What it does |
+|:--|:--|
+| `skills.json` | The list of 27 Skill links shown on the public page |
+| `build_links.py` | Rebuilds the link page (`index.html`) from `skills.json` |
+| `sync_superhuman.py` | Updates the Superhuman Docs link table, needs the writer repo's tokens |
+| `student/`, `instructor/`, `tenant_admin/`, `super_admin/` | The four click-through walkthroughs |
+
+### What stopped when Brady left
+- Brady no longer maintains the link page, so statuses on it will go stale.
+- The Superhuman Docs link table no longer updates, because the writer tokens were Brady's.
+- Test runs that fed link status came from brady-browser-kit and are switched off.
+- DEV links were removed on 18 NOV 2026. STAGE student links were retired on 02 NOV 2026.
+
+### Where to find more
+- `README.md`: Overview; Surfaces; Live Skills (LRPS); Repo layout; Persona sections; Shared persona and course reference; Design System; How to use (including Regenerate the live demo); Source documents; For developers (JFT); Changelog.
+- `CHANGELOG.md`: version history.
+
+---
+
 <div align="center">
 
 # SkillProof
